@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Story Bell — FAQs</title>
+<!-- Google Font to match site -->
+<link href="https://fonts.googleapis.com/css?family=Coming+Soon&amp;display=swap" rel="stylesheet"/>
+<!-- Core styles borrowed from Blank_final template -->
+<style>
+    :root{
+      --bg:#001f3f;
+      --accent:#FFEB3B;
+      --accent-soft:rgba(255,235,59,0.15);
+      --panel:#003366;
+      --text:#ffffff;
+    }
+    html, body{margin:0; padding:0; background:var(--bg); color:var(--text); font-family:'Coming Soon', cursive;}
+    a{color:var(--accent); text-decoration:none;}
+    a:hover{text-decoration:underline;}
+
+    header {
+      width: 100%;
+      background-color: var(--bg);
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+      border-bottom: 2px solid var(--accent);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .header-left a { display:flex; align-items:center; gap:8px; text-decoration:none; }
+    .site-title { font-size: 35px; font-weight: bold; color: var(--accent); font-family:'Georgia', serif; margin:0; }
+
+    nav ul { list-style:none; display:flex; gap:10px; margin:0; padding:0 10px; }
+    nav a  { color: var(--accent); font-family:'Georgia', serif; font-size:18px; padding:4px 8px; border-radius:4px; }
+    nav a:hover{ background: var(--panel); }
+
+    /* Page container mirroring .main-blank */
+    .main-blank {
+      min-height: 90vh;
+      max-width: 900px;
+      margin: 0 auto;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      font-size: 1.15em;
+      letter-spacing: 0.02em;
+      padding: 40px 16px 60px;
+    }
+    .about-header { display:flex; align-items:center; justify-content:center; gap:18px; margin-bottom:8px; }
+    .about-header img {
+      height: 88px; width: 88px; border-radius: 50%; object-fit: cover;
+      background: #FFEB3B22; box-shadow: 0 2px 18px #FFEB3B22;
+    }
+    .about-header h1 {
+      font-size: 2.2em; color:#fff; margin: 0; font-weight:700;
+      text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099; font-family:'Georgia', serif;
+    }
+
+    .section-title {
+      font-size: 2em;
+      margin-top: 26px;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(255,235,59,.6), 0 0 20px rgba(255,170,0,.2);
+      margin-bottom: 0.5em;
+      font-family: 'Georgia', serif;
+      text-align: center;
+    }
+
+    /* Accessible accordion using details/summary */
+    .faq {
+      width:100%;
+      margin-top: 8px;
+    }
+    .faq details {
+      background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.08));
+      border: 2px solid var(--accent);
+      border-radius: 14px;
+      margin: 12px 0;
+      padding: 10px 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+      transition: box-shadow .2s ease, transform .12s ease;
+    }
+    .faq details[open] { box-shadow: 0 0 22px rgba(255,235,59,0.3); transform: translateY(-1px); }
+    .faq summary {
+      font-size: 1.03em;
+      font-weight: 700;
+      list-style: none;
+      cursor: pointer;
+      outline: none;
+    }
+    .faq summary::-webkit-details-marker { display:none; }
+    .faq summary::after {
+      content: "＋";
+      float: right;
+      color: var(--accent);
+      transition: transform .2s ease;
+      font-weight: 900;
+    }
+    .faq details[open] summary::after { content: "–"; transform: rotate(0deg); }
+    .faq p {
+      margin: 8px 0 0;
+      line-height: 1.65;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(255,255,102,.6), 0 0 10px rgba(255,170,0,.27);
+      font-family: 'Georgia', serif;
+    }
+    .faq .evidence { font-size: .96em; opacity: .95; background: var(--panel); padding: 10px 12px; border-radius: 10px; margin-top: 8px; }
+    .badge {
+      display:inline-block; background: var(--accent); color:#003366;
+      font-weight: 800; font-size:.78em; padding: 2px 8px; border-radius: 999px;
+      margin-left: 8px;
+    }
+    .note { font-size:.92em; opacity:.95; }
+
+    @media (max-width:700px){
+      .main-blank { font-size: 1em; padding-top: 22px; }
+      .about-header { flex-direction: column; gap: 10px; }
+      .about-header img { height: 64px; width: 64px; }
+      .about-header h1 { font-size: 1.4em; }
+      .section-title { font-size: 1.2em; }
+    }
+  </style>
+<style id="site-title-bump">
+/* Minimal bump for header brand text without affecting other header items */
+header .site-title {
+  font-size: clamp(32px, 3.4vw, 40px) !important;  /* desktop up to ~40px */
+  line-height: 1.05 !important;
+  white-space: nowrap !important;
+  margin-top: 12px !important; /* keep vertical alignment tight */
+}
+@media (max-width: 800px){
+  header .site-title {
+    font-size: clamp(28px, 7vw, 34px) !important;  /* safe on mobile */
+    line-height: 1.05 !important;
+  }
+}
+</style>
+<style id="sb-cards-base">
+.cards-grid{
+  display:flex; flex-wrap:wrap; justify-content:center;
+  align-items:stretch; gap:16px; margin:2em auto; max-width:1200px; box-sizing:border-box;
+}
+.story-card{
+  flex: 0 1 260px;
+  min-width: 260px;
+  max-width: 320px;
+  display:flex; flex-direction:column; box-sizing:border-box;
+  background:#001f3f; color:#fff; padding:12px; border-radius:14px;
+  border:2px solid #FFEB3B; box-shadow:0 2px 10px #2223;
+  transition:box-shadow .32s cubic-bezier(.5,1.7,.49,1.06), transform .2s cubic-bezier(.5,1.7,.49,1.06);
+  text-align:center;
+}
+.story-card img{
+  width:100%; height:160px; object-fit:cover; border-radius:10px; display:block;
+  margin:0 !important; padding:0 !important; transition:transform .3s cubic-bezier(.5,1.7,.49,1.06);
+}
+.story-card .grow{ flex:1 1 auto; display:flex; flex-direction:column; min-height:0; }
+.story-card h3, .story-card h3 a{
+  color:#fff !important; text-decoration:none !important;
+  text-shadow:0 0 6px #0008; margin:8px 0 6px 0 !important; font-size:1.08em; font-weight:bold;
+}
+.story-card .desc-wrap{ background:#003366; border-radius:8px; padding:8px 10px; margin-top:2px; }
+.story-card p{ color:#fff; font-size:.95em; margin:0; }
+.story-card .chips{ margin-top:10px; display:flex; flex-wrap:wrap; justify-content:center; gap:6px; }
+.story-card .chip{
+  display:inline-block; text-decoration:none; user-select:none;
+  padding:6px 12px; border-radius:999px; font-size:.78em; line-height:1;
+  background:#002a55; color:#fff; border:1px solid rgba(255,255,255,.18);
+  box-shadow: 0 2px 6px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.06);
+  transition: transform .13s, box-shadow .21s, background .18s, color .12s;
+}
+.story-card .chip:hover, .story-card .chip:focus{
+  background:#003e80; color:#FFEB3B;
+  box-shadow: 0 0 16px 6px #FFEB3B66, 0 2px 10px rgba(0,0,0,.28);
+  transform: translateY(-1px) scale(1.05);
+}
+.favorite-star{
+  background:none; border:1px solid rgba(255,255,255,.25);
+  cursor:pointer; font-size:1em; color:#FFEB3B;
+  border-radius:999px; padding:6px 10px; margin-top:10px;
+  transition: color .14s, box-shadow .18s, transform .13s, background .18s, border-color .18s;
+}
+.favorite-star .star{ pointer-events:none; font-size:1.2em; line-height:1; vertical-align:middle; }
+.favorite-star:hover, .favorite-star:focus{
+  background:rgba(255,235,59,.12); border-color:rgba(255,235,59,.55);
+  box-shadow: 0 0 16px 6px #FFEB3B66; transform: translateY(-1px);
+}
+.story-card:hover{ box-shadow:0 0 28px 12px #FFEB3Bcc, 0 2px 10px #2223; transform:scale(1.035); }
+@media (max-width:800px){
+  .cards-grid{ gap:12px; justify-content:space-between; }
+  .story-card{ flex:0 0 calc(50% - 6px); min-width:calc(50% - 6px); max-width:calc(50% - 6px); padding:12px; }
+  .story-card img{ height:130px !important; }
+}
+</style>
+<style id="sb-cards-grid-clean">
+.cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  gap: 16px !important;
+}
+.cards-grid > .story-card,
+#story-cards .cards-grid > .story-card,
+#story-cards .story-grid > .story-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-self: stretch !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  flex: 0 1 calc(25% - 16px) !important;   /* 4-up desktop */
+}
+@media (max-width: 1200px){
+  .cards-grid > .story-card,
+  #story-cards .cards-grid > .story-card,
+  #story-cards .story-grid > .story-card {
+    flex: 0 1 calc(33.333% - 16px) !important;     /* 3-up tablet */
+  }
+}
+@media (max-width: 800px){
+  .cards-grid > .story-card,
+  #story-cards .cards-grid > .story-card,
+  #story-cards .story-grid > .story-card {
+    flex: 0 1 calc(50% - 10px) !important;         /* 2-up mobile */
+  }
+}
+.cards-grid > .story-card .chips,
+#story-cards .cards-grid > .story-card .chips,
+#story-cards .story-grid > .story-card .chips {
+  overflow: visible !important;
+  max-height: none !important;
+}
+.cards-grid > .story-card .desc-wrap p,
+#story-cards .cards-grid > .story-card .desc-wrap p,
+#story-cards .story-grid > .story-card .desc-wrap p {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+  overflow: visible !important;
+}
+</style>
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://story-bell.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Story Bell — FAQs","url":"https://story-bell.com/FAQ.html","inLanguage":"en","description":"Quick, research-backed answers for parents. Tap a question to expand.","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}},"mainEntity":[{"@type":"Question","name":"How long should we read each day?Evidence","acceptedAnswer":{"@type":"Answer","text":"Short and consistent wins: 10–15 minutes daily is powerful for vocabulary, comprehension, and habit-building."}},{"@type":"Question","name":"When should I start reading to my child?Evidence","acceptedAnswer":{"@type":"Answer","text":"From birth. Babies benefit from language rhythm and bonding during read‑alouds."}},{"@type":"Question","name":"Should I correct every reading mistake?Evidence","acceptedAnswer":{"@type":"Answer","text":"No. Encourage self‑correction first; give gentle support if they’re stuck. Keep meaning and enjoyment central."}},{"@type":"Question","name":"My child wants the same book every night—is that okay?Evidence","acceptedAnswer":{"@type":"Answer","text":"Absolutely. Re‑reading strengthens memory and comprehension and is developmentally normal."}},{"@type":"Question","name":"Do audiobooks or digital stories “count” as reading?Evidence","acceptedAnswer":{"@type":"Answer","text":"Yes—especially when audio is synchronized with on‑screen text that highlights words as they’re read."}},{"@type":"Question","name":"Is scrolling text with audio better than video stories?Evidence","acceptedAnswer":{"@type":"Answer","text":"Often yes. Natural scrolling with word highlighting supports eye‑tracking and connects spoken words to print—more active than passive video watching."}},{"@type":"Question","name":"How should we balance print and digital books?Evidence","acceptedAnswer":{"@type":"Answer","text":"Use both. Print supports focus and tactile engagement; digital adds scaffolds like highlighting and immediate word support."}},{"@type":"Question","name":"What if English isn’t our first language?Evidence","acceptedAnswer":{"@type":"Answer","text":"Read in any language you’re comfortable with while also exposing children to the school language. Skills transfer."}},{"@type":"Question","name":"How do I keep 7–12 year‑olds engaged?Evidence","acceptedAnswer":{"@type":"Answer","text":"Offer choice, discuss themes, and connect books to interests. Shared talk about books still matters."}},{"@type":"Question","name":"Why use emotion‑themed stories?Evidence","acceptedAnswer":{"@type":"Answer","text":"They build emotional vocabulary, empathy, and coping strategies—supporting mental health and academics."}},{"@type":"Question","name":"What should I do while reading SEI books?Tips","acceptedAnswer":{"@type":"Answer","text":"Pause to label feelings, ask “Have you felt this way?”, and practice a simple strategy (deep breath, ask for help). Keep it short, frequent, and warm."}}]}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+
+/* Always show a subtle light-blue chip behind descriptions */
+.carousel-section .carousel-desc{
+  background: rgba(173, 216, 230, 0.18); /* light blue */
+  padding: 0.25em 0.5em;
+  border-radius: 10px;
+  display: inline-block;
+  color: #ffffff !important;
+}
+
+/* Make sure carousels don't block vertical page scroll on touch devices */
+.carousel-section .carousel-track{
+  touch-action: auto !important;             /* allow vertical swipes to bubble */
+  overscroll-behavior-x: contain !important; /* keep horizontal bounce inside */
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;             /* gentler snapping */
+}
+
+/* --- Mobile-only refinements --- */
+@media (max-width: 800px){
+
+  /* Hide explicit <br> between title and description to save space */
+  .carousel-section .carousel-item br{ display: none !important; }
+
+  /* Title: smaller than before, tighter line-height, stays white */
+  .carousel-section .carousel-item .carousel-title,
+  .carousel-section a.carousel-title-link .carousel-title,
+  .carousel-section .carousel-title{
+    font-size: 0.74em !important;            /* smaller, still > description */
+    line-height: 1.06em !important;          /* much tighter for 2-line titles */
+    color: #ffffff !important;
+    margin: 0.10em 0 0.06em !important;      /* bring closer to desc */
+  }
+  .carousel-section .carousel-title-link,
+  .carousel-section .carousel-title-link:link,
+  .carousel-section .carousel-title-link:visited{
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+
+  /* Description: compact, white, sits in the blue chip */
+  .carousel-section .carousel-desc{
+    font-size: 0.56em !important;
+    line-height: 1.12em !important;          /* tighter */
+    color: #ffffff !important;
+    padding: 0.22em 0.45em;                   /* a bit tighter on mobile */
+  }
+
+  /* Categories: same size as desc, bold, white; closer spacing */
+  .carousel-section .carousel-category{
+    font-size: 0.56em !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+  .carousel-section .carousel-categories{
+    margin-top: 0.06em !important;           /* closer to description */
+  }
+}</style><style id="sb-carousel-perf-ux">/* === Carousel performance + UX smoothing === */
+
+/* 1) Promote images to their own compositor layer; confine paints */
+.carousel-section .carousel-item img,
+.carousel-section .carousel-card img{
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+  contain: paint; /* shadows/borders don't spill to ancestors */
+}
+
+/* 2) Track tuned for momentum but lets vertical page scroll through */
+.carousel-section .carousel-track{
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;    /* gentler snap reduces jerk */
+  touch-action: auto !important;     /* allow vertical swipes */
+  overscroll-behavior-x: contain;    /* keep bounce inside track */
+  will-change: scroll-position;
+}
+
+/* 3) Tighter two-line titles (carousels only) */
+.carousel-section .carousel-item .carousel-title,
+.carousel-section a.carousel-title-link .carousel-title,
+.carousel-section .carousel-title{
+  line-height: 1.06em !important;   /* reduce big interline gap */
+  margin: 0.10em 0 0.06em !important;
+  color: #fff !important;           /* keep white */
+}
+
+/* 4) Light blue chip behind description (carousels only) */
+.carousel-section .carousel-desc{
+  background: rgba(173, 216, 230, 0.18);
+  padding: 0.25em 0.5em;
+  border-radius: 10px;
+  display: inline-block;
+  color: #ffffff !important;
+}
+
+/* 5) Mobile-only: cheaper shadows + compact spacing */
+@media (max-width: 800px){
+  .carousel-section .carousel-item br{ display:none !important; } /* save vertical space */
+  .carousel-section .carousel-item img,
+  .carousel-section .carousel-card img{
+    box-shadow: 0 0 8px 2px rgba(255,223,0,.35) !important; /* lighter than desktop */
+  }
+  .carousel-section .carousel-desc{
+    line-height: 1.12em !important;
+    padding: 0.22em 0.45em;
+  }
+  .carousel-section .carousel-categories{ margin-top: 0.06em !important; }
+}</style><style id="sb-android-smoothing">
+/* --- Android/Samsung smoothing tweaks (carousels only) --- */
+
+/* Promote the horizontal track to its own layer to avoid repaint storms */
+.carousel-section .carousel-track{
+  transform: translateZ(0);           /* GPU layer */
+  will-change: scroll-position;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;      /* gentler snapping */
+  overscroll-behavior-x: contain;
+  touch-action: auto !important;      /* allow vertical scroll to pass through */
+}
+
+/* Isolate each card so its paints don't spill to neighbors */
+.carousel-section .carousel-item,
+.carousel-section .carousel-card{
+  contain: content;                    /* size+layout+paint isolation */
+}
+
+/* Images: keep compositor-friendly; lighten paints on mobile */
+@media (max-width: 800px){
+  .carousel-section .carousel-item img,
+  .carousel-section .carousel-card img{
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+    /* Lighter glow on mobile, and don't animate box-shadow (expensive) */
+    box-shadow: 0 0 6px 2px rgba(255,223,0,.28) !important;
+    transition: transform .2s ease !important;  /* drop shadow animation */
+  }
+}
+
+/* Tighter two-line titles to avoid big gaps */
+.carousel-section .carousel-item .carousel-title,
+.carousel-section a.carousel-title-link .carousel-title,
+.carousel-section .carousel-title{
+  line-height: 1.06em !important;
+  margin: 0.10em 0 0.06em !important;
+  color: #fff !important;
+}
+
+/* Keep the light-blue chip on description */
+.carousel-section .carousel-desc{
+  background: rgba(173,216,230,0.18);
+  color: #fff !important;
+  padding: 0.22em 0.45em;
+  border-radius: 10px;
+  display: inline-block;
+}
+</style><style id="sb-carousel-nosnap-mobile">
+/* === Force-disable carousel snap + recentering on mobile === */
+@media (max-width: 900px){
+  /* Container: no snap + no smooth 'auto-return' */
+  .carousel-track{
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Items: make sure nothing can snap to them either */
+  .carousel-card, .story-card{
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+    contain: paint;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    overflow: visible;
+  }
+}
+</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>/* SBQ cleanup override: menu shows only with .active */
+#story-queue-menu{display:none !important;}
+html body #story-queue-menu.active{display:flex !important;}
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='index_items/makestorylist.webp';window.SBQ_STILL_LAST='index_items/listen_still_last.png';window.SBQ_GIF_FWD='';window.SBQ_GIF_REV='';window.SBQ_GIF_MS=900;window.SBQ_COUNTDOWN_URL='index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>/* SB click-only override (no hover-close) */
+#story-queue-menu{display:none!important;}
+body.sbq-open #story-queue-menu{display:flex!important;}
+body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}
+body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}
+</style><style id="wand-top-style">
+/* Keep wand always visible above menus, and never block clicks */
+#wand {
+  position: fixed !important;
+  z-index: 20001 !important;
+  pointer-events: none !important;
+}
+</style></head>
+<body>
+<header>
+<div class="header-left">
+<a href="index.html">
+<img alt="Story Bell Logo" src="index_items/logo.jpg" style="height:64px; border-radius:50%;"/>
+<span class="site-title">Story Bell</span>
+</a>
+</div>
+<div class="header-right">
+<nav aria-label="Main">
+<ul id="main-nav">
+<li><a href="0_3.html">0–3</a></li>
+<li><a href="4_6.html">4–6</a></li>
+<li><a href="7_12.html">7–12</a></li>
+<li><a href="5min.html">Short</a></li>
+<li><a href="10min.html">Medium</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main class="main-blank">
+<div class="about-header">
+<img alt="Child reading illustration" src="index_items/0_3.png"/>
+<h1>Frequently Asked Questions</h1>
+</div>
+<p class="note">Quick, research-backed answers for parents. Tap a question to expand.</p>
+<h2 class="section-title">Reading Basics</h2>
+<section aria-label="Reading Basics" class="faq">
+<details>
+<summary>How long should we read each day?<span class="badge">Evidence</span></summary>
+<p>Short and consistent wins: 10–15 minutes daily is powerful for vocabulary, comprehension, and habit-building.</p>
+<div class="evidence">Bus, Van IJzendoorn &amp; Pellegrini (1995) meta-analysis links shared reading to later reading success.</div>
+</details>
+<details>
+<summary>When should I start reading to my child?<span class="badge">Evidence</span></summary>
+<p>From birth. Babies benefit from language rhythm and bonding during read‑alouds.</p>
+<div class="evidence">Hart &amp; Risley (1995) show early language exposure predicts larger vocabularies and later advantages.</div>
+</details>
+<details>
+<summary>Should I correct every reading mistake?<span class="badge">Evidence</span></summary>
+<p>No. Encourage self‑correction first; give gentle support if they’re stuck. Keep meaning and enjoyment central.</p>
+<div class="evidence">National Reading Panel (2000) recommends balancing accuracy, comprehension, and motivation.</div>
+</details>
+<details>
+<summary>My child wants the same book every night—is that okay?<span class="badge">Evidence</span></summary>
+<p>Absolutely. Re‑reading strengthens memory and comprehension and is developmentally normal.</p>
+<div class="evidence">Horst (2013) finds repetition improves word learning and understanding.</div>
+</details>
+</section>
+<h2 class="section-title">Digital Reading</h2>
+<section aria-label="Digital Reading" class="faq">
+<details>
+<summary>Do audiobooks or digital stories “count” as reading?<span class="badge">Evidence</span></summary>
+<p>Yes—especially when audio is synchronized with on‑screen text that highlights words as they’re read.</p>
+<div class="evidence">Mol &amp; Bus (2011) meta-analysis and Takacs, Swart, &amp; Bus (2015) show well-designed e‑books with narration + highlighting boost vocabulary and comprehension.</div>
+</details>
+<details>
+<summary>Is scrolling text with audio better than video stories?<span class="badge">Evidence</span></summary>
+<p>Often yes. Natural scrolling with word highlighting supports eye‑tracking and connects spoken words to print—more active than passive video watching.</p>
+<div class="evidence">Eye‑tracking research (e.g., Kuppens et al., 2019) shows synchronized text/voice aids decoding and fluency.</div>
+</details>
+<details>
+<summary>How should we balance print and digital books?<span class="badge">Evidence</span></summary>
+<p>Use both. Print supports focus and tactile engagement; digital adds scaffolds like highlighting and immediate word support.</p>
+<div class="evidence">Zucker, Moody &amp; McKenna (2009) report balanced exposure strengthens traditional and digital literacy skills.</div>
+</details>
+</section>
+<h2 class="section-title">Language &amp; Motivation</h2>
+<section aria-label="Language and Motivation" class="faq">
+<details>
+<summary>What if English isn’t our first language?<span class="badge">Evidence</span></summary>
+<p>Read in any language you’re comfortable with while also exposing children to the school language. Skills transfer.</p>
+<div class="evidence">August &amp; Shanahan (2006) review shows cross‑language transfer of literacy skills.</div>
+</details>
+<details>
+<summary>How do I keep 7–12 year‑olds engaged?<span class="badge">Evidence</span></summary>
+<p>Offer choice, discuss themes, and connect books to interests. Shared talk about books still matters.</p>
+<div class="evidence">Guthrie &amp; Wigfield (2000) link choice/motivation to independent reading growth.</div>
+</details>
+</section>
+<h2 class="section-title">SEI (Social &amp; Emotional Intelligence) Books</h2>
+<section aria-label="SEI Books" class="faq">
+<details>
+<summary>Why use emotion‑themed stories?<span class="badge">Evidence</span></summary>
+<p>They build emotional vocabulary, empathy, and coping strategies—supporting mental health and academics.</p>
+<div class="evidence">Denham (1998) on early emotional vocabulary; Durlak et al. (2011) meta‑analysis shows SEL boosts academics and behaviour.</div>
+</details>
+<details>
+<summary>What should I do while reading SEI books?<span class="badge">Tips</span></summary>
+<p>Pause to label feelings, ask “Have you felt this way?”, and practice a simple strategy (deep breath, ask for help). Keep it short, frequent, and warm.</p>
+</details>
+</section>
+<p class="note">For age‑specific and genre‑specific tips, see the other pages in the menu.</p>
+</main>
+<script>
+function getFavorites(){ try{return JSON.parse(localStorage.getItem('favorites')||"[]");}catch{return[];} }
+function setFavorites(f){ localStorage.setItem('favorites', JSON.stringify(f)); }
+function toggleFavorite(btn){
+  const title = btn.getAttribute("data-title");
+  let f = getFavorites();
+  if (f.includes(title)) f = f.filter(x=>x!==title); else f.push(title);
+  setFavorites(f); updateStars();
+}
+function isFavorite(t){ return getFavorites().includes(t); }
+function updateStars(){
+  document.querySelectorAll('.favorite-star').forEach(btn=>{
+    const t = btn.getAttribute("data-title");
+    const star = btn.querySelector(".star");
+    if (!star) return;
+    star.innerHTML = isFavorite(t) ? "★" : "☆";
+    btn.title = isFavorite(t) ? "Remove from Favorites" : "Add to Favorites";
+  });
+}
+document.addEventListener('DOMContentLoaded', updateStars);
+</script>
+<script id="sb-cards-flex-enforcer">
+(function(){
+  function applyLayout(root){
+    var grids = (root||document).querySelectorAll('.cards-grid, #story-cards .cards-grid, #story-cards .story-grid');
+    grids.forEach(function(grid){
+      grid.style.display = 'flex';
+      grid.style.flexWrap = 'wrap';
+      grid.style.justifyContent = 'center';
+      grid.style.alignItems = 'stretch';
+      grid.style.gap = '16px';
+
+      var w = window.innerWidth;
+      var basis = 'calc(25% - 16px)';               // desktop
+      if (w <= 1200) basis = 'calc(33.333% - 16px)'; // tablet
+      if (w <= 800)  basis = 'calc(50% - 10px)';     // mobile
+
+      grid.querySelectorAll(':scope > .story-card').forEach(function(card){
+        card.style.display = 'flex';
+        card.style.flexDirection = 'column';
+        card.style.alignSelf = 'stretch';
+        card.style.boxSizing = 'border-box';
+        card.style.margin = '0';
+        card.style.width = '';
+        card.style.minWidth = '0';
+        card.style.maxWidth = 'none';
+        card.style.height = 'auto';
+        card.style.minHeight = '0';
+        card.style.flex = '0 1 ' + basis;
+      });
+
+      grid.querySelectorAll('.chips').forEach(function(ch){
+        ch.style.overflow = 'visible';
+        ch.style.maxHeight = 'none';
+      });
+      grid.querySelectorAll('.desc-wrap p').forEach(function(p){
+        p.style.display = 'block';
+        p.style.overflow = 'visible';
+      });
+    });
+  }
+  function onReady(fn){ if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, {once:true}); else fn(); }
+  onReady(function(){ applyLayout(document); window.addEventListener('resize', function(){ applyLayout(document); }); });
+})();
+</script>
+<style id="sb-mobile-carousel-typography-override">
+@media (max-width: 800px){
+  /* Remove the extra line break between title and description */
+  .carousel-section .carousel-item br{
+    display: none !important;
+  }
+
+  /* Title: smaller than before, but still larger than description; keep white */
+  .carousel-section .carousel-item .carousel-title,
+  .carousel-section a.carousel-title-link .carousel-title,
+  .carousel-section .carousel-title{
+    font-size: 0.74em !important;   /* adjust as needed */
+    line-height: 1.12em !important;
+    color: #ffffff !important;
+    margin: 0.15em 0 0.08em !important;  /* tighter */
+  }
+  /* Ensure the title link itself stays white and un-underlined */
+  .carousel-section .carousel-title-link,
+  .carousel-section .carousel-title-link:link,
+  .carousel-section .carousel-title-link:visited{
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+
+  /* Description: compact, white */
+  .carousel-section .carousel-desc{
+    font-size: 0.56em !important;
+    line-height: 1.18em !important;
+    color: #ffffff !important;
+    margin: 0.05em 0 0.05em !important;  /* tighter */
+  }
+
+  /* Categories: same size as description, bold, white */
+  .carousel-section .carousel-category{
+    font-size: 0.56em !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+  .carousel-section .carousel-categories{
+    margin-top: 0.06em !important;  /* tighter */
+  }
+}
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><div aria-live="polite" id="sbq-hint">Queue Mode ON</div><div aria-label="Open story queue" id="story-queue-button" role="button" tabindex="0" title="Open story queue">
+<img alt="Story Queue Button" class="book-img" src="index_items/makestorylist.webp"/>
+</div><div aria-labelledby="sbq-title" aria-modal="true" id="story-queue-menu" role="dialog">
+<div class="queue-menu-header">
+<button aria-label="Close" class="queue-menu-close">×</button>
+<h2 class="queue-menu-title" id="sbq-title">✨ My Story List ✨</h2>
+</div>
+<div class="queue-menu-list" id="queue-list">
+<div class="queue-empty-message">✨ Tap stories to add to your list ✨</div>
+</div>
+<div class="queue-menu-controls">
+<button data-tooltip="Create a read list: tap story cards to add/remove." id="queue-mode-toggle" title="Create a read list">
+<img alt="" aria-hidden="true" class="icon" src="queue_assets/queue-icon.png"/><span class="label">Create Queue</span>
+</button>
+<button class="queue-control-btn" id="queue-play" title="Play Queue">▶</button>
+<button class="queue-control-btn" disabled="" id="queue-prev" title="Previous Story">◀</button>
+<button class="queue-control-btn" disabled="" id="queue-next" title="Next Story">▶</button>
+<button class="queue-control-btn" disabled="" id="queue-clear" title="Clear Queue">🗑️</button>
+</div>
+</div></body>
+</html>

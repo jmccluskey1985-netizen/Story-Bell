@@ -1,0 +1,1128 @@
+[
+  {
+    "id": "maya's_missing_mittons",
+    "title": "Maya's Missing Mittons",
+    "description": "A story about problem solving with Mummy",
+    "author": "Jon McCluskey",
+    "image": "Maya's Missing Mittons/imagetitle.webp",
+    "audio": "Maya's_Missing_Mittons/Maya's_Missing_Mittons_StoryAudio.mp3",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "childrens-poems-and-rhymes",
+      "5-minute-childrens-stories"
+    ],
+    "html": "Maya's_Missing_Mittons.html",
+    "date_added": "",
+    "slug": "mayas_missing_mittons",
+    "url": "/Maya's_Missing_Mittons.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "4-6",
+    "themes": [
+      "family",
+      "problem-solving"
+    ],
+    "emotions": [],
+    "keywords": [
+      "Maya",
+      "problem solving",
+      "family",
+      "poem",
+      "children's story"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "Maya's Missing Mittons",
+      "description": "A story about problem solving with Mummy",
+      "url": "/Maya's_Missing_Mittons.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": "Maya's Missing Mittons/imagetitle.webp",
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "4-6",
+      "genre": [
+        "Poem",
+        "Family"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Family"
+        },
+        {
+          "@type": "Thing",
+          "name": "Problem Solving"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Jon McCluskey"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "name": "Story Audio",
+        "contentUrl": "Maya's_Missing_Mittons/Maya's_Missing_Mittons_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg"
+      },
+      "datePublished": "2025-10-06",
+      "dateModified": "2025-10-06"
+    }
+  },
+  {
+    "id": "milo_the_mouse",
+    "title": "Milo the Mouse",
+    "description": "A poem about friendship",
+    "author": "Jon McCluskey",
+    "image": "icon/Milo the Mouse.webp",
+    "audio": "Milo_the_Mouse/Milo_the_Mouse_StoryAudio.mp3",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "5-minute-childrens-stories",
+      "childrens-poems-and-rhymes"
+    ],
+    "html": "Milo_the_Mouse.html",
+    "date_added": "",
+    "slug": "milo_the_mouse",
+    "url": "/Milo_the_Mouse.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "4-6",
+    "themes": [
+      "animals",
+      "friendship"
+    ],
+    "emotions": [],
+    "keywords": [
+      "mouse",
+      "friendship",
+      "poem",
+      "animal story",
+      "children's story"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "Milo the Mouse",
+      "description": "A poem about friendship",
+      "url": "/Milo_the_Mouse.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": "icon/Milo the Mouse.webp",
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "4-6",
+      "genre": [
+        "Poem",
+        "Animals",
+        "Friendship"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Animals"
+        },
+        {
+          "@type": "Thing",
+          "name": "Friendship"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Jon McCluskey"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "name": "Story Audio",
+        "contentUrl": "Milo_the_Mouse/Milo_the_Mouse_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg"
+      },
+      "datePublished": "2025-10-06",
+      "dateModified": "2025-10-06"
+    }
+  },
+  {
+    "id": "lunas_colorful_garden",
+    "title": "Luna's Colorful Garden",
+    "description": "A story about helping friends create a magical garden.",
+    "author": "Jon McCluskey",
+    "image": "icon/Luna's Colorful Garden.webp",
+    "audio": "Luna's_Colorful_Garden/Luna's_Colorful_Garden_StoryAudio.mp3",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "5-minute-childrens-stories"
+    ],
+    "html": "Luna's_Colorful_Garden.html",
+    "date_added": "",
+    "slug": "lunas_colorful_garden",
+    "url": "/Luna's_Colorful_Garden.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "4-6",
+    "themes": [
+      "friendship",
+      "nature",
+      "gardening"
+    ],
+    "emotions": [],
+    "keywords": [
+      "garden",
+      "friendship",
+      "nature",
+      "magical",
+      "children's story"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "Luna's Colorful Garden",
+      "description": "A story about helping friends create a magical garden.",
+      "url": "/Luna's_Colorful_Garden.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": "icon/Luna's Colorful Garden.webp",
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "4-6",
+      "genre": [
+        "Friendship",
+        "Nature"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Friendship"
+        },
+        {
+          "@type": "Thing",
+          "name": "Nature"
+        },
+        {
+          "@type": "Thing",
+          "name": "Gardening"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Jon McCluskey"
+      },
+      "datePublished": "2025-10-06",
+      "dateModified": "2025-10-06"
+    }
+  },
+  {
+    "id": "the_tiniest_rainbow",
+    "title": "The Tiniest Rainbow",
+    "description": "A gentle bedtime story for toddlers about discovering happiness on a rainy day.",
+    "author": "AI Generated",
+    "image": "icon/The Tiniest Rainbow.webp",
+    "audio": "The_Tiniest_Rainbow/The_Tiniest_Rainbow_StoryAudio.mp3",
+    "categories": [
+      "childrens-stories-ages-0-3",
+      "5-minute-childrens-stories",
+      "childrens-stories-about-happiness",
+      "kids-stories-about-feelings",
+      "free-bedtime-stories-for-kids",
+      "5-minute-bedtime-stories"
+    ],
+    "html": "The_Tiniest_Rainbow.html",
+    "date_added": "",
+    "slug": "the_tiniest_rainbow",
+    "url": "/The_Tiniest_Rainbow.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "0-3",
+    "themes": [
+      "bedtime",
+      "weather",
+      "happiness"
+    ],
+    "emotions": [
+      "happiness"
+    ],
+    "keywords": [
+      "bedtime",
+      "happiness",
+      "rainbow",
+      "toddlers",
+      "short story"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "The Tiniest Rainbow",
+      "description": "A gentle bedtime story for toddlers about discovering happiness on a rainy day.",
+      "url": "/The_Tiniest_Rainbow.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": "icon/The Tiniest Rainbow.webp",
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "0-3",
+      "genre": [
+        "Bedtime",
+        "Emotions"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Happiness"
+        },
+        {
+          "@type": "Thing",
+          "name": "Weather"
+        },
+        {
+          "@type": "Thing",
+          "name": "Bedtime"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "name": "Story Audio",
+        "contentUrl": "The_Tiniest_Rainbow/The_Tiniest_Rainbow_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg"
+      },
+      "datePublished": "2025-10-06",
+      "dateModified": "2025-10-06"
+    }
+  },
+  {
+    "id": "owl_in_the_dark_forest",
+    "title": "Owl in the Dark Forest",
+    "description": "A brave little owl faces fear while searching for her way home.",
+    "author": "AI Generated",
+    "image": "icon/Owl in the Dark Forest.webp",
+    "audio": "Owl_in_the_Dark_Forest/Owl_in_the_Dark_Forest_StoryAudio.mp3",
+    "categories": [
+      "childrens-stories-ages-7-12",
+      "10-minute-childrens-stories",
+      "childrens-stories-about-fear",
+      "kids-stories-about-feelings"
+    ],
+    "html": "Owl_in_the_Dark_Forest.html",
+    "date_added": "",
+    "slug": "owl_in_the_dark_forest",
+    "url": "/Owl_in_the_Dark_Forest.html",
+    "inLanguage": "en",
+    "duration_min": 10,
+    "age_bracket": "7-12",
+    "themes": [
+      "animals",
+      "courage",
+      "night"
+    ],
+    "emotions": [
+      "fear"
+    ],
+    "keywords": [
+      "owl",
+      "fear",
+      "courage",
+      "forest",
+      "adventure"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "Owl in the Dark Forest",
+      "description": "A brave little owl faces fear while searching for her way home.",
+      "url": "/Owl_in_the_Dark_Forest.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": "icon/Owl in the Dark Forest.webp",
+      "timeRequired": "PT10M",
+      "typicalAgeRange": "7-12",
+      "genre": [
+        "Animals",
+        "Emotions",
+        "Adventure"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Fear"
+        },
+        {
+          "@type": "Thing",
+          "name": "Courage"
+        },
+        {
+          "@type": "Thing",
+          "name": "Owls"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "name": "Story Audio",
+        "contentUrl": "Owl_in_the_Dark_Forest/Owl_in_the_Dark_Forest_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg"
+      },
+      "datePublished": "2025-10-06",
+      "dateModified": "2025-10-06"
+    }
+  },
+  {
+    "id": "the_lonely_leaf",
+    "title": "The Lonely Leaf",
+    "description": "A poem about sadness and finding new friends in autumn.",
+    "author": "AI Generated",
+    "image": "icon/The Lonely Leaf.webp",
+    "audio": "The_Lonely_Leaf/The_Lonely_Leaf_StoryAudio.mp3",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "childrens-poems-and-rhymes",
+      "childrens-stories-about-sadness",
+      "kids-stories-about-feelings"
+    ],
+    "html": "The_Lonely_Leaf.html",
+    "date_added": "",
+    "slug": "the_lonely_leaf",
+    "url": "/The_Lonely_Leaf.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "4-6",
+    "themes": [
+      "nature",
+      "friendship",
+      "autumn"
+    ],
+    "emotions": [
+      "sadness"
+    ],
+    "keywords": [
+      "poem",
+      "sadness",
+      "autumn",
+      "friendship",
+      "nature"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "The Lonely Leaf",
+      "description": "A poem about sadness and finding new friends in autumn.",
+      "url": "/The_Lonely_Leaf.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": "icon/The Lonely Leaf.webp",
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "4-6",
+      "genre": [
+        "Poem",
+        "Nature",
+        "Emotions"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Sadness"
+        },
+        {
+          "@type": "Thing",
+          "name": "Autumn"
+        },
+        {
+          "@type": "Thing",
+          "name": "Friendship"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "name": "Story Audio",
+        "contentUrl": "The_Lonely_Leaf/The_Lonely_Leaf_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg"
+      },
+      "datePublished": "2025-10-06",
+      "dateModified": "2025-10-06"
+    }
+  },
+  {
+    "id": "emma_and_the_surprise_party",
+    "title": "Emma and the Surprise Party",
+    "description": "Emma plans a secret party for her granddad and learns the joy of surprises.",
+    "author": "AI Generated",
+    "image": "icon/Emma and the Surprise Party.webp",
+    "audio": "Emma_and_the_Surprise_Party/Emma_and_the_Surprise_Party_StoryAudio.mp3",
+    "categories": [
+      "childrens-stories-ages-7-12",
+      "5-minute-childrens-stories",
+      "childrens-stories-about-surprise",
+      "kids-stories-about-feelings"
+    ],
+    "html": "Emma_and_the_Surprise_Party.html",
+    "date_added": "",
+    "slug": "emma_and_the_surprise_party",
+    "url": "/Emma_and_the_Surprise_Party.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "7-12",
+    "themes": [
+      "family",
+      "celebration",
+      "surprise"
+    ],
+    "emotions": [
+      "surprise"
+    ],
+    "keywords": [
+      "surprise",
+      "party",
+      "family",
+      "granddad",
+      "celebration"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "Emma and the Surprise Party",
+      "description": "Emma plans a secret party for her granddad and learns the joy of surprises.",
+      "url": "/Emma_and_the_Surprise_Party.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": "icon/Emma and the Surprise Party.webp",
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "7-12",
+      "genre": [
+        "Family",
+        "Emotions"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Surprise"
+        },
+        {
+          "@type": "Thing",
+          "name": "Family"
+        },
+        {
+          "@type": "Thing",
+          "name": "Parties"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "name": "Story Audio",
+        "contentUrl": "Emma_and_the_Surprise_Party/Emma_and_the_Surprise_Party_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg"
+      },
+      "datePublished": "2025-10-06",
+      "dateModified": "2025-10-06"
+    }
+  },
+  {
+    "id": "tommy_and_the_lost_toy",
+    "title": "Tommy and the Lost Toy",
+    "description": "Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.",
+    "author": "AI Generated",
+    "image": "icon/Tommy and the Lost Toy.webp",
+    "audio": "Tommy_and_the_Lost_Toy/Tommy_and_the_Lost_Toy_StoryAudio.mp3",
+    "categories": [
+      "childrens-stories-ages-0-3",
+      "5-minute-childrens-stories",
+      "childrens-stories-about-anger",
+      "kids-stories-about-feelings"
+    ],
+    "html": "Tommy_and_the_Lost_Toy.html",
+    "date_added": "",
+    "slug": "tommy_and_the_lost_toy",
+    "url": "/Tommy_and_the_Lost_Toy.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "0-3",
+    "themes": [
+      "family",
+      "everyday-life"
+    ],
+    "emotions": [
+      "anger"
+    ],
+    "keywords": [
+      "anger",
+      "feelings",
+      "lost toy",
+      "toddler",
+      "family"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "Tommy and the Lost Toy",
+      "description": "Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.",
+      "url": "/Tommy_and_the_Lost_Toy.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": "icon/Tommy and the Lost Toy.webp",
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "0-3",
+      "genre": [
+        "Family",
+        "Emotions"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Anger"
+        },
+        {
+          "@type": "Thing",
+          "name": "Family"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "name": "Story Audio",
+        "contentUrl": "Tommy_and_the_Lost_Toy/Tommy_and_the_Lost_Toy_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg"
+      },
+      "datePublished": "2025-10-06",
+      "dateModified": "2025-10-06"
+    }
+  },
+  {
+    "id": "melody_and_the_muddy_puppy",
+    "title": "Melody and the Muddy Puppy",
+    "description": "A silly story about a girl and her puppy, who both discover the meaning of disgust after a very messy day in the park.",
+    "author": "AI Generated",
+    "image": "icon/Melody and the Muddy Puppy.webp",
+    "audio": "Melody_and_the_Muddy_Puppy/Melody_and_the_Muddy_Puppy_StoryAudio.mp3",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "10-minute-childrens-stories",
+      "childrens-stories-about-disgust",
+      "kids-stories-about-feelings"
+    ],
+    "html": "Melody_and_the_Muddy_Puppy.html",
+    "date_added": "",
+    "slug": "melody_and_the_muddy_puppy",
+    "url": "/Melody_and_the_Muddy_Puppy.html",
+    "inLanguage": "en",
+    "duration_min": 10,
+    "age_bracket": "4-6",
+    "themes": [
+      "animals",
+      "humor",
+      "everyday-life"
+    ],
+    "emotions": [
+      "disgust"
+    ],
+    "keywords": [
+      "puppy",
+      "messy",
+      "disgust",
+      "funny",
+      "park",
+      "animals"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "Melody and the Muddy Puppy",
+      "description": "A silly story about a girl and her puppy, who both discover the meaning of disgust after a very messy day in the park.",
+      "url": "/Melody_and_the_Muddy_Puppy.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": "icon/Melody and the Muddy Puppy.webp",
+      "timeRequired": "PT10M",
+      "typicalAgeRange": "4-6",
+      "genre": [
+        "Animals",
+        "Humor",
+        "Emotions"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Disgust"
+        },
+        {
+          "@type": "Thing",
+          "name": "Dogs"
+        },
+        {
+          "@type": "Thing",
+          "name": "Humor"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "name": "Story Audio",
+        "contentUrl": "Melody_and_the_Muddy_Puppy/Melody_and_the_Muddy_Puppy_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg"
+      },
+      "datePublished": "2025-10-06",
+      "dateModified": "2025-10-06"
+    }
+  },
+  {
+    "id": "the_brave_little_duckling",
+    "title": "The Brave Little Duckling",
+    "description": "A duckling faces his fear of swimming and discovers courage.",
+    "author": "AI Generated",
+    "image": "icon/The Brave Little Duckling.webp",
+    "audio": "The_Brave_Little_Duckling/The_Brave_Little_Duckling_StoryAudio.mp3",
+    "categories": [
+      "childrens-stories-ages-0-3",
+      "5-minute-childrens-stories",
+      "childrens-stories-about-fear",
+      "kids-stories-about-feelings"
+    ],
+    "html": "The_Brave_Little_Duckling.html",
+    "date_added": "",
+    "slug": "the_brave_little_duckling",
+    "url": "/The_Brave_Little_Duckling.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "0-3",
+    "themes": [
+      "animals",
+      "courage",
+      "water"
+    ],
+    "emotions": [
+      "fear"
+    ],
+    "keywords": [
+      "duckling",
+      "fear",
+      "courage",
+      "animals",
+      "swimming"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "The Brave Little Duckling",
+      "description": "A duckling faces his fear of swimming and discovers courage.",
+      "url": "/The_Brave_Little_Duckling.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": "icon/The Brave Little Duckling.webp",
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "0-3",
+      "genre": [
+        "Animals",
+        "Emotions"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Fear"
+        },
+        {
+          "@type": "Thing",
+          "name": "Courage"
+        },
+        {
+          "@type": "Thing",
+          "name": "Ducks"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "name": "Story Audio",
+        "contentUrl": "The_Brave_Little_Duckling/The_Brave_Little_Duckling_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg"
+      },
+      "datePublished": "2025-10-06",
+      "dateModified": "2025-10-06"
+    }
+  },
+  {
+    "id": "stars_in_my_window",
+    "title": "Stars in My Window",
+    "description": "A bedtime poem about finding comfort in the night sky.",
+    "author": "AI Generated",
+    "image": "icon/Stars in My Window.webp",
+    "audio": "Stars_in_My_Window/Stars_in_My_Window_StoryAudio.mp3",
+    "categories": [
+      "childrens-stories-ages-0-3",
+      "childrens-poems-and-rhymes",
+      "childrens-stories-about-happiness",
+      "kids-stories-about-feelings",
+      "free-bedtime-stories-for-kids"
+    ],
+    "html": "Stars_in_My_Window.html",
+    "date_added": "",
+    "slug": "stars_in_my_window",
+    "url": "/Stars_in_My_Window.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "0-3",
+    "themes": [
+      "bedtime",
+      "night",
+      "comfort",
+      "poem"
+    ],
+    "emotions": [
+      "happiness"
+    ],
+    "keywords": [
+      "bedtime",
+      "poem",
+      "night sky",
+      "comfort",
+      "happiness"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "Stars in My Window",
+      "description": "A bedtime poem about finding comfort in the night sky.",
+      "url": "/Stars_in_My_Window.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": "icon/Stars in My Window.webp",
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "0-3",
+      "genre": [
+        "Poem",
+        "Bedtime",
+        "Emotions"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Happiness"
+        },
+        {
+          "@type": "Thing",
+          "name": "Night"
+        },
+        {
+          "@type": "Thing",
+          "name": "Comfort"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "name": "Story Audio",
+        "contentUrl": "Stars_in_My_Window/Stars_in_My_Window_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg"
+      },
+      "datePublished": "2025-10-06",
+      "dateModified": "2025-10-06"
+    }
+  },
+  {
+    "id": "grumpy_grandpa_and_the_silly_hat",
+    "title": "Grumpy Grandpa and the Silly Hat",
+    "description": "Grandpa is feeling angry until his granddaughter makes him laugh with a silly hat.",
+    "author": "AI Generated",
+    "image": "icon/Grumpy Grandpa and the Silly Hat.webp",
+    "audio": "Grumpy_Grandpa_and_the_Silly_Hat/Grumpy_Grandpa_and_the_Silly_Hat_StoryAudio.mp3",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "5-minute-childrens-stories",
+      "childrens-stories-about-anger",
+      "kids-stories-about-feelings"
+    ],
+    "html": "Grumpy_Grandpa_and_the_Silly_Hat.html",
+    "date_added": "",
+    "slug": "grumpy_grandpa_and_the_silly_hat",
+    "url": "/Grumpy_Grandpa_and_the_Silly_Hat.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "4-6",
+    "themes": [
+      "family",
+      "humor"
+    ],
+    "emotions": [
+      "anger"
+    ],
+    "keywords": [
+      "anger",
+      "grandpa",
+      "humor",
+      "family",
+      "feelings"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "Grumpy Grandpa and the Silly Hat",
+      "description": "Grandpa is feeling angry until his granddaughter makes him laugh with a silly hat.",
+      "url": "/Grumpy_Grandpa_and_the_Silly_Hat.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": "icon/Grumpy Grandpa and the Silly Hat.webp",
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "4-6",
+      "genre": [
+        "Family",
+        "Humor",
+        "Emotions"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Anger"
+        },
+        {
+          "@type": "Thing",
+          "name": "Family"
+        },
+        {
+          "@type": "Thing",
+          "name": "Humor"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "name": "Story Audio",
+        "contentUrl": "Grumpy_Grandpa_and_the_Silly_Hat/Grumpy_Grandpa_and_the_Silly_Hat_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg"
+      },
+      "datePublished": "2025-10-06",
+      "dateModified": "2025-10-06"
+    }
+  },
+  {
+    "id": "the_secret_in_the_library",
+    "title": "The Secret in the Library",
+    "description": "An adventure about two friends solving a mystery, and the surprise they find.",
+    "author": "AI Generated",
+    "image": "icon/The Secret in the Library.webp",
+    "audio": "The_Secret_in_the_Library/The_Secret_in_the_Library_StoryAudio.mp3",
+    "categories": [
+      "childrens-stories-ages-7-12",
+      "10-minute-childrens-stories",
+      "childrens-stories-about-surprise",
+      "kids-stories-about-feelings"
+    ],
+    "html": "The_Secret_in_the_Library.html",
+    "date_added": "",
+    "slug": "the_secret_in_the_library",
+    "url": "/The_Secret_in_the_Library.html",
+    "inLanguage": "en",
+    "duration_min": 10,
+    "age_bracket": "7-12",
+    "themes": [
+      "mystery",
+      "friendship",
+      "library"
+    ],
+    "emotions": [
+      "surprise"
+    ],
+    "keywords": [
+      "mystery",
+      "surprise",
+      "library",
+      "adventure",
+      "friends"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "The Secret in the Library",
+      "description": "An adventure about two friends solving a mystery, and the surprise they find.",
+      "url": "/The_Secret_in_the_Library.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": "icon/The Secret in the Library.webp",
+      "timeRequired": "PT10M",
+      "typicalAgeRange": "7-12",
+      "genre": [
+        "Mystery",
+        "Adventure",
+        "Emotions"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Surprise"
+        },
+        {
+          "@type": "Thing",
+          "name": "Mystery"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "name": "Story Audio",
+        "contentUrl": "The_Secret_in_the_Library/The_Secret_in_the_Library_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg"
+      },
+      "datePublished": "2025-10-06",
+      "dateModified": "2025-10-06"
+    }
+  },
+  {
+    "id": "lily_and_the_blue_balloon",
+    "title": "Lily and the Blue Balloon",
+    "description": "Lily feels sad when her balloon floats away, but she finds hope in a new friend.",
+    "author": "AI Generated",
+    "image": "icon/Lily and the Blue Balloon.webp",
+    "audio": "Lily_and_the_Blue_Balloon/Lily_and_the_Blue_Balloon_StoryAudio.mp3",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "5-minute-childrens-stories",
+      "childrens-stories-about-sadness",
+      "kids-stories-about-feelings"
+    ],
+    "html": "Lily_and_the_Blue_Balloon.html",
+    "date_added": "",
+    "slug": "lily_and_the_blue_balloon",
+    "url": "/Lily_and_the_Blue_Balloon.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "4-6",
+    "themes": [
+      "friendship",
+      "hope"
+    ],
+    "emotions": [
+      "sadness"
+    ],
+    "keywords": [
+      "sadness",
+      "friendship",
+      "hope",
+      "balloon",
+      "feelings"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "Lily and the Blue Balloon",
+      "description": "Lily feels sad when her balloon floats away, but she finds hope in a new friend.",
+      "url": "/Lily_and_the_Blue_Balloon.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": "icon/Lily and the Blue Balloon.webp",
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "4-6",
+      "genre": [
+        "Friendship",
+        "Emotions"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Sadness"
+        },
+        {
+          "@type": "Thing",
+          "name": "Hope"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "name": "Story Audio",
+        "contentUrl": "Lily_and_the_Blue_Balloon/Lily_and_the_Blue_Balloon_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg"
+      },
+      "datePublished": "2025-10-06",
+      "dateModified": "2025-10-06"
+    }
+  },
+  {
+    "id": "the_case_of_the_gross_green_socks",
+    "title": "The Case of the Gross Green Socks",
+    "description": "A detective story about disgust, lost laundry, and learning to help with chores.",
+    "author": "AI Generated",
+    "image": "icon/The Case of the Gross Green Socks.webp",
+    "audio": "The_Case_of_the_Gross_Green_Socks/The_Case_of_the_Gross_Green_Socks_StoryAudio.mp3",
+    "categories": [
+      "childrens-stories-ages-7-12",
+      "5-minute-childrens-stories",
+      "childrens-stories-about-disgust",
+      "kids-stories-about-feelings"
+    ],
+    "html": "The_Case_of_the_Gross_Green_Socks.html",
+    "date_added": "",
+    "slug": "the_case_of_the_gross_green_socks",
+    "url": "/The_Case_of_the_Gross_Green_Socks.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "7-12",
+    "themes": [
+      "mystery",
+      "everyday-life",
+      "chores"
+    ],
+    "emotions": [
+      "disgust"
+    ],
+    "keywords": [
+      "disgust",
+      "mystery",
+      "chores",
+      "detective",
+      "laundry"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "The Case of the Gross Green Socks",
+      "description": "A detective story about disgust, lost laundry, and learning to help with chores.",
+      "url": "/The_Case_of_the_Gross_Green_Socks.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": "icon/The Case of the Gross Green Socks.webp",
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "7-12",
+      "genre": [
+        "Mystery",
+        "Emotions"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Disgust"
+        },
+        {
+          "@type": "Thing",
+          "name": "Mystery"
+        },
+        {
+          "@type": "Thing",
+          "name": "Chores"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "name": "Story Audio",
+        "contentUrl": "The_Case_of_the_Gross_Green_Socks/The_Case_of_the_Gross_Green_Socks_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg"
+      },
+      "datePublished": "2025-10-06",
+      "dateModified": "2025-10-06"
+    }
+  }
+]
