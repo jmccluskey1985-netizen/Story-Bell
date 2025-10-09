@@ -2183,219 +2183,53 @@ header .site-title {
     line-height: 1.05 !important;
   }
 }
-</style><style id="sb-about-style-v3">
-/* === Story Bell — About page (conventional layout) === */
-:root { --sb-yellow: #FFEB3B; }
-.about-wrap { max-width: 1100px; margin: 0 auto; padding: 1.25rem; }
-.about-text, .about-wrap h1, .about-wrap h2, .about-wrap h3, .about-wrap p { color: #fff; }
-.about-lead { margin: 0.75rem 0 1.25rem 0; line-height: 1.6; }
-.features { display: grid; gap: 1.5rem; }
-.feature { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1rem; align-items: center; }
-.feature:nth-child(even) { grid-template-columns: 1fr 1.1fr; }
-@media (max-width: 860px) { .feature { grid-template-columns: 1fr; } }
-.media { border: 4px solid var(--sb-yellow); border-radius: 0.75rem; overflow: hidden; }
-.media video { width: 100%; height: 100%; display: block; object-fit: cover; aspect-ratio: 1 / 1; }
-.content h3 { margin: 0 0 0.5rem 0; font-size: 1.25rem; }
-.content p { margin: 0.4rem 0; line-height: 1.7; }
-.content ul { margin: 0.4rem 0 0 1.2rem; }
-.content li { margin: 0.25rem 0; }
-.section-title { margin-top: 1.5rem; }
-small.kicker { display: block; text-transform: uppercase; letter-spacing: .06em; opacity: .9; margin-bottom: .25rem; }
-
-.title-row { display: flex; align-items: center; gap: .75rem; }
-.title-row img { height: 40px; width: auto; }
-
-/* Centered title row with large logo */
-.title-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
+</style><style id="about-center-text">
+/* Center text + media inside About content only */
+main#content {
   text-align: center;
-  margin-bottom: 1.5rem;
 }
-.title-row img {
-  height: 90px;
-  width: auto;
+main#content img,
+main#content video,
+main#content figure,
+main#content .media,
+main#content .mp4 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-.title-row h1 {
-  font-size: 2.2rem;
-  line-height: 1.2;
+/* Keep lists readable while centered */
+main#content ul, main#content ol {
+  display: inline-block;
+  text-align: left;
 }
-</style><script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "AboutPage",
-      "@id": "https://story-bell.com/about",
-      "name": "About Story Bell — Free Read‑Aloud Bedtime Stories for Kids",
-      "description": "Story Bell offers free bedtime stories for kids with read‑along highlighting, gentle narration, favourites, reading lists, and smart auto‑scroll for mobile‑friendly reading.",
-      "inLanguage": "en",
-      "isPartOf": {
-        "@id": "https://story-bell.com/#website"
-      }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://story-bell.com/#website",
-      "name": "Story Bell",
-      "url": "https://story-bell.com/"
-    },
-    {
-      "@type": "ItemList",
-      "@id": "https://story-bell.com/about#features",
-      "name": "Story Bell Features",
-      "itemListElement": [
-        {
-          "@type": "VideoObject",
-          "position": 1,
-          "name": "Read‑Along Highlighting",
-          "description": "Each word glows in sync with the narrator to guide eyes along the line and support phonics. Ideal for emergent readers and children who benefit from visual tracking.",
-          "contentUrl": "index_items/features_readalong.mp4",
-          "encodingFormat": "video/mp4",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "VideoObject",
-          "position": 2,
-          "name": "Listen‑Only Mode",
-          "description": "A calm, child‑friendly voice reads the story aloud with highlights turned off. Perfect for winding down or when you’d like screen‑light to stay minimal.",
-          "contentUrl": "index_items/features_listen.mp4",
-          "encodingFormat": "video/mp4",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "VideoObject",
-          "position": 3,
-          "name": "Favourites & Saved Progress",
-          "description": "Tap the star to bookmark stories and return from any device. Your place is remembered, making stop‑and‑start evenings simpler.",
-          "contentUrl": "index_items/features_favorites.mp4",
-          "encodingFormat": "video/mp4",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "VideoObject",
-          "position": 4,
-          "name": "Create Personal Reading Lists",
-          "description": "Group stories by theme, age, or duration to plan bedtime or lesson time. Save separate queues like ‘5‑minute stories’, ‘kindness’, or ‘feelings’.",
-          "contentUrl": "index_items/features_makestorylist.mp4",
-          "encodingFormat": "video/mp4",
-          "inLanguage": "en"
-        },
-        {
-          "@type": "VideoObject",
-          "position": 5,
-          "name": "Smart Auto‑Scroll",
-          "description": "The page scrolls gently in time with the audio so eyes stay on the right line. Designed to account for images and different screen sizes.",
-          "contentUrl": "index_items/features_autoscroll.mp4",
-          "encodingFormat": "video/mp4",
-          "inLanguage": "en"
-        }
-      ]
-    }
-  ]
-}</script><style id="sb-mobile-static-text">
-/* === Mobile feature text below MP4s (static in HTML) === */
-@media (max-width: 800px){
-  .mobile-feature-text {
-    display: block !important;
-    margin-top: 10px !important;
-    font-size: 0.98em !important;
-    line-height: 1.35 !important;
-    color: #ffffff !important;
-    text-align: center !important;
-    text-shadow: 0 0 8px #ffff6699, 0 0 10px #ffaa0044;
-    font-family: 'Georgia', serif !important;
-  }
+</style><style id="about-video-styles">
+/* Uniform MP4 sizing + yellow frame in About content */
+:root{ --about-video-max: 480px; } /* tweak this to change size */
+@media (max-width: 480px){ :root{ --about-video-max: 360px; } }
+main#content video, 
+main#content .mp4, 
+main#content .media video {
+  width: min(90vw, var(--about-video-max));
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 4px solid #FFEB3B; /* yellow frame */
+  border-radius: 12px;
+  box-sizing: border-box;
 }
-@media (min-width: 801px){
-  .mobile-feature-text { display:none !important; }
-}
-/* Moderate zoom-out for features_makestorylist overlay (mobile only) */
-@media (max-width: 800px){
-  [id*="features_makestorylist"] .story-listy,
-  [id*="features_makestorylist"] .story-list,
-  [id*="features_makestorylist"] .storylist,
-  [id*="features_makestorylist"] .story-list-overlay,
-  [id*="features_makestorylist"] .feature-overlay,
-  [id*="features_makestorylist"] .overlay-label,
-  [class*="features_makestorylist"] .story-listy,
-  [class*="features_makestorylist"] .story-list,
-  [class*="features_makestorylist"] .storylist,
-  [class*="features_makestorylist"] .story-list-overlay,
-  [class*="features_makestorylist"] .feature-overlay,
-  [class*="features_makestorylist"] .overlay-label {
-    transform: scale(0.75) translateZ(0);
-    transform-origin: center center;
-  }
-}
-</style><style id="sb-mobile-below-text-sibling">
-/* === Mobile feature text BELOW the video container (as sibling) === */
-@media (max-width: 800px){
-  .mobile-feature-text {
-    display: block !important;
-    margin: 10px auto 16px auto !important;
-    max-width: 92vw !important;
-    font-size: 0.98em !important;
-    line-height: 1.4 !important;
-    color: #ffffff !important;
-    text-align: center !important;
-    text-shadow: 0 0 8px #ffff6699, 0 0 10px #ffaa0044;
-    font-family: 'Georgia', serif !important;
-  }
-
-  /* Make sure feature containers do not clip the following text */
-  .carousel-card, .feature-card, .video-wrapper, .about-feature, .features-section, .feature, .card {
-    overflow: visible !important;   /* allow the sibling text to show */
-  }
-}
-/* Hide the mobile text on desktop/tablet */
-@media (min-width: 801px){
-  .mobile-feature-text { display: none !important; }
-}
-
-/* Moderate zoom-out for features_makestorylist overlay (mobile only) */
-@media (max-width: 800px){
-  [id*="features_makestorylist"] .story-listy,
-  [id*="features_makestorylist"] .story-list,
-  [id*="features_makestorylist"] .storylist,
-  [id*="features_makestorylist"] .story-list-overlay,
-  [id*="features_makestorylist"] .feature-overlay,
-  [id*="features_makestorylist"] .overlay-label,
-  [class*="features_makestorylist"] .story-listy,
-  [class*="features_makestorylist"] .story-list,
-  [class*="features_makestorylist"] .storylist,
-  [class*="features_makestorylist"] .story-list-overlay,
-  [class*="features_makestorylist"] .feature-overlay,
-  [class*="features_makestorylist"] .overlay-label {
-    transform: scale(0.75) translateZ(0);
-    transform-origin: center center;
-  }
-}
-</style><style id="sb-coming-soon-body">
-/* === Apply Coming Soon font to body content (keep header/nav styles as-is) === */
-body main, 
-body .main-blank,
-body .features-section,
-body .about-feature,
-body .carousel-card,
-body .feature-card,
-body .card,
-body .mobile-feature-text,
-body .section-title,
-body .featured-header,
-body .tagline-glow,
-body .subscribe-box,
-body .story-card,
-body .story-card *,
-body .main-blank *,
-body .features-section *,
-body .about-feature *,
-body .carousel-card *,
-body .feature-card *,
-body .card *,
-body p, body li, body h1, body h2, body h3, body h4, body h5, body h6 {
-  font-family: 'Coming Soon', cursive !important;
+/* Optional: ensure posters/inline images match look if any */
+main#content img.video-poster, 
+main#content figure video, 
+main#content figure img {
+  width: min(90vw, var(--about-video-max));
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 4px solid #FFEB3B;
+  border-radius: 12px;
+  box-sizing: border-box;
 }
 </style>
 <style id="sb-cards-base">
@@ -2815,50 +2649,36 @@ body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!imp
 </button>
 <a class="login-cta-header" data-auth-cta="" href="#login" rel="noopener" style="margin-top: 14px; background: #FFEB3B; color: #003366; font-family: 'Coming Soon', cursive !important; font-size: 16px; font-weight: bold; border-radius: 20px; padding: 9px 22px 9px 32px; text-decoration: none; box-shadow: 0 2px 8px rgba(255,235,59,0.22); display: flex; align-items: center; transition: background 0.2s;" target="_blank">Log in/<br/>Create Account</a>
 <div class="subscribe-text"></div></div>
-</header>
-<!-- Optional image-based footer -->
-<img alt="wand" id="wand" src="./index_items/wand_cursor_cleaned_halfsize.png" style="display: block; position: fixed; pointer-events: none; z-index: 9998; opacity: 1; left: 659px; top: 243px; transition: none;"/><div class="main-blank">
-<div class="about-header">
-<div class="about-wrap"><div class="about-wrap title-row"><img alt="Story Bell Logo" src="index_items/logo.webp"/><h1>About Story Bell</h1></div><p class="about-text about-lead">Story Bell is a children’s storytelling website for free read‑aloud bedtime stories. Kids can follow along with highlighted words, listen to gentle narration, and enjoy smart auto‑scroll on phones, tablets, and desktop — built for calmer nights and better reading.</p><section class="about-wrap" id="features"><h2 class="section-title">What features makes Story Bell great for bedtime and early reading </h2><div class="features"><div class="feature"><div class="media"><video aria-label="Read‑Along Highlighting" autoplay="True" loop="True" muted="True" playsinline="True" preload="metadata"><source src="index_items/features_readalong.mp4" type="video/mp4"/><source src="index_items/features_readalong (1).mp4" type="video/mp4"/></video></div><div class="content"><h3>Read‑Along Highlighting</h3><p class="about-text">Each word glows in sync with the narrator to guide eyes along the line and support phonics.</p><p class="about-text">Ideal for emergent readers and children who benefit from visual tracking.</p><ul class="about-text"><li>Builds confidence and fluency during bedtime routines.</li><li>Gives caregivers a hands‑free way to support early reading skills.</li><li>Optimised for short 5‑minute bedtime stories.</li></ul></div></div><div class="mobile-feature-text">Each word glows in sync with the narrator to guide eyes along the line and support phonics.</div><div class="feature"><div class="media"><video aria-label="Listen‑Only Mode" autoplay="True" loop="True" muted="True" playsinline="True" preload="metadata"><source src="index_items/features_listen.mp4" type="video/mp4"/><source src="index_items/features_listen (1).mp4" type="video/mp4"/></video></div><div class="content"><h3>Listen‑Only Mode</h3><p class="about-text">A calm, child‑friendly voice reads the story aloud with highlights turned off.</p><p class="about-text">Perfect for winding down or when you’d like screen‑light to stay minimal.</p><ul class="about-text"><li>Great for car rides or quiet time.</li><li>Mobile‑first playback with playsinline, autoplay, loop, and muted.</li><li>Pairs well with our ‘stories about feelings’ collection.</li></ul></div></div><div class="mobile-feature-text">A calm, child‑friendly voice reads the story aloud with highlights turned off.</div><div class="feature"><div class="media"><video aria-label="Favourites &amp; Saved Progress" autoplay="True" loop="True" muted="True" playsinline="True" preload="metadata"><source src="index_items/features_favorites.mp4" type="video/mp4"/><source src="index_items/features_favorites (1).mp4" type="video/mp4"/></video></div><div class="content"><h3>Favourites &amp; Saved Progress</h3><p class="about-text">Tap the star to bookmark stories and return from any device.</p><p class="about-text">Your place is remembered, making stop‑and‑start evenings simpler.</p><ul class="about-text"><li>Quickly build a personal library for your child.</li><li>Syncs across pages that support favourites.</li><li>Helps teachers manage classroom reading picks.</li></ul></div></div><div class="mobile-feature-text">Tap the star to bookmark stories and return from any device.</div><div class="feature"><div class="media"><video aria-label="Create Personal Reading Lists" autoplay="True" loop="True" muted="True" playsinline="True" preload="metadata"><source src="index_items/features_makestorylist.mp4" type="video/mp4"/><source src="index_items/features_makestorylist (1).mp4" type="video/mp4"/></video></div><div class="content"><h3>Create Personal Reading Lists</h3><p class="about-text">Group stories by theme, age, or duration to plan bedtime or lesson time.</p><p class="about-text">Save separate queues like ‘5‑minute stories’, ‘kindness’, or ‘feelings’.</p><ul class="about-text"><li>Fast access to the right story at the right moment.</li><li>Useful for classrooms and sibling reading sessions.</li><li>Encourages consistent reading habits.</li></ul></div></div><div class="mobile-feature-text">Group stories by theme, age, or duration to plan bedtime or lesson time.</div><div class="feature"><div class="media"><video aria-label="Smart Auto‑Scroll" autoplay="True" loop="True" muted="True" playsinline="True" preload="metadata"><source src="index_items/features_autoscroll.mp4" type="video/mp4"/><source src="index_items/features_autoscroll (1).mp4" type="video/mp4"/></video></div><div class="content"><h3>Smart Auto‑Scroll</h3><p class="about-text">The page scrolls gently in time with the audio so eyes stay on the right line.</p><p class="about-text">Designed to account for images and different screen sizes.</p><ul class="about-text"><li>Hands‑free reading on mobile.</li><li>Helps maintain focus for young readers.</li><li>Works across short and longer stories.</li></ul></div></div><div class="mobile-feature-text">The page scrolls gently in time with the audio so eyes stay on the right line.</div></div></section></div>
-</div>
-<div class="section-title">🌟 What Makes Story Bell Different?</div>
-<p>
+</header><main id="content"><!-- Optional image-based footer --><div class="main-blank"><div class="about-header"><div class="about-wrap"><div class="about-wrap title-row"><img alt="Story Bell Logo" src="index_items/logo.webp"/><h1>About Story Bell</h1></div><p class="about-text about-lead">Story Bell is a children’s storytelling website for free read‑aloud bedtime stories. Kids can follow along with highlighted words, listen to gentle narration, and enjoy smart auto‑scroll on phones, tablets, and desktop — built for calmer nights and better reading.</p><section class="about-wrap"><h2 class="section-title">What features makes Story Bell great for bedtime and early reading </h2><div class="features"><div class="feature"><div class="media"><video aria-label="Read‑Along Highlighting" autoplay="True" loop="True" muted="True" playsinline="True" preload="metadata"><source src="index_items/features_readalong.mp4" type="video/mp4"/><source src="index_items/features_readalong (1).mp4" type="video/mp4"/></video></div><div class="content"><h3>Read‑Along Highlighting</h3><p class="about-text">Each word glows in sync with the narrator to guide eyes along the line and support phonics.</p><p class="about-text">Ideal for emergent readers and children who benefit from visual tracking.</p><ul class="about-text"><li>Builds confidence and fluency during bedtime routines.</li><li>Gives caregivers a hands‑free way to support early reading skills.</li><li>Optimised for short 5‑minute bedtime stories.</li></ul></div></div><div class="mobile-feature-text">Each word glows in sync with the narrator to guide eyes along the line and support phonics.</div><div class="feature"><div class="media"><video aria-label="Listen‑Only Mode" autoplay="True" loop="True" muted="True" playsinline="True" preload="metadata"><source src="index_items/features_listen.mp4" type="video/mp4"/><source src="index_items/features_listen (1).mp4" type="video/mp4"/></video></div><div class="content"><h3>Listen‑Only Mode</h3><p class="about-text">A calm, child‑friendly voice reads the story aloud with highlights turned off.</p><p class="about-text">Perfect for winding down or when you’d like screen‑light to stay minimal.</p><ul class="about-text"><li>Great for car rides or quiet time.</li><li>Mobile‑first playback with playsinline, autoplay, loop, and muted.</li><li>Pairs well with our ‘stories about feelings’ collection.</li></ul></div></div><div class="mobile-feature-text">A calm, child‑friendly voice reads the story aloud with highlights turned off.</div><div class="feature"><div class="media"><video aria-label="Favourites &amp; Saved Progress" autoplay="True" loop="True" muted="True" playsinline="True" preload="metadata"><source src="index_items/features_favorites.mp4" type="video/mp4"/><source src="index_items/features_favorites (1).mp4" type="video/mp4"/></video></div><div class="content"><h3>Favourites &amp; Saved Progress</h3><p class="about-text">Tap the star to bookmark stories and return from any device.</p><p class="about-text">Your place is remembered, making stop‑and‑start evenings simpler.</p><ul class="about-text"><li>Quickly build a personal library for your child.</li><li>Syncs across pages that support favourites.</li><li>Helps teachers manage classroom reading picks.</li></ul></div></div><div class="mobile-feature-text">Tap the star to bookmark stories and return from any device.</div><div class="feature"><div class="media"><video aria-label="Create Personal Reading Lists" autoplay="True" loop="True" muted="True" playsinline="True" preload="metadata"><source src="index_items/features_makestorylist.mp4" type="video/mp4"/><source src="index_items/features_makestorylist (1).mp4" type="video/mp4"/></video></div><div class="content"><h3>Create Personal Reading Lists</h3><p class="about-text">Group stories by theme, age, or duration to plan bedtime or lesson time.</p><p class="about-text">Save separate queues like ‘5‑minute stories’, ‘kindness’, or ‘feelings’.</p><ul class="about-text"><li>Fast access to the right story at the right moment.</li><li>Useful for classrooms and sibling reading sessions.</li><li>Encourages consistent reading habits.</li></ul></div></div><div class="mobile-feature-text">Group stories by theme, age, or duration to plan bedtime or lesson time.</div><div class="feature"><div class="media"><video aria-label="Smart Auto‑Scroll" autoplay="True" loop="True" muted="True" playsinline="True" preload="metadata"><source src="index_items/features_autoscroll.mp4" type="video/mp4"/><source src="index_items/features_autoscroll (1).mp4" type="video/mp4"/></video></div><div class="content"><h3>Smart Auto‑Scroll</h3><p class="about-text">The page scrolls gently in time with the audio so eyes stay on the right line.</p><p class="about-text">Designed to account for images and different screen sizes.</p><ul class="about-text"><li>Hands‑free reading on mobile.</li><li>Helps maintain focus for young readers.</li><li>Works across short and longer stories.</li></ul></div></div><div class="mobile-feature-text">The page scrolls gently in time with the audio so eyes stay on the right line.</div></div></section></div></div><div class="section-title">🌟 What Makes Story Bell Different?</div><p>
       At the heart of Story Bell is a simple but powerful idea:<br/>
       As each story is read aloud by our gentle narrator (Story Bell herself), each word lights up in real time, guiding children to follow along with ease and confidence.
-    </p>
-<p>
+    </p><p>
       This isn’t just charming, it’s designed for learning.
-    </p>
-<p><strong>Story Bell helps support:</strong></p>
-<ul>
-<li>⭐ Early word recognition</li>
-<li>⭐ Listening and comprehension skills</li>
-<li>⭐ A joyful, intuitive connection to language and storytelling</li>
-</ul>
-<p>
+    </p><p><strong>Story Bell helps support:</strong></p><ul><li>⭐ Early word recognition</li><li>⭐ Listening and comprehension skills</li><li>⭐ A joyful, intuitive connection to language and storytelling</li></ul><p>
       Unlike video-based content, our stories promote active reading—<i>not</i> passive watching.
-    </p>
-<div class="section-title">🏡 From Our Family to Yours</div>
-<p>
+    </p><div class="section-title">🏡 From Our Family to Yours</div><p>
       Story Bell is a small family creation, made right here in Ireland.<br/>
       What began as a bedtime storytelling idea between a parent and two daughters has grown into a mission to share meaningful stories with children and families everywhere.
-    </p>
-<div class="section-title">🎯 Our Mission</div>
-<p>
+    </p><div class="section-title">🎯 Our Mission</div><p>
       To open young minds through storytelling.<br/>
       To create a calm, inspiring space where children can explore, imagine, and grow, one story at a time.<br/>
       And to make reading feel less like a lesson, and more like a spellbinding adventure.
-    </p>
-<div class="section-title">✨ Our Promise</div>
-<p>
+    </p><div class="section-title">✨ Our Promise</div><p>
       Stories that speak, words that glow.<br/>
       Every page of Story Bell is built to support young readers with care, clarity, and a little bit of magic.
-    </p>
-</div><script>
+    </p></div><!-- BEGIN SWIPE-CAROUSEL-JS --><!-- END SWIPE-CAROUSEL-JS --><div data-auth-cta="" style="position:fixed; inset:0; background:rgba(0,0,0,0.65); display:none; align-items:center; justify-content:center; z-index:12000;"><div style="background:#001f3f; border:2px solid #FFEB3B; border-radius:16px; box-shadow:0 0 28px #ffeb3bcc; width:min(92vw,520px); max-height:85vh; overflow:auto; padding:18px; color:#fff; font-family:'Coming Soon',cursive; position:relative;"><h2 style="margin:0 0 8px 0; text-align:center; color:#FFEB3B;">Sign in or Create Account</h2><button aria-label="Close auth modal" onclick="closeAuthModal()" style="position:absolute; top:10px; right:16px; font-size:28px; background:none; border:none; color:#FFEB3B; cursor:pointer;">×</button><div style="margin:10px 0 0 0; font-size:12px; line-height:1.4; color:#fff; text-align:center;"><label for="sb-consent"><input checked="True" type="checkbox"/> I agree to the <a href="terms.html" rel="noopener" style="color:#FFEB3B; text-decoration:underline;" target="_blank">Terms &amp; Conditions</a> and <a href="privacy.html" rel="noopener" style="color:#FFEB3B; text-decoration:underline;" target="_blank">Privacy Policy</a></label></div></div></div><!-- SB Search Modal (Fuse.js) --><div aria-hidden="true" style="position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:10001"><div aria-label="Search stories" aria-modal="true" role="dialog" style="max-width:720px;margin:8vh auto;background:white;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)"><div style="padding:14px 16px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px"><input placeholder="Search stories, poems, emotions, ages… ( / )" style="flex:1;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:16px;outline:none" type="search"/><button aria-label="Close" style="border:0;background:transparent;font-size:18px;cursor:pointer;padding:8px">✕</button></div></div></div><!-- === BEGIN: Minimal Wand + Feature MP4 Uniformizer (no header/layout changes) === --><!-- === END: Minimal Wand + Feature MP4 Uniformizer === --><!-- === BEGIN: RESPONSIVE MP4 Uniformizer (no header/layout changes) === --><!-- === END: RESPONSIVE MP4 Uniformizer === --><!-- === BEGIN: Mobile Fill & Bigger Containers (videos fill containers on mobile) === --><!-- === END: Mobile Fill & Bigger Containers === --><!-- === BEGIN: Restore Mobile Video Fill (ensure MP4s visible) === --><!-- === END: Restore Mobile Video Fill === --></main>
+<div style="max-width: 1100px; margin: 0 auto; cursor: pointer">
+<h1 class="featured-header">
+</h1>
+<!-- FEATURED STORIES CAROUSEL HERE -->
+</div>
+<div class="main-blank">
+</div>
+<script>
+   // Wand cursor & sparkle logic
     const wand = document.getElementById("wand");
-    // Wand offset: tweak for your image so tip matches cursor position
     const WAND_OFFSET_X = 15;
-    const WAND_OFFSET_Y = 8;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
     wand.style.position = "fixed";
     wand.style.pointerEvents = "none";
     wand.style.zIndex = 20001;
@@ -2882,59 +2702,9 @@ body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!imp
     });
     document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
     document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
-  </script><script>
-  // Enable dropdown menu open/close on tap for mobile/tablet
-  document.querySelectorAll('nav > ul > li > a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const dropdown = this.parentElement.querySelector('.dropdown');
-      if (dropdown) {
-        e.preventDefault();
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-      }
-    });
-  });
-  // Hide dropdown if click outside
-  document.addEventListener('click', function(event) {
-    document.querySelectorAll('.dropdown').forEach(drop => {
-      if (!drop.contains(event.target) && !drop.parentElement.contains(event.target)) {
-        drop.style.display = 'none';
-      }
-    });
-  });
-</script><div class="sparkle" style="left: 665px; top: 240px;"></div><div class="sparkle" style="left: 663px; top: 242px;"></div><div class="sparkle" style="left: 659px; top: 246px;"></div><div class="sparkle" style="left: 653px; top: 250px;"></div><script>
-document.querySelectorAll('nav ul > li').forEach(function(menuItem) {
-  let timeout;
-  menuItem.addEventListener('mouseleave', function() {
-    const dropdown = this.querySelector('.dropdown');
-    if (dropdown) {
-      timeout = setTimeout(() => dropdown.style.display = 'none', 180); // Delay close
-    }
-  });
-  menuItem.addEventListener('mouseenter', function() {
-    const dropdown = this.querySelector('.dropdown');
-    if (dropdown) {
-      clearTimeout(timeout);
-      dropdown.style.display = 'block';
-    }
-  });
-});
-</script><script>
-document.addEventListener("DOMContentLoaded", function() {
-  var menuToggle = document.getElementById("menu-toggle");
-  var nav = document.querySelector("nav");
-  if(menuToggle && nav) {
-    menuToggle.addEventListener("click", function() {
-      nav.classList.toggle("open");
-    });
-    // Optional: close menu when a link is clicked
-    nav.querySelectorAll("a").forEach(function(link) {
-      link.addEventListener("click", function() {
-        nav.classList.remove("open");
-      });
-    });
-  }
-});
-</script><footer style="color: #fff; text-align: center; padding: 10px 20px; font-family: 'Georgia', serif; margin-top: 80px; position: relative;">
+  </script>
+<!-- Optional image-based footer -->
+<footer style="color: #fff; text-align: center; padding: 10px 20px; font-family: 'Georgia', serif; margin-top: 80px; position: relative;">
 <div style="background:#001020; padding:30px 10px; text-align:center;">
 <!-- Signup button -->
 <div style="margin:16px 0;">
