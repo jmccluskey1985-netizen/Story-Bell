@@ -48,128 +48,6 @@
 <title>Educational Bedtime Stories – Story Bell</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
-   body { margin: 0;  background-color: #001f3f; min-height: 100vh; cursor: none;}
-    header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
-    .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-    .header-right { display: flex; align-items: center; gap: 10px; }
-    .mascot-logo { height: 56px; width: 56px; border-radius: 50%; object-fit: cover; background: #ffeb3b33; box-shadow: 0 2px 10px #2227; }
-    .site-title {margin-top: 14px !important;  font-size: 28px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
-    .header-left a:hover .site-title {margin-top: 14px !important;  color: #fffde6; }
-    nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
-    nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s; }
-
-nav ul > li > a {
-  padding-top: 18px !important;
-  padding-bottom: 4px !important;
-  display: inline-block;
-}
-
-    nav a:hover { background: #003366; text-decoration: underline; }
-    .main-blank {
-      min-height: 90vh; max-width: 900px; margin: 0 auto;
-      color: #fff; display: flex; flex-direction: column;
-      align-items: center; justify-content: flex-start;
-      font-size: 1.25em; letter-spacing: 0.03em; padding-top: 40px; padding-bottom: 48px;
-    }
-    .about-header {
-      display: flex; align-items: center; justify-content: center; gap: 28px;
-      margin-bottom: 10px;
-    }
-    .about-header img {
-      height: 112px; width: 112px; border-radius: 50%; object-fit: cover;
-      background: #FFEB3B22; box-shadow: 0 2px 18px #FFEB3B22;
-    }
-    .about-header h1 {
-      font-size: 2.7em;
-      color: #fff;
-      margin: 0;
-      font-weight: bold;
-      text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099;
-      font-family: 'Georgia', serif;
-    }
-    .section-title {
-      font-size: 2em;
-      margin-top: 44px;
-      color: #fff;
-      font-weight: bold;
-      text-shadow: 0 0 10px #ffeb3b99, 0 0 20px #ffaa0033;
-      margin-bottom: 0.5em;
-      font-family: 'Georgia', serif;
-      text-align: center;
-    }
-    .main-blank p {
-      text-align: center;
-      color: #fff;
-      text-shadow: 0 0 8px #ffff6699, 0 0 10px #ffaa0044;
-      margin-bottom: 1.3em;
-      margin-top: 0.7em;
-      line-height: 1.7;
-      font-size: 1.08em;
-      letter-spacing: 0.02em;
-      font-family: 'Georgia', serif;
-    }
-    ul {
-      color: #fffde7;
-      font-size: 1em;
-      padding: 0;
-      margin: 1.3em auto;
-      list-style: none;
-      display: inline-block;
-      text-align: center;
-    }
-    li {
-      text-align: center;
-      font-size: 1.1em;
-      margin-bottom: 0.7em;
-      font-family: 'Georgia', serif;
-    }
-    @media (max-width: 700px) {
-      .main-blank { font-size: 1em; padding-top: 18px;}
-      .about-header { flex-direction: column; gap: 12px;}
-      .about-header img { height: 56px; width: 56px; }
-      .about-header h1 { font-size: 1.24em; }
-      .section-title { font-size: 1.09em; }
-    }
-
-    /* Sparkle star styling */
-    .sparkle {
-      position: fixed;
-      pointer-events: none;
-      width: 22px;
-      height: 22px;
-      background: transparent;
-      z-index: 9999;
-      animation: sparkle-fade 0.9s linear forwards;
-    }
-    .sparkle::after {
-      content: "★";
-      color: #ffeb3b;
-      font-size: 22px;
-      filter: drop-shadow(0 0 8px #ffe066) drop-shadow(0 0 16px #fffde0cc);
-      opacity: 0.9;
-    }
-    @keyframes sparkle-fade {
-      0%   { opacity: 1; transform: scale(1) translateY(0); }
-      60%  { opacity: 0.8; transform: scale(1.18) translateY(-4px);}
-      80%  { opacity: 0.8; }
-      100% { opacity: 0; transform: scale(0.8) translateY(-22px);}
-    }
-  </style>
-<style>
-   header, .header-left, .header-right, 
-.header-left a, 
-.header-left img {
-  vertical-align: top !important;
-  align-self: flex-start !important;
-  margin-top: 0 !important;
-}
-.site-title {
-  margin-top: 14px !important;
-  line-height: 1.1 !important;
-  display: inline-block;
-}
-  </style>
-<style>
    body.no-scroll { overflow: hidden; }
   </style>
 <style>
@@ -191,20 +69,6 @@ nav ul > li > a {
     @media (max-width: 700px) {
       .featured-header { font-size: 1.3em; }
     }
-  </style>
-<style>
-   header, .header-left, .header-right, 
-.header-left a, 
-.header-left img {
-  vertical-align: top !important;
-  align-self: flex-start !important;
-  margin-top: 0 !important;
-}
-.site-title {
-  margin-top: 14px !important;
-  line-height: 1.1 !important;
-  display: inline-block;
-}
   </style>
 <style>
 </style>
@@ -244,17 +108,6 @@ nav ul > li > a {
   </style>
 <!-- BEGIN HAMBURGER-MENU-JS -->
 <!-- END HAMBURGER-MENU-JS -->
-<style id="storybell-header-video-style">
-   /* Show video in header, hide logo on mobile; reverse on desktop */
-@media (max-width:800px) {
-  .header-left img[alt="Story Bell Logo"] { display: none !important; }
-  .storybell-header-video { display: block !important; }
-}
-@media (min-width:801px) {
-  .header-left img[alt="Story Bell Logo"] { display: block !important; }
-  .storybell-header-video { display: none !important; }
-}
-  </style>
 <style id="tagline-glow-style">
    .tagline-glow {
   position: relative;
@@ -370,7 +223,455 @@ nav ul > li > a {
   .subscribe-box { font-size: 1em; padding: 12px 14px; margin: 14px auto; }
 }
   </style>
-<link href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css" rel="stylesheet"/><style id="header-logo-text-align">
+<link href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css" rel="stylesheet"/><style id="firebaseui-visibility-fix">
+/* Ensure FirebaseUI list shows normally inside #auth-modal */
+#auth-modal #firebaseui-auth-container .firebaseui-idp-list { display:block !important; }
+#auth-modal #firebaseui-auth-container .firebaseui-list-item { display:block !important; }
+#auth-modal #firebaseui-auth-container { min-width: 280px; }
+</style><style>
+   .carousel-track {
+  display: flex;
+  gap: 1em;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+@media (max-width: 800px) {
+  .carousel-arrow { display: none !important; }
+  .carousel-track { padding-bottom: 0.5em; }
+}
+  </style><style>
+   /* removed desktop .story-card width% rule */
+.story-card img {
+  width: 100%;
+  height: 195px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s cubic-bezier(.5,1.7,.49,1.06);
+  display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.story-card h3,
+.story-card h3 a {
+  color: #fff !important;
+  text-shadow: 0 0 6px #0008;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1.13em;
+  font-weight: bold;
+}
+.story-card p {
+  color: #fff !important;
+  font-size: 0.87em !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.story-card div[style*="background: #ffffff"], .story-card div[style*="background: #003366"] {
+  background: #003366 !important;
+  font-size: 0.87em !important;
+  margin: 0 !important;
+  padding: 2px 0 1px 0 !important;
+  border-radius: 7px !important;
+}
+.story-card .dropdown-item {
+  color: #fff !important;
+  text-shadow: 0 0 6px #0008;
+  font-size: 0.61em !important;
+  padding: 2.5px 10px !important;
+  border-radius: 7px;
+  display: inline-block;
+  margin: 1.5px 2.5px 0 0 !important;
+  transition: background 0.21s, color 0.12s, box-shadow 0.21s, transform 0.13s;
+  box-shadow: none;
+  text-align: center !important;
+}
+.story-card .dropdown-item:hover,
+.story-card .dropdown-item:focus {
+  background: #003366 !important;
+  color: #FFEB3B !important;
+  box-shadow: 0 0 14px 4px #FFEB3Bcc !important;
+  transform: scale(1.13);
+  z-index: 2;
+}
+.story-card:hover {
+  box-shadow: 0 0 28px 12px #FFEB3Bcc, 0 2px 10px #2223;
+  transform: scale(1.035);
+}
+.favorite-star {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.6em;
+  color: #ffd700;
+  margin-top: 6px;
+  margin-bottom: -5px;
+  transition: color 0.14s;
+  outline: none;
+}
+.favorite-star .star {
+  pointer-events: none;
+}
+.favorite-star:hover .star,
+.favorite-star:focus .star {
+  color: #fff56b;
+  text-shadow: 0 0 7px #ffea00;
+}
+/* ---- MOBILE OPTIMIZATION ---- */
+@media (max-width: 800px) {
+  .story-card {
+    width: 94vw !important;
+    min-width: 90vw !important;
+    max-width: 98vw !important;
+    margin: 13px auto !important;
+    font-size: 1.1em !important;
+    padding: 13px !important;
+  }
+  .story-card img {
+    height: 120px !important;
+  }
+  .story-card .dropdown-item {
+    font-size: 0.95em !important;
+    margin: 3px 6px !important;
+    padding: 5px 15px !important;
+  }
+}
+  </style><style>
+   /* MOBILE OVERRIDE: Prevent hover/focus-within from keeping submenus open on touch */
+@media (max-width: 800px) {
+  nav ul > li:hover > .dropdown,
+  nav ul > li:focus-within > .dropdown {
+    display: none !important;
+  }
+  nav ul > li.open > .dropdown {
+    display: block !important;
+  }
+}
+  </style><style>
+   @media (max-width: 800px) {
+  /* Hide only the MP4 animation video(s) that are in the BODY, not header */
+  .index-body-video { display: none !important; }
+
+  /* Hide the 'Story Bell' H1 in the BODY on mobile (keep header untouched) */
+  .index-body-title { display: none !important; }
+}
+  </style><style>
+   /* Disable custom cursor + hide wand/sparkles on mobile */
+@media (max-width: 800px) {
+  body { cursor: auto !important; }
+  #wand { display: none !important; }
+  .sparkle { display: none !important; }
+}
+  </style><style>
+/* Center dropdown menus under parent item on desktop */
+@media (min-width: 801px){
+  nav ul li .dropdown{
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    text-align: center !important;
+  }
+}
+</style><style>
+/* Force pointer cursor visible on all menu list items and links */
+header nav ul li,
+header nav ul li a,
+header nav ul li .dropdown li,
+header nav ul li .dropdown li a {
+  cursor: pointer !important;
+}
+</style><style>
+/* === Mobile header login placement === */
+@media (max-width: 800px){
+  .login-cta-header { display: none !important; }        /* remove header button on mobile */
+  .login-mobile { display: block !important; }           /* show first item in hamburger */
+}
+@media (min-width: 801px){
+  .login-mobile { display: none !important; }            /* hide hamburger login on desktop */
+}
+
+/* === Smaller Firebase modal on mobile === */
+@media (max-width: 800px){
+  #auth-modal > div {
+    width: 92vw !important;
+    max-width: 360px !important;
+    padding: 12px !important;
+  }
+  #auth-modal h2 {
+    font-size: 18px !important;
+    margin-bottom: 6px !important;
+  }
+  #firebaseui-auth-container .firebaseui-card-content { padding: 8px !important; }
+  #firebaseui-auth-container .firebaseui-card-actions { padding: 8px !important; }
+  #firebaseui-auth-container .firebaseui-idp-list, 
+  #firebaseui-auth-container .firebaseui-idp-button {
+    max-width: 280px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  #firebaseui-auth-container .mdl-button { min-width: 160px !important; }
+}
+</style><style>
+@media (max-width: 800px){
+  .login-mobile a {
+    font-size: 13px !important;
+    padding: 6px 10px !important;
+    width: auto !important;
+    display: inline-block !important;
+  }
+}
+</style><style>
+@media (max-width: 800px){
+  .login-mobile a {
+    font-size: 12px !important;
+    padding: 4px 8px !important;
+    width: auto !important;
+    display: inline-block !important;
+    margin: 6px 10px !important;
+    border-radius: 12px !important;
+  }
+}
+</style><style>
+/* Hide any header Login CTA on mobile; keep only the hamburger menu item */
+@media (max-width: 800px){
+  header a.login-cta-header, header .login-cta-header {
+    display: none !important;
+  }
+}
+</style><style>
+@media (max-width: 800px){
+  #auth-modal > div {
+    width: 90vw !important;
+    max-width: 340px !important;
+    padding: 10px !important;
+  }
+  #auth-modal h2 { font-size: 18px !important; margin-bottom: 6px !important; }
+  #firebaseui-auth-container .firebaseui-card-content { padding: 8px !important; }
+  #firebaseui-auth-container .firebaseui-card-actions { padding: 8px !important; }
+  #firebaseui-auth-container .firebaseui-idp-list, 
+  #firebaseui-auth-container .firebaseui-idp-button {
+    max-width: 260px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+</style><style>
+@media (max-width: 800px){
+  .login-mobile a {
+    text-align: left !important;
+    font-size: 14px !important;
+    padding: 10px 16px !important;
+    display: block !important;
+    width: 100% !important;
+    margin: 6px auto !important;
+    white-space: nowrap !important;
+  }
+}
+</style>
+<style id="sb-header-font-restore">
+header .site-title {
+  font-size: 28px !important; /* restored original */
+  font-family: Georgia, serif;
+}
+</style>
+<script>
+(function () {
+  if (/\sEdg\//.test(navigator.userAgent)) {
+    document.documentElement.classList.add('edge');
+  }
+})();
+</script>
+<script id="sb-edge-flag">
+  (function(){
+    try {
+      if (/Edg\//.test(navigator.userAgent)) {
+        document.documentElement.classList.add('is-edge');
+      }
+    } catch(e){}
+  })();
+</script>
+<style id="sb-edge-mobile-tweaks-2">
+/* Edge-specific fine-tuning (smaller font + logo for closer Chrome match) */
+@media (max-width: 800px){
+  html.is-edge .site-title{
+    font-size:22px !important; /* smaller than 26px */
+    line-height:1.15 !important;
+  }
+  html.is-edge .storybell-header-video,
+  html.is-edge .mascot-logo{
+    width:96px !important;
+    min-width:96px !important;
+    max-width:96px !important;
+    height:auto !important;
+    transform:none !important;
+    object-fit:contain !important;
+    display:block !important;
+  }
+}
+</style>
+<style id="site-title-bump">
+/* Minimal bump for header brand text without affecting other header items */
+header .site-title {
+  font-size: clamp(32px, 3.4vw, 40px) !important;  /* desktop up to ~40px */
+  line-height: 1.05 !important;
+  white-space: nowrap !important;
+  margin-top: 12px !important; /* keep vertical alignment tight */
+}
+@media (max-width: 800px){
+  header .site-title {
+    font-size: clamp(28px, 7vw, 34px) !important;  /* safe on mobile */
+    line-height: 1.05 !important;
+  }
+}
+</style><style>
+   body { margin: 0;  background-color: #001f3f; min-height: 100vh; cursor: none;}
+    header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
+    .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .mascot-logo { height: 56px; width: 56px; border-radius: 50%; object-fit: cover; background: #ffeb3b33; box-shadow: 0 2px 10px #2227; }
+    .site-title {margin-top: 14px !important;  font-size: 28px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
+    .header-left a:hover .site-title {margin-top: 14px !important;  color: #fffde6; }
+    nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
+    nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s; }
+
+nav ul > li > a {
+  padding-top: 18px !important;
+  padding-bottom: 4px !important;
+  display: inline-block;
+}
+
+    nav a:hover { background: #003366; text-decoration: underline; }
+    .main-blank {
+      min-height: 90vh; max-width: 900px; margin: 0 auto;
+      color: #fff; display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-start;
+      font-size: 1.25em; letter-spacing: 0.03em; padding-top: 40px; padding-bottom: 48px;
+    }
+    .about-header {
+      display: flex; align-items: center; justify-content: center; gap: 28px;
+      margin-bottom: 10px;
+    }
+    .about-header img {
+      height: 112px; width: 112px; border-radius: 50%; object-fit: cover;
+      background: #FFEB3B22; box-shadow: 0 2px 18px #FFEB3B22;
+    }
+    .about-header h1 {
+      font-size: 2.7em;
+      color: #fff;
+      margin: 0;
+      font-weight: bold;
+      text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099;
+      font-family: 'Georgia', serif;
+    }
+    .section-title {
+      font-size: 2em;
+      margin-top: 44px;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: 0 0 10px #ffeb3b99, 0 0 20px #ffaa0033;
+      margin-bottom: 0.5em;
+      font-family: 'Georgia', serif;
+      text-align: center;
+    }
+    .main-blank p {
+      text-align: center;
+      color: #fff;
+      text-shadow: 0 0 8px #ffff6699, 0 0 10px #ffaa0044;
+      margin-bottom: 1.3em;
+      margin-top: 0.7em;
+      line-height: 1.7;
+      font-size: 1.08em;
+      letter-spacing: 0.02em;
+      font-family: 'Georgia', serif;
+    }
+    ul {
+      color: #fffde7;
+      font-size: 1em;
+      padding: 0;
+      margin: 1.3em auto;
+      list-style: none;
+      display: inline-block;
+      text-align: center;
+    }
+    li {
+      text-align: center;
+      font-size: 1.1em;
+      margin-bottom: 0.7em;
+      font-family: 'Georgia', serif;
+    }
+    @media (max-width: 700px) {
+      .main-blank { font-size: 1em; padding-top: 18px;}
+      .about-header { flex-direction: column; gap: 12px;}
+      .about-header img { height: 56px; width: 56px; }
+      .about-header h1 { font-size: 1.24em; }
+      .section-title { font-size: 1.09em; }
+    }
+
+    /* Sparkle star styling */
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      width: 22px;
+      height: 22px;
+      background: transparent;
+      z-index: 9999;
+      animation: sparkle-fade 0.9s linear forwards;
+    }
+    .sparkle::after {
+      content: "★";
+      color: #ffeb3b;
+      font-size: 22px;
+      filter: drop-shadow(0 0 8px #ffe066) drop-shadow(0 0 16px #fffde0cc);
+      opacity: 0.9;
+    }
+    @keyframes sparkle-fade {
+      0%   { opacity: 1; transform: scale(1) translateY(0); }
+      60%  { opacity: 0.8; transform: scale(1.18) translateY(-4px);}
+      80%  { opacity: 0.8; }
+      100% { opacity: 0; transform: scale(0.8) translateY(-22px);}
+    }
+  </style><style>
+   header, .header-left, .header-right, 
+.header-left a, 
+.header-left img {
+  vertical-align: top !important;
+  align-self: flex-start !important;
+  margin-top: 0 !important;
+}
+.site-title {
+  margin-top: 14px !important;
+  line-height: 1.1 !important;
+  display: inline-block;
+}
+  </style><style>
+   header, .header-left, .header-right, 
+.header-left a, 
+.header-left img {
+  vertical-align: top !important;
+  align-self: flex-start !important;
+  margin-top: 0 !important;
+}
+.site-title {
+  margin-top: 14px !important;
+  line-height: 1.1 !important;
+  display: inline-block;
+}
+  </style><style>
+   /* Show video in header, hide logo on mobile; reverse on desktop */
+@media (max-width:800px) {
+  .header-left img[alt="Story Bell Logo"] { display: none !important; }
+  .storybell-header-video { display: block !important; }
+}
+@media (min-width:801px) {
+  .header-left img[alt="Story Bell Logo"] { display: block !important; }
+  .storybell-header-video { display: none !important; }
+}
+  </style><style>
 /* Align logo and Story Bell text beside each other */
 header .header-left {
   display: flex !important;
@@ -384,11 +685,6 @@ header .site-title {
   text-align: left !important;
   margin: 0 !important;
 }
-</style><style id="firebaseui-visibility-fix">
-/* Ensure FirebaseUI list shows normally inside #auth-modal */
-#auth-modal #firebaseui-auth-container .firebaseui-idp-list { display:block !important; }
-#auth-modal #firebaseui-auth-container .firebaseui-list-item { display:block !important; }
-#auth-modal #firebaseui-auth-container { min-width: 280px; }
 </style><style>
    /* Hamburger Button */
 
@@ -451,24 +747,6 @@ header .site-title {
   }
 }
 @keyframes fadeDown { from {opacity:0;transform:translateY(-16px);} to {opacity:1;transform:translateY(0);} }
-  </style><style>
-   .carousel-track {
-  display: flex;
-  gap: 1em;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Firefox */
-}
-.carousel-track::-webkit-scrollbar { display: none; }
-.carousel-card {
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-}
-@media (max-width: 800px) {
-  .carousel-arrow { display: none !important; }
-  .carousel-track { padding-bottom: 0.5em; }
-}
   </style><style>
    @media (max-width: 800px) {
   #menu-toggle {
@@ -1185,102 +1463,6 @@ header .site-title {
   }
 }
   </style><style>
-   /* removed desktop .story-card width% rule */
-.story-card img {
-  width: 100%;
-  height: 195px;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: transform 0.3s cubic-bezier(.5,1.7,.49,1.06);
-  display: block;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-.story-card h3,
-.story-card h3 a {
-  color: #fff !important;
-  text-shadow: 0 0 6px #0008;
-  margin: 0 !important;
-  padding: 0 !important;
-  font-size: 1.13em;
-  font-weight: bold;
-}
-.story-card p {
-  color: #fff !important;
-  font-size: 0.87em !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-.story-card div[style*="background: #ffffff"], .story-card div[style*="background: #003366"] {
-  background: #003366 !important;
-  font-size: 0.87em !important;
-  margin: 0 !important;
-  padding: 2px 0 1px 0 !important;
-  border-radius: 7px !important;
-}
-.story-card .dropdown-item {
-  color: #fff !important;
-  text-shadow: 0 0 6px #0008;
-  font-size: 0.61em !important;
-  padding: 2.5px 10px !important;
-  border-radius: 7px;
-  display: inline-block;
-  margin: 1.5px 2.5px 0 0 !important;
-  transition: background 0.21s, color 0.12s, box-shadow 0.21s, transform 0.13s;
-  box-shadow: none;
-  text-align: center !important;
-}
-.story-card .dropdown-item:hover,
-.story-card .dropdown-item:focus {
-  background: #003366 !important;
-  color: #FFEB3B !important;
-  box-shadow: 0 0 14px 4px #FFEB3Bcc !important;
-  transform: scale(1.13);
-  z-index: 2;
-}
-.story-card:hover {
-  box-shadow: 0 0 28px 12px #FFEB3Bcc, 0 2px 10px #2223;
-  transform: scale(1.035);
-}
-.favorite-star {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.6em;
-  color: #ffd700;
-  margin-top: 6px;
-  margin-bottom: -5px;
-  transition: color 0.14s;
-  outline: none;
-}
-.favorite-star .star {
-  pointer-events: none;
-}
-.favorite-star:hover .star,
-.favorite-star:focus .star {
-  color: #fff56b;
-  text-shadow: 0 0 7px #ffea00;
-}
-/* ---- MOBILE OPTIMIZATION ---- */
-@media (max-width: 800px) {
-  .story-card {
-    width: 94vw !important;
-    min-width: 90vw !important;
-    max-width: 98vw !important;
-    margin: 13px auto !important;
-    font-size: 1.1em !important;
-    padding: 13px !important;
-  }
-  .story-card img {
-    height: 120px !important;
-  }
-  .story-card .dropdown-item {
-    font-size: 0.95em !important;
-    margin: 3px 6px !important;
-    padding: 5px 15px !important;
-  }
-}
-  </style><style>
    /* --- Responsive Styles for Mobile/Tablet (NO Hamburger Menu) --- */
 @media (max-width: 800px) {
   header { flex-direction: column; align-items: stretch !important; }
@@ -1550,17 +1732,6 @@ nav ul > li:focus-within > .dropdown {
   nav ul { gap: 10px; }
 }
   </style><style>
-   /* MOBILE OVERRIDE: Prevent hover/focus-within from keeping submenus open on touch */
-@media (max-width: 800px) {
-  nav ul > li:hover > .dropdown,
-  nav ul > li:focus-within > .dropdown {
-    display: none !important;
-  }
-  nav ul > li.open > .dropdown {
-    display: block !important;
-  }
-}
-  </style><style>
    @media (max-width: 900px){
   body.menu-open header{ z-index: 11000 !important; position: sticky; top: 0; }
   .header-right #menu-toggle{
@@ -1630,89 +1801,6 @@ nav ul > li:focus-within > .dropdown {
   }
 }
   </style><style>
-   @media (max-width: 800px) {
-  /* Hide only the MP4 animation video(s) that are in the BODY, not header */
-  .index-body-video { display: none !important; }
-
-  /* Hide the 'Story Bell' H1 in the BODY on mobile (keep header untouched) */
-  .index-body-title { display: none !important; }
-}
-  </style><style>
-   /* Disable custom cursor + hide wand/sparkles on mobile */
-@media (max-width: 800px) {
-  body { cursor: auto !important; }
-  #wand { display: none !important; }
-  .sparkle { display: none !important; }
-}
-  </style><style>
-/* Center dropdown menus under parent item on desktop */
-@media (min-width: 801px){
-  nav ul li .dropdown{
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    text-align: center !important;
-  }
-}
-</style><style>
-/* Force pointer cursor visible on all menu list items and links */
-header nav ul li,
-header nav ul li a,
-header nav ul li .dropdown li,
-header nav ul li .dropdown li a {
-  cursor: pointer !important;
-}
-</style><style>
-/* === Mobile header login placement === */
-@media (max-width: 800px){
-  .login-cta-header { display: none !important; }        /* remove header button on mobile */
-  .login-mobile { display: block !important; }           /* show first item in hamburger */
-}
-@media (min-width: 801px){
-  .login-mobile { display: none !important; }            /* hide hamburger login on desktop */
-}
-
-/* === Smaller Firebase modal on mobile === */
-@media (max-width: 800px){
-  #auth-modal > div {
-    width: 92vw !important;
-    max-width: 360px !important;
-    padding: 12px !important;
-  }
-  #auth-modal h2 {
-    font-size: 18px !important;
-    margin-bottom: 6px !important;
-  }
-  #firebaseui-auth-container .firebaseui-card-content { padding: 8px !important; }
-  #firebaseui-auth-container .firebaseui-card-actions { padding: 8px !important; }
-  #firebaseui-auth-container .firebaseui-idp-list, 
-  #firebaseui-auth-container .firebaseui-idp-button {
-    max-width: 280px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  #firebaseui-auth-container .mdl-button { min-width: 160px !important; }
-}
-</style><style>
-@media (max-width: 800px){
-  .login-mobile a {
-    font-size: 13px !important;
-    padding: 6px 10px !important;
-    width: auto !important;
-    display: inline-block !important;
-  }
-}
-</style><style>
-@media (max-width: 800px){
-  .login-mobile a {
-    font-size: 12px !important;
-    padding: 4px 8px !important;
-    width: auto !important;
-    display: inline-block !important;
-    margin: 6px 10px !important;
-    border-radius: 12px !important;
-  }
-}
-</style><style>
 /* Mobile-only tweaks for Login button and hamburger */
 @media (max-width: 800px){
   .login-mobile a {
@@ -1749,35 +1837,11 @@ header nav ul li .dropdown li a {
   .login-cta-header { display: none !important; } /* Hide header login button on mobile */
 }
 </style><style>
-/* Hide any header Login CTA on mobile; keep only the hamburger menu item */
-@media (max-width: 800px){
-  header a.login-cta-header, header .login-cta-header {
-    display: none !important;
-  }
-}
-</style><style>
 @media (max-width: 800px){
   header .hamburger, header .menu-toggle, header .nav-toggle, header #menu-toggle, header .mobile-menu-toggle, header .menu-btn, header .burger {
     margin-left: auto !important;
     margin-right: 8px !important;
     float: right !important;
-  }
-}
-</style><style>
-@media (max-width: 800px){
-  #auth-modal > div {
-    width: 90vw !important;
-    max-width: 340px !important;
-    padding: 10px !important;
-  }
-  #auth-modal h2 { font-size: 18px !important; margin-bottom: 6px !important; }
-  #firebaseui-auth-container .firebaseui-card-content { padding: 8px !important; }
-  #firebaseui-auth-container .firebaseui-card-actions { padding: 8px !important; }
-  #firebaseui-auth-container .firebaseui-idp-list, 
-  #firebaseui-auth-container .firebaseui-idp-button {
-    max-width: 260px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
   }
 }
 </style><style>
@@ -1804,18 +1868,6 @@ header nav ul li .dropdown li a {
     width: 90% !important;
     margin: 8px auto !important;
     text-align: center !important;
-    white-space: nowrap !important;
-  }
-}
-</style><style>
-@media (max-width: 800px){
-  .login-mobile a {
-    text-align: left !important;
-    font-size: 14px !important;
-    padding: 10px 16px !important;
-    display: block !important;
-    width: 100% !important;
-    margin: 6px auto !important;
     white-space: nowrap !important;
   }
 }
@@ -1891,8 +1943,7 @@ header nav ul li .dropdown li a {
     font-weight: normal !important;
   }
 }
-  </style>
-<style id="sb-search-css-forced">
+  </style><style>
 .sb-search-icon{
   display:inline-flex !important; align-items:center !important; justify-content:center !important;
   width:38px !important; height:38px !important; margin-right:8px !important;
@@ -1904,14 +1955,7 @@ header nav ul li .dropdown li a {
 .sb-search-icon:hover{ background:#002a66 !important; box-shadow:0 0 12px rgba(255,235,59,.6) !important; transform:scale(1.05) !important; }
 .sb-search-icon svg{ stroke:currentColor !important; display:block !important; }
 @media (max-width:800px){ .sb-search-icon{ width:34px !important; height:34px !important; margin-right:6px !important; } }
-</style>
-<style id="sb-header-font-restore">
-header .site-title {
-  font-size: 28px !important; /* restored original */
-  font-family: Georgia, serif;
-}
-</style>
-<style id="sb-search-mobile-abs-fix">
+</style><style>
 /* Force search icon to the LEFT of hamburger on mobile */
 @media (max-width: 800px) {
   .header-right { position: relative; min-height: 44px; }
@@ -1926,8 +1970,7 @@ header .site-title {
   /* optional: keep login hidden on mobile if your CSS doesn't already */
   .header-right .login-cta-header { display: none !important; }
 }
-</style>
-<style id="sb-search-mobile-abs-fix-tweaks">
+</style><style>
 @media (max-width: 800px) {
   /* Tight logo/text spacing */
   .header-left a { gap: 0 !important; }
@@ -1945,8 +1988,7 @@ header .site-title {
   .header-right .hamburger     { right: 0px !important; }
   .header-right .sb-search-icon { right: 30px !important; }
 }
-</style>
-<style id="sb-search-mobile-logo-scale">
+</style><style>
 @media (max-width: 800px) {
   .mascot-logo {
     transform: scale(0.8);
@@ -1966,8 +2008,7 @@ header .site-title {
   .header-right .hamburger { right: 0px !important; }
   .header-right .sb-search-icon { right: 43px !important; }
 }
-</style>
-<style id="sb-search-mobile-lane-fix">
+</style><style>
 @media (max-width: 800px) {
   /* Reserve lane for icons so text doesn't overlap (Edge + Chrome consistent) */
   .header-left {
@@ -1984,8 +2025,7 @@ header .site-title {
   .header-right .hamburger { right: 0px !important; }
   .header-right .sb-search-icon { right: 43px !important; }
 }
-</style>
-<style id="sb-edge-only-match-chrome">
+</style><style>
 @supports (-ms-ime-align:auto) {
   @media (max-width: 800px) {
     /* Reserve space for icons without moving them; keep Edge text away from icon lane */
@@ -2021,8 +2061,7 @@ header .site-title {
     }
   }
 }
-</style>
-<style id="sb-edge-only-match-chrome-strong">
+</style><style>
 @supports (-ms-ime-align:auto) {
   @media (max-width: 800px) {
     /* Hard-lock MP4/logo to 72px width on Edge mobile */
@@ -2047,14 +2086,7 @@ header .site-title {
     }
   }
 }
-</style>
-<script>
-(function () {
-  if (/\sEdg\//.test(navigator.userAgent)) {
-    document.documentElement.classList.add('edge');
-  }
-})();
-</script><style id="edge-mobile-header-fix">
+</style><style>
 @media (max-width: 800px) {
   .edge header .storybell-header-video {
     height: 72px !important;
@@ -2080,8 +2112,7 @@ header .site-title {
     margin-right: 8px !important;
   }
 }
-</style>
-<style id="sb-mobile-ideal">
+</style><style>
 
 /* === StoryBell: Mobile header IDEAL settings (locks Chrome/Edge parity) === */
 @media (max-width: 800px){
@@ -2093,36 +2124,7 @@ header .site-title {
   .site-title{ font-size:28px !important; line-height:1.2 !important; margin-left:-4px !important; white-space:nowrap !important; overflow:hidden !important; text-overflow:ellipsis !important; max-width:calc(100% - 96px) !important; }
 }
 
-</style>
-<script id="sb-edge-flag">
-  (function(){
-    try {
-      if (/Edg\//.test(navigator.userAgent)) {
-        document.documentElement.classList.add('is-edge');
-      }
-    } catch(e){}
-  })();
-</script>
-<style id="sb-edge-mobile-tweaks-2">
-/* Edge-specific fine-tuning (smaller font + logo for closer Chrome match) */
-@media (max-width: 800px){
-  html.is-edge .site-title{
-    font-size:22px !important; /* smaller than 26px */
-    line-height:1.15 !important;
-  }
-  html.is-edge .storybell-header-video,
-  html.is-edge .mascot-logo{
-    width:96px !important;
-    min-width:96px !important;
-    max-width:96px !important;
-    height:auto !important;
-    transform:none !important;
-    object-fit:contain !important;
-    display:block !important;
-  }
-}
-</style>
-<style id="sb-allbrowser-icon-scale">
+</style><style>
 /* Scale hamburger and magnifier 15% smaller for all browsers (mobile only) */
 @media (max-width: 800px){
   .sb-search-icon,
@@ -2131,8 +2133,7 @@ header .site-title {
     transform-origin: center center !important;
   }
 }
-</style>
-<style id="sb-magnifier-offsets-v3">
+</style><style>
 @media (max-width: 800px){
   /* Chrome + all non-Edge browsers */
   html:not(.is-edge) .sb-search-icon {
@@ -2146,47 +2147,7 @@ header .site-title {
     transform-origin: center center !important;
   }
 }
-</style>
-<style id="sb-seo-fixes">
-  html { min-height:100%; }
-  body.seo-page { min-height:100vh; display:flex; flex-direction:column; color:#FFFFFF; }
-  body.seo-page main { flex:1 0 auto; }
-  body.seo-page footer { margin-top:auto; }
-  body.seo-page header,
-  body.seo-page .header,
-  body.seo-page .header-left,
-  body.seo-page .header-right,
-  body.seo-page .top-bar,
-  body.seo-page .nav,
-  body.seo-page .navbar {
-    margin-top:0 !important; padding-top:0 !important;
-    margin-bottom:0 !important; padding-bottom:0 !important;
-  }
-  body.seo-page header + * { margin-top:0 !important; padding-top:0 !important; }
-  body.seo-page .page-header{display:flex;align-items:center;justify-content:center;gap:28px;margin:8px auto 20px;max-width:1100px;padding:0 16px}
-  body.seo-page .page-header video{width:112px;height:112px;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,.35)}
-  body.seo-page .page-header h1{
-    margin:0;font-size:32px;line-height:1.15;text-align:center;color:#FFFFFF;
-    font-family:'Coming Soon','Comic Sans MS',cursive,system-ui;
-    text-shadow:0 0 6px rgba(255,235,59,.65),0 0 18px rgba(255,235,59,.35);
-  }
-  body.seo-page .lede{max-width:900px;margin:12px auto 24px auto;text-align:center;opacity:.95;padding:0 16px;font-size:17px;color:#FFFFFF}
-  body.seo-page .page-section{max-width:1100px;margin:0 auto 28px auto;padding:0 16px;color:#FFFFFF}
-  body.seo-page .page-section h2{margin:0 0 10px 0;font-size:22px;text-shadow:0 0 10px rgba(255,255,255,.18);color:#FFFFFF}
-  body.seo-page .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-  body.seo-page .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:12px;text-align:center}
-  body.seo-page .card h3{margin:0 0 6px 0;font-size:18px;color:#FFFFFF}
-  body.seo-page .card a{color:#FFEB3B;text-decoration:none}
-  body.seo-page .faq-item{border-top:1px dashed rgba(255,255,255,.15);padding:12px 0}
-  body.seo-page .faq-item:first-child{border-top:none}
-  body.seo-page .faq-item strong{display:block;margin-bottom:4px;color:#FFFFFF}
-  @media(max-width:700px){
-    body.seo-page .page-header{flex-direction:column;gap:12px}
-    body.seo-page .page-header video{width:56px;height:56px}
-    body.seo-page .page-header h1{font-size:26px}
-  }
-</style>
-<style id="desktop-header-fixed">
+</style><style>
   /* Desktop-only header link sizing */
   @media (min-width: 900px) {
     header a,
@@ -2205,21 +2166,6 @@ header .site-title {
       font-size: 35px !important;
     }
   }
-</style>
-<style id="site-title-bump">
-/* Minimal bump for header brand text without affecting other header items */
-header .site-title {
-  font-size: clamp(32px, 3.4vw, 40px) !important;  /* desktop up to ~40px */
-  line-height: 1.05 !important;
-  white-space: nowrap !important;
-  margin-top: 12px !important; /* keep vertical alignment tight */
-}
-@media (max-width: 800px){
-  header .site-title {
-    font-size: clamp(28px, 7vw, 34px) !important;  /* safe on mobile */
-    line-height: 1.05 !important;
-  }
-}
 </style>
 <style id="sb-cards-base">
 .cards-grid{

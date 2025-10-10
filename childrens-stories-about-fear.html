@@ -48,128 +48,6 @@
 <title>Children’s Stories About Fear</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
-   body { margin: 0;  background-color: #001f3f; min-height: 100vh; cursor: none;}
-    header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
-    .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-    .header-right { display: flex; align-items: center; gap: 10px; }
-    .mascot-logo { height: 56px; width: 56px; border-radius: 50%; object-fit: cover; background: #ffeb3b33; box-shadow: 0 2px 10px #2227; }
-    .site-title {margin-top: 14px !important;  font-size: 28px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
-    .header-left a:hover .site-title {margin-top: 14px !important;  color: #fffde6; }
-    nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
-    nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s; }
-
-nav ul > li > a {
-  padding-top: 18px !important;
-  padding-bottom: 4px !important;
-  display: inline-block;
-}
-
-    nav a:hover { background: #003366; text-decoration: underline; }
-    .main-blank {
-      min-height: 90vh; max-width: 900px; margin: 0 auto;
-      color: #fff; display: flex; flex-direction: column;
-      align-items: center; justify-content: flex-start;
-      font-size: 1.25em; letter-spacing: 0.03em; padding-top: 40px; padding-bottom: 48px;
-    }
-    .about-header {
-      display: flex; align-items: center; justify-content: center; gap: 28px;
-      margin-bottom: 10px;
-    }
-    .about-header img {
-      height: 112px; width: 112px; border-radius: 50%; object-fit: cover;
-      background: #FFEB3B22; box-shadow: 0 2px 18px #FFEB3B22;
-    }
-    .about-header h1 {
-      font-size: 2.7em;
-      color: #fff;
-      margin: 0;
-      font-weight: bold;
-      text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099;
-      font-family: 'Georgia', serif;
-    }
-    .section-title {
-      font-size: 2em;
-      margin-top: 44px;
-      color: #fff;
-      font-weight: bold;
-      text-shadow: 0 0 10px #ffeb3b99, 0 0 20px #ffaa0033;
-      margin-bottom: 0.5em;
-      font-family: 'Georgia', serif;
-      text-align: center;
-    }
-    .main-blank p {
-      text-align: center;
-      color: #fff;
-      text-shadow: 0 0 8px #ffff6699, 0 0 10px #ffaa0044;
-      margin-bottom: 1.3em;
-      margin-top: 0.7em;
-      line-height: 1.7;
-      font-size: 1.08em;
-      letter-spacing: 0.02em;
-      font-family: 'Georgia', serif;
-    }
-    ul {
-      color: #fffde7;
-      font-size: 1em;
-      padding: 0;
-      margin: 1.3em auto;
-      list-style: none;
-      display: inline-block;
-      text-align: center;
-    }
-    li {
-      text-align: center;
-      font-size: 1.1em;
-      margin-bottom: 0.7em;
-      font-family: 'Georgia', serif;
-    }
-    @media (max-width: 700px) {
-      .main-blank { font-size: 1em; padding-top: 18px;}
-      .about-header { flex-direction: column; gap: 12px;}
-      .about-header img { height: 56px; width: 56px; }
-      .about-header h1 { font-size: 1.24em; }
-      .section-title { font-size: 1.09em; }
-    }
-
-    /* Sparkle star styling */
-    .sparkle {
-      position: fixed;
-      pointer-events: none;
-      width: 22px;
-      height: 22px;
-      background: transparent;
-      z-index: 9999;
-      animation: sparkle-fade 0.9s linear forwards;
-    }
-    .sparkle::after {
-      content: "★";
-      color: #ffeb3b;
-      font-size: 22px;
-      filter: drop-shadow(0 0 8px #ffe066) drop-shadow(0 0 16px #fffde0cc);
-      opacity: 0.9;
-    }
-    @keyframes sparkle-fade {
-      0%   { opacity: 1; transform: scale(1) translateY(0); }
-      60%  { opacity: 0.8; transform: scale(1.18) translateY(-4px);}
-      80%  { opacity: 0.8; }
-      100% { opacity: 0; transform: scale(0.8) translateY(-22px);}
-    }
-  </style>
-<style>
-   header, .header-left, .header-right, 
-.header-left a, 
-.header-left img {
-  vertical-align: top !important;
-  align-self: flex-start !important;
-  margin-top: 0 !important;
-}
-.site-title {
-  margin-top: 14px !important;
-  line-height: 1.1 !important;
-  display: inline-block;
-}
-  </style>
-<style>
    body.no-scroll { overflow: hidden; }
   </style>
 <style>
@@ -191,20 +69,6 @@ nav ul > li > a {
     @media (max-width: 700px) {
       .featured-header { font-size: 1.3em; }
     }
-  </style>
-<style>
-   header, .header-left, .header-right, 
-.header-left a, 
-.header-left img {
-  vertical-align: top !important;
-  align-self: flex-start !important;
-  margin-top: 0 !important;
-}
-.site-title {
-  margin-top: 14px !important;
-  line-height: 1.1 !important;
-  display: inline-block;
-}
   </style>
 <style>
 </style>
@@ -244,17 +108,6 @@ nav ul > li > a {
   </style>
 <!-- BEGIN HAMBURGER-MENU-JS -->
 <!-- END HAMBURGER-MENU-JS -->
-<style id="storybell-header-video-style">
-   /* Show video in header, hide logo on mobile; reverse on desktop */
-@media (max-width:800px) {
-  .header-left img[alt="Story Bell Logo"] { display: none !important; }
-  .storybell-header-video { display: block !important; }
-}
-@media (min-width:801px) {
-  .header-left img[alt="Story Bell Logo"] { display: block !important; }
-  .storybell-header-video { display: none !important; }
-}
-  </style>
 <style id="tagline-glow-style">
    .tagline-glow {
   position: relative;
@@ -370,7 +223,498 @@ nav ul > li > a {
   .subscribe-box { font-size: 1em; padding: 12px 14px; margin: 14px auto; }
 }
   </style>
-<link href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css" rel="stylesheet"/><style id="header-logo-text-align">
+<link href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css" rel="stylesheet"/><style id="firebaseui-visibility-fix">
+/* Ensure FirebaseUI list shows normally inside #auth-modal */
+#auth-modal #firebaseui-auth-container .firebaseui-idp-list { display:block !important; }
+#auth-modal #firebaseui-auth-container .firebaseui-list-item { display:block !important; }
+#auth-modal #firebaseui-auth-container { min-width: 280px; }
+</style><style>
+   .carousel-track {
+  display: flex;
+  gap: 1em;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+@media (max-width: 800px) {
+  .carousel-arrow { display: none !important; }
+  .carousel-track { padding-bottom: 0.5em; }
+}
+  </style><style>
+   /* removed desktop .story-card width% rule */
+.story-card img {
+  width: 100%;
+  height: 195px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s cubic-bezier(.5,1.7,.49,1.06);
+  display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.story-card h3,
+.story-card h3 a {
+  color: #fff !important;
+  text-shadow: 0 0 6px #0008;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1.13em;
+  font-weight: bold;
+}
+.story-card p {
+  color: #fff !important;
+  font-size: 0.87em !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.story-card div[style*="background: #ffffff"], .story-card div[style*="background: #003366"] {
+  background: #003366 !important;
+  font-size: 0.87em !important;
+  margin: 0 !important;
+  padding: 2px 0 1px 0 !important;
+  border-radius: 7px !important;
+}
+.story-card .dropdown-item {
+  color: #fff !important;
+  text-shadow: 0 0 6px #0008;
+  font-size: 0.61em !important;
+  padding: 2.5px 10px !important;
+  border-radius: 7px;
+  display: inline-block;
+  margin: 1.5px 2.5px 0 0 !important;
+  transition: background 0.21s, color 0.12s, box-shadow 0.21s, transform 0.13s;
+  box-shadow: none;
+  text-align: center !important;
+}
+.story-card .dropdown-item:hover,
+.story-card .dropdown-item:focus {
+  background: #003366 !important;
+  color: #FFEB3B !important;
+  box-shadow: 0 0 14px 4px #FFEB3Bcc !important;
+  transform: scale(1.13);
+  z-index: 2;
+}
+.story-card:hover {
+  box-shadow: 0 0 28px 12px #FFEB3Bcc, 0 2px 10px #2223;
+  transform: scale(1.035);
+}
+.favorite-star {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.6em;
+  color: #ffd700;
+  margin-top: 6px;
+  margin-bottom: -5px;
+  transition: color 0.14s;
+  outline: none;
+}
+.favorite-star .star {
+  pointer-events: none;
+}
+.favorite-star:hover .star,
+.favorite-star:focus .star {
+  color: #fff56b;
+  text-shadow: 0 0 7px #ffea00;
+}
+/* ---- MOBILE OPTIMIZATION ---- */
+@media (max-width: 800px) {
+  .story-card {
+    width: 94vw !important;
+    min-width: 90vw !important;
+    max-width: 98vw !important;
+    margin: 13px auto !important;
+    font-size: 1.1em !important;
+    padding: 13px !important;
+  }
+  .story-card img {
+    height: 120px !important;
+  }
+  .story-card .dropdown-item {
+    font-size: 0.95em !important;
+    margin: 3px 6px !important;
+    padding: 5px 15px !important;
+  }
+}
+  </style><style>
+   /* MOBILE OVERRIDE: Prevent hover/focus-within from keeping submenus open on touch */
+@media (max-width: 800px) {
+  nav ul > li:hover > .dropdown,
+  nav ul > li:focus-within > .dropdown {
+    display: none !important;
+  }
+  nav ul > li.open > .dropdown {
+    display: block !important;
+  }
+}
+  </style><style>
+   @media (max-width: 800px) {
+  /* Hide only the MP4 animation video(s) that are in the BODY, not header */
+  .index-body-video { display: none !important; }
+
+  /* Hide the 'Story Bell' H1 in the BODY on mobile (keep header untouched) */
+  .index-body-title { display: none !important; }
+}
+  </style><style>
+   /* Disable custom cursor + hide wand/sparkles on mobile */
+@media (max-width: 800px) {
+  body { cursor: auto !important; }
+  #wand { display: none !important; }
+  .sparkle { display: none !important; }
+}
+  </style><style>
+/* Center dropdown menus under parent item on desktop */
+@media (min-width: 801px){
+  nav ul li .dropdown{
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    text-align: center !important;
+  }
+}
+</style><style>
+/* Force pointer cursor visible on all menu list items and links */
+header nav ul li,
+header nav ul li a,
+header nav ul li .dropdown li,
+header nav ul li .dropdown li a {
+  cursor: pointer !important;
+}
+</style><style>
+/* === Mobile header login placement === */
+@media (max-width: 800px){
+  .login-cta-header { display: none !important; }        /* remove header button on mobile */
+  .login-mobile { display: block !important; }           /* show first item in hamburger */
+}
+@media (min-width: 801px){
+  .login-mobile { display: none !important; }            /* hide hamburger login on desktop */
+}
+
+/* === Smaller Firebase modal on mobile === */
+@media (max-width: 800px){
+  #auth-modal > div {
+    width: 92vw !important;
+    max-width: 360px !important;
+    padding: 12px !important;
+  }
+  #auth-modal h2 {
+    font-size: 18px !important;
+    margin-bottom: 6px !important;
+  }
+  #firebaseui-auth-container .firebaseui-card-content { padding: 8px !important; }
+  #firebaseui-auth-container .firebaseui-card-actions { padding: 8px !important; }
+  #firebaseui-auth-container .firebaseui-idp-list, 
+  #firebaseui-auth-container .firebaseui-idp-button {
+    max-width: 280px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  #firebaseui-auth-container .mdl-button { min-width: 160px !important; }
+}
+</style><style>
+@media (max-width: 800px){
+  .login-mobile a {
+    font-size: 13px !important;
+    padding: 6px 10px !important;
+    width: auto !important;
+    display: inline-block !important;
+  }
+}
+</style><style>
+@media (max-width: 800px){
+  .login-mobile a {
+    font-size: 12px !important;
+    padding: 4px 8px !important;
+    width: auto !important;
+    display: inline-block !important;
+    margin: 6px 10px !important;
+    border-radius: 12px !important;
+  }
+}
+</style><style>
+/* Hide any header Login CTA on mobile; keep only the hamburger menu item */
+@media (max-width: 800px){
+  header a.login-cta-header, header .login-cta-header {
+    display: none !important;
+  }
+}
+</style><style>
+@media (max-width: 800px){
+  #auth-modal > div {
+    width: 90vw !important;
+    max-width: 340px !important;
+    padding: 10px !important;
+  }
+  #auth-modal h2 { font-size: 18px !important; margin-bottom: 6px !important; }
+  #firebaseui-auth-container .firebaseui-card-content { padding: 8px !important; }
+  #firebaseui-auth-container .firebaseui-card-actions { padding: 8px !important; }
+  #firebaseui-auth-container .firebaseui-idp-list, 
+  #firebaseui-auth-container .firebaseui-idp-button {
+    max-width: 260px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+</style><style>
+@media (max-width: 800px){
+  .login-mobile a {
+    text-align: left !important;
+    font-size: 14px !important;
+    padding: 10px 16px !important;
+    display: block !important;
+    width: 100% !important;
+    margin: 6px auto !important;
+    white-space: nowrap !important;
+  }
+}
+</style><style id="page-header-style">
+.page-header {
+  display:flex; align-items:center; justify-content:center; gap:28px;
+  margin: 10px auto 12px auto;
+}
+.page-header img {
+  height:112px; width:112px; border-radius:50%; object-fit:cover;
+  background:#FFEB3B22; box-shadow:0 2px 18px #FFEB3B22;
+}
+.page-header h1 {
+  font-size: 2.7em;
+  color:#fff; margin:0; font-weight:bold;
+  text-shadow:0 0 12px #ffff66, 0 0 24px #ffaa0099;
+  font-family:'Coming Soon', cursive !important;
+}
+@media (max-width: 700px) {
+  .page-header { flex-direction:column; gap:12px; }
+  .page-header img { height:56px; width:56px; }
+  .page-header h1 { font-size: clamp(28px, 8vw, 42px); line-height:1.15; }
+}
+</style><style>
+/* SEL Focus — centered lines with yellow wand bullets */
+.sel-box { background: rgba(255, 235, 59, 0.08); border: 2px solid #FFEB3B; border-radius: 12px; padding: 14px 16px; margin: 18px 0; text-align:center; }
+.sel-box h2 { margin: 0 0 8px; font-size: 18px; color: #FFEB3B; }
+.sel-box ul { list-style:none; padding:0; margin: 10px auto 0; }
+.sel-box li { display:flex; justify-content:center; align-items:baseline; gap:8px; margin:6px 0; }
+.sel-box li::before { content: "🪄"; color:#FFEB3B; text-shadow: 0 0 8px rgba(255,235,59,0.45); font-size:1.05em; line-height:1; }
+</style><style id="sb-white-override">
+/* High-contrast text for visibility */
+.lede,
+.sel-box,
+.sel-box li,
+.sel-box p,
+.sel-box ul,
+#faq,
+#faq p,
+#related-emotions,
+#related-emotions a {
+  color: #ffffff !important;
+}
+
+/* Preserve brand accents */
+.sel-box h2 { color: #FFEB3B !important; }
+a { color: #FFEB3B; }
+</style><style>
+/* grid container for story cards */
+.story-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:14px;}
+</style><meta content="Approachable children’s stories to explore feelings of disgust and boundaries." name="description"/><meta content="Children’s Stories About Disgust" property="og:title"/><meta content="Approachable children’s stories to explore feelings of disgust and boundaries." property="og:description"/><meta content="website" property="og:type"/><meta content="/childrens-stories-about-disgust.html" property="og:url"/><meta content="Story Bell" property="og:site_name"/><meta content="/index_items/0_3.png" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="Ages 4–6" name="twitter:title"/><meta content="Stories about disgust for kids—picky eating, germs &amp; hygiene, and healthy boundaries/consent—gentle, age‑appropriate reads for ages 4–12." name="twitter:description"/><meta content="/index_items/0_3.png" name="twitter:image"/><link href="./childrens-stories-about-disgust.html" rel="canonical"/><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Story Bell","url":"./index_.html","logo":"./images/story-bell-logo.webp"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"./index_.html"},{"@type":"ListItem","position":2,"name":"Disgust","item":"./childrens-stories-about-disgust.html"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Children’s Stories About Disgust","description":"Approachable children’s stories to explore feelings of disgust and boundaries.","about":["children's stories","kids stories","read aloud","word highlighting","disgust","Story Bell"],"isPartOf":{"@id":"./index_.html"}}</script><style id="sb-header-font-restore">
+header .site-title {
+  font-size: 28px !important; /* restored original */
+  font-family: Georgia, serif;
+}
+</style><script>
+(function () {
+  if (/\sEdg\//.test(navigator.userAgent)) {
+    document.documentElement.classList.add('edge');
+  }
+})();
+</script><script id="sb-edge-flag">
+  (function(){
+    try {
+      if (/Edg\//.test(navigator.userAgent)) {
+        document.documentElement.classList.add('is-edge');
+      }
+    } catch(e){}
+  })();
+</script><style id="sb-edge-mobile-tweaks-2">
+/* Edge-specific fine-tuning (smaller font + logo for closer Chrome match) */
+@media (max-width: 800px){
+  html.is-edge .site-title{
+    font-size:22px !important; /* smaller than 26px */
+    line-height:1.15 !important;
+  }
+  html.is-edge .storybell-header-video,
+  html.is-edge .mascot-logo{
+    width:96px !important;
+    min-width:96px !important;
+    max-width:96px !important;
+    height:auto !important;
+    transform:none !important;
+    object-fit:contain !important;
+    display:block !important;
+  }
+}
+</style>
+<style id="site-title-bump">
+/* Minimal bump for header brand text without affecting other header items */
+header .site-title {
+  font-size: clamp(32px, 3.4vw, 40px) !important;  /* desktop up to ~40px */
+  line-height: 1.05 !important;
+  white-space: nowrap !important;
+  margin-top: 12px !important; /* keep vertical alignment tight */
+}
+@media (max-width: 800px){
+  header .site-title {
+    font-size: clamp(28px, 7vw, 34px) !important;  /* safe on mobile */
+    line-height: 1.05 !important;
+  }
+}
+</style><style>
+   body { margin: 0;  background-color: #001f3f; min-height: 100vh; cursor: none;}
+    header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
+    .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .mascot-logo { height: 56px; width: 56px; border-radius: 50%; object-fit: cover; background: #ffeb3b33; box-shadow: 0 2px 10px #2227; }
+    .site-title {margin-top: 14px !important;  font-size: 28px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
+    .header-left a:hover .site-title {margin-top: 14px !important;  color: #fffde6; }
+    nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
+    nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s; }
+
+nav ul > li > a {
+  padding-top: 18px !important;
+  padding-bottom: 4px !important;
+  display: inline-block;
+}
+
+    nav a:hover { background: #003366; text-decoration: underline; }
+    .main-blank {
+      min-height: 90vh; max-width: 900px; margin: 0 auto;
+      color: #fff; display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-start;
+      font-size: 1.25em; letter-spacing: 0.03em; padding-top: 40px; padding-bottom: 48px;
+    }
+    .about-header {
+      display: flex; align-items: center; justify-content: center; gap: 28px;
+      margin-bottom: 10px;
+    }
+    .about-header img {
+      height: 112px; width: 112px; border-radius: 50%; object-fit: cover;
+      background: #FFEB3B22; box-shadow: 0 2px 18px #FFEB3B22;
+    }
+    .about-header h1 {
+      font-size: 2.7em;
+      color: #fff;
+      margin: 0;
+      font-weight: bold;
+      text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099;
+      font-family: 'Georgia', serif;
+    }
+    .section-title {
+      font-size: 2em;
+      margin-top: 44px;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: 0 0 10px #ffeb3b99, 0 0 20px #ffaa0033;
+      margin-bottom: 0.5em;
+      font-family: 'Georgia', serif;
+      text-align: center;
+    }
+    .main-blank p {
+      text-align: center;
+      color: #fff;
+      text-shadow: 0 0 8px #ffff6699, 0 0 10px #ffaa0044;
+      margin-bottom: 1.3em;
+      margin-top: 0.7em;
+      line-height: 1.7;
+      font-size: 1.08em;
+      letter-spacing: 0.02em;
+      font-family: 'Georgia', serif;
+    }
+    ul {
+      color: #fffde7;
+      font-size: 1em;
+      padding: 0;
+      margin: 1.3em auto;
+      list-style: none;
+      display: inline-block;
+      text-align: center;
+    }
+    li {
+      text-align: center;
+      font-size: 1.1em;
+      margin-bottom: 0.7em;
+      font-family: 'Georgia', serif;
+    }
+    @media (max-width: 700px) {
+      .main-blank { font-size: 1em; padding-top: 18px;}
+      .about-header { flex-direction: column; gap: 12px;}
+      .about-header img { height: 56px; width: 56px; }
+      .about-header h1 { font-size: 1.24em; }
+      .section-title { font-size: 1.09em; }
+    }
+
+    /* Sparkle star styling */
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      width: 22px;
+      height: 22px;
+      background: transparent;
+      z-index: 9999;
+      animation: sparkle-fade 0.9s linear forwards;
+    }
+    .sparkle::after {
+      content: "★";
+      color: #ffeb3b;
+      font-size: 22px;
+      filter: drop-shadow(0 0 8px #ffe066) drop-shadow(0 0 16px #fffde0cc);
+      opacity: 0.9;
+    }
+    @keyframes sparkle-fade {
+      0%   { opacity: 1; transform: scale(1) translateY(0); }
+      60%  { opacity: 0.8; transform: scale(1.18) translateY(-4px);}
+      80%  { opacity: 0.8; }
+      100% { opacity: 0; transform: scale(0.8) translateY(-22px);}
+    }
+  </style><style>
+   header, .header-left, .header-right, 
+.header-left a, 
+.header-left img {
+  vertical-align: top !important;
+  align-self: flex-start !important;
+  margin-top: 0 !important;
+}
+.site-title {
+  margin-top: 14px !important;
+  line-height: 1.1 !important;
+  display: inline-block;
+}
+  </style><style>
+   header, .header-left, .header-right, 
+.header-left a, 
+.header-left img {
+  vertical-align: top !important;
+  align-self: flex-start !important;
+  margin-top: 0 !important;
+}
+.site-title {
+  margin-top: 14px !important;
+  line-height: 1.1 !important;
+  display: inline-block;
+}
+  </style><style>
+   /* Show video in header, hide logo on mobile; reverse on desktop */
+@media (max-width:800px) {
+  .header-left img[alt="Story Bell Logo"] { display: none !important; }
+  .storybell-header-video { display: block !important; }
+}
+@media (min-width:801px) {
+  .header-left img[alt="Story Bell Logo"] { display: block !important; }
+  .storybell-header-video { display: none !important; }
+}
+  </style><style>
 /* Align logo and Story Bell text beside each other */
 header .header-left {
   display: flex !important;
@@ -384,11 +728,6 @@ header .site-title {
   text-align: left !important;
   margin: 0 !important;
 }
-</style><style id="firebaseui-visibility-fix">
-/* Ensure FirebaseUI list shows normally inside #auth-modal */
-#auth-modal #firebaseui-auth-container .firebaseui-idp-list { display:block !important; }
-#auth-modal #firebaseui-auth-container .firebaseui-list-item { display:block !important; }
-#auth-modal #firebaseui-auth-container { min-width: 280px; }
 </style><style>
    /* Hamburger Button */
 
@@ -451,24 +790,6 @@ header .site-title {
   }
 }
 @keyframes fadeDown { from {opacity:0;transform:translateY(-16px);} to {opacity:1;transform:translateY(0);} }
-  </style><style>
-   .carousel-track {
-  display: flex;
-  gap: 1em;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Firefox */
-}
-.carousel-track::-webkit-scrollbar { display: none; }
-.carousel-card {
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-}
-@media (max-width: 800px) {
-  .carousel-arrow { display: none !important; }
-  .carousel-track { padding-bottom: 0.5em; }
-}
   </style><style>
    @media (max-width: 800px) {
   #menu-toggle {
@@ -1185,102 +1506,6 @@ header .site-title {
   }
 }
   </style><style>
-   /* removed desktop .story-card width% rule */
-.story-card img {
-  width: 100%;
-  height: 195px;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: transform 0.3s cubic-bezier(.5,1.7,.49,1.06);
-  display: block;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-.story-card h3,
-.story-card h3 a {
-  color: #fff !important;
-  text-shadow: 0 0 6px #0008;
-  margin: 0 !important;
-  padding: 0 !important;
-  font-size: 1.13em;
-  font-weight: bold;
-}
-.story-card p {
-  color: #fff !important;
-  font-size: 0.87em !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-.story-card div[style*="background: #ffffff"], .story-card div[style*="background: #003366"] {
-  background: #003366 !important;
-  font-size: 0.87em !important;
-  margin: 0 !important;
-  padding: 2px 0 1px 0 !important;
-  border-radius: 7px !important;
-}
-.story-card .dropdown-item {
-  color: #fff !important;
-  text-shadow: 0 0 6px #0008;
-  font-size: 0.61em !important;
-  padding: 2.5px 10px !important;
-  border-radius: 7px;
-  display: inline-block;
-  margin: 1.5px 2.5px 0 0 !important;
-  transition: background 0.21s, color 0.12s, box-shadow 0.21s, transform 0.13s;
-  box-shadow: none;
-  text-align: center !important;
-}
-.story-card .dropdown-item:hover,
-.story-card .dropdown-item:focus {
-  background: #003366 !important;
-  color: #FFEB3B !important;
-  box-shadow: 0 0 14px 4px #FFEB3Bcc !important;
-  transform: scale(1.13);
-  z-index: 2;
-}
-.story-card:hover {
-  box-shadow: 0 0 28px 12px #FFEB3Bcc, 0 2px 10px #2223;
-  transform: scale(1.035);
-}
-.favorite-star {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.6em;
-  color: #ffd700;
-  margin-top: 6px;
-  margin-bottom: -5px;
-  transition: color 0.14s;
-  outline: none;
-}
-.favorite-star .star {
-  pointer-events: none;
-}
-.favorite-star:hover .star,
-.favorite-star:focus .star {
-  color: #fff56b;
-  text-shadow: 0 0 7px #ffea00;
-}
-/* ---- MOBILE OPTIMIZATION ---- */
-@media (max-width: 800px) {
-  .story-card {
-    width: 94vw !important;
-    min-width: 90vw !important;
-    max-width: 98vw !important;
-    margin: 13px auto !important;
-    font-size: 1.1em !important;
-    padding: 13px !important;
-  }
-  .story-card img {
-    height: 120px !important;
-  }
-  .story-card .dropdown-item {
-    font-size: 0.95em !important;
-    margin: 3px 6px !important;
-    padding: 5px 15px !important;
-  }
-}
-  </style><style>
    /* --- Responsive Styles for Mobile/Tablet (NO Hamburger Menu) --- */
 @media (max-width: 800px) {
   header { flex-direction: column; align-items: stretch !important; }
@@ -1550,17 +1775,6 @@ nav ul > li:focus-within > .dropdown {
   nav ul { gap: 10px; }
 }
   </style><style>
-   /* MOBILE OVERRIDE: Prevent hover/focus-within from keeping submenus open on touch */
-@media (max-width: 800px) {
-  nav ul > li:hover > .dropdown,
-  nav ul > li:focus-within > .dropdown {
-    display: none !important;
-  }
-  nav ul > li.open > .dropdown {
-    display: block !important;
-  }
-}
-  </style><style>
    @media (max-width: 900px){
   body.menu-open header{ z-index: 11000 !important; position: sticky; top: 0; }
   .header-right #menu-toggle{
@@ -1630,89 +1844,6 @@ nav ul > li:focus-within > .dropdown {
   }
 }
   </style><style>
-   @media (max-width: 800px) {
-  /* Hide only the MP4 animation video(s) that are in the BODY, not header */
-  .index-body-video { display: none !important; }
-
-  /* Hide the 'Story Bell' H1 in the BODY on mobile (keep header untouched) */
-  .index-body-title { display: none !important; }
-}
-  </style><style>
-   /* Disable custom cursor + hide wand/sparkles on mobile */
-@media (max-width: 800px) {
-  body { cursor: auto !important; }
-  #wand { display: none !important; }
-  .sparkle { display: none !important; }
-}
-  </style><style>
-/* Center dropdown menus under parent item on desktop */
-@media (min-width: 801px){
-  nav ul li .dropdown{
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    text-align: center !important;
-  }
-}
-</style><style>
-/* Force pointer cursor visible on all menu list items and links */
-header nav ul li,
-header nav ul li a,
-header nav ul li .dropdown li,
-header nav ul li .dropdown li a {
-  cursor: pointer !important;
-}
-</style><style>
-/* === Mobile header login placement === */
-@media (max-width: 800px){
-  .login-cta-header { display: none !important; }        /* remove header button on mobile */
-  .login-mobile { display: block !important; }           /* show first item in hamburger */
-}
-@media (min-width: 801px){
-  .login-mobile { display: none !important; }            /* hide hamburger login on desktop */
-}
-
-/* === Smaller Firebase modal on mobile === */
-@media (max-width: 800px){
-  #auth-modal > div {
-    width: 92vw !important;
-    max-width: 360px !important;
-    padding: 12px !important;
-  }
-  #auth-modal h2 {
-    font-size: 18px !important;
-    margin-bottom: 6px !important;
-  }
-  #firebaseui-auth-container .firebaseui-card-content { padding: 8px !important; }
-  #firebaseui-auth-container .firebaseui-card-actions { padding: 8px !important; }
-  #firebaseui-auth-container .firebaseui-idp-list, 
-  #firebaseui-auth-container .firebaseui-idp-button {
-    max-width: 280px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  #firebaseui-auth-container .mdl-button { min-width: 160px !important; }
-}
-</style><style>
-@media (max-width: 800px){
-  .login-mobile a {
-    font-size: 13px !important;
-    padding: 6px 10px !important;
-    width: auto !important;
-    display: inline-block !important;
-  }
-}
-</style><style>
-@media (max-width: 800px){
-  .login-mobile a {
-    font-size: 12px !important;
-    padding: 4px 8px !important;
-    width: auto !important;
-    display: inline-block !important;
-    margin: 6px 10px !important;
-    border-radius: 12px !important;
-  }
-}
-</style><style>
 /* Mobile-only tweaks for Login button and hamburger */
 @media (max-width: 800px){
   .login-mobile a {
@@ -1749,35 +1880,11 @@ header nav ul li .dropdown li a {
   .login-cta-header { display: none !important; } /* Hide header login button on mobile */
 }
 </style><style>
-/* Hide any header Login CTA on mobile; keep only the hamburger menu item */
-@media (max-width: 800px){
-  header a.login-cta-header, header .login-cta-header {
-    display: none !important;
-  }
-}
-</style><style>
 @media (max-width: 800px){
   header .hamburger, header .menu-toggle, header .nav-toggle, header #menu-toggle, header .mobile-menu-toggle, header .menu-btn, header .burger {
     margin-left: auto !important;
     margin-right: 8px !important;
     float: right !important;
-  }
-}
-</style><style>
-@media (max-width: 800px){
-  #auth-modal > div {
-    width: 90vw !important;
-    max-width: 340px !important;
-    padding: 10px !important;
-  }
-  #auth-modal h2 { font-size: 18px !important; margin-bottom: 6px !important; }
-  #firebaseui-auth-container .firebaseui-card-content { padding: 8px !important; }
-  #firebaseui-auth-container .firebaseui-card-actions { padding: 8px !important; }
-  #firebaseui-auth-container .firebaseui-idp-list, 
-  #firebaseui-auth-container .firebaseui-idp-button {
-    max-width: 260px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
   }
 }
 </style><style>
@@ -1804,18 +1911,6 @@ header nav ul li .dropdown li a {
     width: 90% !important;
     margin: 8px auto !important;
     text-align: center !important;
-    white-space: nowrap !important;
-  }
-}
-</style><style>
-@media (max-width: 800px){
-  .login-mobile a {
-    text-align: left !important;
-    font-size: 14px !important;
-    padding: 10px 16px !important;
-    display: block !important;
-    width: 100% !important;
-    margin: 6px auto !important;
     white-space: nowrap !important;
   }
 }
@@ -1891,76 +1986,7 @@ header nav ul li .dropdown li a {
     font-weight: normal !important;
   }
 }
-  </style><style>/* SB TITLE COLOR FIX */ .site-title{color:#FFEB3B !important;} .header-left a{gap:4px;} .storybell-header-video{margin-right:4px;}</style><style>
-/* SB EDGE MOBILE HEADER VISIBILITY FIX v3 */
-@media (max-width: 820px){
-  header { display:flex !important; align-items:center !important; }
-  header > div { display:flex !important; align-items:center !important; justify-content:space-between !important; width:100% !important; }
-  header .header-left { display:flex !important; align-items:center !important; flex:1 1 auto !important; min-width:0 !important; overflow:visible !important; }
-  header .header-left a { display:flex !important; align-items:center !important; gap:4px !important; font-size:16px !important; white-space:nowrap !important; }
-  header .storybell-header-video { display:inline-block !important; margin-right:6px !important; max-width:90px !important; height:auto !important; }
-  header .site-title {
-    display:inline-block !important;
-    white-space:nowrap !important;
-    overflow:hidden !important;
-    text-overflow:ellipsis !important;
-    color:#FFEB3B !important;
-    font-size:35px !important;
-    line-height:1.1 !important;
-    margin:0 !important;
-    max-width: calc(100vw - 140px) !important; /* leave room for hamburger & right-side pieces */
-  }
-  header .header-right { flex:0 0 auto !important; margin-left:8px !important; position:static !important; }
-  header #menu-toggle { position: static !important; margin:0 6px 0 0 !important; }
-}
-</style><style id="page-header-style">
-.page-header {
-  display:flex; align-items:center; justify-content:center; gap:28px;
-  margin: 10px auto 12px auto;
-}
-.page-header img {
-  height:112px; width:112px; border-radius:50%; object-fit:cover;
-  background:#FFEB3B22; box-shadow:0 2px 18px #FFEB3B22;
-}
-.page-header h1 {
-  font-size: 2.7em;
-  color:#fff; margin:0; font-weight:bold;
-  text-shadow:0 0 12px #ffff66, 0 0 24px #ffaa0099;
-  font-family:'Coming Soon', cursive !important;
-}
-@media (max-width: 700px) {
-  .page-header { flex-direction:column; gap:12px; }
-  .page-header img { height:56px; width:56px; }
-  .page-header h1 { font-size: clamp(28px, 8vw, 42px); line-height:1.15; }
-}
-</style><style>
-/* SEL Focus — centered lines with yellow wand bullets */
-.sel-box { background: rgba(255, 235, 59, 0.08); border: 2px solid #FFEB3B; border-radius: 12px; padding: 14px 16px; margin: 18px 0; text-align:center; }
-.sel-box h2 { margin: 0 0 8px; font-size: 18px; color: #FFEB3B; }
-.sel-box ul { list-style:none; padding:0; margin: 10px auto 0; }
-.sel-box li { display:flex; justify-content:center; align-items:baseline; gap:8px; margin:6px 0; }
-.sel-box li::before { content: "🪄"; color:#FFEB3B; text-shadow: 0 0 8px rgba(255,235,59,0.45); font-size:1.05em; line-height:1; }
-</style><style id="sb-white-override">
-/* High-contrast text for visibility */
-.lede,
-.sel-box,
-.sel-box li,
-.sel-box p,
-.sel-box ul,
-#faq,
-#faq p,
-#related-emotions,
-#related-emotions a {
-  color: #ffffff !important;
-}
-
-/* Preserve brand accents */
-.sel-box h2 { color: #FFEB3B !important; }
-a { color: #FFEB3B; }
-</style><style>
-/* grid container for story cards */
-.story-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:14px;}
-</style><meta content="Approachable children’s stories to explore feelings of disgust and boundaries." name="description"/><meta content="Children’s Stories About Disgust" property="og:title"/><meta content="Approachable children’s stories to explore feelings of disgust and boundaries." property="og:description"/><meta content="website" property="og:type"/><meta content="/childrens-stories-about-disgust.html" property="og:url"/><meta content="Story Bell" property="og:site_name"/><meta content="/index_items/0_3.png" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="Ages 4–6" name="twitter:title"/><meta content="Stories about disgust for kids—picky eating, germs &amp; hygiene, and healthy boundaries/consent—gentle, age‑appropriate reads for ages 4–12." name="twitter:description"/><meta content="/index_items/0_3.png" name="twitter:image"/><link href="./childrens-stories-about-disgust.html" rel="canonical"/><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Story Bell","url":"./index_.html","logo":"./images/story-bell-logo.webp"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"./index_.html"},{"@type":"ListItem","position":2,"name":"Disgust","item":"./childrens-stories-about-disgust.html"}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Children’s Stories About Disgust","description":"Approachable children’s stories to explore feelings of disgust and boundaries.","about":["children's stories","kids stories","read aloud","word highlighting","disgust","Story Bell"],"isPartOf":{"@id":"./index_.html"}}</script><style id="sb-search-css-forced">
+  </style><style>
 .sb-search-icon{
   display:inline-flex !important; align-items:center !important; justify-content:center !important;
   width:38px !important; height:38px !important; margin-right:8px !important;
@@ -1972,12 +1998,7 @@ a { color: #FFEB3B; }
 .sb-search-icon:hover{ background:#002a66 !important; box-shadow:0 0 12px rgba(255,235,59,.6) !important; transform:scale(1.05) !important; }
 .sb-search-icon svg{ stroke:currentColor !important; display:block !important; }
 @media (max-width:800px){ .sb-search-icon{ width:34px !important; height:34px !important; margin-right:6px !important; } }
-</style><style id="sb-header-font-restore">
-header .site-title {
-  font-size: 28px !important; /* restored original */
-  font-family: Georgia, serif;
-}
-</style><style id="sb-search-mobile-abs-fix">
+</style><style>
 /* Force search icon to the LEFT of hamburger on mobile */
 @media (max-width: 800px) {
   .header-right { position: relative; min-height: 44px; }
@@ -1992,7 +2013,7 @@ header .site-title {
   /* optional: keep login hidden on mobile if your CSS doesn't already */
   .header-right .login-cta-header { display: none !important; }
 }
-</style><style id="sb-search-mobile-abs-fix-tweaks">
+</style><style>
 @media (max-width: 800px) {
   /* Tight logo/text spacing */
   .header-left a { gap: 0 !important; }
@@ -2010,7 +2031,7 @@ header .site-title {
   .header-right .hamburger     { right: 0px !important; }
   .header-right .sb-search-icon { right: 30px !important; }
 }
-</style><style id="sb-search-mobile-logo-scale">
+</style><style>
 @media (max-width: 800px) {
   .mascot-logo {
     transform: scale(0.8);
@@ -2030,7 +2051,7 @@ header .site-title {
   .header-right .hamburger { right: 0px !important; }
   .header-right .sb-search-icon { right: 43px !important; }
 }
-</style><style id="sb-search-mobile-lane-fix">
+</style><style>
 @media (max-width: 800px) {
   /* Reserve lane for icons so text doesn't overlap (Edge + Chrome consistent) */
   .header-left {
@@ -2047,7 +2068,7 @@ header .site-title {
   .header-right .hamburger { right: 0px !important; }
   .header-right .sb-search-icon { right: 43px !important; }
 }
-</style><style id="sb-edge-only-match-chrome">
+</style><style>
 @supports (-ms-ime-align:auto) {
   @media (max-width: 800px) {
     /* Reserve space for icons without moving them; keep Edge text away from icon lane */
@@ -2083,7 +2104,7 @@ header .site-title {
     }
   }
 }
-</style><style id="sb-edge-only-match-chrome-strong">
+</style><style>
 @supports (-ms-ime-align:auto) {
   @media (max-width: 800px) {
     /* Hard-lock MP4/logo to 72px width on Edge mobile */
@@ -2108,13 +2129,7 @@ header .site-title {
     }
   }
 }
-</style><script>
-(function () {
-  if (/\sEdg\//.test(navigator.userAgent)) {
-    document.documentElement.classList.add('edge');
-  }
-})();
-</script><style id="edge-mobile-header-fix">
+</style><style>
 @media (max-width: 800px) {
   .edge header .storybell-header-video {
     height: 72px !important;
@@ -2140,7 +2155,7 @@ header .site-title {
     margin-right: 8px !important;
   }
 }
-</style><style id="sb-mobile-ideal">
+</style><style>
 
 /* === StoryBell: Mobile header IDEAL settings (locks Chrome/Edge parity) === */
 @media (max-width: 800px){
@@ -2152,33 +2167,7 @@ header .site-title {
   .site-title{ font-size:28px !important; line-height:1.2 !important; margin-left:-4px !important; white-space:nowrap !important; overflow:hidden !important; text-overflow:ellipsis !important; max-width:calc(100% - 96px) !important; }
 }
 
-</style><script id="sb-edge-flag">
-  (function(){
-    try {
-      if (/Edg\//.test(navigator.userAgent)) {
-        document.documentElement.classList.add('is-edge');
-      }
-    } catch(e){}
-  })();
-</script><style id="sb-edge-mobile-tweaks-2">
-/* Edge-specific fine-tuning (smaller font + logo for closer Chrome match) */
-@media (max-width: 800px){
-  html.is-edge .site-title{
-    font-size:22px !important; /* smaller than 26px */
-    line-height:1.15 !important;
-  }
-  html.is-edge .storybell-header-video,
-  html.is-edge .mascot-logo{
-    width:96px !important;
-    min-width:96px !important;
-    max-width:96px !important;
-    height:auto !important;
-    transform:none !important;
-    object-fit:contain !important;
-    display:block !important;
-  }
-}
-</style><style id="sb-allbrowser-icon-scale">
+</style><style>
 /* Scale hamburger and magnifier 15% smaller for all browsers (mobile only) */
 @media (max-width: 800px){
   .sb-search-icon,
@@ -2187,7 +2176,7 @@ header .site-title {
     transform-origin: center center !important;
   }
 }
-</style><style id="sb-magnifier-offsets-v3">
+</style><style>
 @media (max-width: 800px){
   /* Chrome + all non-Edge browsers */
   html:not(.is-edge) .sb-search-icon {
@@ -2201,8 +2190,7 @@ header .site-title {
     transform-origin: center center !important;
   }
 }
-</style>
-<style id="desktop-header-fixed">
+</style><style>
   /* Desktop-only header link sizing */
   @media (min-width: 900px) {
     header a,
@@ -2221,21 +2209,6 @@ header .site-title {
       font-size: 35px !important;
     }
   }
-</style>
-<style id="site-title-bump">
-/* Minimal bump for header brand text without affecting other header items */
-header .site-title {
-  font-size: clamp(32px, 3.4vw, 40px) !important;  /* desktop up to ~40px */
-  line-height: 1.05 !important;
-  white-space: nowrap !important;
-  margin-top: 12px !important; /* keep vertical alignment tight */
-}
-@media (max-width: 800px){
-  header .site-title {
-    font-size: clamp(28px, 7vw, 34px) !important;  /* safe on mobile */
-    line-height: 1.05 !important;
-  }
-}
 </style>
 <style id="sb-cards-base">
 .cards-grid{
@@ -3133,121 +3106,6 @@ window.onOpenAuthModalHook = function(){
   </script><script>
    (function () {
   const nav = document.querySelector(".header-right nav");
-  const body = document.body;
-  if (!nav) return;
-
-  let toggleBtn = document.getElementById("menu-toggle");
-  if (!toggleBtn) {
-    // try to insert after .header-right open tag
-    const headerRight = document.querySelector(".header-right");
-    if (headerRight) {
-      toggleBtn = document.createElement("button");
-      toggleBtn.id = "menu-toggle";
-      toggleBtn.setAttribute("aria-label","Open menu");
-      toggleBtn.textContent = "☰";
-      toggleBtn.style.display = "none"; // your CSS shows it on mobile
-      headerRight.insertBefore(toggleBtn, headerRight.firstChild);
-    }
-  }
-
-  // ensure overlay exists (sibling after header)
-  let overlay = document.querySelector(".menu-overlay");
-  if (!overlay) {
-    const header = document.querySelector("header");
-    overlay = document.createElement("div");
-    overlay.className = "menu-overlay";
-    if (header && header.parentNode) {
-      header.parentNode.insertBefore(overlay, header.nextSibling);
-    } else {
-      document.body.appendChild(overlay);
-    }
-  }
-
-  function openMenu() {
-    nav.classList.add("open");
-    body.classList.add("menu-open");
-    overlay.classList.add("active");
-  }
-  function closeMenu() {
-    nav.classList.remove("open");
-    body.classList.remove("menu-open");
-    overlay.classList.remove("active");
-    nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
-  }
-
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      if (nav.classList.contains("open")) closeMenu(); else openMenu();
-    });
-  }
-  overlay.addEventListener("click", (e) => { e.stopPropagation(); closeMenu(); });
-
-  // close on route click (mobile) when link navigates
-  nav.querySelectorAll("ul > li > a").forEach(link => {
-    link.addEventListener("click", function(e){
-      if (window.matchMedia("(max-width: 900px)").matches && this.href && !this.href.endsWith("#")) {
-        closeMenu();
-      }
-    });
-  });
-})();
-  </script><script>
-   (function () {
-  const nav = document.querySelector(".header-right nav");
-  const body = document.body;
-  if (!nav) return;
-
-  // Ensure toggle button exists
-  let toggleBtn = document.getElementById("menu-toggle");
-  if (!toggleBtn) {
-    const headerRight = document.querySelector(".header-right");
-    if (headerRight) {
-      toggleBtn = document.createElement("button");
-      toggleBtn.id = "menu-toggle";
-      toggleBtn.setAttribute("aria-label","Open menu");
-      toggleBtn.textContent = "☰";
-      toggleBtn.style.display = "none"; // CSS will unhide on mobile
-      headerRight.insertBefore(toggleBtn, headerRight.firstChild);
-    }
-  }
-  // Ensure overlay exists
-  let overlay = document.querySelector(".menu-overlay");
-  if (!overlay) {
-    overlay = document.createElement("div");
-    overlay.className = "menu-overlay";
-    const header = document.querySelector("header");
-    if (header && header.parentNode) header.parentNode.insertBefore(overlay, header.nextSibling);
-    else document.body.appendChild(overlay);
-  }
-
-  const openMenu = () => { nav.classList.add("open"); body.classList.add("menu-open"); overlay.classList.add("active"); };
-  const closeMenu = () => {
-    nav.classList.remove("open"); body.classList.remove("menu-open"); overlay.classList.remove("active");
-    nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
-  };
-
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", (e) => {
-      e.preventDefault(); e.stopPropagation();
-      nav.classList.contains("open") ? closeMenu() : openMenu();
-    });
-  }
-  overlay.addEventListener("click", (e) => { e.stopPropagation(); closeMenu(); });
-
-  // Close when navigating to a real href on mobile
-  nav.querySelectorAll("ul > li > a").forEach(link => {
-    link.addEventListener("click", function() {
-      if (window.matchMedia("(max-width: 900px)").matches && this.href && !this.href.endsWith("#")) {
-        closeMenu();
-      }
-    });
-  });
-})();
-  </script><script>
-   (function () {
-  const nav = document.querySelector(".header-right nav");
   if (!nav) return;
   const isMobile = () => window.matchMedia("(max-width: 900px)").matches;
 
@@ -3270,84 +3128,6 @@ window.onOpenAuthModalHook = function(){
   window.addEventListener("resize", () => {
     if (!isMobile()) nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
   });
-})();
-  </script><script>
-   (function(){
-  const nav = document.querySelector(".header-right nav");
-  const btn = document.getElementById("menu-toggle");
-  let overlay = document.querySelector(".menu-overlay");
-  if (!nav || !btn) return;
-  if (!overlay){
-    overlay = document.createElement("div");
-    overlay.className = "menu-overlay";
-    const header = document.querySelector("header");
-    (header && header.parentNode ? header.parentNode : document.body)
-      .insertBefore(overlay, header ? header.nextSibling : null);
-  }
-  const body = document.body;
-  const isMobile = () => matchMedia("(max-width:900px)").matches;
-
-  let justOpenedUntil = 0;
-  const armGuard = () => { justOpenedUntil = Date.now() + 180; };
-
-  const openMenu = ()=>{
-    nav.classList.add("open");
-    body.classList.add("menu-open");
-    overlay.classList.add("active");
-    armGuard();
-  };
-  const closeMenu = ()=>{
-    nav.classList.remove("open");
-    body.classList.remove("menu-open");
-    overlay.classList.remove("active");
-    nav.querySelectorAll("li.open").forEach(li=>li.classList.remove("open"));
-  };
-
-  // Rebind elements to clear old listeners
-  const rebind = (el)=>{ const c = el.cloneNode(true); el.parentNode.replaceChild(c, el); return c; };
-  const _btn = rebind(btn);
-  overlay = rebind(overlay);
-
-  // Button uses pointerup only
-  _btn.addEventListener("pointerup", (e)=>{
-    e.preventDefault(); e.stopPropagation();
-    nav.classList.contains("open") ? closeMenu() : openMenu();
-  }, {passive:false});
-
-  // Overlay click closes, but not during guard window
-  overlay.addEventListener("click", (e)=>{
-    if (Date.now() < justOpenedUntil) { e.preventDefault(); return; }
-    e.preventDefault(); closeMenu();
-  }, {passive:false});
-
-  // Submenu: pointerup only (no click). Toggle .open on the parent <li>.
-  const onPointerUp = (e)=>{
-    if (!isMobile()) return;
-    const a = e.target.closest("nav ul > li > a");
-    if (!a || !nav.contains(a)) return;
-    const dd = a.nextElementSibling;
-    const hasDropdown = dd && dd.classList && dd.classList.contains("dropdown");
-    if (!hasDropdown) return;
-    e.preventDefault(); e.stopPropagation();
-    const li = a.parentElement;
-    const willOpen = !li.classList.contains("open");
-    nav.querySelectorAll("li.open").forEach(x=>{ if (x!==li) x.classList.remove("open"); });
-    li.classList.toggle("open", willOpen);
-  };
-  nav.addEventListener("pointerup", onPointerUp, {passive:false});
-
-  // Close on real link tap inside drawer
-  nav.addEventListener("pointerup", (e)=>{
-    if (!isMobile()) return;
-    const a = e.target.closest("nav ul > li > a");
-    if (!a || !nav.contains(a)) return;
-    const dd = a.nextElementSibling;
-    if (dd && dd.classList && dd.classList.contains("dropdown")) return; // parent; handled above
-    const href = a.getAttribute("href");
-    if (href && href !== "#") { e.preventDefault(); closeMenu(); location.href = href; }
-  }, {passive:false});
-
-  addEventListener("resize", ()=>{ if (!isMobile()) closeMenu(); });
 })();
   </script><script>
 // --- Robust Auth Modal Open/Close (v3) ---
