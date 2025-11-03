@@ -2194,7 +2194,7 @@ html, body { max-width:100vw; overflow-x:hidden; overscroll-behavior-x:contain; 
 .carousel-item, .carousel-card { flex:0 0 auto; scroll-snap-align:start; }
 @media (min-width:801px){
   .carousel-section .carousel-wrapper { position:relative !important; }
-  .carousel-section .carousel-container { overflow:hidden !重要; }
+  .carousel-section .carousel-container { overflow:hidden !important; }
   .carousel-section .carousel-button{
     position:absolute !important; top:50% !important; transform:translateY(-50%); z-index:5; margin:0 !important;
     width:36px; height:36px; border-radius:9999px;
@@ -2553,13 +2553,13 @@ html, body { max-width:100vw; overflow-x:hidden; overscroll-behavior-x:contain; 
 </style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>/* SBQ cleanup override: menu shows only with .active */
 #story-queue-menu{display:none !important;}
 html body #story-queue-menu.active{display:flex !important;}
-</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='index_items/makestorylist.webp';window.SBQ_STILL_LAST='index_items/listen_still_last.png';window.SBQ_GIF_FWD='';window.SBQ_GIF_REV='';window.SBQ_GIF_MS=900;window.SBQ_COUNTDOWN_URL='index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>/* SB click-only override (no hover-close) */
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='index_items/listen_still_first.png';window.SBQ_STILL_LAST='index_items/listen_still_last.png';window.SBQ_GIF_FWD='index_items/listen_fast.gif';window.SBQ_GIF_REV='index_items/listen_reverse_fast.gif';window.SBQ_GIF_MS=3018;window.SBQ_COUNTDOWN_URL='index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>/* SB click-only override (no hover-close) */
 #story-queue-menu{display:none!important;}
 body.sbq-open #story-queue-menu{display:flex!important;}
 body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}
 body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}
 </style><style>
-/* SB-FEATURE-TILES v9 */
+/* SB-FEATURE-TILES v10 (reversed order + Create List video tweak) */
 .sb-sep{ border:0; height:2px; background:#FFEB3B; opacity:.9; margin:18px 0 14px 0; }
 
 /* container */
@@ -2580,6 +2580,12 @@ body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!imp
 }
 .sb-icon:hover .vidwrap, .sb-icon:focus .vidwrap{ transform:scale(1.05); }
 .sb-icon video{ width:100%; height:100%; display:block; border-radius:10px; object-fit:cover; }
+
+/* Specific tweak: show full left/right edges on the Create Story List tile */
+.sb-icon.feature-create-list .vidwrap video{
+  object-fit:contain;         /* reveal full width/edges */
+  width:92%; height:92%;      /* slightly smaller inside same frame */
+}
 
 .sb-icon .label{ font-size:clamp(15px,2.2vw,20px); line-height:1.2; color:#fff; font-weight:800; }
 .sb-icon .desc{ font-size:.78rem; color:#eeeeee; line-height:1.3; max-width:160px; margin:0; }
@@ -2617,55 +2623,7 @@ body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!imp
   .sb-icon .label{ font-size:.68rem; }
   .sb-icon .desc{ display:none; }
 }
-</style> <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://www.storybell.co/#organization",
-      "name": "Story Bell",
-      "url": "https://www.storybell.co",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.storybell.co/logo.png"
-      },
-      "sameAs": [
-        "https://www.facebook.com/storybell",
-        "https://www.instagram.com/storybell",
-        "https://www.youtube.com/@storybell"
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://www.storybell.co/#website",
-      "url": "https://www.storybell.co",
-      "name": "Story Bell",
-      "inLanguage": "en",
-      "description": "Story Bell offers free, short bedtime stories, poems and read‑along audio narration for children ages 0–12. Enjoy interactive reading with glowing words and a customizable story list.",
-      "keywords": [
-        "free bedtime stories",
-        "audio bedtime stories",
-        "short bedtime stories for toddlers",
-        "read‑along stories for kids",
-        "interactive bedtime stories",
-        "poems for children",
-        "free nursery rhymes",
-        "storybell"
-      ],
-      "publisher": {
-        "@id": "https://www.storybell.co/#organization"
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://www.storybell.co/search?query={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-  ]
-}
-    </script>
-<style id="wand-top-style">
+</style><script data-sb="sb-org-website-jsonld" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://story-bell.com/#organization","name":"Story Bell","url":"https://story-bell.com/","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"},"sameAs":[]},{"@type":"WebSite","@id":"https://story-bell.com/#website","url":"https://story-bell.com/","name":"Story Bell","inLanguage":"en","description":"Story Bell offers free, short bedtime stories, poems and read-along audio for children ages 0–12. Enjoy interactive reading with glowing words and a customizable story list.","publisher":{"@id":"https://story-bell.com/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://story-bell.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}]}</script><style id="wand-top-style">
 /* Keep wand always visible above menus, and never block clicks */
 #wand {
   position: fixed !important;
@@ -2803,512 +2761,6 @@ body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!imp
 </section>
 <h1 class="featured-header">
 </h1>
-<div class="carousel-section" data-section="featured-stories">
-<h2 class="carousel-header"><span class="glow-underline">Featured Stories</span></h2>
-<div class="carousel-toggle-row"><button aria-controls="carousel-wrap-featured-stories" aria-expanded="true" class="carousel-toggle" data-target="#carousel-wrap-featured-stories" title="Collapse / Expand this carousel"><span class="toggle-icon" data-closed="▼" data-open="▲">▲</span></button></div>
-<div class="carousel-wrapper" id="carousel-wrap-featured-stories">
-<button aria-label="Scroll left" class="carousel-button">→</button>
-<div class="carousel-container">
-<div class="carousel-track">
-<div class="carousel-item" data-title="Maya's Missing Mittons">
-<a href="Maya's_Missing_Mittons.html"><img alt="Maya's Missing Mittons" decoding="async" fetchpriority="high" height="250" loading="eager" src="icon/Maya's Missing Mittons.webp" width="250"/></a>
-<a class="carousel-title-link" href="Maya's_Missing_Mittons.html"><span class="carousel-title">Maya's Missing Mittons</span></a>
-<br/>
-<span class="carousel-desc">A story about problem solving with Mummy</span>
-<button class="favorite-star" data-title="Maya's Missing Mittons" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Milo the Mouse">
-<a href="Milo_the_Mouse.html"><img alt="Milo the Mouse" decoding="async" fetchpriority="high" height="250" loading="eager" src="icon/Milo the Mouse.webp" width="250"/></a>
-<a class="carousel-title-link" href="Milo_the_Mouse.html"><span class="carousel-title">Milo the Mouse</span></a>
-<br/>
-<span class="carousel-desc">A poem about friendship</span>
-<button class="favorite-star" data-title="Milo the Mouse" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Luna's Colorful Garden">
-<a href="Luna's_Colorful_Garden.html"><img alt="Luna's Colorful Garden" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Luna's Colorful Garden.webp" width="250"/></a>
-<a class="carousel-title-link" href="Luna's_Colorful_Garden.html"><span class="carousel-title">Luna's Colorful Garden</span></a>
-<br/>
-<span class="carousel-desc">A story about helping friends create a magical garden.</span>
-<button class="favorite-star" data-title="Luna's Colorful Garden" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="The Tiniest Rainbow">
-<a href="The_Tiniest_Rainbow.html"><img alt="The Tiniest Rainbow" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/The Tiniest Rainbow.webp" width="250"/></a>
-<a class="carousel-title-link" href="The_Tiniest_Rainbow.html"><span class="carousel-title">The Tiniest Rainbow</span></a>
-<br/>
-<span class="carousel-desc">A gentle bedtime story for toddlers about discovering happiness on a rainy day.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-happiness.html">Children’s Stories About Happiness</a></div>
-<button class="favorite-star" data-title="The Tiniest Rainbow" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Owl in the Dark Forest">
-<a href="Owl_in_the_Dark_Forest.html"><img alt="Owl in the Dark Forest" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Owl in the Dark Forest.webp" width="250"/></a>
-<a class="carousel-title-link" href="Owl_in_the_Dark_Forest.html"><span class="carousel-title">Owl in the Dark Forest</span></a>
-<br/>
-<span class="carousel-desc">A brave little owl faces fear while searching for her way home.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-fear.html">Children’s Stories About Fear</a></div>
-<button class="favorite-star" data-title="Owl in the Dark Forest" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="The Lonely Leaf">
-<a href="The_Lonely_Leaf.html"><img alt="The Lonely Leaf" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/The Lonely Leaf.webp" width="250"/></a>
-<a class="carousel-title-link" href="The_Lonely_Leaf.html"><span class="carousel-title">The Lonely Leaf</span></a>
-<br/>
-<span class="carousel-desc">A poem about sadness and finding new friends in autumn.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-sadness.html">Children’s Stories About Sadness</a></div>
-<button class="favorite-star" data-title="The Lonely Leaf" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Emma and the Surprise Party">
-<a href="Emma_and_the_Surprise_Party.html"><img alt="Emma and the Surprise Party" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Emma and the Surprise Party.webp" width="250"/></a>
-<a class="carousel-title-link" href="Emma_and_the_Surprise_Party.html"><span class="carousel-title">Emma and the Surprise Party</span></a>
-<br/>
-<span class="carousel-desc">Emma plans a secret party for her granddad and learns the joy of surprises.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-surprise.html">Children’s Stories About Surprise</a></div>
-<button class="favorite-star" data-title="Emma and the Surprise Party" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Tommy and the Lost Toy">
-<a href="Tommy_and_the_Lost_Toy.html"><img alt="Tommy and the Lost Toy" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Tommy and the Lost Toy.webp" width="250"/></a>
-<a class="carousel-title-link" href="Tommy_and_the_Lost_Toy.html"><span class="carousel-title">Tommy and the Lost Toy</span></a>
-<br/>
-<span class="carousel-desc">Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-anger.html">Children’s Stories About Anger</a></div>
-<button class="favorite-star" data-title="Tommy and the Lost Toy" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Melody and the Muddy Puppy">
-<a href="Melody_and_the_Muddy_Puppy.html"><img alt="Melody and the Muddy Puppy" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Melody and the Muddy Puppy.webp" width="250"/></a>
-<a class="carousel-title-link" href="Melody_and_the_Muddy_Puppy.html"><span class="carousel-title">Melody and the Muddy Puppy</span></a>
-<br/>
-<span class="carousel-desc">A silly story about a girl and her puppy, who both discover the meaning of disgust after a very messy day in the park.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-disgust.html">Children’s Stories About Disgust</a></div>
-<button class="favorite-star" data-title="Melody and the Muddy Puppy" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="The Brave Little Duckling">
-<a href="The_Brave_Little_Duckling.html"><img alt="The Brave Little Duckling" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/The Brave Little Duckling.webp" width="250"/></a>
-<a class="carousel-title-link" href="The_Brave_Little_Duckling.html"><span class="carousel-title">The Brave Little Duckling</span></a>
-<br/>
-<span class="carousel-desc">A duckling faces his fear of swimming and discovers courage.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-fear.html">Children’s Stories About Fear</a></div>
-<button class="favorite-star" data-title="The Brave Little Duckling" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Stars in My Window">
-<a href="Stars_in_My_Window.html"><img alt="Stars in My Window" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Stars in My Window.webp" width="250"/></a>
-<a class="carousel-title-link" href="Stars_in_My_Window.html"><span class="carousel-title">Stars in My Window</span></a>
-<br/>
-<span class="carousel-desc">A bedtime poem about finding comfort in the night sky.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-happiness.html">Children’s Stories About Happiness</a></div>
-<button class="favorite-star" data-title="Stars in My Window" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Grumpy Grandpa and the Silly Hat">
-<a href="Grumpy_Grandpa_and_the_Silly_Hat.html"><img alt="Grumpy Grandpa and the Silly Hat" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Grumpy Grandpa and the Silly Hat.webp" width="250"/></a>
-<a class="carousel-title-link" href="Grumpy_Grandpa_and_the_Silly_Hat.html"><span class="carousel-title">Grumpy Grandpa and the Silly Hat</span></a>
-<br/>
-<span class="carousel-desc">Grandpa is feeling angry until his granddaughter makes him laugh with a silly hat.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-anger.html">Children’s Stories About Anger</a></div>
-<button class="favorite-star" data-title="Grumpy Grandpa and the Silly Hat" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="The Secret in the Library">
-<a href="The_Secret_in_the_Library.html"><img alt="The Secret in the Library" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/The Secret in the Library.webp" width="250"/></a>
-<a class="carousel-title-link" href="The_Secret_in_the_Library.html"><span class="carousel-title">The Secret in the Library</span></a>
-<br/>
-<span class="carousel-desc">An adventure about two friends solving a mystery, and the surprise they find.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-surprise.html">Children’s Stories About Surprise</a></div>
-<button class="favorite-star" data-title="The Secret in the Library" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Lily and the Blue Balloon">
-<a href="Lily_and_the_Blue_Balloon.html"><img alt="Lily and the Blue Balloon" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Lily and the Blue Balloon.webp" width="250"/></a>
-<a class="carousel-title-link" href="Lily_and_the_Blue_Balloon.html"><span class="carousel-title">Lily and the Blue Balloon</span></a>
-<br/>
-<span class="carousel-desc">Lily feels sad when her balloon floats away, but she finds hope in a new friend.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-sadness.html">Children’s Stories About Sadness</a></div>
-<button class="favorite-star" data-title="Lily and the Blue Balloon" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="The Case of the Gross Green Socks">
-<a href="The_Case_of_the_Gross_Green_Socks.html"><img alt="The Case of the Gross Green Socks" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/The Case of the Gross Green Socks.webp" width="250"/></a>
-<a class="carousel-title-link" href="The_Case_of_the_Gross_Green_Socks.html"><span class="carousel-title">The Case of the Gross Green Socks</span></a>
-<br/>
-<span class="carousel-desc">A detective story about disgust, lost laundry, and learning to help with chores.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-disgust.html">Children’s Stories About Disgust</a></div>
-<button class="favorite-star" data-title="The Case of the Gross Green Socks" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-</div>
-</div>
-<button aria-label="Scroll right" class="carousel-button">→</button>
-</div>
-</div>
-<!-- === Story Bell Feature Videos (lazy, 2-up desktop, 1-up mobile, square, auto+loop) === -->
-<hr class="sb-divider"/>
-<section class="sb-features" id="sb-feature-videos">
-<div class="sb-features-grid">
-<figure class="sb-feature">
-<div class="sb-feature-frame">
-<video aria-label="Auto-Scroll Read-Aloud demo" class="sb-feature-video" data-src="index_items/features_autoscroll.mp4" loop="" muted="" playsinline="" preload="none"></video>
-</div>
-<figcaption class="sb-feature-caption">
-<strong class="sb-feature-title">Auto-Scroll Read-Aloud</strong>
-<span class="sb-feature-desc">Watch text gently auto-scroll while the narration plays — perfect for hands-free bedtime reading and improving reading fluency.</span>
-<a class="sb-learn-more" href="about.html">Learn more</a>
-</figcaption>
-</figure>
-<figure class="sb-feature">
-<div class="sb-feature-frame">
-<video aria-label="Tap-to-Favorite Stories demo" class="sb-feature-video" data-src="index_items/features_favorites.mp4" loop="" muted="" playsinline="" preload="none"></video>
-</div>
-<figcaption class="sb-feature-caption">
-<strong class="sb-feature-title">Tap-to-Favorite Stories</strong>
-<span class="sb-feature-desc">Star the tales your child loves to build a personalized favorites shelf you can revisit every night.</span>
-<a class="sb-learn-more" href="about.html">Learn more</a>
-</figcaption>
-</figure>
-<figure class="sb-feature">
-<div class="sb-feature-frame">
-<video aria-label="Listen-Only Audio Mode demo" class="sb-feature-video" data-src="index_items/features_listen.mp4" loop="" muted="" playsinline="" preload="none"></video>
-</div>
-<figcaption class="sb-feature-caption">
-<strong class="sb-feature-title">Listen-Only Audio Mode</strong>
-<span class="sb-feature-desc">Switch to calming, screen-light audio so kids can relax, focus on the story, and drift off peacefully.</span>
-<a class="sb-learn-more" href="about.html">Learn more</a>
-</figcaption>
-</figure>
-<figure class="sb-feature">
-<div class="sb-feature-frame">
-<video aria-label="Custom Story Lists demo" class="sb-feature-video" data-src="index_items/features_makestorylist.mp4" loop="" muted="" playsinline="" preload="none"></video>
-</div>
-<figcaption class="sb-feature-caption">
-<strong class="sb-feature-title">Custom Story Lists</strong>
-<span class="sb-feature-desc">Bundle stories by theme, length, or mood to create just-right bedtime playlists for any evening.</span>
-<a class="sb-learn-more" href="about.html">Learn more</a>
-</figcaption>
-</figure>
-<figure class="sb-feature">
-<div class="sb-feature-frame">
-<video aria-label="Read-Along Highlighting demo" class="sb-feature-video" data-src="index_items/features_readalong.mp4" loop="" muted="" playsinline="" preload="none"></video>
-</div>
-<figcaption class="sb-feature-caption">
-<strong class="sb-feature-title">Read-Along Highlighting</strong>
-<span class="sb-feature-desc">Follow word-by-word highlights that build early literacy, vocabulary, and reading confidence.</span>
-<a class="sb-learn-more" href="about.html">Learn more</a>
-</figcaption>
-</figure>
-</div>
-</section>
-<hr class="sb-divider"/>
-<div class="carousel-section" data-section="children-s-stories-for-ages-0-3-years-old">
-<h2 class="carousel-header"><a class="carousel-header-link" href="childrens-stories-ages-0-3.html"><span class="glow-underline">Children’s Stories for Ages 0–3 Years Old</span></a></h2>
-<div class="carousel-toggle-row"><button aria-controls="carousel-wrap-children-s-stories-for-ages-0-3-years-old" aria-expanded="true" class="carousel-toggle" data-target="#carousel-wrap-children-s-stories-for-ages-0-3-years-old" title="Collapse / Expand this carousel"><span class="toggle-icon" data-closed="▼" data-open="▲">▲</span></button></div>
-<div class="carousel-wrapper" id="carousel-wrap-children-s-stories-for-ages-0-3-years-old">
-<button aria-label="Scroll left" class="carousel-button">→</button>
-<div class="carousel-container">
-<div class="carousel-track">
-<div class="carousel-item" data-title="The Tiniest Rainbow">
-<a href="The_Tiniest_Rainbow.html"><img alt="The Tiniest Rainbow" decoding="async" fetchpriority="high" height="250" loading="eager" src="icon/The Tiniest Rainbow.webp" width="250"/></a>
-<a class="carousel-title-link" href="The_Tiniest_Rainbow.html"><span class="carousel-title">The Tiniest Rainbow</span></a>
-<br/>
-<span class="carousel-desc">A gentle bedtime story for toddlers about discovering happiness on a rainy day.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-happiness.html">Children’s Stories About Happiness</a></div>
-<button class="favorite-star" data-title="The Tiniest Rainbow" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Tommy and the Lost Toy">
-<a href="Tommy_and_the_Lost_Toy.html"><img alt="Tommy and the Lost Toy" decoding="async" fetchpriority="high" height="250" loading="eager" src="icon/Tommy and the Lost Toy.webp" width="250"/></a>
-<a class="carousel-title-link" href="Tommy_and_the_Lost_Toy.html"><span class="carousel-title">Tommy and the Lost Toy</span></a>
-<br/>
-<span class="carousel-desc">Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-anger.html">Children’s Stories About Anger</a></div>
-<button class="favorite-star" data-title="Tommy and the Lost Toy" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="The Brave Little Duckling">
-<a href="The_Brave_Little_Duckling.html"><img alt="The Brave Little Duckling" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/The Brave Little Duckling.webp" width="250"/></a>
-<a class="carousel-title-link" href="The_Brave_Little_Duckling.html"><span class="carousel-title">The Brave Little Duckling</span></a>
-<br/>
-<span class="carousel-desc">A duckling faces his fear of swimming and discovers courage.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-fear.html">Children’s Stories About Fear</a></div>
-<button class="favorite-star" data-title="The Brave Little Duckling" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Stars in My Window">
-<a href="Stars_in_My_Window.html"><img alt="Stars in My Window" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Stars in My Window.webp" width="250"/></a>
-<a class="carousel-title-link" href="Stars_in_My_Window.html"><span class="carousel-title">Stars in My Window</span></a>
-<br/>
-<span class="carousel-desc">A bedtime poem about finding comfort in the night sky.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-happiness.html">Children’s Stories About Happiness</a></div>
-<button class="favorite-star" data-title="Stars in My Window" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-</div>
-</div>
-<button aria-label="Scroll right" class="carousel-button">→</button>
-</div>
-</div>
-<div class="carousel-section" data-section="children-s-stories-for-ages-4-6-years-old">
-<h2 class="carousel-header"><a class="carousel-header-link" href="childrens-stories-ages-4-6.html"><span class="glow-underline">Children’s Stories for Ages 4–6 Years Old</span></a></h2>
-<div class="carousel-toggle-row"><button aria-controls="carousel-wrap-children-s-stories-for-ages-4-6-years-old" aria-expanded="true" class="carousel-toggle" data-target="#carousel-wrap-children-s-stories-for-ages-4-6-years-old" title="Collapse / Expand this carousel"><span class="toggle-icon" data-closed="▼" data-open="▲">▲</span></button></div>
-<div class="carousel-wrapper" id="carousel-wrap-children-s-stories-for-ages-4-6-years-old">
-<button aria-label="Scroll left" class="carousel-button">→</button>
-<div class="carousel-container">
-<div class="carousel-track">
-<div class="carousel-item" data-title="Maya's Missing Mittons">
-<a href="Maya's_Missing_Mittons.html"><img alt="Maya's Missing Mittons" decoding="async" fetchpriority="high" height="250" loading="eager" src="icon/Maya's Missing Mittons.webp" width="250"/></a>
-<a class="carousel-title-link" href="Maya's_Missing_Mittons.html"><span class="carousel-title">Maya's Missing Mittons</span></a>
-<br/>
-<span class="carousel-desc">A story about problem solving with Mummy</span>
-<button class="favorite-star" data-title="Maya's Missing Mittons" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Milo the Mouse">
-<a href="Milo_the_Mouse.html"><img alt="Milo the Mouse" decoding="async" fetchpriority="high" height="250" loading="eager" src="icon/Milo the Mouse.webp" width="250"/></a>
-<a class="carousel-title-link" href="Milo_the_Mouse.html"><span class="carousel-title">Milo the Mouse</span></a>
-<br/>
-<span class="carousel-desc">A poem about friendship</span>
-<button class="favorite-star" data-title="Milo the Mouse" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Luna's Colorful Garden">
-<a href="Luna's_Colorful_Garden.html"><img alt="Luna's Colorful Garden" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Luna's Colorful Garden.webp" width="250"/></a>
-<a class="carousel-title-link" href="Luna's_Colorful_Garden.html"><span class="carousel-title">Luna's Colorful Garden</span></a>
-<br/>
-<span class="carousel-desc">A story about helping friends create a magical garden.</span>
-<button class="favorite-star" data-title="Luna's Colorful Garden" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="The Lonely Leaf">
-<a href="The_Lonely_Leaf.html"><img alt="The Lonely Leaf" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/The Lonely Leaf.webp" width="250"/></a>
-<a class="carousel-title-link" href="The_Lonely_Leaf.html"><span class="carousel-title">The Lonely Leaf</span></a>
-<br/>
-<span class="carousel-desc">A poem about sadness and finding new friends in autumn.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-sadness.html">Children’s Stories About Sadness</a></div>
-<button class="favorite-star" data-title="The Lonely Leaf" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Melody and the Muddy Puppy">
-<a href="Melody_and_the_Muddy_Puppy.html"><img alt="Melody and the Muddy Puppy" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Melody and the Muddy Puppy.webp" width="250"/></a>
-<a class="carousel-title-link" href="Melody_and_the_Muddy_Puppy.html"><span class="carousel-title">Melody and the Muddy Puppy</span></a>
-<br/>
-<span class="carousel-desc">A silly story about a girl and her puppy, who both discover the meaning of disgust after a very messy day in the park.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-disgust.html">Children’s Stories About Disgust</a></div>
-<button class="favorite-star" data-title="Melody and the Muddy Puppy" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Grumpy Grandpa and the Silly Hat">
-<a href="Grumpy_Grandpa_and_the_Silly_Hat.html"><img alt="Grumpy Grandpa and the Silly Hat" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Grumpy Grandpa and the Silly Hat.webp" width="250"/></a>
-<a class="carousel-title-link" href="Grumpy_Grandpa_and_the_Silly_Hat.html"><span class="carousel-title">Grumpy Grandpa and the Silly Hat</span></a>
-<br/>
-<span class="carousel-desc">Grandpa is feeling angry until his granddaughter makes him laugh with a silly hat.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-anger.html">Children’s Stories About Anger</a></div>
-<button class="favorite-star" data-title="Grumpy Grandpa and the Silly Hat" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Lily and the Blue Balloon">
-<a href="Lily_and_the_Blue_Balloon.html"><img alt="Lily and the Blue Balloon" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Lily and the Blue Balloon.webp" width="250"/></a>
-<a class="carousel-title-link" href="Lily_and_the_Blue_Balloon.html"><span class="carousel-title">Lily and the Blue Balloon</span></a>
-<br/>
-<span class="carousel-desc">Lily feels sad when her balloon floats away, but she finds hope in a new friend.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-sadness.html">Children’s Stories About Sadness</a></div>
-<button class="favorite-star" data-title="Lily and the Blue Balloon" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-</div>
-</div>
-<button aria-label="Scroll right" class="carousel-button">→</button>
-</div>
-</div>
-<div class="carousel-section" data-section="children-s-stories-for-ages-7-12-years-old">
-<h2 class="carousel-header"><a class="carousel-header-link" href="childrens-stories-ages-7-12.html"><span class="glow-underline">Children’s Stories for Ages 7–12 Years Old</span></a></h2>
-<div class="carousel-toggle-row"><button aria-controls="carousel-wrap-children-s-stories-for-ages-7-12-years-old" aria-expanded="true" class="carousel-toggle" data-target="#carousel-wrap-children-s-stories-for-ages-7-12-years-old" title="Collapse / Expand this carousel"><span class="toggle-icon" data-closed="▼" data-open="▲">▲</span></button></div>
-<div class="carousel-wrapper" id="carousel-wrap-children-s-stories-for-ages-7-12-years-old">
-<button aria-label="Scroll left" class="carousel-button">→</button>
-<div class="carousel-container">
-<div class="carousel-track">
-<div class="carousel-item" data-title="Owl in the Dark Forest">
-<a href="Owl_in_the_Dark_Forest.html"><img alt="Owl in the Dark Forest" decoding="async" fetchpriority="high" height="250" loading="eager" src="icon/Owl in the Dark Forest.webp" width="250"/></a>
-<a class="carousel-title-link" href="Owl_in_the_Dark_Forest.html"><span class="carousel-title">Owl in the Dark Forest</span></a>
-<br/>
-<span class="carousel-desc">A brave little owl faces fear while searching for her way home.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-fear.html">Children’s Stories About Fear</a></div>
-<button class="favorite-star" data-title="Owl in the Dark Forest" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Emma and the Surprise Party">
-<a href="Emma_and_the_Surprise_Party.html"><img alt="Emma and the Surprise Party" decoding="async" fetchpriority="high" height="250" loading="eager" src="icon/Emma and the Surprise Party.webp" width="250"/></a>
-<a class="carousel-title-link" href="Emma_and_the_Surprise_Party.html"><span class="carousel-title">Emma and the Surprise Party</span></a>
-<br/>
-<span class="carousel-desc">Emma plans a secret party for her granddad and learns the joy of surprises.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-surprise.html">Children’s Stories About Surprise</a></div>
-<button class="favorite-star" data-title="Emma and the Surprise Party" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="The Secret in the Library">
-<a href="The_Secret_in_the_Library.html"><img alt="The Secret in the Library" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/The Secret in the Library.webp" width="250"/></a>
-<a class="carousel-title-link" href="The_Secret_in_the_Library.html"><span class="carousel-title">The Secret in the Library</span></a>
-<br/>
-<span class="carousel-desc">An adventure about two friends solving a mystery, and the surprise they find.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-surprise.html">Children’s Stories About Surprise</a></div>
-<button class="favorite-star" data-title="The Secret in the Library" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="The Case of the Gross Green Socks">
-<a href="The_Case_of_the_Gross_Green_Socks.html"><img alt="The Case of the Gross Green Socks" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/The Case of the Gross Green Socks.webp" width="250"/></a>
-<a class="carousel-title-link" href="The_Case_of_the_Gross_Green_Socks.html"><span class="carousel-title">The Case of the Gross Green Socks</span></a>
-<br/>
-<span class="carousel-desc">A detective story about disgust, lost laundry, and learning to help with chores.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-disgust.html">Children’s Stories About Disgust</a></div>
-<button class="favorite-star" data-title="The Case of the Gross Green Socks" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-</div>
-</div>
-<button aria-label="Scroll right" class="carousel-button">→</button>
-</div>
-</div>
-<div class="carousel-section" data-section="short-stories-5-minutes">
-<h2 class="carousel-header"><a class="carousel-header-link" href="5-minute-childrens-stories.html"><span class="glow-underline">Short Stories (≈5 Minutes)</span></a></h2>
-<div class="carousel-toggle-row"><button aria-controls="carousel-wrap-short-stories-5-minutes" aria-expanded="true" class="carousel-toggle" data-target="#carousel-wrap-short-stories-5-minutes" title="Collapse / Expand this carousel"><span class="toggle-icon" data-closed="▼" data-open="▲">▲</span></button></div>
-<div class="carousel-wrapper" id="carousel-wrap-short-stories-5-minutes">
-<button aria-label="Scroll left" class="carousel-button">→</button>
-<div class="carousel-container">
-<div class="carousel-track">
-<div class="carousel-item" data-title="Maya's Missing Mittons">
-<a href="Maya's_Missing_Mittons.html"><img alt="Maya's Missing Mittons" decoding="async" fetchpriority="high" height="250" loading="eager" src="icon/Maya's Missing Mittons.webp" width="250"/></a>
-<a class="carousel-title-link" href="Maya's_Missing_Mittons.html"><span class="carousel-title">Maya's Missing Mittons</span></a>
-<br/>
-<span class="carousel-desc">A story about problem solving with Mummy</span>
-<button class="favorite-star" data-title="Maya's Missing Mittons" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Milo the Mouse">
-<a href="Milo_the_Mouse.html"><img alt="Milo the Mouse" decoding="async" fetchpriority="high" height="250" loading="eager" src="icon/Milo the Mouse.webp" width="250"/></a>
-<a class="carousel-title-link" href="Milo_the_Mouse.html"><span class="carousel-title">Milo the Mouse</span></a>
-<br/>
-<span class="carousel-desc">A poem about friendship</span>
-<button class="favorite-star" data-title="Milo the Mouse" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Luna's Colorful Garden">
-<a href="Luna's_Colorful_Garden.html"><img alt="Luna's Colorful Garden" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Luna's Colorful Garden.webp" width="250"/></a>
-<a class="carousel-title-link" href="Luna's_Colorful_Garden.html"><span class="carousel-title">Luna's Colorful Garden</span></a>
-<br/>
-<span class="carousel-desc">A story about helping friends create a magical garden.</span>
-<button class="favorite-star" data-title="Luna's Colorful Garden" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="The Tiniest Rainbow">
-<a href="The_Tiniest_Rainbow.html"><img alt="The Tiniest Rainbow" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/The Tiniest Rainbow.webp" width="250"/></a>
-<a class="carousel-title-link" href="The_Tiniest_Rainbow.html"><span class="carousel-title">The Tiniest Rainbow</span></a>
-<br/>
-<span class="carousel-desc">A gentle bedtime story for toddlers about discovering happiness on a rainy day.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-happiness.html">Children’s Stories About Happiness</a></div>
-<button class="favorite-star" data-title="The Tiniest Rainbow" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Emma and the Surprise Party">
-<a href="Emma_and_the_Surprise_Party.html"><img alt="Emma and the Surprise Party" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Emma and the Surprise Party.webp" width="250"/></a>
-<a class="carousel-title-link" href="Emma_and_the_Surprise_Party.html"><span class="carousel-title">Emma and the Surprise Party</span></a>
-<br/>
-<span class="carousel-desc">Emma plans a secret party for her granddad and learns the joy of surprises.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-surprise.html">Children’s Stories About Surprise</a></div>
-<button class="favorite-star" data-title="Emma and the Surprise Party" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Tommy and the Lost Toy">
-<a href="Tommy_and_the_Lost_Toy.html"><img alt="Tommy and the Lost Toy" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Tommy and the Lost Toy.webp" width="250"/></a>
-<a class="carousel-title-link" href="Tommy_and_the_Lost_Toy.html"><span class="carousel-title">Tommy and the Lost Toy</span></a>
-<br/>
-<span class="carousel-desc">Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-anger.html">Children’s Stories About Anger</a></div>
-<button class="favorite-star" data-title="Tommy and the Lost Toy" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="The Brave Little Duckling">
-<a href="The_Brave_Little_Duckling.html"><img alt="The Brave Little Duckling" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/The Brave Little Duckling.webp" width="250"/></a>
-<a class="carousel-title-link" href="The_Brave_Little_Duckling.html"><span class="carousel-title">The Brave Little Duckling</span></a>
-<br/>
-<span class="carousel-desc">A duckling faces his fear of swimming and discovers courage.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-fear.html">Children’s Stories About Fear</a></div>
-<button class="favorite-star" data-title="The Brave Little Duckling" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Grumpy Grandpa and the Silly Hat">
-<a href="Grumpy_Grandpa_and_the_Silly_Hat.html"><img alt="Grumpy Grandpa and the Silly Hat" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Grumpy Grandpa and the Silly Hat.webp" width="250"/></a>
-<a class="carousel-title-link" href="Grumpy_Grandpa_and_the_Silly_Hat.html"><span class="carousel-title">Grumpy Grandpa and the Silly Hat</span></a>
-<br/>
-<span class="carousel-desc">Grandpa is feeling angry until his granddaughter makes him laugh with a silly hat.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-anger.html">Children’s Stories About Anger</a></div>
-<button class="favorite-star" data-title="Grumpy Grandpa and the Silly Hat" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Lily and the Blue Balloon">
-<a href="Lily_and_the_Blue_Balloon.html"><img alt="Lily and the Blue Balloon" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Lily and the Blue Balloon.webp" width="250"/></a>
-<a class="carousel-title-link" href="Lily_and_the_Blue_Balloon.html"><span class="carousel-title">Lily and the Blue Balloon</span></a>
-<br/>
-<span class="carousel-desc">Lily feels sad when her balloon floats away, but she finds hope in a new friend.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-sadness.html">Children’s Stories About Sadness</a></div>
-<button class="favorite-star" data-title="Lily and the Blue Balloon" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="The Case of the Gross Green Socks">
-<a href="The_Case_of_the_Gross_Green_Socks.html"><img alt="The Case of the Gross Green Socks" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/The Case of the Gross Green Socks.webp" width="250"/></a>
-<a class="carousel-title-link" href="The_Case_of_the_Gross_Green_Socks.html"><span class="carousel-title">The Case of the Gross Green Socks</span></a>
-<br/>
-<span class="carousel-desc">A detective story about disgust, lost laundry, and learning to help with chores.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-disgust.html">Children’s Stories About Disgust</a></div>
-<button class="favorite-star" data-title="The Case of the Gross Green Socks" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-</div>
-</div>
-<button aria-label="Scroll right" class="carousel-button">→</button>
-</div>
-</div>
-<div class="carousel-section" data-section="medium-stories-10-minutes">
-<h2 class="carousel-header"><a class="carousel-header-link" href="10-minute-childrens-stories.html"><span class="glow-underline">Medium Stories (≈10 Minutes)</span></a></h2>
-<div class="carousel-toggle-row"><button aria-controls="carousel-wrap-medium-stories-10-minutes" aria-expanded="true" class="carousel-toggle" data-target="#carousel-wrap-medium-stories-10-minutes" title="Collapse / Expand this carousel"><span class="toggle-icon" data-closed="▼" data-open="▲">▲</span></button></div>
-<div class="carousel-wrapper" id="carousel-wrap-medium-stories-10-minutes">
-<button aria-label="Scroll left" class="carousel-button">→</button>
-<div class="carousel-container">
-<div class="carousel-track">
-<div class="carousel-item" data-title="Owl in the Dark Forest">
-<a href="Owl_in_the_Dark_Forest.html"><img alt="Owl in the Dark Forest" decoding="async" fetchpriority="high" height="250" loading="eager" src="icon/Owl in the Dark Forest.webp" width="250"/></a>
-<a class="carousel-title-link" href="Owl_in_the_Dark_Forest.html"><span class="carousel-title">Owl in the Dark Forest</span></a>
-<br/>
-<span class="carousel-desc">A brave little owl faces fear while searching for her way home.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-fear.html">Children’s Stories About Fear</a></div>
-<button class="favorite-star" data-title="Owl in the Dark Forest" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Melody and the Muddy Puppy">
-<a href="Melody_and_the_Muddy_Puppy.html"><img alt="Melody and the Muddy Puppy" decoding="async" fetchpriority="high" height="250" loading="eager" src="icon/Melody and the Muddy Puppy.webp" width="250"/></a>
-<a class="carousel-title-link" href="Melody_and_the_Muddy_Puppy.html"><span class="carousel-title">Melody and the Muddy Puppy</span></a>
-<br/>
-<span class="carousel-desc">A silly story about a girl and her puppy, who both discover the meaning of disgust after a very messy day in the park.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-disgust.html">Children’s Stories About Disgust</a></div>
-<button class="favorite-star" data-title="Melody and the Muddy Puppy" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="The Secret in the Library">
-<a href="The_Secret_in_the_Library.html"><img alt="The Secret in the Library" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/The Secret in the Library.webp" width="250"/></a>
-<a class="carousel-title-link" href="The_Secret_in_the_Library.html"><span class="carousel-title">The Secret in the Library</span></a>
-<br/>
-<span class="carousel-desc">An adventure about two friends solving a mystery, and the surprise they find.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-surprise.html">Children’s Stories About Surprise</a></div>
-<button class="favorite-star" data-title="The Secret in the Library" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-</div>
-</div>
-<button aria-label="Scroll right" class="carousel-button">→</button>
-</div>
-</div>
-<div class="carousel-section" data-section="children-s-poems-rhymes">
-<h2 class="carousel-header"><a class="carousel-header-link" href="childrens-poems-and-rhymes.html"><span class="glow-underline">Children’s Poems &amp; Rhymes</span></a></h2>
-<div class="carousel-toggle-row"><button aria-controls="carousel-wrap-children-s-poems-rhymes" aria-expanded="true" class="carousel-toggle" data-target="#carousel-wrap-children-s-poems-rhymes" title="Collapse / Expand this carousel"><span class="toggle-icon" data-closed="▼" data-open="▲">▲</span></button></div>
-<div class="carousel-wrapper" id="carousel-wrap-children-s-poems-rhymes">
-<button aria-label="Scroll left" class="carousel-button">→</button>
-<div class="carousel-container">
-<div class="carousel-track">
-<div class="carousel-item" data-title="Maya's Missing Mittons">
-<a href="Maya's_Missing_Mittons.html"><img alt="Maya's Missing Mittons" decoding="async" fetchpriority="high" height="250" loading="eager" src="icon/Maya's Missing Mittons.webp" width="250"/></a>
-<a class="carousel-title-link" href="Maya's_Missing_Mittons.html"><span class="carousel-title">Maya's Missing Mittons</span></a>
-<br/>
-<span class="carousel-desc">A story about problem solving with Mummy</span>
-<button class="favorite-star" data-title="Maya's Missing Mittons" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Milo the Mouse">
-<a href="Milo_the_Mouse.html"><img alt="Milo the Mouse" decoding="async" fetchpriority="high" height="250" loading="eager" src="icon/Milo the Mouse.webp" width="250"/></a>
-<a class="carousel-title-link" href="Milo_the_Mouse.html"><span class="carousel-title">Milo the Mouse</span></a>
-<br/>
-<span class="carousel-desc">A poem about friendship</span>
-<button class="favorite-star" data-title="Milo the Mouse" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="The Lonely Leaf">
-<a href="The_Lonely_Leaf.html"><img alt="The Lonely Leaf" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/The Lonely Leaf.webp" width="250"/></a>
-<a class="carousel-title-link" href="The_Lonely_Leaf.html"><span class="carousel-title">The Lonely Leaf</span></a>
-<br/>
-<span class="carousel-desc">A poem about sadness and finding new friends in autumn.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-sadness.html">Children’s Stories About Sadness</a></div>
-<button class="favorite-star" data-title="The Lonely Leaf" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-<div class="carousel-item" data-title="Stars in My Window">
-<a href="Stars_in_My_Window.html"><img alt="Stars in My Window" decoding="async" fetchpriority="low" height="250" loading="lazy" src="icon/Stars in My Window.webp" width="250"/></a>
-<a class="carousel-title-link" href="Stars_in_My_Window.html"><span class="carousel-title">Stars in My Window</span></a>
-<br/>
-<span class="carousel-desc">A bedtime poem about finding comfort in the night sky.</span>
-<div class="carousel-emotions"><a class="carousel-emotion-chip" href="childrens-stories-about-happiness.html">Children’s Stories About Happiness</a></div>
-<button class="favorite-star" data-title="Stars in My Window" onclick="toggleFavorite(this)" title="Add to Favorites"><span class="star">☆</span></button>
-</div>
-</div>
-</div>
-<button aria-label="Scroll right" class="carousel-button">→</button>
-</div>
-</div>
 <!-- FEATURED STORIES CAROUSEL HERE -->
 </div>
 <div class="main-blank">
@@ -4391,41 +3843,22 @@ window.onOpenAuthModalHook = function(){
 }
 </style>
 <style id="sb-features-style">
-/* Header yellow line match */
-.sb-divider{
-  border:0; height:3px; width:100%;
-  background:#FFEB3B; margin:16px auto;
-  box-shadow:0 0 8px 2px rgba(255,235,59,.45);
-}
-/* Grid: 2 per row desktop, 1 per row mobile */
+.sb-divider{ border:0; height:3px; width:100%; background:#FFEB3B; margin:16px auto; box-shadow:0 0 8px 2px rgba(255,235,59,.45); }
 .sb-features{margin:6px auto 6px; max-width:1100px; padding:0 10px; box-sizing:border-box;}
-.sb-features-grid{
-  display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px; justify-items:center; align-items:start;
-}
-/* Square videos @ 75% of 260px => 195px */
+.sb-features-grid{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px; justify-items:center; align-items:start; }
 .sb-feature-frame{ width:195px; height:195px; border:2px solid #FFEB3B; border-radius:18px; padding:6px; box-sizing:border-box;
   display:flex; align-items:center; justify-content:center; background:#001f3f; box-shadow:0 0 15px #2228; }
 .sb-feature-video{ width:100%; height:100%; object-fit:cover; border-radius:12px; background:#000; }
-
-/* Caption below each video */
 .sb-feature-caption{ margin-top:8px; max-width:220px; text-align:center; display:flex; flex-direction:column; gap:6px; }
 .sb-feature-title{ color:#fff; font-family:'Coming Soon',cursive; font-size:1.05em; }
 .sb-feature-desc{ color:#fff; opacity:.92; font-size:.95em; line-height:1.35; }
-
-/* Per-item learn more button */
-.sb-learn-more{
-  display:inline-block; align-self:center; margin-top:2px; padding:8px 14px; border-radius:999px; text-decoration:none;
-  background:#FFEB3B; color:#001f3f; font-weight:700; border:1px solid rgba(0,0,0,.15);
-  transition:transform .12s ease, box-shadow .2s ease, background .18s ease;
-}
+.sb-learn-more{ display:inline-block; align-self:center; margin-top:2px; padding:8px 14px; border-radius:999px; text-decoration:none;
+  background:#FFEB3B; color:#001f3f; font-weight:700; border:1px solid rgba(0,0,0,.15); transition:transform .12s, box-shadow .2s, background .18s; }
 .sb-learn-more:hover,.sb-learn-more:focus{ transform:translateY(-1px); box-shadow:0 6px 16px rgba(255,235,59,.35); }
-
-/* Mobile: 1 feature per row + center carousel headers on mobile only */
 @media (max-width:800px){
   .sb-features-grid{ grid-template-columns:1fr; gap:12px; }
   .sb-feature-frame{ width:180px; height:180px; }
   .sb-feature-caption{ max-width:200px; }
-
   .carousel-header{ text-align:center !important; margin-left:auto; margin-right:auto; }
 }
 </style>
@@ -4449,21 +3882,11 @@ window.onOpenAuthModalHook = function(){
   function itemsIn(track){ return q('.carousel-item, .carousel-card', track).filter(function(el){ return el.parentElement===track; }); }
   function firstItem(track){ return itemsIn(track)[0]; }
 
-  // --- localStorage helpers for open/closed state ---
   var STATE_KEY = 'sb-carousel-state';
-  function getState(){
-    try { return JSON.parse(localStorage.getItem(STATE_KEY) || '{}'); } catch(e){ return {}; }
-  }
-  function setState(map){
-    try { localStorage.setItem(STATE_KEY, JSON.stringify(map)); } catch(e){}
-  }
-  function setSectionOpen(slug, open){
-    var s = getState(); s[slug] = !!open; setState(s);
-  }
-  function isSectionOpen(slug, fallback){
-    var s = getState();
-    return typeof s[slug] === 'boolean' ? s[slug] : !!fallback;
-  }
+  function getState(){ try { return JSON.parse(localStorage.getItem(STATE_KEY) || '{}'); } catch(e){ return {}; } }
+  function setState(map){ try { localStorage.setItem(STATE_KEY, JSON.stringify(map)); } catch(e){} }
+  function setSectionOpen(slug, open){ var s=getState(); s[slug]=!!open; setState(s); }
+  function isSectionOpen(slug, fallback){ var s=getState(); return typeof s[slug]==='boolean' ? s[slug] : !!fallback; }
 
   function whenImagesReady(track){
     var imgs = q('img', track);
@@ -4542,7 +3965,6 @@ window.onOpenAuthModalHook = function(){
     });
   }
 
-  // === Toggle logic with state memory ===
   function initToggles(root){
     q('.carousel-section', root).forEach(function(section){
       var btn = section.querySelector('.carousel-toggle');
@@ -4569,7 +3991,6 @@ window.onOpenAuthModalHook = function(){
         }
       }
 
-      // initial from localStorage (default open)
       var startOpen = isSectionOpen(slug, true);
       apply(startOpen);
 
@@ -4585,7 +4006,6 @@ window.onOpenAuthModalHook = function(){
     });
   }
 
-  // === Lazy video loader for feature grid ===
   function initFeatureLazy(){
     var vids = q('#sb-feature-videos .sb-feature-video');
     if(!vids.length) return;
@@ -4696,6 +4116,70 @@ window.onOpenAuthModalHook = function(){
   function getFavorites(){ try { return JSON.parse(localStorage.getItem('favorites') || "[]"); } catch { return []; } }
   function setFavorites(f){ localStorage.setItem('favorites', JSON.stringify(f)); }
   function isFavorite(t){ return getFavorites().includes(t); }
+
+  // --- kebab slug (lowercase + hyphens)
+  function kebab(s){
+    return (s||"").toLowerCase().trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "");
+  }
+
+  // --- build a minimal card if not found on page
+  function buildCardFromTitle(title, desc){
+    var slug = kebab(title);
+    var href = "/stories/" + slug + "/";
+
+    // Image: try .webp → .jpg → .png
+    var img = document.createElement("img");
+    img.loading = "lazy";
+    img.alt = title;
+    img.src = "/icon/" + slug + ".webp";
+    img.onerror = function(){
+      if (img.src.endsWith(".webp")) img.src = "/icon/" + slug + ".jpg";
+      else if (img.src.endsWith(".jpg")) img.src = "/icon/" + slug + ".png";
+    };
+
+    var imgLink = document.createElement("a");
+    imgLink.href = href;
+    imgLink.appendChild(img);
+
+    var titleSpan = document.createElement("span");
+    titleSpan.className = "carousel-title";
+    titleSpan.textContent = title;
+
+    var titleLink = document.createElement("a");
+    titleLink.href = href;
+    titleLink.className = "carousel-title-link";
+    titleLink.appendChild(titleSpan);
+
+    var br = document.createElement("br");
+
+    var d = document.createElement("span");
+    d.className = "carousel-desc";
+    d.textContent = desc || "";
+
+    var fav = document.createElement("button");
+    fav.className = "favorite-star";
+    fav.setAttribute("data-title", title);
+    fav.setAttribute("title", "Remove from Favorites");
+    fav.innerHTML = '<span class="star">&#9733;</span>'; // filled by default in favorites
+    fav.addEventListener("click", function(e){
+      e.preventDefault();
+      toggleFavorite(fav);
+    });
+
+    var item = document.createElement("div");
+    item.className = "carousel-item";
+    item.setAttribute("data-title", title);
+    item.appendChild(imgLink);
+    item.appendChild(titleLink);
+    item.appendChild(br);
+    item.appendChild(d);
+    item.appendChild(fav);
+    return item;
+  }
+
   window.toggleFavorite = function(btn){
     const t = btn.getAttribute("data-title");
     let favs = getFavorites();
@@ -4703,7 +4187,8 @@ window.onOpenAuthModalHook = function(){
     setFavorites(favs);
     updateStars();
     buildFavoritesCarousel();
-  }
+  };
+
   window.updateStars = function(){
     document.querySelectorAll('.favorite-star').forEach(btn=>{
       const t = btn.getAttribute("data-title");
@@ -4711,7 +4196,7 @@ window.onOpenAuthModalHook = function(){
       if(star) star.innerHTML = isFavorite(t) ? "&#9733;" : "&#9734;";
       btn.title = isFavorite(t) ? "Remove from Favorites" : "Add to Favorites";
     });
-  }
+  };
 
   // Native-momentum init for a single wrapper (Favorites)
   function initFavoritesNative(wrapper){
@@ -4723,11 +4208,9 @@ window.onOpenAuthModalHook = function(){
     const items = Array.from(track.children).filter(n=>n.matches('.carousel-item,.carousel-card'));
     const base = items.length; if(!base) return;
 
-    // Measure one card
     const measure = ()=> (items[0]?.getBoundingClientRect().width || container.getBoundingClientRect().width/2 || 1);
     let cardW = measure();
 
-    // Clone enough items on each side
     let clones = Math.max(1, Math.ceil(container.clientWidth / cardW));
     clones = Math.min(clones, base);
     const head = items.slice(0, clones).map(n=>n.cloneNode(true));
@@ -4739,12 +4222,10 @@ window.onOpenAuthModalHook = function(){
     const start = clones * cardW;
     track.scrollLeft = Math.round(start);
 
-    // Buttons
     const [leftBtn, rightBtn] = wrapper.querySelectorAll('.carousel-button');
     if(leftBtn)  leftBtn.onclick  = (e)=>{ e.preventDefault(); track.scrollBy({left:-cardW,behavior:'smooth'}); };
     if(rightBtn) rightBtn.onclick = (e)=>{ e.preventDefault(); track.scrollBy({left: cardW,behavior:'smooth'}); };
 
-    // Wrap
     let wrapping=false;
     track.addEventListener('scroll', ()=>{
       if(wrapping) return;
@@ -4757,7 +4238,6 @@ window.onOpenAuthModalHook = function(){
       }
     }, {passive:true});
 
-    // Keep aligned on resize
     window.addEventListener('resize', ()=>{
       cardW = measure();
       const idx = Math.round(track.scrollLeft / (cardW||1));
@@ -4776,8 +4256,17 @@ window.onOpenAuthModalHook = function(){
 
     favs.forEach(t=>{
       if(used.has(t)) return;
-      const c = allCards.find(el => el.getAttribute('data-title') === t);
-      if(c){ favCards.push(c.cloneNode(true)); used.add(t); }
+      // 1) Prefer an existing card on page
+      const existing = allCards.find(el => el.getAttribute('data-title') === t);
+      if(existing){
+        favCards.push(existing.cloneNode(true));
+        used.add(t);
+        return;
+      }
+      // 2) Fallback: build a new card from kebab assumptions
+      const desc = ""; // (optional) could be improved later if a global index is exposed
+      favCards.push(buildCardFromTitle(t, desc));
+      used.add(t);
     });
 
     // Find or create the target section
@@ -4918,7 +4407,7 @@ window.onOpenAuthModalHook = function(){
 }
 </style>
 <link href="queue_assets/queue.css" rel="stylesheet"/><div aria-live="polite" id="sbq-hint">Queue Mode ON</div><div aria-label="Open story queue" id="story-queue-button" role="button" tabindex="0" title="Open story queue">
-<img alt="Story Queue Button" class="book-img" src="index_items/makestorylist.webp"/>
+<img alt="Story Queue Button" class="book-img" src="index_items/listen_still_first.png"/>
 </div><div aria-labelledby="sbq-title" aria-modal="true" id="story-queue-menu" role="dialog">
 <div class="queue-menu-header">
 <button aria-label="Close" class="queue-menu-close">×</button>

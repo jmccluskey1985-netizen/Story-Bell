@@ -1,12 +1,13 @@
 [
   {
-    "title": "Maya's Missing Mittons",
-    "url": "/Maya's_Missing_Mittons.html",
+    "title": "Maya's Missing Mittens",
+    "url": "/Maya's_Missing_Mittens.html",
     "description": "A story about problem solving with Mummy",
     "age": "4-6",
     "categories": [
       "childrens-stories-ages-4-6",
-      "childrens-poems-and-rhymes",
+      "childrens-stories-about-happiness",
+      "kids-stories-about-feelings",
       "5-minute-childrens-stories"
     ],
     "themes": [
@@ -18,10 +19,11 @@
       "Maya",
       "problem solving",
       "family",
-      "poem",
+      "sadness",
+      "happiness",
       "children's story"
     ],
-    "image": "/Maya's Missing Mittons/imagetitle.webp"
+    "image": "/Maya's Missing Mittens/imagetitle.webp"
   },
   {
     "title": "Milo the Mouse",
