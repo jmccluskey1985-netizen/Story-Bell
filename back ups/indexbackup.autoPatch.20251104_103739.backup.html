@@ -1,0 +1,2887 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- BEGIN SWIPE-CAROUSEL-STYLE -->
+<!-- BEGIN HAMBURGER-MENU-CSS -->
+<style>
+   /* Hamburger Button */
+
+
+
+/* Responsive for Mobile */
+@media (max-width: 900px) {
+  
+  .header-right nav {
+    width: 100vw;
+    max-width: 400px;
+    min-width: 230px;
+    background: #001f3f;
+    position: absolute;
+    right: 0; top: 54px;
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 8px 32px #0005;
+    z-index: 3999;
+    display: none;
+    padding-bottom: 14px;
+    animation: fadeDown 0.17s;
+  }
+  .header-right.nav-open nav {
+    display: block !important;
+  }
+  .header-right nav ul {
+    flex-direction: column;
+    width: 100%;
+    margin: 0; padding: 0;
+    background: none;
+  }
+  .header-right nav ul > li {
+    width: 100%;
+    position: relative;
+    text-align: left;
+  }
+  .header-right nav a {
+    width: 100%;
+    font-size: 18px;
+    text-align: left;
+    border-radius: 8px;
+    padding: 13px 22px;
+    display: block;
+    color: #FFEB3B;
+    background: none;
+  }
+  .header-right nav ul .dropdown {
+    display: none;
+    background: #003366;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px #001a30cc;
+    padding: 0.7em 0;
+    min-width: 180px;
+    z-index: 4050;
+    margin-top: 0.1em;
+    position: static;
+  }
+  .header-right nav ul li.open > .dropdown {
+    display: block;
+  }
+}
+@keyframes fadeDown { from {opacity:0;transform:translateY(-16px);} to {opacity:1;transform:translateY(0);} }
+  </style>
+<!-- END HAMBURGER-MENU-CSS -->
+<style>
+   .carousel-track {
+  display: flex;
+  gap: 1em;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+@media (max-width: 800px) {
+  .carousel-arrow { display: none !important; }
+  .carousel-track { padding-bottom: 0.5em; }
+}
+  </style>
+<style>
+   @media (max-width: 800px) {
+  #menu-toggle {
+    display: block !important;
+    position: absolute;
+    right: 10px;
+    top: -60px;
+    z-index: 5000;
+    background: none;
+    border: none;
+    color: #FFEB3B;
+    font-size: 2.1em;
+    cursor: pointer;
+    padding: 7px 10px;
+    line-height: 1;
+    font-family: 'Coming Soon', cursive !important;
+  }
+  .header-right {
+    position: relative;
+    min-height: 50px;
+  }
+  .header-right > a[href*="mailchimp"] {
+    display: none !important;
+  }
+  .header-right nav {
+    position: fixed !important;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    max-width: 98vw;
+    height: 100vh;
+    background: #001f3f;
+    z-index: 10000;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.5);
+    transition: right 0.3s cubic-bezier(.5,1.7,.49,1.06);
+    overflow-y: auto;
+    padding-top: 60px;
+    display: block !important;
+    transform: translateX(0);
+  }
+  .header-right nav.open {
+    right: 0 !important;
+  }
+  .header-right nav::before {
+    content: "×";
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2.4em;
+    color: #FFEB3B;
+    cursor: pointer;
+    line-height: 1;
+    font-family: 'Georgia', serif;
+    z-index: 4001;
+  }
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    background: transparent !important;
+    gap: 0;
+    margin: 0;
+    padding: 10px 0;
+    position: static !important;
+    box-shadow: none !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    border-radius: 0 !important;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+  nav ul > li {
+    width: 100%;
+    position: relative;
+  }
+  nav ul > li > a {
+    width: 100%;
+    display: block !important;
+    text-align: left !important;
+    font-size: 17px !important;
+    padding: 12px 14px !important;
+    border-bottom: 1px solid rgba(255,235,59,0.13);
+    color: #FFEB3B;
+    position: relative;
+    font-family: 'Coming Soon', cursive !important;
+    text-decoration: none !important;
+  }
+  nav ul > li > a:hover {
+    background: rgba(255,235,59,0.13);
+  }
+  nav ul > li:has(.dropdown) > a:after {
+    content: "▼";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9em;
+    opacity: 0.6;
+    transition: transform 0.3s;
+  }
+  li.open > a:after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  .dropdown {
+    display: none !important;
+    position: static !important;
+    background: rgba(0,0,0,0.22) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    max-width: 95vw;
+    min-width: 120px !important;
+    top: auto !important;
+    left: auto !important;
+  }
+  li.open > .dropdown {
+    display: block !important;
+  }
+  .dropdown li a,
+  .dropdown-item {
+    padding: 10px 28px !important;
+    font-size: 15px !important;
+    text-align: left !important;
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255,235,59,0.07);
+    display: block !important;
+    font-family: 'Coming Soon', cursive !important;
+    text-decoration: none !important;
+    color: #FFEB3B !important;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+  .dropdown li a:hover,
+  .dropdown-item:hover {
+    background: rgba(255,235,59,0.18) !important;
+  }
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 280px;
+    bottom: 0;
+    background: rgba(0,0,0,0.46);
+    z-index: 9999;
+  }
+  .menu-overlay.active {
+    display: block;
+  }
+  body.menu-open {
+    overflow: hidden;
+  }
+  .mailchimp-link-mobile {
+    display: none !important;
+  }
+}
+@media (min-width: 801px) {
+  #menu-toggle {
+    display: none !important;
+  }
+  .menu-overlay {
+    display: none !important;
+  }
+  .header-right nav {
+    display: block !important;
+    position: static !important;
+    right: auto !important;
+    width: auto !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    transition: none !important;
+  }
+  .mailchimp-link-mobile {
+    display: none !important;
+  }
+}
+  </style>
+<style>
+   /* --- Hamburger Menu Styles --- */
+@media (max-width: 800px) {
+  
+  .header-right {
+    position: relative;
+    min-height: 50px;
+  }
+  /* Hide mailchimp/email links on mobile/hamburger only */
+  .header-right a[href*="mailchimp"],
+  .header-right a[aria-label*="mailchimp"],
+  .header-right a[title*="mailchimp"],
+  .header-right a[href*="email"],
+  .header-right a[aria-label*="email"],
+  .header-right a[title*="email"],
+  .header-right button[href*="mailchimp"],
+  .header-right button[aria-label*="mailchimp"],
+  .header-right button[title*="mailchimp"],
+  .header-right button[href*="email"],
+  .header-right button[aria-label*="email"],
+  .header-right button[title*="email"],
+  .header-right li.mailchimp-link-mobile,
+  .header-right li.mailchimp-link,
+  .header-right .mailchimp-link-mobile,
+  .header-right .mailchimp-link
+  {
+    display: none !important;
+  }
+  .header-right nav {
+    position: fixed !important;
+    top: 0;
+    right: -220px; /* Hidden off-screen, wider menu */
+    width: 240px;
+    max-width: 98vw;
+    height: 100vh;
+    background: #001f3f;
+    background-image:
+      radial-gradient(circle, rgba(255, 238, 136, 0.3) 1px, transparent 1px),
+      radial-gradient(circle, rgba(255, 238, 136, 0.3) 1px, transparent 1px);
+    background-position: 0 0, 25px 25px;
+    background-size: 50px 50px;
+    z-index: 10000;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.5);
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    padding-top: 60px;
+    display: block !important;
+    transform: translateX(0);
+  }
+  .header-right nav.open {
+    right: 0 !important;
+  }
+  .header-right nav::before {
+    content: "×";
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2.5em;
+    color: #FFEB3B;
+    cursor: pointer;
+    line-height: 1;
+    font-family: 'Georgia', serif;
+    z-index: 4001;
+  }
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    background: transparent !important;
+    gap: 0;
+    margin: 0;
+    padding: 10px 0;
+    position: static !important;
+    box-shadow: none !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    border-radius: 0 !important;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+  nav ul > li {
+    width: 100%;
+    position: relative;
+  }
+  nav ul > li > a {
+    width: 100%;
+    display: block !important;
+    text-align: left !important;
+    font-size: 17px !important;
+    padding: 12px 14px !important;
+    border-bottom: 1px solid rgba(255,235,59,0.1);
+    color: #FFEB3B;
+    position: relative;
+    font-family: 'Coming Soon', cursive !important;
+    text-decoration: none !important;
+  }
+  nav ul > li > a:hover {
+    background: rgba(255,235,59,0.1);
+  }
+  nav ul > li:has(.dropdown) > a:after {
+    content: "▼";
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    opacity: 0.6;
+    transition: transform 0.3s;
+  }
+  li.open > a:after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  .dropdown {
+    display: none !important;
+    position: static !important;
+    background: rgba(0,0,0,0.3) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    width: 220px !important;
+    max-width: 98vw !important;
+    min-width: 90px !important;
+    top: auto !important;
+    left: auto !important;
+  }
+  li.open > .dropdown {
+    display: block !important;
+  }
+  .dropdown li a,
+  .dropdown-item {
+    padding: 8px 24px !important;
+    font-size: 15px !important;
+    text-align: left !important;
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255,235,59,0.05);
+    display: block !important;
+    font-family: 'Coming Soon', cursive !important;
+    text-decoration: none !important;
+    color: #FFEB3B !important;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+  .dropdown li a:hover,
+  .dropdown-item:hover {
+    background: rgba(255,235,59,0.15) !important;
+  }
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 240px;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+  }
+  .menu-overlay.active {
+    display: block;
+  }
+  body.menu-open {
+    overflow: hidden;
+  }
+  .mailchimp-link-mobile a {
+    background: #FFEB3B !important;
+    color: #003366 !important;
+    margin: 10px 14px !important;
+    border-radius: 20px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    border-bottom: none !important;
+  }
+}
+/* Desktop styles - ensure hamburger is hidden */
+@media (min-width: 801px) {
+  
+  .menu-overlay {
+    display: none !important;
+  }
+  .header-right nav {
+    display: block !important;
+    position: static !important;
+    right: auto !important;
+    width: auto !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    transition: none !important;
+  }
+  .mailchimp-link-mobile {
+    display: none !important;
+  }
+}
+  </style>
+<style>
+   /* --- Hamburger Menu Styles --- */
+@media (max-width: 800px) {
+  
+  .header-right {
+    position: relative;
+    min-height: 50px;
+  }
+  .header-right > a[href*="mailchimp"] {
+    display: none !important;
+  }
+  .header-right nav {
+    position: fixed !important;
+    top: 0;
+    right: -220px; /* Hidden off-screen, wider menu */
+    width: 240px;
+    max-width: 98vw;
+    height: 100vh;
+    background: #001f3f;
+    background-image:
+      radial-gradient(circle, rgba(255, 238, 136, 0.3) 1px, transparent 1px),
+      radial-gradient(circle, rgba(255, 238, 136, 0.3) 1px, transparent 1px);
+    background-position: 0 0, 25px 25px;
+    background-size: 50px 50px;
+    z-index: 10000;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.5);
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    padding-top: 60px;
+    display: block !important;
+    transform: translateX(0);
+  }
+  .header-right nav.open {
+    right: 0 !important;
+  }
+  .header-right nav::before {
+    content: "×";
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2.5em;
+    color: #FFEB3B;
+    cursor: pointer;
+    line-height: 1;
+    font-family: 'Georgia', serif;
+    z-index: 4001;
+  }
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    background: transparent !important;
+    gap: 0;
+    margin: 0;
+    padding: 10px 0;
+    position: static !important;
+    box-shadow: none !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    border-radius: 0 !important;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+  nav ul > li {
+    width: 100%;
+    position: relative;
+  }
+  nav ul > li > a {
+    width: 100%;
+    display: block !important;
+    text-align: left !important;
+    font-size: 17px !important;
+    padding: 12px 14px !important;
+    border-bottom: 1px solid rgba(255,235,59,0.1);
+    color: #FFEB3B;
+    position: relative;
+    font-family: 'Coming Soon', cursive !important;
+    text-decoration: none !important;
+  }
+  nav ul > li > a:hover {
+    background: rgba(255,235,59,0.1);
+  }
+  nav ul > li:has(.dropdown) > a:after {
+    content: "▼";
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    opacity: 0.6;
+    transition: transform 0.3s;
+  }
+  li.open > a:after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  .dropdown {
+    display: none !important;
+    position: static !important;
+    background: rgba(0,0,0,0.3) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    width: 220px !important;
+    max-width: 98vw !important;
+    min-width: 90px !important;
+    top: auto !important;
+    left: auto !important;
+  }
+  li.open > .dropdown {
+    display: block !important;
+  }
+  .dropdown li a,
+  .dropdown-item {
+    padding: 8px 24px !important;
+    font-size: 15px !important;
+    text-align: left !important;
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255,235,59,0.05);
+    display: block !important;
+    font-family: 'Coming Soon', cursive !important;
+    text-decoration: none !important;
+    color: #FFEB3B !important;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+  .dropdown li a:hover,
+  .dropdown-item:hover {
+    background: rgba(255,235,59,0.15) !important;
+  }
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 240px;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+  }
+  .menu-overlay.active {
+    display: block;
+  }
+  body.menu-open {
+    overflow: hidden;
+  }
+  .mailchimp-link-mobile a {
+    background: #FFEB3B !important;
+    color: #003366 !important;
+    margin: 10px 14px !important;
+    border-radius: 20px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    border-bottom: none !important;
+  }
+}
+/* Desktop styles - ensure hamburger is hidden */
+@media (min-width: 801px) {
+  
+  .menu-overlay {
+    display: none !important;
+  }
+  .header-right nav {
+    display: block !important;
+    position: static !important;
+    right: auto !important;
+    width: auto !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    transition: none !important;
+  }
+  .mailchimp-link-mobile {
+    display: none !important;
+  }
+}
+  </style>
+<style>
+   @media (max-width: 800px) {
+  
+  .header-right {
+    position: relative;
+    min-height: 50px;
+  }
+  .header-right > a[href*="mailchimp"] {
+    display: none !important;
+  }
+  .header-right nav {
+    position: fixed !important;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    max-width: 98vw;
+    height: 100vh;
+    background: #001f3f;
+    z-index: 10000;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.5);
+    transition: right 0.3s cubic-bezier(.5,1.7,.49,1.06);
+    overflow-y: auto;
+    padding-top: 60px;
+    display: block !important;
+    transform: translateX(0);
+  }
+  .header-right nav.open {
+    right: 0 !important;
+  }
+  .header-right nav::before {
+    content: "×";
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2.4em;
+    color: #FFEB3B;
+    cursor: pointer;
+    line-height: 1;
+    font-family: 'Georgia', serif;
+    z-index: 4001;
+  }
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    background: transparent !important;
+    gap: 0;
+    margin: 0;
+    padding: 10px 0;
+    position: static !important;
+    box-shadow: none !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    border-radius: 0 !important;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+  nav ul > li {
+    width: 100%;
+    position: relative;
+  }
+  nav ul > li > a {
+    width: 100%;
+    display: block !important;
+    text-align: left !important;
+    font-size: 17px !important;
+    padding: 12px 14px !important;
+    border-bottom: 1px solid rgba(255,235,59,0.13);
+    color: #FFEB3B;
+    position: relative;
+    font-family: 'Coming Soon', cursive !important;
+    text-decoration: none !important;
+  }
+  nav ul > li > a:hover {
+    background: rgba(255,235,59,0.13);
+  }
+  nav ul > li:has(.dropdown) > a:after {
+    content: "▼";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9em;
+    opacity: 0.6;
+    transition: transform 0.3s;
+  }
+  li.open > a:after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  .dropdown {
+    display: none !important;
+    position: static !important;
+    background: rgba(0,0,0,0.22) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    max-width: 95vw;
+    min-width: 120px !important;
+    top: auto !important;
+    left: auto !important;
+  }
+  li.open > .dropdown {
+    display: block !important;
+  }
+  .dropdown li a,
+  .dropdown-item {
+    padding: 10px 28px !important;
+    font-size: 15px !important;
+    text-align: left !important;
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255,235,59,0.07);
+    display: block !important;
+    font-family: 'Coming Soon', cursive !important;
+    text-decoration: none !important;
+    color: #FFEB3B !important;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+  .dropdown li a:hover,
+  .dropdown-item:hover {
+    background: rgba(255,235,59,0.18) !important;
+  }
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 280px;
+    bottom: 0;
+    background: rgba(0,0,0,0.46);
+    z-index: 9999;
+  }
+  .menu-overlay.active {
+    display: block;
+  }
+  body.menu-open {
+    overflow: hidden;
+  }
+  .mailchimp-link-mobile {
+    display: none !important;
+  }
+}
+@media (min-width: 801px) {
+  
+  .menu-overlay {
+    display: none !important;
+  }
+  .header-right nav {
+    display: block !important;
+    position: static !important;
+    right: auto !important;
+    width: auto !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    transition: none !important;
+  }
+  .mailchimp-link-mobile {
+    display: none !important;
+  }
+}
+  </style>
+<!-- END SWIPE-CAROUSEL-STYLE -->
+<!-- BEGIN HIDE-CAROUSEL-ARROWS -->
+<style>
+   .carousel-arrow,
+.carousel-arrow-left,
+.carousel-arrow-right,
+.carousel-prev,
+.carousel-next {
+  display: none !important;
+  visibility: hidden !important;
+}
+  </style>
+<!-- END HIDE-CAROUSEL-ARROWS -->
+<!-- BEGIN CAROUSEL-DESKTOP-FIX -->
+<style>
+   .carousel-track {
+  display: flex !important;
+  gap: 1em;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  width: 100% !important;
+  max-width: 100vw !important;
+}
+.carousel-card {
+  flex: 0 0 auto !important;
+  scroll-snap-align: start;
+}
+@media (min-width: 801px) {
+  .carousel-card {
+    width: 18% !important;      /* Adjust for more/less cards */
+    min-width: 220px !important;
+    max-width: 280px !important;
+  }
+}
+  </style>
+<!-- END CAROUSEL-DESKTOP-FIX -->
+<link href="https://fonts.googleapis.com/css?family=Coming+Soon&amp;display=swap" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<title>Ages 4–6</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
+   body { margin: 0;  background-color: #001f3f; min-height: 100vh; cursor: none;}
+    header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
+    .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .mascot-logo { height: 56px; width: 56px; border-radius: 50%; object-fit: cover; background: #ffeb3b33; box-shadow: 0 2px 10px #2227; }
+    .site-title {margin-top: 14px !important;  font-size: 28px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
+    .header-left a:hover .site-title {margin-top: 14px !important;  color: #fffde6; }
+    nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
+    nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s; }
+
+nav ul > li > a {
+  padding-top: 18px !important;
+  padding-bottom: 4px !important;
+  display: inline-block;
+}
+
+    nav a:hover { background: #003366; text-decoration: underline; }
+    .main-blank {
+      min-height: 90vh; max-width: 900px; margin: 0 auto;
+      color: #fff; display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-start;
+      font-size: 1.25em; letter-spacing: 0.03em; padding-top: 40px; padding-bottom: 48px;
+    }
+    .about-header {
+      display: flex; align-items: center; justify-content: center; gap: 28px;
+      margin-bottom: 10px;
+    }
+    .about-header img {
+      height: 112px; width: 112px; border-radius: 50%; object-fit: cover;
+      background: #FFEB3B22; box-shadow: 0 2px 18px #FFEB3B22;
+    }
+    .about-header h1 {
+      font-size: 2.7em;
+      color: #fff;
+      margin: 0;
+      font-weight: bold;
+      text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099;
+      font-family: 'Georgia', serif;
+    }
+    .section-title {
+      font-size: 2em;
+      margin-top: 44px;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: 0 0 10px #ffeb3b99, 0 0 20px #ffaa0033;
+      margin-bottom: 0.5em;
+      font-family: 'Georgia', serif;
+      text-align: center;
+    }
+    .main-blank p {
+      text-align: center;
+      color: #fff;
+      text-shadow: 0 0 8px #ffff6699, 0 0 10px #ffaa0044;
+      margin-bottom: 1.3em;
+      margin-top: 0.7em;
+      line-height: 1.7;
+      font-size: 1.08em;
+      letter-spacing: 0.02em;
+      font-family: 'Georgia', serif;
+    }
+    ul {
+      color: #fffde7;
+      font-size: 1em;
+      padding: 0;
+      margin: 1.3em auto;
+      list-style: none;
+      display: inline-block;
+      text-align: center;
+    }
+    li {
+      text-align: center;
+      font-size: 1.1em;
+      margin-bottom: 0.7em;
+      font-family: 'Georgia', serif;
+    }
+    @media (max-width: 700px) {
+      .main-blank { font-size: 1em; padding-top: 18px;}
+      .about-header { flex-direction: column; gap: 12px;}
+      .about-header img { height: 56px; width: 56px; }
+      .about-header h1 { font-size: 1.24em; }
+      .section-title { font-size: 1.09em; }
+    }
+
+    /* Sparkle star styling */
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      width: 22px;
+      height: 22px;
+      background: transparent;
+      z-index: 9999;
+      animation: sparkle-fade 0.9s linear forwards;
+    }
+    .sparkle::after {
+      content: "★";
+      color: #ffeb3b;
+      font-size: 22px;
+      filter: drop-shadow(0 0 8px #ffe066) drop-shadow(0 0 16px #fffde0cc);
+      opacity: 0.9;
+    }
+    @keyframes sparkle-fade {
+      0%   { opacity: 1; transform: scale(1) translateY(0); }
+      60%  { opacity: 0.8; transform: scale(1.18) translateY(-4px);}
+      80%  { opacity: 0.8; }
+      100% { opacity: 0; transform: scale(0.8) translateY(-22px);}
+    }
+  </style>
+<style>
+   header, .header-left, .header-right, 
+.header-left a, 
+.header-left img {
+  vertical-align: top !important;
+  align-self: flex-start !important;
+  margin-top: 0 !important;
+}
+.site-title {
+  margin-top: 14px !important;
+  line-height: 1.1 !important;
+  display: inline-block;
+}
+  </style>
+<style>
+   /* removed desktop .story-card width% rule */
+.story-card img {
+  width: 100%;
+  height: 195px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s cubic-bezier(.5,1.7,.49,1.06);
+  display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.story-card h3,
+.story-card h3 a {
+  color: #fff !important;
+  text-shadow: 0 0 6px #0008;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1.13em;
+  font-weight: bold;
+}
+.story-card p {
+  color: #fff !important;
+  font-size: 0.87em !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.story-card div[style*="background: #ffffff"], .story-card div[style*="background: #003366"] {
+  background: #003366 !important;
+  font-size: 0.87em !important;
+  margin: 0 !important;
+  padding: 2px 0 1px 0 !important;
+  border-radius: 7px !important;
+}
+.story-card .dropdown-item {
+  color: #fff !important;
+  text-shadow: 0 0 6px #0008;
+  font-size: 0.61em !important;
+  padding: 2.5px 10px !important;
+  border-radius: 7px;
+  display: inline-block;
+  margin: 1.5px 2.5px 0 0 !important;
+  transition: background 0.21s, color 0.12s, box-shadow 0.21s, transform 0.13s;
+  box-shadow: none;
+  text-align: center !important;
+}
+.story-card .dropdown-item:hover,
+.story-card .dropdown-item:focus {
+  background: #003366 !important;
+  color: #FFEB3B !important;
+  box-shadow: 0 0 14px 4px #FFEB3Bcc !important;
+  transform: scale(1.13);
+  z-index: 2;
+}
+.story-card:hover {
+  box-shadow: 0 0 28px 12px #FFEB3Bcc, 0 2px 10px #2223;
+  transform: scale(1.035);
+}
+.favorite-star {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.6em;
+  color: #ffd700;
+  margin-top: 6px;
+  margin-bottom: -5px;
+  transition: color 0.14s;
+  outline: none;
+}
+.favorite-star .star {
+  pointer-events: none;
+}
+.favorite-star:hover .star,
+.favorite-star:focus .star {
+  color: #fff56b;
+  text-shadow: 0 0 7px #ffea00;
+}
+/* ---- MOBILE OPTIMIZATION ---- */
+@media (max-width: 800px) {
+  .story-card {
+    width: 94vw !important;
+    min-width: 90vw !important;
+    max-width: 98vw !important;
+    margin: 13px auto !important;
+    font-size: 1.1em !important;
+    padding: 13px !important;
+  }
+  .story-card img {
+    height: 120px !important;
+  }
+  .story-card .dropdown-item {
+    font-size: 0.95em !important;
+    margin: 3px 6px !important;
+    padding: 5px 15px !important;
+  }
+}
+  </style>
+<style>
+   body.no-scroll { overflow: hidden; }
+  </style>
+<style>
+</style>
+<style>
+</style>
+<style>
+   /* --- Responsive Styles for Mobile/Tablet (NO Hamburger Menu) --- */
+@media (max-width: 800px) {
+  header { flex-direction: column; align-items: stretch !important; }
+  .header-right {
+    width: 100%;
+    justify-content: flex-end;
+    padding: 0;
+    margin: 0;
+    position: relative;
+  }
+  nav {
+    width: 100%;
+    margin-top: 8px;
+  }
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    background: #001f3f;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 6px 24px #0005;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    display: none; /* keep closed by default */
+    position: absolute;
+    left: 0; right: 0; top: 45px;
+    z-index: 3000;
+  }
+  nav ul > li { width: 100%; }
+  nav a { width: 100%; text-align: left; font-size: 18px; }
+}
+
+
+/* General improvements for small screens */
+@media (max-width: 600px) {
+  .site-title { font-size: 35px; }
+  header { padding: 5px 2px; }
+  nav a { font-size: 15px; padding: 8px 14px; }
+}
+
+
+body, body * {
+  font-family: 'Coming Soon', cursive !important;
+}
+
+
+.about-header h1,
+.section-title,
+.main-blank h1,
+.main-blank > h1,
+h1.main-title {
+  font-family: 'Coming Soon', cursive !important;
+}
+
+
+.header-right, .header-right nav, .header-right nav a, .header-right nav ul, .header-right nav ul li, .header-right nav ul li a,
+.header-left a:not(.site-title), 
+header nav a, header nav ul, header nav ul li, header nav ul li a
+{
+  font-family: 'Coming Soon', cursive !important;
+}
+
+body {
+  margin: 0;
+  
+  background-color: #001f3f;
+  background-image:
+    radial-gradient(circle, #ffee88 1px, transparent 1px),
+    radial-gradient(circle, #ffee88 1px, transparent 1px),
+    radial-gradient(circle, #ffffff 1px, transparent 1px),
+    radial-gradient(circle, #88ccff 1px, transparent 1px);
+  background-position:
+    10px 20px,
+    80px 150px,
+    200px 100px,
+    120px 250px;
+  background-size: 300px 300px;
+  background-repeat: repeat;
+  cursor: none;
+}
+h1 {
+  font-size: 60px;
+  color: #FFD700;
+  text-align: center;
+}
+.tagline {
+  font-size: 24px;
+  text-align: center;
+  font-style: italic;
+  color: white;
+}
+.tagline span {
+  display: inline-block;
+  animation: glowTrail 3s infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes glowTrail {
+  0%, 100% { text-shadow: 0 0 0px yellow; }
+  50% { text-shadow: 0 0 10px yellow, 0 0 20px gold; }
+}
+header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
+.header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.header-right { display: flex; align-items: center; gap: 10px; }
+.site-title {margin-top: 14px !important;  font-size: 35px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
+.header-left a:hover .site-title {margin-top: 14px !important;  color: #fffde6; }
+nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
+nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s;}
+
+nav ul > li > a {
+  padding-top: 18px !important;
+  padding-bottom: 4px !important;
+  display: inline-block;
+}
+
+nav a:hover, nav a:focus { background: #003366; text-decoration: underline; }
+nav ul > li { position: relative; }
+.dropdown {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 110%;
+  background: #003366;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px #001a30cc;
+  padding: 0.5em 0;
+  min-width: 150px;
+  z-index: 999;
+  list-style: none;
+  margin: 0;
+  transition: opacity 0.14s;
+}
+nav ul > li:hover > .dropdown,
+nav ul > li:focus-within > .dropdown {
+  display: block !important;
+}
+.dropdown-item {
+  display: block;
+  color: #FFEB3B;
+  text-decoration: none;
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.13s;
+  user-select: none;
+
+  text-align: center;
+}
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: #184a73 !important;
+  color: #fffbe9 !important;
+  outline: none;
+}
+/* Sparkle star styling */
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  width: 22px;
+  height: 22px;
+  background: transparent;
+  z-index: 9999;
+  animation: sparkle-fade 0.9s linear forwards;
+}
+.sparkle::after {
+  content: "★";
+  color: #ffeb3b;
+  font-size: 22px;
+  filter: drop-shadow(0 0 8px #ffe066) drop-shadow(0 0 16px #fffde0cc);
+  opacity: 0.9;
+}
+@keyframes sparkle-fade {
+  0%   { opacity: 1; transform: scale(1) translateY(0); }
+  60%  { opacity: 0.8; transform: scale(1.18) translateY(-4px);}
+  80%  { opacity: 0.8; }
+  100% { opacity: 0; transform: scale(0.8) translateY(-22px);}
+}
+@media (max-width: 700px) {
+  nav ul { gap: 10px; }
+}
+
+/* Force dropdown menu links to be center-aligned */
+.dropdown li a {
+  text-align: center !important;
+  display: block !important;
+}
+  </style>
+<style>
+   .featured-header {
+      font-size: 1.7em;
+      color: #fff;
+      margin: 0 0 10px 0;
+      font-weight: bold;
+      text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099;
+      font-family: 'Georgia', serif;
+      text-align: left;
+      padding-left: 6px;
+      letter-spacing: 1px;
+    }
+    @media (max-width: 700px) {
+      .featured-header { font-size: 1.3em; }
+    }
+  </style>
+<style>
+   header, .header-left, .header-right, 
+.header-left a, 
+.header-left img {
+  vertical-align: top !important;
+  align-self: flex-start !important;
+  margin-top: 0 !important;
+}
+.site-title {
+  margin-top: 14px !important;
+  line-height: 1.1 !important;
+  display: inline-block;
+}
+  </style>
+<style>
+</style>
+<style>
+</style>
+<style>
+   body { margin: 0;  background-color: #001f3f; min-height: 100vh; cursor: none;}
+header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
+.header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.header-right { display: flex; align-items: center; gap: 10px; }
+.site-title {margin-top: 14px !important;  font-size: 35px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
+.header-left a:hover .site-title {margin-top: 14px !important;  color: #fffde6; }
+nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
+nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s;}
+
+nav ul > li > a {
+  padding-top: 18px !important;
+  padding-bottom: 4px !important;
+  display: inline-block;
+}
+
+nav a:hover, nav a:focus { background: #003366; text-decoration: underline; }
+nav ul > li { position: relative; }
+.dropdown {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 110%;
+  background: #003366;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px #001a30cc;
+  padding: 0.5em 0;
+  min-width: 150px;
+  z-index: 999;
+  list-style: none;
+  margin: 0;
+  transition: opacity 0.14s;
+}
+nav ul > li:hover > .dropdown,
+nav ul > li:focus-within > .dropdown {
+  display: block !important;
+}
+.dropdown-item {
+  display: block;
+  color: #FFEB3B;
+  text-decoration: none;
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.13s;
+  user-select: none;
+
+  text-align: center;
+}
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: #184a73 !important;
+  color: #fffbe9 !important;
+  outline: none;
+}
+/* Sparkle star styling */
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  width: 22px;
+  height: 22px;
+  background: transparent;
+  z-index: 9999;
+  animation: sparkle-fade 0.9s linear forwards;
+}
+.sparkle::after {
+  content: "★";
+  color: #ffeb3b;
+  font-size: 22px;
+  filter: drop-shadow(0 0 8px #ffe066) drop-shadow(0 0 16px #fffde0cc);
+  opacity: 0.9;
+}
+@keyframes sparkle-fade {
+  0%   { opacity: 1; transform: scale(1) translateY(0); }
+  60%  { opacity: 0.8; transform: scale(1.18) translateY(-4px);}
+  80%  { opacity: 0.8; }
+  100% { opacity: 0; transform: scale(0.8) translateY(-22px);}
+}
+@media (max-width: 700px) {
+  nav ul { gap: 10px; }
+}
+  </style>
+<style>
+   @keyframes glowTrail {
+  0%, 100% { text-shadow: none; }
+  50% { text-shadow: 0 0 8px #fff678, 0 0 14px #ffcc33; }
+}
+.glow-underline {
+  animation: glowTrail 2.8s infinite;
+}
+
+.carousel-header {
+  font-size: 1.7em;
+  font-weight: bold;
+  color: #ffffff;
+  font-family: 'Georgia', serif !important;
+  text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099;
+  margin: 0;
+  padding-left: 6px;
+  text-align: left;
+  letter-spacing: 1px;
+}
+.carousel-wrapper {
+  margin-top: 0;
+}
+.carousel-header a {
+  color: inherit !important;
+  text-decoration: none;
+}
+
+@media (max-width: 700px) {
+  .carousel-header { font-size: 1.3em; }
+}
+  </style>
+<style>
+   /* MOBILE OVERRIDE: Prevent hover/focus-within from keeping submenus open on touch */
+@media (max-width: 800px) {
+  nav ul > li:hover > .dropdown,
+  nav ul > li:focus-within > .dropdown {
+    display: none !important;
+  }
+  nav ul > li.open > .dropdown {
+    display: block !important;
+  }
+}
+  </style>
+<!-- BEGIN HAMBURGER-MENU-JS -->
+<!-- END HAMBURGER-MENU-JS -->
+<style id="storybell-header-video-style">
+   /* Show video in header, hide logo on mobile; reverse on desktop */
+@media (max-width:800px) {
+  .header-left img[alt="Story Bell Logo"] { display: none !important; }
+  .storybell-header-video { display: block !important; }
+}
+@media (min-width:801px) {
+  .header-left img[alt="Story Bell Logo"] { display: block !important; }
+  .storybell-header-video { display: none !important; }
+}
+  </style>
+<style id="sb-mobile-override-css">
+@media (max-width: 900px){
+  body.menu-open header{ z-index: 11000 !important; position: sticky; top: 0; }
+  .header-right #menu-toggle{
+    display:block !important; position:absolute !important; right:10px; top:10px;
+    z-index:11002; background:none; border:0; color:#FFEB3B; font-size:2.1em;
+    padding:7px 10px; line-height:1; cursor:pointer;
+  }
+  .header-right nav{
+    position:fixed !important; top:0; right:-280px !important;
+    width:280px; max-width:98vw; height:100vh; background:#001f3f;
+    box-shadow:-4px 0 20px rgba(0,0,0,.5); overflow-y:auto; padding-top:60px;
+    transition:right .28s cubic-bezier(.5,1.7,.49,1.06); z-index:11001; display:block !important;
+  }
+  .header-right nav.open{ right:0 !important; }
+  .menu-overlay{
+    position:fixed; inset:0; background:rgba(0,0,0,.25);
+    display:none; z-index:10000;
+  }
+  .menu-overlay.active{ display:block !important; }
+  body.menu-open{ overflow:hidden !important; }
+
+  .header-right nav>ul{ display:none !important; flex-direction:column; margin:0; padding:10px 0; max-height:calc(100vh - 80px); overflow-y:auto; }
+  .header-right nav.open>ul{ display:flex !important; }
+
+  /* Disable hover/focus in mobile completely */
+  .header-right nav ul>li:hover>.dropdown, .header-right nav ul>li:focus-within>.dropdown{ display:none !important; }
+
+  /* Submenu base style */
+  .header-right nav ul>li>.dropdown{
+    display:none !important; position:static !important; background:transparent !important;
+    margin:0 !important; padding:0 !important; width:100% !important;
+  }
+  .header-right nav ul>li.open>.dropdown{ display:block !important; }
+
+  /* Submenu links: left align + indent */
+  .header-right nav ul>li>.dropdown li a{
+    padding-left: 24px !important;
+    font-size: 0.9em !important;
+    text-align: left !important;
+  }
+
+  /* Indicator arrows */
+  .header-right nav ul>li:has(> .dropdown) > a::after{
+    content:"▼"; position:absolute; right:18px; top:50%; transform:translateY(-50%);
+    font-size:.85em; opacity:.85;
+  }
+  .header-right nav ul>li.open > a::after{ transform:translateY(-50%) rotate(180deg); }
+}
+@media (min-width:901px){
+  .header-right #menu-toggle{ display:none !important; }
+  .menu-overlay{ display:none !important; }
+}
+</style>
+<style id="sb-stack-ensure">
+@media (max-width: 900px){
+  body.menu-open header{ z-index: 11000 !important; }
+  .header-right nav{ z-index: 11001 !important; }
+  .header-right #menu-toggle{ z-index: 11002 !important; }
+  .menu-overlay{ z-index: 10000 !important; }
+}
+</style>
+<style id="sb-mobile-header-nudge">
+@media (max-width: 900px){
+  header .header-right #menu-toggle{
+    position: static !important;   /* keep flex alignment */
+    margin-left: -36px !important; /* nudge closer to "Story Bell" */
+    margin-right: 0 !important;
+    transform: none !important;    /* remove any transforms */
+  }
+}
+</style>
+<style id="tagline-glow-style">
+.tagline-glow {
+  position: relative;
+  text-align: center;
+  margin: 6px auto 0 auto;
+  font-family: 'Coming Soon', cursive !important;
+  font-weight: 700;
+  font-size: clamp(18px, 3.2vw, 28px);
+  line-height: 1.25;
+  color: #fffde6;
+  letter-spacing: 0.02em;
+}
+
+/* Shared shimmer layer (two copies, phased) */
+.tagline-glow::before,
+.tagline-glow::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: #ffeb3b;
+  text-shadow: 0 0 8px #fff678, 0 0 18px #ffcc33, 0 0 36px rgba(255, 223, 0, 0.65);
+  white-space: nowrap;
+  overflow: hidden;
+  pointer-events: none;
+
+  /* Narrow moving mask to create a SHIMMER band */
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    rgba(0,0,0,0)    0%,
+    rgba(0,0,0,0)   44%,
+    rgba(0,0,0,0.65) 47%,
+    rgba(0,0,0,1)   50%,
+    rgba(0,0,0,0.65) 53%,
+    rgba(0,0,0,0)   56%,
+    rgba(0,0,0,0)  100%
+  );
+          mask-image: linear-gradient(
+    90deg,
+    rgba(0,0,0,0)    0%,
+    rgba(0,0,0,0)   44%,
+    rgba(0,0,0,0.65) 47%,
+    rgba(0,0,0,1)   50%,
+    rgba(0,0,0,0.65) 53%,
+    rgba(0,0,0,0)   56%,
+    rgba(0,0,0,0)  100%
+  );
+  -webkit-mask-size: 220% 100%;
+          mask-size: 220% 100%;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+
+  animation-name: taglineShimmerRL;
+  animation-duration: 8s;                 /* slower sweep */
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-delay: 0s;
+}
+
+/* Phase offset so one band enters as the other exits => continuous shimmer */
+.tagline-glow::before { animation-delay: 0s;  opacity: 0.95; }
+.tagline-glow::after  { animation-delay: 4s;  opacity: 0.95; } /* half of duration */
+
+@keyframes taglineShimmerRL {
+  0%   { -webkit-mask-position: 120% 0; mask-position: 120% 0; }
+  100% { -webkit-mask-position: -20% 0; mask-position: -20% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tagline-glow::before,
+  .tagline-glow::after { animation: none; -webkit-mask-position: -20% 0; mask-position: -20% 0; }
+}
+</style><style id="mobile-hide-body-video-only">
+@media (max-width: 800px) {
+  /* Hide only the MP4 animation video(s) that are in the BODY, not header */
+  .index-body-video { display: none !important; }
+
+  /* Hide the 'Story Bell' H1 in the BODY on mobile (keep header untouched) */
+  .index-body-title { display: none !important; }
+}
+</style><style id="mobile-disable-wand">/* Disable custom cursor + hide wand/sparkles on mobile */
+@media (max-width: 800px) {
+  body { cursor: auto !important; }
+  #wand { display: none !important; }
+  .sparkle { display: none !important; }
+}</style><style id="sb-desktop-carousel-category-white">
+/* Desktop only: make carousel category links white */
+@media (min-width: 801px){
+  .carousel-section .carousel-category,
+  .carousel-section .carousel-category:link,
+  .carousel-section .carousel-category:visited {
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+  /* optional: keep your yellow glow on interaction */
+  .carousel-section .carousel-category:hover,
+  .carousel-section .carousel-category:focus {
+    color: #FFEB3B !important;
+  }
+}
+</style><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+
+/* Always show a subtle light-blue chip behind descriptions */
+.carousel-section .carousel-desc{
+  background: rgba(173, 216, 230, 0.18); /* light blue */
+  padding: 0.25em 0.5em;
+  border-radius: 10px;
+  display: inline-block;
+  color: #ffffff !important;
+}
+
+/* Make sure carousels don't block vertical page scroll on touch devices */
+.carousel-section .carousel-track{
+  touch-action: auto !important;             /* allow vertical swipes to bubble */
+  overscroll-behavior-x: contain !important; /* keep horizontal bounce inside */
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;             /* gentler snapping */
+}
+
+/* --- Mobile-only refinements --- */
+@media (max-width: 800px){
+
+  /* Hide explicit <br> between title and description to save space */
+  .carousel-section .carousel-item br{ display: none !important; }
+
+  /* Title: smaller than before, tighter line-height, stays white */
+  .carousel-section .carousel-item .carousel-title,
+  .carousel-section a.carousel-title-link .carousel-title,
+  .carousel-section .carousel-title{
+    font-size: 0.74em !important;            /* smaller, still > description */
+    line-height: 1.06em !important;          /* much tighter for 2-line titles */
+    color: #ffffff !important;
+    margin: 0.10em 0 0.06em !important;      /* bring closer to desc */
+  }
+  .carousel-section .carousel-title-link,
+  .carousel-section .carousel-title-link:link,
+  .carousel-section .carousel-title-link:visited{
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+
+  /* Description: compact, white, sits in the blue chip */
+  .carousel-section .carousel-desc{
+    font-size: 0.56em !important;
+    line-height: 1.12em !important;          /* tighter */
+    color: #ffffff !important;
+    padding: 0.22em 0.45em;                   /* a bit tighter on mobile */
+  }
+
+  /* Categories: same size as desc, bold, white; closer spacing */
+  .carousel-section .carousel-category{
+    font-size: 0.56em !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+  .carousel-section .carousel-categories{
+    margin-top: 0.06em !important;           /* closer to description */
+  }
+}</style><style id="sb-carousel-perf-ux">/* === Carousel performance + UX smoothing === */
+
+/* 1) Promote images to their own compositor layer; confine paints */
+.carousel-section .carousel-item img,
+.carousel-section .carousel-card img{
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+  contain: paint; /* shadows/borders don't spill to ancestors */
+}
+
+/* 2) Track tuned for momentum but lets vertical page scroll through */
+.carousel-section .carousel-track{
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;    /* gentler snap reduces jerk */
+  touch-action: auto !important;     /* allow vertical swipes */
+  overscroll-behavior-x: contain;    /* keep bounce inside track */
+  will-change: scroll-position;
+}
+
+/* 3) Tighter two-line titles (carousels only) */
+.carousel-section .carousel-item .carousel-title,
+.carousel-section a.carousel-title-link .carousel-title,
+.carousel-section .carousel-title{
+  line-height: 1.06em !important;   /* reduce big interline gap */
+  margin: 0.10em 0 0.06em !important;
+  color: #fff !important;           /* keep white */
+}
+
+/* 4) Light blue chip behind description (carousels only) */
+.carousel-section .carousel-desc{
+  background: rgba(173, 216, 230, 0.18);
+  padding: 0.25em 0.5em;
+  border-radius: 10px;
+  display: inline-block;
+  color: #ffffff !important;
+}
+
+/* 5) Mobile-only: cheaper shadows + compact spacing */
+@media (max-width: 800px){
+  .carousel-section .carousel-item br{ display:none !important; } /* save vertical space */
+  .carousel-section .carousel-item img,
+  .carousel-section .carousel-card img{
+    box-shadow: 0 0 8px 2px rgba(255,223,0,.35) !important; /* lighter than desktop */
+  }
+  .carousel-section .carousel-desc{
+    line-height: 1.12em !important;
+    padding: 0.22em 0.45em;
+  }
+  .carousel-section .carousel-categories{ margin-top: 0.06em !important; }
+}</style><style id="sb-android-smoothing">
+/* --- Android/Samsung smoothing tweaks (carousels only) --- */
+
+/* Promote the horizontal track to its own layer to avoid repaint storms */
+.carousel-section .carousel-track{
+  transform: translateZ(0);           /* GPU layer */
+  will-change: scroll-position;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;      /* gentler snapping */
+  overscroll-behavior-x: contain;
+  touch-action: auto !important;      /* allow vertical scroll to pass through */
+}
+
+/* Isolate each card so its paints don't spill to neighbors */
+.carousel-section .carousel-item,
+.carousel-section .carousel-card{
+  contain: content;                    /* size+layout+paint isolation */
+}
+
+/* Images: keep compositor-friendly; lighten paints on mobile */
+@media (max-width: 800px){
+  .carousel-section .carousel-item img,
+  .carousel-section .carousel-card img{
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+    /* Lighter glow on mobile, and don't animate box-shadow (expensive) */
+    box-shadow: 0 0 6px 2px rgba(255,223,0,.28) !important;
+    transition: transform .2s ease !important;  /* drop shadow animation */
+  }
+}
+
+/* Tighter two-line titles to avoid big gaps */
+.carousel-section .carousel-item .carousel-title,
+.carousel-section a.carousel-title-link .carousel-title,
+.carousel-section .carousel-title{
+  line-height: 1.06em !important;
+  margin: 0.10em 0 0.06em !important;
+  color: #fff !important;
+}
+
+/* Keep the light-blue chip on description */
+.carousel-section .carousel-desc{
+  background: rgba(173,216,230,0.18);
+  color: #fff !important;
+  padding: 0.22em 0.45em;
+  border-radius: 10px;
+  display: inline-block;
+}
+</style><style id="sb-fav-star-css">
+.favorite-star{background:none;border:none;cursor:pointer;font-size:1.6em;color:#ffd700;margin-top:6px;margin-bottom:-5px;transition:color .14s;outline:none;}
+.favorite-star .star{pointer-events:none;}
+.favorite-star:hover .star,.favorite-star:focus .star{color:#fff56b;text-shadow:0 0 7px #ffea00;}
+</style>
+<style id="sb-swipe-carousel-style-lite">
+/* Swipe-friendly, momentum + gentle snapping */
+.carousel-track{
+  display:flex;
+  gap:1em;
+  overflow-x:auto;
+  scroll-snap-type:x proximity;     /* softer than mandatory */
+  -webkit-overflow-scrolling:touch; /* iOS momentum */
+  scrollbar-width:none;             /* Firefox hide bar */
+  touch-action:pan-x;
+  overscroll-behavior-x:contain;
+}
+.carousel-track::-webkit-scrollbar{ display:none; }
+
+/* Each card snaps into view */
+.carousel-item, .carousel-card{
+  flex:0 0 auto;
+  scroll-snap-align:start;
+}
+
+/* Mobile: reclaim edge space + tighter gaps */
+@media (max-width:800px){
+  .carousel-wrapper,
+  .carousel-container,
+  .carousel-track{
+    padding-left:0 !important;
+    padding-right:0 !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+  }
+  .carousel-track{ gap:.5em !important; }
+}
+</style>
+<style id="sb-mobile-hide-carousel-arrows-lite">
+/* Mobile: hide arrow UI (CSS-only; no DOM deletion) */
+@media (max-width:800px){
+  .carousel-arrow,
+  .carousel-arrow-left,
+  .carousel-arrow-right,
+  .carousel-prev,
+  .carousel-next,
+  .prev,
+  .next,
+  button[aria-label="Previous"],
+  button[aria-label="Next"],
+  .carousel-button{
+    display:none !important;
+  }
+}
+</style>
+<style id="sb-mobile-carousel-trim">/* === Mobile carousel trim: hide arrows + 50% item width === */
+@media (max-width: 800px){
+  /* Hide arrow UIs so edges are usable for swiping */
+  .carousel-button,
+  .carousel-arrow,
+  .carousel-arrow-left,
+  .carousel-arrow-right,
+  .carousel-prev,
+  .carousel-next,
+  .prev,
+  .next,
+  button[aria-label="Previous"],
+  button[aria-label="Next"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Reclaim edge space */
+  .carousel-wrapper,
+  .carousel-container,
+  .cards-row,
+  .cards-track,
+  .carousel-track {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Tighter spacing on mobile */
+  .carousel-track { gap: 0.5em !important; }
+
+  /* Make each card ~50% of the viewport width */
+  .carousel-card {
+    width: 50vw !important;
+    min-width: 50vw !important;
+    max-width: 50vw !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Ensure images scale inside the card */
+  .carousel-card img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Optional: slightly smaller text to match the reduced cards */
+  .carousel-title   { font-size: 0.9em !important; }
+  .carousel-desc    { font-size: 0.85em !important; }
+  .carousel-category{ font-size: 0.8em !important; }
+}</style><style id="sb-mobile-track-transform-kill">
+@media (max-width:800px){
+  /* kill any JS translateX on mobile */
+  .carousel-track{
+    transform: none !important;
+    transition: none !important;
+    scroll-snap-type: none !important; /* avoids wrap flicker */
+  }
+}
+</style><style id="sb-carousel-nosnap-mobile">
+/* === Force-disable carousel snap + recentering on mobile === */
+@media (max-width: 900px){
+  /* Container: no snap + no smooth 'auto-return' */
+  .carousel-track{
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Items: make sure nothing can snap to them either */
+  .carousel-card, .story-card{
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+    contain: paint;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    overflow: visible;
+  }
+}
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='../index_items/listen_still_first.png';window.SBQ_STILL_LAST='../index_items/listen_still_last.png';window.SBQ_GIF_FWD='../index_items/listen_fast.gif';window.SBQ_GIF_REV='../index_items/listen_reverse_fast.gif';window.SBQ_GIF_MS=3018;window.SBQ_COUNTDOWN_URL='../index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
+/* Keep wand always visible above menus, and never block clicks */
+#wand {
+  position: fixed !important;
+  z-index: 20001 !important;
+  pointer-events: none !important;
+}
+</style></head>
+<body>
+<img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
+<header>
+<div class="header-left">
+<a href="index.html">
+<video autoplay="" class="storybell-header-video" controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture="" muted="" playsinline="" style="max-width:90px; height:auto; display:none; margin-right:10px;">
+<source src="index_items/animationSB.mp4" type="video/mp4"/>
+</video>
+<img alt="Story Bell Logo" src="index_items/logo.webp" style="height: 80px;  margin-right: 10px;"/>
+<span class="site-title" style="font-size: 35px; font-family: 'Georgia', serif !important;">
+      Story Bell
+     </span>
+</a>
+</div>
+<div class="header-right">
+<button aria-label="Open menu" id="menu-toggle">
+     ☰
+    </button>
+<nav>
+<ul>
+<li style="position:relative;">
+<a href="#" style="cursor:pointer;">
+        Age Group
+       </a>
+<ul class="dropdown">
+<li>
+<a href="0_3.html">
+          0–3 Years Old
+         </a>
+</li>
+<li>
+<a href="4_6.html">
+          4–6 Years Old
+         </a>
+</li>
+<li>
+<a href="7_12.html">
+          7–12 Years Old
+         </a>
+</li>
+</ul>
+</li>
+<li style="position:relative;">
+<a href="#" style="cursor:pointer;">
+        Emotion Themed
+        <br/>
+        Stories
+       </a>
+<ul class="dropdown">
+<li>
+<a href="happiness.html">
+          Happiness
+         </a>
+</li>
+<li>
+<a href="sadness.html">
+          Sadness
+         </a>
+</li>
+<li>
+<a href="fear.html">
+          Fear
+         </a>
+</li>
+<li>
+<a href="anger.html">
+          Anger
+         </a>
+</li>
+<li>
+<a href="disgust.html">
+          Disgust
+         </a>
+</li>
+<li>
+<a href="surprise.html">
+          Surprise
+         </a>
+</li>
+</ul>
+</li>
+<li style="position:relative;">
+<a href="#" style="cursor:pointer;">
+        Story Length
+       </a>
+<ul class="dropdown">
+<li>
+<a href="5min.html">
+          Short Stories
+         </a>
+</li>
+<li>
+<a href="10min.html">
+          Medium Length Stories
+         </a>
+</li>
+</ul>
+</li>
+<li>
+<a href="poems.html" style="font-weight:bold;">
+        Poems
+       </a>
+</li>
+<li>
+<a href="about.html">
+        About
+       </a>
+</li>
+</ul>
+</nav>
+<!-- Mailchimp Email Signup -->
+<a href="https://your-new-mailchimp-url.com" style="margin-top: 14px; background: #FFEB3B; color: #003366; font-family: 'Coming Soon', cursive !important; font-size: 16px; font-weight: bold; border-radius: 20px; padding: 9px 22px 9px 32px; text-decoration: none; box-shadow: 0 2px 8px rgba(255,235,59,0.22); display: flex; align-items: center; transition: background 0.2s;" target="_blank">
+<svg fill="#003366" height="21" style="margin-right:10px;" viewbox="0 0 24 24" width="21" xmlns="http://www.w3.org/2000/svg">
+<path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18V8.83l7.88 7.88a.996.996 0 001.41 0L20 8.83V18H4z">
+</path>
+</svg>
+     Join Email List
+    </a>
+</div>
+</header><div style="max-width: 1100px; margin: 0 auto;"><video autoplay="" class="index-body-video" controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture="" muted="" playsinline="" style="width: 35.1%; display:block; margin: 0 auto;">
+<source src="index_items/animationSB.mp4" type="video/mp4"/>
+    Your browser does not support the video tag.
+   </video><h1 class="index-body-title" style="font-family: 'Georgia', serif !important;">
+    Story Bell
+   </h1><div class="tagline-glow" data-text="Stories that speak, words that glow.">Stories that speak, words that glow.</div><h1 class="featured-header"></h1><!-- FEATURED STORIES CAROUSEL HERE --></div>
+<div class="main-blank">
+</div>
+<script>
+   // Wand cursor & sparkle logic
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script>
+<!-- Optional image-based footer -->
+<footer style="background: url('index_items/footer.jpg') no-repeat center center / cover; color: #fff; text-align: center; padding: 10px 20px; font-family: 'Georgia', serif; margin-top: 80px; position: relative;">
+<div style="background: rgba(0, 0, 0, 0.55); padding: 30px 20px; border-radius: 12px; max-width: 800px; margin: auto;">
+<h2 style="margin-bottom: 14px; font-size: 1.4em; text-shadow: 0 0 8px #000;">
+     📬 Stay in the Story Bell loop!
+    </h2>
+<form action="https://your-new-mailchimp-url.com" method="post" style="margin-bottom: 20px;" target="_blank">
+<input name="EMAIL" placeholder="Your email address" required="" style="padding: 10px; border-radius: 6px; border: none; width: 250px; max-width: 80%; font-size: 16px;" type="email"/>
+<button style="background: #FFEB3B; color: #003366; border: none; border-radius: 6px; padding: 10px 20px; font-size: 16px; margin-left: 10px; cursor: pointer;" type="submit">
+      Sign Up
+     </button>
+</form>
+<div style="display: flex; justify-content: center; gap: 30px;">
+<a aria-label="Facebook" href="https://facebook.com" style="filter: drop-shadow(0 0 4px #000);" target="_blank">
+<svg fill="#FFEB3B" height="28" viewbox="0 0 24 24" width="28">
+<path d="M22 12a10 10 0 10-11.6 9.9v-7h-2v-2.9h2v-2.2c0-2 1.2-3.1 3-3.1.9 0 1.9.2 1.9.2v2.1h-1.1c-1.1 0-1.4.7-1.4 1.4v1.6h2.4l-.4 2.9h-2v7A10 10 0 0022 12z">
+</path>
+</svg>
+</a>
+<a aria-label="Instagram" href="https://instagram.com" style="filter: drop-shadow(0 0 4px #000);" target="_blank">
+<svg fill="#FFEB3B" height="28" viewbox="0 0 24 24" width="28">
+<path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 2 .3 2.5.5a4.5 4.5 0 011.6 1.1 4.5 4.5 0 011.1 1.6c.2.5.4 1.3.5 2.5.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.3 2-.5 2.5a4.5 4.5 0 01-1.1 1.6 4.5 4.5 0 01-1.6 1.1c-.5.2-1.3.4-2.5.5-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-2-.3-2.5-.5a4.5 4.5 0 01-1.6-1.1 4.5 4.5 0 01-1.1-1.6c-.2-.5-.4-1.3-.5-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.3-2 .5-2.5a4.5 4.5 0 011.1-1.6 4.5 4.5 0 011.6-1.1c.5-.2 1.3-.4 2.5-.5C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1 .1-1.6.3-2 .5-.5.2-.9.5-1.3.9-.4.4-.7.8-.9 1.3-.2.4-.4 1-.5 2-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .3 1.6.5 2 .2.5.5.9.9 1.3.4.4.8.7 1.3.9.4.2 1 .4 2 .5 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.3 2-.5a3 3 0 001.3-.9c.4-.4.7-.8.9-1.3.2-.4.4-1 .5-2 .1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.3-1.6-.5-2a3 3 0 00-.9-1.3 3 3 0 00-1.3-.9c-.4-.2-1-.4-2-.5-1.2-.1-1.6-.1-4.7-.1zM12 6.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11zm0 1.8a3.7 3.7 0 100 7.4 3.7 3.7 0 000-7.4zm5.5-2.2a1.3 1.3 0 110 2.6 1.3 1.3 0 010-2.6z">
+</path>
+</svg>
+</a>
+<a aria-label="Twitter (X)" href="https://twitter.com" style="filter: drop-shadow(0 0 4px #000);" target="_blank">
+<svg fill="#FFEB3B" height="28" viewbox="0 0 24 24" width="28">
+<path d="M22 4.01c-.8.4-1.6.7-2.4.8.9-.5 1.5-1.4 1.8-2.3-.9.5-1.8.9-2.7 1.1a4.2 4.2 0 00-7.2 3.8c-3.4-.2-6.4-1.8-8.4-4.2a4.2 4.2 0 001.3 5.7c-.7 0-1.4-.2-2-.5 0 2 1.4 3.8 3.4 4.2-.7.2-1.3.2-2 .1a4.2 4.2 0 003.9 2.9A8.5 8.5 0 012 19.6a11.8 11.8 0 006.3 1.8c7.5 0 11.6-6.2 11.6-11.6v-.5a8.2 8.2 0 002-2.1z">
+</path>
+</svg>
+</a>
+</div>
+</div>
+<div style="margin-top: 12px; font-size: 0.96em; color: #FFEB3B; opacity: 0.88;">
+    © 2025 Story Bell. All rights reserved.
+   </div>
+</footer>
+<script>
+   var wand = window.wand ||  document.getElementById("wand");
+    // Wand offset: tweak for your image so tip matches cursor position
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8;
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 9998;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script>
+<script>
+   // Desktop-only hover open/close for dropdowns
+(function () {
+  if (!window.matchMedia('(min-width: 801px)').matches) return;
+
+  document.querySelectorAll('nav ul > li').forEach(function(menuItem) {
+    let timeout;
+    menuItem.addEventListener('mouseleave', function() {
+      const dropdown = this.querySelector('.dropdown');
+      if (dropdown) {
+        timeout = setTimeout(() => dropdown.style.display = 'none', 180);
+      }
+    });
+    menuItem.addEventListener('mouseenter', function() {
+      const dropdown = this.querySelector('.dropdown');
+      if (dropdown) {
+        clearTimeout(timeout);
+        dropdown.style.display = 'block';
+      }
+    });
+  });
+})();
+  </script>
+<script>
+   function getFavorites() {
+  try { return JSON.parse(localStorage.getItem('favorites') || "[]"); }
+  catch { return []; }
+}
+function setFavorites(favs) {
+  localStorage.setItem('favorites', JSON.stringify(favs));
+}
+function toggleFavorite(btn) {
+  const title = btn.getAttribute("data-title");
+  let favs = getFavorites();
+  if (favs.includes(title)) {
+    favs = favs.filter(f => f !== title);
+  } else {
+    favs.push(title);
+  }
+  setFavorites(favs);
+  updateStars();
+}
+function isFavorite(title) {
+  return getFavorites().includes(title);
+}
+function updateStars() {
+  document.querySelectorAll('.favorite-star').forEach(btn => {
+    const title = btn.getAttribute("data-title");
+    btn.querySelector(".star").innerHTML = isFavorite(title) ? "&#9733;" : "&#9734;";
+    btn.title = isFavorite(title) ? "Remove from Favorites" : "Add to Favorites";
+  });
+}
+document.addEventListener('DOMContentLoaded', updateStars);
+  </script>
+<!-- BEGIN SWIPE-CAROUSEL-JS -->
+<script>
+   document.querySelectorAll('.carousel-track').forEach(function(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    e.preventDefault();
+  });
+  track.addEventListener('mouseleave', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    track.scrollLeft = scrollLeft - walk;
+  });
+  // Touch events for mobile
+  let startTouchX = 0, startScroll = 0;
+  track.addEventListener('touchstart', function(e) {
+    startTouchX = e.touches[0].pageX;
+    startScroll = track.scrollLeft;
+  }, {passive:true});
+  track.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      let dx = e.touches[0].pageX - startTouchX;
+      track.scrollLeft = startScroll - dx;
+    }
+  }, {passive:true});
+});
+  </script>
+<!-- END SWIPE-CAROUSEL-JS -->
+<script id="universal-mobile-dropdown-fix-js">
+(function () {
+  const nav = document.querySelector(".header-right nav");
+  if (!nav) return;
+  const isMobile = () => window.matchMedia("(max-width: 900px)").matches;
+
+  function onActivate(e) {
+    const link = e.target.closest("nav ul > li > a");
+    if (!link || !nav.contains(link)) return;
+    const dropdown = link.nextElementSibling;
+    const hasDropdown = dropdown && dropdown.classList && dropdown.classList.contains("dropdown");
+    if (!hasDropdown || !isMobile()) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const li = link.parentElement;
+    const willOpen = !li.classList.contains("open");
+    nav.querySelectorAll("li.open").forEach(el => { if (el !== li) el.classList.remove("open"); });
+    li.classList.toggle("open", willOpen);
+  }
+
+  nav.addEventListener("pointerup", onActivate, { passive: false });
+  nav.addEventListener("click", onActivate, { passive: false });
+  window.addEventListener("resize", () => {
+    if (!isMobile()) nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
+  });
+})();
+</script>
+<script id="hamburger-toggle-js">
+(function () {
+  const nav = document.querySelector(".header-right nav");
+  const body = document.body;
+  if (!nav) return;
+
+  let toggleBtn = document.getElementById("menu-toggle");
+  if (!toggleBtn) {
+    // try to insert after .header-right open tag
+    const headerRight = document.querySelector(".header-right");
+    if (headerRight) {
+      toggleBtn = document.createElement("button");
+      toggleBtn.id = "menu-toggle";
+      toggleBtn.setAttribute("aria-label","Open menu");
+      toggleBtn.textContent = "☰";
+      toggleBtn.style.display = "none"; // your CSS shows it on mobile
+      headerRight.insertBefore(toggleBtn, headerRight.firstChild);
+    }
+  }
+
+  // ensure overlay exists (sibling after header)
+  let overlay = document.querySelector(".menu-overlay");
+  if (!overlay) {
+    const header = document.querySelector("header");
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    if (header && header.parentNode) {
+      header.parentNode.insertBefore(overlay, header.nextSibling);
+    } else {
+      document.body.appendChild(overlay);
+    }
+  }
+
+  function openMenu() {
+    nav.classList.add("open");
+    body.classList.add("menu-open");
+    overlay.classList.add("active");
+  }
+  function closeMenu() {
+    nav.classList.remove("open");
+    body.classList.remove("menu-open");
+    overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (nav.classList.contains("open")) closeMenu(); else openMenu();
+    });
+  }
+  overlay.addEventListener("click", (e) => { e.stopPropagation(); closeMenu(); });
+
+  // close on route click (mobile) when link navigates
+  nav.querySelectorAll("ul > li > a").forEach(link => {
+    link.addEventListener("click", function(e){
+      if (window.matchMedia("(max-width: 900px)").matches && this.href && !this.href.endsWith("#")) {
+        closeMenu();
+      }
+    });
+  });
+})();
+</script>
+<script id="sb-hamburger-js">
+(function () {
+  const nav = document.querySelector(".header-right nav");
+  const body = document.body;
+  if (!nav) return;
+
+  // Ensure toggle button exists
+  let toggleBtn = document.getElementById("menu-toggle");
+  if (!toggleBtn) {
+    const headerRight = document.querySelector(".header-right");
+    if (headerRight) {
+      toggleBtn = document.createElement("button");
+      toggleBtn.id = "menu-toggle";
+      toggleBtn.setAttribute("aria-label","Open menu");
+      toggleBtn.textContent = "☰";
+      toggleBtn.style.display = "none"; // CSS will unhide on mobile
+      headerRight.insertBefore(toggleBtn, headerRight.firstChild);
+    }
+  }
+  // Ensure overlay exists
+  let overlay = document.querySelector(".menu-overlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    const header = document.querySelector("header");
+    if (header && header.parentNode) header.parentNode.insertBefore(overlay, header.nextSibling);
+    else document.body.appendChild(overlay);
+  }
+
+  const openMenu = () => { nav.classList.add("open"); body.classList.add("menu-open"); overlay.classList.add("active"); };
+  const closeMenu = () => {
+    nav.classList.remove("open"); body.classList.remove("menu-open"); overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
+  };
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault(); e.stopPropagation();
+      nav.classList.contains("open") ? closeMenu() : openMenu();
+    });
+  }
+  overlay.addEventListener("click", (e) => { e.stopPropagation(); closeMenu(); });
+
+  // Close when navigating to a real href on mobile
+  nav.querySelectorAll("ul > li > a").forEach(link => {
+    link.addEventListener("click", function() {
+      if (window.matchMedia("(max-width: 900px)").matches && this.href && !this.href.endsWith("#")) {
+        closeMenu();
+      }
+    });
+  });
+})();
+</script>
+<script id="sb-dropdown-js">
+(function () {
+  const nav = document.querySelector(".header-right nav");
+  if (!nav) return;
+  const isMobile = () => window.matchMedia("(max-width: 900px)").matches;
+
+  function onActivate(e) {
+    const link = e.target.closest("nav ul > li > a");
+    if (!link || !nav.contains(link)) return;
+    const dropdown = link.nextElementSibling;
+    const hasDropdown = dropdown && dropdown.classList && dropdown.classList.contains("dropdown");
+    if (!hasDropdown || !isMobile()) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const li = link.parentElement;
+    const willOpen = !li.classList.contains("open");
+    nav.querySelectorAll("li.open").forEach(el => { if (el !== li) el.classList.remove("open"); });
+    li.classList.toggle("open", willOpen);
+  }
+
+  nav.addEventListener("pointerup", onActivate, { passive: false });
+  nav.addEventListener("click", onActivate, { passive: false });
+  window.addEventListener("resize", () => {
+    if (!isMobile()) nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
+  });
+})();
+</script>
+<script id="sb-universal-js">
+(function(){
+  const nav = document.querySelector(".header-right nav");
+  const btn = document.getElementById("menu-toggle");
+  let overlay = document.querySelector(".menu-overlay");
+  if (!nav || !btn) return;
+  if (!overlay){
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    const header = document.querySelector("header");
+    (header && header.parentNode ? header.parentNode : document.body)
+      .insertBefore(overlay, header ? header.nextSibling : null);
+  }
+  const body = document.body;
+  const isMobile = () => matchMedia("(max-width:900px)").matches;
+
+  let justOpenedUntil = 0;
+  const armGuard = () => { justOpenedUntil = Date.now() + 180; };
+
+  const openMenu = ()=>{
+    nav.classList.add("open");
+    body.classList.add("menu-open");
+    overlay.classList.add("active");
+    armGuard();
+  };
+  const closeMenu = ()=>{
+    nav.classList.remove("open");
+    body.classList.remove("menu-open");
+    overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li=>li.classList.remove("open"));
+  };
+
+  // Rebind elements to clear old listeners
+  const rebind = (el)=>{ const c = el.cloneNode(true); el.parentNode.replaceChild(c, el); return c; };
+  const _btn = rebind(btn);
+  overlay = rebind(overlay);
+
+  // Button uses pointerup only
+  _btn.addEventListener("pointerup", (e)=>{
+    e.preventDefault(); e.stopPropagation();
+    nav.classList.contains("open") ? closeMenu() : openMenu();
+  }, {passive:false});
+
+  // Overlay click closes, but not during guard window
+  overlay.addEventListener("click", (e)=>{
+    if (Date.now() < justOpenedUntil) { e.preventDefault(); return; }
+    e.preventDefault(); closeMenu();
+  }, {passive:false});
+
+  // Submenu: pointerup only (no click). Toggle .open on the parent <li>.
+  const onPointerUp = (e)=>{
+    if (!isMobile()) return;
+    const a = e.target.closest("nav ul > li > a");
+    if (!a || !nav.contains(a)) return;
+    const dd = a.nextElementSibling;
+    const hasDropdown = dd && dd.classList && dd.classList.contains("dropdown");
+    if (!hasDropdown) return;
+    e.preventDefault(); e.stopPropagation();
+    const li = a.parentElement;
+    const willOpen = !li.classList.contains("open");
+    nav.querySelectorAll("li.open").forEach(x=>{ if (x!==li) x.classList.remove("open"); });
+    li.classList.toggle("open", willOpen);
+  };
+  nav.addEventListener("pointerup", onPointerUp, {passive:false});
+
+  // Close on real link tap inside drawer
+  nav.addEventListener("pointerup", (e)=>{
+    if (!isMobile()) return;
+    const a = e.target.closest("nav ul > li > a");
+    if (!a || !nav.contains(a)) return;
+    const dd = a.nextElementSibling;
+    if (dd && dd.classList && dd.classList.contains("dropdown")) return; // parent; handled above
+    const href = a.getAttribute("href");
+    if (href && href !== "#") { e.preventDefault(); closeMenu(); location.href = href; }
+  }, {passive:false});
+
+  addEventListener("resize", ()=>{ if (!isMobile()) closeMenu(); });
+})();
+</script>
+<style id="sb-mobile-header-align">
+@media (max-width: 900px){
+  header{
+    display:flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+  }
+  .header-left{
+    display:flex !important;
+    align-items:center !important;
+    gap: 8px !important;
+    white-space: nowrap !important;
+  }
+  .header-left h1, .header-left h2, .header-left span{
+    white-space: nowrap !important;
+  }
+  .header-right{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    position: relative !important;
+    min-height: unset !important;
+    margin-right: 6px !important;
+  }
+
+  /* Animation */
+  .storybell-header-video{
+    display:block !important;
+    max-width: 120px !important;
+    height:auto !important;
+    margin-left:-4px !important;
+    margin-right:8px !important;
+  }
+
+  /* Hamburger icon - further left enforced */
+  .header-right #menu-toggle{
+    position: static !important;
+    margin-left: -60px !important; /* force bigger left shift */
+    margin-top: 12px !important;
+    z-index: 11002 !important;
+    background: none !important;
+    border: none !important;
+    color: #FFEB3B !important;
+    font-size: 2.1em !important;
+    padding: 4px 6px !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+  }
+
+  /* Drawer 20% narrower enforced */
+  .header-right nav{
+    width: 156px !important; /* reduced from 196px */
+    max-width: 60vw !important; /* narrower relative width */
+  }
+
+  /* Bold main menu items */
+  .header-right nav ul > li > a{
+    padding: 6px 14px !important;
+    font-weight: bold !important;
+  }
+
+  /* Compact submenu items */
+  .header-right nav ul > li > .dropdown li a{
+    padding: 4px 20px !important;
+    line-height: 1.1 !important;
+    font-size: 0.85em !important;
+    text-align: left !important;
+    font-weight: normal !important;
+  }
+}
+</style>
+<script id="mobile-disable-wand-js">(function(){
+  function isMobile(){
+    return window.matchMedia("(max-width: 800px)").matches || ("ontouchstart" in window);
+  }
+  function disableWandOnMobile(){
+    if(!isMobile()) return;
+
+    // Remove wand image if present
+    var wand = document.getElementById("wand");
+    if (wand) { try { wand.remove(); } catch(e){} }
+
+    // Remove any existing sparkles
+    try { document.querySelectorAll(".sparkle").forEach(function(n){ n.remove(); }); } catch(e){}
+
+    // Block mousemove sparkle creators (capture phase)
+    try {
+      document.addEventListener("mousemove", function(e){ e.stopImmediatePropagation(); }, true);
+    } catch(e){}
+
+    // MutationObserver to auto-remove any sparkles added later
+    try {
+      var mo = new MutationObserver(function(muts){
+        for (var i=0;i<muts.length;i++){
+          var ad = muts[i].addedNodes || [];
+          for (var j=0;j<ad.length;j++){
+            var n = ad[j];
+            if (n && n.nodeType === 1){
+              if (n.classList && n.classList.contains("sparkle")) { n.remove(); continue; }
+              if (n.querySelectorAll){
+                n.querySelectorAll(".sparkle").forEach(function(el){ el.remove(); });
+              }
+            }
+          }
+        }
+      });
+      mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
+    } catch(e){}
+  }
+
+  document.addEventListener("DOMContentLoaded", disableWandOnMobile);
+  window.addEventListener("resize", disableWandOnMobile);
+})();</script><style id="sb-mobile-carousel-typography-override">
+@media (max-width: 800px){
+  /* Remove the extra line break between title and description */
+  .carousel-section .carousel-item br{
+    display: none !important;
+  }
+
+  /* Title: smaller than before, but still larger than description; keep white */
+  .carousel-section .carousel-item .carousel-title,
+  .carousel-section a.carousel-title-link .carousel-title,
+  .carousel-section .carousel-title{
+    font-size: 0.74em !important;   /* adjust as needed */
+    line-height: 1.12em !important;
+    color: #ffffff !important;
+    margin: 0.15em 0 0.08em !important;  /* tighter */
+  }
+  /* Ensure the title link itself stays white and un-underlined */
+  .carousel-section .carousel-title-link,
+  .carousel-section .carousel-title-link:link,
+  .carousel-section .carousel-title-link:visited{
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+
+  /* Description: compact, white */
+  .carousel-section .carousel-desc{
+    font-size: 0.56em !important;
+    line-height: 1.18em !important;
+    color: #ffffff !important;
+    margin: 0.05em 0 0.05em !important;  /* tighter */
+  }
+
+  /* Categories: same size as description, bold, white */
+  .carousel-section .carousel-category{
+    font-size: 0.56em !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+  .carousel-section .carousel-categories{
+    margin-top: 0.06em !important;  /* tighter */
+  }
+}
+</style><script id="sb-favorites-js">
+(function(){
+  function getFavorites(){ try { return JSON.parse(localStorage.getItem('favorites') || "[]"); } catch { return []; } }
+  function setFavorites(f){ localStorage.setItem('favorites', JSON.stringify(f)); }
+  function isFavorite(t){ return getFavorites().includes(t); }
+
+  // --- kebab slug (lowercase + hyphens)
+  function kebab(s){
+    return (s||"").toLowerCase().trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "");
+  }
+
+  // --- build a minimal card if not found on page
+  function buildCardFromTitle(title, desc){
+    var slug = kebab(title);
+    var href = "/stories/" + slug + "/";
+
+    // Image: try .webp → .jpg → .png
+    var img = document.createElement("img");
+    img.loading = "lazy";
+    img.alt = title;
+    img.src = "/icon/" + slug + ".webp";
+    img.onerror = function(){
+      if (img.src.endsWith(".webp")) img.src = "/icon/" + slug + ".jpg";
+      else if (img.src.endsWith(".jpg")) img.src = "/icon/" + slug + ".png";
+    };
+
+    var imgLink = document.createElement("a");
+    imgLink.href = href;
+    imgLink.appendChild(img);
+
+    var titleSpan = document.createElement("span");
+    titleSpan.className = "carousel-title";
+    titleSpan.textContent = title;
+
+    var titleLink = document.createElement("a");
+    titleLink.href = href;
+    titleLink.className = "carousel-title-link";
+    titleLink.appendChild(titleSpan);
+
+    var br = document.createElement("br");
+
+    var d = document.createElement("span");
+    d.className = "carousel-desc";
+    d.textContent = desc || "";
+
+    var fav = document.createElement("button");
+    fav.className = "favorite-star";
+    fav.setAttribute("data-title", title);
+    fav.setAttribute("title", "Remove from Favorites");
+    fav.innerHTML = '<span class="star">&#9733;</span>'; // filled by default in favorites
+    fav.addEventListener("click", function(e){
+      e.preventDefault();
+      toggleFavorite(fav);
+    });
+
+    var item = document.createElement("div");
+    item.className = "carousel-item";
+    item.setAttribute("data-title", title);
+    item.appendChild(imgLink);
+    item.appendChild(titleLink);
+    item.appendChild(br);
+    item.appendChild(d);
+    item.appendChild(fav);
+    return item;
+  }
+
+  window.toggleFavorite = function(btn){
+    const t = btn.getAttribute("data-title");
+    let favs = getFavorites();
+    favs = favs.includes(t) ? favs.filter(x=>x!==t) : favs.concat(t);
+    setFavorites(favs);
+    updateStars();
+    buildFavoritesCarousel();
+  };
+
+  window.updateStars = function(){
+    document.querySelectorAll('.favorite-star').forEach(btn=>{
+      const t = btn.getAttribute("data-title");
+      const star = btn.querySelector(".star");
+      if(star) star.innerHTML = isFavorite(t) ? "&#9733;" : "&#9734;";
+      btn.title = isFavorite(t) ? "Remove from Favorites" : "Add to Favorites";
+    });
+  };
+
+  // Native-momentum init for a single wrapper (Favorites)
+  function initFavoritesNative(wrapper){
+    if(!wrapper || wrapper.dataset.nativeInfinite==='1') return;
+    const track = wrapper.querySelector('.carousel-track');
+    const container = wrapper.querySelector('.carousel-container');
+    if(!track || !container) return;
+
+    const items = Array.from(track.children).filter(n=>n.matches('.carousel-item,.carousel-card'));
+    const base = items.length; if(!base) return;
+
+    const measure = ()=> (items[0]?.getBoundingClientRect().width || container.getBoundingClientRect().width/2 || 1);
+    let cardW = measure();
+
+    let clones = Math.max(1, Math.ceil(container.clientWidth / cardW));
+    clones = Math.min(clones, base);
+    const head = items.slice(0, clones).map(n=>n.cloneNode(true));
+    const tail = items.slice(-clones).map(n=>n.cloneNode(true));
+    tail.forEach(n=>track.insertBefore(n, track.firstChild));
+    head.forEach(n=>track.appendChild(n));
+
+    const jump = base * cardW;
+    const start = clones * cardW;
+    track.scrollLeft = Math.round(start);
+
+    const [leftBtn, rightBtn] = wrapper.querySelectorAll('.carousel-button');
+    if(leftBtn)  leftBtn.onclick  = (e)=>{ e.preventDefault(); track.scrollBy({left:-cardW,behavior:'smooth'}); };
+    if(rightBtn) rightBtn.onclick = (e)=>{ e.preventDefault(); track.scrollBy({left: cardW,behavior:'smooth'}); };
+
+    let wrapping=false;
+    track.addEventListener('scroll', ()=>{
+      if(wrapping) return;
+      const x=track.scrollLeft, nearL = x <= (cardW*0.5), nearR = x >= (start+jump - cardW*0.5);
+      if(nearL || nearR){
+        const prev = track.style.scrollSnapType; track.style.scrollSnapType = 'none';
+        wrapping = true;
+        track.scrollLeft = Math.round(x + (nearL ? jump : -jump));
+        requestAnimationFrame(()=>{ track.style.scrollSnapType = prev || 'x mandatory'; wrapping=false; });
+      }
+    }, {passive:true});
+
+    window.addEventListener('resize', ()=>{
+      cardW = measure();
+      const idx = Math.round(track.scrollLeft / (cardW||1));
+      track.scrollLeft = Math.round(idx * (cardW||1));
+    });
+
+    wrapper.dataset.nativeInfinite='1';
+  }
+
+  // Build/refresh Favorites section
+  window.buildFavoritesCarousel = function(){
+    const favs = getFavorites();
+    const allCards = Array.from(document.querySelectorAll('.carousel-item,.carousel-card'));
+    const used = new Set();
+    const favCards = [];
+
+    favs.forEach(t=>{
+      if(used.has(t)) return;
+      // 1) Prefer an existing card on page
+      const existing = allCards.find(el => el.getAttribute('data-title') === t);
+      if(existing){
+        favCards.push(existing.cloneNode(true));
+        used.add(t);
+        return;
+      }
+      // 2) Fallback: build a new card from kebab assumptions
+      const desc = ""; // (optional) could be improved later if a global index is exposed
+      favCards.push(buildCardFromTitle(t, desc));
+      used.add(t);
+    });
+
+    // Find or create the target section
+    let host = document.getElementById('favorites-carousel-section');
+    if(!host){
+      host = document.createElement('div');
+      host.id = 'favorites-carousel-section';
+      // insert after the first carousel-section if possible
+      const firstSection = document.querySelector('.carousel-section');
+      if(firstSection && firstSection.parentElement){
+        firstSection.parentElement.insertBefore(host, firstSection.nextSibling);
+      } else {
+        document.body.appendChild(host);
+      }
+    }
+
+    if(favCards.length === 0){
+      host.innerHTML = ""; // nothing to show
+      return;
+    }
+
+    host.innerHTML = `
+      <div class="carousel-section">
+        <h2 class="carousel-header"><span class="glow-underline">Favorites</span></h2>
+        <div class="carousel-wrapper">
+          <button class="carousel-button">←</button>
+          <div class="carousel-container">
+            <div class="carousel-track" id="favorites-carousel-track"></div>
+          </div>
+          <button class="carousel-button">→</button>
+        </div>
+      </div>`;
+
+    const track = host.querySelector('#favorites-carousel-track');
+    favCards.forEach(c => track.appendChild(c));
+
+    // Init the favorites wrapper with native infinite behavior
+    initFavoritesNative(host.querySelector('.carousel-wrapper'));
+  };
+
+  document.addEventListener('DOMContentLoaded', function(){
+    updateStars();
+    buildFavoritesCarousel();
+  });
+})();
+</script><script id="sb-mobile-scrollby-override">
+(function(){
+  if (!window.matchMedia || !window.matchMedia("(max-width: 800px)").matches) return;
+
+  function q(sel, root){ return [].slice.call((root||document).querySelectorAll(sel)); }
+  function firstCard(track){ return track && (track.querySelector('.carousel-item, .carousel-card')); }
+
+  // Override moveCarousel to use native scrollBy (no clamping, no translateX)
+  window.moveCarousel = function(btn, dir){
+    var w = btn.closest('.carousel-wrapper');
+    var track = w && w.querySelector('.carousel-track');
+    var card = firstCard(track);
+    if(!track || !card) return;
+    var wCard = card.getBoundingClientRect().width || 1;
+    track.scrollBy({ left: (dir<0?-1:1) * wCard, behavior: 'smooth' });
+  };
+
+  // During scroll, strip any inline transform/data-current that older code might set
+  q('.carousel-track').forEach(function(track){
+    track.addEventListener('scroll', function(){
+      try{
+        if (track.hasAttribute('data-current')) track.removeAttribute('data-current');
+        if (track.style && track.style.transform) track.style.transform = ''; // neutralize translateX writes
+      }catch(e){}
+    }, {passive:true});
+  });
+})();
+</script><link href="queue_assets/queue.css" rel="stylesheet"/><div aria-live="polite" id="sbq-hint">Queue Mode ON</div><div aria-label="Open story queue" id="story-queue-button" role="button" tabindex="0" title="Open story queue">
+<picture>
+<img alt="Story Queue Button" class="book-img" src="../index_items/listen_still_first.png"/>
+</picture>
+</div><div aria-labelledby="sbq-title" aria-modal="true" id="story-queue-menu" role="dialog">
+<div class="queue-menu-header">
+<button aria-label="Close" class="queue-menu-close">×</button>
+<h2 class="queue-menu-title" id="sbq-title">✨ My Story List ✨</h2>
+</div>
+<div class="queue-menu-list" id="queue-list">
+<div class="queue-empty-message">✨ Tap stories to add to your list ✨</div>
+</div>
+<div class="queue-menu-controls">
+<button data-tooltip="Create a read list: tap story cards to add/remove." id="queue-mode-toggle" title="Create a read list">
+<img alt="" aria-hidden="true" class="icon" src="queue_assets/queue-icon.png"/><span class="label">Create Queue</span>
+</button>
+<button class="queue-control-btn" id="queue-play" title="Play Queue">▶</button>
+<button class="queue-control-btn" disabled="" id="queue-prev" title="Previous Story">◀</button>
+<button class="queue-control-btn" disabled="" id="queue-next" title="Next Story">▶</button>
+<button class="queue-control-btn" disabled="" id="queue-clear" title="Clear Queue">🗑️</button>
+</div>
+</div></body>
+</html>
