@@ -3,19 +3,19 @@
   --sb-edge-desktop: 8px;
   --sb-edge-mobile: 8px;
 
-  /* Place button/menu 1/8 up the screen (was 1/4) */
+  /* Place button/menu 1/8 up the screen */
   --btn-bottom-desktop: 12.5vh;
   --btn-bottom-mobile: 12.5vh;
 
-  /* GIF sizes (container) */
+  /* Button container size (kept from GIF layout for consistency) */
   --btn-w-desktop: 190px;
   --btn-h-desktop: 235px;
 
-  /* MOBILE: half-size button container */
+  /* MOBILE: size from viewport width */
   --btn-w-mobile: 36vw;
   --btn-h-mobile: calc(var(--btn-w-mobile) * 1.2);
 
-  /* Menu base sizes; visual scale set via --menu-scale (desktop bumps below) */
+  /* Menu base sizes; scale via --menu-scale */
   --menu-w-desktop: 320px;
   --menu-maxh-desktop: 320px;
   --menu-font: 13px;
@@ -32,35 +32,33 @@
   --blue2: #003366;
 }
 @media (min-width: 901px){
-  :root{ --menu-scale: .828; } /* Desktop-only +15% (was .72) */
+  :root{ --menu-scale: .828; }
 }
 
-/* Floating GIF button with glow */
+/* Floating button with glow */
 #story-queue-button{
   position: fixed !important;
   right: var(--sb-edge-desktop) !important;
-  bottom: var(--btn-bottom-desktop) !important;   /* 1/8-way up */
+  bottom: var(--btn-bottom-desktop) !important;
   width: var(--btn-w-desktop) !important; height: var(--btn-h-desktop) !important;
   z-index: 2147483647 !important; cursor: pointer !important;
   transition: filter .18s ease, transform .18s ease; pointer-events: auto !important;
   background: transparent !important; touch-action: manipulation;
   filter: drop-shadow(0 0 6px rgba(255,235,59,.35)) drop-shadow(0 0 0 rgba(255,235,59,0));
 }
-#story-queue-button:hover{ filter: drop-shadow(0 0 10px rgba(255,235,59,.65)) drop-shadow(0 0 22px rgba(255,235,59,.25)); }
+#story-queue-button:hover{  filter: drop-shadow(0 0 10px rgba(255,235,59,.65)) drop-shadow(0 0 22px rgba(255,235,59,.25)); }
 #story-queue-button.sbq-press{ filter: drop-shadow(0 0 14px rgba(255,235,59,.85)) drop-shadow(0 0 28px rgba(255,235,59,.45)); }
 body.sbq-open #story-queue-button{ filter: drop-shadow(0 0 12px rgba(255,235,59,.85)) drop-shadow(0 0 26px rgba(255,235,59,.35)); }
 
-/* Button image: smaller & right-aligned (kept from previous) */
+/* The image inside the button (scaled, anchored bottom-right) */
 #story-queue-button .book-img{
   position: absolute !important;
   right: 0;
-  bottom: 12px;                          /* small lift */
-  width: auto !important;
-  height: auto !important;
-  max-width: none !important;
-  max-height: none !important;
-  object-fit: unset !important;
-  transform: scale(.140625);             /* 14.0625% of intrinsic size */
+  bottom: 12px;
+  width: auto !important; height: auto !important;
+  max-width: none !important; max-height: none !important;
+  object-fit: contain !important;
+  transform: scale(.140625);
   transform-origin: bottom right;
   display: block !important;
   pointer-events: none !important;
@@ -70,7 +68,7 @@ body.sbq-open #story-queue-button{ filter: drop-shadow(0 0 12px rgba(255,235,59,
 #story-queue-menu{
   position: fixed !important;
   right: var(--sb-edge-desktop) !important;
-  bottom: calc(var(--btn-bottom-desktop) + var(--btn-h-desktop) + 6px) !important; /* just above the button */
+  bottom: calc(var(--btn-bottom-desktop) + var(--btn-h-desktop) + 6px) !important;
   width: var(--menu-w-desktop); max-height: var(--menu-maxh-desktop); font-size: var(--menu-font);
   background: var(--blue1); border: 2px solid var(--yellow); border-radius: 12px; display: none;
   z-index: 2147483646 !important; box-shadow: 0 12px 28px rgba(0,0,0,.5), 0 0 22px rgba(255,235,59,.28);
@@ -104,15 +102,12 @@ body.sbq-open #story-queue-menu{ display: flex !important; }
 
 /* Controls */
 .queue-menu-controls{ flex: 0 0 auto; display: flex; gap: 6px; justify-content: space-between; align-items: center; padding: 8px; border-top: 2px solid var(--yellow); background: linear-gradient(135deg,var(--blue1),var(--blue2)); }
-
-/* Create Queue (desktop pill; mobile icon-only) */
 #queue-mode-toggle{ flex: 1; height: 42px; border-radius: 999px; border: 2px solid var(--yellow); background: var(--yellow); color: #000; font-weight: 900; cursor: pointer; font-size: 13px; padding: 0 16px;
   display: inline-flex; align-items: center; justify-content: center; gap: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; position: relative; }
 #queue-mode-toggle .icon{ width: 18px; height: 18px; display: inline-block; }
 #queue-mode-toggle .label{ font-size: 13px; }
 #queue-mode-toggle.active{ background: var(--yellow); color: #000; }
 
-/* Control buttons */
 .queue-control-btn{ width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--yellow); color: var(--yellow); background: transparent; font-size: 18px; cursor: pointer; display: grid; place-items: center; font-family: system-ui, "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji", emoji, sans-serif; }
 .queue-control-btn:disabled{ opacity: .35; cursor: not-allowed; }
 
@@ -153,10 +148,7 @@ body.sbq-mode #sbq-hint{ display: inline-block; }
     transform: scale(var(--menu-scale)); transform-origin: bottom right;
   }
   #sbq-hint{ right: var(--sb-edge-mobile); bottom: calc(var(--btn-bottom-mobile) - 32px); font-size: 12px; }
-  #queue-mode-toggle{ flex: 0 0 auto; width: 48px; height: 48px; padding: 0; border-radius: 50%; }
-  #queue-mode-toggle .label{ display: none; }
-  #queue-mode-toggle .icon{ width: 24px; height: 24px; }
-  #sbq-next-overlay{ bottom: 25vh !important; } /* ensure on mobile too */
+  #sbq-next-overlay{ bottom: 25vh !important; }
 }
 
 /* Click-only menu enforcement */
