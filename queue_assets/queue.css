@@ -7,7 +7,7 @@
   --btn-bottom-desktop: 12.5vh;
   --btn-bottom-mobile: 12.5vh;
 
-  /* Button container size (matches your layout) */
+  /* Button container nominal size */
   --btn-w-desktop: 190px;
   --btn-h-desktop: 235px;
 
@@ -33,28 +33,24 @@
 
   --toggle-on: #22c55e;   /* green */
   --toggle-off: #ef4444;  /* red */
-  --toggle-track: #0b2f5a;
 }
 @media (min-width: 901px){
   :root{ --menu-scale: .828; }
 }
 
-/* Floating button */
+/* Floating button container (no glow here) */
 #story-queue-button{
   position: fixed !important;
   right: var(--sb-edge-desktop) !important;
   bottom: var(--btn-bottom-desktop) !important;
   width: var(--btn-w-desktop) !important; height: var(--btn-h-desktop) !important;
   z-index: 2147483647 !important; cursor: pointer !important;
-  transition: filter .18s ease, transform .18s ease; pointer-events: auto !important;
+  transition: transform .18s ease; pointer-events: auto !important;
   background: transparent !important; touch-action: manipulation;
-  filter: drop-shadow(0 0 6px rgba(255,235,59,.35)) drop-shadow(0 0 0 rgba(255,235,59,0));
 }
-#story-queue-button:hover{  filter: drop-shadow(0 0 10px rgba(255,235,59,.65)) drop-shadow(0 0 22px rgba(255,235,59,.25)); }
-#story-queue-button.sbq-press{ filter: drop-shadow(0 0 14px rgba(255,235,59,.85)) drop-shadow(0 0 28px rgba(255,235,59,.45)); }
-body.sbq-open #story-queue-button{ filter: drop-shadow(0 0 12px rgba(255,235,59,.85)) drop-shadow(0 0 26px rgba(255,235,59,.35)); }
+#story-queue-button.sbq-press{ transform: translateY(-1px) scale(1.01); }
 
-/* Button image — ORIGINAL scale */
+/* Button image — ORIGINAL scale + glow on the IMAGE only */
 #story-queue-button .book-img{
   position: absolute !important;
   right: 0;
@@ -62,20 +58,30 @@ body.sbq-open #story-queue-button{ filter: drop-shadow(0 0 12px rgba(255,235,59,
   width: auto !important; height: auto !important;
   max-width: none !important; max-height: none !important;
   object-fit: contain !important;
-  transform: scale(.140625);        /* restored */
+  transform: scale(.140625);        /* you control size by editing the PNG */
   transform-origin: bottom right;
   display: block !important;
   pointer-events: none !important;
+  filter: drop-shadow(0 0 6px rgba(255,235,59,.35));
+}
+#story-queue-button:hover .book-img{
+  filter: drop-shadow(0 0 10px rgba(255,235,59,.65)) drop-shadow(0 0 22px rgba(255,235,59,.25));
+}
+body.sbq-open #story-queue-button .book-img{
+  filter: drop-shadow(0 0 12px rgba(255,235,59,.85)) drop-shadow(0 0 26px rgba(255,235,59,.35));
 }
 
-/* Reveal-on-first-open toggle (below the button, initially hidden) */
+/* Toggle lives INSIDE the button and hovers over the bottom edge at 50% size */
 #sbq-toggle-wrap{
-  position: fixed;
-  right: var(--sb-edge-desktop);
-  bottom: calc(var(--btn-bottom-desktop) - 36px);
-  z-index: 2147483647 !important;
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translate(-50%, 30%) scale(.5);
+  transform-origin: bottom center;
+  z-index: 2147483648 !important;
   display: none; /* shown on first open */
   user-select: none;
+  pointer-events: auto;
 }
 #sbq-toggle-wrap .label{
   font-size: 12px; font-weight: 800; color: var(--yellow);
@@ -99,12 +105,8 @@ body.sbq-open #story-queue-button{ filter: drop-shadow(0 0 12px rgba(255,235,59,
   background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.2);
   transition: left .18s ease, background .18s ease;
 }
-.sbq-toggle[data-on="true"]{
-  background: var(--toggle-on);
-}
-.sbq-toggle[data-on="true"] .knob{
-  left: 32px;
-}
+.sbq-toggle[data-on="true"]{ background: var(--toggle-on); }
+.sbq-toggle[data-on="true"] .knob{ left: 32px; }
 
 /* Menu just above button; scaled */
 #story-queue-menu{
@@ -181,11 +183,6 @@ body.sbq-open #story-queue-menu{ display: flex !important; }
     width: var(--menu-w-mobile) !important; max-height: var(--menu-maxh-mobile) !important; font-size: var(--menu-font-mobile);
     transform: scale(var(--menu-scale)); transform-origin: bottom right;
   }
-  #sbq-toggle-wrap{
-    right: var(--sb-edge-mobile);
-    bottom: calc(var(--btn-bottom-mobile) - 36px);
-  }
-  #sbq-next-overlay{ bottom: 25vh !important; }
 }
 
 /* Click-only menu enforcement */
