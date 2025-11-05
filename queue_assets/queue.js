@@ -26,6 +26,22 @@
   function loadQ(){ try{ return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); }catch(_){ return []; } }
   function saveQ(q){ try{ localStorage.setItem(LS_KEY, JSON.stringify(q)); }catch(_){} }
 
+  // Shared mode setter so both the pill and the big button use the same logic
+  function setMode(active){
+    if(active){
+      bodyOn('sbq-mode');
+      var qm = $('#queue-mode-toggle');
+      if(qm){ qm.classList.add('active'); var label=qm.querySelector('.label'); if(label) label.textContent='Done'; }
+      updateHint(true);
+    }else{
+      bodyOff('sbq-mode');
+      var qm2 = $('#queue-mode-toggle');
+      if(qm2){ qm2.classList.remove('active'); var label2=qm2.querySelector('.label'); if(label2) label2.textContent='Create Queue'; }
+      updateHint(false);
+    }
+    syncBadges();
+  }
+
   // --- Cleanup timers/overlay/audio ---
   function clearNavAndCountdown(){
     if(window.__sbqNavTimer){ clearTimeout(window.__sbqNavTimer); window.__sbqNavTimer = null; }
@@ -285,31 +301,43 @@
     var btn = document.querySelector('#queue-mode-toggle');
     if(!btn || btn.__sbqBound) return;
     btn.__sbqBound = true;
-    var label = btn.querySelector('.label');
     btn.addEventListener('click', function(){
-      var active = !isMode();
-      if(active){ bodyOn('sbq-mode'); btn.classList.add('active'); if(label) label.textContent = 'Done'; }
-      else      { bodyOff('sbq-mode'); btn.classList.remove('active'); if(label) label.textContent = 'Create Queue'; }
-      syncBadges();
+      setMode(!document.body.classList.contains('sbq-mode'));
     });
-    if(!window.__sbqDocClickBound){
-      window.__sbqDocClickBound = true;
-      document.addEventListener('click', function(e){
-        if(!isMode()) return;
-        var card = e.target.closest(CARD_SEL+',a[href$=".html"]');
-        if(!card) return;
-        if(card.closest('header,nav,footer')) return;
-        e.preventDefault(); e.stopPropagation();
-        var info = extract(card);
-        var q = loadQ();
-        var i = q.findIndex(function(x){ return x.id === info.id; });
-        if(i >= 0) q.splice(i,1); else q.push(info);
-        info.title = (info.title && info.title.trim()) || humanizeTitle(info.url||info.id||'');
-        saveQ(q);
-        syncBadges();
-      }, true);
+  }
+
+  // Yellow pill below the button — acts as a toggle
+  function updateHint(active){
+    var h = document.querySelector('#sbq-hint');
+    if(!h) return;
+    if(active){
+      h.textContent = 'Queue Mode: ON (tap to turn off)';
+      h.setAttribute('aria-pressed', 'true');
+    }else{
+      h.textContent = 'Queue Mode: OFF (tap to turn on)';
+      h.setAttribute('aria-pressed', 'false');
     }
   }
+  function bindHintToggle(){
+    var h = document.querySelector('#sbq-hint');
+    if(!h || h.__sbqBound) return;
+    h.__sbqBound = true;
+    h.setAttribute('role', 'button');
+    h.setAttribute('tabindex', '0');
+    updateHint(document.body.classList.contains('sbq-mode'));
+
+    h.addEventListener('click', function(e){
+      e.preventDefault(); e.stopPropagation();
+      setMode(!document.body.classList.contains('sbq-mode'));
+    }, true);
+    h.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault(); e.stopPropagation();
+        setMode(!document.body.classList.contains('sbq-mode'));
+      }
+    }, true);
+  }
+
   function navToIndex(idx){
     var q = loadQ();
     if(!q.length) return;
@@ -379,9 +407,8 @@
       e.preventDefault(); e.stopPropagation();
       var open = isOpen();
       if(!open){
-        bodyOn('sbq-open'); bodyOn('sbq-mode'); // open + queue mode ON
-        var qm = document.querySelector('#queue-mode-toggle'); if(qm){ qm.classList.add('active'); var label = qm.querySelector('.label'); if(label) label.textContent = 'Done'; }
-        syncBadges();
+        bodyOn('sbq-open');
+        setMode(true);   // ensure queue mode is ON when opening
       } else {
         bodyOff('sbq-open');
       }
@@ -423,11 +450,13 @@
     hardOverrides();
     bindButton();
     bindQueueMode();
+    bindHintToggle();
     bindPlay();
     bindPrevNext();
     bindClear();
     bindClose();
     bindAutoAdvanceOnAudio();
+    updateHint(document.body.classList.contains('sbq-mode'));
     syncBadges();
   }
 

@@ -4,7 +4,6 @@
 <head>
 <!-- BEGIN SWIPE-CAROUSEL-STYLE -->
 <!-- BEGIN HAMBURGER-MENU-CSS -->
-
 <!-- END HAMBURGER-MENU-CSS -->
 <style>
    .carousel-track {
@@ -25,10 +24,6 @@
   .carousel-track { padding-bottom: 0.5em; }
 }
   </style>
-
-
-
-
 <!-- END SWIPE-CAROUSEL-STYLE -->
 <!-- BEGIN HIDE-CAROUSEL-ARROWS -->
 <style>
@@ -71,9 +66,6 @@
 <meta charset="utf-8"/>
 <title>Poems</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-
-
-
 <style>
    /* removed desktop .story-card width% rule */
 .story-card img {
@@ -178,7 +170,6 @@
 </style>
 <style>
 </style>
-
 <style>
    .featured-header {
       font-size: 1.7em;
@@ -195,12 +186,10 @@
       .featured-header { font-size: 1.3em; }
     }
   </style>
-
 <style>
 </style>
 <style>
 </style>
-
 <style>
    @keyframes glowTrail {
   0%, 100% { text-shadow: none; }
@@ -247,10 +236,6 @@
   </style>
 <!-- BEGIN HAMBURGER-MENU-JS -->
 <!-- END HAMBURGER-MENU-JS -->
-
-
-
-
 <style id="mobile-disable-wand">/* Disable custom cursor + hide wand/sparkles on mobile */
 @media (max-width: 800px) {
   body { cursor: auto !important; }
@@ -452,14 +437,7 @@
     overflow: visible;
   }
 }
-</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='../index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='../index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
-/* Keep wand always visible above menus, and never block clicks */
-#wand {
-  position: fixed !important;
-  z-index: 20001 !important;
-  pointer-events: none !important;
-}
-</style><style>
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style>
    body { margin: 0;  background-color: #001f3f; min-height: 100vh; cursor: none;}
     header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
     .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
@@ -2098,7 +2076,14 @@ nav ul > li:focus-within > .dropdown {
     }
   }
 </style><style id="wand-pointer-events-fix">/* auto patch */
-#wand, .cursor-wand, .sparkle { pointer-events: none !important; }</style></head>
+#wand, .cursor-wand, .sparkle { pointer-events: none !important; }</style><script>window.SBQ_STILL_FIRST='../index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='../index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
+/* Keep wand always visible above menus, and never block clicks */
+#wand {
+  position: fixed !important;
+  z-index: 20001 !important;
+  pointer-events: none !important;
+}
+</style></head>
 <body>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>
@@ -2434,8 +2419,6 @@ document.addEventListener('DOMContentLoaded', updateStars);
   });
 })();
 </script>
-
-
 <script id="sb-dropdown-js">
 (function () {
   const nav = document.querySelector(".header-right nav");
@@ -2463,8 +2446,6 @@ document.addEventListener('DOMContentLoaded', updateStars);
   });
 })();
 </script>
-
-
 <script id="mobile-disable-wand-js">(function(){
   function isMobile(){
     return window.matchMedia("(max-width: 800px)").matches || ("ontouchstart" in window);
@@ -2549,26 +2530,7 @@ document.addEventListener('DOMContentLoaded', updateStars);
     margin-top: 0.06em !important;  /* tighter */
   }
 }
-</style><link href="queue_assets/queue.css" rel="stylesheet"/><div aria-live="polite" id="sbq-hint">Queue Mode ON</div><div aria-label="Open story queue" id="story-queue-button" role="button" tabindex="0" title="Open story queue">
-<img alt="Make Reading List" class="book-img" src="../index_items/make-reading-list.png"/>
-</div><div aria-labelledby="sbq-title" aria-modal="true" id="story-queue-menu" role="dialog">
-<div class="queue-menu-header">
-<button aria-label="Close" class="queue-menu-close">×</button>
-<h2 class="queue-menu-title" id="sbq-title">✨ My Story List ✨</h2>
-</div>
-<div class="queue-menu-list" id="queue-list">
-<div class="queue-empty-message">✨ Tap stories to add to your list ✨</div>
-</div>
-<div class="queue-menu-controls">
-<button data-tooltip="Create a read list: tap story cards to add/remove." id="queue-mode-toggle" title="Create a read list">
-<img alt="" aria-hidden="true" class="icon" src="queue_assets/queue-icon.png"/><span class="label">Create Queue</span>
-</button>
-<button class="queue-control-btn" id="queue-play" title="Play Queue">▶</button>
-<button class="queue-control-btn" disabled="" id="queue-prev" title="Previous Story">◀</button>
-<button class="queue-control-btn" disabled="" id="queue-next" title="Next Story">▶</button>
-<button class="queue-control-btn" disabled="" id="queue-clear" title="Clear Queue">🗑️</button>
-</div>
-</div><script>
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>
    (function () {
   const nav = document.querySelector(".header-right nav");
   const body = document.body;
@@ -3267,5 +3229,24 @@ document.addEventListener('DOMContentLoaded', updateStars);
     });
   }catch(_){}
 })();
-</script></body>
+</script><link href="queue_assets/queue.css" rel="stylesheet"/><div aria-live="polite" aria-pressed="false" id="sbq-hint">Queue Mode: OFF (tap to turn on)</div><div aria-label="Open story queue" id="story-queue-button" role="button" tabindex="0" title="Open story queue">
+<img alt="Make Reading List" class="book-img" src="../index_items/make-reading-list.png"/>
+</div><div aria-labelledby="sbq-title" aria-modal="true" id="story-queue-menu" role="dialog">
+<div class="queue-menu-header">
+<button aria-label="Close" class="queue-menu-close">×</button>
+<h2 class="queue-menu-title" id="sbq-title">✨ My Story List ✨</h2>
+</div>
+<div class="queue-menu-list" id="queue-list">
+<div class="queue-empty-message">✨ Tap stories to add to your list ✨</div>
+</div>
+<div class="queue-menu-controls">
+<button data-tooltip="Create a read list: tap story cards to add/remove." id="queue-mode-toggle" title="Create a read list">
+<img alt="" aria-hidden="true" class="icon" src="queue_assets/queue-icon.png"/><span class="label">Create Queue</span>
+</button>
+<button class="queue-control-btn" id="queue-play" title="Play Queue">▶</button>
+<button class="queue-control-btn" disabled="" id="queue-prev" title="Previous Story">◀</button>
+<button class="queue-control-btn" disabled="" id="queue-next" title="Next Story">▶</button>
+<button class="queue-control-btn" disabled="" id="queue-clear" title="Clear Queue">🗑️</button>
+</div>
+</div></body>
 </html>
