@@ -217,7 +217,7 @@
     }, { offset: Number.NEGATIVE_INFINITY }).element;
   }
 
-  // Bind clicks while in Queue Mode
+  // Click-to-queue while in Queue Mode
   function bindCardClicks(){
     document.addEventListener('click', function(e){
       if(!isMode()) return;
@@ -242,7 +242,7 @@
 
     var main = $('audio[data-sbq-main]') || $all('audio').find(function(a){ return a.offsetParent !== null; }) || $('audio');
     if(!main || main.__sbqAA) return;
-    main.__sbqAA = True;
+    main.__sbqAA = true;
 
     main.addEventListener('play', function(){ clearNavAndCountdown(); });
     main.addEventListener('ended', function(){
@@ -290,7 +290,7 @@
     btn.addEventListener('click', function(){ setMode(!isMode()); });
   }
 
-  // Toggle below the image (inside the button)
+  // Toggle logic
   function updateToggle(active){
     var sw = $('#sbq-toggle'); if(!sw) return;
     sw.dataset.on = active ? 'true' : 'false';
@@ -344,6 +344,7 @@
   function bindButton(){
     var btn = $('#story-queue-button'); if(!btn || btn.__sbqBound) return;
     btn.__sbqBound = true;
+
     var img = btn.querySelector('img'); var cfgv = cfg();
     if(img && cfgv.STILL_FIRST) img.src = cfgv.STILL_FIRST;
 
