@@ -187,7 +187,12 @@
     overflow: visible;
   }
 }
-</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='../index_items/listen_still_first.png';window.SBQ_STILL_LAST='../index_items/listen_still_last.png';window.SBQ_GIF_FWD='../index_items/listen_fast.gif';window.SBQ_GIF_REV='../index_items/listen_reverse_fast.gif';window.SBQ_GIF_MS=3018;window.SBQ_COUNTDOWN_URL='../index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='../index_items/listen_still_first.png';window.SBQ_STILL_LAST='../index_items/listen_still_last.png';window.SBQ_GIF_FWD='../index_items/listen_fast.gif';window.SBQ_GIF_REV='../index_items/listen_reverse_fast.gif';window.SBQ_GIF_MS=3018;window.SBQ_COUNTDOWN_URL='../index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>/* SB click-only override (no hover-close) */
+#story-queue-menu{display:none!important;}
+body.sbq-open #story-queue-menu{display:flex!important;}
+body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}
+body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}
+</style><style id="wand-top-style">
 /* Keep wand always visible above menus, and never block clicks */
 #wand {
   position: fixed !important;
@@ -2093,9 +2098,7 @@ document.querySelectorAll('nav ul > li').forEach(function(menuItem) {
   }
 }
 </style><link href="queue_assets/queue.css" rel="stylesheet"/><div aria-live="polite" id="sbq-hint">Queue Mode ON</div><div aria-label="Open story queue" id="story-queue-button" role="button" tabindex="0" title="Open story queue">
-<picture>
 <img alt="Story Queue Button" class="book-img" src="../index_items/listen_still_first.png"/>
-</picture>
 </div><div aria-labelledby="sbq-title" aria-modal="true" id="story-queue-menu" role="dialog">
 <div class="queue-menu-header">
 <button aria-label="Close" class="queue-menu-close">×</button>

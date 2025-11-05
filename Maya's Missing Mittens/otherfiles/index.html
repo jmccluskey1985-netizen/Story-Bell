@@ -425,7 +425,12 @@ nav ul > li:focus-within > .dropdown {
     overflow: visible;
   }
 }
-</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='../../index_items/listen_still_first.png';window.SBQ_STILL_LAST='../../index_items/listen_still_last.png';window.SBQ_GIF_FWD='../../index_items/listen_fast.gif';window.SBQ_GIF_REV='../../index_items/listen_reverse_fast.gif';window.SBQ_GIF_MS=3018;window.SBQ_COUNTDOWN_URL='../../index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='../../index_items/listen_still_first.png';window.SBQ_STILL_LAST='../../index_items/listen_still_last.png';window.SBQ_GIF_FWD='../../index_items/listen_fast.gif';window.SBQ_GIF_REV='../../index_items/listen_reverse_fast.gif';window.SBQ_GIF_MS=3018;window.SBQ_COUNTDOWN_URL='../../index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>/* SB click-only override (no hover-close) */
+#story-queue-menu{display:none!important;}
+body.sbq-open #story-queue-menu{display:flex!important;}
+body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}
+body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}
+</style><style id="wand-top-style">
 /* Keep wand always visible above menus, and never block clicks */
 #wand {
   position: fixed !important;
@@ -722,70 +727,6 @@ nav ul > li:focus-within > .dropdown {
   function getFavorites(){ try { return JSON.parse(localStorage.getItem('favorites') || "[]"); } catch { return []; } }
   function setFavorites(f){ localStorage.setItem('favorites', JSON.stringify(f)); }
   function isFavorite(t){ return getFavorites().includes(t); }
-
-  // --- kebab slug (lowercase + hyphens)
-  function kebab(s){
-    return (s||"").toLowerCase().trim()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/-+/g, "-")
-      .replace(/^-|-$/g, "");
-  }
-
-  // --- build a minimal card if not found on page
-  function buildCardFromTitle(title, desc){
-    var slug = kebab(title);
-    var href = "/stories/" + slug + "/";
-
-    // Image: try .webp → .jpg → .png
-    var img = document.createElement("img");
-    img.loading = "lazy";
-    img.alt = title;
-    img.src = "/icon/" + slug + ".webp";
-    img.onerror = function(){
-      if (img.src.endsWith(".webp")) img.src = "/icon/" + slug + ".jpg";
-      else if (img.src.endsWith(".jpg")) img.src = "/icon/" + slug + ".png";
-    };
-
-    var imgLink = document.createElement("a");
-    imgLink.href = href;
-    imgLink.appendChild(img);
-
-    var titleSpan = document.createElement("span");
-    titleSpan.className = "carousel-title";
-    titleSpan.textContent = title;
-
-    var titleLink = document.createElement("a");
-    titleLink.href = href;
-    titleLink.className = "carousel-title-link";
-    titleLink.appendChild(titleSpan);
-
-    var br = document.createElement("br");
-
-    var d = document.createElement("span");
-    d.className = "carousel-desc";
-    d.textContent = desc || "";
-
-    var fav = document.createElement("button");
-    fav.className = "favorite-star";
-    fav.setAttribute("data-title", title);
-    fav.setAttribute("title", "Remove from Favorites");
-    fav.innerHTML = '<span class="star">&#9733;</span>'; // filled by default in favorites
-    fav.addEventListener("click", function(e){
-      e.preventDefault();
-      toggleFavorite(fav);
-    });
-
-    var item = document.createElement("div");
-    item.className = "carousel-item";
-    item.setAttribute("data-title", title);
-    item.appendChild(imgLink);
-    item.appendChild(titleLink);
-    item.appendChild(br);
-    item.appendChild(d);
-    item.appendChild(fav);
-    return item;
-  }
-
   window.toggleFavorite = function(btn){
     const t = btn.getAttribute("data-title");
     let favs = getFavorites();
@@ -793,8 +734,7 @@ nav ul > li:focus-within > .dropdown {
     setFavorites(favs);
     updateStars();
     buildFavoritesCarousel();
-  };
-
+  }
   window.updateStars = function(){
     document.querySelectorAll('.favorite-star').forEach(btn=>{
       const t = btn.getAttribute("data-title");
@@ -802,7 +742,7 @@ nav ul > li:focus-within > .dropdown {
       if(star) star.innerHTML = isFavorite(t) ? "&#9733;" : "&#9734;";
       btn.title = isFavorite(t) ? "Remove from Favorites" : "Add to Favorites";
     });
-  };
+  }
 
   // Native-momentum init for a single wrapper (Favorites)
   function initFavoritesNative(wrapper){
@@ -814,9 +754,11 @@ nav ul > li:focus-within > .dropdown {
     const items = Array.from(track.children).filter(n=>n.matches('.carousel-item,.carousel-card'));
     const base = items.length; if(!base) return;
 
+    // Measure one card
     const measure = ()=> (items[0]?.getBoundingClientRect().width || container.getBoundingClientRect().width/2 || 1);
     let cardW = measure();
 
+    // Clone enough items on each side
     let clones = Math.max(1, Math.ceil(container.clientWidth / cardW));
     clones = Math.min(clones, base);
     const head = items.slice(0, clones).map(n=>n.cloneNode(true));
@@ -828,10 +770,12 @@ nav ul > li:focus-within > .dropdown {
     const start = clones * cardW;
     track.scrollLeft = Math.round(start);
 
+    // Buttons
     const [leftBtn, rightBtn] = wrapper.querySelectorAll('.carousel-button');
     if(leftBtn)  leftBtn.onclick  = (e)=>{ e.preventDefault(); track.scrollBy({left:-cardW,behavior:'smooth'}); };
     if(rightBtn) rightBtn.onclick = (e)=>{ e.preventDefault(); track.scrollBy({left: cardW,behavior:'smooth'}); };
 
+    // Wrap
     let wrapping=false;
     track.addEventListener('scroll', ()=>{
       if(wrapping) return;
@@ -844,6 +788,7 @@ nav ul > li:focus-within > .dropdown {
       }
     }, {passive:true});
 
+    // Keep aligned on resize
     window.addEventListener('resize', ()=>{
       cardW = measure();
       const idx = Math.round(track.scrollLeft / (cardW||1));
@@ -862,17 +807,8 @@ nav ul > li:focus-within > .dropdown {
 
     favs.forEach(t=>{
       if(used.has(t)) return;
-      // 1) Prefer an existing card on page
-      const existing = allCards.find(el => el.getAttribute('data-title') === t);
-      if(existing){
-        favCards.push(existing.cloneNode(true));
-        used.add(t);
-        return;
-      }
-      // 2) Fallback: build a new card from kebab assumptions
-      const desc = ""; // (optional) could be improved later if a global index is exposed
-      favCards.push(buildCardFromTitle(t, desc));
-      used.add(t);
+      const c = allCards.find(el => el.getAttribute('data-title') === t);
+      if(c){ favCards.push(c.cloneNode(true)); used.add(t); }
     });
 
     // Find or create the target section
@@ -946,9 +882,7 @@ nav ul > li:focus-within > .dropdown {
   });
 })();
 </script><link href="queue_assets/queue.css" rel="stylesheet"/><div aria-live="polite" id="sbq-hint">Queue Mode ON</div><div aria-label="Open story queue" id="story-queue-button" role="button" tabindex="0" title="Open story queue">
-<picture>
 <img alt="Story Queue Button" class="book-img" src="../../index_items/listen_still_first.png"/>
-</picture>
 </div><div aria-labelledby="sbq-title" aria-modal="true" id="story-queue-menu" role="dialog">
 <div class="queue-menu-header">
 <button aria-label="Close" class="queue-menu-close">×</button>

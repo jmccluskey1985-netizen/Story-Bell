@@ -509,7 +509,8 @@ header .site-title {
 }
 .story-card{
   flex: 0 1 260px;
-  min-width: 260px; max-width: 320px;
+  min-width: 260px;
+  max-width: 320px;
   display:flex; flex-direction:column; box-sizing:border-box;
   background:#001f3f; color:#fff; padding:12px; border-radius:14px;
   border:2px solid #FFEB3B; box-shadow:0 2px 10px #2223;
@@ -560,20 +561,57 @@ header .site-title {
 </style>
 <style id="sb-cards-grid-clean">
 .cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
-  display:flex !important; flex-wrap:wrap !important; justify-content:center !important;
-  align-items:stretch !important; gap:16px !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  gap: 16px !important;
 }
-.cards-grid > .story-card, #story-cards .cards-grid > .story-card, #story-cards .story-grid > .story-card {
-  display:flex !important; flex-direction:column !important; align-self:stretch !important;
-  box-sizing:border-box !important; margin:0 !important; width:auto !important; min-width:0 !important;
-  max-width:none !important; height:auto !important; min-height:0 !important; flex:0 1 calc(25% - 16px) !important;
+.cards-grid > .story-card,
+#story-cards .cards-grid > .story-card,
+#story-cards .story-grid > .story-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-self: stretch !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  flex: 0 1 calc(25% - 16px) !important;   /* 4-up desktop */
 }
-@media (max-width:1200px){ .cards-grid > .story-card, #story-cards .cards-grid > .story-card, #story-cards .story-grid > .story-card { flex:0 1 calc(33.333% - 16px) !important; } }
-@media (max-width:800px){  .cards-grid > .story-card, #story-cards .cards-grid > .story-card, #story-cards .story-grid > .story-card { flex:0 1 calc(50% - 10px) !important; } }
-.cards-grid > .story-card .chips, #story-cards .cards-grid > .story-card .chips, #story-cards .story-grid > .story-card .chips { overflow:visible !important; max-height:none !important; }
-.cards-grid > .story-card .desc-wrap p, #story-cards .cards-grid > .story-card .desc-wrap p, #story-cards .story-grid > .story-card .desc-wrap p { display:block !important; -webkit-line-clamp:unset !important; -webkit-box-orient:unset !important; overflow:visible !important; }
+@media (max-width: 1200px){
+  .cards-grid > .story-card,
+  #story-cards .cards-grid > .story-card,
+  #story-cards .story-grid > .story-card {
+    flex: 0 1 calc(33.333% - 16px) !important;     /* 3-up tablet */
+  }
+}
+@media (max-width: 800px){
+  .cards-grid > .story-card,
+  #story-cards .cards-grid > .story-card,
+  #story-cards .story-grid > .story-card {
+    flex: 0 1 calc(50% - 10px) !important;         /* 2-up mobile */
+  }
+}
+.cards-grid > .story-card .chips,
+#story-cards .cards-grid > .story-card .chips,
+#story-cards .story-grid > .story-card .chips {
+  overflow: visible !important;
+  max-height: none !important;
+}
+.cards-grid > .story-card .desc-wrap p,
+#story-cards .cards-grid > .story-card .desc-wrap p,
+#story-cards .story-grid > .story-card .desc-wrap p {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+  overflow: visible !important;
+}
 </style>
-<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story Bell","url":"https://story-bell.com/","publisher":{"@type":"Organization","name":"Story Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Reading Tips & FAQ – Story Bell","url":"https://story-bell.com/faq.html","inLanguage":"en","description":"Discover practical reading tips for parents and caregivers. Learn how to nurture a love of reading from birth through adolescence with daily reading routines, interactive storytelling and balanced guidance. Use these tips to spark enjoyment and confidence in young readers.","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}},"mainEntity":[{"@type":"Question","name":"How long should I read with my child each day?","acceptedAnswer":{"@type":"Answer","text":"Even 10–15 minutes daily is powerful. Regular short sessions build vocabulary, comprehension and reading habits."}},{"@type":"Question","name":"When should I start reading to my child?","acceptedAnswer":{"@type":"Answer","text":"From birth. Babies benefit from rhythm, tone and bonding during reading."}},{"@type":"Question","name":"Should I correct every mistake when my child reads aloud?","acceptedAnswer":{"@type":"Answer","text":"No. Let them self-correct first and provide gentle support when needed."}},{"@type":"Question","name":"What if my child wants the same book every night?","acceptedAnswer":{"@type":"Answer","text":"Repetition is beneficial for memory and comprehension and builds confidence."}},{"@type":"Question","name":"Do audiobooks or digital stories count as reading?","acceptedAnswer":{"@type":"Answer","text":"Yes—especially when the text is highlighted in sync with the narration."}},{"@type":"Question","name":"Is scrolling text with audio better than video story formats?","acceptedAnswer":{"@type":"Answer","text":"Yes. Scrolling text mimics natural reading and supports eye-tracking and decoding."}},{"@type":"Question","name":"How can I help if English isn’t our first language?","acceptedAnswer":{"@type":"Answer","text":"Reading in any language helps. Strong first-language foundations transfer to English."}},{"@type":"Question","name":"How can I keep older children (7–12) engaged?","acceptedAnswer":{"@type":"Answer","text":"Encourage choice, discuss themes and morals, and explore different genres. Motivation drives growth."}},{"@type":"Question","name":"What are the benefits of social-emotional intelligence books?","acceptedAnswer":{"@type":"Answer","text":"They build emotional literacy, empathy and resilience, improving social skills and academic success."}},{"@type":"Question","name":"Should I mix print and digital books?","acceptedAnswer":{"@type":"Answer","text":"Yes. Print builds focus while digital adds scaffolds like highlighting. Balanced use is best."}}]}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://story-bell.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Reading Tips & FAQ – Story Bell","url":"https://story-bell.com/faq.html","inLanguage":"en","description":"Discover practical reading tips for parents and caregivers. Learn how to nurture a love of reading from birth through adolescence with daily reading routines, interactive storytelling and balanced guidance. Use these tips to spark enjoyment and confidence in young readers.","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}},"mainEntity":{"@type":"ItemList","numberOfItems":0,"itemListElement":[]},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://story-bell.com/"},{"@type":"ListItem","position":2,"name":"Reading Tips & FAQ – Story Bell","item":"https://story-bell.com/faq.html"}]}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
 .carousel-section .carousel-desc{
@@ -757,7 +795,12 @@ header .site-title {
 </style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>/* SBQ cleanup override: menu shows only with .active */
 #story-queue-menu{display:none !important;}
 html body #story-queue-menu.active{display:flex !important;}
-</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='index_items/listen_still_first.png';window.SBQ_STILL_LAST='index_items/listen_still_last.png';window.SBQ_GIF_FWD='index_items/listen_fast.gif';window.SBQ_GIF_REV='index_items/listen_reverse_fast.gif';window.SBQ_GIF_MS=3018;window.SBQ_COUNTDOWN_URL='index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='index_items/listen_still_first.png';window.SBQ_STILL_LAST='index_items/listen_still_last.png';window.SBQ_GIF_FWD='index_items/listen_fast.gif';window.SBQ_GIF_REV='index_items/listen_reverse_fast.gif';window.SBQ_GIF_MS=3018;window.SBQ_COUNTDOWN_URL='index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>/* SB click-only override (no hover-close) */
+#story-queue-menu{display:none!important;}
+body.sbq-open #story-queue-menu{display:flex!important;}
+body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}
+body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}
+</style><style id="wand-top-style">
 /* Keep wand always visible above menus, and never block clicks */
 #wand {
   position: fixed !important;
@@ -2533,7 +2576,7 @@ nav ul > li:focus-within > .dropdown {
 <li>Balance fun and skills by mixing playful voices with discussion of words and themes</li>
 </ul>
 </section>
-<section aria-labelledby="faq-title" id="faq">
+<div class="cards-grid"></div><section aria-labelledby="faq-title" id="faq">
 <h2 id="faq-title">FAQ: Reading</h2>
 <h3>How long should I read with my child each day?</h3>
 <p>Even 10–15 minutes daily is powerful. Regular short sessions build vocabulary, comprehension and reading habits.</p>
@@ -2650,21 +2693,44 @@ nav ul > li:focus-within > .dropdown {
 <script id="sb-cards-flex-enforcer">
 (function(){
   function applyLayout(root){
-    var grids=(root||document).querySelectorAll('.cards-grid, #story-cards .cards-grid, #story-cards .story-grid');
+    var grids = (root||document).querySelectorAll('.cards-grid, #story-cards .cards-grid, #story-cards .story-grid');
     grids.forEach(function(grid){
-      grid.style.display='flex'; grid.style.flexWrap='wrap'; grid.style.justifyContent='center';
-      grid.style.alignItems='stretch'; grid.style.gap='16px';
-      var w=window.innerWidth, basis='calc(25% - 16px)'; if(w<=1200) basis='calc(33.333% - 16px)'; if(w<=800) basis='calc(50% - 10px)';
+      grid.style.display = 'flex';
+      grid.style.flexWrap = 'wrap';
+      grid.style.justifyContent = 'center';
+      grid.style.alignItems = 'stretch';
+      grid.style.gap = '16px';
+
+      var w = window.innerWidth;
+      var basis = 'calc(25% - 16px)';               // desktop
+      if (w <= 1200) basis = 'calc(33.333% - 16px)'; // tablet
+      if (w <= 800)  basis = 'calc(50% - 10px)';     // mobile
+
       grid.querySelectorAll(':scope > .story-card').forEach(function(card){
-        card.style.display='flex'; card.style.flexDirection='column'; card.style.alignSelf='stretch';
-        card.style.boxSizing='border-box'; card.style.margin='0'; card.style.width=''; card.style.minWidth='0';
-        card.style.maxWidth='none'; card.style.height='auto'; card.style.minHeight='0'; card.style.flex='0 1 '+basis;
+        card.style.display = 'flex';
+        card.style.flexDirection = 'column';
+        card.style.alignSelf = 'stretch';
+        card.style.boxSizing = 'border-box';
+        card.style.margin = '0';
+        card.style.width = '';
+        card.style.minWidth = '0';
+        card.style.maxWidth = 'none';
+        card.style.height = 'auto';
+        card.style.minHeight = '0';
+        card.style.flex = '0 1 ' + basis;
       });
-      grid.querySelectorAll('.chips').forEach(function(ch){ ch.style.overflow='visible'; ch.style.maxHeight='none'; });
-      grid.querySelectorAll('.desc-wrap p').forEach(function(p){ p.style.display='block'; p.style.overflow='visible'; });
+
+      grid.querySelectorAll('.chips').forEach(function(ch){
+        ch.style.overflow = 'visible';
+        ch.style.maxHeight = 'none';
+      });
+      grid.querySelectorAll('.desc-wrap p').forEach(function(p){
+        p.style.display = 'block';
+        p.style.overflow = 'visible';
+      });
     });
   }
-  function onReady(fn){ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', fn, {once:true}); else fn(); }
+  function onReady(fn){ if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, {once:true}); else fn(); }
   onReady(function(){ applyLayout(document); window.addEventListener('resize', function(){ applyLayout(document); }); });
 })();
 </script>
@@ -2712,9 +2778,7 @@ nav ul > li:focus-within > .dropdown {
   }
 }
 </style><link href="queue_assets/queue.css" rel="stylesheet"/><div aria-live="polite" id="sbq-hint">Queue Mode ON</div><div aria-label="Open story queue" id="story-queue-button" role="button" tabindex="0" title="Open story queue">
-<picture>
 <img alt="Story Queue Button" class="book-img" src="index_items/listen_still_first.png"/>
-</picture>
 </div><div aria-labelledby="sbq-title" aria-modal="true" id="story-queue-menu" role="dialog">
 <div class="queue-menu-header">
 <button aria-label="Close" class="queue-menu-close">×</button>
