@@ -3,17 +3,20 @@
   --sb-edge-desktop: 8px;
   --sb-edge-mobile: 8px;
 
-  /* Placement */
+  /* Placement from screen bottom-right */
   --btn-bottom-desktop: 12.5vh;
   --btn-bottom-mobile: 12.5vh;
 
-  /* 40% of previous container size (hitbox) */
+  /* 40% button footprint (hitbox + visual) */
   --btn-w-desktop: 76px;  /* 190 * .4 */
   --btn-h-desktop: 94px;  /* 235 * .4 */
 
-  /* Mobile: 40% of previous 36vw (≈14.4vw) */
+  /* Mobile footprint: 40% of previous 36vw -> 14.4vw */
   --btn-w-mobile: 14.4vw;
   --btn-h-mobile: calc(var(--btn-w-mobile) * 1.2);
+
+  /* Toggle size */
+  --toggle-scale: .5;
 
   /* Menu sizes */
   --menu-w-desktop: 320px;
@@ -24,37 +27,38 @@
   --menu-maxh-mobile: 250px;
   --menu-font-mobile: 12px;
 
-  --menu-scale: .6;   /* mobile default; desktop -> .828 */
-
+  --menu-scale: .6;   /* desktop overridden below */
   --yellow: #FFEB3B;
   --blue0: #00152a;
   --blue1: #001f3f;
   --blue2: #003366;
-
-  --toggle-scale: .5; /* 50% size for toggle */
 }
 @media (min-width: 901px){
   :root{ --menu-scale: .828; }
 }
 
-/* Floating button container — smaller footprint */
+/* Floating create-story-list BUTTON — 40% footprint */
 #story-queue-button{
   position: fixed !important;
   right: var(--sb-edge-desktop) !important;
   bottom: var(--btn-bottom-desktop) !important;
-  width: var(--btn-w-desktop) !important; height: var(--btn-h-desktop) !important;
-  z-index: 2147483647 !important; cursor: pointer !important;
-  transition: transform .18s ease; pointer-events: auto !important;
-  background: transparent !important; touch-action: manipulation;
+  width: var(--btn-w-desktop) !important;
+  height: var(--btn-h-desktop) !important;
+  z-index: 2147483647 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  background: transparent !important;
+  touch-action: manipulation;
+  transition: transform .18s ease;
 }
 #story-queue-button.sbq-press{ transform: translateY(-1px) scale(1.01); }
 
-/* Image inside the smaller container */
+/* The PNG fills the smaller box so the click/highlight matches the visual */
 #story-queue-button .book-img{
   position: absolute !important;
-  right: 0;
-  bottom: 0; /* align inside the smaller box */
-  width: 100% !important; height: 100% !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
   object-fit: contain !important;
   display: block !important;
   pointer-events: none !important;
@@ -67,13 +71,14 @@ body.sbq-open #story-queue-button .book-img{
   filter: drop-shadow(0 0 12px rgba(255,235,59,.85)) drop-shadow(0 0 26px rgba(255,235,59,.35));
 }
 
-/* Toggle BELOW the button (separate fixed element), at 50% size */
+/* QUEUE TOGGLE — pinned ABOVE the button (and scaled 50%) */
 #sbq-toggle-wrap{
   position: fixed;
   right: var(--sb-edge-desktop);
-  bottom: calc(var(--btn-bottom-desktop) - 8px); /* slightly below button */
-  transform: translateY(100%) scale(var(--toggle-scale));
-  transform-origin: top right;
+  /* sit directly above button: bottom = button bottom + button height + gap */
+  bottom: calc(var(--btn-bottom-desktop) + var(--btn-h-desktop) + 6px);
+  transform: scale(var(--toggle-scale));
+  transform-origin: bottom right;
   z-index: 2147483647 !important;
   display: none; /* shown first time you open the menu */
   user-select: none;
@@ -169,20 +174,22 @@ body.sbq-open #story-queue-menu{ display: flex !important; }
 
 @media (max-width: 900px){
   #story-queue-button{
-    width: var(--btn-w-mobile) !important; height: var(--btn-h-mobile) !important;
-    right: var(--sb-edge-mobile) !important; bottom: var(--btn-bottom-mobile) !important;
+    width: var(--btn-w-mobile) !important;
+    height: var(--btn-h-mobile) !important;
+    right: var(--sb-edge-mobile) !important;
+    bottom: var(--btn-bottom-mobile) !important;
+  }
+  #sbq-toggle-wrap{
+    right: var(--sb-edge-mobile);
+    bottom: calc(var(--btn-bottom-mobile) + var(--btn-h-mobile) + 6px);
+    transform: scale(var(--toggle-scale));
+    transform-origin: bottom right;
   }
   #story-queue-menu{
     right: var(--sb-edge-mobile) !important;
     bottom: calc(var(--btn-bottom-mobile) + var(--btn-h-mobile) + 6px) !important;
     width: var(--menu-w-mobile) !important; max-height: var(--menu-maxh-mobile) !important; font-size: var(--menu-font-mobile);
     transform: scale(var(--menu-scale)); transform-origin: bottom right;
-  }
-  #sbq-toggle-wrap{
-    right: var(--sb-edge-mobile);
-    bottom: calc(var(--btn-bottom-mobile) - 8px);
-    transform: translateY(100%) scale(var(--toggle-scale));
-    transform-origin: top right;
   }
 }
 
