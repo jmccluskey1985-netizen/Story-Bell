@@ -7,15 +7,15 @@
   --btn-bottom-desktop: 12.5vh;
   --btn-bottom-mobile: 12.5vh;
 
-  /* Button container size (kept from your layout) */
+  /* Button container size (matches your layout) */
   --btn-w-desktop: 190px;
   --btn-h-desktop: 235px;
 
-  /* MOBILE: size from viewport width */
+  /* MOBILE sizes */
   --btn-w-mobile: 36vw;
   --btn-h-mobile: calc(var(--btn-w-mobile) * 1.2);
 
-  /* Menu base sizes; scale via --menu-scale */
+  /* Menu sizes */
   --menu-w-desktop: 320px;
   --menu-maxh-desktop: 320px;
   --menu-font: 13px;
@@ -30,12 +30,16 @@
   --blue0: #00152a;
   --blue1: #001f3f;
   --blue2: #003366;
+
+  --toggle-on: #22c55e;   /* green */
+  --toggle-off: #ef4444;  /* red */
+  --toggle-track: #0b2f5a;
 }
 @media (min-width: 901px){
   :root{ --menu-scale: .828; }
 }
 
-/* Floating button with glow */
+/* Floating button */
 #story-queue-button{
   position: fixed !important;
   right: var(--sb-edge-desktop) !important;
@@ -50,8 +54,7 @@
 #story-queue-button.sbq-press{ filter: drop-shadow(0 0 14px rgba(255,235,59,.85)) drop-shadow(0 0 28px rgba(255,235,59,.45)); }
 body.sbq-open #story-queue-button{ filter: drop-shadow(0 0 12px rgba(255,235,59,.85)) drop-shadow(0 0 26px rgba(255,235,59,.35)); }
 
-/* The image inside the button (scaled, anchored bottom-right)
-   Previous scale: 0.140625 ; New = 30% of that = 0.0421875 */
+/* Button image — ORIGINAL scale */
 #story-queue-button .book-img{
   position: absolute !important;
   right: 0;
@@ -59,10 +62,48 @@ body.sbq-open #story-queue-button{ filter: drop-shadow(0 0 12px rgba(255,235,59,
   width: auto !important; height: auto !important;
   max-width: none !important; max-height: none !important;
   object-fit: contain !important;
-  transform: scale(.0421875);
+  transform: scale(.140625);        /* restored */
   transform-origin: bottom right;
   display: block !important;
   pointer-events: none !important;
+}
+
+/* Reveal-on-first-open toggle (below the button, initially hidden) */
+#sbq-toggle-wrap{
+  position: fixed;
+  right: var(--sb-edge-desktop);
+  bottom: calc(var(--btn-bottom-desktop) - 36px);
+  z-index: 2147483647 !important;
+  display: none; /* shown on first open */
+  user-select: none;
+}
+#sbq-toggle-wrap .label{
+  font-size: 12px; font-weight: 800; color: var(--yellow);
+  margin-right: 8px;
+  text-shadow: 0 2px 6px rgba(0,0,0,.35);
+}
+
+/* Toggle switch (green/red) */
+.sbq-toggle{
+  position: relative; width: 58px; height: 28px; border-radius: 999px;
+  background: var(--toggle-off);
+  border: 2px solid #fff3; box-shadow: 0 4px 14px rgba(0,0,0,.35);
+  transition: background .18s ease;
+  display: inline-block; vertical-align: middle;
+}
+.sbq-toggle input{
+  position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+}
+.sbq-toggle .knob{
+  position: absolute; top: 2px; left: 2px; width: 24px; height: 24px; border-radius: 50%;
+  background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.2);
+  transition: left .18s ease, background .18s ease;
+}
+.sbq-toggle[data-on="true"]{
+  background: var(--toggle-on);
+}
+.sbq-toggle[data-on="true"] .knob{
+  left: 32px;
 }
 
 /* Menu just above button; scaled */
@@ -112,20 +153,6 @@ body.sbq-open #story-queue-menu{ display: flex !important; }
 .queue-control-btn{ width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--yellow); color: var(--yellow); background: transparent; font-size: 18px; cursor: pointer; display: grid; place-items: center; font-family: system-ui, "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji", emoji, sans-serif; }
 .queue-control-btn:disabled{ opacity: .35; cursor: not-allowed; }
 
-/* Yellow queue-mode TOGGLE (always visible, below the button) */
-#sbq-hint{
-  position: fixed;
-  right: var(--sb-edge-desktop);
-  bottom: calc(var(--btn-bottom-desktop) - 32px);
-  background: var(--yellow); color: var(--blue1);
-  padding: 4px 10px; border-radius: 999px; font-weight: 800; font-size: 12px;
-  box-shadow: 0 6px 16px rgba(0,0,0,.3);
-  z-index: 2147483647 !important;
-  display: inline-block;               /* always visible */
-  cursor: pointer; user-select: none;
-}
-#sbq-hint[aria-pressed="true"]{ outline: 2px solid #fff; }
-
 /* Strong queued highlight + badge */
 .sbq-queued{ box-shadow: 0 0 0 3px var(--yellow), 0 0 18px rgba(255,235,59,.35) !important; outline: 3px solid var(--yellow); outline-offset: 0; position: relative !important; }
 .sbq-badge{ position: absolute; top: 6px; right: 6px; min-width: 18px; height: 18px; border-radius: 999px; background: var(--yellow); color: var(--blue1); display: grid; place-items: center; font-weight: 800; font-size: 11px; border: 2px solid #fff; z-index: 10; }
@@ -154,10 +181,9 @@ body.sbq-open #story-queue-menu{ display: flex !important; }
     width: var(--menu-w-mobile) !important; max-height: var(--menu-maxh-mobile) !important; font-size: var(--menu-font-mobile);
     transform: scale(var(--menu-scale)); transform-origin: bottom right;
   }
-  #sbq-hint{
+  #sbq-toggle-wrap{
     right: var(--sb-edge-mobile);
-    bottom: calc(var(--btn-bottom-mobile) - 32px);
-    font-size: 12px;
+    bottom: calc(var(--btn-bottom-mobile) - 36px);
   }
   #sbq-next-overlay{ bottom: 25vh !important; }
 }

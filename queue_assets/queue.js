@@ -13,7 +13,7 @@
 
   function cfg(){
     return {
-      STILL_FIRST: window.SBQ_STILL_FIRST || '',  // our PNG
+      STILL_FIRST: window.SBQ_STILL_FIRST || '',  // our PNG button image
       COUNTDOWN_URL: window.SBQ_COUNTDOWN_URL || ''
     };
   }
@@ -26,20 +26,27 @@
   function loadQ(){ try{ return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); }catch(_){ return []; } }
   function saveQ(q){ try{ localStorage.setItem(LS_KEY, JSON.stringify(q)); }catch(_){} }
 
-  // Shared mode setter so both the pill and the big button use the same logic
   function setMode(active){
     if(active){
       bodyOn('sbq-mode');
       var qm = $('#queue-mode-toggle');
       if(qm){ qm.classList.add('active'); var label=qm.querySelector('.label'); if(label) label.textContent='Done'; }
-      updateHint(true);
+      updateToggle(true);
     }else{
       bodyOff('sbq-mode');
       var qm2 = $('#queue-mode-toggle');
       if(qm2){ qm2.classList.remove('active'); var label2=qm2.querySelector('.label'); if(label2) label2.textContent='Create Queue'; }
-      updateHint(false);
+      updateToggle(false);
     }
     syncBadges();
+  }
+
+  // Reveal the toggle once per page (first open)
+  function revealToggleOnce(){
+    if(window.__sbqToggleRevealed) return;
+    window.__sbqToggleRevealed = true;
+    var w = $('#sbq-toggle-wrap');
+    if(w) w.style.display = 'inline-block';
   }
 
   // --- Cleanup timers/overlay/audio ---
@@ -53,7 +60,7 @@
     window.__sbqPaused = false;
   }
 
-  // --- Countdown overlay at 25vh ---
+  // Countdown overlay
   function ensureOverlay(title){
     var ov = $('#sbq-next-overlay');
     if(ov) return ov;
@@ -306,36 +313,28 @@
     });
   }
 
-  // Yellow pill below the button — acts as a toggle
-  function updateHint(active){
-    var h = document.querySelector('#sbq-hint');
-    if(!h) return;
-    if(active){
-      h.textContent = 'Queue Mode: ON (tap to turn off)';
-      h.setAttribute('aria-pressed', 'true');
-    }else{
-      h.textContent = 'Queue Mode: OFF (tap to turn on)';
-      h.setAttribute('aria-pressed', 'false');
-    }
+  // Toggle switch below the button
+  function updateToggle(active){
+    var sw = document.querySelector('#sbq-toggle');
+    if(!sw) return;
+    sw.dataset.on = active ? 'true' : 'false';
+    var cb = sw.querySelector('input[type="checkbox"]');
+    if(cb) cb.checked = !!active;
+    sw.setAttribute('aria-pressed', active ? 'true' : 'false');
   }
-  function bindHintToggle(){
-    var h = document.querySelector('#sbq-hint');
-    if(!h || h.__sbqBound) return;
-    h.__sbqBound = true;
-    h.setAttribute('role', 'button');
-    h.setAttribute('tabindex', '0');
-    updateHint(document.body.classList.contains('sbq-mode'));
+  function bindToggle(){
+    var w = document.querySelector('#sbq-toggle-wrap');
+    var sw = document.querySelector('#sbq-toggle');
+    if(!w || !sw || sw.__sbqBound) return;
+    sw.__sbqBound = true;
 
-    h.addEventListener('click', function(e){
-      e.preventDefault(); e.stopPropagation();
-      setMode(!document.body.classList.contains('sbq-mode'));
-    }, true);
-    h.addEventListener('keydown', function(e){
-      if(e.key === 'Enter' || e.key === ' '){
-        e.preventDefault(); e.stopPropagation();
-        setMode(!document.body.classList.contains('sbq-mode'));
-      }
-    }, true);
+    var cb = sw.querySelector('input[type="checkbox"]');
+    if(cb){
+      cb.checked = document.body.classList.contains('sbq-mode');
+      cb.addEventListener('change', function(e){
+        setMode(!!cb.checked);
+      }, true);
+    }
   }
 
   function navToIndex(idx){
@@ -408,7 +407,8 @@
       var open = isOpen();
       if(!open){
         bodyOn('sbq-open');
-        setMode(true);   // ensure queue mode is ON when opening
+        revealToggleOnce();    // show the toggle the first time you open
+        setMode(true);         // default to ON when opening
       } else {
         bodyOff('sbq-open');
       }
@@ -450,13 +450,13 @@
     hardOverrides();
     bindButton();
     bindQueueMode();
-    bindHintToggle();
     bindPlay();
     bindPrevNext();
     bindClear();
     bindClose();
+    bindToggle();
     bindAutoAdvanceOnAudio();
-    updateHint(document.body.classList.contains('sbq-mode'));
+    updateToggle(document.body.classList.contains('sbq-mode'));
     syncBadges();
   }
 
