@@ -611,45 +611,7 @@ header .site-title {
   overflow: visible !important;
 }
 </style>
-<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://story-bell.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Reading Tips & FAQ – Story Bell","url":"https://story-bell.com/faq.html","inLanguage":"en","description":"Discover practical reading tips for parents and caregivers. Learn how to nurture a love of reading from birth through adolescence with daily reading routines, interactive storytelling and balanced guidance. Use these tips to spark enjoyment and confidence in young readers.","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}},"mainEntity":{"@type":"ItemList","numberOfItems":0,"itemListElement":[]},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://story-bell.com/"},{"@type":"ListItem","position":2,"name":"Reading Tips & FAQ – Story Bell","item":"https://story-bell.com/faq.html"}]}}</script>
-<style id="sb-play-all-style">
-.sb-play-all-wrap {
-  max-width: 1200px;
-  margin: 1.5em auto 0.5em auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.sb-play-all-btn {
-  background: #FFEB3B;
-  color: #001f3f;
-  font-weight: 900;
-  font-size: 1.05em;
-  padding: 9px 24px;
-  border-radius: 999px;
-  border: 2px solid #FFEB3B;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.35);
-  text-transform: none;
-  letter-spacing: 0.02em;
-}
-.sb-play-all-btn span.icon {
-  font-size: 1.1em;
-  line-height: 1;
-}
-.sb-play-all-btn:hover,
-.sb-play-all-btn:focus-visible {
-  outline: none;
-  background: #ffe956;
-  border-color: #ffe956;
-  box-shadow: 0 0 18px rgba(255,235,59,.85), 0 4px 14px rgba(0,0,0,.5);
-  transform: translateY(-1px);
-}
-</style>
-<style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://story-bell.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Reading Tips & FAQ – Story Bell","url":"https://story-bell.com/faq.html","inLanguage":"en","description":"Discover practical reading tips for parents and caregivers. Learn how to nurture a love of reading from birth through adolescence with daily reading routines, interactive storytelling and balanced guidance. Use these tips to spark enjoyment and confidence in young readers.","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}},"mainEntity":{"@type":"ItemList","numberOfItems":0,"itemListElement":[]},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://story-bell.com/"},{"@type":"ListItem","position":2,"name":"Reading Tips & FAQ – Story Bell","item":"https://story-bell.com/faq.html"}]}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
 .carousel-section .carousel-desc{
@@ -2609,7 +2571,7 @@ nav ul > li:focus-within > .dropdown {
 <li>Balance fun and skills by mixing playful voices with discussion of words and themes</li>
 </ul>
 </section>
-<div class="sb-play-all-wrap"><button class="sb-play-all-btn" data-sb-play-all="1" title="Add all stories on this page to your Story List" type="button"><span class="icon">▶</span> Play all</button></div><div class="cards-grid"></div><section aria-labelledby="faq-title" id="faq">
+<div class="cards-grid"></div><section aria-labelledby="faq-title" id="faq">
 <h2 id="faq-title">FAQ: Reading</h2>
 <h3>How long should I read with my child each day?</h3>
 <p>Even 10–15 minutes daily is powerful. Regular short sessions build vocabulary, comprehension and reading habits.</p>
@@ -2765,111 +2727,6 @@ nav ul > li:focus-within > .dropdown {
   }
   function onReady(fn){ if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, {once:true}); else fn(); }
   onReady(function(){ applyLayout(document); window.addEventListener('resize', function(){ applyLayout(document); }); });
-})();
-</script>
-<script id="sb-play-all-script">
-(function(){
-  if (window.__SB_PLAY_ALL_BOUND) return;
-  window.__SB_PLAY_ALL_BOUND = true;
-
-  function loadQ(){
-    try { return JSON.parse(localStorage.getItem('storyBellQueue') || '[]'); }
-    catch (_) { return []; }
-  }
-  function saveQ(q){
-    try { localStorage.setItem('storyBellQueue', JSON.stringify(q)); } catch(_){}
-  }
-
-  function storyIdFromHref(href){
-    try {
-      var u = new URL(href, window.location.href);
-      var fn = (u.pathname.split('/').pop() || '');
-      return fn.replace(/\.[^.]+$/, '').toLowerCase();
-    } catch(_){
-      var fn2 = (href || '').split('/').pop() || '';
-      return fn2.replace(/\.[^.]+$/, '').toLowerCase();
-    }
-  }
-
-  function applyBadges(){
-    var q = loadQ();
-    var map = new Map(q.map(function(it, i){ return [it.id, i+1]; }));
-
-    // Clear old
-    document.querySelectorAll('.sbq-badge').forEach(function(b){ b.remove(); });
-    document.querySelectorAll('.sbq-queued').forEach(function(el){ el.classList.remove('sbq-queued'); });
-
-    // Repaint on visible cards
-    var targets = document.querySelectorAll('.story-card a[href$=".html"], a[href$=".html"].story-link');
-    targets.forEach(function(a){
-      var href = a.getAttribute('href') || '';
-      var id = storyIdFromHref(href);
-      var n = map.get(id);
-      if (!n) return;
-      var card = a.closest('.story-card') || a;
-      card.classList.add('sbq-queued');
-      if (!card.style.position) card.style.position = 'relative';
-      var badge = document.createElement('div');
-      badge.className = 'sbq-badge';
-      badge.textContent = String(n);
-      card.insertBefore(badge, card.firstChild);
-    });
-  }
-
-  function bindPlayAllButtons(){
-    document.querySelectorAll('[data-sb-play-all]').forEach(function(btn){
-      if (btn.__sbBound) return;
-      btn.__sbBound = true;
-
-      btn.addEventListener('click', function(ev){
-        ev.preventDefault();
-        ev.stopPropagation();
-
-        var queue = loadQ();
-        var map = new Map(queue.map(function(it){ return [it.id, it]; }));
-
-        var added = 0;
-        var cards = document.querySelectorAll('.story-card a[href$=".html"]');
-        cards.forEach(function(a){
-          var href = a.getAttribute('href') || '';
-          if (!href) return;
-          var id = storyIdFromHref(href);
-          if (!id || map.has(id)) return;
-
-          var title = (a.textContent || a.getAttribute('title') || '').trim();
-          if (!title){
-            var img = a.querySelector('img');
-            if (img && img.alt) title = img.alt.trim();
-          }
-          if (!title) title = id;
-
-          map.set(id, { id: id, title: title, url: href });
-          added++;
-        });
-
-        var newQueue = Array.from(map.values());
-        saveQ(newQueue);
-        applyBadges();
-
-        if (added > 0){
-          alert('Added ' + added + ' stories from this page to your Story List.');
-        } else {
-          alert('All stories on this page are already in your Story List.');
-        }
-      }, true);
-    });
-  }
-
-  function init(){
-    bindPlayAllButtons();
-    applyBadges();
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init, {once:true});
-  } else {
-    init();
-  }
 })();
 </script>
 <style id="sb-mobile-carousel-typography-override">

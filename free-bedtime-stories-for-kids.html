@@ -642,7 +642,7 @@ header .site-title {
 <style id="sb-play-all-style">
 .sb-play-all-wrap {
   max-width: 1200px;
-  margin: 1.5em auto 0.5em auto;
+  margin: 1.5em auto 0.75em auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2789,15 +2789,18 @@ nav ul > li:focus-within > .dropdown {
   if (window.__SB_PLAY_ALL_BOUND) return;
   window.__SB_PLAY_ALL_BOUND = true;
 
+  var LS_KEY = 'storyBellQueue';
+
   function loadQ(){
-    try { return JSON.parse(localStorage.getItem('storyBellQueue') || '[]'); }
+    try { return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); }
     catch (_) { return []; }
   }
   function saveQ(q){
-    try { localStorage.setItem('storyBellQueue', JSON.stringify(q)); } catch(_){}
+    try { localStorage.setItem(LS_KEY, JSON.stringify(q)); } catch(_){}
   }
 
   function storyIdFromHref(href){
+    if (!href) return '';
     try {
       var u = new URL(href, window.location.href);
       var fn = (u.pathname.split('/').pop() || '');
@@ -2816,14 +2819,17 @@ nav ul > li:focus-within > .dropdown {
     document.querySelectorAll('.sbq-badge').forEach(function(b){ b.remove(); });
     document.querySelectorAll('.sbq-queued').forEach(function(el){ el.classList.remove('sbq-queued'); });
 
-    // Repaint on visible cards
-    var targets = document.querySelectorAll('.story-card a[href$=".html"], a[href$=".html"].story-link');
-    targets.forEach(function(a){
-      var href = a.getAttribute('href') || '';
+    // Repaint on cards in grids
+    var cards = document.querySelectorAll('.cards-grid .story-card');
+    cards.forEach(function(card){
+      var link = card.querySelector('a[href]');
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
       var id = storyIdFromHref(href);
+      if (!id) return;
       var n = map.get(id);
       if (!n) return;
-      var card = a.closest('.story-card') || a;
+
       card.classList.add('sbq-queued');
       if (!card.style.position) card.style.position = 'relative';
       var badge = document.createElement('div');
@@ -2831,6 +2837,41 @@ nav ul > li:focus-within > .dropdown {
       badge.textContent = String(n);
       card.insertBefore(badge, card.firstChild);
     });
+  }
+
+  function collectPageStories(){
+    var queue = loadQ();
+    var map = new Map(queue.map(function(it){ return [it.id, it]; }));
+    var added = 0;
+
+    // Look at all .story-card inside .cards-grid on this page
+    var cards = document.querySelectorAll('.cards-grid .story-card');
+    cards.forEach(function(card){
+      var link = card.querySelector('a[href]');
+      if (!link) return;
+
+      var href = link.getAttribute('href') || '';
+      if (!href || href === '#') return;
+
+      var id = storyIdFromHref(href);
+      if (!id || map.has(id)) return;
+
+      // Derive a solid title
+      var title =
+        (card.getAttribute('data-title') || '').trim() ||
+        ((card.querySelector('h3') && card.querySelector('h3').textContent.trim()) || '') ||
+        ((link.getAttribute('title') || '').trim()) ||
+        ((card.querySelector('img') && card.querySelector('img').alt) || '').trim() ||
+        id;
+
+      map.set(id, { id: id, title: title, url: href });
+      added++;
+    });
+
+    var newQueue = Array.from(map.values());
+    saveQ(newQueue);
+    applyBadges();
+    return added;
   }
 
   function bindPlayAllButtons(){
@@ -2842,32 +2883,7 @@ nav ul > li:focus-within > .dropdown {
         ev.preventDefault();
         ev.stopPropagation();
 
-        var queue = loadQ();
-        var map = new Map(queue.map(function(it){ return [it.id, it]; }));
-
-        var added = 0;
-        var cards = document.querySelectorAll('.story-card a[href$=".html"]');
-        cards.forEach(function(a){
-          var href = a.getAttribute('href') || '';
-          if (!href) return;
-          var id = storyIdFromHref(href);
-          if (!id || map.has(id)) return;
-
-          var title = (a.textContent || a.getAttribute('title') || '').trim();
-          if (!title){
-            var img = a.querySelector('img');
-            if (img && img.alt) title = img.alt.trim();
-          }
-          if (!title) title = id;
-
-          map.set(id, { id: id, title: title, url: href });
-          added++;
-        });
-
-        var newQueue = Array.from(map.values());
-        saveQ(newQueue);
-        applyBadges();
-
+        var added = collectPageStories();
         if (added > 0){
           alert('Added ' + added + ' stories from this page to your Story List.');
         } else {
