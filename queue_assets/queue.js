@@ -31,7 +31,7 @@
     catch(_){}
   }
 
-  /* ---------- Queue Mode (controlled by toggle + initial open) ---------- */
+  /* ---------- Queue Mode (toggle + first open) ---------- */
 
   function setMode(active){
     var sw = $('#sbq-toggle');
@@ -278,7 +278,9 @@
         e.dataTransfer.effectAllowed = 'move';
         try{ e.dataTransfer.setData('text/plain', it.getAttribute('data-id')); }catch(_){}
       });
-      it.addEventListener('dragend', function(){ it.classList.remove('dragging'); });
+      it.addEventListener('dragend', function(){
+        it.classList.remove('dragging');
+      });
     });
     list.addEventListener('dragover', function(e){
       e.preventDefault();
@@ -313,7 +315,7 @@
     }, { offset: Number.NEGATIVE_INFINITY }).element;
   }
 
-  /* ---------- Click-to-add/remove when in Queue Mode ---------- */
+  /* ---------- Click-to-add/remove in Queue Mode ---------- */
 
   document.addEventListener('click', function(e){
     if(!isMode()) return;
@@ -408,12 +410,13 @@
 
   /* ---------- Controls: shuffle, play, prev/next, clear, close, toggle ---------- */
 
-  // Shuffle-only button
   function bindShuffle(){
     var b = $('#queue-shuffle');
     if(!b || b.__sbqBound) return;
     b.__sbqBound = true;
-    b.addEventListener('click', function(){
+    b.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
       var q = loadQ();
       if(!q.length){
         alert('Add stories to your queue first!');
@@ -422,7 +425,6 @@
       if(q.length < 2){
         return; // nothing to shuffle
       }
-      // Fisher-Yates shuffle
       for(var i=q.length-1;i>0;i--){
         var j = Math.floor(Math.random() * (i+1));
         var tmp = q[i];
@@ -434,12 +436,13 @@
     }, true);
   }
 
-  // Play → first HTML in queue
   function bindPlay(){
     var p = $('#queue-play');
     if(!p || p.__sbqBound) return;
     p.__sbqBound = true;
-    p.addEventListener('click', function(){
+    p.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
       var q = loadQ();
       if(!q.length){
         alert('Add stories to your queue first!');
@@ -465,7 +468,9 @@
 
     if(prev && !prev.__sbqBound){
       prev.__sbqBound = true;
-      prev.addEventListener('click', function(){
+      prev.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
         clearNavAndCountdown();
         var q = loadQ(); if(!q.length) return;
         var i = getIdx();
@@ -478,7 +483,9 @@
 
     if(next && !next.__sbqBound){
       next.__sbqBound = true;
-      next.addEventListener('click', function(){
+      next.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
         clearNavAndCountdown();
         var q = loadQ(); if(!q.length) return;
         var i = getIdx();
@@ -494,7 +501,9 @@
     var c = $('#queue-clear');
     if(!c || c.__sbqBound) return;
     c.__sbqBound = true;
-    c.addEventListener('click', function(){
+    c.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
       if(!loadQ().length) return;
       clearNavAndCountdown();
       if(confirm('Clear all stories from your queue?')){
@@ -516,7 +525,6 @@
     }, true);
   }
 
-  // Toggle below main button
   function bindToggle(){
     var sw = $('#sbq-toggle');
     if(!sw || sw.__sbqBound) return;
@@ -524,13 +532,14 @@
     var cb = sw.querySelector('input[type="checkbox"]');
     if(cb){
       cb.checked = isMode();
-      cb.addEventListener('change', function(){
+      cb.addEventListener('change', function(e){
+        e.stopPropagation();
         setMode(!!cb.checked);
       }, true);
     }
   }
 
-  /* ---------- Main button ---------- */
+  /* ---------- Main floating button ---------- */
 
   function bindButton(){
     var btn = $('#story-queue-button');
@@ -559,7 +568,7 @@
       if(!open){
         bodyOn('sbq-open');
         revealToggleOnce();
-        setMode(true);  // start in queue mode ON when first opening
+        setMode(true);  // default ON when first opened
       } else {
         bodyOff('sbq-open');
       }
@@ -574,7 +583,7 @@
     });
   }
 
-  /* ---------- Hard overrides: click-only menu ---------- */
+  /* ---------- Hard overrides: click-only ---------- */
 
   function hardOverrides(){
     try{
