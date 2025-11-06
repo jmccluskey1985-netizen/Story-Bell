@@ -1,6 +1,0 @@
-[TITLE] Maya's Missing Mittons
-[DESCRIPTION] A story about problem solving with Mummy
-[CATEGORIES] 4_7, 5min, Problem solving
-[ICON] Imagetitle
-[AUTHOR]Jon McCluskey
-
