@@ -31,22 +31,26 @@
     catch(_){}
   }
 
-  /* ---------- Mode + UI ---------- */
+  /* ---------- Queue Mode (controlled by toggle + initial open) ---------- */
 
   function setMode(active){
-    var qm = $('#queue-mode-toggle');
-    var label = qm ? qm.querySelector('.label') : null;
-
+    var sw = $('#sbq-toggle');
     if(active){
       bodyOn('sbq-mode');
-      if(qm) qm.classList.add('active');
-      if(label) label.textContent = '🔀';   // shuffle icon when ON
-      updateToggle(true);
+      if(sw){
+        sw.dataset.on = 'true';
+        var cb = sw.querySelector('input[type="checkbox"]');
+        if(cb) cb.checked = true;
+        sw.setAttribute('aria-pressed','true');
+      }
     } else {
       bodyOff('sbq-mode');
-      if(qm) qm.classList.remove('active');
-      if(label) label.textContent = 'Create Queue';
-      updateToggle(false);
+      if(sw){
+        sw.dataset.on = 'false';
+        var cb2 = sw.querySelector('input[type="checkbox"]');
+        if(cb2) cb2.checked = false;
+        sw.setAttribute('aria-pressed','false');
+      }
     }
     syncBadges();
   }
@@ -54,8 +58,8 @@
   function revealToggleOnce(){
     if(window.__sbqToggleRevealed) return;
     window.__sbqToggleRevealed = true;
-    var w = $('#sbq-toggle-wrap');
-    if(w) w.style.display = 'inline-block';
+    var wrap = $('#sbq-toggle-wrap');
+    if(wrap) wrap.style.display = 'inline-block';
   }
 
   /* ---------- Countdown / auto-next ---------- */
@@ -65,10 +69,14 @@
     if(window.__sbqCountdownStarter){ clearTimeout(window.__sbqCountdownStarter); window.__sbqCountdownStarter = null; }
     if(window.__sbqCountdownTimer){ clearInterval(window.__sbqCountdownTimer); window.__sbqCountdownTimer = null; }
     if(window.__sbqCountdownAudio){
-      try{ window.__sbqCountdownAudio.pause(); window.__sbqCountdownAudio.currentTime = 0; }catch(_){}
+      try{
+        window.__sbqCountdownAudio.pause();
+        window.__sbqCountdownAudio.currentTime = 0;
+      }catch(_){}
       window.__sbqCountdownAudio = null;
     }
-    var ov = $('#sbq-next-overlay'); if(ov) ov.remove();
+    var ov = $('#sbq-next-overlay');
+    if(ov) ov.remove();
     window.__sbqCountdownRemain = null;
     window.__sbqPaused = false;
   }
@@ -91,7 +99,9 @@
         window.__sbqPaused = true;
         if(window.__sbqNavTimer){ clearTimeout(window.__sbqNavTimer); window.__sbqNavTimer = null; }
         if(window.__sbqCountdownTimer){ clearInterval(window.__sbqCountdownTimer); window.__sbqCountdownTimer = null; }
-        if(window.__sbqCountdownAudio){ try{ window.__sbqCountdownAudio.pause(); }catch(_){ } }
+        if(window.__sbqCountdownAudio){
+          try{ window.__sbqCountdownAudio.pause(); }catch(_){}
+        }
         btn.textContent = '▶';
         btn.title = 'Resume';
         btn.setAttribute('aria-label','Resume auto-continue');
@@ -99,7 +109,7 @@
         window.__sbqPaused = false;
         var remain = Math.max(1, Number(window.__sbqCountdownRemain) || COUNTDOWN_DURATION_S);
         scheduleNavigation(remain * 1000);
-        startCountdown(remain);
+        startCountdown(remain, title);
         btn.textContent = '⏸';
         btn.title = 'Pause';
         btn.setAttribute('aria-label','Pause auto-continue');
@@ -131,14 +141,19 @@
       var a = new Audio(url);
       a.volume = 1.0;
       a.currentTime = 0;
-      a.play().catch(function(_){});
+      a.play().catch(function(){});
       window.__sbqCountdownAudio = a;
     }catch(_){}
   }
 
+  /* ---------- Helpers ---------- */
+
   function humanizeTitle(s){
     try{ s = decodeURI(s || ''); }catch(_){}
-    s = (s || '').replace(/\.[^.]+$/,'').replace(/[_\-]+/g,' ').replace(/\s+/g,' ').trim();
+    s = (s || '').replace(/\.[^.]+$/,'')
+                 .replace(/[_\-]+/g,' ')
+                 .replace(/\s+/g,' ')
+                 .trim();
     if(!s) return s;
     return s.split(' ').map(function(w){
       return w.charAt(0).toUpperCase() + w.slice(1);
@@ -150,7 +165,7 @@
       var u = new URL(href, location.href);
       var fn = u.pathname.split('/').pop() || '';
       return fn.replace(/\.[^.]+$/,'').toLowerCase();
-    } catch(_){
+    }catch(_){
       var fn2 = (href || '').split('/').pop() || '';
       return fn2.replace(/\.[^.]+$/,'').toLowerCase();
     }
@@ -181,7 +196,7 @@
       || (el.querySelector('img') && el.querySelector('img').getAttribute('alt'))
       || '';
     var title = (titleNode && titleNode.trim()) || humanizeTitle((a && a.getAttribute('href')) || id || '');
-    return { id: id, title: title, url: href };
+    return { id:id, title:title, url:href };
   }
 
   function clearAllBadges(){
@@ -206,7 +221,7 @@
 
   function syncBadges(){
     var q = loadQ();
-    var map = new Map(q.map(function(it, i){ return [it.id, i+1]; }));
+    var map = new Map(q.map(function(it,i){ return [it.id, i+1]; }));
     clearAllBadges();
     collectCards().forEach(function(card){
       var info = extract(card);
@@ -216,7 +231,7 @@
     renderList();
   }
 
-  /* ---------- Render queue list + DnD ---------- */
+  /* ---------- Render list + DnD ---------- */
 
   function renderList(){
     var list = $('#queue-list');
@@ -263,9 +278,7 @@
         e.dataTransfer.effectAllowed = 'move';
         try{ e.dataTransfer.setData('text/plain', it.getAttribute('data-id')); }catch(_){}
       });
-      it.addEventListener('dragend', function(){
-        it.classList.remove('dragging');
-      });
+      it.addEventListener('dragend', function(){ it.classList.remove('dragging'); });
     });
     list.addEventListener('dragover', function(e){
       e.preventDefault();
@@ -300,14 +313,13 @@
     }, { offset: Number.NEGATIVE_INFINITY }).element;
   }
 
-  /* ---------- Click-to-queue in Queue Mode ---------- */
+  /* ---------- Click-to-add/remove when in Queue Mode ---------- */
 
   document.addEventListener('click', function(e){
     if(!isMode()) return;
     var card = e.target.closest(CARD_SEL+',a[href$=".html"]');
     if(!card) return;
     if(card.closest('header,nav,footer,#story-queue-menu,.queue-menu')) return;
-
     e.preventDefault();
     e.stopPropagation();
 
@@ -316,7 +328,6 @@
     var i = q.findIndex(function(x){ return x.id === info.id; });
     if(i >= 0) q.splice(i,1);
     else q.push(info);
-
     saveQ(q);
     syncBadges();
   }, true);
@@ -331,8 +342,8 @@
     if(idx < 0) return;
 
     var main = document.querySelector('audio[data-sbq-main]')
-            || $all('audio').find(function(a){ return a.offsetParent !== null; })
-            || document.querySelector('audio');
+           || $all('audio').find(function(a){ return a.offsetParent !== null; })
+           || document.querySelector('audio');
     if(!main || main.__sbqAA) return;
     main.__sbqAA = true;
 
@@ -355,7 +366,7 @@
       window.__sbqCountdownStarter = setTimeout(function(){
         playCountdownCue();
         startCountdown(COUNTDOWN_DURATION_S, title);
-      }, Math.max(0, nextDelay - COUNTDOWN_DURATION_S * 1000));
+      }, Math.max(0, nextDelay - COUNTDOWN_DURATION_S*1000));
     });
   }
 
@@ -380,7 +391,6 @@
     var ov = ensureOverlay(title);
     setOverlayVisible(true);
     updateOverlayText(window.__sbqCountdownRemain, title);
-
     if(window.__sbqCountdownTimer){
       clearInterval(window.__sbqCountdownTimer);
     }
@@ -396,41 +406,35 @@
     }, 1000);
   }
 
-  /* ---------- Controls: mode, play, prev/next, clear, close ---------- */
+  /* ---------- Controls: shuffle, play, prev/next, clear, close, toggle ---------- */
 
-  function bindQueueMode(){
-    var btn = $('#queue-mode-toggle');
-    if(!btn || btn.__sbqBound) return;
-    btn.__sbqBound = true;
-    btn.addEventListener('click', function(){
-      setMode(!isMode());
-    });
+  // Shuffle-only button
+  function bindShuffle(){
+    var b = $('#queue-shuffle');
+    if(!b || b.__sbqBound) return;
+    b.__sbqBound = true;
+    b.addEventListener('click', function(){
+      var q = loadQ();
+      if(!q.length){
+        alert('Add stories to your queue first!');
+        return;
+      }
+      if(q.length < 2){
+        return; // nothing to shuffle
+      }
+      // Fisher-Yates shuffle
+      for(var i=q.length-1;i>0;i--){
+        var j = Math.floor(Math.random() * (i+1));
+        var tmp = q[i];
+        q[i] = q[j];
+        q[j] = tmp;
+      }
+      saveQ(q);
+      syncBadges();
+    }, true);
   }
 
-  // Toggle widget below button
-  function updateToggle(active){
-    var sw = $('#sbq-toggle');
-    if(!sw) return;
-    sw.dataset.on = active ? 'true' : 'false';
-    var cb = sw.querySelector('input[type="checkbox"]');
-    if(cb) cb.checked = !!active;
-    sw.setAttribute('aria-pressed', active ? 'true' : 'false');
-  }
-
-  function bindToggle(){
-    var sw = $('#sbq-toggle');
-    if(!sw || sw.__sbqBound) return;
-    sw.__sbqBound = true;
-    var cb = sw.querySelector('input[type="checkbox"]');
-    if(cb){
-      cb.checked = isMode();
-      cb.addEventListener('change', function(){
-        setMode(!!cb.checked);
-      }, true);
-    }
-  }
-
-  // Play button → FIRST HTML in the queue
+  // Play → first HTML in queue
   function bindPlay(){
     var p = $('#queue-play');
     if(!p || p.__sbqBound) return;
@@ -448,7 +452,8 @@
   }
 
   function bindPrevNext(){
-    var prev = $('#queue-prev'), next = $('#queue-next');
+    var prev = $('#queue-prev');
+    var next = $('#queue-next');
 
     function getIdx(){
       var id = (location.pathname.split('/').pop() || '')
@@ -464,7 +469,7 @@
         clearNavAndCountdown();
         var q = loadQ(); if(!q.length) return;
         var i = getIdx();
-        var n = Math.max(i - 1, 0);
+        var n = Math.max(i-1, 0);
         var u = q[n].url || '#';
         if(!/\.html($|\?)/i.test(u)) u += '.html';
         location.href = u;
@@ -477,7 +482,7 @@
         clearNavAndCountdown();
         var q = loadQ(); if(!q.length) return;
         var i = getIdx();
-        var n = Math.min(i + 1, q.length - 1);
+        var n = Math.min(i+1, q.length-1);
         var u = q[n].url || '#';
         if(!/\.html($|\?)/i.test(u)) u += '.html';
         location.href = u;
@@ -511,7 +516,21 @@
     }, true);
   }
 
-  /* ---------- Button (Create Reading List) ---------- */
+  // Toggle below main button
+  function bindToggle(){
+    var sw = $('#sbq-toggle');
+    if(!sw || sw.__sbqBound) return;
+    sw.__sbqBound = true;
+    var cb = sw.querySelector('input[type="checkbox"]');
+    if(cb){
+      cb.checked = isMode();
+      cb.addEventListener('change', function(){
+        setMode(!!cb.checked);
+      }, true);
+    }
+  }
+
+  /* ---------- Main button ---------- */
 
   function bindButton(){
     var btn = $('#story-queue-button');
@@ -539,8 +558,8 @@
       var open = isOpen();
       if(!open){
         bodyOn('sbq-open');
-        revealToggleOnce();   // show toggle on first open
-        setMode(true);        // start in queue mode ON
+        revealToggleOnce();
+        setMode(true);  // start in queue mode ON when first opening
       } else {
         bodyOff('sbq-open');
       }
@@ -574,14 +593,13 @@
   function boot(){
     hardOverrides();
     bindButton();
-    bindQueueMode();
+    bindShuffle();
     bindPlay();
     bindPrevNext();
     bindClear();
     bindClose();
     bindToggle();
     bindAutoAdvanceOnAudio();
-    updateToggle(isMode());
     syncBadges();
   }
 
