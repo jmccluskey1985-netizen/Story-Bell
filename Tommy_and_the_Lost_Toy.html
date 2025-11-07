@@ -675,7 +675,59 @@ header .site-title {
   .story-card img{ height:130px !important; }
 }
 </style>
-<style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+<style id="sb-cards-grid-clean">
+.cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  gap: 16px !important;
+}
+.cards-grid > .story-card,
+#story-cards .cards-grid > .story-card,
+#story-cards .story-grid > .story-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-self: stretch !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  flex: 0 1 calc(25% - 16px) !important;   /* 4-up desktop */
+}
+@media (max-width: 1200px){
+  .cards-grid > .story-card,
+  #story-cards .cards-grid > .story-card,
+  #story-cards .story-grid > .story-card {
+    flex: 0 1 calc(33.333% - 16px) !important;     /* 3-up tablet */
+  }
+}
+@media (max-width: 800px){
+  .cards-grid > .story-card,
+  #story-cards .cards-grid > .story-card,
+  #story-cards .story-grid > .story-card {
+    flex: 0 1 calc(50% - 10px) !important;         /* 2-up mobile */
+  }
+}
+.cards-grid > .story-card .chips,
+#story-cards .cards-grid > .story-card .chips,
+#story-cards .story-grid > .story-card .chips {
+  overflow: visible !important;
+  max-height: none !important;
+}
+.cards-grid > .story-card .desc-wrap p,
+#story-cards .cards-grid > .story-card .desc-wrap p,
+#story-cards .story-grid > .story-card .desc-wrap p {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+  overflow: visible !important;
+}
+</style>
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://story-bell.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Ages 4–6","description":"© 2025 Story Bell. All rights reserved.","url":"https://story-bell.com/Tommy_and_the_Lost_Toy.html","inLanguage":"en","isFamilyFriendly":true,"image":"https://story-bell.com/icon/Tommy and the Lost Toy.webp","author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","genre":["anger","everyday-life","family"],"about":[{"@type":"Thing","name":"family"},{"@type":"Thing","name":"everyday-life"},{"@type":"Thing","name":"anger"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://story-bell.com/Tommy_and_the_Lost_Toy/Tommy_and_the_Lost_Toy_StoryAudio.mp3","encodingFormat":"audio/mpeg"}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
 .carousel-section .carousel-desc{
@@ -859,62 +911,7 @@ header .site-title {
 </style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>/* SBQ cleanup override: menu shows only with .active */
 #story-queue-menu{display:none !important;}
 html body #story-queue-menu.active{display:flex !important;}
-</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style>
-<style id="sb-cards-grid-clean">
-.cards-grid,
-#story-cards .cards-grid,
-#story-cards .story-grid {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-  align-items: stretch !important;
-  gap: 16px !important;
-}
-.cards-grid > .story-card,
-#story-cards .cards-grid > .story-card,
-#story-cards .story-grid > .story-card {
-  display: flex !important;
-  flex-direction: column !important;
-  align-self: stretch !important;
-  box-sizing: border-box !important;
-  margin: 0 !important;
-  width: auto !important;
-  min-width: 0 !important;
-  max-width: none !important;
-  height: auto !important;
-  min-height: 0 !important;
-  flex: 0 1 calc(25% - 16px) !important;
-}
-@media (max-width: 1200px){
-  .cards-grid > .story-card,
-  #story-cards .cards-grid > .story-card,
-  #story-cards .story-grid > .story-card {
-    flex: 0 1 calc(33.333% - 16px) !important;
-  }
-}
-@media (max-width: 800px){
-  .cards-grid > .story-card,
-  #story-cards .cards-grid > .story-card,
-  #story-cards .story-grid > .story-card {
-    flex: 0 1 calc(50% - 10px) !important;
-  }
-}
-.cards-grid > .story-card .chips,
-#story-cards .cards-grid > .story-card .chips,
-#story-cards .story-grid > .story-card .chips {
-  overflow: visible !important;
-  max-height: none !important;
-}
-.cards-grid > .story-card .desc-wrap p,
-#story-cards .cards-grid > .story-card .desc-wrap p,
-#story-cards .story-grid > .story-card .desc-wrap p {
-  display: block !important;
-  -webkit-line-clamp: unset !important;
-  -webkit-box-orient: unset !important;
-  overflow: visible !important;
-}
-</style>
-<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://story-bell.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Ages 4–6","description":"© 2025 Story Bell. All rights reserved.","url":"https://story-bell.com/Tommy_and_the_Lost_Toy.html","inLanguage":"en","isFamilyFriendly":true,"image":"https://story-bell.com/icon/Tommy and the Lost Toy.webp","author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","genre":["anger","everyday-life","family"],"about":[{"@type":"Thing","name":"family"},{"@type":"Thing","name":"everyday-life"},{"@type":"Thing","name":"anger"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://story-bell.com/Tommy_and_the_Lost_Toy/Tommy_and_the_Lost_Toy_StoryAudio.mp3","encodingFormat":"audio/mpeg"}}</script><style id="wand-top-style">
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
 /* Keep wand always visible above menus, and never block clicks */
 #wand {
   position: fixed !important;
@@ -2760,10 +2757,12 @@ nav ul > li:focus-within > .dropdown {
       grid.style.justifyContent = 'center';
       grid.style.alignItems = 'stretch';
       grid.style.gap = '16px';
+
       var w = window.innerWidth;
-      var basis = 'calc(25% - 16px)';
-      if (w <= 1200) basis = 'calc(33.333% - 16px)';
-      if (w <= 800)  basis = 'calc(50% - 10px)';
+      var basis = 'calc(25% - 16px)';               // desktop
+      if (w <= 1200) basis = 'calc(33.333% - 16px)'; // tablet
+      if (w <= 800)  basis = 'calc(50% - 10px)';     // mobile
+
       grid.querySelectorAll(':scope > .story-card').forEach(function(card){
         card.style.display = 'flex';
         card.style.flexDirection = 'column';
@@ -2777,6 +2776,7 @@ nav ul > li:focus-within > .dropdown {
         card.style.minHeight = '0';
         card.style.flex = '0 1 ' + basis;
       });
+
       grid.querySelectorAll('.chips').forEach(function(ch){
         ch.style.overflow = 'visible';
         ch.style.maxHeight = 'none';
@@ -2787,18 +2787,77 @@ nav ul > li:focus-within > .dropdown {
       });
     });
   }
-  function onReady(fn){
-    if (document.readyState === 'loading')
-      document.addEventListener('DOMContentLoaded', fn, {once:true});
-    else fn();
-  }
-  onReady(function(){
-    applyLayout(document);
-    window.addEventListener('resize', function(){ applyLayout(document); });
-  });
+  function onReady(fn){ if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, {once:true}); else fn(); }
+  onReady(function(){ applyLayout(document); window.addEventListener('resize', function(){ applyLayout(document); }); });
 })();
 </script>
-<script>
+<style id="sb-mobile-carousel-typography-override">
+@media (max-width: 800px){
+  /* Remove the extra line break between title and description */
+  .carousel-section .carousel-item br{
+    display: none !important;
+  }
+
+  /* Title: smaller than before, but still larger than description; keep white */
+  .carousel-section .carousel-item .carousel-title,
+  .carousel-section a.carousel-title-link .carousel-title,
+  .carousel-section .carousel-title{
+    font-size: 0.74em !important;   /* adjust as needed */
+    line-height: 1.12em !important;
+    color: #ffffff !important;
+    margin: 0.15em 0 0.08em !important;  /* tighter */
+  }
+  /* Ensure the title link itself stays white and un-underlined */
+  .carousel-section .carousel-title-link,
+  .carousel-section .carousel-title-link:link,
+  .carousel-section .carousel-title-link:visited{
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+
+  /* Description: compact, white */
+  .carousel-section .carousel-desc{
+    font-size: 0.56em !important;
+    line-height: 1.18em !important;
+    color: #ffffff !important;
+    margin: 0.05em 0 0.05em !important;  /* tighter */
+  }
+
+  /* Categories: same size as description, bold, white */
+  .carousel-section .carousel-category{
+    font-size: 0.56em !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+  .carousel-section .carousel-categories{
+    margin-top: 0.06em !important;  /* tighter */
+  }
+}
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><div aria-label="Open story queue" id="story-queue-button" role="button" tabindex="0" title="Open story queue">
+<img alt="Make Reading List" class="book-img" src="index_items/make-reading-list.png"/>
+</div><div aria-hidden="true" id="sbq-toggle-wrap">
+<span class="label">Queue</span>
+<span aria-pressed="false" class="sbq-toggle" data-on="false" id="sbq-toggle" role="button">
+<input aria-label="Toggle Queue Mode" type="checkbox"/>
+<span class="knob"></span>
+</span>
+</div><div aria-labelledby="sbq-title" aria-modal="true" id="story-queue-menu" role="dialog">
+<div class="queue-menu-header">
+<button aria-label="Close" class="queue-menu-close">×</button>
+<h2 class="queue-menu-title" id="sbq-title">✨ My Story List ✨</h2>
+</div>
+<div class="queue-menu-list" id="queue-list">
+<div class="queue-empty-message">✨ Tap stories to add to your list ✨</div>
+</div>
+<div class="queue-menu-controls">
+<button id="queue-shuffle" title="Shuffle Queue">🔀</button>
+<button class="queue-control-btn" id="queue-play" title="Play Queue">▶</button>
+<button class="queue-control-btn" disabled="" id="queue-prev" title="Previous Story">◀</button>
+<button class="queue-control-btn" disabled="" id="queue-next" title="Next Story">▶</button>
+<button class="queue-control-btn" disabled="" id="queue-clear" title="Clear Queue">🗑️</button>
+</div>
+</div><script>
    // Wand cursor & sparkle logic
     const wand = document.getElementById("wand");
     const WAND_OFFSET_X = 15;
