@@ -8,14 +8,14 @@
     "audio": "Maya's_Missing_Mittens/Maya's_Missing_Mittens_StoryAudio.mp3",
     "categories": [
       "childrens-stories-ages-4-6",
-    "childrens-stories-about-happiness",
+      "childrens-stories-about-happiness",
       "kids-stories-about-feelings",
       "5-minute-childrens-stories"
     ],
     "html": "Maya's_Missing_Mittens.html",
     "date_added": "",
     "slug": "mayas_missing_mittens",
-    "url": "/Maya's_Missing_Mittens.html",
+    "url": "https://story-bell.com/mayas-missing-mittons.html",
     "inLanguage": "en",
     "duration_min": 5,
     "age_bracket": "4-6",
@@ -36,10 +36,13 @@
       "@type": "CreativeWork",
       "name": "Maya's Missing Mittens",
       "description": "A story about problem solving with Mummy",
-      "url": "/Maya's_Missing_Mittons.html",
+      "url": "https://story-bell.com/mayas-missing-mittons.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
-      "image": "Maya's Missing Mittens/imagetitle.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://story-bell.com/Maya's Missing Mittens/imagetitle.webp"
+      },
       "timeRequired": "PT5M",
       "typicalAgeRange": "4-6",
       "genre": [
@@ -62,12 +65,43 @@
       },
       "audio": {
         "@type": "AudioObject",
-        "name": "Story Audio",
-        "contentUrl": "Maya's_Missing_Mittons/Maya's_Missing_Mittons_StoryAudio.mp3",
-        "encodingFormat": "audio/mpeg"
+        "contentUrl": "https://story-bell.com/Maya's_Missing_Mittons/Maya's_Missing_Mittons_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
       },
       "datePublished": "2025-10-06",
-      "dateModified": "2025-10-06"
+      "dateModified": "2025-10-06",
+      "mainEntityOfPage": "https://story-bell.com/mayas-missing-mittons.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://story-bell.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://story-bell.com/assets/logo-512.png"
+        }
+      },
+      "headline": "Maya's Missing Mittens",
+      "suggestedMinAge": 4,
+      "suggestedMaxAge": 6,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://story-bell.com/ages-4-6/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
     }
   },
   {
@@ -85,7 +119,7 @@
     "html": "Milo_the_Mouse.html",
     "date_added": "",
     "slug": "milo_the_mouse",
-    "url": "/Milo_the_Mouse.html",
+    "url": "https://story-bell.com/milo-the-mouse.html",
     "inLanguage": "en",
     "duration_min": 5,
     "age_bracket": "4-6",
@@ -105,10 +139,13 @@
       "@type": "CreativeWork",
       "name": "Milo the Mouse",
       "description": "A poem about friendship",
-      "url": "/Milo_the_Mouse.html",
+      "url": "https://story-bell.com/milo-the-mouse.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
-      "image": "icon/Milo the Mouse.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://story-bell.com/icon/Milo the Mouse.webp"
+      },
       "timeRequired": "PT5M",
       "typicalAgeRange": "4-6",
       "genre": [
@@ -132,12 +169,43 @@
       },
       "audio": {
         "@type": "AudioObject",
-        "name": "Story Audio",
-        "contentUrl": "Milo_the_Mouse/Milo_the_Mouse_StoryAudio.mp3",
-        "encodingFormat": "audio/mpeg"
+        "contentUrl": "https://story-bell.com/Milo_the_Mouse/Milo_the_Mouse_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
       },
       "datePublished": "2025-10-06",
-      "dateModified": "2025-10-06"
+      "dateModified": "2025-10-06",
+      "mainEntityOfPage": "https://story-bell.com/milo-the-mouse.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://story-bell.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://story-bell.com/assets/logo-512.png"
+        }
+      },
+      "headline": "Milo the Mouse",
+      "suggestedMinAge": 4,
+      "suggestedMaxAge": 6,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://story-bell.com/ages-4-6/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
     }
   },
   {
@@ -154,7 +222,7 @@
     "html": "Luna's_Colorful_Garden.html",
     "date_added": "",
     "slug": "lunas_colorful_garden",
-    "url": "/Luna's_Colorful_Garden.html",
+    "url": "https://story-bell.com/lunas-colorful-garden.html",
     "inLanguage": "en",
     "duration_min": 5,
     "age_bracket": "4-6",
@@ -175,10 +243,13 @@
       "@type": "CreativeWork",
       "name": "Luna's Colorful Garden",
       "description": "A story about helping friends create a magical garden.",
-      "url": "/Luna's_Colorful_Garden.html",
+      "url": "https://story-bell.com/lunas-colorful-garden.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
-      "image": "icon/Luna's Colorful Garden.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://story-bell.com/icon/Luna's Colorful Garden.webp"
+      },
       "timeRequired": "PT5M",
       "typicalAgeRange": "4-6",
       "genre": [
@@ -204,7 +275,42 @@
         "name": "Jon McCluskey"
       },
       "datePublished": "2025-10-06",
-      "dateModified": "2025-10-06"
+      "dateModified": "2025-10-06",
+      "mainEntityOfPage": "https://story-bell.com/lunas-colorful-garden.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://story-bell.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://story-bell.com/assets/logo-512.png"
+        }
+      },
+      "headline": "Luna's Colorful Garden",
+      "suggestedMinAge": 4,
+      "suggestedMaxAge": 6,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://story-bell.com/ages-4-6/"
+      },
+      "isAccessibleForFree": true,
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://story-bell.com/Luna's_Colorful_Garden/Luna's_Colorful_Garden_StoryAudio.mp3"
+      },
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
     }
   },
   {
@@ -225,7 +331,7 @@
     "html": "The_Tiniest_Rainbow.html",
     "date_added": "",
     "slug": "the_tiniest_rainbow",
-    "url": "/The_Tiniest_Rainbow.html",
+    "url": "https://story-bell.com/the-tiniest-rainbow.html",
     "inLanguage": "en",
     "duration_min": 5,
     "age_bracket": "0-3",
@@ -248,10 +354,13 @@
       "@type": "CreativeWork",
       "name": "The Tiniest Rainbow",
       "description": "A gentle bedtime story for toddlers about discovering happiness on a rainy day.",
-      "url": "/The_Tiniest_Rainbow.html",
+      "url": "https://story-bell.com/the-tiniest-rainbow.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
-      "image": "icon/The Tiniest Rainbow.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://story-bell.com/icon/The Tiniest Rainbow.webp"
+      },
       "timeRequired": "PT5M",
       "typicalAgeRange": "0-3",
       "genre": [
@@ -278,12 +387,43 @@
       },
       "audio": {
         "@type": "AudioObject",
-        "name": "Story Audio",
-        "contentUrl": "The_Tiniest_Rainbow/The_Tiniest_Rainbow_StoryAudio.mp3",
-        "encodingFormat": "audio/mpeg"
+        "contentUrl": "https://story-bell.com/The_Tiniest_Rainbow/The_Tiniest_Rainbow_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
       },
       "datePublished": "2025-10-06",
-      "dateModified": "2025-10-06"
+      "dateModified": "2025-10-06",
+      "mainEntityOfPage": "https://story-bell.com/the-tiniest-rainbow.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://story-bell.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://story-bell.com/assets/logo-512.png"
+        }
+      },
+      "headline": "The Tiniest Rainbow",
+      "suggestedMinAge": 0,
+      "suggestedMaxAge": 3,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://story-bell.com/ages-0-3/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
     }
   },
   {
@@ -302,7 +442,7 @@
     "html": "Owl_in_the_Dark_Forest.html",
     "date_added": "",
     "slug": "owl_in_the_dark_forest",
-    "url": "/Owl_in_the_Dark_Forest.html",
+    "url": "https://story-bell.com/owl-in-the-dark-forest.html",
     "inLanguage": "en",
     "duration_min": 10,
     "age_bracket": "7-12",
@@ -325,10 +465,13 @@
       "@type": "CreativeWork",
       "name": "Owl in the Dark Forest",
       "description": "A brave little owl faces fear while searching for her way home.",
-      "url": "/Owl_in_the_Dark_Forest.html",
+      "url": "https://story-bell.com/owl-in-the-dark-forest.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
-      "image": "icon/Owl in the Dark Forest.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://story-bell.com/icon/Owl in the Dark Forest.webp"
+      },
       "timeRequired": "PT10M",
       "typicalAgeRange": "7-12",
       "genre": [
@@ -356,12 +499,43 @@
       },
       "audio": {
         "@type": "AudioObject",
-        "name": "Story Audio",
-        "contentUrl": "Owl_in_the_Dark_Forest/Owl_in_the_Dark_Forest_StoryAudio.mp3",
-        "encodingFormat": "audio/mpeg"
+        "contentUrl": "https://story-bell.com/Owl_in_the_Dark_Forest/Owl_in_the_Dark_Forest_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
       },
       "datePublished": "2025-10-06",
-      "dateModified": "2025-10-06"
+      "dateModified": "2025-10-06",
+      "mainEntityOfPage": "https://story-bell.com/owl-in-the-dark-forest.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://story-bell.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://story-bell.com/assets/logo-512.png"
+        }
+      },
+      "headline": "Owl in the Dark Forest",
+      "suggestedMinAge": 7,
+      "suggestedMaxAge": 12,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://story-bell.com/ages-7-12/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
     }
   },
   {
@@ -380,7 +554,7 @@
     "html": "The_Lonely_Leaf.html",
     "date_added": "",
     "slug": "the_lonely_leaf",
-    "url": "/The_Lonely_Leaf.html",
+    "url": "https://story-bell.com/the-lonely-leaf.html",
     "inLanguage": "en",
     "duration_min": 5,
     "age_bracket": "4-6",
@@ -403,10 +577,13 @@
       "@type": "CreativeWork",
       "name": "The Lonely Leaf",
       "description": "A poem about sadness and finding new friends in autumn.",
-      "url": "/The_Lonely_Leaf.html",
+      "url": "https://story-bell.com/the-lonely-leaf.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
-      "image": "icon/The Lonely Leaf.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://story-bell.com/icon/The Lonely Leaf.webp"
+      },
       "timeRequired": "PT5M",
       "typicalAgeRange": "4-6",
       "genre": [
@@ -434,12 +611,43 @@
       },
       "audio": {
         "@type": "AudioObject",
-        "name": "Story Audio",
-        "contentUrl": "The_Lonely_Leaf/The_Lonely_Leaf_StoryAudio.mp3",
-        "encodingFormat": "audio/mpeg"
+        "contentUrl": "https://story-bell.com/The_Lonely_Leaf/The_Lonely_Leaf_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
       },
       "datePublished": "2025-10-06",
-      "dateModified": "2025-10-06"
+      "dateModified": "2025-10-06",
+      "mainEntityOfPage": "https://story-bell.com/the-lonely-leaf.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://story-bell.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://story-bell.com/assets/logo-512.png"
+        }
+      },
+      "headline": "The Lonely Leaf",
+      "suggestedMinAge": 4,
+      "suggestedMaxAge": 6,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://story-bell.com/ages-4-6/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
     }
   },
   {
@@ -458,7 +666,7 @@
     "html": "Emma_and_the_Surprise_Party.html",
     "date_added": "",
     "slug": "emma_and_the_surprise_party",
-    "url": "/Emma_and_the_Surprise_Party.html",
+    "url": "https://story-bell.com/emma-and-the-surprise-party.html",
     "inLanguage": "en",
     "duration_min": 5,
     "age_bracket": "7-12",
@@ -481,10 +689,13 @@
       "@type": "CreativeWork",
       "name": "Emma and the Surprise Party",
       "description": "Emma plans a secret party for her granddad and learns the joy of surprises.",
-      "url": "/Emma_and_the_Surprise_Party.html",
+      "url": "https://story-bell.com/emma-and-the-surprise-party.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
-      "image": "icon/Emma and the Surprise Party.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://story-bell.com/icon/Emma and the Surprise Party.webp"
+      },
       "timeRequired": "PT5M",
       "typicalAgeRange": "7-12",
       "genre": [
@@ -511,12 +722,43 @@
       },
       "audio": {
         "@type": "AudioObject",
-        "name": "Story Audio",
-        "contentUrl": "Emma_and_the_Surprise_Party/Emma_and_the_Surprise_Party_StoryAudio.mp3",
-        "encodingFormat": "audio/mpeg"
+        "contentUrl": "https://story-bell.com/Emma_and_the_Surprise_Party/Emma_and_the_Surprise_Party_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
       },
       "datePublished": "2025-10-06",
-      "dateModified": "2025-10-06"
+      "dateModified": "2025-10-06",
+      "mainEntityOfPage": "https://story-bell.com/emma-and-the-surprise-party.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://story-bell.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://story-bell.com/assets/logo-512.png"
+        }
+      },
+      "headline": "Emma and the Surprise Party",
+      "suggestedMinAge": 7,
+      "suggestedMaxAge": 12,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://story-bell.com/ages-7-12/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
     }
   },
   {
@@ -535,7 +777,7 @@
     "html": "Tommy_and_the_Lost_Toy.html",
     "date_added": "",
     "slug": "tommy_and_the_lost_toy",
-    "url": "/Tommy_and_the_Lost_Toy.html",
+    "url": "https://story-bell.com/tommy-and-the-lost-toy.html",
     "inLanguage": "en",
     "duration_min": 5,
     "age_bracket": "0-3",
@@ -557,10 +799,13 @@
       "@type": "CreativeWork",
       "name": "Tommy and the Lost Toy",
       "description": "Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.",
-      "url": "/Tommy_and_the_Lost_Toy.html",
+      "url": "https://story-bell.com/tommy-and-the-lost-toy.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
-      "image": "icon/Tommy and the Lost Toy.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://story-bell.com/icon/Tommy and the Lost Toy.webp"
+      },
       "timeRequired": "PT5M",
       "typicalAgeRange": "0-3",
       "genre": [
@@ -583,12 +828,43 @@
       },
       "audio": {
         "@type": "AudioObject",
-        "name": "Story Audio",
-        "contentUrl": "Tommy_and_the_Lost_Toy/Tommy_and_the_Lost_Toy_StoryAudio.mp3",
-        "encodingFormat": "audio/mpeg"
+        "contentUrl": "https://story-bell.com/Tommy_and_the_Lost_Toy/Tommy_and_the_Lost_Toy_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
       },
       "datePublished": "2025-10-06",
-      "dateModified": "2025-10-06"
+      "dateModified": "2025-10-06",
+      "mainEntityOfPage": "https://story-bell.com/tommy-and-the-lost-toy.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://story-bell.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://story-bell.com/assets/logo-512.png"
+        }
+      },
+      "headline": "Tommy and the Lost Toy",
+      "suggestedMinAge": 0,
+      "suggestedMaxAge": 3,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://story-bell.com/ages-0-3/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
     }
   },
   {
@@ -607,7 +883,7 @@
     "html": "Melody_and_the_Muddy_Puppy.html",
     "date_added": "",
     "slug": "melody_and_the_muddy_puppy",
-    "url": "/Melody_and_the_Muddy_Puppy.html",
+    "url": "https://story-bell.com/melody-and-the-muddy-puppy.html",
     "inLanguage": "en",
     "duration_min": 10,
     "age_bracket": "4-6",
@@ -631,10 +907,13 @@
       "@type": "CreativeWork",
       "name": "Melody and the Muddy Puppy",
       "description": "A silly story about a girl and her puppy, who both discover the meaning of disgust after a very messy day in the park.",
-      "url": "/Melody_and_the_Muddy_Puppy.html",
+      "url": "https://story-bell.com/melody-and-the-muddy-puppy.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
-      "image": "icon/Melody and the Muddy Puppy.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://story-bell.com/icon/Melody and the Muddy Puppy.webp"
+      },
       "timeRequired": "PT10M",
       "typicalAgeRange": "4-6",
       "genre": [
@@ -662,12 +941,43 @@
       },
       "audio": {
         "@type": "AudioObject",
-        "name": "Story Audio",
-        "contentUrl": "Melody_and_the_Muddy_Puppy/Melody_and_the_Muddy_Puppy_StoryAudio.mp3",
-        "encodingFormat": "audio/mpeg"
+        "contentUrl": "https://story-bell.com/Melody_and_the_Muddy_Puppy/Melody_and_the_Muddy_Puppy_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
       },
       "datePublished": "2025-10-06",
-      "dateModified": "2025-10-06"
+      "dateModified": "2025-10-06",
+      "mainEntityOfPage": "https://story-bell.com/melody-and-the-muddy-puppy.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://story-bell.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://story-bell.com/assets/logo-512.png"
+        }
+      },
+      "headline": "Melody and the Muddy Puppy",
+      "suggestedMinAge": 4,
+      "suggestedMaxAge": 6,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://story-bell.com/ages-4-6/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
     }
   },
   {
@@ -686,7 +996,7 @@
     "html": "The_Brave_Little_Duckling.html",
     "date_added": "",
     "slug": "the_brave_little_duckling",
-    "url": "/The_Brave_Little_Duckling.html",
+    "url": "https://story-bell.com/the-brave-little-duckling.html",
     "inLanguage": "en",
     "duration_min": 5,
     "age_bracket": "0-3",
@@ -709,10 +1019,13 @@
       "@type": "CreativeWork",
       "name": "The Brave Little Duckling",
       "description": "A duckling faces his fear of swimming and discovers courage.",
-      "url": "/The_Brave_Little_Duckling.html",
+      "url": "https://story-bell.com/the-brave-little-duckling.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
-      "image": "icon/The Brave Little Duckling.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://story-bell.com/icon/The Brave Little Duckling.webp"
+      },
       "timeRequired": "PT5M",
       "typicalAgeRange": "0-3",
       "genre": [
@@ -739,12 +1052,43 @@
       },
       "audio": {
         "@type": "AudioObject",
-        "name": "Story Audio",
-        "contentUrl": "The_Brave_Little_Duckling/The_Brave_Little_Duckling_StoryAudio.mp3",
-        "encodingFormat": "audio/mpeg"
+        "contentUrl": "https://story-bell.com/The_Brave_Little_Duckling/The_Brave_Little_Duckling_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
       },
       "datePublished": "2025-10-06",
-      "dateModified": "2025-10-06"
+      "dateModified": "2025-10-06",
+      "mainEntityOfPage": "https://story-bell.com/the-brave-little-duckling.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://story-bell.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://story-bell.com/assets/logo-512.png"
+        }
+      },
+      "headline": "The Brave Little Duckling",
+      "suggestedMinAge": 0,
+      "suggestedMaxAge": 3,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://story-bell.com/ages-0-3/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
     }
   },
   {
@@ -764,7 +1108,7 @@
     "html": "Stars_in_My_Window.html",
     "date_added": "",
     "slug": "stars_in_my_window",
-    "url": "/Stars_in_My_Window.html",
+    "url": "https://story-bell.com/stars-in-my-window.html",
     "inLanguage": "en",
     "duration_min": 5,
     "age_bracket": "0-3",
@@ -788,10 +1132,13 @@
       "@type": "CreativeWork",
       "name": "Stars in My Window",
       "description": "A bedtime poem about finding comfort in the night sky.",
-      "url": "/Stars_in_My_Window.html",
+      "url": "https://story-bell.com/stars-in-my-window.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
-      "image": "icon/Stars in My Window.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://story-bell.com/icon/Stars in My Window.webp"
+      },
       "timeRequired": "PT5M",
       "typicalAgeRange": "0-3",
       "genre": [
@@ -819,12 +1166,43 @@
       },
       "audio": {
         "@type": "AudioObject",
-        "name": "Story Audio",
-        "contentUrl": "Stars_in_My_Window/Stars_in_My_Window_StoryAudio.mp3",
-        "encodingFormat": "audio/mpeg"
+        "contentUrl": "https://story-bell.com/Stars_in_My_Window/Stars_in_My_Window_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
       },
       "datePublished": "2025-10-06",
-      "dateModified": "2025-10-06"
+      "dateModified": "2025-10-06",
+      "mainEntityOfPage": "https://story-bell.com/stars-in-my-window.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://story-bell.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://story-bell.com/assets/logo-512.png"
+        }
+      },
+      "headline": "Stars in My Window",
+      "suggestedMinAge": 0,
+      "suggestedMaxAge": 3,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://story-bell.com/ages-0-3/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
     }
   },
   {
@@ -843,7 +1221,7 @@
     "html": "Grumpy_Grandpa_and_the_Silly_Hat.html",
     "date_added": "",
     "slug": "grumpy_grandpa_and_the_silly_hat",
-    "url": "/Grumpy_Grandpa_and_the_Silly_Hat.html",
+    "url": "https://story-bell.com/grumpy-grandpa-and-the-silly-hat.html",
     "inLanguage": "en",
     "duration_min": 5,
     "age_bracket": "4-6",
@@ -865,10 +1243,13 @@
       "@type": "CreativeWork",
       "name": "Grumpy Grandpa and the Silly Hat",
       "description": "Grandpa is feeling angry until his granddaughter makes him laugh with a silly hat.",
-      "url": "/Grumpy_Grandpa_and_the_Silly_Hat.html",
+      "url": "https://story-bell.com/grumpy-grandpa-and-the-silly-hat.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
-      "image": "icon/Grumpy Grandpa and the Silly Hat.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://story-bell.com/icon/Grumpy Grandpa and the Silly Hat.webp"
+      },
       "timeRequired": "PT5M",
       "typicalAgeRange": "4-6",
       "genre": [
@@ -896,12 +1277,43 @@
       },
       "audio": {
         "@type": "AudioObject",
-        "name": "Story Audio",
-        "contentUrl": "Grumpy_Grandpa_and_the_Silly_Hat/Grumpy_Grandpa_and_the_Silly_Hat_StoryAudio.mp3",
-        "encodingFormat": "audio/mpeg"
+        "contentUrl": "https://story-bell.com/Grumpy_Grandpa_and_the_Silly_Hat/Grumpy_Grandpa_and_the_Silly_Hat_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
       },
       "datePublished": "2025-10-06",
-      "dateModified": "2025-10-06"
+      "dateModified": "2025-10-06",
+      "mainEntityOfPage": "https://story-bell.com/grumpy-grandpa-and-the-silly-hat.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://story-bell.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://story-bell.com/assets/logo-512.png"
+        }
+      },
+      "headline": "Grumpy Grandpa and the Silly Hat",
+      "suggestedMinAge": 4,
+      "suggestedMaxAge": 6,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://story-bell.com/ages-4-6/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
     }
   },
   {
@@ -920,7 +1332,7 @@
     "html": "The_Secret_in_the_Library.html",
     "date_added": "",
     "slug": "the_secret_in_the_library",
-    "url": "/The_Secret_in_the_Library.html",
+    "url": "https://story-bell.com/the-secret-in-the-library.html",
     "inLanguage": "en",
     "duration_min": 10,
     "age_bracket": "7-12",
@@ -943,10 +1355,13 @@
       "@type": "CreativeWork",
       "name": "The Secret in the Library",
       "description": "An adventure about two friends solving a mystery, and the surprise they find.",
-      "url": "/The_Secret_in_the_Library.html",
+      "url": "https://story-bell.com/the-secret-in-the-library.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
-      "image": "icon/The Secret in the Library.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://story-bell.com/icon/The Secret in the Library.webp"
+      },
       "timeRequired": "PT10M",
       "typicalAgeRange": "7-12",
       "genre": [
@@ -970,12 +1385,43 @@
       },
       "audio": {
         "@type": "AudioObject",
-        "name": "Story Audio",
-        "contentUrl": "The_Secret_in_the_Library/The_Secret_in_the_Library_StoryAudio.mp3",
-        "encodingFormat": "audio/mpeg"
+        "contentUrl": "https://story-bell.com/The_Secret_in_the_Library/The_Secret_in_the_Library_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
       },
       "datePublished": "2025-10-06",
-      "dateModified": "2025-10-06"
+      "dateModified": "2025-10-06",
+      "mainEntityOfPage": "https://story-bell.com/the-secret-in-the-library.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://story-bell.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://story-bell.com/assets/logo-512.png"
+        }
+      },
+      "headline": "The Secret in the Library",
+      "suggestedMinAge": 7,
+      "suggestedMaxAge": 12,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://story-bell.com/ages-7-12/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
     }
   },
   {
@@ -994,7 +1440,7 @@
     "html": "Lily_and_the_Blue_Balloon.html",
     "date_added": "",
     "slug": "lily_and_the_blue_balloon",
-    "url": "/Lily_and_the_Blue_Balloon.html",
+    "url": "https://story-bell.com/lily-and-the-blue-balloon.html",
     "inLanguage": "en",
     "duration_min": 5,
     "age_bracket": "4-6",
@@ -1016,10 +1462,13 @@
       "@type": "CreativeWork",
       "name": "Lily and the Blue Balloon",
       "description": "Lily feels sad when her balloon floats away, but she finds hope in a new friend.",
-      "url": "/Lily_and_the_Blue_Balloon.html",
+      "url": "https://story-bell.com/lily-and-the-blue-balloon.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
-      "image": "icon/Lily and the Blue Balloon.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://story-bell.com/icon/Lily and the Blue Balloon.webp"
+      },
       "timeRequired": "PT5M",
       "typicalAgeRange": "4-6",
       "genre": [
@@ -1042,12 +1491,43 @@
       },
       "audio": {
         "@type": "AudioObject",
-        "name": "Story Audio",
-        "contentUrl": "Lily_and_the_Blue_Balloon/Lily_and_the_Blue_Balloon_StoryAudio.mp3",
-        "encodingFormat": "audio/mpeg"
+        "contentUrl": "https://story-bell.com/Lily_and_the_Blue_Balloon/Lily_and_the_Blue_Balloon_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
       },
       "datePublished": "2025-10-06",
-      "dateModified": "2025-10-06"
+      "dateModified": "2025-10-06",
+      "mainEntityOfPage": "https://story-bell.com/lily-and-the-blue-balloon.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://story-bell.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://story-bell.com/assets/logo-512.png"
+        }
+      },
+      "headline": "Lily and the Blue Balloon",
+      "suggestedMinAge": 4,
+      "suggestedMaxAge": 6,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://story-bell.com/ages-4-6/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
     }
   },
   {
@@ -1066,7 +1546,7 @@
     "html": "The_Case_of_the_Gross_Green_Socks.html",
     "date_added": "",
     "slug": "the_case_of_the_gross_green_socks",
-    "url": "/The_Case_of_the_Gross_Green_Socks.html",
+    "url": "https://story-bell.com/the-case-of-the-gross-green-socks.html",
     "inLanguage": "en",
     "duration_min": 5,
     "age_bracket": "7-12",
@@ -1089,10 +1569,13 @@
       "@type": "CreativeWork",
       "name": "The Case of the Gross Green Socks",
       "description": "A detective story about disgust, lost laundry, and learning to help with chores.",
-      "url": "/The_Case_of_the_Gross_Green_Socks.html",
+      "url": "https://story-bell.com/the-case-of-the-gross-green-socks.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
-      "image": "icon/The Case of the Gross Green Socks.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://story-bell.com/icon/The Case of the Gross Green Socks.webp"
+      },
       "timeRequired": "PT5M",
       "typicalAgeRange": "7-12",
       "genre": [
@@ -1119,12 +1602,43 @@
       },
       "audio": {
         "@type": "AudioObject",
-        "name": "Story Audio",
-        "contentUrl": "The_Case_of_the_Gross_Green_Socks/The_Case_of_the_Gross_Green_Socks_StoryAudio.mp3",
-        "encodingFormat": "audio/mpeg"
+        "contentUrl": "https://story-bell.com/The_Case_of_the_Gross_Green_Socks/The_Case_of_the_Gross_Green_Socks_StoryAudio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
       },
       "datePublished": "2025-10-06",
-      "dateModified": "2025-10-06"
+      "dateModified": "2025-10-06",
+      "mainEntityOfPage": "https://story-bell.com/the-case-of-the-gross-green-socks.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://story-bell.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://story-bell.com/assets/logo-512.png"
+        }
+      },
+      "headline": "The Case of the Gross Green Socks",
+      "suggestedMinAge": 7,
+      "suggestedMaxAge": 12,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://story-bell.com/ages-7-12/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
     }
   }
 ]

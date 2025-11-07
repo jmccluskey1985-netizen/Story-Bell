@@ -964,20 +964,20 @@ audio::-webkit-media-controls-timeline-container{
   max-width: none !important;
   height: auto !important;
   min-height: 0 !important;
-  flex: 0 1 calc(25% - 16px) !important;   /* 4-up desktop */
+  flex: 0 1 calc(25% - 16px) !important;
 }
 @media (max-width: 1200px){
   .cards-grid > .story-card,
   #story-cards .cards-grid > .story-card,
   #story-cards .story-grid > .story-card {
-    flex: 0 1 calc(33.333% - 16px) !important;     /* 3-up tablet */
+    flex: 0 1 calc(33.333% - 16px) !important;
   }
 }
 @media (max-width: 800px){
   .cards-grid > .story-card,
   #story-cards .cards-grid > .story-card,
   #story-cards .story-grid > .story-card {
-    flex: 0 1 calc(50% - 10px) !important;         /* 2-up mobile */
+    flex: 0 1 calc(50% - 10px) !important;
   }
 }
 .cards-grid > .story-card .chips,
@@ -995,7 +995,7 @@ audio::-webkit-media-controls-timeline-container{
   overflow: visible !important;
 }
 </style>
-<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://story-bell.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Ages 4–6","url":"https://story-bell.com/mayas-missing-mittens.html","inLanguage":"en","description":"","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://story-bell.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Ages 4–6","description":"A story about problem solving with Mummy","url":"https://story-bell.com/mayas-missing-mittens.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"Jon McCluskey"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://story-bell.com/Maya's Missing Mittens/imagetitle.webp","genre":["family","problem-solving"],"about":[{"@type":"Thing","name":"family"},{"@type":"Thing","name":"problem-solving"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://story-bell.com/Maya's_Missing_Mittens/Maya's_Missing_Mittens_StoryAudio.mp3","encodingFormat":"audio/mpeg"}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
 .carousel-section .carousel-desc{
@@ -7902,9 +7902,9 @@ nav ul > li:focus-within > .dropdown {
       grid.style.gap = '16px';
 
       var w = window.innerWidth;
-      var basis = 'calc(25% - 16px)';               // desktop
-      if (w <= 1200) basis = 'calc(33.333% - 16px)'; // tablet
-      if (w <= 800)  basis = 'calc(50% - 10px)';     // mobile
+      var basis = 'calc(25% - 16px)';
+      if (w <= 1200) basis = 'calc(33.333% - 16px)';
+      if (w <= 800)  basis = 'calc(50% - 10px)';
 
       grid.querySelectorAll(':scope > .story-card').forEach(function(card){
         card.style.display = 'flex';

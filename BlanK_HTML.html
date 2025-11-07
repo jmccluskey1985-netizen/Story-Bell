@@ -609,20 +609,20 @@ header .site-title {
   max-width: none !important;
   height: auto !important;
   min-height: 0 !important;
-  flex: 0 1 calc(25% - 16px) !important;   /* 4-up desktop */
+  flex: 0 1 calc(25% - 16px) !important;
 }
 @media (max-width: 1200px){
   .cards-grid > .story-card,
   #story-cards .cards-grid > .story-card,
   #story-cards .story-grid > .story-card {
-    flex: 0 1 calc(33.333% - 16px) !important;     /* 3-up tablet */
+    flex: 0 1 calc(33.333% - 16px) !important;
   }
 }
 @media (max-width: 800px){
   .cards-grid > .story-card,
   #story-cards .cards-grid > .story-card,
   #story-cards .story-grid > .story-card {
-    flex: 0 1 calc(50% - 10px) !important;         /* 2-up mobile */
+    flex: 0 1 calc(50% - 10px) !important;
   }
 }
 .cards-grid > .story-card .chips,
@@ -2672,9 +2672,9 @@ nav ul > li:focus-within > .dropdown {
       grid.style.gap = '16px';
 
       var w = window.innerWidth;
-      var basis = 'calc(25% - 16px)';               // desktop
-      if (w <= 1200) basis = 'calc(33.333% - 16px)'; // tablet
-      if (w <= 800)  basis = 'calc(50% - 10px)';     // mobile
+      var basis = 'calc(25% - 16px)';
+      if (w <= 1200) basis = 'calc(33.333% - 16px)';
+      if (w <= 800)  basis = 'calc(50% - 10px)';
 
       grid.querySelectorAll(':scope > .story-card').forEach(function(card){
         card.style.display = 'flex';
