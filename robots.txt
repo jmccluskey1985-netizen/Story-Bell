@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /OLD HTML/
+
+Sitemap: https://www.storybellkids.com/sitemap.xml
