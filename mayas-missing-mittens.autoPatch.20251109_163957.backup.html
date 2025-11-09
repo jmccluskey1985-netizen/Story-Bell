@@ -1058,7 +1058,7 @@ header .site-title, header nav a, header nav ul li a, header .dropdown-item {
   overflow: visible !important;
 }
 </style>
-<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://story-bell.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Maya's Missing Mittens","description":"A calm, step-by-step problem-solving story: Maya retraces her steps to find her red snowflake mittens and learns a simple strategy she can reuse.","url":"https://story-bell.com/owl-in-the-dark-forest.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT10M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://story-bell.com/icon/Owl in the Dark Forest.webp","genre":["animals","courage","fear","night"],"about":[{"@type":"Thing","name":"animals"},{"@type":"Thing","name":"courage"},{"@type":"Thing","name":"night"},{"@type":"Thing","name":"fear"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://story-bell.com/Owl_in_the_Dark_Forest/Owl_in_the_Dark_Forest_StoryAudio.mp3","encodingFormat":"audio/mpeg"}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://story-bell.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Maya's Missing Mittens","description":"A calm, step-by-step problem-solving story: Maya retraces her steps to find her red snowflake mittens and learns a simple strategy she can reuse.","url":"https://story-bell.com/mayas-missing-mittens.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"Jon McCluskey"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://story-bell.com/Maya's Missing Mittens/imagetitle.webp","genre":["family","problem-solving"],"about":[{"@type":"Thing","name":"family"},{"@type":"Thing","name":"problem-solving"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://story-bell.com/Maya's_Missing_Mittens/Maya's_Missing_Mittens_StoryAudio.mp3","encodingFormat":"audio/mpeg"}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
 .carousel-section .carousel-desc{
@@ -1229,8 +1229,7 @@ html body #story-queue-menu.active{display:flex !important;}
   z-index: 20001 !important;
   pointer-events: none !important;
 }
-</style><style id="wand-pointer-events-fix">/* auto patch */
-#wand, .cursor-wand, .sparkle { pointer-events: none !important; }</style><style>
+</style><style>
    body { margin: 0;  background-color: #001f3f; min-height: 100vh; cursor: none;}
     header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
     .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
@@ -2868,7 +2867,8 @@ nav ul > li:focus-within > .dropdown {
       font-size: 35px !important;
     }
   }
-</style><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
+</style><style id="wand-pointer-events-fix">/* auto patch */
+#wand, .cursor-wand, .sparkle { pointer-events: none !important; }</style><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
 <body>
 <div style="text-align:center;font-size:12px;color:#ffffff;margin-top:8px;margin-bottom:4px;">TEST VERSION - MAYA'S MISSING MITTENS</div>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
@@ -4839,275 +4839,6 @@ nav ul > li:focus-within > .dropdown {
 <button class="queue-control-btn" disabled="" id="queue-clear" title="Clear Queue">🗑️</button>
 </div>
 </div><script>
-   // Wand cursor & sparkle logic
-    const wand = document.getElementById("wand");
-    const WAND_OFFSET_X = 15;
-    const WAND_OFFSET_Y = 8; // moved down by 10px
-    wand.style.position = "fixed";
-    wand.style.pointerEvents = "none";
-    wand.style.zIndex = 20001;
-    let lastSparkleTime = 0;
-    document.body.addEventListener("mousemove", (e) => {
-      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
-      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
-      wand.style.transition = "none";
-      wand.style.opacity = "1";
-      // Sparkle at wand tip
-      const now = Date.now();
-      if (now - lastSparkleTime > 16) {
-        const sparkle = document.createElement("div");
-        sparkle.className = "sparkle";
-        sparkle.style.left = `${e.clientX - 11}px`;
-        sparkle.style.top  = `${e.clientY - 11}px`;
-        document.body.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), 900);
-        lastSparkleTime = now;
-      }
-    });
-    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
-    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
-  </script><script>
-   var wand = window.wand ||  document.getElementById("wand");
-    // Wand offset: tweak for your image so tip matches cursor position
-    const WAND_OFFSET_X = 15;
-    const WAND_OFFSET_Y = 8;
-    wand.style.position = "fixed";
-    wand.style.pointerEvents = "none";
-    wand.style.zIndex = 9998;
-    let lastSparkleTime = 0;
-    document.body.addEventListener("mousemove", (e) => {
-      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
-      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
-      wand.style.transition = "none";
-      wand.style.opacity = "1";
-      // Sparkle at wand tip
-      const now = Date.now();
-      if (now - lastSparkleTime > 16) {
-        const sparkle = document.createElement("div");
-        sparkle.className = "sparkle";
-        sparkle.style.left = `${e.clientX - 11}px`;
-        sparkle.style.top  = `${e.clientY - 11}px`;
-        document.body.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), 900);
-        lastSparkleTime = now;
-      }
-    });
-    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
-    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
-  </script><script>
-   document.querySelectorAll('.carousel-track').forEach(function(track){
-  let isDown = false, startX, scrollLeft;
-  track.addEventListener('mousedown', function(e){
-    isDown = true;
-    track.classList.add('dragging');
-    startX = e.pageX - track.offsetLeft;
-    scrollLeft = track.scrollLeft;
-    e.preventDefault();
-  });
-  track.addEventListener('mouseleave', function(){
-    isDown = false;
-    track.classList.remove('dragging');
-  });
-  track.addEventListener('mouseup', function(){
-    isDown = false;
-    track.classList.remove('dragging');
-  });
-  track.addEventListener('mousemove', function(e){
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - track.offsetLeft;
-    const walk = (x - startX) * 1.3;
-    track.scrollLeft = scrollLeft - walk;
-  });
-  // Touch events for mobile
-  let startTouchX = 0, startScroll = 0;
-  track.addEventListener('touchstart', function(e) {
-    startTouchX = e.touches[0].pageX;
-    startScroll = track.scrollLeft;
-  }, {passive:true});
-  track.addEventListener('touchmove', function(e) {
-    if (e.touches.length === 1) {
-      let dx = e.touches[0].pageX - startTouchX;
-      track.scrollLeft = startScroll - dx;
-    }
-  }, {passive:true});
-});
-  </script><script data-copied-from-id="mobile-disable-wand-js">
-   (function(){
-  function isMobile(){
-    return window.matchMedia("(max-width: 800px)").matches || ("ontouchstart" in window);
-  }
-  function disableWandOnMobile(){
-    if(!isMobile()) return;
-
-    // Remove wand image if present
-    var wand = document.getElementById("wand");
-    if (wand) { try { wand.remove(); } catch(e){} }
-
-    // Remove any existing sparkles
-    try { document.querySelectorAll(".sparkle").forEach(function(n){ n.remove(); }); } catch(e){}
-
-    // Block mousemove sparkle creators (capture phase)
-    try {
-      document.addEventListener("mousemove", function(e){ e.stopImmediatePropagation(); }, true);
-    } catch(e){}
-
-    // MutationObserver to auto-remove any sparkles added later
-    try {
-      var mo = new MutationObserver(function(muts){
-        for (var i=0;i<muts.length;i++){
-          var ad = muts[i].addedNodes || [];
-          for (var j=0;j<ad.length;j++){
-            var n = ad[j];
-            if (n && n.nodeType === 1){
-              if (n.classList && n.classList.contains("sparkle")) { n.remove(); continue; }
-              if (n.querySelectorAll){
-                n.querySelectorAll(".sparkle").forEach(function(el){ el.remove(); });
-              }
-            }
-          }
-        }
-      });
-      mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
-    } catch(e){}
-  }
-
-  document.addEventListener("DOMContentLoaded", disableWandOnMobile);
-  window.addEventListener("resize", disableWandOnMobile);
-})();
-  </script><script>
-// Delegated handler to ensure Login/Subscribe CTAs always open the auth modal (desktop & mobile).
-(function(){
-  function wantsAuth(el){
-    if(!el) return false;
-    var text = (el.innerText || '').toLowerCase();
-    return el.hasAttribute('data-auth-cta')
-      || (el.matches && (el.matches('a[href="#login"]') || el.matches('#subscribe-box, .subscribe-box, .subscribe-text')))
-      || (text.includes('log in') && text.includes('create account'))
-      || text.includes('subscribe to story bell');
-  }
-  document.addEventListener('click', function(e){
-    var t = e.target.closest('[data-auth-cta], a[href="#login"], #subscribe-box, .subscribe-box, .subscribe-text, .header-login-button, .mobile-login-button');
-    if(!t && wantsAuth(e.target)) t = e.target;
-    if(t){
-      try { e.preventDefault(); } catch(_){}
-      try { e.stopPropagation(); } catch(_){}
-      if(typeof window.openAuthModal === 'function'){ window.openAuthModal(); }
-    }
-  }, {passive:false, capture:true});
-})();
-</script><script>
-// --- Robust Auth Modal Open/Close (v3) ---
-(function(){
-  // Ensure functions exist on window
-  window.closeAuthModal = function(){
-    try {
-      var m = document.getElementById('auth-modal');
-      if (!m) return;
-      m.style.display = 'none';
-      // If FirebaseUI mounted, optionally reset container (prevents stale state)
-      var c = document.getElementById('firebaseui-auth-container');
-      if (c) { c.innerHTML = ''; }
-    } catch(e){ console.error('closeAuthModal error:', e); }
-  };
-
-  // Overlay + X + Esc close behavior
-  function bindModalClose(){
-    var m = document.getElementById('auth-modal');
-    if (!m) return;
-    var content = m.querySelector('.auth-modal-content, .modal-content, [role="dialog"]') || m;
-    // Close on overlay click (but not when clicking the content box)
-    m.addEventListener('click', function(ev){
-      if (!content.contains(ev.target)) return; // inside content: ignore
-      // If click target is *exactly* the overlay (m), close
-      if (ev.target === m) { window.closeAuthModal(); }
-    }, {capture: true});
-
-    // Bind buttons/links that look like close
-    var closeSelectors = [
-      '.auth-close', '.modal-close', '.close', '[data-close]', '[aria-label="Close"]', '.firebaseui-idp-cancel'
-    ];
-    closeSelectors.forEach(function(sel){
-      m.querySelectorAll(sel).forEach(function(btn){
-        btn.addEventListener('click', function(e){
-          e.preventDefault(); e.stopPropagation();
-          window.closeAuthModal();
-        }, {passive:false});
-      });
-    });
-
-    // Esc key
-    document.addEventListener('keydown', function(e){
-      if (e.key === 'Escape') window.closeAuthModal();
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bindModalClose);
-  } else {
-    bindModalClose();
-  }
-
-  // Make sure the hamburger's login button also opens the modal
-  document.addEventListener('click', function(e){
-    var t = e.target.closest('.hamburger-login, .hamburger .login, .mobile-login-button, #mobileLoginBtn, [data-hamburger-login]');
-    if (t){
-      try { e.preventDefault(); e.stopPropagation(); } catch(_){}
-      if (typeof window.openAuthModal === 'function') window.openAuthModal();
-    }
-  }, {capture:true, passive:false});
-})();
-</script><script data-copied-from-id="auth-guard-openauth">
-(function(){
-  var ALLOWED = '.login-cta-header, .login-mobile a, .subscribe-box, .subscribe-text, [data-auth-cta="auth"]';
-  // Capture last click target (capture phase to beat bubbling handlers)
-  document.addEventListener('click', function(e){
-    window.__sbLastClickTarget = e.target || null;
-  }, true);
-
-  function isAllowedTarget(t){
-    try {
-      return !!(t && t.closest && t.closest(ALLOWED));
-    } catch(e) { return false; }
-  }
-
-  // Monkey-patch openAuthModal to block calls not originating from allowed CTAs
-  var waited = 0;
-  function patchWhenReady(){
-    if (typeof window.openAuthModal === 'function' && !window.__sbOpenAuthPatched){
-      window.__sbOpenAuthPatched = true;
-      var _orig = window.openAuthModal;
-      window.openAuthModal = function(){
-        var t = window.__sbLastClickTarget || null;
-        if (isAllowedTarget(t)){
-          return _orig.apply(this, arguments);
-        } else {
-          try { console.warn('Blocked openAuthModal from non-CTA region'); } catch(_){}
-          return false;
-        }
-      };
-    } else if (waited < 8000) {
-      waited += 200;
-      setTimeout(patchWhenReady, 200);
-    }
-  }
-  patchWhenReady();
-
-  // Fallback: bind explicit CTA clicks to open auth (in case their inline handlers were removed)
-  document.addEventListener('click', function(e){
-    var el = e.target;
-    if (!el || !el.closest) return;
-    var cta = el.closest(ALLOWED);
-    if (!cta) return;
-    e.preventDefault();
-    if (typeof window.openAuthModal === 'function'){
-      window.__sbLastClickTarget = el;
-      window.openAuthModal();
-    }
-    return false;
-  }, true);
-})();
-</script><script>
    (function () {
   const nav = document.querySelector(".header-right nav");
   const body = document.body;
