@@ -2,53 +2,27 @@
 
 <html lang="en">
 <head>
-<!-- Copy of the head section from an existing page to ensure consistent styling and functionality -->
-<!-- BEGIN SWIPE-CAROUSEL-STYLE -->
-<!-- BEGIN HAMBURGER-MENU-CSS -->
-<!-- END HAMBURGER-MENU-CSS -->
-<!-- END SWIPE-CAROUSEL-STYLE -->
-<!-- BEGIN HIDE-CAROUSEL-ARROWS -->
-<style>
-   .carousel-arrow,
-.carousel-arrow-left,
-.carousel-arrow-right,
-.carousel-prev,
-.carousel-next {
-  display: none !important;
-  visibility: hidden !important;
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Story Bell — FAQs</title>
+<!-- Google Font to match site -->
+<link href="https://fonts.googleapis.com/css?family=Coming+Soon&amp;display=swap" rel="stylesheet"/>
+<!-- Core styles borrowed from Blank_final template -->
+<style id="site-title-bump">
+/* Minimal bump for header brand text without affecting other header items */
+header .site-title {
+  font-size: clamp(32px, 3.4vw, 40px) !important;  /* desktop up to ~40px */
+  line-height: 1.05 !important;
+  white-space: nowrap !important;
+  margin-top: 12px !important; /* keep vertical alignment tight */
 }
-  </style>
-<!-- END HIDE-CAROUSEL-ARROWS -->
-<!-- BEGIN CAROUSEL-DESKTOP-FIX -->
-<style>
-   .carousel-track {
-  display: flex !important;
-  gap: 1em;
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  width: 100% !important;
-  max-width: 100vw !important;
-}
-.carousel-card {
-  flex: 0 0 auto !important;
-  scroll-snap-align: start;
-}
-@media (min-width: 801px) {
-  .carousel-card {
-    width: 18% !important;      /* Adjust for more/less cards */
-    min-width: 220px !important;
-    max-width: 280px !important;
+@media (max-width: 800px){
+  header .site-title {
+    font-size: clamp(28px, 7vw, 34px) !important;  /* safe on mobile */
+    line-height: 1.05 !important;
   }
 }
-  </style>
-<!-- END CAROUSEL-DESKTOP-FIX -->
-<link href="https://fonts.googleapis.com/css?family=Coming+Soon&amp;display=swap" rel="stylesheet"/>
-<meta charset="utf-8"/>
-<title>Reading Tips &amp; FAQ – Story Bell</title>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<style>
+</style><style>
    body { margin: 0;  background-color: #001f3f; min-height: 100vh; cursor: none;}
     header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
     .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
@@ -155,8 +129,7 @@ nav ul > li > a {
       80%  { opacity: 0.8; }
       100% { opacity: 0; transform: scale(0.8) translateY(-22px);}
     }
-  </style>
-<style>
+  </style><style>
    header, .header-left, .header-right, 
 .header-left a, 
 .header-left img {
@@ -169,71 +142,20 @@ nav ul > li > a {
   line-height: 1.1 !important;
   display: inline-block;
 }
-  </style>
-<style>
-   body.no-scroll { overflow: hidden; }
-  </style>
-<style>
-</style>
-<style>
-</style>
-<style>
-   .featured-header {
-      font-size: 1.7em;
-      color: #fff;
-      margin: 0 0 10px 0;
-      font-weight: bold;
-      text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099;
-      font-family: 'Georgia', serif;
-      text-align: left;
-      padding-left: 6px;
-      letter-spacing: 1px;
-    }
-    @media (max-width: 700px) {
-      .featured-header { font-size: 1.3em; }
-    }
-  </style>
-<style>
+  </style><style>
    header, .header-left, .header-right, 
 .header-left a, 
 .header-left img {
   vertical-align: top !important;
   align-self: flex-start !important;
   margin-top: 0 !important;
-  }
-  </style>
-<style>
-   @keyframes glowTrail {
-  0%, 100% { text-shadow: none; }
-  50% { text-shadow: 0 0 8px #fff678, 0 0 14px #ffcc33; }
 }
-.glow-underline {
-  animation: glowTrail 2.8s infinite;
+.site-title {
+  margin-top: 14px !important;
+  line-height: 1.1 !important;
+  display: inline-block;
 }
-
-.carousel-header {
-  font-size: 1.7em;
-  font-weight: bold;
-  color: #ffffff;
-  font-family: 'Georgia', serif !important;
-  text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099;
-  margin: 0;
-  padding-left: 6px;
-  text-align: left;
-  letter-spacing: 1px;
-}
-.carousel-wrapper {
-  margin-top: 0;
-}
-.carousel-header a {
-  color: inherit !important;
-  text-decoration: none;
-}
-
-@media (max-width: 700px) {
-  .carousel-header { font-size: 1.3em; }
-}
-  </style><style id="storybell-header-video-style">
+  </style><style>
    /* Show video in header, hide logo on mobile; reverse on desktop */
 @media (max-width:800px) {
   .header-left img[alt="Story Bell Logo"] { display: none !important; }
@@ -243,120 +165,7 @@ nav ul > li > a {
   .header-left img[alt="Story Bell Logo"] { display: block !important; }
   .storybell-header-video { display: none !important; }
 }
-  </style><style id="tagline-glow-style">
-   .tagline-glow {
-  position: relative;
-  text-align: center;
-  margin: 6px auto 0 auto;
-  font-family: 'Coming Soon', cursive !important;
-  font-weight: 700;
-  font-size: clamp(18px, 3.2vw, 28px);
-  line-height: 1.25;
-  color: #fffde6;
-  letter-spacing: 0.02em;
-}
-
-/* Shared shimmer layer (two copies, phased) */
-.tagline-glow::before,
-.tagline-glow::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  color: #ffeb3b;
-  text-shadow: 0 0 8px #fff678, 0 0 18px #ffcc33, 0 0 36px rgba(255, 223, 0, 0.65);
-  white-space: nowrap;
-  overflow: hidden;
-  pointer-events: none;
-
-  /* Narrow moving mask to create a SHIMMER band */
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    rgba(0,0,0,0)    0%,
-    rgba(0,0,0,0)   44%,
-    rgba(0,0,0,0.65) 47%,
-    rgba(0,0,0,1)   50%,
-    rgba(0,0,0,0.65) 53%,
-    rgba(0,0,0,0)   56%,
-    rgba(0,0,0,0)  100%
-  );
-          mask-image: linear-gradient(
-    90deg,
-    rgba(0,0,0,0)    0%,
-    rgba(0,0,0,0)   44%,
-    rgba(0,0,0,0.65) 47%,
-    rgba(0,0,0,1)   50%,
-    rgba(0,0,0,0.65) 53%,
-    rgba(0,0,0,0)   56%,
-    rgba(0,0,0,0)  100%
-  );
-  -webkit-mask-size: 220% 100%;
-          mask-size: 220% 100%;
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-
-  animation-name: taglineShimmerRL;
-  animation-duration: 8s;                 /* slower sweep */
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-delay: 0s;
-}
-
-/* Phase offset so one band enters as the other exits => continuous shimmer */
-.tagline-glow::before { animation-delay: 0s;  opacity: 0.95; }
-.tagline-glow::after  { animation-delay: 4s;  opacity: 0.95; } /* half of duration */
-
-@keyframes taglineShimmerRL {
-  0%   { -webkit-mask-position: 120% 0; mask-position: 120% 0; }
-  100% { -webkit-mask-position: -20% 0; mask-position: -20% 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tagline-glow::before,
-  .tagline-glow::after { animation: none; -webkit-mask-position: -20% 0; mask-position: -20% 0; }
-}
-  </style><style id="subscribe-box-style">
-   /* === SEO-friendly Subscribe Box (styled like question box) === */
-.subscribe-box {
-  background: linear-gradient(180deg, #FFD700, #FFEB3B);
-  color: #000;
-  padding: 14px 18px;
-  margin: 20px auto;
-  border-radius: 14px;
-  text-align: center;
-  font-size: 1.05em;
-  font-weight: bold;
-  font-family: 'Coming Soon', cursive !important;
-  max-width: 800px;
-  position: relative;
-  border: 2px solid rgba(0,0,0,0.12);
-  box-shadow: 0 0 18px rgba(255,234,0,0.45), 0 0 36px rgba(255,215,0,0.33);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  animation: subscribePulse 3.5s ease-in-out infinite;
-  cursor: pointer;
-}
-.subscribe-starfield {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(circle, rgba(255,255,255,0.9) 1px, transparent 1px);
-  background-size: 20px 20px;
-  opacity: 0.28;
-  z-index: 1;
-  pointer-events: none;
-}
-.subscribe-text { position: relative; z-index: 2; }
-.subscribe-box:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 28px rgba(255,234,0,0.75), 0 0 52px rgba(255,215,0,0.6);
-}
-@keyframes subscribePulse {
-  0%, 100% { box-shadow: 0 0 18px rgba(255,234,0,0.45), 0 0 36px rgba(255,215,0,0.33); }
-  50%      { box-shadow: 0 0 26px rgba(255,234,0,0.85), 0 0 56px rgba(255,215,0,0.65); }
-}
-@media (max-width: 700px) {
-  .subscribe-box { font-size: 1em; padding: 12px 14px; margin: 14px auto; }
-}
-  </style><link href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css" rel="stylesheet"/><style id="header-logo-text-align">
+  </style><style>
 /* Align logo and Story Bell text beside each other */
 header .header-left {
   display: flex !important;
@@ -370,11 +179,6 @@ header .site-title {
   text-align: left !important;
   margin: 0 !important;
 }
-</style><style id="firebaseui-visibility-fix">
-/* Ensure FirebaseUI list shows normally inside #auth-modal */
-#auth-modal #firebaseui-auth-container .firebaseui-idp-list { display:block !important; }
-#auth-modal #firebaseui-auth-container .firebaseui-list-item { display:block !important; }
-#auth-modal #firebaseui-auth-container { min-width: 280px; }
 </style><style>
    /* Hamburger Button */
 
@@ -437,24 +241,6 @@ header .site-title {
   }
 }
 @keyframes fadeDown { from {opacity:0;transform:translateY(-16px);} to {opacity:1;transform:translateY(0);} }
-  </style><style>
-   .carousel-track {
-  display: flex;
-  gap: 1em;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Firefox */
-}
-.carousel-track::-webkit-scrollbar { display: none; }
-.carousel-card {
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-}
-@media (max-width: 800px) {
-  .carousel-arrow { display: none !important; }
-  .carousel-track { padding-bottom: 0.5em; }
-}
   </style><style>
    @media (max-width: 800px) {
   #menu-toggle {
@@ -1171,102 +957,6 @@ header .site-title {
   }
 }
   </style><style>
-   /* removed desktop .story-card width% rule */
-.story-card img {
-  width: 100%;
-  height: 195px;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: transform 0.3s cubic-bezier(.5,1.7,.49,1.06);
-  display: block;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-.story-card h3,
-.story-card h3 a {
-  color: #fff !important;
-  text-shadow: 0 0 6px #0008;
-  margin: 0 !important;
-  padding: 0 !important;
-  font-size: 1.13em;
-  font-weight: bold;
-}
-.story-card p {
-  color: #fff !important;
-  font-size: 0.87em !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-.story-card div[style*="background: #ffffff"], .story-card div[style*="background: #003366"] {
-  background: #003366 !important;
-  font-size: 0.87em !important;
-  margin: 0 !important;
-  padding: 2px 0 1px 0 !important;
-  border-radius: 7px !important;
-}
-.story-card .dropdown-item {
-  color: #fff !important;
-  text-shadow: 0 0 6px #0008;
-  font-size: 0.61em !important;
-  padding: 2.5px 10px !important;
-  border-radius: 7px;
-  display: inline-block;
-  margin: 1.5px 2.5px 0 0 !important;
-  transition: background 0.21s, color 0.12s, box-shadow 0.21s, transform 0.13s;
-  box-shadow: none;
-  text-align: center !important;
-}
-.story-card .dropdown-item:hover,
-.story-card .dropdown-item:focus {
-  background: #003366 !important;
-  color: #FFEB3B !important;
-  box-shadow: 0 0 14px 4px #FFEB3Bcc !important;
-  transform: scale(1.13);
-  z-index: 2;
-}
-.story-card:hover {
-  box-shadow: 0 0 28px 12px #FFEB3Bcc, 0 2px 10px #2223;
-  transform: scale(1.035);
-}
-.favorite-star {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.6em;
-  color: #ffd700;
-  margin-top: 6px;
-  margin-bottom: -5px;
-  transition: color 0.14s;
-  outline: none;
-}
-.favorite-star .star {
-  pointer-events: none;
-}
-.favorite-star:hover .star,
-.favorite-star:focus .star {
-  color: #fff56b;
-  text-shadow: 0 0 7px #ffea00;
-}
-/* ---- MOBILE OPTIMIZATION ---- */
-@media (max-width: 800px) {
-  .story-card {
-    width: 94vw !important;
-    min-width: 90vw !important;
-    max-width: 98vw !important;
-    margin: 13px auto !important;
-    font-size: 1.1em !important;
-    padding: 13px !important;
-  }
-  .story-card img {
-    height: 120px !important;
-  }
-  .story-card .dropdown-item {
-    font-size: 0.95em !important;
-    margin: 3px 6px !important;
-    padding: 5px 15px !important;
-  }
-}
-  </style><style>
    /* --- Responsive Styles for Mobile/Tablet (NO Hamburger Menu) --- */
 @media (max-width: 800px) {
   header { flex-direction: column; align-items: stretch !important; }
@@ -1536,17 +1226,6 @@ nav ul > li:focus-within > .dropdown {
   nav ul { gap: 10px; }
 }
   </style><style>
-   /* MOBILE OVERRIDE: Prevent hover/focus-within from keeping submenus open on touch */
-@media (max-width: 800px) {
-  nav ul > li:hover > .dropdown,
-  nav ul > li:focus-within > .dropdown {
-    display: none !important;
-  }
-  nav ul > li.open > .dropdown {
-    display: block !important;
-  }
-}
-  </style><style>
    @media (max-width: 900px){
   body.menu-open header{ z-index: 11000 !important; position: sticky; top: 0; }
   .header-right #menu-toggle{
@@ -1616,89 +1295,6 @@ nav ul > li:focus-within > .dropdown {
   }
 }
   </style><style>
-   @media (max-width: 800px) {
-  /* Hide only the MP4 animation video(s) that are in the BODY, not header */
-  .index-body-video { display: none !important; }
-
-  /* Hide the 'Story Bell' H1 in the BODY on mobile (keep header untouched) */
-  .index-body-title { display: none !important; }
-}
-  </style><style>
-   /* Disable custom cursor + hide wand/sparkles on mobile */
-@media (max-width: 800px) {
-  body { cursor: auto !important; }
-  #wand { display: none !important; }
-  .sparkle { display: none !important; }
-}
-  </style><style>
-/* Center dropdown menus under parent item on desktop */
-@media (min-width: 801px){
-  nav ul li .dropdown{
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    text-align: center !important;
-  }
-}
-</style><style>
-/* Force pointer cursor visible on all menu list items and links */
-header nav ul li,
-header nav ul li a,
-header nav ul li .dropdown li,
-header nav ul li .dropdown li a {
-  cursor: pointer !important;
-}
-</style><style>
-/* === Mobile header login placement === */
-@media (max-width: 800px){
-  .login-cta-header { display: none !important; }        /* remove header button on mobile */
-  .login-mobile { display: block !important; }           /* show first item in hamburger */
-}
-@media (min-width: 801px){
-  .login-mobile { display: none !important; }            /* hide hamburger login on desktop */
-}
-
-/* === Smaller Firebase modal on mobile === */
-@media (max-width: 800px){
-  #auth-modal > div {
-    width: 92vw !important;
-    max-width: 360px !important;
-    padding: 12px !important;
-  }
-  #auth-modal h2 {
-    font-size: 18px !important;
-    margin-bottom: 6px !important;
-  }
-  #firebaseui-auth-container .firebaseui-card-content { padding: 8px !important; }
-  #firebaseui-auth-container .firebaseui-card-actions { padding: 8px !important; }
-  #firebaseui-auth-container .firebaseui-idp-list, 
-  #firebaseui-auth-container .firebaseui-idp-button {
-    max-width: 280px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  #firebaseui-auth-container .mdl-button { min-width: 160px !important; }
-}
-</style><style>
-@media (max-width: 800px){
-  .login-mobile a {
-    font-size: 13px !important;
-    padding: 6px 10px !important;
-    width: auto !important;
-    display: inline-block !important;
-  }
-}
-</style><style>
-@media (max-width: 800px){
-  .login-mobile a {
-    font-size: 12px !important;
-    padding: 4px 8px !important;
-    width: auto !important;
-    display: inline-block !important;
-    margin: 6px 10px !important;
-    border-radius: 12px !important;
-  }
-}
-</style><style>
 /* Mobile-only tweaks for Login button and hamburger */
 @media (max-width: 800px){
   .login-mobile a {
@@ -1735,35 +1331,11 @@ header nav ul li .dropdown li a {
   .login-cta-header { display: none !important; } /* Hide header login button on mobile */
 }
 </style><style>
-/* Hide any header Login CTA on mobile; keep only the hamburger menu item */
-@media (max-width: 800px){
-  header a.login-cta-header, header .login-cta-header {
-    display: none !important;
-  }
-}
-</style><style>
 @media (max-width: 800px){
   header .hamburger, header .menu-toggle, header .nav-toggle, header #menu-toggle, header .mobile-menu-toggle, header .menu-btn, header .burger {
     margin-left: auto !important;
     margin-right: 8px !important;
     float: right !important;
-  }
-}
-</style><style>
-@media (max-width: 800px){
-  #auth-modal > div {
-    width: 90vw !important;
-    max-width: 340px !important;
-    padding: 10px !important;
-  }
-  #auth-modal h2 { font-size: 18px !important; margin-bottom: 6px !important; }
-  #firebaseui-auth-container .firebaseui-card-content { padding: 8px !important; }
-  #firebaseui-auth-container .firebaseui-card-actions { padding: 8px !important; }
-  #firebaseui-auth-container .firebaseui-idp-list, 
-  #firebaseui-auth-container .firebaseui-idp-button {
-    max-width: 260px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
   }
 }
 </style><style>
@@ -1790,18 +1362,6 @@ header nav ul li .dropdown li a {
     width: 90% !important;
     margin: 8px auto !important;
     text-align: center !important;
-    white-space: nowrap !important;
-  }
-}
-</style><style>
-@media (max-width: 800px){
-  .login-mobile a {
-    text-align: left !important;
-    font-size: 14px !important;
-    padding: 10px 16px !important;
-    display: block !important;
-    width: 100% !important;
-    margin: 6px auto !important;
     white-space: nowrap !important;
   }
 }
@@ -1877,7 +1437,7 @@ header nav ul li .dropdown li a {
     font-weight: normal !important;
   }
 }
-  </style><style id="sb-search-css-forced">
+  </style><style>
 .sb-search-icon{
   display:inline-flex !important; align-items:center !important; justify-content:center !important;
   width:38px !important; height:38px !important; margin-right:8px !important;
@@ -1889,12 +1449,7 @@ header nav ul li .dropdown li a {
 .sb-search-icon:hover{ background:#002a66 !important; box-shadow:0 0 12px rgba(255,235,59,.6) !important; transform:scale(1.05) !important; }
 .sb-search-icon svg{ stroke:currentColor !important; display:block !important; }
 @media (max-width:800px){ .sb-search-icon{ width:34px !important; height:34px !important; margin-right:6px !important; } }
-</style><style id="sb-header-font-restore">
-header .site-title {
-  font-size: 28px !important; /* restored original */
-  font-family: Georgia, serif;
-}
-</style><style id="sb-search-mobile-abs-fix">
+</style><style>
 /* Force search icon to the LEFT of hamburger on mobile */
 @media (max-width: 800px) {
   .header-right { position: relative; min-height: 44px; }
@@ -1909,7 +1464,7 @@ header .site-title {
   /* optional: keep login hidden on mobile if your CSS doesn't already */
   .header-right .login-cta-header { display: none !important; }
 }
-</style><style id="sb-search-mobile-abs-fix-tweaks">
+</style><style>
 @media (max-width: 800px) {
   /* Tight logo/text spacing */
   .header-left a { gap: 0 !important; }
@@ -1927,7 +1482,7 @@ header .site-title {
   .header-right .hamburger     { right: 0px !important; }
   .header-right .sb-search-icon { right: 30px !important; }
 }
-</style><style id="sb-search-mobile-logo-scale">
+</style><style>
 @media (max-width: 800px) {
   .mascot-logo {
     transform: scale(0.8);
@@ -1947,7 +1502,7 @@ header .site-title {
   .header-right .hamburger { right: 0px !important; }
   .header-right .sb-search-icon { right: 43px !important; }
 }
-</style><style id="sb-search-mobile-lane-fix">
+</style><style>
 @media (max-width: 800px) {
   /* Reserve lane for icons so text doesn't overlap (Edge + Chrome consistent) */
   .header-left {
@@ -1964,7 +1519,7 @@ header .site-title {
   .header-right .hamburger { right: 0px !important; }
   .header-right .sb-search-icon { right: 43px !important; }
 }
-</style><style id="sb-edge-only-match-chrome">
+</style><style>
 @supports (-ms-ime-align:auto) {
   @media (max-width: 800px) {
     /* Reserve space for icons without moving them; keep Edge text away from icon lane */
@@ -2000,7 +1555,7 @@ header .site-title {
     }
   }
 }
-</style><style id="sb-edge-only-match-chrome-strong">
+</style><style>
 @supports (-ms-ime-align:auto) {
   @media (max-width: 800px) {
     /* Hard-lock MP4/logo to 72px width on Edge mobile */
@@ -2025,13 +1580,7 @@ header .site-title {
     }
   }
 }
-</style><script>
-(function () {
-  if (/\sEdg\//.test(navigator.userAgent)) {
-    document.documentElement.classList.add('edge');
-  }
-})();
-</script><style id="edge-mobile-header-fix">
+</style><style>
 @media (max-width: 800px) {
   .edge header .storybell-header-video {
     height: 72px !important;
@@ -2057,7 +1606,7 @@ header .site-title {
     margin-right: 8px !important;
   }
 }
-</style><style id="sb-mobile-ideal">
+</style><style>
 
 /* === StoryBell: Mobile header IDEAL settings (locks Chrome/Edge parity) === */
 @media (max-width: 800px){
@@ -2069,33 +1618,7 @@ header .site-title {
   .site-title{ font-size:28px !important; line-height:1.2 !important; margin-left:-4px !important; white-space:nowrap !important; overflow:hidden !important; text-overflow:ellipsis !important; max-width:calc(100% - 96px) !important; }
 }
 
-</style><script id="sb-edge-flag">
-  (function(){
-    try {
-      if (/Edg\//.test(navigator.userAgent)) {
-        document.documentElement.classList.add('is-edge');
-      }
-    } catch(e){}
-  })();
-</script><style id="sb-edge-mobile-tweaks-2">
-/* Edge-specific fine-tuning (smaller font + logo for closer Chrome match) */
-@media (max-width: 800px){
-  html.is-edge .site-title{
-    font-size:22px !important; /* smaller than 26px */
-    line-height:1.15 !important;
-  }
-  html.is-edge .storybell-header-video,
-  html.is-edge .mascot-logo{
-    width:96px !important;
-    min-width:96px !important;
-    max-width:96px !important;
-    height:auto !important;
-    transform:none !important;
-    object-fit:contain !important;
-    display:block !important;
-  }
-}
-</style><style id="sb-allbrowser-icon-scale">
+</style><style>
 /* Scale hamburger and magnifier 15% smaller for all browsers (mobile only) */
 @media (max-width: 800px){
   .sb-search-icon,
@@ -2104,7 +1627,7 @@ header .site-title {
     transform-origin: center center !important;
   }
 }
-</style><style id="sb-magnifier-offsets-v3">
+</style><style>
 @media (max-width: 800px){
   /* Chrome + all non-Edge browsers */
   html:not(.is-edge) .sb-search-icon {
@@ -2118,8 +1641,7 @@ header .site-title {
     transform-origin: center center !important;
   }
 }
-</style>
-<style id="desktop-header-fixed">
+</style><style>
   /* Desktop-only header link sizing */
   @media (min-width: 900px) {
     header a,
@@ -2248,7 +1770,7 @@ header .site-title {
   overflow: visible !important;
 }
 </style>
-<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://story-bell.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Reading Tips & FAQ – Story Bell","url":"https://story-bell.com/faq.html","inLanguage":"en","description":"Discover practical reading tips for parents and caregivers. Learn how to nurture a love of reading from birth through adolescence with daily reading routines, interactive storytelling and balanced guidance. Use these tips to spark enjoyment and confidence in young readers.","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}},"mainEntity":{"@type":"ItemList","numberOfItems":0,"itemListElement":[]},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://story-bell.com/"},{"@type":"ListItem","position":2,"name":"Reading Tips & FAQ – Story Bell","item":"https://story-bell.com/faq.html"}]}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://story-bell.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Story Bell — FAQs","url":"https://story-bell.com/FAQ.html","inLanguage":"en","description":"Quick, research-backed answers for parents. Tap a question to expand.","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://story-bell.com/index_items/logo.webp"}},"mainEntity":[{"@type":"Question","name":"How long should we read each day?Evidence","acceptedAnswer":{"@type":"Answer","text":"Short and consistent wins: 10–15 minutes daily is powerful for vocabulary, comprehension, and habit-building."}},{"@type":"Question","name":"When should I start reading to my child?Evidence","acceptedAnswer":{"@type":"Answer","text":"From birth. Babies benefit from language rhythm and bonding during read‑alouds."}},{"@type":"Question","name":"Should I correct every reading mistake?Evidence","acceptedAnswer":{"@type":"Answer","text":"No. Encourage self‑correction first; give gentle support if they’re stuck. Keep meaning and enjoyment central."}},{"@type":"Question","name":"My child wants the same book every night—is that okay?Evidence","acceptedAnswer":{"@type":"Answer","text":"Absolutely. Re‑reading strengthens memory and comprehension and is developmentally normal."}},{"@type":"Question","name":"Do audiobooks or digital stories “count” as reading?Evidence","acceptedAnswer":{"@type":"Answer","text":"Yes—especially when audio is synchronized with on‑screen text that highlights words as they’re read."}},{"@type":"Question","name":"Is scrolling text with audio better than video stories?Evidence","acceptedAnswer":{"@type":"Answer","text":"Often yes. Natural scrolling with word highlighting supports eye‑tracking and connects spoken words to print—more active than passive video watching."}},{"@type":"Question","name":"How should we balance print and digital books?Evidence","acceptedAnswer":{"@type":"Answer","text":"Use both. Print supports focus and tactile engagement; digital adds scaffolds like highlighting and immediate word support."}},{"@type":"Question","name":"What if English isn’t our first language?Evidence","acceptedAnswer":{"@type":"Answer","text":"Read in any language you’re comfortable with while also exposing children to the school language. Skills transfer."}},{"@type":"Question","name":"How do I keep 7–12 year‑olds engaged?Evidence","acceptedAnswer":{"@type":"Answer","text":"Offer choice, discuss themes, and connect books to interests. Shared talk about books still matters."}},{"@type":"Question","name":"Why use emotion‑themed stories?Evidence","acceptedAnswer":{"@type":"Answer","text":"They build emotional vocabulary, empathy, and coping strategies—supporting mental health and academics."}},{"@type":"Question","name":"What should I do while reading SEI books?Tips","acceptedAnswer":{"@type":"Answer","text":"Pause to label feelings, ask “Have you felt this way?”, and practice a simple strategy (deep breath, ask for help). Keep it short, frequent, and warm."}}]}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
 .carousel-section .carousel-desc{
@@ -2441,9 +1963,6 @@ html body #story-queue-menu.active{display:flex !important;}
 }
 </style><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
 <body>
-<!-- Wand cursor element for sparkle effect (required by script) -->
-<div id="wand"></div>
-<!-- Header copied from an existing page to preserve the same navigation and login behaviour -->
 <header>
 <div class="header-left">
 <a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
@@ -2524,9 +2043,7 @@ html body #story-queue-menu.active{display:flex !important;}
 </ul>
 </li>
 <li style="position:relative;">
-<a href="#" style="cursor:pointer;">
-        Story Length
-       </a>
+<a href="#" style="cursor:pointer;">Story Length/<br/>Type</a>
 <ul class="dropdown">
 <li>
 <a href="5-minute-childrens-stories.html">
@@ -2538,16 +2055,11 @@ html body #story-queue-menu.active{display:flex !important;}
           Medium Length Stories
          </a>
 </li>
-</ul>
-</li>
-<li>
-<a href="childrens-poems-and-rhymes.html">
-        Poems
-       </a>
+<li><a href="childrens-poems-and-rhymes.html">Poems</a></li></ul>
 </li>
 <li>
 <a href="parent-playground.html">Parents<br/>Playground</a>
-</li>
+</li><li><a href="https://www.story-bell.shop" rel="noopener" target="_blank">Store</a></li>
 </ul>
 </nav>
 <!-- Mailchimp Email Signup -->
@@ -2561,135 +2073,384 @@ html body #story-queue-menu.active{display:flex !important;}
 <a class="login-cta-header" data-auth-cta="" href="#login" rel="noopener" style="margin-top: 14px; background: #FFEB3B; color: #003366; font-family: 'Coming Soon', cursive !important; font-size: 16px; font-weight: bold; border-radius: 20px; padding: 9px 22px 9px 32px; text-decoration: none; box-shadow: 0 2px 8px rgba(255,235,59,0.22); display: flex; align-items: center; transition: background 0.2s;" target="_blank">Log in/<br/>Create Account</a>
 <div class="subscribe-text"></div></div>
 </header>
-<main style="max-width:1100px;margin:32px auto;padding:0 16px;">
-<div class="page-header">
-<img alt="Reading tips and FAQ — reading tips for parents, parent reading guidelines, reading questions answered" src="index_items/0_3.png"/>
-<h1>Reading Tips &amp; FAQ</h1>
+<main class="main-blank">
+<div class="about-header">
+<img alt="Child reading illustration" src="index_items/0_3.png"/>
+<h1>Frequently Asked Questions</h1>
 </div>
-<p class="lede">Discover practical reading tips for parents and caregivers. Learn how to nurture a love of reading from birth through adolescence with daily reading routines, interactive storytelling and balanced guidance. Use these tips to spark enjoyment and confidence in young readers.</p>
-<section aria-labelledby="sel" class="sel-box">
-<h2 id="sel">Reading Tips</h2>
-<ul>
-<li>Read daily—even brief sessions build strong habits and vocabulary</li>
-<li>Use an interactive style: ask questions, pause and encourage predictions</li>
-<li>Model enjoyment and let children see you reading for pleasure</li>
-<li>Balance fun and skills by mixing playful voices with discussion of words and themes</li>
-</ul>
+<p class="note">Quick, research-backed answers for parents. Tap a question to expand.</p>
+<h2 class="section-title">Reading Basics</h2>
+<section aria-label="Reading Basics" class="faq">
+<details>
+<summary>How long should we read each day?<span class="badge">Evidence</span></summary>
+<p>Short and consistent wins: 10–15 minutes daily is powerful for vocabulary, comprehension, and habit-building.</p>
+<div class="evidence">Bus, Van IJzendoorn &amp; Pellegrini (1995) meta-analysis links shared reading to later reading success.</div>
+</details>
+<details>
+<summary>When should I start reading to my child?<span class="badge">Evidence</span></summary>
+<p>From birth. Babies benefit from language rhythm and bonding during read‑alouds.</p>
+<div class="evidence">Hart &amp; Risley (1995) show early language exposure predicts larger vocabularies and later advantages.</div>
+</details>
+<details>
+<summary>Should I correct every reading mistake?<span class="badge">Evidence</span></summary>
+<p>No. Encourage self‑correction first; give gentle support if they’re stuck. Keep meaning and enjoyment central.</p>
+<div class="evidence">National Reading Panel (2000) recommends balancing accuracy, comprehension, and motivation.</div>
+</details>
+<details>
+<summary>My child wants the same book every night—is that okay?<span class="badge">Evidence</span></summary>
+<p>Absolutely. Re‑reading strengthens memory and comprehension and is developmentally normal.</p>
+<div class="evidence">Horst (2013) finds repetition improves word learning and understanding.</div>
+</details>
 </section>
-<div class="cards-grid"></div><section aria-labelledby="faq-title" id="faq">
-<h2 id="faq-title">FAQ: Reading</h2>
-<h3>How long should I read with my child each day?</h3>
-<p>Even 10–15 minutes daily is powerful. Regular short sessions build vocabulary, comprehension and reading habits.</p>
-<h3>When should I start reading to my child?</h3>
-<p>From birth. Babies benefit from rhythm, tone and bonding during reading.</p>
-<h3>Should I correct every mistake when my child reads aloud?</h3>
-<p>No. Let them self-correct first and provide gentle support when needed.</p>
-<h3>What if my child wants the same book every night?</h3>
-<p>Repetition is beneficial for memory and comprehension and builds confidence.</p>
-<h3>Do audiobooks or digital stories count as reading?</h3>
-<p>Yes—especially when the text is highlighted in sync with the narration.</p>
-<h3>Is scrolling text with audio better than video story formats?</h3>
-<p>Yes. Scrolling text mimics natural reading and supports eye-tracking and decoding.</p>
-<h3>How can I help if English isn’t our first language?</h3>
-<p>Reading in any language helps. Strong first-language foundations transfer to English.</p>
-<h3>How can I keep older children (7–12) engaged?</h3>
-<p>Encourage choice, discuss themes and morals, and explore different genres. Motivation drives growth.</p>
-<h3>What are the benefits of social-emotional intelligence books?</h3>
-<p>They build emotional literacy, empathy and resilience, improving social skills and academic success.</p>
-<h3>Should I mix print and digital books?</h3>
-<p>Yes. Print builds focus while digital adds scaffolds like highlighting. Balanced use is best.</p>
+<h2 class="section-title">Digital Reading</h2>
+<section aria-label="Digital Reading" class="faq">
+<details>
+<summary>Do audiobooks or digital stories “count” as reading?<span class="badge">Evidence</span></summary>
+<p>Yes—especially when audio is synchronized with on‑screen text that highlights words as they’re read.</p>
+<div class="evidence">Mol &amp; Bus (2011) meta-analysis and Takacs, Swart, &amp; Bus (2015) show well-designed e‑books with narration + highlighting boost vocabulary and comprehension.</div>
+</details>
+<details>
+<summary>Is scrolling text with audio better than video stories?<span class="badge">Evidence</span></summary>
+<p>Often yes. Natural scrolling with word highlighting supports eye‑tracking and connects spoken words to print—more active than passive video watching.</p>
+<div class="evidence">Eye‑tracking research (e.g., Kuppens et al., 2019) shows synchronized text/voice aids decoding and fluency.</div>
+</details>
+<details>
+<summary>How should we balance print and digital books?<span class="badge">Evidence</span></summary>
+<p>Use both. Print supports focus and tactile engagement; digital adds scaffolds like highlighting and immediate word support.</p>
+<div class="evidence">Zucker, Moody &amp; McKenna (2009) report balanced exposure strengthens traditional and digital literacy skills.</div>
+</details>
 </section>
+<h2 class="section-title">Language &amp; Motivation</h2>
+<section aria-label="Language and Motivation" class="faq">
+<details>
+<summary>What if English isn’t our first language?<span class="badge">Evidence</span></summary>
+<p>Read in any language you’re comfortable with while also exposing children to the school language. Skills transfer.</p>
+<div class="evidence">August &amp; Shanahan (2006) review shows cross‑language transfer of literacy skills.</div>
+</details>
+<details>
+<summary>How do I keep 7–12 year‑olds engaged?<span class="badge">Evidence</span></summary>
+<p>Offer choice, discuss themes, and connect books to interests. Shared talk about books still matters.</p>
+<div class="evidence">Guthrie &amp; Wigfield (2000) link choice/motivation to independent reading growth.</div>
+</details>
+</section>
+<h2 class="section-title">SEI (Social &amp; Emotional Intelligence) Books</h2>
+<section aria-label="SEI Books" class="faq">
+<details>
+<summary>Why use emotion‑themed stories?<span class="badge">Evidence</span></summary>
+<p>They build emotional vocabulary, empathy, and coping strategies—supporting mental health and academics.</p>
+<div class="evidence">Denham (1998) on early emotional vocabulary; Durlak et al. (2011) meta‑analysis shows SEL boosts academics and behaviour.</div>
+</details>
+<details>
+<summary>What should I do while reading SEI books?<span class="badge">Tips</span></summary>
+<p>Pause to label feelings, ask “Have you felt this way?”, and practice a simple strategy (deep breath, ask for help). Keep it short, frequent, and warm.</p>
+</details>
+</section>
+<p class="note">For age‑specific and genre‑specific tips, see the other pages in the menu.</p>
 </main>
-<!-- Authentication Modal copied from an existing page to preserve login functionality -->
-<div data-auth-cta="" id="auth-modal" onclick="openAuthModal(); return false;" style="position:fixed; inset:0; background:rgba(0,0,0,0.65); display:none; align-items:center; justify-content:center; z-index:12000;"><style id="auth-modal-style">
-   #auth-modal * {
-  font-family: 'Coming Soon', cursive !important;
-  box-sizing: border-box;
-}
-#auth-modal h2 {
-  font-family: 'Coming Soon', cursive !important;
-}
+<div aria-hidden="true" id="sb-search-modal" style="position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:10001">
+<div aria-label="Search stories" aria-modal="true" role="dialog" style="max-width:720px;margin:8vh auto;background:white;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)">
+<div style="padding:14px 16px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px">
+<input id="sb-search-input" placeholder="Search stories, poems, emotions, ages… ( / )" style="flex:1;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:16px;outline:none" type="search"/>
+<button aria-label="Close" id="sb-search-close" style="border:0;background:transparent;font-size:18px;cursor:pointer;padding:8px">✕</button>
+</div>
+<div id="sb-search-results" style="max-height:60vh;overflow:auto;padding:8px 8px 12px"></div>
+</div>
+</div><script>
+   (function () {
+  const nav = document.querySelector(".header-right nav");
+  const body = document.body;
+  if (!nav) return;
 
-/* Center FirebaseUI contents inside modal */
-#auth-modal #firebaseui-auth-container .firebaseui-container,
-#auth-modal #firebaseui-auth-container .firebaseui-card-content,
-#auth-modal #firebaseui-auth-container .firebaseui-card-actions {
-  text-align: center !important;
-}
-#auth-modal #firebaseui-auth-container .firebaseui-idp-list,
-#auth-modal #firebaseui-auth-container .firebaseui-idp-button,
-#auth-modal #firebaseui-auth-container .mdl-button {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  display: block !important;
-}
-  </style><div style="background:#001f3f; border:2px solid #FFEB3B; border-radius:16px; box-shadow:0 0 28px #ffeb3bcc; width:min(92vw,520px); max-height:85vh; overflow:auto; padding:18px; color:#fff; font-family:'Coming Soon',cursive; position:relative;"><h2 style="margin:0 0 8px 0; text-align:center; color:#FFEB3B;">Sign in or Create Account</h2><button aria-label="Close auth modal" onclick="closeAuthModal()" style="position:absolute; top:10px; right:16px; font-size:28px; background:none; border:none; color:#FFEB3B; cursor:pointer;">×</button><div id="sb-consent-wrap" style="margin:10px 0 0 0; font-size:12px; line-height:1.4; color:#fff; text-align:center;"><label for="sb-consent"><input checked="True" id="sb-consent" type="checkbox"/> I agree to the <a href="./terms.html" rel="noopener" style="color:#FFEB3B; text-decoration:underline;" target="_blank">Terms &amp; Conditions</a> and <a href="./privacy.html" rel="noopener" style="color:#FFEB3B; text-decoration:underline;" target="_blank">Privacy Policy</a></label><div id="firebaseui-auth-container"></div></div></div></div><script>
-   // Wand cursor & sparkle logic
-    const wand = document.getElementById("wand");
-    const WAND_OFFSET_X = 15;
-    const WAND_OFFSET_Y = 8; // moved down by 10px
-    wand.style.position = "fixed";
-    wand.style.pointerEvents = "none";
-    wand.style.zIndex = 20001;
-    let lastSparkleTime = 0;
-    document.body.addEventListener("mousemove", (e) => {
-      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
-      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
-      wand.style.transition = "none";
-      wand.style.opacity = "1";
-      // Sparkle at wand tip
-      const now = Date.now();
-      if (now - lastSparkleTime > 16) {
-        const sparkle = document.createElement("div");
-        sparkle.className = "sparkle";
-        sparkle.style.left = `${e.clientX + 5}px`;
-        sparkle.style.top  = `${e.clientY + 5}px`;
-        document.body.appendChild(sparkle);
-        lastSparkleTime = now;
-        setTimeout(() => sparkle.remove(), 900);
+  let toggleBtn = document.getElementById("menu-toggle");
+  if (!toggleBtn) {
+    // try to insert after .header-right open tag
+    const headerRight = document.querySelector(".header-right");
+    if (headerRight) {
+      toggleBtn = document.createElement("button");
+      toggleBtn.id = "menu-toggle";
+      toggleBtn.setAttribute("aria-label","Open menu");
+      toggleBtn.textContent = "☰";
+      toggleBtn.style.display = "none"; // your CSS shows it on mobile
+      headerRight.insertBefore(toggleBtn, headerRight.firstChild);
+    }
+  }
+
+  // ensure overlay exists (sibling after header)
+  let overlay = document.querySelector(".menu-overlay");
+  if (!overlay) {
+    const header = document.querySelector("header");
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    if (header && header.parentNode) {
+      header.parentNode.insertBefore(overlay, header.nextSibling);
+    } else {
+      document.body.appendChild(overlay);
+    }
+  }
+
+  function openMenu() {
+    nav.classList.add("open");
+    body.classList.add("menu-open");
+    overlay.classList.add("active");
+  }
+  function closeMenu() {
+    nav.classList.remove("open");
+    body.classList.remove("menu-open");
+    overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (nav.classList.contains("open")) closeMenu(); else openMenu();
+    });
+  }
+  overlay.addEventListener("click", (e) => { e.stopPropagation(); closeMenu(); });
+
+  // close on route click (mobile) when link navigates
+  nav.querySelectorAll("ul > li > a").forEach(link => {
+    link.addEventListener("click", function(e){
+      if (window.matchMedia("(max-width: 900px)").matches && this.href && !this.href.endsWith("#")) {
+        closeMenu();
       }
     });
-  </script>
-<footer style="color: #fff; text-align: center; padding: 10px 20px; font-family: 'Georgia', serif; margin-top: 80px; position: relative;">
-<div style="background:#001020; padding:30px 10px; text-align:center;">
-<!-- Signup button -->
-<div style="margin:16px 0;">
-<a data-auth-cta="auth" href="#login" onclick="return window.sbFooterOpenAuth &amp;&amp; sbFooterOpenAuth(this);" style="display:inline-block; background:#FFEB3B; color:#001f3f; font-weight:bold; padding:10px 20px; border-radius:6px; text-decoration:none; cursor:pointer;">
-      Sign Up to Story Bell
-    </a>
-</div>
-<div class="sb-socials" style="margin:12px 0; font-size:0; color:#FFEB3B;">
-<a aria-label="Facebook" href="https://facebook.com" style="filter: drop-shadow(0 0 4px #000);" target="_blank">
-<svg fill="#FFEB3B" height="28" viewbox="0 0 24 24" width="28">
-<path d="M22 12a10 10 0 10-11.6 9.9v-7h-2v-2.9h2v-2.2c0-2 1.2-3.1 3-3.1.9 0 1.9.2 1.9.2v2.1h-1.1c-1.1 0-1.4.7-1.4 1.4v1.6h2.4l-.4 2.9h-2v7A10 10 0 0022 12z">
-</path>
-</svg>
-</a>
-<a aria-label="Instagram" href="https://instagram.com" style="filter: drop-shadow(0 0 4px #000);" target="_blank">
-<svg fill="#FFEB3B" height="28" viewbox="0 0 24 24" width="28">
-<path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 2 .3 2.5.5a4.5 4.5 0 011.6 1.1 4.5 4.5 0 011.1 1.6c.2.5.4 1.3.5 2.5.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.3 2-.5 2.5a4.5 4.5 0 01-1.1 1.6 4.5 4.5 0 01-1.6 1.1c-.5.2-1.3.4-2.5.5-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-2-.3-2.5-.5a4.5 4.5 0 01-1.6-1.1 4.5 4.5 0 01-1.1-1.6c-.2-.5-.4-1.3-.5-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.3-2 .5-2.5a4.5 4.5 0 011.1-1.6 4.5 4.5 0 011.6-1.1c.5-.2 1.3-.4 2.5-.5C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1 .1-1.6.3-2 .5-.5.2-.9.5-1.3.9-.4.4-.7.8-.9 1.3-.2.4-.4 1-.5 2-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .3 1.6.5 2 .2.5.5.9.9 1.3.4.4.8.7 1.3.9.4.2 1 .4 2 .5 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.3 2-.5a3 3 0 001.3-.9c.4-.4.7-.8.9-1.3.2-.4.4-1 .5-2 .1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.3-1.6-.5-2a3 3 0 00-.9-1.3 3 3 0 00-1.3-.9c-.4-.2-1-.4-2-.5-1.2-.1-1.6-.1-4.7-.1zM12 6.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11zm0 1.8a3.7 3.7 0 100 7.4 3.7 3.7 0 000-7.4zm5.5-2.2a1.3 1.3 0 110 2.6 1.3 1.3 0 010-2.6z">
-</path>
-</svg>
-</a>
-<a aria-label="Twitter (X)" href="https://twitter.com" style="filter: drop-shadow(0 0 4px #000);" target="_blank">
-<svg fill="#FFEB3B" height="28" viewbox="0 0 24 24" width="28">
-<path d="M22 4.01c-.8.4-1.6.7-2.4.8.9-.5 1.5-1.4 1.8-2.3-.9.5-1.8.9-2.7 1.1a4.2 4.2 0 00-7.2 3.8c-3.4-.2-6.4-1.8-8.4-4.2a4.2 4.2 0 001.3 5.7c-.7 0-1.4-.2-2-.5 0 2 1.4 3.8 3.4 4.2-.7.2-1.3.2-2 .1a4.2 4.2 0 003.9 2.9A8.5 8.5 0 012 19.6a11.8 11.8 0 006.3 1.8c7.5 0 11.6-6.2 11.6-11.6v-.5a8.2 8.2 0 002-2.1z">
-</path>
-</svg>
-</a>
-</div>
-<!-- Copyright -->
-<p style="color:#FFEB3B; margin-top:14px;">© 2025 Story Bell. All rights reserved.</p>
-<!-- Legal links -->
-<div id="footer-legal-links" style="margin-top:8px; font-size:12px; color:#FFEB3B; text-align:center;">
-<a href="./terms.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">Terms &amp; Conditions</a> | 
-    <a href="./privacy.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">Privacy Policy</a> | 
-    <a href="./about.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">About</a> | 
-    <a href="Reviews.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">Reviews</a> | 
-    <a href="./contact.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">Contact</a>
-</div>
-</div>
-</footer>
+  });
+})();
+  </script><script>
+   (function () {
+  const nav = document.querySelector(".header-right nav");
+  const body = document.body;
+  if (!nav) return;
+
+  // Ensure toggle button exists
+  let toggleBtn = document.getElementById("menu-toggle");
+  if (!toggleBtn) {
+    const headerRight = document.querySelector(".header-right");
+    if (headerRight) {
+      toggleBtn = document.createElement("button");
+      toggleBtn.id = "menu-toggle";
+      toggleBtn.setAttribute("aria-label","Open menu");
+      toggleBtn.textContent = "☰";
+      toggleBtn.style.display = "none"; // CSS will unhide on mobile
+      headerRight.insertBefore(toggleBtn, headerRight.firstChild);
+    }
+  }
+  // Ensure overlay exists
+  let overlay = document.querySelector(".menu-overlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    const header = document.querySelector("header");
+    if (header && header.parentNode) header.parentNode.insertBefore(overlay, header.nextSibling);
+    else document.body.appendChild(overlay);
+  }
+
+  const openMenu = () => { nav.classList.add("open"); body.classList.add("menu-open"); overlay.classList.add("active"); };
+  const closeMenu = () => {
+    nav.classList.remove("open"); body.classList.remove("menu-open"); overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
+  };
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault(); e.stopPropagation();
+      nav.classList.contains("open") ? closeMenu() : openMenu();
+    });
+  }
+  overlay.addEventListener("click", (e) => { e.stopPropagation(); closeMenu(); });
+
+  // Close when navigating to a real href on mobile
+  nav.querySelectorAll("ul > li > a").forEach(link => {
+    link.addEventListener("click", function() {
+      if (window.matchMedia("(max-width: 900px)").matches && this.href && !this.href.endsWith("#")) {
+        closeMenu();
+      }
+    });
+  });
+})();
+  </script><script>
+   (function(){
+  const nav = document.querySelector(".header-right nav");
+  const btn = document.getElementById("menu-toggle");
+  let overlay = document.querySelector(".menu-overlay");
+  if (!nav || !btn) return;
+  if (!overlay){
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    const header = document.querySelector("header");
+    (header && header.parentNode ? header.parentNode : document.body)
+      .insertBefore(overlay, header ? header.nextSibling : null);
+  }
+  const body = document.body;
+  const isMobile = () => matchMedia("(max-width:900px)").matches;
+
+  let justOpenedUntil = 0;
+  const armGuard = () => { justOpenedUntil = Date.now() + 180; };
+
+  const openMenu = ()=>{
+    nav.classList.add("open");
+    body.classList.add("menu-open");
+    overlay.classList.add("active");
+    armGuard();
+  };
+  const closeMenu = ()=>{
+    nav.classList.remove("open");
+    body.classList.remove("menu-open");
+    overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li=>li.classList.remove("open"));
+  };
+
+  // Rebind elements to clear old listeners
+  const rebind = (el)=>{ const c = el.cloneNode(true); el.parentNode.replaceChild(c, el); return c; };
+  const _btn = rebind(btn);
+  overlay = rebind(overlay);
+
+  // Button uses pointerup only
+  _btn.addEventListener("pointerup", (e)=>{
+    e.preventDefault(); e.stopPropagation();
+    nav.classList.contains("open") ? closeMenu() : openMenu();
+  }, {passive:false});
+
+  // Overlay click closes, but not during guard window
+  overlay.addEventListener("click", (e)=>{
+    if (Date.now() < justOpenedUntil) { e.preventDefault(); return; }
+    e.preventDefault(); closeMenu();
+  }, {passive:false});
+
+  // Submenu: pointerup only (no click). Toggle .open on the parent <li>.
+  const onPointerUp = (e)=>{
+    if (!isMobile()) return;
+    const a = e.target.closest("nav ul > li > a");
+    if (!a || !nav.contains(a)) return;
+    const dd = a.nextElementSibling;
+    const hasDropdown = dd && dd.classList && dd.classList.contains("dropdown");
+    if (!hasDropdown) return;
+    e.preventDefault(); e.stopPropagation();
+    const li = a.parentElement;
+    const willOpen = !li.classList.contains("open");
+    nav.querySelectorAll("li.open").forEach(x=>{ if (x!==li) x.classList.remove("open"); });
+    li.classList.toggle("open", willOpen);
+  };
+  nav.addEventListener("pointerup", onPointerUp, {passive:false});
+
+  // Close on real link tap inside drawer
+  nav.addEventListener("pointerup", (e)=>{
+    if (!isMobile()) return;
+    const a = e.target.closest("nav ul > li > a");
+    if (!a || !nav.contains(a)) return;
+    const dd = a.nextElementSibling;
+    if (dd && dd.classList && dd.classList.contains("dropdown")) return; // parent; handled above
+    const href = a.getAttribute("href");
+    if (href && href !== "#") { e.preventDefault(); closeMenu(); location.href = href; }
+  }, {passive:false});
+
+  addEventListener("resize", ()=>{ if (!isMobile()) closeMenu(); });
+})();
+  </script><script>
+(() => {
+  const modal = document.getElementById('sb-search-modal');
+  const input = document.getElementById('sb-search-input');
+  const closeBtn = document.getElementById('sb-search-close');
+  const resultsEl = document.getElementById('sb-search-results');
+  if(resultsEl) resultsEl.style.display='none';
+  let fuse, data = [], loaded = false;
+  function render(items){
+    if(!items || items.length===0){ resultsEl.innerHTML=''; resultsEl.style.display='none'; return; }
+    resultsEl.style.display='block';
+    resultsEl.innerHTML = items.slice(0,30).map(x=>{ const it=x.item||x; return `
+      <a href="${it.url||'#'}" style="display:flex;gap:12px;padding:10px;border-radius:12px;text-decoration:none;color:inherit;border:1px solid #eee;margin:8px">
+        <img src="${it.cover||'/index_items/placeholder.webp'}" alt="${it.title||'Story'} cover"
+             style="width:64px;height:64px;object-fit:cover;border-radius:12px;border:1px solid #f2f2f2">
+        <div><div style="font-weight:700">${it.title||'Untitled'}</div>
+        <div style="font-size:13px;color:#444;margin-top:2px">${(it.summary||'').slice(0,160)}</div>
+        <div style="font-size:12px;color:#666;margin-top:6px">Age: ${it.age||'—'} · ${(it.categories||[]).join(', ')}</div></div>
+      </a>`; }).join('');
+  }
+  async function ensureLoaded(){ if(loaded) return; try{ const res=await fetch('/search-index.json',{cache:'no-store'}); data=await res.json(); }catch(e){ data=[]; }
+    fuse=new Fuse(data,{includeScore:true,threshold:0.35,keys:[{name:'title',weight:0.6},{name:'summary',weight:0.2},{name:'categories',weight:0.15},{name:'age',weight:0.05}]});
+    loaded=true;
+  }
+  function openModal(){ modal.style.display='block'; modal.setAttribute('aria-hidden','false'); setTimeout(()=>input&&input.focus(),0); render([]); }
+  function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); if(input) input.value=''; }
+  function onTriggerClick(e){ e.preventDefault(); ensureLoaded().then(openModal); }
+  const attach=()=>{ document.querySelectorAll('[data-sb-search-trigger]').forEach(el=>{ if(!el._sbBound){ el.addEventListener('click', onTriggerClick); el._sbBound=true; } }); };
+  attach(); new MutationObserver(attach).observe(document.body,{childList:true,subtree:true});
+  if(closeBtn) closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
+  window.addEventListener('keydown', async e=>{ if(e.key==='/'&&!e.metaKey&&!e.ctrlKey&&!e.altKey){ e.preventDefault(); await ensureLoaded(); openModal(); } else if(e.key==='Escape'){ closeModal(); } });
+  if(input){ input.addEventListener('input', ()=>{ const q=input.value.trim(); if(!q){ render([]); return; } const out=fuse.search(q); render(out); }); }
+})();
+</script><script>
+(function(){
+  function bySel(s){ return document.querySelector(s); }
+  function closeMenu(){
+    try {
+      var nav = document.querySelector('.header-right nav');
+      var overlay = document.querySelector('.menu-overlay');
+      document.body.classList.remove('menu-open');
+      if (nav) nav.classList.remove('open');
+      if (overlay){ overlay.classList.remove('active'); overlay.style.display = 'none'; }
+      if (nav) nav.querySelectorAll('li.open').forEach(li => li.classList.remove('open'));
+    } catch(e){}
+  }
+  function openAuth(link){
+    // mark last click for guard
+    window.__sbLastClickTarget = link;
+    if (typeof window.openAuthModal === 'function'){ return window.openAuthModal(); }
+    var m = document.getElementById('auth-modal');
+    if (m){
+      m.style.display = 'flex';
+      try { if (typeof window.onOpenAuthModalHook === 'function') window.onOpenAuthModalHook(); } catch(e){}
+      return true;
+    }
+    console.warn('auth-mobile-direct: auth modal not found');
+    return false;
+  }
+  function bind(){
+    var link = bySel('.login-mobile a');
+    if(!link) return;
+    // Defensive: ensure it has explicit CTA marker
+    if(!link.hasAttribute('data-auth-cta')) link.setAttribute('data-auth-cta','auth');
+    ['click','touchend','pointerup'].forEach(function(evt){
+      link.addEventListener(evt, function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        closeMenu();
+        setTimeout(function(){ openAuth(link); }, 0);
+        return false;
+      }, {passive:false, capture:true});
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', bind, {once:true});
+  } else {
+    bind();
+  }
+})();
+</script>
+<script>
+function getFavorites(){ try{return JSON.parse(localStorage.getItem('favorites')||"[]");}catch{return[];} }
+function setFavorites(f){ localStorage.setItem('favorites', JSON.stringify(f)); }
+function toggleFavorite(btn){
+  const title = btn.getAttribute("data-title");
+  let f = getFavorites();
+  if (f.includes(title)) f = f.filter(x=>x!==title); else f.push(title);
+  setFavorites(f); updateStars();
+}
+function isFavorite(t){ return getFavorites().includes(t); }
+function updateStars(){
+  document.querySelectorAll('.favorite-star').forEach(btn=>{
+    const t = btn.getAttribute("data-title");
+    const star = btn.querySelector(".star");
+    if (!star) return;
+    star.innerHTML = isFavorite(t) ? "★" : "☆";
+    btn.title = isFavorite(t) ? "Remove from Favorites" : "Add to Favorites";
+  });
+}
+document.addEventListener('DOMContentLoaded', updateStars);
+</script>
 <script id="sb-cards-flex-enforcer">
 (function(){
   function applyLayout(root){
