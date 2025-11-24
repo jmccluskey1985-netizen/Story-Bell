@@ -588,52 +588,6 @@ header .site-title {
   .story-card img{ height:130px !important; }
 }
 </style>
-<style id="sb-carousel-nosnap-mobile">
-/* === Force-disable carousel snap + recentering on mobile === */
-@media (max-width: 900px){
-  /* Container: no snap + no smooth 'auto-return' */
-  .carousel-track{
-    scroll-snap-type: none !important;
-    scroll-behavior: auto !important;
-    overscroll-behavior-x: contain;
-    -webkit-overflow-scrolling: touch;
-  }
-  /* Items: make sure nothing can snap to them either */
-  .carousel-card, .story-card{
-    scroll-snap-align: none !important;
-    scroll-snap-stop: normal !important;
-    contain: paint;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    overflow: visible;
-  }
-}
-</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><link href="queue_assets/queue.css" rel="stylesheet"/><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style><style id="wand-pointer-events-fix">/* auto patch */
-#wand, .cursor-wand, .sparkle { pointer-events: none !important; }</style><link href="favicon.ico" rel="icon" type="image/x-icon"/>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style><style>html body #story-queue-menu.active{display:flex !important;}</style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
-<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
 <style id="sb-cards-grid-clean">
 .cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
   display: flex !important;
@@ -847,17 +801,38 @@ header .site-title {
   border-radius: 10px;
   display: inline-block;
 }
+</style><style id="sb-carousel-nosnap-mobile">
+/* === Force-disable carousel snap + recentering on mobile === */
+@media (max-width: 900px){
+  /* Container: no snap + no smooth 'auto-return' */
+  .carousel-track{
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Items: make sure nothing can snap to them either */
+  .carousel-card, .story-card{
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+    contain: paint;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    overflow: visible;
+  }
+}
 </style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>/* SBQ cleanup override: menu shows only with .active */
 #story-queue-menu{display:none !important;}
 html body #story-queue-menu.active{display:flex !important;}
-</style><script>window.SBQ_STILL_FIRST='index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
 /* Keep wand always visible above menus, and never block clicks */
 #wand {
   position: fixed !important;
   z-index: 20001 !important;
   pointer-events: none !important;
 }
-</style><style>
+</style><style id="wand-pointer-events-fix">/* auto patch */
+#wand, .cursor-wand, .sparkle { pointer-events: none !important; }</style><style>
    body { margin: 0;  background-color: #001f3f; min-height: 100vh; cursor: none;}
     header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
     .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
@@ -2495,7 +2470,7 @@ nav ul > li:focus-within > .dropdown {
       font-size: 35px !important;
     }
   }
-</style></head>
+</style><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
 <body>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>

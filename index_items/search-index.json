@@ -1,7 +1,7 @@
 [
   {
     "title": "Maya's Missing Mittens",
-    "url": "/https://story-bell.com/mayas-missing-mittons.html",
+    "url": "/https://storybellkids.com/mayas-missing-mittons.html",
     "description": "A story about problem solving with Mummy",
     "age": "4-6",
     "categories": [
@@ -23,11 +23,11 @@
       "happiness",
       "children's story"
     ],
-    "image": "/Maya's Missing Mittens/imagetitle.webp"
+    "image": "/icon/mayas-missing-mittens-imagetitle.webp"
   },
   {
     "title": "Milo the Mouse",
-    "url": "/https://story-bell.com/milo-the-mouse.html",
+    "url": "/https://storybellkids.com/milo-the-mouse.html",
     "description": "A poem about friendship",
     "age": "4-6",
     "categories": [
@@ -47,11 +47,11 @@
       "animal story",
       "children's story"
     ],
-    "image": "/icon/Milo the Mouse.webp"
+    "image": "/icon/milo-the-mouse-imagetitle.webp"
   },
   {
     "title": "Luna's Colorful Garden",
-    "url": "/https://story-bell.com/lunas-colorful-garden.html",
+    "url": "/https://storybellkids.com/lunas-colorful-garden.html",
     "description": "A story about helping friends create a magical garden.",
     "age": "4-6",
     "categories": [
@@ -71,11 +71,11 @@
       "magical",
       "children's story"
     ],
-    "image": "/icon/Luna's Colorful Garden.webp"
+    "image": "/icon/lunas-colorful-garden-imagetitle.webp"
   },
   {
     "title": "The Tiniest Rainbow",
-    "url": "/https://story-bell.com/the-tiniest-rainbow.html",
+    "url": "/https://storybellkids.com/the-tiniest-rainbow.html",
     "description": "A gentle bedtime story for toddlers about discovering happiness on a rainy day.",
     "age": "0-3",
     "categories": [
@@ -101,11 +101,11 @@
       "toddlers",
       "short story"
     ],
-    "image": "/icon/The Tiniest Rainbow.webp"
+    "image": "/icon/the-tiniest-rainbow-imagetitle.webp"
   },
   {
     "title": "Owl in the Dark Forest",
-    "url": "/https://story-bell.com/owl-in-the-dark-forest.html",
+    "url": "/https://storybellkids.com/owl-in-the-dark-forest.html",
     "description": "A brave little owl faces fear while searching for her way home.",
     "age": "7-12",
     "categories": [
@@ -129,11 +129,11 @@
       "forest",
       "adventure"
     ],
-    "image": "/icon/Owl in the Dark Forest.webp"
+    "image": "/icon/owl-in-the-dark-forest-imagetitle.webp"
   },
   {
     "title": "The Lonely Leaf",
-    "url": "/https://story-bell.com/the-lonely-leaf.html",
+    "url": "/https://storybellkids.com/the-lonely-leaf.html",
     "description": "A poem about sadness and finding new friends in autumn.",
     "age": "4-6",
     "categories": [
@@ -157,11 +157,11 @@
       "friendship",
       "nature"
     ],
-    "image": "/icon/The Lonely Leaf.webp"
+    "image": "/icon/the-lonely-leaf-imagetitle.webp"
   },
   {
     "title": "Emma and the Surprise Party",
-    "url": "/https://story-bell.com/emma-and-the-surprise-party.html",
+    "url": "/https://storybellkids.com/emma-and-the-surprise-party.html",
     "description": "Emma plans a secret party for her granddad and learns the joy of surprises.",
     "age": "7-12",
     "categories": [
@@ -185,11 +185,11 @@
       "granddad",
       "celebration"
     ],
-    "image": "/icon/Emma and the Surprise Party.webp"
+    "image": "/icon/emma-and-the-surprise-party-imagetitle.webp"
   },
   {
     "title": "Tommy and the Lost Toy",
-    "url": "/https://story-bell.com/tommy-and-the-lost-toy.html",
+    "url": "/https://storybellkids.com/tommy-and-the-lost-toy.html",
     "description": "Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.",
     "age": "0-3",
     "categories": [
@@ -212,11 +212,11 @@
       "toddler",
       "family"
     ],
-    "image": "/icon/Tommy and the Lost Toy.webp"
+    "image": "/icon/tommy-and-the-lost-toy-imagetitle.webp"
   },
   {
     "title": "Melody and the Muddy Puppy",
-    "url": "/https://story-bell.com/melody-and-the-muddy-puppy.html",
+    "url": "/https://storybellkids.com/melody-and-the-muddy-puppy.html",
     "description": "A silly story about a girl and her puppy, who both discover the meaning of disgust after a very messy day in the park.",
     "age": "4-6",
     "categories": [
@@ -241,11 +241,11 @@
       "park",
       "animals"
     ],
-    "image": "/icon/Melody and the Muddy Puppy.webp"
+    "image": "/icon/melody-and-the-muddy-puppy-imagetitle.webp"
   },
   {
     "title": "The Brave Little Duckling",
-    "url": "/https://story-bell.com/the-brave-little-duckling.html",
+    "url": "/https://storybellkids.com/the-brave-little-duckling.html",
     "description": "A duckling faces his fear of swimming and discovers courage.",
     "age": "0-3",
     "categories": [
@@ -269,11 +269,11 @@
       "animals",
       "swimming"
     ],
-    "image": "/icon/The Brave Little Duckling.webp"
+    "image": "/icon/the-brave-little-duckling-imagetitle.webp"
   },
   {
     "title": "Stars in My Window",
-    "url": "/https://story-bell.com/stars-in-my-window.html",
+    "url": "/https://storybellkids.com/stars-in-my-window.html",
     "description": "A bedtime poem about finding comfort in the night sky.",
     "age": "0-3",
     "categories": [
@@ -299,11 +299,11 @@
       "comfort",
       "happiness"
     ],
-    "image": "/icon/Stars in My Window.webp"
+    "image": "/icon/stars-in-my-window-imagetitle.webp"
   },
   {
     "title": "Grumpy Grandpa and the Silly Hat",
-    "url": "/https://story-bell.com/grumpy-grandpa-and-the-silly-hat.html",
+    "url": "/https://storybellkids.com/grumpy-grandpa-and-the-silly-hat.html",
     "description": "Grandpa is feeling angry until his granddaughter makes him laugh with a silly hat.",
     "age": "4-6",
     "categories": [
@@ -326,11 +326,11 @@
       "family",
       "feelings"
     ],
-    "image": "/icon/Grumpy Grandpa and the Silly Hat.webp"
+    "image": "/icon/grumpy-grandpa-and-the-silly-hat-imagetitle.webp"
   },
   {
     "title": "The Secret in the Library",
-    "url": "/https://story-bell.com/the-secret-in-the-library.html",
+    "url": "/https://storybellkids.com/the-secret-in-the-library.html",
     "description": "An adventure about two friends solving a mystery, and the surprise they find.",
     "age": "7-12",
     "categories": [
@@ -354,11 +354,11 @@
       "adventure",
       "friends"
     ],
-    "image": "/icon/The Secret in the Library.webp"
+    "image": "/icon/the-secret-in-the-library-imagetitle.webp"
   },
   {
     "title": "Lily and the Blue Balloon",
-    "url": "/https://story-bell.com/lily-and-the-blue-balloon.html",
+    "url": "/https://storybellkids.com/lily-and-the-blue-balloon.html",
     "description": "Lily feels sad when her balloon floats away, but she finds hope in a new friend.",
     "age": "4-6",
     "categories": [
@@ -381,11 +381,11 @@
       "balloon",
       "feelings"
     ],
-    "image": "/icon/Lily and the Blue Balloon.webp"
+    "image": "/icon/lily-and-the-blue-balloon-imagetitle.webp"
   },
   {
     "title": "The Case of the Gross Green Socks",
-    "url": "/https://story-bell.com/the-case-of-the-gross-green-socks.html",
+    "url": "/https://storybellkids.com/the-case-of-the-gross-green-socks.html",
     "description": "A detective story about disgust, lost laundry, and learning to help with chores.",
     "age": "7-12",
     "categories": [
@@ -409,6 +409,6 @@
       "detective",
       "laundry"
     ],
-    "image": "/icon/The Case of the Gross Green Socks.webp"
+    "image": "/icon/the-case-of-the-gross-green-socks-imagetitle.webp"
   }
 ]
