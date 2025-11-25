@@ -764,7 +764,7 @@
   {
     "id": "tommy_and_the_lost_toy",
     "title": "Tommy and the Lost Toy",
-    "description": "Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.",
+    "description": "Tommy learns about anger when he can\u2019t find his favourite truck, but Mummy helps him talk about his feelings.",
     "author": "AI Generated",
     "image": "icon/tommy-and-the-lost-toy-imagetitle.webp",
     "audio": "tommy-and-the-lost-toy/tommy-and-the-lost-toy-audio.mp3",
@@ -798,7 +798,7 @@
     "schema": {
       "@type": "CreativeWork",
       "name": "Tommy and the Lost Toy",
-      "description": "Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.",
+      "description": "Tommy learns about anger when he can\u2019t find his favourite truck, but Mummy helps him talk about his feelings.",
       "url": "https://storybellkids.com/tommy-and-the-lost-toy.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
@@ -1638,6 +1638,64 @@
       "educationalUse": [
         "read-aloud",
         "literacy"
+      ]
+    }
+  },
+  {
+    "id": "cousins_countryside_adventure",
+    "title": "Cousins' Countryside Adventure",
+    "description": "Join Sophia, Isabelle, Juliette, and Rory as four little cousins explore the countryside together, discovering butterflies, a babbling brook, and the joy of family.",
+    "author": "Story Bell",
+    "image": "icon/cousins-countryside-adventure-imagetitle.webp",
+    "audio": "cousins-countryside-adventure/cousins-countryside-adventure-audio.mp3",
+    "categories": [
+      "childrens-stories-ages-0-3",
+      "family-stories",
+      "outdoor-adventures"
+    ],
+    "html": "cousins-countryside-adventure.html",
+    "date_added": "2025-11-25",
+    "slug": "cousins-countryside-adventure",
+    "url": "https://storybellkids.com/cousins-countryside-adventure.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "0-3",
+    "themes": [
+      "family",
+      "cousins",
+      "outdoor-play",
+      "nature",
+      "togetherness"
+    ],
+    "emotions": [
+      "Happiness",
+      "Excitement",
+      "Love"
+    ],
+    "keywords": [
+      "cousins",
+      "countryside",
+      "adventure",
+      "family",
+      "nature",
+      "butterflies"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "Cousins' Countryside Adventure",
+      "description": "Join Sophia, Isabelle, Juliette, and Rory as four little cousins explore the countryside together.",
+      "url": "https://storybellkids.com/cousins-countryside-adventure.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://storybellkids.com/icon/cousins-countryside-adventure-imagetitle.webp"
+      },
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "0-3",
+      "genre": [
+        "Children's Story",
+        "Family"
       ]
     }
   }

@@ -257,6 +257,24 @@
   /* Optional: tighter spacing between icon and title */
   .about-header { gap: 16px !important; }
 }</style>
+<!-- Firebase (compat) + FirebaseUI -->
+<link href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css" rel="stylesheet"/>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
+<script id="firebase-init">
+// Firebase config for storybellkids
+const firebaseConfig = {
+  apiKey: "AIzaSyC9vYsSvGN7zSDfkIcByvBZDOQnRyUPIBo",
+  authDomain: "storybellkids.firebaseapp.com",
+  projectId: "storybellkids",
+  storageBucket: "storybellkids.firebasestorage.app",
+  messagingSenderId: "107989104962",
+  appId: "1:107989104962:web:a93c5a427353a87111b0db",
+  measurementId: "G-F64PJ8CCZQ"
+};
+if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+</script>
 <style id="sb-cards-base">
 .cards-grid{
   display:flex; flex-wrap:wrap; justify-content:center;

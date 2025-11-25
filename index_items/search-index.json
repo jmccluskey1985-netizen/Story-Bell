@@ -410,5 +410,37 @@
       "laundry"
     ],
     "image": "/icon/the-case-of-the-gross-green-socks-imagetitle.webp"
+  },
+  {
+    "title": "Cousins' Countryside Adventure",
+    "url": "/https://storybellkids.com/cousins-countryside-adventure.html",
+    "description": "Join Sophia, Isabelle, Juliette, and Rory as four little cousins explore the countryside together, discovering butterflies, a babbling brook, and the joy of family.",
+    "age": "0-3",
+    "categories": [
+      "childrens-stories-ages-0-3",
+      "family-stories",
+      "outdoor-adventures"
+    ],
+    "themes": [
+      "family",
+      "cousins",
+      "outdoor-play",
+      "nature",
+      "togetherness"
+    ],
+    "emotions": [
+      "Happiness",
+      "Excitement",
+      "Love"
+    ],
+    "keywords": [
+      "cousins",
+      "countryside",
+      "adventure",
+      "family",
+      "nature",
+      "butterflies"
+    ],
+    "image": "/icon/cousins-countryside-adventure-imagetitle.webp"
   }
 ]
