@@ -2224,6 +2224,64 @@ nav ul > li:focus-within > .dropdown {
   .story-card img{ height:130px !important; }
 }
 </style>
+<style id="sb-play-all-style">
+.sb-play-all-wrap {
+  max-width: 1200px;
+  margin: 1.5em auto 0.75em auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sb-play-all-btn {
+  background: #FFEB3B;
+  color: #001f3f;
+  font-weight: 900;
+  font-size: 1.05em;
+  padding: 9px 24px;
+  border-radius: 999px;
+  border: 2px solid #FFEB3B;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.35);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+.sb-play-all-btn span.icon {
+  font-size: 1.1em;
+  line-height: 1;
+}
+.sb-play-all-btn:hover,
+.sb-play-all-btn:focus-visible {
+  outline: none;
+  background: #ffe956;
+  border-color: #ffe956;
+  box-shadow: 0 0 18px rgba(255,235,59,.85), 0 4px 14px rgba(0,0,0,.5);
+  transform: translateY(-1px);
+}
+</style>
+<style id="sb-carousel-nosnap-mobile">
+/* === Force-disable carousel snap + recentering on mobile === */
+@media (max-width: 900px){
+  /* Container: no snap + no smooth 'auto-return' */
+  .carousel-track{
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Items: make sure nothing can snap to them either */
+  .carousel-card, .story-card{
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+    contain: paint;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    overflow: visible;
+  }
+}
+</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><link href="queue_assets/queue.css" rel="stylesheet"/><style></style><link href="favicon.ico" rel="icon" type="image/x-icon"/>
 <style id="sb-cards-grid-clean">
 .cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
   display: flex !important;
@@ -2276,45 +2334,7 @@ nav ul > li:focus-within > .dropdown {
   overflow: visible !important;
 }
 </style>
-<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Kids Stories About Feelings – Story Bell","url":"https://storybellkids.com/kids-stories-about-feelings.html","inLanguage":"en","description":"A story about problem solving with Mummy","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}},"mainEntity":{"@type":"ItemList","numberOfItems":13,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"CreativeWork","name":"Maya's Missing Mittens","description":"A story about problem solving with Mummy","url":"https://storybellkids.com/mayas-missing-mittens.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"Jon McCluskey"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/mayas-missing-mittens-imagetitle.webp","genre":["family","problem-solving"],"about":[{"@type":"Thing","name":"family"},{"@type":"Thing","name":"problem-solving"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/mayas-missing-mittens/mayas-missing-mittens-audio.mp3","encodingFormat":"audio/mpeg"}}},{"@type":"ListItem","position":2,"item":{"@type":"CreativeWork","name":"The Tiniest Rainbow","description":"A gentle bedtime story for toddlers about discovering happiness on a rainy day.","url":"https://storybellkids.com/the-tiniest-rainbow.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/the-tiniest-rainbow-imagetitle.webp","genre":["bedtime","happiness","weather"],"about":[{"@type":"Thing","name":"bedtime"},{"@type":"Thing","name":"weather"},{"@type":"Thing","name":"happiness"},{"@type":"Thing","name":"happiness"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/the-tiniest-rainbow/the-tiniest-rainbow-audio.mp3","encodingFormat":"audio/mpeg"}}},{"@type":"ListItem","position":3,"item":{"@type":"CreativeWork","name":"Owl in the Dark Forest","description":"A brave little owl faces fear while searching for her way home.","url":"https://storybellkids.com/owl-in-the-dark-forest.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT10M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/owl-in-the-dark-forest-imagetitle.webp","genre":["animals","courage","fear","night"],"about":[{"@type":"Thing","name":"animals"},{"@type":"Thing","name":"courage"},{"@type":"Thing","name":"night"},{"@type":"Thing","name":"fear"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/owl-in-the-dark-forest/owl-in-the-dark-forest-audio.mp3","encodingFormat":"audio/mpeg"}}},{"@type":"ListItem","position":4,"item":{"@type":"CreativeWork","name":"The Lonely Leaf","description":"A poem about sadness and finding new friends in autumn.","url":"https://storybellkids.com/the-lonely-leaf.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/the-lonely-leaf-imagetitle.webp","genre":["autumn","friendship","nature","sadness"],"about":[{"@type":"Thing","name":"nature"},{"@type":"Thing","name":"friendship"},{"@type":"Thing","name":"autumn"},{"@type":"Thing","name":"sadness"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/the-lonely-leaf/the-lonely-leaf-audio.mp3","encodingFormat":"audio/mpeg"}}},{"@type":"ListItem","position":5,"item":{"@type":"CreativeWork","name":"Emma and the Surprise Party","description":"Emma plans a secret party for her granddad and learns the joy of surprises.","url":"https://storybellkids.com/emma-and-the-surprise-party.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/emma-and-the-surprise-party-imagetitle.webp","genre":["celebration","family","surprise"],"about":[{"@type":"Thing","name":"family"},{"@type":"Thing","name":"celebration"},{"@type":"Thing","name":"surprise"},{"@type":"Thing","name":"surprise"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/emma-and-the-surprise-party/emma-and-the-surprise-party-audio.mp3","encodingFormat":"audio/mpeg"}}},{"@type":"ListItem","position":6,"item":{"@type":"CreativeWork","name":"Tommy and the Lost Toy","description":"Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.","url":"https://storybellkids.com/tommy-and-the-lost-toy.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/tommy-and-the-lost-toy-imagetitle.webp","genre":["anger","everyday-life","family"],"about":[{"@type":"Thing","name":"family"},{"@type":"Thing","name":"everyday-life"},{"@type":"Thing","name":"anger"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/tommy-and-the-lost-toy/tommy-and-the-lost-toy-audio.mp3","encodingFormat":"audio/mpeg"}}},{"@type":"ListItem","position":7,"item":{"@type":"CreativeWork","name":"Melody and the Muddy Puppy","description":"A silly story about a girl and her puppy, who both discover the meaning of disgust after a very messy day in the park.","url":"https://storybellkids.com/melody-and-the-muddy-puppy.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT10M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/melody-and-the-muddy-puppy-imagetitle.webp","genre":["animals","disgust","everyday-life","humor"],"about":[{"@type":"Thing","name":"animals"},{"@type":"Thing","name":"humor"},{"@type":"Thing","name":"everyday-life"},{"@type":"Thing","name":"disgust"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/melody-and-the-muddy-puppy/melody-and-the-muddy-puppy-audio.mp3","encodingFormat":"audio/mpeg"}}},{"@type":"ListItem","position":8,"item":{"@type":"CreativeWork","name":"The Brave Little Duckling","description":"A duckling faces his fear of swimming and discovers courage.","url":"https://storybellkids.com/the-brave-little-duckling.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/the-brave-little-duckling-imagetitle.webp","genre":["animals","courage","fear","water"],"about":[{"@type":"Thing","name":"animals"},{"@type":"Thing","name":"courage"},{"@type":"Thing","name":"water"},{"@type":"Thing","name":"fear"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/the-brave-little-duckling/the-brave-little-duckling-audio.mp3","encodingFormat":"audio/mpeg"}}},{"@type":"ListItem","position":9,"item":{"@type":"CreativeWork","name":"Stars in My Window","description":"A bedtime poem about finding comfort in the night sky.","url":"https://storybellkids.com/stars-in-my-window.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/stars-in-my-window-imagetitle.webp","genre":["bedtime","comfort","happiness","night","poem"],"about":[{"@type":"Thing","name":"bedtime"},{"@type":"Thing","name":"night"},{"@type":"Thing","name":"comfort"},{"@type":"Thing","name":"poem"},{"@type":"Thing","name":"happiness"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/stars-in-my-window/stars-in-my-window-audio.mp3","encodingFormat":"audio/mpeg"}}},{"@type":"ListItem","position":10,"item":{"@type":"CreativeWork","name":"Grumpy Grandpa and the Silly Hat","description":"Grandpa is feeling angry until his granddaughter makes him laugh with a silly hat.","url":"https://storybellkids.com/grumpy-grandpa-and-the-silly-hat.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/grumpy-grandpa-and-the-silly-hat-imagetitle.webp","genre":["anger","family","humor"],"about":[{"@type":"Thing","name":"family"},{"@type":"Thing","name":"humor"},{"@type":"Thing","name":"anger"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/grumpy-grandpa-and-the-silly-hat/grumpy-grandpa-and-the-silly-hat-audio.mp3","encodingFormat":"audio/mpeg"}}},{"@type":"ListItem","position":11,"item":{"@type":"CreativeWork","name":"The Secret in the Library","description":"An adventure about two friends solving a mystery, and the surprise they find.","url":"https://storybellkids.com/the-secret-in-the-library.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT10M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/the-secret-in-the-library-imagetitle.webp","genre":["friendship","library","mystery","surprise"],"about":[{"@type":"Thing","name":"mystery"},{"@type":"Thing","name":"friendship"},{"@type":"Thing","name":"library"},{"@type":"Thing","name":"surprise"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/the-secret-in-the-library/the-secret-in-the-library-audio.mp3","encodingFormat":"audio/mpeg"}}},{"@type":"ListItem","position":12,"item":{"@type":"CreativeWork","name":"Lily and the Blue Balloon","description":"Lily feels sad when her balloon floats away, but she finds hope in a new friend.","url":"https://storybellkids.com/lily-and-the-blue-balloon.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/lily-and-the-blue-balloon-imagetitle.webp","genre":["friendship","hope","sadness"],"about":[{"@type":"Thing","name":"friendship"},{"@type":"Thing","name":"hope"},{"@type":"Thing","name":"sadness"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/lily-and-the-blue-balloon/lily-and-the-blue-balloon-audio.mp3","encodingFormat":"audio/mpeg"}}},{"@type":"ListItem","position":13,"item":{"@type":"CreativeWork","name":"The Case of the Gross Green Socks","description":"A detective story about disgust, lost laundry, and learning to help with chores.","url":"https://storybellkids.com/the-case-of-the-gross-green-socks.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/the-case-of-the-gross-green-socks-imagetitle.webp","genre":["chores","disgust","everyday-life","mystery"],"about":[{"@type":"Thing","name":"mystery"},{"@type":"Thing","name":"everyday-life"},{"@type":"Thing","name":"chores"},{"@type":"Thing","name":"disgust"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/the-case-of-the-gross-green-socks/the-case-of-the-gross-green-socks-audio.mp3","encodingFormat":"audio/mpeg"}}}]},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://storybellkids.com/"},{"@type":"ListItem","position":2,"name":"Kids Stories About Feelings – Story Bell","item":"https://storybellkids.com/kids-stories-about-feelings.html"}]}}</script>
-<style id="sb-play-all-style">
-.sb-play-all-wrap {
-  max-width: 1200px;
-  margin: 1.5em auto 0.75em auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.sb-play-all-btn {
-  background: #FFEB3B;
-  color: #001f3f;
-  font-weight: 900;
-  font-size: 1.05em;
-  padding: 9px 24px;
-  border-radius: 999px;
-  border: 2px solid #FFEB3B;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.35);
-  text-transform: none;
-  letter-spacing: 0.02em;
-}
-.sb-play-all-btn span.icon {
-  font-size: 1.1em;
-  line-height: 1;
-}
-.sb-play-all-btn:hover,
-.sb-play-all-btn:focus-visible {
-  outline: none;
-  background: #ffe956;
-  border-color: #ffe956;
-  box-shadow: 0 0 18px rgba(255,235,59,.85), 0 4px 14px rgba(0,0,0,.5);
-  transform: translateY(-1px);
-}
-</style>
-<style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Kids Stories About Feelings – Story Bell","url":"https://storybellkids.com/kids-stories-about-feelings.autoPatch.20251125_232058.backup.html","inLanguage":"en","description":"A story about problem solving with Mummy","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
 .carousel-section .carousel-desc{
@@ -2475,37 +2495,17 @@ nav ul > li:focus-within > .dropdown {
   border-radius: 10px;
   display: inline-block;
 }
-</style><style id="sb-carousel-nosnap-mobile">
-/* === Force-disable carousel snap + recentering on mobile === */
-@media (max-width: 900px){
-  /* Container: no snap + no smooth 'auto-return' */
-  .carousel-track{
-    scroll-snap-type: none !important;
-    scroll-behavior: auto !important;
-    overscroll-behavior-x: contain;
-    -webkit-overflow-scrolling: touch;
-  }
-  /* Items: make sure nothing can snap to them either */
-  .carousel-card, .story-card{
-    scroll-snap-align: none !important;
-    scroll-snap-stop: normal !important;
-    contain: paint;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    overflow: visible;
-  }
-}
 </style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>/* SBQ cleanup override: menu shows only with .active */
 #story-queue-menu{display:none !important;}
 html body #story-queue-menu.active{display:flex !important;}
-</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
+</style><script>window.SBQ_STILL_FIRST='index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
 /* Keep wand always visible above menus, and never block clicks */
 #wand {
   position: fixed !important;
   z-index: 20001 !important;
   pointer-events: none !important;
 }
-</style><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
+</style></head>
 <body class="seo-page">
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>

@@ -2224,6 +2224,27 @@ nav ul > li:focus-within > .dropdown {
   .story-card img{ height:130px !important; }
 }
 </style>
+<style id="sb-carousel-nosnap-mobile">
+/* === Force-disable carousel snap + recentering on mobile === */
+@media (max-width: 900px){
+  /* Container: no snap + no smooth 'auto-return' */
+  .carousel-track{
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Items: make sure nothing can snap to them either */
+  .carousel-card, .story-card{
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+    contain: paint;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    overflow: visible;
+  }
+}
+</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><link href="queue_assets/queue.css" rel="stylesheet"/><style></style><link href="favicon.ico" rel="icon" type="image/x-icon"/>
 <style id="sb-cards-grid-clean">
 .cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
   display: flex !important;
@@ -2276,7 +2297,7 @@ nav ul > li:focus-within > .dropdown {
   overflow: visible !important;
 }
 </style>
-<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Read Aloud Stories For Children – Story Bell","url":"https://storybellkids.com/read-aloud-stories-for-children.html","inLanguage":"en","description":"Read‑aloud stories for children with word‑glow tracking—perfect for story time at home or in the classroom.","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}},"mainEntity":{"@type":"ItemList","numberOfItems":0,"itemListElement":[]},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://storybellkids.com/"},{"@type":"ListItem","position":2,"name":"Read Aloud Stories For Children – Story Bell","item":"https://storybellkids.com/read-aloud-stories-for-children.html"}]}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Read Aloud Stories For Children – Story Bell","url":"https://storybellkids.com/read-aloud-stories-for-children.autoPatch.20251125_232058.backup.html","inLanguage":"en","description":"Read‑aloud stories for children with word‑glow tracking—perfect for story time at home or in the classroom.","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
 .carousel-section .carousel-desc{
@@ -2437,37 +2458,17 @@ nav ul > li:focus-within > .dropdown {
   border-radius: 10px;
   display: inline-block;
 }
-</style><style id="sb-carousel-nosnap-mobile">
-/* === Force-disable carousel snap + recentering on mobile === */
-@media (max-width: 900px){
-  /* Container: no snap + no smooth 'auto-return' */
-  .carousel-track{
-    scroll-snap-type: none !important;
-    scroll-behavior: auto !important;
-    overscroll-behavior-x: contain;
-    -webkit-overflow-scrolling: touch;
-  }
-  /* Items: make sure nothing can snap to them either */
-  .carousel-card, .story-card{
-    scroll-snap-align: none !important;
-    scroll-snap-stop: normal !important;
-    contain: paint;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    overflow: visible;
-  }
-}
 </style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>/* SBQ cleanup override: menu shows only with .active */
 #story-queue-menu{display:none !important;}
 html body #story-queue-menu.active{display:flex !important;}
-</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
+</style><script>window.SBQ_STILL_FIRST='index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
 /* Keep wand always visible above menus, and never block clicks */
 #wand {
   position: fixed !important;
   z-index: 20001 !important;
   pointer-events: none !important;
 }
-</style><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
+</style></head>
 <body class="seo-page">
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>

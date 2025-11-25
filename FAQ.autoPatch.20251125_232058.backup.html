@@ -1736,6 +1736,27 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
   .story-card img{ height:130px !important; }
 }
 </style>
+<style id="sb-carousel-nosnap-mobile">
+/* === Force-disable carousel snap + recentering on mobile === */
+@media (max-width: 900px){
+  /* Container: no snap + no smooth 'auto-return' */
+  .carousel-track{
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Items: make sure nothing can snap to them either */
+  .carousel-card, .story-card{
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+    contain: paint;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    overflow: visible;
+  }
+}
+</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><link href="queue_assets/queue.css" rel="stylesheet"/><style></style><link href="favicon.ico" rel="icon" type="image/x-icon"/>
 <style id="sb-cards-grid-clean">
 .cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
   display: flex !important;
@@ -1788,7 +1809,7 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
   overflow: visible !important;
 }
 </style>
-<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Story Bell — FAQs","url":"https://storybellkids.com/FAQ.html","inLanguage":"en","description":"Quick, research-backed answers for parents. Tap a question to expand.","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}},"mainEntity":[{"@type":"Question","name":"How long should we read each day?Evidence","acceptedAnswer":{"@type":"Answer","text":"Short and consistent wins: 10–15 minutes daily is powerful for vocabulary, comprehension, and habit-building."}},{"@type":"Question","name":"When should I start reading to my child?Evidence","acceptedAnswer":{"@type":"Answer","text":"From birth. Babies benefit from language rhythm and bonding during read‑alouds."}},{"@type":"Question","name":"Should I correct every reading mistake?Evidence","acceptedAnswer":{"@type":"Answer","text":"No. Encourage self‑correction first; give gentle support if they’re stuck. Keep meaning and enjoyment central."}},{"@type":"Question","name":"My child wants the same book every night—is that okay?Evidence","acceptedAnswer":{"@type":"Answer","text":"Absolutely. Re‑reading strengthens memory and comprehension and is developmentally normal."}},{"@type":"Question","name":"Do audiobooks or digital stories “count” as reading?Evidence","acceptedAnswer":{"@type":"Answer","text":"Yes—especially when audio is synchronized with on‑screen text that highlights words as they’re read."}},{"@type":"Question","name":"Is scrolling text with audio better than video stories?Evidence","acceptedAnswer":{"@type":"Answer","text":"Often yes. Natural scrolling with word highlighting supports eye‑tracking and connects spoken words to print—more active than passive video watching."}},{"@type":"Question","name":"How should we balance print and digital books?Evidence","acceptedAnswer":{"@type":"Answer","text":"Use both. Print supports focus and tactile engagement; digital adds scaffolds like highlighting and immediate word support."}},{"@type":"Question","name":"What if English isn’t our first language?Evidence","acceptedAnswer":{"@type":"Answer","text":"Read in any language you’re comfortable with while also exposing children to the school language. Skills transfer."}},{"@type":"Question","name":"How do I keep 7–12 year‑olds engaged?Evidence","acceptedAnswer":{"@type":"Answer","text":"Offer choice, discuss themes, and connect books to interests. Shared talk about books still matters."}},{"@type":"Question","name":"Why use emotion‑themed stories?Evidence","acceptedAnswer":{"@type":"Answer","text":"They build emotional vocabulary, empathy, and coping strategies—supporting mental health and academics."}},{"@type":"Question","name":"What should I do while reading SEI books?Tips","acceptedAnswer":{"@type":"Answer","text":"Pause to label feelings, ask “Have you felt this way?”, and practice a simple strategy (deep breath, ask for help). Keep it short, frequent, and warm."}}]}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Story Bell — FAQs","url":"https://storybellkids.com/FAQ.autoPatch.20251125_232058.backup.html","inLanguage":"en","description":"Quick, research-backed answers for parents. Tap a question to expand.","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
 .carousel-section .carousel-desc{
@@ -1949,37 +1970,17 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
   border-radius: 10px;
   display: inline-block;
 }
-</style><style id="sb-carousel-nosnap-mobile">
-/* === Force-disable carousel snap + recentering on mobile === */
-@media (max-width: 900px){
-  /* Container: no snap + no smooth 'auto-return' */
-  .carousel-track{
-    scroll-snap-type: none !important;
-    scroll-behavior: auto !important;
-    overscroll-behavior-x: contain;
-    -webkit-overflow-scrolling: touch;
-  }
-  /* Items: make sure nothing can snap to them either */
-  .carousel-card, .story-card{
-    scroll-snap-align: none !important;
-    scroll-snap-stop: normal !important;
-    contain: paint;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    overflow: visible;
-  }
-}
 </style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>/* SBQ cleanup override: menu shows only with .active */
 #story-queue-menu{display:none !important;}
 html body #story-queue-menu.active{display:flex !important;}
-</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
+</style><script>window.SBQ_STILL_FIRST='index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
 /* Keep wand always visible above menus, and never block clicks */
 #wand {
   position: fixed !important;
   z-index: 20001 !important;
   pointer-events: none !important;
 }
-</style><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
+</style></head>
 <body>
 <header>
 <div class="header-left">

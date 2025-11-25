@@ -1691,7 +1691,27 @@ nav ul > li:focus-within > .dropdown {
   }
   /* Optional: tighter spacing between icon and title */
   .about-header { gap: 16px !important; }
-}</style><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+}</style><style id="sb-carousel-nosnap-mobile">
+/* === Force-disable carousel snap + recentering on mobile === */
+@media (max-width: 900px){
+  /* Container: no snap + no smooth 'auto-return' */
+  .carousel-track{
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Items: make sure nothing can snap to them either */
+  .carousel-card, .story-card{
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+    contain: paint;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    overflow: visible;
+  }
+}
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><link href="favicon.ico" rel="icon" type="image/x-icon"/><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
 .carousel-section .carousel-desc{
@@ -1852,34 +1872,14 @@ nav ul > li:focus-within > .dropdown {
   border-radius: 10px;
   display: inline-block;
 }
-</style><style id="sb-carousel-nosnap-mobile">
-/* === Force-disable carousel snap + recentering on mobile === */
-@media (max-width: 900px){
-  /* Container: no snap + no smooth 'auto-return' */
-  .carousel-track{
-    scroll-snap-type: none !important;
-    scroll-behavior: auto !important;
-    overscroll-behavior-x: contain;
-    -webkit-overflow-scrolling: touch;
-  }
-  /* Items: make sure nothing can snap to them either */
-  .carousel-card, .story-card{
-    scroll-snap-align: none !important;
-    scroll-snap-stop: normal !important;
-    contain: paint;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    overflow: visible;
-  }
-}
-</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='../index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='../index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
+</style><script>window.SBQ_STILL_FIRST='../index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='../index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
 /* Keep wand always visible above menus, and never block clicks */
 #wand {
   position: fixed !important;
   z-index: 20001 !important;
   pointer-events: none !important;
 }
-</style><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
+</style></head>
 <body>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>
@@ -2562,7 +2562,7 @@ document.addEventListener('DOMContentLoaded', updateStars);
 
   document.addEventListener("DOMContentLoaded", disableWandOnMobile);
   window.addEventListener("resize", disableWandOnMobile);
-})();</script><style id="sb-mobile-carousel-typography-override">
+})();</script><link href="queue_assets/queue.css" rel="stylesheet"/><style id="sb-mobile-carousel-typography-override">
 @media (max-width: 800px){
   /* Remove the extra line break between title and description */
   .carousel-section .carousel-item br{

@@ -56,6 +56,48 @@
   .story-card img{ height:130px !important; }
 }
 </style>
+<script>
+function getFavorites(){ try{return JSON.parse(localStorage.getItem('favorites')||"[]");}catch{return[];} }
+function setFavorites(f){ localStorage.setItem('favorites', JSON.stringify(f)); }
+function toggleFavorite(btn){
+  const title = btn.getAttribute("data-title");
+  let f = getFavorites();
+  if (f.includes(title)) f = f.filter(x=>x!==title); else f.push(title);
+  setFavorites(f); updateStars();
+}
+function isFavorite(t){ return getFavorites().includes(t); }
+function updateStars(){
+  document.querySelectorAll('.favorite-star').forEach(btn=>{
+    const t = btn.getAttribute("data-title");
+    const star = btn.querySelector(".star");
+    if (!star) return;
+    star.innerHTML = isFavorite(t) ? "★" : "☆";
+    btn.title = isFavorite(t) ? "Remove from Favorites" : "Add to Favorites";
+  });
+}
+document.addEventListener('DOMContentLoaded', updateStars);
+</script>
+<html><head><style id="sb-carousel-nosnap-mobile">
+/* === Force-disable carousel snap + recentering on mobile === */
+@media (max-width: 900px){
+  /* Container: no snap + no smooth 'auto-return' */
+  .carousel-track{
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Items: make sure nothing can snap to them either */
+  .carousel-card, .story-card{
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+    contain: paint;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    overflow: visible;
+  }
+}
+</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><link href="queue_assets/queue.css" rel="stylesheet"/><style></style><link href="favicon.ico" rel="icon" type="image/x-icon"/>
 <style id="sb-cards-grid-clean">
 .cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
   display: flex !important;
@@ -108,28 +150,7 @@
   overflow: visible !important;
 }
 </style>
-<script>
-function getFavorites(){ try{return JSON.parse(localStorage.getItem('favorites')||"[]");}catch{return[];} }
-function setFavorites(f){ localStorage.setItem('favorites', JSON.stringify(f)); }
-function toggleFavorite(btn){
-  const title = btn.getAttribute("data-title");
-  let f = getFavorites();
-  if (f.includes(title)) f = f.filter(x=>x!==title); else f.push(title);
-  setFavorites(f); updateStars();
-}
-function isFavorite(t){ return getFavorites().includes(t); }
-function updateStars(){
-  document.querySelectorAll('.favorite-star').forEach(btn=>{
-    const t = btn.getAttribute("data-title");
-    const star = btn.querySelector(".star");
-    if (!star) return;
-    star.innerHTML = isFavorite(t) ? "★" : "☆";
-    btn.title = isFavorite(t) ? "Remove from Favorites" : "Add to Favorites";
-  });
-}
-document.addEventListener('DOMContentLoaded', updateStars);
-</script>
-<html><head><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"The Case of the Gross Green Socks","description":"A detective story about disgust, lost laundry, and learning to help with chores.","url":"https://storybellkids.com/the-case-of-the-gross-green-socks.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/the-case-of-the-gross-green-socks-imagetitle.webp","genre":["chores","disgust","everyday-life","mystery"],"about":[{"@type":"Thing","name":"mystery"},{"@type":"Thing","name":"everyday-life"},{"@type":"Thing","name":"chores"},{"@type":"Thing","name":"disgust"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/the-case-of-the-gross-green-socks/the-case-of-the-gross-green-socks-audio.mp3","encodingFormat":"audio/mpeg"}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"the-case-of-the-gross-green-socks.autoPatch.20251125_232058.backup","url":"https://storybellkids.com/the-case-of-the-gross-green-socks.autoPatch.20251125_232058.backup.html","inLanguage":"en","description":"","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
 .carousel-section .carousel-desc{
@@ -290,37 +311,62 @@ document.addEventListener('DOMContentLoaded', updateStars);
   border-radius: 10px;
   display: inline-block;
 }
-</style><style id="sb-carousel-nosnap-mobile">
-/* === Force-disable carousel snap + recentering on mobile === */
-@media (max-width: 900px){
-  /* Container: no snap + no smooth 'auto-return' */
-  .carousel-track{
-    scroll-snap-type: none !important;
-    scroll-behavior: auto !important;
-    overscroll-behavior-x: contain;
-    -webkit-overflow-scrolling: touch;
-  }
-  /* Items: make sure nothing can snap to them either */
-  .carousel-card, .story-card{
-    scroll-snap-align: none !important;
-    scroll-snap-stop: normal !important;
-    contain: paint;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    overflow: visible;
-  }
-}
 </style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>/* SBQ cleanup override: menu shows only with .active */
 #story-queue-menu{display:none !important;}
 html body #story-queue-menu.active{display:flex !important;}
-</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
+</style><script>window.SBQ_STILL_FIRST='index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
 /* Keep wand always visible above menus, and never block clicks */
 #wand {
   position: fixed !important;
   z-index: 20001 !important;
   pointer-events: none !important;
 }
-</style><link href="favicon.ico" rel="icon" type="image/x-icon"/></head><body><style id="sb-mobile-carousel-typography-override">
+</style></head><body>
+<script id="sb-cards-flex-enforcer">
+(function(){
+  function applyLayout(root){
+    var grids = (root||document).querySelectorAll('.cards-grid, #story-cards .cards-grid, #story-cards .story-grid');
+    grids.forEach(function(grid){
+      grid.style.display = 'flex';
+      grid.style.flexWrap = 'wrap';
+      grid.style.justifyContent = 'center';
+      grid.style.alignItems = 'stretch';
+      grid.style.gap = '16px';
+
+      var w = window.innerWidth;
+      var basis = 'calc(25% - 16px)';
+      if (w <= 1200) basis = 'calc(33.333% - 16px)';
+      if (w <= 800)  basis = 'calc(50% - 10px)';
+
+      grid.querySelectorAll(':scope > .story-card').forEach(function(card){
+        card.style.display = 'flex';
+        card.style.flexDirection = 'column';
+        card.style.alignSelf = 'stretch';
+        card.style.boxSizing = 'border-box';
+        card.style.margin = '0';
+        card.style.width = '';
+        card.style.minWidth = '0';
+        card.style.maxWidth = 'none';
+        card.style.height = 'auto';
+        card.style.minHeight = '0';
+        card.style.flex = '0 1 ' + basis;
+      });
+
+      grid.querySelectorAll('.chips').forEach(function(ch){
+        ch.style.overflow = 'visible';
+        ch.style.maxHeight = 'none';
+      });
+      grid.querySelectorAll('.desc-wrap p').forEach(function(p){
+        p.style.display = 'block';
+        p.style.overflow = 'visible';
+      });
+    });
+  }
+  function onReady(fn){ if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, {once:true}); else fn(); }
+  onReady(function(){ applyLayout(document); window.addEventListener('resize', function(){ applyLayout(document); }); });
+})();
+</script>
+<style id="sb-mobile-carousel-typography-override">
 @media (max-width: 800px){
   /* Remove the extra line break between title and description */
   .carousel-section .carousel-item br{
@@ -387,47 +433,3 @@ html body #story-queue-menu.active{display:flex !important;}
 <button class="queue-control-btn" disabled="" id="queue-clear" title="Clear Queue">🗑️</button>
 </div>
 </div></body></html>
-<script id="sb-cards-flex-enforcer">
-(function(){
-  function applyLayout(root){
-    var grids = (root||document).querySelectorAll('.cards-grid, #story-cards .cards-grid, #story-cards .story-grid');
-    grids.forEach(function(grid){
-      grid.style.display = 'flex';
-      grid.style.flexWrap = 'wrap';
-      grid.style.justifyContent = 'center';
-      grid.style.alignItems = 'stretch';
-      grid.style.gap = '16px';
-
-      var w = window.innerWidth;
-      var basis = 'calc(25% - 16px)';
-      if (w <= 1200) basis = 'calc(33.333% - 16px)';
-      if (w <= 800)  basis = 'calc(50% - 10px)';
-
-      grid.querySelectorAll(':scope > .story-card').forEach(function(card){
-        card.style.display = 'flex';
-        card.style.flexDirection = 'column';
-        card.style.alignSelf = 'stretch';
-        card.style.boxSizing = 'border-box';
-        card.style.margin = '0';
-        card.style.width = '';
-        card.style.minWidth = '0';
-        card.style.maxWidth = 'none';
-        card.style.height = 'auto';
-        card.style.minHeight = '0';
-        card.style.flex = '0 1 ' + basis;
-      });
-
-      grid.querySelectorAll('.chips').forEach(function(ch){
-        ch.style.overflow = 'visible';
-        ch.style.maxHeight = 'none';
-      });
-      grid.querySelectorAll('.desc-wrap p').forEach(function(p){
-        p.style.display = 'block';
-        p.style.overflow = 'visible';
-      });
-    });
-  }
-  function onReady(fn){ if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, {once:true}); else fn(); }
-  onReady(function(){ applyLayout(document); window.addEventListener('resize', function(){ applyLayout(document); }); });
-})();
-</script>

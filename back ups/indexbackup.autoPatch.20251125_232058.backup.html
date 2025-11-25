@@ -1592,7 +1592,32 @@ nav ul > li:focus-within > .dropdown {
   body { cursor: auto !important; }
   #wand { display: none !important; }
   .sparkle { display: none !important; }
-}</style><style id="sb-desktop-carousel-category-white">
+}</style><style id="sb-fav-star-css">
+.favorite-star{background:none;border:none;cursor:pointer;font-size:1.6em;color:#ffd700;margin-top:6px;margin-bottom:-5px;transition:color .14s;outline:none;}
+.favorite-star .star{pointer-events:none;}
+.favorite-star:hover .star,.favorite-star:focus .star{color:#fff56b;text-shadow:0 0 7px #ffea00;}
+</style>
+<style id="sb-carousel-nosnap-mobile">
+/* === Force-disable carousel snap + recentering on mobile === */
+@media (max-width: 900px){
+  /* Container: no snap + no smooth 'auto-return' */
+  .carousel-track{
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Items: make sure nothing can snap to them either */
+  .carousel-card, .story-card{
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+    contain: paint;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    overflow: visible;
+  }
+}
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><link href="favicon.ico" rel="icon" type="image/x-icon"/><style id="sb-desktop-carousel-category-white">
 /* Desktop only: make carousel category links white */
 @media (min-width: 801px){
   .carousel-section .carousel-category,
@@ -1768,10 +1793,6 @@ nav ul > li:focus-within > .dropdown {
   border-radius: 10px;
   display: inline-block;
 }
-</style><style id="sb-fav-star-css">
-.favorite-star{background:none;border:none;cursor:pointer;font-size:1.6em;color:#ffd700;margin-top:6px;margin-bottom:-5px;transition:color .14s;outline:none;}
-.favorite-star .star{pointer-events:none;}
-.favorite-star:hover .star,.favorite-star:focus .star{color:#fff56b;text-shadow:0 0 7px #ffea00;}
 </style>
 <style id="sb-swipe-carousel-style-lite">
 /* Swipe-friendly, momentum + gentle snapping */
@@ -1882,34 +1903,14 @@ nav ul > li:focus-within > .dropdown {
     scroll-snap-type: none !important; /* avoids wrap flicker */
   }
 }
-</style><style id="sb-carousel-nosnap-mobile">
-/* === Force-disable carousel snap + recentering on mobile === */
-@media (max-width: 900px){
-  /* Container: no snap + no smooth 'auto-return' */
-  .carousel-track{
-    scroll-snap-type: none !important;
-    scroll-behavior: auto !important;
-    overscroll-behavior-x: contain;
-    -webkit-overflow-scrolling: touch;
-  }
-  /* Items: make sure nothing can snap to them either */
-  .carousel-card, .story-card{
-    scroll-snap-align: none !important;
-    scroll-snap-stop: normal !important;
-    contain: paint;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    overflow: visible;
-  }
-}
-</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='../index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='../index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
+</style><script>window.SBQ_STILL_FIRST='../index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='../index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
 /* Keep wand always visible above menus, and never block clicks */
 #wand {
   position: fixed !important;
   z-index: 20001 !important;
   pointer-events: none !important;
 }
-</style><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
+</style></head>
 <body>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>
@@ -2591,50 +2592,7 @@ document.addEventListener('DOMContentLoaded', updateStars);
 
   document.addEventListener("DOMContentLoaded", disableWandOnMobile);
   window.addEventListener("resize", disableWandOnMobile);
-})();</script><style id="sb-mobile-carousel-typography-override">
-@media (max-width: 800px){
-  /* Remove the extra line break between title and description */
-  .carousel-section .carousel-item br{
-    display: none !important;
-  }
-
-  /* Title: smaller than before, but still larger than description; keep white */
-  .carousel-section .carousel-item .carousel-title,
-  .carousel-section a.carousel-title-link .carousel-title,
-  .carousel-section .carousel-title{
-    font-size: 0.74em !important;   /* adjust as needed */
-    line-height: 1.12em !important;
-    color: #ffffff !important;
-    margin: 0.15em 0 0.08em !important;  /* tighter */
-  }
-  /* Ensure the title link itself stays white and un-underlined */
-  .carousel-section .carousel-title-link,
-  .carousel-section .carousel-title-link:link,
-  .carousel-section .carousel-title-link:visited{
-    color: #ffffff !important;
-    text-decoration: none !important;
-  }
-
-  /* Description: compact, white */
-  .carousel-section .carousel-desc{
-    font-size: 0.56em !important;
-    line-height: 1.18em !important;
-    color: #ffffff !important;
-    margin: 0.05em 0 0.05em !important;  /* tighter */
-  }
-
-  /* Categories: same size as description, bold, white */
-  .carousel-section .carousel-category{
-    font-size: 0.56em !important;
-    font-weight: 700 !important;
-    color: #ffffff !important;
-    text-decoration: none !important;
-  }
-  .carousel-section .carousel-categories{
-    margin-top: 0.06em !important;  /* tighter */
-  }
-}
-</style><script id="sb-favorites-js">
+})();</script><script id="sb-favorites-js">
 (function(){
   function getFavorites(){ try { return JSON.parse(localStorage.getItem('favorites') || "[]"); } catch { return []; } }
   function setFavorites(f){ localStorage.setItem('favorites', JSON.stringify(f)); }
@@ -2766,7 +2724,50 @@ document.addEventListener('DOMContentLoaded', updateStars);
     buildFavoritesCarousel();
   });
 })();
-</script><script id="sb-mobile-scrollby-override">
+</script><link href="queue_assets/queue.css" rel="stylesheet"/><style id="sb-mobile-carousel-typography-override">
+@media (max-width: 800px){
+  /* Remove the extra line break between title and description */
+  .carousel-section .carousel-item br{
+    display: none !important;
+  }
+
+  /* Title: smaller than before, but still larger than description; keep white */
+  .carousel-section .carousel-item .carousel-title,
+  .carousel-section a.carousel-title-link .carousel-title,
+  .carousel-section .carousel-title{
+    font-size: 0.74em !important;   /* adjust as needed */
+    line-height: 1.12em !important;
+    color: #ffffff !important;
+    margin: 0.15em 0 0.08em !important;  /* tighter */
+  }
+  /* Ensure the title link itself stays white and un-underlined */
+  .carousel-section .carousel-title-link,
+  .carousel-section .carousel-title-link:link,
+  .carousel-section .carousel-title-link:visited{
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+
+  /* Description: compact, white */
+  .carousel-section .carousel-desc{
+    font-size: 0.56em !important;
+    line-height: 1.18em !important;
+    color: #ffffff !important;
+    margin: 0.05em 0 0.05em !important;  /* tighter */
+  }
+
+  /* Categories: same size as description, bold, white */
+  .carousel-section .carousel-category{
+    font-size: 0.56em !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+  .carousel-section .carousel-categories{
+    margin-top: 0.06em !important;  /* tighter */
+  }
+}
+</style><script id="sb-mobile-scrollby-override">
 (function(){
   if (!window.matchMedia || !window.matchMedia("(max-width: 800px)").matches) return;
 
