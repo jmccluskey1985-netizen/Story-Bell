@@ -256,7 +256,44 @@
   }
   /* Optional: tighter spacing between icon and title */
   .about-header { gap: 16px !important; }
-}</style><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+}</style><style id="sb-carousel-nosnap-mobile">
+/* === Force-disable carousel snap + recentering on mobile === */
+@media (max-width: 900px){
+  /* Container: no snap + no smooth 'auto-return' */
+  .carousel-track{
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Items: make sure nothing can snap to them either */
+  .carousel-card, .story-card{
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+    contain: paint;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    overflow: visible;
+  }
+}
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-pointer-events-fix">/* auto patch */
+#wand, .cursor-wand, .sparkle { pointer-events: none !important; }</style><link href="favicon.ico" rel="icon" type="image/x-icon"/><style>/* SB click-only override */
+#story-queue-menu{display:none!important;}
+body.sbq-open #story-queue-menu{display:flex!important;}
+#story-queue-button:hover + #story-queue-menu{display:none!important;}
+</style><style id="sbq-style">
+#sbq-controls{position:relative;z-index:3400;max-width:1100px;margin:10px auto;padding:8px 10px;border:1px dashed rgba(255,235,59,.4);border-radius:12px;background:#001f3f99;backdrop-filter:saturate(1.1) blur(2px)}
+.sbq-btn{appearance:none;border:1px solid rgba(255,235,59,.6);border-radius:10px;padding:.45rem .7rem;background:transparent;color:#FFEB3B;font-family:inherit;cursor:pointer}
+.sbq-btn.primary{background:rgba(255,235,59,.14)}
+.sbq-btn:disabled{opacity:.6;cursor:not-allowed}
+#sbq-menu{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.4rem}
+.sbq-chip{display:inline-flex;align-items:center;gap:.35rem;border:1px solid rgba(255,235,59,.35);border-radius:9999px;padding:.18rem .5rem;text-decoration:none;color:#fff}
+.sbq-chip .n{font-weight:700;opacity:.9}
+.sbq-queued{outline:2px solid rgba(255,235,59,.35);outline-offset:2px;position:relative}
+.sbq-badge{position:absolute;top:6px;left:6px;background:#FFEB3B;color:#003366;font-weight:700;border-radius:9999px;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.8rem;padding:0 6px}
+.sbq-visually-hidden{position:absolute !important;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);height:1px;width:1px;overflow:hidden;white-space:nowrap;border:0;padding:0;margin:-1px}
+</style>
+<link href="https://storybellkids.com/back ups/7_12" rel="canonical"/><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://storybellkids.com"},{"@type":"ListItem","position":2,"name":"Back Ups"},{"@type":"ListItem","position":3,"name":"7-12 Years Old","item":"https://storybellkids.com/back ups/7_12"}]}</script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
 .carousel-section .carousel-desc{
@@ -417,35 +454,14 @@
   border-radius: 10px;
   display: inline-block;
 }
-</style><style id="sb-carousel-nosnap-mobile">
-/* === Force-disable carousel snap + recentering on mobile === */
-@media (max-width: 900px){
-  /* Container: no snap + no smooth 'auto-return' */
-  .carousel-track{
-    scroll-snap-type: none !important;
-    scroll-behavior: auto !important;
-    overscroll-behavior-x: contain;
-    -webkit-overflow-scrolling: touch;
-  }
-  /* Items: make sure nothing can snap to them either */
-  .carousel-card, .story-card{
-    scroll-snap-align: none !important;
-    scroll-snap-stop: normal !important;
-    contain: paint;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    overflow: visible;
-  }
-}
-</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='../index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='../index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
+</style><script>window.SBQ_STILL_FIRST='../index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='../index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
 /* Keep wand always visible above menus, and never block clicks */
 #wand {
   position: fixed !important;
   z-index: 20001 !important;
   pointer-events: none !important;
 }
-</style><style id="wand-pointer-events-fix">/* auto patch */
-#wand, .cursor-wand, .sparkle { pointer-events: none !important; }</style><style>
+</style><style>
    body { margin: 0;  background-color: #001f3f; min-height: 100vh; cursor: none;}
     header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
     .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
@@ -2083,7 +2099,7 @@ nav ul > li:focus-within > .dropdown {
       font-size: 35px !important;
     }
   }
-</style><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
+</style></head>
 <body>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>
@@ -2195,7 +2211,7 @@ nav ul > li:focus-within > .dropdown {
 </button>
 <a class="login-cta-header" data-auth-cta="" href="#login" rel="noopener" style="margin-top: 14px; background: #FFEB3B; color: #003366; font-family: 'Coming Soon', cursive !important; font-size: 16px; font-weight: bold; border-radius: 20px; padding: 9px 22px 9px 32px; text-decoration: none; box-shadow: 0 2px 8px rgba(255,235,59,0.22); display: flex; align-items: center; transition: background 0.2s;" target="_blank">Log in/<br/>Create Account</a>
 <div class="subscribe-text"></div></div>
-</header><div class="menu-overlay"></div>
+</header><div class="sb-queue-wrap"><div></div></div><div class="menu-overlay"></div>
 <div class="main-blank">
 <div class="about-header">
 <img alt="7_12" src="index_items/8plus.png"/>
@@ -2489,7 +2505,2268 @@ document.addEventListener('DOMContentLoaded', updateStars);
 
   document.addEventListener("DOMContentLoaded", disableWandOnMobile);
   window.addEventListener("resize", disableWandOnMobile);
-})();</script><style id="sb-mobile-carousel-typography-override">
+})();</script><link href="queue_assets/queue.css" rel="stylesheet"/><script>
+   // Wand cursor & sparkle logic
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   var wand = window.wand ||  document.getElementById("wand");
+    // Wand offset: tweak for your image so tip matches cursor position
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8;
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 9998;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   document.querySelectorAll('.carousel-track').forEach(function(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    e.preventDefault();
+  });
+  track.addEventListener('mouseleave', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    track.scrollLeft = scrollLeft - walk;
+  });
+  // Touch events for mobile
+  let startTouchX = 0, startScroll = 0;
+  track.addEventListener('touchstart', function(e) {
+    startTouchX = e.touches[0].pageX;
+    startScroll = track.scrollLeft;
+  }, {passive:true});
+  track.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      let dx = e.touches[0].pageX - startTouchX;
+      track.scrollLeft = startScroll - dx;
+    }
+  }, {passive:true});
+});
+  </script><script>
+// Delegated handler to ensure Login/Subscribe CTAs always open the auth modal (desktop & mobile).
+(function(){
+  function wantsAuth(el){
+    if(!el) return false;
+    var text = (el.innerText || '').toLowerCase();
+    return el.hasAttribute('data-auth-cta')
+      || (el.matches && (el.matches('a[href="#login"]') || el.matches('#subscribe-box, .subscribe-box, .subscribe-text')))
+      || (text.includes('log in') && text.includes('create account'))
+      || text.includes('subscribe to story bell');
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-auth-cta], a[href="#login"], #subscribe-box, .subscribe-box, .subscribe-text, .header-login-button, .mobile-login-button');
+    if(!t && wantsAuth(e.target)) t = e.target;
+    if(t){
+      try { e.preventDefault(); } catch(_){}
+      try { e.stopPropagation(); } catch(_){}
+      if(typeof window.openAuthModal === 'function'){ window.openAuthModal(); }
+    }
+  }, {passive:false, capture:true});
+})();
+</script><script>
+// --- Robust Auth Modal Open/Close (v3) ---
+(function(){
+  // Ensure functions exist on window
+  window.closeAuthModal = function(){
+    try {
+      var m = document.getElementById('auth-modal');
+      if (!m) return;
+      m.style.display = 'none';
+      // If FirebaseUI mounted, optionally reset container (prevents stale state)
+      var c = document.getElementById('firebaseui-auth-container');
+      if (c) { c.innerHTML = ''; }
+    } catch(e){ console.error('closeAuthModal error:', e); }
+  };
+
+  // Overlay + X + Esc close behavior
+  function bindModalClose(){
+    var m = document.getElementById('auth-modal');
+    if (!m) return;
+    var content = m.querySelector('.auth-modal-content, .modal-content, [role="dialog"]') || m;
+    // Close on overlay click (but not when clicking the content box)
+    m.addEventListener('click', function(ev){
+      if (!content.contains(ev.target)) return; // inside content: ignore
+      // If click target is *exactly* the overlay (m), close
+      if (ev.target === m) { window.closeAuthModal(); }
+    }, {capture: true});
+
+    // Bind buttons/links that look like close
+    var closeSelectors = [
+      '.auth-close', '.modal-close', '.close', '[data-close]', '[aria-label="Close"]', '.firebaseui-idp-cancel'
+    ];
+    closeSelectors.forEach(function(sel){
+      m.querySelectorAll(sel).forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          window.closeAuthModal();
+        }, {passive:false});
+      });
+    });
+
+    // Esc key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') window.closeAuthModal();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindModalClose);
+  } else {
+    bindModalClose();
+  }
+
+  // Make sure the hamburger's login button also opens the modal
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.hamburger-login, .hamburger .login, .mobile-login-button, #mobileLoginBtn, [data-hamburger-login]');
+    if (t){
+      try { e.preventDefault(); e.stopPropagation(); } catch(_){}
+      if (typeof window.openAuthModal === 'function') window.openAuthModal();
+    }
+  }, {capture:true, passive:false});
+})();
+</script><script data-copied-from-id="auth-guard-openauth">
+(function(){
+  var ALLOWED = '.login-cta-header, .login-mobile a, .subscribe-box, .subscribe-text, [data-auth-cta="auth"]';
+  // Capture last click target (capture phase to beat bubbling handlers)
+  document.addEventListener('click', function(e){
+    window.__sbLastClickTarget = e.target || null;
+  }, true);
+
+  function isAllowedTarget(t){
+    try {
+      return !!(t && t.closest && t.closest(ALLOWED));
+    } catch(e) { return false; }
+  }
+
+  // Monkey-patch openAuthModal to block calls not originating from allowed CTAs
+  var waited = 0;
+  function patchWhenReady(){
+    if (typeof window.openAuthModal === 'function' && !window.__sbOpenAuthPatched){
+      window.__sbOpenAuthPatched = true;
+      var _orig = window.openAuthModal;
+      window.openAuthModal = function(){
+        var t = window.__sbLastClickTarget || null;
+        if (isAllowedTarget(t)){
+          return _orig.apply(this, arguments);
+        } else {
+          try { console.warn('Blocked openAuthModal from non-CTA region'); } catch(_){}
+          return false;
+        }
+      };
+    } else if (waited < 8000) {
+      waited += 200;
+      setTimeout(patchWhenReady, 200);
+    }
+  }
+  patchWhenReady();
+
+  // Fallback: bind explicit CTA clicks to open auth (in case their inline handlers were removed)
+  document.addEventListener('click', function(e){
+    var el = e.target;
+    if (!el || !el.closest) return;
+    var cta = el.closest(ALLOWED);
+    if (!cta) return;
+    e.preventDefault();
+    if (typeof window.openAuthModal === 'function'){
+      window.__sbLastClickTarget = el;
+      window.openAuthModal();
+    }
+    return false;
+  }, true);
+})();
+</script><script>
+   // Wand cursor & sparkle logic
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   var wand = window.wand ||  document.getElementById("wand");
+    // Wand offset: tweak for your image so tip matches cursor position
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8;
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 9998;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   document.querySelectorAll('.carousel-track').forEach(function(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    e.preventDefault();
+  });
+  track.addEventListener('mouseleave', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    track.scrollLeft = scrollLeft - walk;
+  });
+  // Touch events for mobile
+  let startTouchX = 0, startScroll = 0;
+  track.addEventListener('touchstart', function(e) {
+    startTouchX = e.touches[0].pageX;
+    startScroll = track.scrollLeft;
+  }, {passive:true});
+  track.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      let dx = e.touches[0].pageX - startTouchX;
+      track.scrollLeft = startScroll - dx;
+    }
+  }, {passive:true});
+});
+  </script><script>
+// Delegated handler to ensure Login/Subscribe CTAs always open the auth modal (desktop & mobile).
+(function(){
+  function wantsAuth(el){
+    if(!el) return false;
+    var text = (el.innerText || '').toLowerCase();
+    return el.hasAttribute('data-auth-cta')
+      || (el.matches && (el.matches('a[href="#login"]') || el.matches('#subscribe-box, .subscribe-box, .subscribe-text')))
+      || (text.includes('log in') && text.includes('create account'))
+      || text.includes('subscribe to story bell');
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-auth-cta], a[href="#login"], #subscribe-box, .subscribe-box, .subscribe-text, .header-login-button, .mobile-login-button');
+    if(!t && wantsAuth(e.target)) t = e.target;
+    if(t){
+      try { e.preventDefault(); } catch(_){}
+      try { e.stopPropagation(); } catch(_){}
+      if(typeof window.openAuthModal === 'function'){ window.openAuthModal(); }
+    }
+  }, {passive:false, capture:true});
+})();
+</script><script>
+// --- Robust Auth Modal Open/Close (v3) ---
+(function(){
+  // Ensure functions exist on window
+  window.closeAuthModal = function(){
+    try {
+      var m = document.getElementById('auth-modal');
+      if (!m) return;
+      m.style.display = 'none';
+      // If FirebaseUI mounted, optionally reset container (prevents stale state)
+      var c = document.getElementById('firebaseui-auth-container');
+      if (c) { c.innerHTML = ''; }
+    } catch(e){ console.error('closeAuthModal error:', e); }
+  };
+
+  // Overlay + X + Esc close behavior
+  function bindModalClose(){
+    var m = document.getElementById('auth-modal');
+    if (!m) return;
+    var content = m.querySelector('.auth-modal-content, .modal-content, [role="dialog"]') || m;
+    // Close on overlay click (but not when clicking the content box)
+    m.addEventListener('click', function(ev){
+      if (!content.contains(ev.target)) return; // inside content: ignore
+      // If click target is *exactly* the overlay (m), close
+      if (ev.target === m) { window.closeAuthModal(); }
+    }, {capture: true});
+
+    // Bind buttons/links that look like close
+    var closeSelectors = [
+      '.auth-close', '.modal-close', '.close', '[data-close]', '[aria-label="Close"]', '.firebaseui-idp-cancel'
+    ];
+    closeSelectors.forEach(function(sel){
+      m.querySelectorAll(sel).forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          window.closeAuthModal();
+        }, {passive:false});
+      });
+    });
+
+    // Esc key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') window.closeAuthModal();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindModalClose);
+  } else {
+    bindModalClose();
+  }
+
+  // Make sure the hamburger's login button also opens the modal
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.hamburger-login, .hamburger .login, .mobile-login-button, #mobileLoginBtn, [data-hamburger-login]');
+    if (t){
+      try { e.preventDefault(); e.stopPropagation(); } catch(_){}
+      if (typeof window.openAuthModal === 'function') window.openAuthModal();
+    }
+  }, {capture:true, passive:false});
+})();
+</script><script data-copied-from-id="auth-guard-openauth">
+(function(){
+  var ALLOWED = '.login-cta-header, .login-mobile a, .subscribe-box, .subscribe-text, [data-auth-cta="auth"]';
+  // Capture last click target (capture phase to beat bubbling handlers)
+  document.addEventListener('click', function(e){
+    window.__sbLastClickTarget = e.target || null;
+  }, true);
+
+  function isAllowedTarget(t){
+    try {
+      return !!(t && t.closest && t.closest(ALLOWED));
+    } catch(e) { return false; }
+  }
+
+  // Monkey-patch openAuthModal to block calls not originating from allowed CTAs
+  var waited = 0;
+  function patchWhenReady(){
+    if (typeof window.openAuthModal === 'function' && !window.__sbOpenAuthPatched){
+      window.__sbOpenAuthPatched = true;
+      var _orig = window.openAuthModal;
+      window.openAuthModal = function(){
+        var t = window.__sbLastClickTarget || null;
+        if (isAllowedTarget(t)){
+          return _orig.apply(this, arguments);
+        } else {
+          try { console.warn('Blocked openAuthModal from non-CTA region'); } catch(_){}
+          return false;
+        }
+      };
+    } else if (waited < 8000) {
+      waited += 200;
+      setTimeout(patchWhenReady, 200);
+    }
+  }
+  patchWhenReady();
+
+  // Fallback: bind explicit CTA clicks to open auth (in case their inline handlers were removed)
+  document.addEventListener('click', function(e){
+    var el = e.target;
+    if (!el || !el.closest) return;
+    var cta = el.closest(ALLOWED);
+    if (!cta) return;
+    e.preventDefault();
+    if (typeof window.openAuthModal === 'function'){
+      window.__sbLastClickTarget = el;
+      window.openAuthModal();
+    }
+    return false;
+  }, true);
+})();
+</script><link href="queue_assets/queue.css" rel="stylesheet"/><script src="sb-queue.js"></script>
+<link href="queue_assets/queue.css" rel="stylesheet"/><script>
+   // Wand cursor & sparkle logic
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   var wand = window.wand ||  document.getElementById("wand");
+    // Wand offset: tweak for your image so tip matches cursor position
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8;
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 9998;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   document.querySelectorAll('.carousel-track').forEach(function(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    e.preventDefault();
+  });
+  track.addEventListener('mouseleave', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    track.scrollLeft = scrollLeft - walk;
+  });
+  // Touch events for mobile
+  let startTouchX = 0, startScroll = 0;
+  track.addEventListener('touchstart', function(e) {
+    startTouchX = e.touches[0].pageX;
+    startScroll = track.scrollLeft;
+  }, {passive:true});
+  track.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      let dx = e.touches[0].pageX - startTouchX;
+      track.scrollLeft = startScroll - dx;
+    }
+  }, {passive:true});
+});
+  </script><script>
+// Delegated handler to ensure Login/Subscribe CTAs always open the auth modal (desktop & mobile).
+(function(){
+  function wantsAuth(el){
+    if(!el) return false;
+    var text = (el.innerText || '').toLowerCase();
+    return el.hasAttribute('data-auth-cta')
+      || (el.matches && (el.matches('a[href="#login"]') || el.matches('#subscribe-box, .subscribe-box, .subscribe-text')))
+      || (text.includes('log in') && text.includes('create account'))
+      || text.includes('subscribe to story bell');
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-auth-cta], a[href="#login"], #subscribe-box, .subscribe-box, .subscribe-text, .header-login-button, .mobile-login-button');
+    if(!t && wantsAuth(e.target)) t = e.target;
+    if(t){
+      try { e.preventDefault(); } catch(_){}
+      try { e.stopPropagation(); } catch(_){}
+      if(typeof window.openAuthModal === 'function'){ window.openAuthModal(); }
+    }
+  }, {passive:false, capture:true});
+})();
+</script><script>
+// --- Robust Auth Modal Open/Close (v3) ---
+(function(){
+  // Ensure functions exist on window
+  window.closeAuthModal = function(){
+    try {
+      var m = document.getElementById('auth-modal');
+      if (!m) return;
+      m.style.display = 'none';
+      // If FirebaseUI mounted, optionally reset container (prevents stale state)
+      var c = document.getElementById('firebaseui-auth-container');
+      if (c) { c.innerHTML = ''; }
+    } catch(e){ console.error('closeAuthModal error:', e); }
+  };
+
+  // Overlay + X + Esc close behavior
+  function bindModalClose(){
+    var m = document.getElementById('auth-modal');
+    if (!m) return;
+    var content = m.querySelector('.auth-modal-content, .modal-content, [role="dialog"]') || m;
+    // Close on overlay click (but not when clicking the content box)
+    m.addEventListener('click', function(ev){
+      if (!content.contains(ev.target)) return; // inside content: ignore
+      // If click target is *exactly* the overlay (m), close
+      if (ev.target === m) { window.closeAuthModal(); }
+    }, {capture: true});
+
+    // Bind buttons/links that look like close
+    var closeSelectors = [
+      '.auth-close', '.modal-close', '.close', '[data-close]', '[aria-label="Close"]', '.firebaseui-idp-cancel'
+    ];
+    closeSelectors.forEach(function(sel){
+      m.querySelectorAll(sel).forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          window.closeAuthModal();
+        }, {passive:false});
+      });
+    });
+
+    // Esc key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') window.closeAuthModal();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindModalClose);
+  } else {
+    bindModalClose();
+  }
+
+  // Make sure the hamburger's login button also opens the modal
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.hamburger-login, .hamburger .login, .mobile-login-button, #mobileLoginBtn, [data-hamburger-login]');
+    if (t){
+      try { e.preventDefault(); e.stopPropagation(); } catch(_){}
+      if (typeof window.openAuthModal === 'function') window.openAuthModal();
+    }
+  }, {capture:true, passive:false});
+})();
+</script><script data-copied-from-id="auth-guard-openauth">
+(function(){
+  var ALLOWED = '.login-cta-header, .login-mobile a, .subscribe-box, .subscribe-text, [data-auth-cta="auth"]';
+  // Capture last click target (capture phase to beat bubbling handlers)
+  document.addEventListener('click', function(e){
+    window.__sbLastClickTarget = e.target || null;
+  }, true);
+
+  function isAllowedTarget(t){
+    try {
+      return !!(t && t.closest && t.closest(ALLOWED));
+    } catch(e) { return false; }
+  }
+
+  // Monkey-patch openAuthModal to block calls not originating from allowed CTAs
+  var waited = 0;
+  function patchWhenReady(){
+    if (typeof window.openAuthModal === 'function' && !window.__sbOpenAuthPatched){
+      window.__sbOpenAuthPatched = true;
+      var _orig = window.openAuthModal;
+      window.openAuthModal = function(){
+        var t = window.__sbLastClickTarget || null;
+        if (isAllowedTarget(t)){
+          return _orig.apply(this, arguments);
+        } else {
+          try { console.warn('Blocked openAuthModal from non-CTA region'); } catch(_){}
+          return false;
+        }
+      };
+    } else if (waited < 8000) {
+      waited += 200;
+      setTimeout(patchWhenReady, 200);
+    }
+  }
+  patchWhenReady();
+
+  // Fallback: bind explicit CTA clicks to open auth (in case their inline handlers were removed)
+  document.addEventListener('click', function(e){
+    var el = e.target;
+    if (!el || !el.closest) return;
+    var cta = el.closest(ALLOWED);
+    if (!cta) return;
+    e.preventDefault();
+    if (typeof window.openAuthModal === 'function'){
+      window.__sbLastClickTarget = el;
+      window.openAuthModal();
+    }
+    return false;
+  }, true);
+})();
+</script><script>(function(){function t(e){try{{e&&(e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation&&e.stopImmediatePropagation())}}catch(_){ }var m=document.getElementById('story-queue-menu');if(m) m.classList.toggle('active');} window.__sbqToggle=t; var b=document.getElementById('story-queue-button'); if(b){ ['click','pointerdown','touchstart'].forEach(function(evt){ b.addEventListener(evt,t,true);});}})();</script><script>
+   // Wand cursor & sparkle logic
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   var wand = window.wand ||  document.getElementById("wand");
+    // Wand offset: tweak for your image so tip matches cursor position
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8;
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 9998;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   document.querySelectorAll('.carousel-track').forEach(function(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    e.preventDefault();
+  });
+  track.addEventListener('mouseleave', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    track.scrollLeft = scrollLeft - walk;
+  });
+  // Touch events for mobile
+  let startTouchX = 0, startScroll = 0;
+  track.addEventListener('touchstart', function(e) {
+    startTouchX = e.touches[0].pageX;
+    startScroll = track.scrollLeft;
+  }, {passive:true});
+  track.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      let dx = e.touches[0].pageX - startTouchX;
+      track.scrollLeft = startScroll - dx;
+    }
+  }, {passive:true});
+});
+  </script><script>
+// Delegated handler to ensure Login/Subscribe CTAs always open the auth modal (desktop & mobile).
+(function(){
+  function wantsAuth(el){
+    if(!el) return false;
+    var text = (el.innerText || '').toLowerCase();
+    return el.hasAttribute('data-auth-cta')
+      || (el.matches && (el.matches('a[href="#login"]') || el.matches('#subscribe-box, .subscribe-box, .subscribe-text')))
+      || (text.includes('log in') && text.includes('create account'))
+      || text.includes('subscribe to story bell');
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-auth-cta], a[href="#login"], #subscribe-box, .subscribe-box, .subscribe-text, .header-login-button, .mobile-login-button');
+    if(!t && wantsAuth(e.target)) t = e.target;
+    if(t){
+      try { e.preventDefault(); } catch(_){}
+      try { e.stopPropagation(); } catch(_){}
+      if(typeof window.openAuthModal === 'function'){ window.openAuthModal(); }
+    }
+  }, {passive:false, capture:true});
+})();
+</script><script>
+// --- Robust Auth Modal Open/Close (v3) ---
+(function(){
+  // Ensure functions exist on window
+  window.closeAuthModal = function(){
+    try {
+      var m = document.getElementById('auth-modal');
+      if (!m) return;
+      m.style.display = 'none';
+      // If FirebaseUI mounted, optionally reset container (prevents stale state)
+      var c = document.getElementById('firebaseui-auth-container');
+      if (c) { c.innerHTML = ''; }
+    } catch(e){ console.error('closeAuthModal error:', e); }
+  };
+
+  // Overlay + X + Esc close behavior
+  function bindModalClose(){
+    var m = document.getElementById('auth-modal');
+    if (!m) return;
+    var content = m.querySelector('.auth-modal-content, .modal-content, [role="dialog"]') || m;
+    // Close on overlay click (but not when clicking the content box)
+    m.addEventListener('click', function(ev){
+      if (!content.contains(ev.target)) return; // inside content: ignore
+      // If click target is *exactly* the overlay (m), close
+      if (ev.target === m) { window.closeAuthModal(); }
+    }, {capture: true});
+
+    // Bind buttons/links that look like close
+    var closeSelectors = [
+      '.auth-close', '.modal-close', '.close', '[data-close]', '[aria-label="Close"]', '.firebaseui-idp-cancel'
+    ];
+    closeSelectors.forEach(function(sel){
+      m.querySelectorAll(sel).forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          window.closeAuthModal();
+        }, {passive:false});
+      });
+    });
+
+    // Esc key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') window.closeAuthModal();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindModalClose);
+  } else {
+    bindModalClose();
+  }
+
+  // Make sure the hamburger's login button also opens the modal
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.hamburger-login, .hamburger .login, .mobile-login-button, #mobileLoginBtn, [data-hamburger-login]');
+    if (t){
+      try { e.preventDefault(); e.stopPropagation(); } catch(_){}
+      if (typeof window.openAuthModal === 'function') window.openAuthModal();
+    }
+  }, {capture:true, passive:false});
+})();
+</script><script data-copied-from-id="auth-guard-openauth">
+(function(){
+  var ALLOWED = '.login-cta-header, .login-mobile a, .subscribe-box, .subscribe-text, [data-auth-cta="auth"]';
+  // Capture last click target (capture phase to beat bubbling handlers)
+  document.addEventListener('click', function(e){
+    window.__sbLastClickTarget = e.target || null;
+  }, true);
+
+  function isAllowedTarget(t){
+    try {
+      return !!(t && t.closest && t.closest(ALLOWED));
+    } catch(e) { return false; }
+  }
+
+  // Monkey-patch openAuthModal to block calls not originating from allowed CTAs
+  var waited = 0;
+  function patchWhenReady(){
+    if (typeof window.openAuthModal === 'function' && !window.__sbOpenAuthPatched){
+      window.__sbOpenAuthPatched = true;
+      var _orig = window.openAuthModal;
+      window.openAuthModal = function(){
+        var t = window.__sbLastClickTarget || null;
+        if (isAllowedTarget(t)){
+          return _orig.apply(this, arguments);
+        } else {
+          try { console.warn('Blocked openAuthModal from non-CTA region'); } catch(_){}
+          return false;
+        }
+      };
+    } else if (waited < 8000) {
+      waited += 200;
+      setTimeout(patchWhenReady, 200);
+    }
+  }
+  patchWhenReady();
+
+  // Fallback: bind explicit CTA clicks to open auth (in case their inline handlers were removed)
+  document.addEventListener('click', function(e){
+    var el = e.target;
+    if (!el || !el.closest) return;
+    var cta = el.closest(ALLOWED);
+    if (!cta) return;
+    e.preventDefault();
+    if (typeof window.openAuthModal === 'function'){
+      window.__sbLastClickTarget = el;
+      window.openAuthModal();
+    }
+    return false;
+  }, true);
+})();
+</script><script>(function(){function t(e){try{{e&&(e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation&&e.stopImmediatePropagation())}}catch(_){ }var m=document.getElementById('story-queue-menu');if(m) m.classList.toggle('active');} window.__sbqToggle=t; var b=document.getElementById('story-queue-button'); if(b){ ['click','pointerdown','touchstart'].forEach(function(evt){ b.addEventListener(evt,t,true);});}})();</script><link href="queue_assets/queue.css" rel="stylesheet"/><script>
+   // Wand cursor & sparkle logic
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   var wand = window.wand ||  document.getElementById("wand");
+    // Wand offset: tweak for your image so tip matches cursor position
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8;
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 9998;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   document.querySelectorAll('.carousel-track').forEach(function(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    e.preventDefault();
+  });
+  track.addEventListener('mouseleave', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    track.scrollLeft = scrollLeft - walk;
+  });
+  // Touch events for mobile
+  let startTouchX = 0, startScroll = 0;
+  track.addEventListener('touchstart', function(e) {
+    startTouchX = e.touches[0].pageX;
+    startScroll = track.scrollLeft;
+  }, {passive:true});
+  track.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      let dx = e.touches[0].pageX - startTouchX;
+      track.scrollLeft = startScroll - dx;
+    }
+  }, {passive:true});
+});
+  </script><script>
+// Delegated handler to ensure Login/Subscribe CTAs always open the auth modal (desktop & mobile).
+(function(){
+  function wantsAuth(el){
+    if(!el) return false;
+    var text = (el.innerText || '').toLowerCase();
+    return el.hasAttribute('data-auth-cta')
+      || (el.matches && (el.matches('a[href="#login"]') || el.matches('#subscribe-box, .subscribe-box, .subscribe-text')))
+      || (text.includes('log in') && text.includes('create account'))
+      || text.includes('subscribe to story bell');
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-auth-cta], a[href="#login"], #subscribe-box, .subscribe-box, .subscribe-text, .header-login-button, .mobile-login-button');
+    if(!t && wantsAuth(e.target)) t = e.target;
+    if(t){
+      try { e.preventDefault(); } catch(_){}
+      try { e.stopPropagation(); } catch(_){}
+      if(typeof window.openAuthModal === 'function'){ window.openAuthModal(); }
+    }
+  }, {passive:false, capture:true});
+})();
+</script><script>
+// --- Robust Auth Modal Open/Close (v3) ---
+(function(){
+  // Ensure functions exist on window
+  window.closeAuthModal = function(){
+    try {
+      var m = document.getElementById('auth-modal');
+      if (!m) return;
+      m.style.display = 'none';
+      // If FirebaseUI mounted, optionally reset container (prevents stale state)
+      var c = document.getElementById('firebaseui-auth-container');
+      if (c) { c.innerHTML = ''; }
+    } catch(e){ console.error('closeAuthModal error:', e); }
+  };
+
+  // Overlay + X + Esc close behavior
+  function bindModalClose(){
+    var m = document.getElementById('auth-modal');
+    if (!m) return;
+    var content = m.querySelector('.auth-modal-content, .modal-content, [role="dialog"]') || m;
+    // Close on overlay click (but not when clicking the content box)
+    m.addEventListener('click', function(ev){
+      if (!content.contains(ev.target)) return; // inside content: ignore
+      // If click target is *exactly* the overlay (m), close
+      if (ev.target === m) { window.closeAuthModal(); }
+    }, {capture: true});
+
+    // Bind buttons/links that look like close
+    var closeSelectors = [
+      '.auth-close', '.modal-close', '.close', '[data-close]', '[aria-label="Close"]', '.firebaseui-idp-cancel'
+    ];
+    closeSelectors.forEach(function(sel){
+      m.querySelectorAll(sel).forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          window.closeAuthModal();
+        }, {passive:false});
+      });
+    });
+
+    // Esc key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') window.closeAuthModal();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindModalClose);
+  } else {
+    bindModalClose();
+  }
+
+  // Make sure the hamburger's login button also opens the modal
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.hamburger-login, .hamburger .login, .mobile-login-button, #mobileLoginBtn, [data-hamburger-login]');
+    if (t){
+      try { e.preventDefault(); e.stopPropagation(); } catch(_){}
+      if (typeof window.openAuthModal === 'function') window.openAuthModal();
+    }
+  }, {capture:true, passive:false});
+})();
+</script><script data-copied-from-id="auth-guard-openauth">
+(function(){
+  var ALLOWED = '.login-cta-header, .login-mobile a, .subscribe-box, .subscribe-text, [data-auth-cta="auth"]';
+  // Capture last click target (capture phase to beat bubbling handlers)
+  document.addEventListener('click', function(e){
+    window.__sbLastClickTarget = e.target || null;
+  }, true);
+
+  function isAllowedTarget(t){
+    try {
+      return !!(t && t.closest && t.closest(ALLOWED));
+    } catch(e) { return false; }
+  }
+
+  // Monkey-patch openAuthModal to block calls not originating from allowed CTAs
+  var waited = 0;
+  function patchWhenReady(){
+    if (typeof window.openAuthModal === 'function' && !window.__sbOpenAuthPatched){
+      window.__sbOpenAuthPatched = true;
+      var _orig = window.openAuthModal;
+      window.openAuthModal = function(){
+        var t = window.__sbLastClickTarget || null;
+        if (isAllowedTarget(t)){
+          return _orig.apply(this, arguments);
+        } else {
+          try { console.warn('Blocked openAuthModal from non-CTA region'); } catch(_){}
+          return false;
+        }
+      };
+    } else if (waited < 8000) {
+      waited += 200;
+      setTimeout(patchWhenReady, 200);
+    }
+  }
+  patchWhenReady();
+
+  // Fallback: bind explicit CTA clicks to open auth (in case their inline handlers were removed)
+  document.addEventListener('click', function(e){
+    var el = e.target;
+    if (!el || !el.closest) return;
+    var cta = el.closest(ALLOWED);
+    if (!cta) return;
+    e.preventDefault();
+    if (typeof window.openAuthModal === 'function'){
+      window.__sbLastClickTarget = el;
+      window.openAuthModal();
+    }
+    return false;
+  }, true);
+})();
+</script><script>(function(){function t(e){try{{e&&(e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation&&e.stopImmediatePropagation())}}catch(_){ }var m=document.getElementById('story-queue-menu');if(m) m.classList.toggle('active');} window.__sbqToggle=t; var b=document.getElementById('story-queue-button'); if(b){ ['click','pointerdown','touchstart'].forEach(function(evt){ b.addEventListener(evt,t,true);});}})();</script><script>
+   // Wand cursor & sparkle logic
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   var wand = window.wand ||  document.getElementById("wand");
+    // Wand offset: tweak for your image so tip matches cursor position
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8;
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 9998;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   document.querySelectorAll('.carousel-track').forEach(function(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    e.preventDefault();
+  });
+  track.addEventListener('mouseleave', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    track.scrollLeft = scrollLeft - walk;
+  });
+  // Touch events for mobile
+  let startTouchX = 0, startScroll = 0;
+  track.addEventListener('touchstart', function(e) {
+    startTouchX = e.touches[0].pageX;
+    startScroll = track.scrollLeft;
+  }, {passive:true});
+  track.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      let dx = e.touches[0].pageX - startTouchX;
+      track.scrollLeft = startScroll - dx;
+    }
+  }, {passive:true});
+});
+  </script><script>
+// Delegated handler to ensure Login/Subscribe CTAs always open the auth modal (desktop & mobile).
+(function(){
+  function wantsAuth(el){
+    if(!el) return false;
+    var text = (el.innerText || '').toLowerCase();
+    return el.hasAttribute('data-auth-cta')
+      || (el.matches && (el.matches('a[href="#login"]') || el.matches('#subscribe-box, .subscribe-box, .subscribe-text')))
+      || (text.includes('log in') && text.includes('create account'))
+      || text.includes('subscribe to story bell');
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-auth-cta], a[href="#login"], #subscribe-box, .subscribe-box, .subscribe-text, .header-login-button, .mobile-login-button');
+    if(!t && wantsAuth(e.target)) t = e.target;
+    if(t){
+      try { e.preventDefault(); } catch(_){}
+      try { e.stopPropagation(); } catch(_){}
+      if(typeof window.openAuthModal === 'function'){ window.openAuthModal(); }
+    }
+  }, {passive:false, capture:true});
+})();
+</script><script>
+// --- Robust Auth Modal Open/Close (v3) ---
+(function(){
+  // Ensure functions exist on window
+  window.closeAuthModal = function(){
+    try {
+      var m = document.getElementById('auth-modal');
+      if (!m) return;
+      m.style.display = 'none';
+      // If FirebaseUI mounted, optionally reset container (prevents stale state)
+      var c = document.getElementById('firebaseui-auth-container');
+      if (c) { c.innerHTML = ''; }
+    } catch(e){ console.error('closeAuthModal error:', e); }
+  };
+
+  // Overlay + X + Esc close behavior
+  function bindModalClose(){
+    var m = document.getElementById('auth-modal');
+    if (!m) return;
+    var content = m.querySelector('.auth-modal-content, .modal-content, [role="dialog"]') || m;
+    // Close on overlay click (but not when clicking the content box)
+    m.addEventListener('click', function(ev){
+      if (!content.contains(ev.target)) return; // inside content: ignore
+      // If click target is *exactly* the overlay (m), close
+      if (ev.target === m) { window.closeAuthModal(); }
+    }, {capture: true});
+
+    // Bind buttons/links that look like close
+    var closeSelectors = [
+      '.auth-close', '.modal-close', '.close', '[data-close]', '[aria-label="Close"]', '.firebaseui-idp-cancel'
+    ];
+    closeSelectors.forEach(function(sel){
+      m.querySelectorAll(sel).forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          window.closeAuthModal();
+        }, {passive:false});
+      });
+    });
+
+    // Esc key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') window.closeAuthModal();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindModalClose);
+  } else {
+    bindModalClose();
+  }
+
+  // Make sure the hamburger's login button also opens the modal
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.hamburger-login, .hamburger .login, .mobile-login-button, #mobileLoginBtn, [data-hamburger-login]');
+    if (t){
+      try { e.preventDefault(); e.stopPropagation(); } catch(_){}
+      if (typeof window.openAuthModal === 'function') window.openAuthModal();
+    }
+  }, {capture:true, passive:false});
+})();
+</script><script data-copied-from-id="auth-guard-openauth">
+(function(){
+  var ALLOWED = '.login-cta-header, .login-mobile a, .subscribe-box, .subscribe-text, [data-auth-cta="auth"]';
+  // Capture last click target (capture phase to beat bubbling handlers)
+  document.addEventListener('click', function(e){
+    window.__sbLastClickTarget = e.target || null;
+  }, true);
+
+  function isAllowedTarget(t){
+    try {
+      return !!(t && t.closest && t.closest(ALLOWED));
+    } catch(e) { return false; }
+  }
+
+  // Monkey-patch openAuthModal to block calls not originating from allowed CTAs
+  var waited = 0;
+  function patchWhenReady(){
+    if (typeof window.openAuthModal === 'function' && !window.__sbOpenAuthPatched){
+      window.__sbOpenAuthPatched = true;
+      var _orig = window.openAuthModal;
+      window.openAuthModal = function(){
+        var t = window.__sbLastClickTarget || null;
+        if (isAllowedTarget(t)){
+          return _orig.apply(this, arguments);
+        } else {
+          try { console.warn('Blocked openAuthModal from non-CTA region'); } catch(_){}
+          return false;
+        }
+      };
+    } else if (waited < 8000) {
+      waited += 200;
+      setTimeout(patchWhenReady, 200);
+    }
+  }
+  patchWhenReady();
+
+  // Fallback: bind explicit CTA clicks to open auth (in case their inline handlers were removed)
+  document.addEventListener('click', function(e){
+    var el = e.target;
+    if (!el || !el.closest) return;
+    var cta = el.closest(ALLOWED);
+    if (!cta) return;
+    e.preventDefault();
+    if (typeof window.openAuthModal === 'function'){
+      window.__sbLastClickTarget = el;
+      window.openAuthModal();
+    }
+    return false;
+  }, true);
+})();
+</script><script>(function(){function t(e){try{{e&&(e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation&&e.stopImmediatePropagation())}}catch(_){ }var m=document.getElementById('story-queue-menu');if(m) m.classList.toggle('active');} window.__sbqToggle=t; var b=document.getElementById('story-queue-button'); if(b){ ['click','pointerdown','touchstart'].forEach(function(evt){ b.addEventListener(evt,t,true);});}})();</script><link href="queue_assets/queue.css" rel="stylesheet"/><script>
+   // Wand cursor & sparkle logic
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   var wand = window.wand ||  document.getElementById("wand");
+    // Wand offset: tweak for your image so tip matches cursor position
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8;
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 9998;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   document.querySelectorAll('.carousel-track').forEach(function(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    e.preventDefault();
+  });
+  track.addEventListener('mouseleave', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    track.scrollLeft = scrollLeft - walk;
+  });
+  // Touch events for mobile
+  let startTouchX = 0, startScroll = 0;
+  track.addEventListener('touchstart', function(e) {
+    startTouchX = e.touches[0].pageX;
+    startScroll = track.scrollLeft;
+  }, {passive:true});
+  track.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      let dx = e.touches[0].pageX - startTouchX;
+      track.scrollLeft = startScroll - dx;
+    }
+  }, {passive:true});
+});
+  </script><script>
+// Delegated handler to ensure Login/Subscribe CTAs always open the auth modal (desktop & mobile).
+(function(){
+  function wantsAuth(el){
+    if(!el) return false;
+    var text = (el.innerText || '').toLowerCase();
+    return el.hasAttribute('data-auth-cta')
+      || (el.matches && (el.matches('a[href="#login"]') || el.matches('#subscribe-box, .subscribe-box, .subscribe-text')))
+      || (text.includes('log in') && text.includes('create account'))
+      || text.includes('subscribe to story bell');
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-auth-cta], a[href="#login"], #subscribe-box, .subscribe-box, .subscribe-text, .header-login-button, .mobile-login-button');
+    if(!t && wantsAuth(e.target)) t = e.target;
+    if(t){
+      try { e.preventDefault(); } catch(_){}
+      try { e.stopPropagation(); } catch(_){}
+      if(typeof window.openAuthModal === 'function'){ window.openAuthModal(); }
+    }
+  }, {passive:false, capture:true});
+})();
+</script><script>
+// --- Robust Auth Modal Open/Close (v3) ---
+(function(){
+  // Ensure functions exist on window
+  window.closeAuthModal = function(){
+    try {
+      var m = document.getElementById('auth-modal');
+      if (!m) return;
+      m.style.display = 'none';
+      // If FirebaseUI mounted, optionally reset container (prevents stale state)
+      var c = document.getElementById('firebaseui-auth-container');
+      if (c) { c.innerHTML = ''; }
+    } catch(e){ console.error('closeAuthModal error:', e); }
+  };
+
+  // Overlay + X + Esc close behavior
+  function bindModalClose(){
+    var m = document.getElementById('auth-modal');
+    if (!m) return;
+    var content = m.querySelector('.auth-modal-content, .modal-content, [role="dialog"]') || m;
+    // Close on overlay click (but not when clicking the content box)
+    m.addEventListener('click', function(ev){
+      if (!content.contains(ev.target)) return; // inside content: ignore
+      // If click target is *exactly* the overlay (m), close
+      if (ev.target === m) { window.closeAuthModal(); }
+    }, {capture: true});
+
+    // Bind buttons/links that look like close
+    var closeSelectors = [
+      '.auth-close', '.modal-close', '.close', '[data-close]', '[aria-label="Close"]', '.firebaseui-idp-cancel'
+    ];
+    closeSelectors.forEach(function(sel){
+      m.querySelectorAll(sel).forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          window.closeAuthModal();
+        }, {passive:false});
+      });
+    });
+
+    // Esc key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') window.closeAuthModal();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindModalClose);
+  } else {
+    bindModalClose();
+  }
+
+  // Make sure the hamburger's login button also opens the modal
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.hamburger-login, .hamburger .login, .mobile-login-button, #mobileLoginBtn, [data-hamburger-login]');
+    if (t){
+      try { e.preventDefault(); e.stopPropagation(); } catch(_){}
+      if (typeof window.openAuthModal === 'function') window.openAuthModal();
+    }
+  }, {capture:true, passive:false});
+})();
+</script><script data-copied-from-id="auth-guard-openauth">
+(function(){
+  var ALLOWED = '.login-cta-header, .login-mobile a, .subscribe-box, .subscribe-text, [data-auth-cta="auth"]';
+  // Capture last click target (capture phase to beat bubbling handlers)
+  document.addEventListener('click', function(e){
+    window.__sbLastClickTarget = e.target || null;
+  }, true);
+
+  function isAllowedTarget(t){
+    try {
+      return !!(t && t.closest && t.closest(ALLOWED));
+    } catch(e) { return false; }
+  }
+
+  // Monkey-patch openAuthModal to block calls not originating from allowed CTAs
+  var waited = 0;
+  function patchWhenReady(){
+    if (typeof window.openAuthModal === 'function' && !window.__sbOpenAuthPatched){
+      window.__sbOpenAuthPatched = true;
+      var _orig = window.openAuthModal;
+      window.openAuthModal = function(){
+        var t = window.__sbLastClickTarget || null;
+        if (isAllowedTarget(t)){
+          return _orig.apply(this, arguments);
+        } else {
+          try { console.warn('Blocked openAuthModal from non-CTA region'); } catch(_){}
+          return false;
+        }
+      };
+    } else if (waited < 8000) {
+      waited += 200;
+      setTimeout(patchWhenReady, 200);
+    }
+  }
+  patchWhenReady();
+
+  // Fallback: bind explicit CTA clicks to open auth (in case their inline handlers were removed)
+  document.addEventListener('click', function(e){
+    var el = e.target;
+    if (!el || !el.closest) return;
+    var cta = el.closest(ALLOWED);
+    if (!cta) return;
+    e.preventDefault();
+    if (typeof window.openAuthModal === 'function'){
+      window.__sbLastClickTarget = el;
+      window.openAuthModal();
+    }
+    return false;
+  }, true);
+})();
+</script><script>(function(){function t(e){try{{e&&(e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation&&e.stopImmediatePropagation())}}catch(_){ }var m=document.getElementById('story-queue-menu');if(m) m.classList.toggle('active');} window.__sbqToggle=t; var b=document.getElementById('story-queue-button'); if(b){ ['click','pointerdown','touchstart'].forEach(function(evt){ b.addEventListener(evt,t,true);});}})();</script><script>
+   // Wand cursor & sparkle logic
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   var wand = window.wand ||  document.getElementById("wand");
+    // Wand offset: tweak for your image so tip matches cursor position
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8;
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 9998;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   document.querySelectorAll('.carousel-track').forEach(function(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    e.preventDefault();
+  });
+  track.addEventListener('mouseleave', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    track.scrollLeft = scrollLeft - walk;
+  });
+  // Touch events for mobile
+  let startTouchX = 0, startScroll = 0;
+  track.addEventListener('touchstart', function(e) {
+    startTouchX = e.touches[0].pageX;
+    startScroll = track.scrollLeft;
+  }, {passive:true});
+  track.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      let dx = e.touches[0].pageX - startTouchX;
+      track.scrollLeft = startScroll - dx;
+    }
+  }, {passive:true});
+});
+  </script><script>
+// Delegated handler to ensure Login/Subscribe CTAs always open the auth modal (desktop & mobile).
+(function(){
+  function wantsAuth(el){
+    if(!el) return false;
+    var text = (el.innerText || '').toLowerCase();
+    return el.hasAttribute('data-auth-cta')
+      || (el.matches && (el.matches('a[href="#login"]') || el.matches('#subscribe-box, .subscribe-box, .subscribe-text')))
+      || (text.includes('log in') && text.includes('create account'))
+      || text.includes('subscribe to story bell');
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-auth-cta], a[href="#login"], #subscribe-box, .subscribe-box, .subscribe-text, .header-login-button, .mobile-login-button');
+    if(!t && wantsAuth(e.target)) t = e.target;
+    if(t){
+      try { e.preventDefault(); } catch(_){}
+      try { e.stopPropagation(); } catch(_){}
+      if(typeof window.openAuthModal === 'function'){ window.openAuthModal(); }
+    }
+  }, {passive:false, capture:true});
+})();
+</script><script>
+// --- Robust Auth Modal Open/Close (v3) ---
+(function(){
+  // Ensure functions exist on window
+  window.closeAuthModal = function(){
+    try {
+      var m = document.getElementById('auth-modal');
+      if (!m) return;
+      m.style.display = 'none';
+      // If FirebaseUI mounted, optionally reset container (prevents stale state)
+      var c = document.getElementById('firebaseui-auth-container');
+      if (c) { c.innerHTML = ''; }
+    } catch(e){ console.error('closeAuthModal error:', e); }
+  };
+
+  // Overlay + X + Esc close behavior
+  function bindModalClose(){
+    var m = document.getElementById('auth-modal');
+    if (!m) return;
+    var content = m.querySelector('.auth-modal-content, .modal-content, [role="dialog"]') || m;
+    // Close on overlay click (but not when clicking the content box)
+    m.addEventListener('click', function(ev){
+      if (!content.contains(ev.target)) return; // inside content: ignore
+      // If click target is *exactly* the overlay (m), close
+      if (ev.target === m) { window.closeAuthModal(); }
+    }, {capture: true});
+
+    // Bind buttons/links that look like close
+    var closeSelectors = [
+      '.auth-close', '.modal-close', '.close', '[data-close]', '[aria-label="Close"]', '.firebaseui-idp-cancel'
+    ];
+    closeSelectors.forEach(function(sel){
+      m.querySelectorAll(sel).forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          window.closeAuthModal();
+        }, {passive:false});
+      });
+    });
+
+    // Esc key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') window.closeAuthModal();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindModalClose);
+  } else {
+    bindModalClose();
+  }
+
+  // Make sure the hamburger's login button also opens the modal
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.hamburger-login, .hamburger .login, .mobile-login-button, #mobileLoginBtn, [data-hamburger-login]');
+    if (t){
+      try { e.preventDefault(); e.stopPropagation(); } catch(_){}
+      if (typeof window.openAuthModal === 'function') window.openAuthModal();
+    }
+  }, {capture:true, passive:false});
+})();
+</script><script data-copied-from-id="auth-guard-openauth">
+(function(){
+  var ALLOWED = '.login-cta-header, .login-mobile a, .subscribe-box, .subscribe-text, [data-auth-cta="auth"]';
+  // Capture last click target (capture phase to beat bubbling handlers)
+  document.addEventListener('click', function(e){
+    window.__sbLastClickTarget = e.target || null;
+  }, true);
+
+  function isAllowedTarget(t){
+    try {
+      return !!(t && t.closest && t.closest(ALLOWED));
+    } catch(e) { return false; }
+  }
+
+  // Monkey-patch openAuthModal to block calls not originating from allowed CTAs
+  var waited = 0;
+  function patchWhenReady(){
+    if (typeof window.openAuthModal === 'function' && !window.__sbOpenAuthPatched){
+      window.__sbOpenAuthPatched = true;
+      var _orig = window.openAuthModal;
+      window.openAuthModal = function(){
+        var t = window.__sbLastClickTarget || null;
+        if (isAllowedTarget(t)){
+          return _orig.apply(this, arguments);
+        } else {
+          try { console.warn('Blocked openAuthModal from non-CTA region'); } catch(_){}
+          return false;
+        }
+      };
+    } else if (waited < 8000) {
+      waited += 200;
+      setTimeout(patchWhenReady, 200);
+    }
+  }
+  patchWhenReady();
+
+  // Fallback: bind explicit CTA clicks to open auth (in case their inline handlers were removed)
+  document.addEventListener('click', function(e){
+    var el = e.target;
+    if (!el || !el.closest) return;
+    var cta = el.closest(ALLOWED);
+    if (!cta) return;
+    e.preventDefault();
+    if (typeof window.openAuthModal === 'function'){
+      window.__sbLastClickTarget = el;
+      window.openAuthModal();
+    }
+    return false;
+  }, true);
+})();
+</script><script>(function(){function t(e){try{{e&&(e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation&&e.stopImmediatePropagation())}}catch(_){ }var m=document.getElementById('story-queue-menu');if(m) m.classList.toggle('active');} window.__sbqToggle=t; var b=document.getElementById('story-queue-button'); if(b){ ['click','pointerdown','touchstart'].forEach(function(evt){ b.addEventListener(evt,t,true);});}})();</script><link href="queue_assets/queue.css" rel="stylesheet"/><script>
+   // Wand cursor & sparkle logic
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   var wand = window.wand ||  document.getElementById("wand");
+    // Wand offset: tweak for your image so tip matches cursor position
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8;
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 9998;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   document.querySelectorAll('.carousel-track').forEach(function(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    e.preventDefault();
+  });
+  track.addEventListener('mouseleave', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    track.scrollLeft = scrollLeft - walk;
+  });
+  // Touch events for mobile
+  let startTouchX = 0, startScroll = 0;
+  track.addEventListener('touchstart', function(e) {
+    startTouchX = e.touches[0].pageX;
+    startScroll = track.scrollLeft;
+  }, {passive:true});
+  track.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      let dx = e.touches[0].pageX - startTouchX;
+      track.scrollLeft = startScroll - dx;
+    }
+  }, {passive:true});
+});
+  </script><script>
+// Delegated handler to ensure Login/Subscribe CTAs always open the auth modal (desktop & mobile).
+(function(){
+  function wantsAuth(el){
+    if(!el) return false;
+    var text = (el.innerText || '').toLowerCase();
+    return el.hasAttribute('data-auth-cta')
+      || (el.matches && (el.matches('a[href="#login"]') || el.matches('#subscribe-box, .subscribe-box, .subscribe-text')))
+      || (text.includes('log in') && text.includes('create account'))
+      || text.includes('subscribe to story bell');
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-auth-cta], a[href="#login"], #subscribe-box, .subscribe-box, .subscribe-text, .header-login-button, .mobile-login-button');
+    if(!t && wantsAuth(e.target)) t = e.target;
+    if(t){
+      try { e.preventDefault(); } catch(_){}
+      try { e.stopPropagation(); } catch(_){}
+      if(typeof window.openAuthModal === 'function'){ window.openAuthModal(); }
+    }
+  }, {passive:false, capture:true});
+})();
+</script><script>
+// --- Robust Auth Modal Open/Close (v3) ---
+(function(){
+  // Ensure functions exist on window
+  window.closeAuthModal = function(){
+    try {
+      var m = document.getElementById('auth-modal');
+      if (!m) return;
+      m.style.display = 'none';
+      // If FirebaseUI mounted, optionally reset container (prevents stale state)
+      var c = document.getElementById('firebaseui-auth-container');
+      if (c) { c.innerHTML = ''; }
+    } catch(e){ console.error('closeAuthModal error:', e); }
+  };
+
+  // Overlay + X + Esc close behavior
+  function bindModalClose(){
+    var m = document.getElementById('auth-modal');
+    if (!m) return;
+    var content = m.querySelector('.auth-modal-content, .modal-content, [role="dialog"]') || m;
+    // Close on overlay click (but not when clicking the content box)
+    m.addEventListener('click', function(ev){
+      if (!content.contains(ev.target)) return; // inside content: ignore
+      // If click target is *exactly* the overlay (m), close
+      if (ev.target === m) { window.closeAuthModal(); }
+    }, {capture: true});
+
+    // Bind buttons/links that look like close
+    var closeSelectors = [
+      '.auth-close', '.modal-close', '.close', '[data-close]', '[aria-label="Close"]', '.firebaseui-idp-cancel'
+    ];
+    closeSelectors.forEach(function(sel){
+      m.querySelectorAll(sel).forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          window.closeAuthModal();
+        }, {passive:false});
+      });
+    });
+
+    // Esc key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') window.closeAuthModal();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindModalClose);
+  } else {
+    bindModalClose();
+  }
+
+  // Make sure the hamburger's login button also opens the modal
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.hamburger-login, .hamburger .login, .mobile-login-button, #mobileLoginBtn, [data-hamburger-login]');
+    if (t){
+      try { e.preventDefault(); e.stopPropagation(); } catch(_){}
+      if (typeof window.openAuthModal === 'function') window.openAuthModal();
+    }
+  }, {capture:true, passive:false});
+})();
+</script><script data-copied-from-id="auth-guard-openauth">
+(function(){
+  var ALLOWED = '.login-cta-header, .login-mobile a, .subscribe-box, .subscribe-text, [data-auth-cta="auth"]';
+  // Capture last click target (capture phase to beat bubbling handlers)
+  document.addEventListener('click', function(e){
+    window.__sbLastClickTarget = e.target || null;
+  }, true);
+
+  function isAllowedTarget(t){
+    try {
+      return !!(t && t.closest && t.closest(ALLOWED));
+    } catch(e) { return false; }
+  }
+
+  // Monkey-patch openAuthModal to block calls not originating from allowed CTAs
+  var waited = 0;
+  function patchWhenReady(){
+    if (typeof window.openAuthModal === 'function' && !window.__sbOpenAuthPatched){
+      window.__sbOpenAuthPatched = true;
+      var _orig = window.openAuthModal;
+      window.openAuthModal = function(){
+        var t = window.__sbLastClickTarget || null;
+        if (isAllowedTarget(t)){
+          return _orig.apply(this, arguments);
+        } else {
+          try { console.warn('Blocked openAuthModal from non-CTA region'); } catch(_){}
+          return false;
+        }
+      };
+    } else if (waited < 8000) {
+      waited += 200;
+      setTimeout(patchWhenReady, 200);
+    }
+  }
+  patchWhenReady();
+
+  // Fallback: bind explicit CTA clicks to open auth (in case their inline handlers were removed)
+  document.addEventListener('click', function(e){
+    var el = e.target;
+    if (!el || !el.closest) return;
+    var cta = el.closest(ALLOWED);
+    if (!cta) return;
+    e.preventDefault();
+    if (typeof window.openAuthModal === 'function'){
+      window.__sbLastClickTarget = el;
+      window.openAuthModal();
+    }
+    return false;
+  }, true);
+})();
+</script><script>(function(){function t(e){try{{e&&(e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation&&e.stopImmediatePropagation())}}catch(_){ }var m=document.getElementById('story-queue-menu');if(m) m.classList.toggle('active');} window.__sbqToggle=t; var b=document.getElementById('story-queue-button'); if(b){ ['click','pointerdown','touchstart'].forEach(function(evt){ b.addEventListener(evt,t,true);});}})();</script><script>
+   // Wand cursor & sparkle logic
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   var wand = window.wand ||  document.getElementById("wand");
+    // Wand offset: tweak for your image so tip matches cursor position
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8;
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 9998;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   document.querySelectorAll('.carousel-track').forEach(function(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    e.preventDefault();
+  });
+  track.addEventListener('mouseleave', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    track.scrollLeft = scrollLeft - walk;
+  });
+  // Touch events for mobile
+  let startTouchX = 0, startScroll = 0;
+  track.addEventListener('touchstart', function(e) {
+    startTouchX = e.touches[0].pageX;
+    startScroll = track.scrollLeft;
+  }, {passive:true});
+  track.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      let dx = e.touches[0].pageX - startTouchX;
+      track.scrollLeft = startScroll - dx;
+    }
+  }, {passive:true});
+});
+  </script><script>
+// Delegated handler to ensure Login/Subscribe CTAs always open the auth modal (desktop & mobile).
+(function(){
+  function wantsAuth(el){
+    if(!el) return false;
+    var text = (el.innerText || '').toLowerCase();
+    return el.hasAttribute('data-auth-cta')
+      || (el.matches && (el.matches('a[href="#login"]') || el.matches('#subscribe-box, .subscribe-box, .subscribe-text')))
+      || (text.includes('log in') && text.includes('create account'))
+      || text.includes('subscribe to story bell');
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-auth-cta], a[href="#login"], #subscribe-box, .subscribe-box, .subscribe-text, .header-login-button, .mobile-login-button');
+    if(!t && wantsAuth(e.target)) t = e.target;
+    if(t){
+      try { e.preventDefault(); } catch(_){}
+      try { e.stopPropagation(); } catch(_){}
+      if(typeof window.openAuthModal === 'function'){ window.openAuthModal(); }
+    }
+  }, {passive:false, capture:true});
+})();
+</script><script>
+// --- Robust Auth Modal Open/Close (v3) ---
+(function(){
+  // Ensure functions exist on window
+  window.closeAuthModal = function(){
+    try {
+      var m = document.getElementById('auth-modal');
+      if (!m) return;
+      m.style.display = 'none';
+      // If FirebaseUI mounted, optionally reset container (prevents stale state)
+      var c = document.getElementById('firebaseui-auth-container');
+      if (c) { c.innerHTML = ''; }
+    } catch(e){ console.error('closeAuthModal error:', e); }
+  };
+
+  // Overlay + X + Esc close behavior
+  function bindModalClose(){
+    var m = document.getElementById('auth-modal');
+    if (!m) return;
+    var content = m.querySelector('.auth-modal-content, .modal-content, [role="dialog"]') || m;
+    // Close on overlay click (but not when clicking the content box)
+    m.addEventListener('click', function(ev){
+      if (!content.contains(ev.target)) return; // inside content: ignore
+      // If click target is *exactly* the overlay (m), close
+      if (ev.target === m) { window.closeAuthModal(); }
+    }, {capture: true});
+
+    // Bind buttons/links that look like close
+    var closeSelectors = [
+      '.auth-close', '.modal-close', '.close', '[data-close]', '[aria-label="Close"]', '.firebaseui-idp-cancel'
+    ];
+    closeSelectors.forEach(function(sel){
+      m.querySelectorAll(sel).forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          window.closeAuthModal();
+        }, {passive:false});
+      });
+    });
+
+    // Esc key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') window.closeAuthModal();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindModalClose);
+  } else {
+    bindModalClose();
+  }
+
+  // Make sure the hamburger's login button also opens the modal
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.hamburger-login, .hamburger .login, .mobile-login-button, #mobileLoginBtn, [data-hamburger-login]');
+    if (t){
+      try { e.preventDefault(); e.stopPropagation(); } catch(_){}
+      if (typeof window.openAuthModal === 'function') window.openAuthModal();
+    }
+  }, {capture:true, passive:false});
+})();
+</script><script data-copied-from-id="auth-guard-openauth">
+(function(){
+  var ALLOWED = '.login-cta-header, .login-mobile a, .subscribe-box, .subscribe-text, [data-auth-cta="auth"]';
+  // Capture last click target (capture phase to beat bubbling handlers)
+  document.addEventListener('click', function(e){
+    window.__sbLastClickTarget = e.target || null;
+  }, true);
+
+  function isAllowedTarget(t){
+    try {
+      return !!(t && t.closest && t.closest(ALLOWED));
+    } catch(e) { return false; }
+  }
+
+  // Monkey-patch openAuthModal to block calls not originating from allowed CTAs
+  var waited = 0;
+  function patchWhenReady(){
+    if (typeof window.openAuthModal === 'function' && !window.__sbOpenAuthPatched){
+      window.__sbOpenAuthPatched = true;
+      var _orig = window.openAuthModal;
+      window.openAuthModal = function(){
+        var t = window.__sbLastClickTarget || null;
+        if (isAllowedTarget(t)){
+          return _orig.apply(this, arguments);
+        } else {
+          try { console.warn('Blocked openAuthModal from non-CTA region'); } catch(_){}
+          return false;
+        }
+      };
+    } else if (waited < 8000) {
+      waited += 200;
+      setTimeout(patchWhenReady, 200);
+    }
+  }
+  patchWhenReady();
+
+  // Fallback: bind explicit CTA clicks to open auth (in case their inline handlers were removed)
+  document.addEventListener('click', function(e){
+    var el = e.target;
+    if (!el || !el.closest) return;
+    var cta = el.closest(ALLOWED);
+    if (!cta) return;
+    e.preventDefault();
+    if (typeof window.openAuthModal === 'function'){
+      window.__sbLastClickTarget = el;
+      window.openAuthModal();
+    }
+    return false;
+  }, true);
+})();
+</script><script>(function(){function t(e){try{{e&&(e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation&&e.stopImmediatePropagation())}}catch(_){ }var m=document.getElementById('story-queue-menu');if(m) m.classList.toggle('active');} window.__sbqToggle=t; var b=document.getElementById('story-queue-button'); if(b){ ['click','pointerdown','touchstart'].forEach(function(evt){ b.addEventListener(evt,t,true);});}})();</script><style id="sb-mobile-carousel-typography-override">
 @media (max-width: 800px){
   /* Remove the extra line break between title and description */
   .carousel-section .carousel-item br{
@@ -2781,7 +5058,7 @@ document.addEventListener('DOMContentLoaded', updateStars);
     return false;
   }, true);
 })();
-</script><script>
+</script><script>(function(){function t(e){try{{e&&(e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation&&e.stopImmediatePropagation())}}catch(_){ }var m=document.getElementById('story-queue-menu');if(m) m.classList.toggle('active');} window.__sbqToggle=t; var b=document.getElementById('story-queue-button'); if(b){ ['click','pointerdown','touchstart'].forEach(function(evt){ b.addEventListener(evt,t,true);});}})();</script><script>
    (function () {
   const nav = document.querySelector(".header-right nav");
   const body = document.body;
@@ -3451,7 +5728,7 @@ document.addEventListener('DOMContentLoaded', updateStars);
     bind();
   }
 })();
-</script><script id="sb-search-fallback-opener">
+</script><script>(function(){function t(e){try{{e&&(e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation&&e.stopImmediatePropagation())}}catch(_){ }var m=document.getElementById('story-queue-menu');if(m) m.classList.toggle('active');} window.__sbqToggle=t; var b=document.getElementById('story-queue-button'); if(b){ ['click','pointerdown','touchstart'].forEach(function(evt){ b.addEventListener(evt,t,true);});}})();</script><script id="sb-search-fallback-opener">
 (function(){
   try{
     var btn = document.querySelector('[data-sb-search-trigger]');

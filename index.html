@@ -2206,7 +2206,7 @@ header .site-title {
     overflow: visible;
   }
 }
-</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><link href="queue_assets/queue.css" rel="stylesheet"/><style></style>
+</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
 <style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
 <meta content="Free bedtime stories and audio stories for kids aged 0–12. Read-along picture books, 5-minute and 10-minute stories, poems, and calming narration on Story Bell." name="description"/><link href="https://www.storybellkids.com/" rel="canonical"/><style id="sb-homepage-intro-style">
     [data-sb-intro="homepage"]{
@@ -2287,6 +2287,29 @@ html, body { max-width:100vw; overflow-x:hidden; overscroll-behavior-x:contain; 
 <style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
 <style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
 <script async="" data-key="7G2e0a3WMAYxNFng5V+LhQ" src="https://analytics.ahrefs.com/analytics.js"></script>
+<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
+<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>body:not(.sbq-open) body.sbq-open}</style>
+<style></style><style id="sbq-style">
+#sbq-controls{position:relative;z-index:3400;max-width:1100px;margin:10px auto;padding:8px 10px;border:1px dashed rgba(255,235,59,.4);border-radius:12px;background:#001f3f99;backdrop-filter:saturate(1.1) blur(2px)}
+.sbq-btn{appearance:none;border:1px solid rgba(255,235,59,.6);border-radius:10px;padding:.45rem .7rem;background:transparent;color:#FFEB3B;font-family:inherit;cursor:pointer}
+.sbq-btn.primary{background:rgba(255,235,59,.14)}
+.sbq-btn:disabled{opacity:.6;cursor:not-allowed}
+#sbq-menu{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.4rem}
+.sbq-chip{display:inline-flex;align-items:center;gap:.35rem;border:1px solid rgba(255,235,59,.35);border-radius:9999px;padding:.18rem .5rem;text-decoration:none;color:#fff}
+.sbq-chip .n{font-weight:700;opacity:.9}
+.sbq-queued{outline:2px solid rgba(255,235,59,.35);outline-offset:2px;position:relative}
+.sbq-badge{position:absolute;top:6px;left:6px;background:#FFEB3B;color:#003366;font-weight:700;border-radius:9999px;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.8rem;padding:0 6px}
+.sbq-visually-hidden{position:absolute !important;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);height:1px;width:1px;overflow:hidden;white-space:nowrap;border:0;padding:0;margin:-1px}
+</style>
+<link href="queue_assets/queue.css" rel="stylesheet"/><style>html body #story-queue-menu.active{display:flex!important;}</style><script defer="True" src="assets/queue.js"></script><style id="sbq-rescue">/* sbq-rescue: ensure button/menu visible & clickable */
+#story-queue-button{position:fixed !important; bottom:20px; right:20px;
+  z-index:2147483647 !important; pointer-events:auto !important;}
+#story-queue-menu{z-index:2147483646 !important;}
+#story-queue-menu.active{display:block !important;}</style>
+<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
+<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style>
+<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
+<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
 <style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
 <style id="sb-desktop-carousel-category-white">
 /* Desktop only: make carousel category links white */
@@ -2782,7 +2805,7 @@ html body #story-queue-menu.active{display:flex !important;}
    </h1><p data-sb-intro="homepage">Discover children’s stories with read-aloud audio, word highlighting, and illustrations. Safe, age-grouped tales with discussion questions for 0–12 year olds.</p>
 <div class="tagline-glow" data-text="Stories that speak, words that glow.">
     Stories that speak, words that glow.
-   </div>
+   </div><div class="sb-queue-wrap"><div></div></div>
 <section aria-label="Subscribe to Story Bell newsletter" class="subscribe-box" onclick="if(typeof openAuthModal==='function'){openAuthModal();} return false;" style="cursor: pointer">
 <div aria-hidden="true" class="subscribe-starfield">
 </div>
@@ -4468,6 +4491,42 @@ window.onOpenAuthModalHook = function(){
   });
 })();
 </script>
+<script>
+(function(){
+  if (window.__sbqFallbackApplied) return; window.__sbqFallbackApplied = true;
+  function ready(fn){ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', fn); else fn(); }
+  ready(function(){
+    var btn = document.getElementById('story-queue-button');
+    var menu = document.getElementById('story-queue-menu');
+    if(!btn || !menu) return;
+    var img = btn.querySelector('img');
+    if(img && (!img.src || img.src.trim()==='')) img.src = 'index_items/makestorylist.gif';
+    function toggle(){ menu.style.display = (menu.style.display==='block' || menu.classList.contains('active')) ? 'none' : 'block';
+      menu.classList.toggle('active'); }
+    btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); toggle(); });
+    var closeBtn = document.querySelector('.queue-menu-close');
+    if(closeBtn) closeBtn.addEventListener('click', function(){ menu.style.display='none'; menu.classList.remove('active'); });
+  });
+})();
+</script>
+<script>(function(){function t(e){try{{e&&(e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation&&e.stopImmediatePropagation())}}catch(_){ }var m=document.getElementById('story-queue-menu');if(m) m.classList.toggle('active');} window.__sbqToggle=t; var b=document.getElementById('story-queue-button'); if(b){ ['click','pointerdown','touchstart'].forEach(function(evt){ b.addEventListener(evt,t,true);});}})();</script><script id="sbq-fallback">
+;(function(){
+  if (window.__sbqFallbackBound) return; window.__sbqFallbackBound = true;
+  function bind(){
+    var btn = document.getElementById('story-queue-button');
+    var menu= document.getElementById('story-queue-menu');
+    if(!btn || !menu) return;
+    btn.addEventListener('click', function(e){
+      e.preventDefault(); e.stopPropagation();
+      menu.classList.toggle('active');
+    }, {passive:false});
+    var x = document.querySelector('.queue-menu-close');
+    if (x) x.addEventListener('click', function(){ menu.classList.remove('active'); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bind);
+  else bind();
+})();
+</script><script src="queue_assets/queue_gif_booster.js"></script>
 <script id="sb-moveCarousel-scrollBy-safe">
 (function(){
   function q(sel, root){ return [].slice.call((root||document).querySelectorAll(sel)); }

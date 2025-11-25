@@ -1,0 +1,30 @@
+
+:root{--sb-blue:#0b63c6;--sb-yellow:#ffd400;--sb-card-glow:0 0 0 3px #ffd400,0 0 18px #ffd400aa;}
+.sb-queue-wrap{width:100%;display:flex;justify-content:center;margin:10px 0 16px;pointer-events:none;}
+/* Button is just the image; ONLY the button is clickable */
+.sb-queue-btn{pointer-events:auto;background:none;border:none;padding:0!important;margin:0!important;width:auto!important;max-width:none!important;display:inline-block;line-height:0;cursor:pointer;}
+.sb-queue-img{display:block;width:180px;height:auto;}
+@media (max-width:560px){.sb-queue-img{width:150px;}}
+/* Panel */
+.sb-queue-panel{display:none;width:min(820px,calc(100% - 24px));margin:10px auto;border-radius:16px;background:#062546;color:#fff;border:1px solid #0b3b73;padding:12px;box-shadow:0 10px 36px #0005;}
+.sb-queue-panel.open{display:block;}
+.sb-queue-header{display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.sb-queue-actions{display:flex;gap:8px;}
+.sb-queue-actions button{border:1px solid #2a5ea0;background:#0b3f7a;color:#fff;padding:6px 10px;border-radius:8px;cursor:pointer;}
+.sb-queue-list{list-style:none;margin:10px 0;padding:0;display:flex;flex-direction:column;gap:8px;}
+.sb-queue-item{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:10px;background:#0a2c54;border-radius:12px;padding:8px;}
+.sb-qi-num{width:26px;height:26px;display:grid;place-items:center;border-radius:999px;background:var(--sb-yellow);color:#111;font-weight:800;}
+.sb-qi-remove{border:none;background:#143f70;color:#fff;padding:6px 10px;border-radius:10px;cursor:pointer;}
+.sb-queue-footer{display:flex;gap:8px;justify-content:flex-end;padding-top:6px;border-top:1px dashed #2a5ea0;}
+.sb-queue-footer button{border:1px solid #2a5ea0;background:#0b3f7a;color:#fff;padding:8px 10px;border-radius:10px;cursor:pointer;}
+/* Card visuals */
+.sb-queued{box-shadow:var(--sb-card-glow)!important;position:relative;}
+.sb-queue-badge{position:absolute;top:6px;right:6px;min-width:22px;height:22px;border-radius:999px;background:var(--sb-yellow);color:#111;display:grid;place-items:center;font-weight:800;font-size:13px;border:2px solid #fff;z-index:5;}
+/* Yellow pill (notification) */
+.sb-queue-pill{
+  position:fixed;left:50%;transform:translateX(-50%);bottom:18px;
+  background:var(--sb-yellow);color:#111;font-weight:700;border-radius:999px;
+  padding:10px 16px;box-shadow:0 8px 28px rgba(0,0,0,.25);z-index:9999;cursor:pointer;
+  user-select:none;display:none;
+}
+.sb-queue-pill.show{display:inline-block;}

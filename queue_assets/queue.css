@@ -6,11 +6,11 @@
   --btn-bottom-desktop: 12.5vh;
   --btn-bottom-mobile: 12.5vh;
 
-  /* 24% of original footprint (60% of 40% size = 190x235 * 0.24) */
-  --btn-w-desktop: 46px;
-  --btn-h-desktop: 56px;
+  /* 40% of original footprint (190x235) */
+  --btn-w-desktop: 76px;
+  --btn-h-desktop: 94px;
 
-  --btn-w-mobile: 8.64vw;  /* 60% of 14.4vw */
+  --btn-w-mobile: 14.4vw;
   --btn-h-mobile: calc(var(--btn-w-mobile) * 1.2);
 
   --toggle-scale: .5;
@@ -35,7 +35,7 @@
   :root{ --menu-scale: .9; }      /* slightly bigger desktop */
 }
 
-/* ---------- Floating Create-Reading-List button (24% size, semi-transparent) ---------- */
+/* ---------- Floating Create-Reading-List button (40% size) ---------- */
 #story-queue-button{
   position: fixed !important;
   right: var(--sb-edge-desktop) !important;
@@ -60,7 +60,6 @@
   object-fit: contain !important;
   display: block !important;
   pointer-events: none !important;
-  opacity: 0.7 !important;
   filter: drop-shadow(0 0 6px rgba(255,235,59,.35));
 }
 #story-queue-button:hover .book-img{
