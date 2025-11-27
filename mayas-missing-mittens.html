@@ -9501,7 +9501,7 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 </div>
 </div>
 <script id="sb-questions-script">
-(function(){
+function init(){
   // Reveal questions ~0.5s BEFORE audio ends, with safe fallbacks.
   function revealNow(){
     var qc = document.getElementById('questionsContainer');
@@ -9542,7 +9542,8 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
       revealNow();
     }
   });
-})();
+}
+if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", init); } else { init(); }
 </script>
 <style id="sb-header-desktop-patch">
 /* Desktop Header Fixes - Auto-applied by generator */
