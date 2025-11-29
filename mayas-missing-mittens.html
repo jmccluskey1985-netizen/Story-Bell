@@ -11606,7 +11606,7 @@ var wordTimings = [
 ];
 </script>
 <script id="sb-glow-wand-script">
-(function init(){
+(function(){
   const audio = document.getElementById('storyAudio')
              || document.querySelector('.audio-box audio')
              || document.querySelector('audio');
@@ -11703,11 +11703,11 @@ var wordTimings = [
   });
   audio.addEventListener('play', tick);
   if (!audio.paused) tick();
-}); if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", init); } else { init(); }
+})();
 </script>
 <!-- SB_AUTOPLAY_V1 START -->
 <script>
-(function init(){
+(function(){
   // Unmuted-only autoplay:
   // 1) Try to play unmuted on load.
   // 2) If blocked by policy, wait for first user gesture, then unmute+play.
@@ -11765,7 +11765,7 @@ var wordTimings = [
     window.addEventListener(ev, onFirstUserGesture, {capture:true, passive:true})
   );
   document.addEventListener('visibilitychange', onVis);
-}); if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", init); } else { init(); }
+})();
 </script>
 <!-- SB_AUTOPLAY_V1 END -->
 <!-- SB_GLOW_BOOST_START -->
@@ -11791,7 +11791,7 @@ var wordTimings = [
 <!-- SB_AUTODETECT10_BOTTOMAWARE_V1 -->
 <style id="sb-scroll-behavior-off">html{scroll-behavior:auto!important}</style>
 <script id="SB_AUTODETECT10_BOTTOMAWARE_V1">
-(function init(){
+(function(){
   const STORAGE_SPEED='sb_speed', STORAGE_SCROLL='sb_autoscroll';
   const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -11863,7 +11863,7 @@ var wordTimings = [
     chk.addEventListener('change', ()=> setStored(chk.checked));
     chk.addEventListener('keydown', e=>{ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); chk.checked=!chk.checked; chk.dispatchEvent(new Event('change')); }});
     addEventListener('storage', (e)=>{ if(e && e.key===STORAGE_SCROLL) apply(); });
-  }); if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", init); } else { init(); }
+  })();
 
   // ---- User interaction guard (skip next programmatic scroll after manual input) ----
   let skipNext=false;
@@ -12109,11 +12109,11 @@ var wordTimings = [
     audio.addEventListener('play', ()=>{ skipNext=false; });
     audio.addEventListener('loadedmetadata', measureOccluder);
   }
-}); if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", init); } else { init(); }
+})();
 </script>
 <img alt="Illustration 15 from Ages 4–6" id="wand-reader" src="index_items/wand_reader.png" style="display:none; position:absolute; z-index:20; width:38px; height:auto; pointer-events:none; background:transparent; filter: drop-shadow(0 0 10px #fffbe9) brightness(1.15);"/>
 <script id="sb_wand_reader_exact_legacy_v1">
-(function init(){
+(function(){
   var root = document.getElementById('transcript') || document.body;
   if (!root) return;
   var wand = document.getElementById('wand-reader');
@@ -12148,30 +12148,30 @@ var wordTimings = [
       if (!((el.id||'').match(/^word_\d+$/i) || el.hasAttribute('data-word'))) continue;
       if (el.classList.contains('highlight')) {
         var a = anchorEl();
-        if (a) requestAnimationFrame(function init(){ moveWand(a); });
+        if (a) requestAnimationFrame(function(){ moveWand(a); });
         break;
       }
     }
   });
   obs.observe(root, {subtree:true, attributes:true, attributeFilter:['class']});
 
-  requestAnimationFrame(function init(){
+  requestAnimationFrame(function(){
     var a = anchorEl();
     if (a) moveWand(a);
   });
 
   window.addEventListener('scroll', function(){
     var a = anchorEl();
-    if (a && wand.style.display!=='none') requestAnimationFrame(function init(){ moveWand(a); });
+    if (a && wand.style.display!=='none') requestAnimationFrame(function(){ moveWand(a); });
   });
   window.addEventListener('resize', function(){
     var a = anchorEl();
-    if (a && wand.style.display!=='none') requestAnimationFrame(function init(){ moveWand(a); });
+    if (a && wand.style.display!=='none') requestAnimationFrame(function(){ moveWand(a); });
   });
   document.addEventListener('visibilitychange', function(){
     if (document.visibilityState!=='visible') hide();
   });
-}); if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", init); } else { init(); }
+})();
 </script>
 <style id="SB_FIRSTLINE_STYLE_V3">
 /* Bigger + resilient underline drawn on the wrapper, so glow text rules can't cancel it */
@@ -12209,7 +12209,7 @@ var wordTimings = [
     return out.join(" ");
   }
 
-  onceReady(function init(){
+  onceReady(function(){
     var root = document.getElementById('transcript');
     if (!root || root.querySelector('span.'+WRAP_CLASS)) return; // idempotent
 
@@ -12253,11 +12253,11 @@ var wordTimings = [
       rng.insertNode(wrap);
     }
   });
-}); if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", init); } else { init(); }
+})();
 </script>
 <audio id="sb-complete-audio" playsinline="True" preload="auto" src="index_items/complete.mp3"></audio>
 <script id="sb-align-under-prevword-js">
-(function init(){
+(function(){
   var wrap   = document.getElementById('sb-end-anim-wrap');
   var holder = document.getElementById('sb-end-anim-holder');
   var frame  = document.getElementById('sb-end-anim-frame');
@@ -12332,7 +12332,7 @@ var wordTimings = [
   function stopPing(){ if (!ping) return; try { ping.pause(); ping.currentTime = 0; } catch(_) {} }
   function playPingNow(){
     if (!ping) return;
-    try { ping.currentTime = 0; var p = ping.play(); if (p && p.catch) p.catch(function init(){}); } catch(_){}
+    try { ping.currentTime = 0; var p = ping.play(); if (p && p.catch) p.catch(function(){}); } catch(_){}
   }
 
   if(!audio){ revealAndPlayOnce(); }
@@ -12349,7 +12349,7 @@ var wordTimings = [
 
   var t = document.getElementById('transcript');
   if (t && window.MutationObserver){
-    var mo = new MutationObserver(function init(){
+    var mo = new MutationObserver(function(){
       if (revealed && wrap.style.display !== 'none') alignUnderAnchor();
     });
     mo.observe(t, { childList:true, subtree:true, attributes:false });
@@ -12360,7 +12360,7 @@ var wordTimings = [
 if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", init); } else { init(); }
 </script>
 <script id="sb-end-anim-replay-js">
-(function init(){
+(function(){
   // IDs expected from your existing injector:
   // wrap: #sb-end-anim-wrap, video: #sb-end-anim
   var wrap = document.getElementById('sb-end-anim-wrap');
@@ -12443,10 +12443,10 @@ if (document.readyState === "loading") { document.addEventListener("DOMContentLo
 
   // Initial state
   hideAnim();
-}); if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", init); } else { init(); }
+})();
 </script>
 <script id="sb-glowwand-hide-js">
-(function init(){
+(function(){
   var HIDE_DELAY_MS = 2000;   // 3.5s after trigger
   var ARM_WINDOW_S  = 0.10;   // arm when 0.1s from end
   var audio = document.getElementById('audio')
@@ -12513,7 +12513,7 @@ if (document.readyState === "loading") { document.addEventListener("DOMContentLo
   });
 
   // MutationObserver to reapply hidden state if element recreated
-  var mo = new MutationObserver(function init(){
+  var mo = new MutationObserver(function(){
     var w = getWand();
     if (!w) return;
     if (shouldBeHidden) w.classList.add('sb-hidden');
@@ -12527,7 +12527,7 @@ if (document.readyState === "loading") { document.addEventListener("DOMContentLo
   } else {
     showReader();
   }
-}); if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", init); } else { init(); }
+})();
 </script>
 <link href="queue_assets/queue.css" rel="stylesheet"/><div aria-label="Open story queue" id="story-queue-button" role="button" tabindex="0" title="Open story queue">
 <img alt="Make Reading List" class="book-img" src="index_items/make-reading-list.png"/>
@@ -12553,7 +12553,7 @@ if (document.readyState === "loading") { document.addEventListener("DOMContentLo
 <button class="queue-control-btn" disabled="" id="queue-clear" title="Clear Queue">🗑️</button>
 </div>
 </div><script id="sb-glow-reset-script">
-(function init(){
+(function(){
   if (document.getElementById("sb-glow-reset-script")) return; // idempotent
 
   function resolveAudio(){
@@ -12600,11 +12600,11 @@ if (document.readyState === "loading") { document.addEventListener("DOMContentLo
       if (changed){
         // two RAFs to ensure style commit across engines
         el.setAttribute('data-sb-repaint','1');
-        requestAnimationFrame(function init(){
+        requestAnimationFrame(function(){
           // toggle text-shadow briefly to kick the compositor (no visual difference)
           var ts = el.style.textShadow;
           el.style.textShadow = (ts ? ts + ', transparent 0 0 0' : 'transparent 0 0 0');
-          requestAnimationFrame(function init(){
+          requestAnimationFrame(function(){
             el.style.textShadow = ts || '';
             el.removeAttribute('data-sb-repaint');
           });
@@ -12661,7 +12661,7 @@ if (document.readyState === "loading") { document.addEventListener("DOMContentLo
     // In case the transcript is injected/changed after load:
     var tr = document.getElementById('transcript') || document.body;
     if (tr && window.MutationObserver){
-      var mo = new MutationObserver(function init(){
+      var mo = new MutationObserver(function(){
         // If we're at the start, keep the DOM clean of any pre-applied 'current' classes
         var t = parseFloat(audio.currentTime)||0;
         if (t <= NEAR_ZERO) clearHighlights(tr);
@@ -12675,7 +12675,7 @@ if (document.readyState === "loading") { document.addEventListener("DOMContentLo
   } else {
     wire();
   }
-}); if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", init); } else { init(); }
+})();
 </script>
 
 
