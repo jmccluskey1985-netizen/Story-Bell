@@ -11609,7 +11609,8 @@ var wordTimings = [
 </script>
 <script id="sb-glow-wand-script">
 (function(){
-  const audio = document.getElementById('storyAudio')
+  const audio = document.getElementById('audio')
+             || document.getElementById('storyAudio')
              || document.querySelector('.audio-box audio')
              || document.querySelector('audio');
   const root  = document.getElementById('transcript') || document.body;
@@ -12134,7 +12135,7 @@ var wordTimings = [
   }
   function hide(){ wand.style.display = 'none'; }
 
-  var audio = document.getElementById('storyAudio') || document.getElementById('audio')
+  var audio = document.getElementById('audio') || document.getElementById('storyAudio')
            || document.querySelector('.audio-box audio') || document.querySelector('audio');
   if (audio) {
     audio.addEventListener('play',  function(){ wand.style.display='block'; });
