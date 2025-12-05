@@ -12761,7 +12761,6 @@ var wordTimings = [
   var SELECTOR = [
     '.current-word',
     '.word.current',
-    '.word.highlight',
     '.highlighted',
     '.sb-highlight',
     '.sb-word.is-current',
@@ -12772,11 +12771,13 @@ var wordTimings = [
     '[data-word-current="true"]',
     '[data-highlight="on"]'
   ].join(',');
+  // NOTE: '.word.highlight' and '.prev' selectors removed - managed by sb-glow-wand-script
 
   var CLASS_CANDIDATES = [
-    'current-word','current','highlight','highlighted','active','on',
+    'current-word','current','highlighted','active','on',
     'sb-highlight','is-current'
   ];
+  // NOTE: 'highlight' and 'prev' are managed by sb-glow-wand-script, don't clear them here
 
   function clearHighlights(root){
     root = root || document;
