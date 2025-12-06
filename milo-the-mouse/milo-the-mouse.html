@@ -527,5 +527,28 @@
   const anchor=document.querySelector("h1"); anchor.insertAdjacentElement("afterend", grid);
 })();
   </script>
- </body>
+ 
+
+
+<!-- SB_GLOW_BOOST_START -->
+<style id="sb-glow-boost">
+/* Stronger two-word glow — override only */
+#transcript span.highlight,
+#transcript span.glow {
+  color: #ffffff !important;
+  /* heavier + wider multi-layer glow */
+  text-shadow:
+    0 0 10px rgba(255,232,40,1.00),
+    0 0 18px rgba(255,196,0,0.95),
+    0 0 34px rgba(255,150,0,0.85),
+    0 0 56px rgba(255,130,0,0.70),
+    0 0 84px rgba(255,110,0,0.55);
+}
+/* keep previous word slightly dimmed but still glowing */
+#transcript span.prev {
+  opacity: .98;
+}
+</style>
+<!-- SB_GLOW_BOOST_END -->
+</body>
 </html>
