@@ -23,7 +23,11 @@
       "family",
       "problem-solving"
     ],
-    "emotions": [],
+    "emotions": [
+      "Frustrated",
+      "Proud",
+      "Happiness"
+    ],
     "keywords": [
       "Maya",
       "problem solving",
@@ -114,7 +118,9 @@
     "categories": [
       "childrens-stories-ages-4-6",
       "5-minute-childrens-stories",
-      "childrens-poems-and-rhymes"
+      "childrens-poems-and-rhymes",
+      "childrens-stories-about-sadness",
+      "kids-stories-about-feelings"
     ],
     "html": "milo-the-mouse.html",
     "date_added": "",
@@ -127,7 +133,9 @@
       "animals",
       "friendship"
     ],
-    "emotions": [],
+    "emotions": [
+      "Sadness"
+    ],
     "keywords": [
       "mouse",
       "friendship",
@@ -764,7 +772,7 @@
   {
     "id": "tommy_and_the_lost_toy",
     "title": "Tommy and the Lost Toy",
-    "description": "Tommy learns about anger when he can\u2019t find his favourite truck, but Mummy helps him talk about his feelings.",
+    "description": "Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.",
     "author": "AI Generated",
     "image": "icon/tommy-and-the-lost-toy-imagetitle.webp",
     "audio": "tommy-and-the-lost-toy/tommy-and-the-lost-toy-audio.mp3",
@@ -798,7 +806,7 @@
     "schema": {
       "@type": "CreativeWork",
       "name": "Tommy and the Lost Toy",
-      "description": "Tommy learns about anger when he can\u2019t find his favourite truck, but Mummy helps him talk about his feelings.",
+      "description": "Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.",
       "url": "https://storybellkids.com/tommy-and-the-lost-toy.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
