@@ -2230,6 +2230,7 @@ header .site-title {
 <style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
 <style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
 <style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
+<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
 <style id="sb-carousel-native-style">
 html, body { max-width:100vw; overflow-x:hidden; overscroll-behavior-x:contain; }
 .carousel-container { overflow:hidden !important; }
@@ -2775,6 +2776,7 @@ html body #story-queue-menu.active{display:flex !important;}
 <source src="index_items/animationSB.mp4" type="video/mp4"/>
     Your browser does not support the video tag.
    </video>
+<!-- === Story Bell Feature Videos (lazy, 2-up desktop, 1-up mobile, square, auto+loop) === -->
 <!-- === Story Bell Feature Videos (lazy, 2-up desktop, 1-up mobile, square, auto+loop) === -->
 <!-- === Story Bell Feature Videos (lazy, 2-up desktop, 1-up mobile, square, auto+loop) === -->
 <!-- === Story Bell Feature Videos (lazy, 2-up desktop, 1-up mobile, square, auto+loop) === -->
@@ -4684,6 +4686,106 @@ window.onOpenAuthModalHook = function(){
 }
 </style>
 </div>
+<style id="sb-features-style">
+.sb-divider{
+  border:0; height:3px; width:100%;
+  background:#FFEB3B; margin:16px auto;
+  box-shadow:0 0 8px 2px rgba(255,235,59,.45);
+}
+.sb-features{
+  margin:6px auto 6px;
+  max-width:1100px;
+  padding:0 10px;
+  box-sizing:border-box;
+}
+.sb-features-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:16px;
+  justify-items:center;
+  align-items:start;
+}
+.sb-feature-frame{
+  width:195px;
+  height:195px;
+  border:2px solid #FFEB3B;
+  border-radius:18px;
+  padding:6px;
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#001f3f;
+  box-shadow:0 0 15px #2228;
+}
+.sb-feature-video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:12px;
+  background:#000;
+}
+.sb-feature-video[data-src*="makestorylist"]{
+  object-position: left center;
+}
+.sb-feature-caption{
+  margin-top:8px;
+  max-width:220px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.sb-feature-title{
+  color:#fff;
+  font-family:'Coming Soon',cursive;
+  font-size:1.05em;
+}
+.sb-feature-desc{
+  color:#fff;
+  opacity:.92;
+  font-size:.95em;
+  line-height:1.35;
+}
+.sb-features-cta-wrap{
+  margin-top:8px;
+  display:flex;
+  justify-content:center;
+}
+.sb-learn-more{
+  display:inline-block;
+  padding:8px 14px;
+  border-radius:999px;
+  text-decoration:none;
+  background:#FFEB3B;
+  color:#001f3f;
+  font-weight:700;
+  border:1px solid rgba(0,0,0,.15);
+  transition:transform .12s ease, box-shadow .2s ease, background .18s ease;
+}
+.sb-learn-more:hover,.sb-learn-more:focus{
+  transform:translateY(-1px);
+  box-shadow:0 6px 16px rgba(255,235,59,.35);
+}
+@media (max-width:800px){
+  .sb-features-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  .sb-feature-frame{
+    width:180px;
+    height:180px;
+  }
+  .sb-feature-caption{
+    max-width:200px;
+  }
+  .carousel-header{
+    text-align:center !important;
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
+</style>
 <script id="sb-carousel-native-js">
 (function(){
   function q(sel, root){ return Array.prototype.slice.call((root||document).querySelectorAll(sel)); }
