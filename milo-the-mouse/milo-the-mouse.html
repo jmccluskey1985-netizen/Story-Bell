@@ -2247,9 +2247,6 @@ Remember little Milo's home.<br/>
 Reach out with kindness, try and see,<br/>
 How happy friends will always be!<br/>
 The End</div><div id="sb-end-anim-wrap" style="display:none; margin-top:16px; width:100%; text-align:left; position:relative;"><div id="sb-end-anim-holder" style="display:inline-block;"><div id="sb-end-anim-frame" style="display:inline-block; overflow:hidden; border-radius:16px; width:60vw; max-width:224px; aspect-ratio:1/1; position:relative;"><video controlslist="nodownload noplaybackrate noremoteplayback" disablepictureinpicture="" id="sb-end-anim" muted="True" playsinline="True" preload="auto" webkit-playsinline=""><source src="index_items/sbell_story.webm" type="video/webm"/></video></div></div></div></div>
-
-
-
 <div class="audio-sticky-bottom">
 <div class="audio-box">
 <audio controls="" controlslist="nodownload" id="audio">
@@ -2700,26 +2697,7 @@ var wordTimings = [
   if (!audio.paused) tick();
 })();
 </script>
-<!-- SB_GLOW_BOOST_START -->
-<style id="sb-glow-boost">
-/* Stronger two-word glow — override only */
-#transcript span.highlight,
-#transcript span.glow {
-  color: #ffffff !important;
-  /* heavier + wider multi-layer glow */
-  text-shadow:
-    0 0 10px rgba(255,232,40,1.00),
-    0 0 18px rgba(255,196,0,0.95),
-    0 0 34px rgba(255,150,0,0.85),
-    0 0 56px rgba(255,130,0,0.70),
-    0 0 84px rgba(255,110,0,0.55);
-}
-/* keep previous word slightly dimmed but still glowing */
-#transcript span.prev {
-  opacity: .98;
-}
-</style>
-<!-- SB_GLOW_BOOST_END -->
+
 <!-- SB_AUTODETECT10_BOTTOMAWARE_V1 -->
 <style id="sb-scroll-behavior-off">html{scroll-behavior:auto!important}</style>
 <script id="SB_AUTODETECT10_BOTTOMAWARE_V1">
@@ -3390,92 +3368,7 @@ var wordTimings = [
   });
 })();
 </script>
-<script id="sb-end-anim-replay-js">
-(function(){
-  // IDs expected from your existing injector:
-  // wrap: #sb-end-anim-wrap, video: #sb-end-anim
-  var wrap = document.getElementById('sb-end-anim-wrap');
-  var vid  = document.getElementById('sb-end-anim');
-  if (!wrap || !vid) return;
 
-  // Prefer the main audio; fallbacks keep it resilient.
-  var audio = document.getElementById('audio')
-          || document.querySelector('.audio-box audio')
-          || document.querySelector('audio');
-  if (!audio) return;
-
-  // ---- Completion sound (index_items/complete.mp3) ----
-  // Create once, reuse every cycle.
-  var COMPLETE_ID = 'sb-complete-audio';
-  var complete = document.getElementById(COMPLETE_ID);
-  if (!complete) {
-    complete = document.createElement('audio');
-    complete.id = COMPLETE_ID;
-    complete.preload = 'auto';
-    complete.src = 'index_items/complete.mp3';
-    complete.setAttribute('playsinline','');
-    // Optionally set a default volume (0.0 - 1.0):
-    // complete.volume = 1.0;
-    document.body.appendChild(complete);
-  }
-
-  // Helper: if your page defines alignUnderAnchor(), reuse it to keep positioning tidy.
-  function alignIfAvailable(){
-    try {
-      if (typeof alignUnderAnchor === 'function') { alignUnderAnchor(); }
-    } catch(e){}
-  }
-
-  function hideAnim(){
-    wrap.style.display = 'none';
-    try { vid.pause(); } catch(e){}
-    try { vid.currentTime = 0; } catch(e){}
-    try { complete.pause(); complete.currentTime = 0; } catch(e){}
-  }
-
-  function playAnimOnce(){
-    wrap.style.display = 'block';
-    alignIfAvailable();
-    try { vid.currentTime = 0; } catch(e){}
-    try { vid.play(); } catch(e){}
-    // play completion MP3 DURING the animation
-    try { complete.currentTime = 0; complete.play(); } catch(e){}
-  }
-
-  // When the animation video ends, briefly hold last frame then hide.
-  vid.addEventListener('ended', function(){
-    try {
-      if (isFinite(vid.duration) && vid.duration > 0) {
-        var hold = Math.max(0, vid.duration - 0.05);
-        vid.currentTime = hold;
-      }
-      vid.pause();
-    } catch(e){}
-    wrap.style.display = 'none';
-  });
-
-  // --- Replay logic: animation shows every time audio completes,
-  //     BUT completion MP3 plays only once per page load.
-  function resetForNewPlayback(){
-    hideAnim();
-  }
-
-  audio.addEventListener('play',    resetForNewPlayback);
-  audio.addEventListener('seeking', resetForNewPlayback);
-  audio.addEventListener('seeked',  resetForNewPlayback);
-
-  // >>>>> Option A guard (ONCE per page load) <<<<<
-  var _playedOnce = false;
-  audio.addEventListener('ended', function(){
-    if (_playedOnce) return;
-    _playedOnce = true;
-    playAnimOnce();
-  });
-
-  // Initial state
-  hideAnim();
-})();
-</script>
 <script id="sb-glowwand-hide-js">
 (function(){
   var HIDE_DELAY_MS = 3500;   // 3.5s after trigger
@@ -3708,5 +3601,75 @@ var wordTimings = [
     wire();
   }
 })();
-</script></body>
+</script>
+<script id="sb-end-anim-replay-js">
+(function(){
+  var wrap = document.getElementById('sb-end-anim-wrap');
+  var vid  = document.getElementById('sb-end-anim');
+  if (!wrap || !vid) return;
+
+  var audio = document.getElementById('audio')
+          || document.getElementById('storyAudio')
+          || document.querySelector('.audio-box audio')
+          || document.querySelector('audio');
+  if (!audio) return;
+
+  var complete = document.getElementById('sb-complete-audio');
+
+  function hideAnim(){
+    wrap.style.display = 'none';
+    try { vid.pause(); vid.currentTime = 0; } catch(e){}
+    if (complete) { try { complete.pause(); complete.currentTime = 0; } catch(e){} }
+  }
+
+  function alignIfAvailable(){
+    try { if (typeof window.alignUnderAnchor === 'function') window.alignUnderAnchor(); } catch(e){}
+  }
+
+  function playAnimOnceWithPing(){
+    wrap.style.display = 'block';
+    alignIfAvailable();
+    try { vid.currentTime = 0; vid.play(); } catch(e){}
+    if (complete) { try { complete.currentTime = 0; complete.play(); } catch(e){} }
+  }
+
+  audio.addEventListener('ended', function(){ playAnimOnceWithPing(); });
+  ['play','seeking','seeked'].forEach(function(ev){ audio.addEventListener(ev, hideAnim); });
+
+  vid.addEventListener('ended', function(){
+    try {
+      if (isFinite(vid.duration) && vid.duration > 0) {
+        var hold = Math.max(0, vid.duration - 0.05);
+        vid.currentTime = hold;
+      }
+      vid.pause();
+    } catch(e){}
+    wrap.style.display = 'none';
+  });
+
+  hideAnim(); // initial state
+})();
+</script>
+
+<!-- SB_GLOW_BOOST_START -->
+<style id="sb-glow-boost">
+/* Stronger two-word glow — override only */
+#transcript span.highlight,
+#transcript span.glow {
+  color: #ffffff !important;
+  /* heavier + wider multi-layer glow */
+  text-shadow:
+    0 0 10px rgba(255,232,40,1.00),
+    0 0 18px rgba(255,196,0,0.95),
+    0 0 34px rgba(255,150,0,0.85),
+    0 0 56px rgba(255,130,0,0.70),
+    0 0 84px rgba(255,110,0,0.55);
+}
+/* keep previous word slightly dimmed but still glowing */
+#transcript span.prev {
+  opacity: .98;
+}
+</style>
+<!-- SB_GLOW_BOOST_END -->
+</body>
 </html>
