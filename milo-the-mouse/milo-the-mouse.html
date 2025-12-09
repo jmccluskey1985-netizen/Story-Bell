@@ -7928,14 +7928,9 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>
 <div class="header-left">
-<a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
-<video autoplay="" class="storybell-header-video" controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture="" muted="" playsinline="" style="max-width:90px; height:auto; display:none; margin-right:10px;max-width:90px; height:auto; margin-right:8px;">
-<source src="index_items/animationSB.mp4" type="video/mp4"/>
-</video>
-<img alt="Story Bell Logo" src="index_items/logo.webp" style="height:80px; margin-right:8px;"/>
-<span class="site-title" style="font-size:35px; font-family:'Georgia',serif !important; margin:0;">
-      Story Bell
-     </span>
+<a href="index.html">
+<img alt="Story Bell Logo" src="index_items/logo.jpg" style="height: 52px; margin-right: 10px;"/>
+<span class="site-title">Story Bell</span>
 </a>
 </div>
 <div class="header-right" style="cursor: pointer">
@@ -11933,26 +11928,7 @@ var wordTimings = [
 })();
 </script>
 <!-- SB_AUTOPLAY_V1 END -->
-<!-- SB_GLOW_BOOST_START -->
-<style id="sb-glow-boost">
-/* Stronger two-word glow — override only */
-#transcript span.highlight,
-#transcript span.glow {
-  color: #ffffff !important;
-  /* heavier + wider multi-layer glow */
-  text-shadow:
-    0 0 10px rgba(255,232,40,1.00),
-    0 0 18px rgba(255,196,0,0.95),
-    0 0 34px rgba(255,150,0,0.85),
-    0 0 56px rgba(255,130,0,0.70),
-    0 0 84px rgba(255,110,0,0.55);
-}
-/* keep previous word slightly dimmed but still glowing */
-#transcript span.prev {
-  opacity: .98;
-}
-</style>
-<!-- SB_GLOW_BOOST_END -->
+
 <!-- SB_AUTODETECT10_BOTTOMAWARE_V1 -->
 <style id="sb-scroll-behavior-off">html{scroll-behavior:auto!important}</style>
 <script id="SB_AUTODETECT10_BOTTOMAWARE_V1">
@@ -12841,5 +12817,26 @@ var wordTimings = [
     wire();
   }
 })();
-</script></body>
+</script>
+<!-- SB_GLOW_BOOST_START -->
+<style id="sb-glow-boost">
+/* Stronger two-word glow — override only */
+#transcript span.highlight,
+#transcript span.glow {
+  color: #ffffff !important;
+  /* heavier + wider multi-layer glow */
+  text-shadow:
+    0 0 10px rgba(255,232,40,1.00),
+    0 0 18px rgba(255,196,0,0.95),
+    0 0 34px rgba(255,150,0,0.85),
+    0 0 56px rgba(255,130,0,0.70),
+    0 0 84px rgba(255,110,0,0.55);
+}
+/* keep previous word slightly dimmed but still glowing */
+#transcript span.prev {
+  opacity: .98;
+}
+</style>
+<!-- SB_GLOW_BOOST_END -->
+</body>
 </html>
