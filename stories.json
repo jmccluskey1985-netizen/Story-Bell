@@ -4,7 +4,7 @@
     "title": "Maya's Missing Mittens",
     "description": "A story about problem solving with Mummy",
     "author": "Jon McCluskey",
-    "image": "icon/mayas-missing-mittens-imagetitle.webp",
+    "image": "icon/mayas-missing-mittens-icon.webp",
     "audio": "mayas-missing-mittens/mayas-missing-mittens-audio.mp3",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -45,7 +45,7 @@
       "isFamilyFriendly": true,
       "image": {
         "@type": "ImageObject",
-        "url": "https://storybellkids.com/icon/mayas-missing-mittens-imagetitle.webp"
+        "url": "https://storybellkids.com/icon/mayas-missing-mittens-icon.webp"
       },
       "timeRequired": "PT5M",
       "typicalAgeRange": "4-6",
@@ -113,7 +113,7 @@
     "title": "Milo the Mouse",
     "description": "A poem about friendship",
     "author": "Jon McCluskey",
-    "image": "icon/milo-the-mouse-imagetitle.webp",
+    "image": "icon/milo-the-mouse-icon.webp",
     "audio": "milo-the-mouse/milo-the-mouse-audio.mp3",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -152,7 +152,7 @@
       "isFamilyFriendly": true,
       "image": {
         "@type": "ImageObject",
-        "url": "https://storybellkids.com/icon/milo-the-mouse-imagetitle.webp"
+        "url": "https://storybellkids.com/icon/milo-the-mouse-icon.webp"
       },
       "timeRequired": "PT5M",
       "typicalAgeRange": "4-6",
@@ -221,7 +221,7 @@
     "title": "Luna's Colorful Garden",
     "description": "A story about helping friends create a magical garden.",
     "author": "Jon McCluskey",
-    "image": "icon/lunas-colorful-garden-imagetitle.webp",
+    "image": "icon/lunas-colorful-garden-icon.webp",
     "audio": "lunas-colorful-garden/lunas-colorful-garden-audio.mp3",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -256,7 +256,7 @@
       "isFamilyFriendly": true,
       "image": {
         "@type": "ImageObject",
-        "url": "https://storybellkids.com/icon/lunas-colorful-garden-imagetitle.webp"
+        "url": "https://storybellkids.com/icon/lunas-colorful-garden-icon.webp"
       },
       "timeRequired": "PT5M",
       "typicalAgeRange": "4-6",
@@ -326,7 +326,7 @@
     "title": "The Tiniest Rainbow",
     "description": "A gentle bedtime story for toddlers about discovering happiness on a rainy day.",
     "author": "AI Generated",
-    "image": "icon/the-tiniest-rainbow-imagetitle.webp",
+    "image": "icon/the-tiniest-rainbow-icon.webp",
     "audio": "the-tiniest-rainbow/the-tiniest-rainbow-audio.mp3",
     "categories": [
       "childrens-stories-ages-0-3",
@@ -367,7 +367,7 @@
       "isFamilyFriendly": true,
       "image": {
         "@type": "ImageObject",
-        "url": "https://storybellkids.com/icon/the-tiniest-rainbow-imagetitle.webp"
+        "url": "https://storybellkids.com/icon/the-tiniest-rainbow-icon.webp"
       },
       "timeRequired": "PT5M",
       "typicalAgeRange": "0-3",
@@ -439,7 +439,7 @@
     "title": "Owl in the Dark Forest",
     "description": "A brave little owl faces fear while searching for her way home.",
     "author": "AI Generated",
-    "image": "icon/owl-in-the-dark-forest-imagetitle.webp",
+    "image": "icon/owl-in-the-dark-forest-icon.webp",
     "audio": "owl-in-the-dark-forest/owl-in-the-dark-forest-audio.mp3",
     "categories": [
       "childrens-stories-ages-7-12",
@@ -478,7 +478,7 @@
       "isFamilyFriendly": true,
       "image": {
         "@type": "ImageObject",
-        "url": "https://storybellkids.com/icon/owl-in-the-dark-forest-imagetitle.webp"
+        "url": "https://storybellkids.com/icon/owl-in-the-dark-forest-icon.webp"
       },
       "timeRequired": "PT10M",
       "typicalAgeRange": "7-12",
@@ -551,7 +551,7 @@
     "title": "The Lonely Leaf",
     "description": "A poem about sadness and finding new friends in autumn.",
     "author": "AI Generated",
-    "image": "icon/the-lonely-leaf-imagetitle.webp",
+    "image": "icon/the-lonely-leaf-icon.webp",
     "audio": "the-lonely-leaf/the-lonely-leaf-audio.mp3",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -590,7 +590,7 @@
       "isFamilyFriendly": true,
       "image": {
         "@type": "ImageObject",
-        "url": "https://storybellkids.com/icon/the-lonely-leaf-imagetitle.webp"
+        "url": "https://storybellkids.com/icon/the-lonely-leaf-icon.webp"
       },
       "timeRequired": "PT5M",
       "typicalAgeRange": "4-6",
@@ -663,7 +663,7 @@
     "title": "Emma and the Surprise Party",
     "description": "Emma plans a secret party for her granddad and learns the joy of surprises.",
     "author": "AI Generated",
-    "image": "icon/emma-and-the-surprise-party-imagetitle.webp",
+    "image": "icon/emma-and-the-surprise-party-icon.webp",
     "audio": "emma-and-the-surprise-party/emma-and-the-surprise-party-audio.mp3",
     "categories": [
       "childrens-stories-ages-7-12",
@@ -702,7 +702,7 @@
       "isFamilyFriendly": true,
       "image": {
         "@type": "ImageObject",
-        "url": "https://storybellkids.com/icon/emma-and-the-surprise-party-imagetitle.webp"
+        "url": "https://storybellkids.com/icon/emma-and-the-surprise-party-icon.webp"
       },
       "timeRequired": "PT5M",
       "typicalAgeRange": "7-12",
@@ -774,7 +774,7 @@
     "title": "Tommy and the Lost Toy",
     "description": "Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.",
     "author": "AI Generated",
-    "image": "icon/tommy-and-the-lost-toy-imagetitle.webp",
+    "image": "icon/tommy-and-the-lost-toy-icon.webp",
     "audio": "tommy-and-the-lost-toy/tommy-and-the-lost-toy-audio.mp3",
     "categories": [
       "childrens-stories-ages-0-3",
@@ -812,7 +812,7 @@
       "isFamilyFriendly": true,
       "image": {
         "@type": "ImageObject",
-        "url": "https://storybellkids.com/icon/tommy-and-the-lost-toy-imagetitle.webp"
+        "url": "https://storybellkids.com/icon/tommy-and-the-lost-toy-icon.webp"
       },
       "timeRequired": "PT5M",
       "typicalAgeRange": "0-3",
@@ -880,7 +880,7 @@
     "title": "Melody and the Muddy Puppy",
     "description": "A silly story about a girl and her puppy, who both discover the meaning of disgust after a very messy day in the park.",
     "author": "AI Generated",
-    "image": "icon/melody-and-the-muddy-puppy-imagetitle.webp",
+    "image": "icon/melody-and-the-muddy-puppy-icon.webp",
     "audio": "melody-and-the-muddy-puppy/melody-and-the-muddy-puppy-audio.mp3",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -920,7 +920,7 @@
       "isFamilyFriendly": true,
       "image": {
         "@type": "ImageObject",
-        "url": "https://storybellkids.com/icon/melody-and-the-muddy-puppy-imagetitle.webp"
+        "url": "https://storybellkids.com/icon/melody-and-the-muddy-puppy-icon.webp"
       },
       "timeRequired": "PT10M",
       "typicalAgeRange": "4-6",
@@ -993,7 +993,7 @@
     "title": "The Brave Little Duckling",
     "description": "A duckling faces his fear of swimming and discovers courage.",
     "author": "AI Generated",
-    "image": "icon/the-brave-little-duckling-imagetitle.webp",
+    "image": "icon/the-brave-little-duckling-icon.webp",
     "audio": "the-brave-little-duckling/the-brave-little-duckling-audio.mp3",
     "categories": [
       "childrens-stories-ages-0-3",
@@ -1032,7 +1032,7 @@
       "isFamilyFriendly": true,
       "image": {
         "@type": "ImageObject",
-        "url": "https://storybellkids.com/icon/the-brave-little-duckling-imagetitle.webp"
+        "url": "https://storybellkids.com/icon/the-brave-little-duckling-icon.webp"
       },
       "timeRequired": "PT5M",
       "typicalAgeRange": "0-3",
@@ -1104,7 +1104,7 @@
     "title": "Stars in My Window",
     "description": "A bedtime poem about finding comfort in the night sky.",
     "author": "AI Generated",
-    "image": "icon/stars-in-my-window-imagetitle.webp",
+    "image": "icon/stars-in-my-window-icon.webp",
     "audio": "stars-in-my-window/stars-in-my-window-audio.mp3",
     "categories": [
       "childrens-stories-ages-0-3",
@@ -1145,7 +1145,7 @@
       "isFamilyFriendly": true,
       "image": {
         "@type": "ImageObject",
-        "url": "https://storybellkids.com/icon/stars-in-my-window-imagetitle.webp"
+        "url": "https://storybellkids.com/icon/stars-in-my-window-icon.webp"
       },
       "timeRequired": "PT5M",
       "typicalAgeRange": "0-3",
@@ -1218,7 +1218,7 @@
     "title": "Grumpy Grandpa and the Silly Hat",
     "description": "Grandpa is feeling angry until his granddaughter makes him laugh with a silly hat.",
     "author": "AI Generated",
-    "image": "icon/grumpy-grandpa-and-the-silly-hat-imagetitle.webp",
+    "image": "icon/grumpy-grandpa-and-the-silly-hat-icon.webp",
     "audio": "grumpy-grandpa-and-the-silly-hat/grumpy-grandpa-and-the-silly-hat-audio.mp3",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -1256,7 +1256,7 @@
       "isFamilyFriendly": true,
       "image": {
         "@type": "ImageObject",
-        "url": "https://storybellkids.com/icon/grumpy-grandpa-and-the-silly-hat-imagetitle.webp"
+        "url": "https://storybellkids.com/icon/grumpy-grandpa-and-the-silly-hat-icon.webp"
       },
       "timeRequired": "PT5M",
       "typicalAgeRange": "4-6",
@@ -1329,7 +1329,7 @@
     "title": "The Secret in the Library",
     "description": "An adventure about two friends solving a mystery, and the surprise they find.",
     "author": "AI Generated",
-    "image": "icon/the-secret-in-the-library-imagetitle.webp",
+    "image": "icon/the-secret-in-the-library-icon.webp",
     "audio": "the-secret-in-the-library/the-secret-in-the-library-audio.mp3",
     "categories": [
       "childrens-stories-ages-7-12",
@@ -1368,7 +1368,7 @@
       "isFamilyFriendly": true,
       "image": {
         "@type": "ImageObject",
-        "url": "https://storybellkids.com/icon/the-secret-in-the-library-imagetitle.webp"
+        "url": "https://storybellkids.com/icon/the-secret-in-the-library-icon.webp"
       },
       "timeRequired": "PT10M",
       "typicalAgeRange": "7-12",
@@ -1437,7 +1437,7 @@
     "title": "Lily and the Blue Balloon",
     "description": "Lily feels sad when her balloon floats away, but she finds hope in a new friend.",
     "author": "AI Generated",
-    "image": "icon/lily-and-the-blue-balloon-imagetitle.webp",
+    "image": "icon/lily-and-the-blue-balloon-icon.webp",
     "audio": "lily-and-the-blue-balloon/lily-and-the-blue-balloon-audio.mp3",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -1475,7 +1475,7 @@
       "isFamilyFriendly": true,
       "image": {
         "@type": "ImageObject",
-        "url": "https://storybellkids.com/icon/lily-and-the-blue-balloon-imagetitle.webp"
+        "url": "https://storybellkids.com/icon/lily-and-the-blue-balloon-icon.webp"
       },
       "timeRequired": "PT5M",
       "typicalAgeRange": "4-6",
@@ -1543,7 +1543,7 @@
     "title": "The Case of the Gross Green Socks",
     "description": "A detective story about disgust, lost laundry, and learning to help with chores.",
     "author": "AI Generated",
-    "image": "icon/the-case-of-the-gross-green-socks-imagetitle.webp",
+    "image": "icon/the-case-of-the-gross-green-socks-icon.webp",
     "audio": "the-case-of-the-gross-green-socks/the-case-of-the-gross-green-socks-audio.mp3",
     "categories": [
       "childrens-stories-ages-7-12",
@@ -1582,7 +1582,7 @@
       "isFamilyFriendly": true,
       "image": {
         "@type": "ImageObject",
-        "url": "https://storybellkids.com/icon/the-case-of-the-gross-green-socks-imagetitle.webp"
+        "url": "https://storybellkids.com/icon/the-case-of-the-gross-green-socks-icon.webp"
       },
       "timeRequired": "PT5M",
       "typicalAgeRange": "7-12",
@@ -1654,7 +1654,7 @@
     "title": "Cousins' Countryside Adventure",
     "description": "Join Sophia, Isabelle, Juliette, and Rory as four little cousins explore the countryside together, discovering butterflies, a babbling brook, and the joy of family.",
     "author": "Story Bell",
-    "image": "icon/cousins-countryside-adventure-imagetitle.webp",
+    "image": "icon/cousins-countryside-adventure-icon.webp",
     "audio": "cousins-countryside-adventure/cousins-countryside-adventure-audio.mp3",
     "categories": [
       "childrens-stories-ages-0-3",
@@ -1697,7 +1697,7 @@
       "isFamilyFriendly": true,
       "image": {
         "@type": "ImageObject",
-        "url": "https://storybellkids.com/icon/cousins-countryside-adventure-imagetitle.webp"
+        "url": "https://storybellkids.com/icon/cousins-countryside-adventure-icon.webp"
       },
       "timeRequired": "PT5M",
       "typicalAgeRange": "0-3",
