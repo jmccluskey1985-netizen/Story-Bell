@@ -8034,7 +8034,7 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 </style>
 </head>
 <body><h1 class="sr-only" id="story-title">Ages 4–6</h1>
-<div id="sb-test-banner">TEST PAGE - STAGING - 2025-12-11 21:35</div>
+<div id="sb-test-banner">TEST PAGE - STAGING - 2025-12-11 21:41</div>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>
 <div class="header-left">
@@ -11375,6 +11375,38 @@ var wordTimings = [
       qc.style.setProperty('margin-top', '20px', 'important');
     }
   });
+</script>
+
+
+<script id="sb-gap-fix-immediate">
+// Run immediately
+(function() {
+    function fixGap() {
+        var mb = document.querySelector('.main-blank');
+        if (mb) {
+            mb.style.cssText = 'min-height: auto !important; height: auto !important; padding-bottom: 0 !important; margin-bottom: 0 !important; justify-content: flex-start !important;';
+        }
+        var tr = document.getElementById('transcript');
+        if (tr) {
+            tr.style.cssText = tr.style.cssText + '; margin-bottom: 0 !important; padding-bottom: 0 !important;';
+        }
+        // Kill all br margins
+        var brs = document.querySelectorAll('#transcript br');
+        brs.forEach(function(br) {
+            br.style.cssText = 'margin: 0 !important; padding: 0 !important; line-height: 1 !important;';
+        });
+    }
+    // Run now
+    if (document.readyState !== 'loading') {
+        fixGap();
+    }
+    // Run on DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', fixGap);
+    // Run after a delay too
+    setTimeout(fixGap, 100);
+    setTimeout(fixGap, 500);
+    setTimeout(fixGap, 1000);
+})();
 </script>
 
 </body>
