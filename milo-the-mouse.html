@@ -8034,7 +8034,7 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 </style>
 </head>
 <body><h1 class="sr-only" id="story-title">Ages 4–6</h1>
-<div id="sb-test-banner">TEST PAGE - STAGING - 2025-12-11 20:31</div>
+<div id="sb-test-banner">TEST PAGE - STAGING - 2025-12-11 20:37</div>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>
 <div class="header-left">
@@ -11306,26 +11306,31 @@ var wordTimings = [
 })();
 </script>
 
+
 <style id="sb-gap-fix-final">
-/* FINAL FIX: Override all previous main-blank styles */
-.main-blank, .main-blank.questions-toggle, div.main-blank {
-    min-height: auto !important;
-    height: auto !important;
-    justify-content: flex-start !important;
-    padding-bottom: 10px !important;
-    margin-bottom: 0 !important;
-}
-#transcript {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-}
-#transcript > br:last-child {
-    display: none !important;
-}
-.questions-container {
-    margin-top: 20px !important;
-}
+  /* 1. Kill the 90% screen height requirement */
+  .main-blank {
+      min-height: auto !important;
+      justify-content: flex-start !important;
+      padding-bottom: 10px !important;
+  }
+
+  /* 2. Reduce the top margin on the questions box itself */
+  .questions-container {
+      margin-top: 20px !important;
+      padding-top: 0 !important;
+  }
 </style>
+
+<script id="sb-gap-fix-js">
+  document.addEventListener("DOMContentLoaded", function() {
+    var qc = document.getElementById('questionsContainer');
+    if (qc) {
+      // Force margin to be small even if other scripts try to change it
+      qc.style.setProperty('margin-top', '20px', 'important');
+    }
+  });
+</script>
 
 </body>
 </html>
