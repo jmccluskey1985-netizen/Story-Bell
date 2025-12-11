@@ -8034,7 +8034,7 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 </style>
 </head>
 <body><h1 class="sr-only" id="story-title">Ages 4–6</h1>
-<div id="sb-test-banner">TEST PAGE - STAGING - 2025-12-11 21:12</div>
+<div id="sb-test-banner">TEST PAGE - STAGING - 2025-12-11 21:35</div>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>
 <div class="header-left">
@@ -11311,27 +11311,59 @@ var wordTimings = [
 
 
 <style id="sb-gap-fix-final">
-  /* 1. Kill the 90% screen height requirement */
-  .main-blank {
+  /* NUCLEAR OPTION - Override everything causing the gap */
+  
+  /* 1. Main container - kill height and centering */
+  .main-blank, 
+  .main-blank.questions-toggle,
+  div.main-blank {
       min-height: auto !important;
+      height: auto !important;
       justify-content: flex-start !important;
-      padding-bottom: 10px !important;
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
   }
 
-  /* 2. Reduce the top margin on the questions box itself */
-  .questions-container {
+  /* 2. Transcript - kill margins */
+  #transcript {
+      margin: 0 auto !important;
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+  }
+
+  /* 3. Kill ALL br margins in transcript */
+  #transcript br,
+  #transcript > br,
+  #transcript > br:last-child,
+  #transcript > br:last-of-type {
+      margin: 0 !important;
+      margin-bottom: 0 !important;
+      padding: 0 !important;
+      line-height: 1 !important;
+  }
+
+  /* 4. Questions container */
+  .questions-container,
+  #questionsContainer {
       margin-top: 20px !important;
       padding-top: 0 !important;
   }
 
-  /* 3. Remove body padding that creates gap */
+  /* 5. Body padding */
   body {
       padding-bottom: 0 !important;
   }
 
-  /* 4. Ensure carousel is snug to content */
-  .age-carousel {
+  /* 6. Carousel snug to content */
+  .age-carousel,
+  section.age-carousel {
       margin-top: 20px !important;
+  }
+
+  /* 7. End animation wrapper */
+  #sb-end-anim-wrap {
+      margin-top: 10px !important;
+      margin-bottom: 0 !important;
   }
 </style>
 
