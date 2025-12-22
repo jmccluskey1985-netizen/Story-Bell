@@ -1,0 +1,47 @@
+[
+  {
+    "id": "maya's_missing_mittons",
+    "title": "Maya's Missing Mittons",
+    "description": "A story about problem solving with Mummy",
+    "author": "Jon McCluskey",
+    "image": "Maya's Missing Mittons/imagetitle.jpg",
+    "audio": "Maya's Missing Mittons/StoryAudio.mp3",
+    "categories": [
+      "4_7",
+      "poems",
+      "5min"
+    ],
+    "html": "Maya's_Missing_Mittons.html",
+    "date_added": ""
+  }
+]
+{
+  "id": "milo_the_mouse",
+  "title": "Milo the Mouse",
+  "description": "A poem about friendship",
+  "author": "Jon McCluskey",
+  "image": "icon/Milo the Mouse.jpg",
+  "audio": "Milo_the_Mouse/StoryAudio.mp3",  // Only if you have audio, else omit
+  "categories": [
+    "4_7",
+    "5min",
+    "friendship"
+  ],
+  "html": "Milo_the_Mouse.html",
+  "date_added": ""
+}
+{
+  "id": "lunas_colorful_garden",
+  "title": "Luna's Colorful Garden",
+  "description": "A story about helping friends create a magical garden.",
+  "author": "Jon McCluskey",
+  "image": "icon/Luna's Colorful Garden.jpg",
+  "audio": "",  // Add path if audio exists, else leave empty
+  "categories": [
+    "4_7",
+    "5min",
+    "friendship"
+  ],
+  "html": "Luna's_Colorful_Garden.html",
+  "date_added": ""
+}
