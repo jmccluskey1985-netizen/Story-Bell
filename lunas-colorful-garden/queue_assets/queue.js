@@ -1,1 +1,0 @@
-<SNIP: your existing queue.js from v3.8.8 exactly as-is>
