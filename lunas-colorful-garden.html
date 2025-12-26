@@ -1033,7 +1033,7 @@ audio::-webkit-media-controls-timeline-container{
     .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
     .header-right { display: flex; align-items: center; gap: 10px; }
     .mascot-logo { height: 56px; width: 56px; border-radius: 50%; object-fit: cover; background: #ffeb3b33; box-shadow: 0 2px 10px #2227; }
-    .site-title {margin-top: 14px !important;  font-size: 28px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
+    .site-title {margin-top: 14px !important;  font-size: clamp(28px, 3vw, 35px); font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
     .header-left a:hover .site-title {margin-top: 14px !important;  color: #fffde6; }
     nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
     nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s; }
@@ -3815,7 +3815,7 @@ header nav a, header nav ul, header nav ul li, header nav ul li a
     header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
     .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
     .header-right { display: flex; align-items: center; gap: 10px; }
-    .site-title {margin-top: 14px !important;  font-size: 28px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
+    .site-title {margin-top: 14px !important;  font-size: clamp(28px, 3vw, 35px); font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
     .header-left a:hover .site-title {margin-top: 14px !important;  color: #fffde6; }
     nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
     nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s;}
@@ -4326,7 +4326,7 @@ header nav a, header nav ul, header nav ul li, header nav ul li a
     header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
     .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
     .header-right { display: flex; align-items: center; gap: 10px; }
-    .site-title {margin-top: 14px !important;  font-size: 28px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
+    .site-title {margin-top: 14px !important;  font-size: clamp(28px, 3vw, 35px); font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
     .header-left a:hover .site-title {margin-top: 14px !important;  color: #fffde6; }
     nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
     nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s;}
@@ -7880,36 +7880,52 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
   box-shadow: none !important;
   border: 0 !important;
 }
-/* animation layer: behind transcript, but not buried under the whole page */
+/* animation layer: desktop */
 #sb-end-anim-wrap {
   position: relative;
-  z-index: 10;         /* higher z-index for better mobile visibility */
-  transform: translateZ(0);  /* force hardware acceleration */
+  z-index: 10;         
+  transform: translateZ(0);  
   -webkit-transform: translateZ(0);
-  pointer-events: none;  /* never intercept clicks */
+  pointer-events: none; 
   clear: both;
 }
-/* explicitly raise the transcript/text layer above */
-#transcript {
-  position: relative;
-  z-index: 2;          /* above video */
-}
+#transcript { position: relative; z-index: 2; }
 
 #sb-end-anim {
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
-  object-position:center;
-  outline:none;
-  background:transparent !important;
+  width:100%; height:100%; display:block;
+  object-fit:cover; object-position:center;
+  outline:none; background:transparent !important;
 }
 #sb-end-anim::-webkit-media-controls,
 #sb-end-anim::-webkit-media-controls-enclosure,
 #sb-end-anim::-webkit-media-controls-start-playback-button {
   display:none !important;
 }
-@media (max-width:700px) {  #sb-end-anim-frame { width:75vw; max-width:260px; }  /* Enhanced mobile visibility */  #sb-end-anim-wrap {    z-index: 10 !important;    /* display removed - controlled by JS */    visibility: visible !important;    opacity: 1 !important;    transform: translateZ(0) !important;    -webkit-transform: translateZ(0) !important;  }  #sb-end-anim {    /* display removed - controlled by JS */    visibility: visible !important;    opacity: 1 !important;    -webkit-backface-visibility: visible !important;    backface-visibility: visible !important;  }}
+
+/* --- MOBILE FIXES --- */
+@media (max-width:800px) {  
+  #sb-end-anim-frame { 
+      width:75vw; 
+      max-width:260px; 
+  }  
+  #sb-end-anim-wrap {
+    /* Force ultra-high z-index on mobile to sit above background */
+    z-index: 99999 !important; 
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    position: relative !important;
+  }
+  #sb-end-anim {
+    visibility: visible !important;
+    opacity: 1 !important;
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+}
 </style>
 <style id="sb-glowwand-hide-css">
   #glowWandImg { transition: opacity 200ms ease; }
@@ -7922,7 +7938,54 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-</style><meta content="index,follow,max-image-preview:large" name="robots"/><meta content="article" property="og:type"/><meta content="Luna's Colorful Garden" property="og:title"/><meta content="Story Bell" property="og:site_name"/><meta content="summary_large_image" name="twitter:card"/><meta content="Luna's Colorful Garden" name="twitter:title"/><script id="sb-jsonld" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"#story#webpage","url":null,"name":"Luna's Colorful Garden","inLanguage":"en","description":null,"isPartOf":null,"primaryImageOfPage":null},{"@type":"ShortStory","@id":"#story#shortstory","name":"Luna's Colorful Garden","inLanguage":"en","isFamilyFriendly":true,"isAccessibleForFree":true,"datePublished":null,"dateModified":null,"creativeWorkStatus":"Published","keywords":null,"genre":null,"about":null,"timeRequired":"PT3M","description":null,"author":null,"publisher":{"@type":"Organization","name":"Story Bell","url":null},"image":null,"wordCount":913},{"@type":"FAQPage","@id":"#story#faq","mainEntity":[{"@type":"Question","name":"What did Luna discover behind the old wooden fence at the playground?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"How do you think Luna felt when she first found the forgotten garden?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"Why did Luna invite her friends to help with the garden instead of doing it alone?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"What are some of the jobs Luna and her friends did to prepare the garden for planting?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"Luna said \"Seeds need time to grow, just like friendships need time to grow strong.\" What do you think she meant by that?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"How did Luna show patience while waiting for the seeds to sprout?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"What different colors of flowers bloomed in the garden? Can you name them all?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"How did the garden change from the beginning of the story to the end?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"Why do you think the neighborhood families wanted to visit Luna's garden?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"Have you ever worked together with friends to create something special? How did it make you feel?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}}]}]}</script></head>
+</style><meta content="index,follow,max-image-preview:large" name="robots"/><meta content="article" property="og:type"/><meta content="Luna's Colorful Garden" property="og:title"/><meta content="Story Bell" property="og:site_name"/><meta content="summary_large_image" name="twitter:card"/><meta content="Luna's Colorful Garden" name="twitter:title"/><script id="sb-jsonld" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"#story#webpage","url":null,"name":"Luna's Colorful Garden","inLanguage":"en","description":null,"isPartOf":null,"primaryImageOfPage":null},{"@type":"ShortStory","@id":"#story#shortstory","name":"Luna's Colorful Garden","inLanguage":"en","isFamilyFriendly":true,"isAccessibleForFree":true,"datePublished":null,"dateModified":null,"creativeWorkStatus":"Published","keywords":null,"genre":null,"about":null,"timeRequired":"PT3M","description":null,"author":null,"publisher":{"@type":"Organization","name":"Story Bell","url":null},"image":null,"wordCount":913},{"@type":"FAQPage","@id":"#story#faq","mainEntity":[{"@type":"Question","name":"What did Luna discover behind the old wooden fence at the playground?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"How do you think Luna felt when she first found the forgotten garden?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"Why did Luna invite her friends to help with the garden instead of doing it alone?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"What are some of the jobs Luna and her friends did to prepare the garden for planting?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"Luna said \"Seeds need time to grow, just like friendships need time to grow strong.\" What do you think she meant by that?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"How did Luna show patience while waiting for the seeds to sprout?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"What different colors of flowers bloomed in the garden? Can you name them all?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"How did the garden change from the beginning of the story to the end?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"Why do you think the neighborhood families wanted to visit Luna's garden?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"Have you ever worked together with friends to create something special? How did it make you feel?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}}]}]}</script>
+<style id="sb-header-desktop-patch">
+/* Desktop Header Fixes - Auto-applied by generator */
+@media (min-width: 801px) {
+  .mascot-logo {
+    height: 56px !important;
+    width: 56px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    background: #ffeb3b33 !important;
+    box-shadow: 0 2px 10px rgba(34, 34, 34, 0.44) !important;
+    /* display removed - controlled by JS */
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .site-title {
+    font-size: clamp(28px, 3vw, 35px) !important;
+    font-weight: bold !important;
+    color: #FFEB3B !important;
+    text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099 !important;
+  }
+
+  .header-left a {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+}
+</style>
+
+<style id="sb-questions-mobile-fix">
+.questions-container {
+  position: relative !important;
+  z-index: 2147483647 !important; /* Must be higher than video (99999) */
+  display: none; /* Hidden by default, toggled by JS */
+  clear: both;
+  margin-top: 20px;
+  padding-bottom: 50px;
+}
+/* Ensure content inside is visible */
+.question-box {
+  opacity: 1 !important; 
+  transform: none !important;
+  visibility: visible !important;
+}
+</style>
+</head>
 <body><h1 class="sr-only" id="story-title">Ages 4–6</h1>
 <div id="sb-test-banner">TEST PAGE - STAGING - 2025-12-25 23:22:05</div>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
@@ -8036,55 +8099,9 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 <a class="login-cta-header" data-auth-cta="" href="#login" rel="noopener" style="margin-top: 14px; background: #FFEB3B; color: #003366; font-family: 'Coming Soon', cursive !important; font-size: 16px; font-weight: bold; border-radius: 20px; padding: 9px 22px 9px 32px; text-decoration: none; box-shadow: 0 2px 8px rgba(255,235,59,0.22); display: flex; align-items: center; transition: background 0.2s;" target="_blank">Log in/<br/>Create Account</a>
 <div class="subscribe-text"></div></div>
 </header>
-<div class="main-blank questions-toggle"><div id="transcript" style="text-align:center;"><img alt="Luna's Colorful Garden" class="story-image sb-firstline" decoding="async" loading="lazy" src="lunas-colorful-garden/lunas-colorful-garden-imagetitle.webp" style="display:block;margin:1em auto;max-width:90%"/><br/>
-<span class="big-title" data-end="5.251000" data-start="5.131000" id="word_1" style="font-size:1.28em;font-weight:bold;">Luna's</span> <span class="big-title" data-end="5.532000" data-start="5.332000" id="word_2" style="font-size:1.28em;font-weight:bold;">Colorful</span> <span class="big-title" data-end="6.093000" data-start="5.572000" id="word_3" style="font-size:1.28em;font-weight:bold;">Garden</span> <br/><span data-end="7.655000" data-start="7.314000" id="word_4">Luna</span> <span data-end="8.115000" data-start="7.795000" id="word_5">loved</span> <span data-end="8.456000" data-start="8.195000" id="word_6">everything</span> <span data-end="8.556000" data-start="8.496000" id="word_7">about</span> <span data-end="8.656000" data-start="8.596000" id="word_8">nature.</span> <span data-end="8.996000" data-start="8.716000" id="word_9">She</span> <span data-end="10.038000" data-start="9.917000" id="word_10">loved</span> <span data-end="10.398000" data-start="10.098000" id="word_11">the</span> <span data-end="10.618000" data-start="10.418000" id="word_12">way</span> <span data-end="10.779000" data-start="10.678000" id="word_13">flowers</span> <span data-end="11.039000" data-start="10.819000" id="word_14">smelled,</span> <span data-end="11.239000" data-start="11.099000" id="word_15">the</span> <span data-end="11.379000" data-start="11.279000" id="word_16">soft</span> <span data-end="11.700000" data-start="11.439000" id="word_17">buzz</span> <span data-end="12.020000" data-start="11.840000" id="word_18">of</span> <span data-end="12.441000" data-start="12.100000" id="word_19">bees,</span> <span data-end="12.641000" data-start="12.521000" id="word_20">and</span> <span data-end="13.021000" data-start="12.681000" id="word_21">the</span> <span data-end="13.262000" data-start="13.082000" id="word_22">feeling</span> <span data-end="13.802000" data-start="13.342000" id="word_23">of</span> <span data-end="13.963000" data-start="13.883000" id="word_24">warm</span> <span data-end="14.143000" data-start="14.003000" id="word_25">soil</span> <span data-end="15.064000" data-start="14.944000" id="word_26">between</span> <span data-end="15.284000" data-start="15.124000" id="word_27">her</span> <span data-end="15.425000" data-start="15.324000" id="word_28">fingers.</span> <span data-end="15.645000" data-start="15.445000" id="word_29">One</span> <span data-end="16.085000" data-start="15.745000" id="word_30">sunny</span> <span data-end="16.226000" data-start="16.145000" id="word_31">afternoon,</span> <span data-end="16.666000" data-start="16.286000" id="word_32">while</span> <span data-end="16.946000" data-start="16.726000" id="word_33">playing</span> <span data-end="17.307000" data-start="17.027000" id="word_34">near</span> <span data-end="17.848000" data-start="17.347000" id="word_35">the</span> <span data-end="19.450000" data-start="19.329000" id="word_36">neighborhood</span> <span data-end="19.810000" data-start="19.510000" id="word_37">playground,</span> <span data-end="20.231000" data-start="19.850000" id="word_38">Luna</span> <span data-end="20.811000" data-start="20.531000" id="word_39">noticed</span> <span data-end="21.012000" data-start="20.851000" id="word_40">something</span> <span data-end="21.352000" data-start="21.072000" id="word_41">special</span> <span data-end="21.512000" data-start="21.392000" id="word_42">behind</span> <span data-end="21.913000" data-start="21.572000" id="word_43">the</span> <span data-end="22.714000" data-start="22.594000" id="word_44">old</span> <span data-end="22.874000" data-start="22.754000" id="word_45">wooden</span> <span data-end="22.974000" data-start="22.934000" id="word_46">fence.</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image1.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation1.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="23.114000" data-start="23.014000" id="word_47">Luna's</span> <span data-end="23.435000" data-start="23.174000" id="word_48">heart</span> <span data-end="23.915000" data-start="23.815000" id="word_49">filled</span> <span data-end="24.336000" data-start="23.975000" id="word_50">with</span> <span data-end="24.756000" data-start="24.636000" id="word_51">excitement.</span> <span data-end="25.077000" data-start="24.817000" id="word_52">She</span> <span data-end="25.858000" data-start="25.698000" id="word_53">ran</span> <span data-end="25.938000" data-start="25.898000" id="word_54">back</span> <span data-end="27.280000" data-start="25.958000" id="word_55">to</span> <span data-end="28.181000" data-start="28.101000" id="word_56">the</span> <span data-end="28.521000" data-start="28.241000" id="word_57">playground</span> <span data-end="28.701000" data-start="28.581000" id="word_58">where</span> <span data-end="29.102000" data-start="28.742000" id="word_59">her</span> <span data-end="29.202000" data-start="29.142000" id="word_60">friends</span> <span data-end="29.322000" data-start="29.242000" id="word_61">were</span> <span data-end="29.903000" data-start="29.402000" id="word_62">playing</span> <span data-end="32.792000" data-start="32.431000" id="word_63">on</span> <span data-end="32.972000" data-start="32.932000" id="word_64">the</span> <span data-end="33.272000" data-start="33.052000" id="word_65">swings.</span> <span data-end="33.493000" data-start="33.332000" id="word_66">"Everyone,</span> <span data-end="33.633000" data-start="33.533000" id="word_67">come</span> <span data-end="33.993000" data-start="33.693000" id="word_68">quick!</span> <span data-end="34.494000" data-start="34.033000" id="word_69">I</span> <span data-end="35.375000" data-start="35.155000" id="word_70">found</span> <span data-end="35.616000" data-start="35.415000" id="word_71">something</span> <span data-end="35.836000" data-start="35.696000" id="word_72">amazing!"</span> <span data-end="36.196000" data-start="35.956000" id="word_73">Her</span> <span data-end="36.757000" data-start="36.257000" id="word_74">friends</span> <span data-end="37.518000" data-start="37.418000" id="word_75">gathered</span> <span data-end="37.719000" data-start="37.538000" id="word_76">around</span> <span data-end="37.799000" data-start="37.739000" id="word_77">as</span> <span data-end="37.959000" data-start="37.859000" id="word_78">Luna</span> <span data-end="38.199000" data-start="38.019000" id="word_79">told</span> <span data-end="38.640000" data-start="38.239000" id="word_80">them</span> <span data-end="39.041000" data-start="38.860000" id="word_81">about</span> <span data-end="39.201000" data-start="39.081000" id="word_82">the</span> <span data-end="39.481000" data-start="39.261000" id="word_83">secret</span> <span data-end="39.742000" data-start="39.662000" id="word_84">garden.</span> <span data-end="39.862000" data-start="39.802000" id="word_85">"It</span> <span data-end="40.022000" data-start="39.922000" id="word_86">needs</span> <span data-end="40.543000" data-start="40.062000" id="word_87">our</span> <span data-end="41.564000" data-start="41.364000" id="word_88">help,"</span> <span data-end="41.865000" data-start="41.624000" id="word_89">Luna</span> <span data-end="42.325000" data-start="41.945000" id="word_90">explained.</span> <span data-end="43.687000" data-start="42.386000" id="word_91">"If</span> <span data-end="44.569000" data-start="44.328000" id="word_92">we</span> <span data-end="44.789000" data-start="44.629000" id="word_93">work</span> <span data-end="45.350000" data-start="44.869000" id="word_94">together,</span> <span data-end="46.592000" data-start="46.451000" id="word_95">we</span> <span data-end="46.732000" data-start="46.632000" id="word_96">can</span> <span data-end="46.872000" data-start="46.792000" id="word_97">make</span> <span data-end="47.132000" data-start="46.912000" id="word_98">it</span> <span data-end="47.373000" data-start="47.193000" id="word_99">beautiful</span> <span data-end="47.513000" data-start="47.393000" id="word_100">again!"</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image2.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation2.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="47.894000" data-start="47.553000" id="word_101">She</span> <span data-end="48.194000" data-start="47.954000" id="word_102">pushed</span> <span data-end="48.354000" data-start="48.234000" id="word_103">aside</span> <span data-end="48.775000" data-start="48.394000" id="word_104">the</span> <span data-end="52.020000" data-start="51.739000" id="word_105">tall</span> <span data-end="52.320000" data-start="52.060000" id="word_106">weeds</span> <span data-end="52.660000" data-start="52.360000" id="word_107">and</span> <span data-end="54.103000" data-start="53.602000" id="word_108">tangled</span> <span data-end="54.143000" data-start="54.123000" id="word_109">vines.</span> <span data-end="54.904000" data-start="54.723000" id="word_110">There,</span> <span data-end="55.084000" data-start="54.964000" id="word_111">hidden</span> <span data-end="55.244000" data-start="55.124000" id="word_112">from</span> <span data-end="55.344000" data-start="55.284000" id="word_113">everyone,</span> <span data-end="55.585000" data-start="55.384000" id="word_114">was</span> <span data-end="55.685000" data-start="55.645000" id="word_115">a</span> <span data-end="56.186000" data-start="55.725000" id="word_116">forgotten</span> <span data-end="56.366000" data-start="56.226000" id="word_117">garden!</span> <span data-end="56.746000" data-start="56.446000" id="word_118">The</span> <span data-end="56.867000" data-start="56.786000" id="word_119">space</span> <span data-end="57.167000" data-start="56.967000" id="word_120">was</span> <span data-end="57.528000" data-start="57.287000" id="word_121">overgrown</span> <span data-end="57.968000" data-start="57.608000" id="word_122">with</span> <span data-end="59.470000" data-start="59.190000" id="word_123">weeds</span> <span data-end="60.532000" data-start="60.252000" id="word_124">and</span> <span data-end="61.273000" data-start="60.592000" id="word_125">the</span> <span data-end="62.072000" data-start="61.912000" id="word_126">soil</span> <span data-end="62.212000" data-start="62.112000" id="word_127">looked</span> <span data-end="62.353000" data-start="62.232000" id="word_128">tired</span> <span data-end="62.553000" data-start="62.413000" id="word_129">and</span> <span data-end="62.833000" data-start="62.633000" id="word_130">brown,</span> <span data-end="62.994000" data-start="62.873000" id="word_131">but</span> <span data-end="63.214000" data-start="63.034000" id="word_132">Luna</span> <span data-end="63.655000" data-start="63.274000" id="word_133">could</span> <span data-end="63.855000" data-start="63.715000" id="word_134">see</span> <span data-end="64.296000" data-start="63.935000" id="word_135">its</span> <span data-end="67.721000" data-start="67.360000" id="word_136">magic.</span> <span data-end="68.121000" data-start="67.941000" id="word_137">"This</span> <span data-end="68.382000" data-start="68.202000" id="word_138">garden</span> <span data-end="68.582000" data-start="68.482000" id="word_139">is</span> <span data-end="69.664000" data-start="69.624000" id="word_140">just</span> <span data-end="70.084000" data-start="69.724000" id="word_141">waiting</span> <span data-end="70.365000" data-start="70.165000" id="word_142">for</span> <span data-end="71.046000" data-start="70.385000" id="word_143">someone</span> <span data-end="71.206000" data-start="71.086000" id="word_144">to</span> <span data-end="71.467000" data-start="71.306000" id="word_145">help</span> <span data-end="71.847000" data-start="71.587000" id="word_146">it</span> <span data-end="72.007000" data-start="71.907000" id="word_147">bloom</span> <span data-end="72.087000" data-start="72.047000" id="word_148">again,"</span> <span data-end="72.288000" data-start="72.128000" id="word_149">she</span> <span data-end="72.668000" data-start="72.388000" id="word_150">whispered</span> <span data-end="72.789000" data-start="72.708000" id="word_151">to</span> <span data-end="72.909000" data-start="72.849000" id="word_152">herself.</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image3.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation3.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="73.269000" data-start="72.969000" id="word_153">The</span> <span data-end="73.450000" data-start="73.329000" id="word_154">next</span> <span data-end="73.690000" data-start="73.510000" id="word_155">day,</span> <span data-end="74.191000" data-start="73.750000" id="word_156">Luna</span> <span data-end="75.793000" data-start="75.573000" id="word_157">and</span> <span data-end="75.973000" data-start="75.853000" id="word_158">her</span> <span data-end="76.234000" data-start="76.034000" id="word_159">friends</span> <span data-end="76.334000" data-start="76.274000" id="word_160">arrived</span> <span data-end="76.695000" data-start="76.374000" id="word_161">with</span> <span data-end="77.135000" data-start="76.755000" id="word_162">small</span> <span data-end="78.197000" data-start="77.936000" id="word_163">gloves</span> <span data-end="78.738000" data-start="78.237000" id="word_164">and</span> <span data-end="80.040000" data-start="79.899000" id="word_165">garden</span> <span data-end="80.360000" data-start="80.100000" id="word_166">tools.</span> <span data-end="80.440000" data-start="80.380000" id="word_167">There</span> <span data-end="80.560000" data-start="80.480000" id="word_168">was</span> <span data-end="80.961000" data-start="80.600000" id="word_169">Maya</span> <span data-end="81.241000" data-start="81.161000" id="word_170">with</span> <span data-end="81.642000" data-start="81.322000" id="word_171">her</span> <span data-end="81.902000" data-start="81.682000" id="word_172">bright</span> <span data-end="82.223000" data-start="81.942000" id="word_173">red</span> <span data-end="82.824000" data-start="82.323000" id="word_174">hat,</span> <span data-end="83.785000" data-start="83.645000" id="word_175">Sam</span> <span data-end="84.206000" data-start="83.845000" id="word_176">carrying</span> <span data-end="84.346000" data-start="84.286000" id="word_177">a</span> <span data-end="84.466000" data-start="84.386000" id="word_178">tiny</span> <span data-end="84.867000" data-start="84.506000" id="word_179">rake,</span> <span data-end="85.688000" data-start="85.548000" id="word_180">and</span> <span data-end="86.149000" data-start="85.768000" id="word_181">Noah</span> <span data-end="86.289000" data-start="86.229000" id="word_182">with</span> <span data-end="86.409000" data-start="86.329000" id="word_183">a</span> <span data-end="86.890000" data-start="86.449000" id="word_184">basket</span> <span data-end="90.200000" data-start="89.840000" id="word_185">for</span> <span data-end="91.282000" data-start="91.001000" id="word_186">collecting</span> <span data-end="91.502000" data-start="91.322000" id="word_187">weeds.</span> <span data-end="92.043000" data-start="91.662000" id="word_188">Together,</span> <span data-end="92.183000" data-start="92.083000" id="word_189">they</span> <span data-end="92.624000" data-start="92.223000" id="word_190">worked</span> <span data-end="93.505000" data-start="93.465000" id="word_191">as</span> <span data-end="93.665000" data-start="93.545000" id="word_192">a</span> <span data-end="94.045000" data-start="93.805000" id="word_193">team.</span> <span data-end="94.586000" data-start="94.145000" id="word_194">Luna</span> <span data-end="94.846000" data-start="94.646000" id="word_195">showed</span> <span data-end="94.987000" data-start="94.886000" id="word_196">them</span> <span data-end="95.247000" data-start="95.047000" id="word_197">how</span> <span data-end="95.788000" data-start="95.347000" id="word_198">to</span> <span data-end="95.988000" data-start="95.868000" id="word_199">pull</span> <span data-end="96.108000" data-start="96.048000" id="word_200">weeds</span> <span data-end="96.549000" data-start="96.308000" id="word_201">gently</span> <span data-end="96.709000" data-start="96.589000" id="word_202">from</span> <span data-end="96.949000" data-start="96.789000" id="word_203">the</span> <span data-end="97.089000" data-start="96.989000" id="word_204">roots.</span> <span data-end="97.510000" data-start="97.189000" id="word_205">Sam</span> <span data-end="97.790000" data-start="97.590000" id="word_206">raked</span> <span data-end="98.291000" data-start="97.930000" id="word_207">the</span> <span data-end="98.611000" data-start="98.331000" id="word_208">soil</span> <span data-end="99.092000" data-start="98.691000" id="word_209">smooth.</span> <span data-end="100.133000" data-start="99.933000" id="word_210">Maya</span> <span data-end="100.253000" data-start="100.173000" id="word_211">and</span> <span data-end="100.353000" data-start="100.313000" id="word_212">Noah</span> <span data-end="100.834000" data-start="100.393000" id="word_213">cleared</span> <span data-end="101.054000" data-start="100.914000" id="word_214">away</span> <span data-end="101.355000" data-start="101.134000" id="word_215">old</span> <span data-end="101.775000" data-start="101.415000" id="word_216">leaves</span> <span data-end="103.197000" data-start="102.917000" id="word_217">and</span> <span data-end="104.018000" data-start="103.237000" id="word_218">sticks.</span> <span data-end="104.499000" data-start="104.078000" id="word_219">Even</span> <span data-end="104.879000" data-start="104.519000" id="word_220">though</span> <span data-end="105.640000" data-start="105.380000" id="word_221">it</span> <span data-end="105.860000" data-start="105.700000" id="word_222">was</span> <span data-end="106.361000" data-start="105.960000" id="word_223">hard</span> <span data-end="107.462000" data-start="107.302000" id="word_224">work,</span> <span data-end="107.563000" data-start="107.482000" id="word_225">they</span> <span data-end="107.683000" data-start="107.603000" id="word_226">laughed</span> <span data-end="107.923000" data-start="107.743000" id="word_227">and</span> <span data-end="108.223000" data-start="108.023000" id="word_228">sang</span> <span data-end="108.644000" data-start="108.283000" id="word_229">songs</span> <span data-end="108.824000" data-start="108.744000" id="word_230">while</span> <span data-end="109.305000" data-start="108.884000" id="word_231">they</span> <span data-end="112.589000" data-start="112.389000" id="word_232">worked.</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image4.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation4.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="112.729000" data-start="112.629000" id="word_233">When</span> <span data-end="113.150000" data-start="112.789000" id="word_234">the</span> <span data-end="114.231000" data-start="113.971000" id="word_235">garden</span> <span data-end="114.792000" data-start="114.271000" id="word_236">space</span> <span data-end="115.833000" data-start="115.693000" id="word_237">was</span> <span data-end="116.133000" data-start="115.873000" id="word_238">clean</span> <span data-end="116.234000" data-start="116.173000" id="word_239">and</span> <span data-end="116.334000" data-start="116.274000" id="word_240">ready,</span> <span data-end="116.594000" data-start="116.374000" id="word_241">Luna</span> <span data-end="116.774000" data-start="116.634000" id="word_242">carefully</span> <span data-end="116.914000" data-start="116.794000" id="word_243">opened</span> <span data-end="117.015000" data-start="116.954000" id="word_244">several</span> <span data-end="117.295000" data-start="117.035000" id="word_245">packets</span> <span data-end="118.176000" data-start="117.335000" id="word_246">of</span> <span data-end="118.716000" data-start="118.375000" id="word_247">flower</span> <span data-end="118.936000" data-start="118.756000" id="word_248">seeds.</span> <span data-end="119.217000" data-start="118.996000" id="word_249">"These</span> <span data-end="119.317000" data-start="119.257000" id="word_250">are</span> <span data-end="119.618000" data-start="119.357000" id="word_251">sunflower</span> <span data-end="119.798000" data-start="119.658000" id="word_252">seeds,"</span> <span data-end="119.878000" data-start="119.818000" id="word_253">she</span> <span data-end="120.219000" data-start="119.918000" id="word_254">explained,</span> <span data-end="120.920000" data-start="120.840000" id="word_255">showing</span> <span data-end="121.221000" data-start="121.000000" id="word_256">the</span> <span data-end="121.381000" data-start="121.261000" id="word_257">small</span> <span data-end="121.622000" data-start="121.441000" id="word_258">seeds</span> <span data-end="122.483000" data-start="122.383000" id="word_259">to</span> <span data-end="122.704000" data-start="122.544000" id="word_260">her</span> <span data-end="123.065000" data-start="122.764000" id="word_261">friends.</span> <span data-end="123.205000" data-start="123.105000" id="word_262">"And</span> <span data-end="123.506000" data-start="123.245000" id="word_263">these</span> <span data-end="124.067000" data-start="123.566000" id="word_264">will</span> <span data-end="124.868000" data-start="124.488000" id="word_265">grow</span> <span data-end="125.169000" data-start="124.928000" id="word_266">into</span> <span data-end="125.289000" data-start="125.229000" id="word_267">purple</span> <span data-end="125.610000" data-start="125.329000" id="word_268">lavender.</span> <span data-end="128.356000" data-start="128.255000" id="word_269">These</span> <span data-end="128.616000" data-start="128.396000" id="word_270">pink</span> <span data-end="128.796000" data-start="128.676000" id="word_271">ones</span> <span data-end="129.338000" data-start="129.237000" id="word_272">will</span> <span data-end="129.638000" data-start="129.398000" id="word_273">become</span> <span data-end="129.819000" data-start="129.678000" id="word_274">zinnias!"</span> <span data-end="131.001000" data-start="130.760000" id="word_275">Each</span> <span data-end="131.342000" data-start="131.041000" id="word_276">friend</span> <span data-end="131.943000" data-start="131.662000" id="word_277">took</span> <span data-end="132.043000" data-start="131.983000" id="word_278">turns</span> <span data-end="132.324000" data-start="132.083000" id="word_279">pressing</span> <span data-end="132.664000" data-start="132.384000" id="word_280">seeds</span> <span data-end="132.905000" data-start="132.745000" id="word_281">into</span> <span data-end="133.045000" data-start="132.945000" id="word_282">the</span> <span data-end="133.366000" data-start="133.085000" id="word_283">soft</span> <span data-end="134.228000" data-start="134.107000" id="word_284">soil.</span> <span data-end="134.408000" data-start="134.268000" id="word_285">Luna</span> <span data-end="134.989000" data-start="134.608000" id="word_286">taught</span> <span data-end="135.671000" data-start="135.510000" id="word_287">them</span> <span data-end="135.851000" data-start="135.691000" id="word_288">to</span> <span data-end="136.132000" data-start="135.891000" id="word_289">make</span> <span data-end="136.753000" data-start="136.633000" id="word_290">small</span> <span data-end="136.913000" data-start="136.793000" id="word_291">holes</span> <span data-end="137.214000" data-start="136.953000" id="word_292">with</span> <span data-end="137.795000" data-start="137.715000" id="word_293">their</span> <span data-end="138.156000" data-start="137.875000" id="word_294">fingers,</span> <span data-end="138.316000" data-start="138.236000" id="word_295">drop</span> <span data-end="138.797000" data-start="138.376000" id="word_296">in</span> <span data-end="141.536000" data-start="141.376000" id="word_297">a</span> <span data-end="141.696000" data-start="141.576000" id="word_298">seed,</span> <span data-end="141.937000" data-start="141.777000" id="word_299">and</span> <span data-end="142.017000" data-start="141.997000" id="word_300">cover</span> <span data-end="142.317000" data-start="142.077000" id="word_301">it</span> <span data-end="142.638000" data-start="142.377000" id="word_302">gently</span> <span data-end="143.559000" data-start="143.339000" id="word_303">with</span> <span data-end="143.820000" data-start="143.619000" id="word_304">earth.</span> <span data-end="144.260000" data-start="144.040000" id="word_305">"Gardens</span> <span data-end="144.581000" data-start="144.300000" id="word_306">teach</span> <span data-end="144.681000" data-start="144.661000" id="word_307">us</span> <span data-end="145.001000" data-start="144.741000" id="word_308">to</span> <span data-end="145.823000" data-start="145.662000" id="word_309">be</span> <span data-end="146.083000" data-start="145.843000" id="word_310">patient,"</span> <span data-end="146.464000" data-start="146.143000" id="word_311">Luna</span> <span data-end="146.564000" data-start="146.504000" id="word_312">said</span> <span data-end="147.004000" data-start="146.624000" id="word_313">wisely.</span> <span data-end="147.185000" data-start="147.044000" id="word_314">"Seeds</span> <span data-end="147.385000" data-start="147.205000" id="word_315">need</span> <span data-end="147.645000" data-start="147.425000" id="word_316">time</span> <span data-end="148.927000" data-start="147.685000" id="word_317">to</span> <span data-end="149.308000" data-start="149.027000" id="word_318">grow,</span> <span data-end="149.708000" data-start="149.408000" id="word_319">just</span> <span data-end="150.129000" data-start="149.768000" id="word_320">like</span> <span data-end="153.634000" data-start="153.334000" id="word_321">friendships</span> <span data-end="153.875000" data-start="153.694000" id="word_322">need</span> <span data-end="154.275000" data-start="153.975000" id="word_323">time</span> <span data-end="154.415000" data-start="154.335000" id="word_324">to</span> <span data-end="154.816000" data-start="154.475000" id="word_325">grow</span> <span data-end="155.797000" data-start="155.657000" id="word_326">strong."</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image5.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation5.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="156.098000" data-start="155.858000" id="word_327">Every</span> <span data-end="156.238000" data-start="156.138000" id="word_328">day</span> <span data-end="156.418000" data-start="156.278000" id="word_329">after</span> <span data-end="156.839000" data-start="156.498000" id="word_330">that,</span> <span data-end="157.099000" data-start="156.899000" id="word_331">the</span> <span data-end="157.560000" data-start="157.200000" id="word_332">friends</span> <span data-end="158.461000" data-start="157.600000" id="word_333">visited</span> <span data-end="158.822000" data-start="158.562000" id="word_334">their</span> <span data-end="159.042000" data-start="158.862000" id="word_335">garden</span> <span data-end="159.142000" data-start="159.082000" id="word_336">together.</span> <span data-end="159.323000" data-start="159.202000" id="word_337">They</span> <span data-end="159.463000" data-start="159.403000" id="word_338">brought</span> <span data-end="159.783000" data-start="159.543000" id="word_339">watering</span> <span data-end="160.204000" data-start="159.843000" id="word_340">cans</span> <span data-end="160.344000" data-start="160.264000" id="word_341">filled</span> <span data-end="160.645000" data-start="160.444000" id="word_342">with</span> <span data-end="161.225000" data-start="160.745000" id="word_343">cool</span> <span data-end="161.526000" data-start="161.306000" id="word_344">water</span> <span data-end="161.907000" data-start="161.626000" id="word_345">and</span> <span data-end="162.107000" data-start="161.947000" id="word_346">sprinkled</span> <span data-end="162.407000" data-start="162.147000" id="word_347">the</span> <span data-end="162.668000" data-start="162.447000" id="word_348">thirsty</span> <span data-end="162.928000" data-start="162.728000" id="word_349">soil.</span> <span data-end="166.032000" data-start="165.811000" id="word_350">Luna</span> <span data-end="166.273000" data-start="166.092000" id="word_351">reminded</span> <span data-end="166.494000" data-start="166.313000" id="word_352">everyone</span> <span data-end="166.755000" data-start="166.655000" id="word_353">that</span> <span data-end="167.559000" data-start="167.137000" id="word_354">plants</span> <span data-end="168.041000" data-start="167.679000" id="word_355">need</span> <span data-end="168.362000" data-start="168.101000" id="word_356">water,</span> <span data-end="168.905000" data-start="168.443000" id="word_357">sunshine,</span> <span data-end="169.748000" data-start="168.945000" id="word_358">and</span> <span data-end="170.351000" data-start="169.808000" id="word_359">love</span> <span data-end="170.552000" data-start="170.431000" id="word_360">to</span> <span data-end="170.893000" data-start="170.652000" id="word_361">grow.</span> <span data-end="171.315000" data-start="170.994000" id="word_362">"We're</span> <span data-end="171.717000" data-start="171.436000" id="word_363">taking</span> <span data-end="171.898000" data-start="171.777000" id="word_364">care</span> <span data-end="172.199000" data-start="171.958000" id="word_365">of</span> <span data-end="173.404000" data-start="172.259000" id="word_366">something</span> <span data-end="173.605000" data-start="173.485000" id="word_367">together,"</span> <span data-end="174.368000" data-start="173.645000" id="word_368">she</span> <span data-end="174.871000" data-start="174.529000" id="word_369">told</span> <span data-end="175.051000" data-start="174.931000" id="word_370">her</span> <span data-end="175.252000" data-start="175.132000" id="word_371">friends.</span> <span data-end="175.433000" data-start="175.313000" id="word_372">"That</span> <span data-end="175.835000" data-start="175.453000" id="word_373">makes</span> <span data-end="176.116000" data-start="175.915000" id="word_374">our</span> <span data-end="179.953000" data-start="176.156000" id="word_375">friendship</span> <span data-end="180.917000" data-start="180.154000" id="word_376">even</span> <span id="word_377">more</span> <span id="word_378">special."</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image6.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation6.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span id="word_379">Weeks</span> <span id="word_380">passed,</span> <span id="word_381">and</span> <span id="word_382">Luna</span> <span id="word_383">checked</span> <span id="word_384">the</span> <span id="word_385">garden</span> <span id="word_386">every</span> <span id="word_387">morning</span> <span id="word_388">before</span> <span id="word_389">school.</span> <span id="word_390">At</span> <span id="word_391">first,</span> <span id="word_392">nothing</span> <span id="word_393">seemed</span> <span id="word_394">to</span> <span id="word_395">happen.</span> <span id="word_396">But</span> <span id="word_397">Luna</span> <span id="word_398">wasn't</span> <span id="word_399">worried.</span> <span id="word_400">"Good</span> <span id="word_401">things</span> <span id="word_402">take</span> <span id="word_403">time,"</span> <span id="word_404">she</span> <span id="word_405">reminded</span> <span id="word_406">herself.</span> <span id="word_407">Then</span> <span id="word_408">one</span> <span id="word_409">morning,</span> <span id="word_410">she</span> <span id="word_411">saw</span> <span id="word_412">them—tiny</span> <span id="word_413">green</span> <span id="word_414">sprouts</span> <span id="word_415">pushing</span> <span id="word_416">up</span> <span id="word_417">through</span> <span id="word_418">the</span> <span id="word_419">soil!</span> <span id="word_420">Luna</span> <span id="word_421">felt</span> <span id="word_422">so</span> <span id="word_423">happy</span> <span id="word_424">she</span> <span id="word_425">could</span> <span id="word_426">hardly</span> <span id="word_427">stand</span> <span id="word_428">still.</span> <span id="word_429">She</span> <span id="word_430">touched</span> <span id="word_431">the</span> <span id="word_432">little</span> <span id="word_433">sprouts</span> <span id="word_434">gently</span> <span id="word_435">with</span> <span id="word_436">one</span> <span id="word_437">finger.</span> <span id="word_438">"Hello,</span> <span id="word_439">little</span> <span id="word_440">plants,"</span> <span id="word_441">she</span> <span id="word_442">whispered.</span> <span id="word_443">"Keep</span> <span id="word_444">growing</span> <span id="word_445">strong."</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image7.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation7.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span id="word_446">More</span> <span id="word_447">weeks</span> <span id="word_448">went</span> <span id="word_449">by,</span> <span id="word_450">and</span> <span id="word_451">something</span> <span id="word_452">magical</span> <span id="word_453">happened.</span> <span id="word_454">The</span> <span id="word_455">garden</span> <span id="word_456">exploded</span> <span id="word_457">with</span> <span id="word_458">color!</span> <span id="word_459">Bright</span> <span id="word_460">yellow</span> <span id="word_461">sunflowers</span> <span id="word_462">stretched</span> <span id="word_463">tall</span> <span id="word_464">toward</span> <span id="word_465">the</span> <span id="word_466">sky.</span> <span id="word_467">Purple</span> <span id="word_468">lavender</span> <span id="word_469">swayed</span> <span id="word_470">in</span> <span id="word_471">the</span> <span id="word_472">breeze,</span> <span id="word_473">filling</span> <span id="word_474">the</span> <span id="word_475">air</span> <span id="word_476">with</span> <span id="word_477">sweet</span> <span id="word_478">scent.</span> <span id="word_479">Pink</span> <span id="word_480">and</span> <span id="word_481">red</span> <span id="word_482">zinnias</span> <span id="word_483">opened</span> <span id="word_484">their</span> <span id="word_485">petals</span> <span id="word_486">wide.</span> <span id="word_487">Orange</span> <span id="word_488">marigolds</span> <span id="word_489">glowed</span> <span id="word_490">like</span> <span id="word_491">little</span> <span id="word_492">suns.</span> <span id="word_493">Blue</span> <span id="word_494">forget-me-nots</span> <span id="word_495">dotted</span> <span id="word_496">the</span> <span id="word_497">garden</span> <span id="word_498">like</span> <span id="word_499">tiny</span> <span id="word_500">stars.</span> <span id="word_501">When</span> <span id="word_502">Luna</span> <span id="word_503">and</span> <span id="word_504">her</span> <span id="word_505">friends</span> <span id="word_506">arrived</span> <span id="word_507">that</span> <span id="word_508">afternoon,</span> <span id="word_509">they</span> <span id="word_510">gasped</span> <span id="word_511">with</span> <span id="word_512">wonder.</span> <span id="word_513">Butterflies</span> <span id="word_514">danced</span> <span id="word_515">from</span> <span id="word_516">flower</span> <span id="word_517">to</span> <span id="word_518">flower.</span> <span id="word_519">Bees</span> <span id="word_520">hummed</span> <span id="word_521">happy</span> <span id="word_522">songs.</span> <span id="word_523">"We</span> <span id="word_524">did</span> <span id="word_525">this</span> <span id="word_526">together!"</span> <span id="word_527">Maya</span> <span id="word_528">cheered.</span> <span id="word_529">"Our</span> <span id="word_530">garden</span> <span id="word_531">is</span> <span id="word_532">like</span> <span id="word_533">a</span> <span id="word_534">rainbow!"</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image8.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation8.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span id="word_535">The</span> <span id="word_536">colorful</span> <span id="word_537">garden</span> <span id="word_538">became</span> <span id="word_539">a</span> <span id="word_540">special</span> <span id="word_541">place</span> <span id="word_542">for</span> <span id="word_543">everyone</span> <span id="word_544">in</span> <span id="word_545">the</span> <span id="word_546">neighborhood.</span> <span id="word_547">Families</span> <span id="word_548">came</span> <span id="word_549">to</span> <span id="word_550">admire</span> <span id="word_551">the</span> <span id="word_552">flowers</span> <span id="word_553">and</span> <span id="word_554">rest</span> <span id="word_555">on</span> <span id="word_556">the</span> <span id="word_557">soft</span> <span id="word_558">grass.</span> <span id="word_559">Luna</span> <span id="word_560">and</span> <span id="word_561">her</span> <span id="word_562">friends</span> <span id="word_563">felt</span> <span id="word_564">proud</span> <span id="word_565">every</span> <span id="word_566">time</span> <span id="word_567">someone</span> <span id="word_568">smiled</span> <span id="word_569">at</span> <span id="word_570">their</span> <span id="word_571">beautiful</span> <span id="word_572">creation.</span> <span id="word_573">"Remember</span> <span id="word_574">when</span> <span id="word_575">this</span> <span id="word_576">was</span> <span id="word_577">just</span> <span id="word_578">weeds</span> <span id="word_579">and</span> <span id="word_580">dirt?"</span> <span id="word_581">Sam</span> <span id="word_582">asked.</span> <span id="word_583">Luna</span> <span id="word_584">nodded,</span> <span id="word_585">her</span> <span id="word_586">heart</span> <span id="word_587">full</span> <span id="word_588">of</span> <span id="word_589">happiness.</span> <span id="word_590">"We</span> <span id="word_591">learned</span> <span id="word_592">something</span> <span id="word_593">important,"</span> <span id="word_594">she</span> <span id="word_595">said.</span> <span id="word_596">"When</span> <span id="word_597">friends</span> <span id="word_598">work</span> <span id="word_599">together</span> <span id="word_600">and</span> <span id="word_601">take</span> <span id="word_602">care</span> <span id="word_603">of</span> <span id="word_604">something</span> <span id="word_605">with</span> <span id="word_606">patience</span> <span id="word_607">and</span> <span id="word_608">love,</span> <span id="word_609">magical</span> <span id="word_610">things</span> <span id="word_611">can</span> <span id="word_612">happen."</span> <span id="word_613">The</span> <span id="word_614">garden</span> <span id="word_615">wasn't</span> <span id="word_616">just</span> <span id="word_617">full</span> <span id="word_618">of</span> <span id="word_619">beautiful</span> <span id="word_620">flowers—it</span> <span id="word_621">was</span> <span id="word_622">full</span> <span id="word_623">of</span> <span id="word_624">friendship,</span> <span id="word_625">teamwork,</span> <span id="word_626">and</span> <span id="word_627">the</span> <span id="word_628">wonderful</span> <span id="word_629">feeling</span> <span id="word_630">that</span> <span id="word_631">comes</span> <span id="word_632">from</span> <span id="word_633">making</span> <span id="word_634">the</span> <span id="word_635">world</span> <span id="word_636">a</span> <span id="word_637">little</span> <span id="word_638">more</span> <span id="word_639">colorful.</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image9.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation9.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span id="word_640">The</span> <span id="word_641">End</span> <br/></div>
-<style id="sb-questions-style">
-.questions-container {
-  display: block;
-  clear: both;
-  margin-top: 0;
-  margin-bottom: 60px;
-  padding: 30px 20px;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-.questions-title {
-  font-family: 'Coming Soon', cursive;
-  font-size: 1.8em;
-  color: #FFD700;
-  text-shadow: 0 0 10px rgba(255,215,0,0.6), 0 0 20px rgba(255,165,0,0.4);
-  margin-bottom: 30px;
-}
-.question-text {
-  font-family: 'Coming Soon', cursive;
-  font-size: 1.3em;
-  color: #FFD700;
-  text-shadow: 0 0 8px rgba(255,215,0,0.5), 0 0 16px rgba(255,165,0,0.3);
-  line-height: 1.8;
-  padding: 20px 10px;
-  margin: 0 auto 25px auto;
-  max-width: 85%;
-}
-.question-number {
-  display: block;
-  font-size: 1.4em;
-  color: #FFA500;
-  text-shadow: 0 0 6px rgba(255,165,0,0.5);
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-@media (max-width: 900px) {
-  .questions-container {
-    padding: 20px 15px;
-  }
-  .question-text {
-    font-size: 1.1em;
-    max-width: 95%;
-  }
-}
-</style>
+<div class="main-blank questions-toggle"><div id="transcript" style="text-align:center;"><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation sb-firstline" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-imagetitle.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animationtitle.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/>
+<span class="big-title" id="word_1" data-start="0.000000" data-end="1.080000" style="font-size:1.28em;font-weight:bold;">Luna's</span> <span class="big-title" id="word_2" data-start="1.700000" data-end="2.060000" style="font-size:1.28em;font-weight:bold;">Colorful</span> <span class="big-title" id="word_3" data-start="2.060000" data-end="2.340000" style="font-size:1.28em;font-weight:bold;">Garden</span> <br/><span id="word_4" data-start="2.340000" data-end="2.520000">Luna</span> <span id="word_5" data-start="2.520000" data-end="2.640000">loved</span> <span id="word_6" data-start="2.640000" data-end="2.980000">everything</span> <span id="word_7" data-start="2.980000" data-end="3.420000">about</span> <span id="word_8" data-start="3.900000" data-end="4.040000">nature.</span> <span id="word_9" data-start="4.040000" data-end="4.400000">She</span> <span id="word_10" data-start="4.400000" data-end="4.720000">loved</span> <span id="word_11" data-start="4.720000" data-end="4.900000">the</span> <span id="word_12" data-start="4.900000" data-end="5.240000">way</span> <span id="word_13" data-start="5.720000" data-end="5.920000">flowers</span> <span id="word_14" data-start="5.920000" data-end="6.020000">smelled,</span> <span id="word_15" data-start="6.020000" data-end="6.320000">the</span> <span id="word_16" data-start="6.320000" data-end="6.480000">soft</span> <span id="word_17" data-start="6.480000" data-end="6.760000">buzz</span> <span id="word_18" data-start="6.760000" data-end="7.160000">of</span> <span id="word_19" data-start="7.160000" data-end="7.480000">bees,</span> <span id="word_20" data-start="7.480000" data-end="7.660000">and</span> <span id="word_21" data-start="7.660000" data-end="7.940000">the</span> <span id="word_22" data-start="8.840000" data-end="9.240000">feeling</span> <span id="word_23" data-start="9.240000" data-end="9.480000">of</span> <span id="word_24" data-start="9.480000" data-end="10.000000">warm</span> <span id="word_25" data-start="10.320000" data-end="10.420000">soil</span> <span id="word_26" data-start="10.420000" data-end="10.740000">between</span> <span id="word_27" data-start="10.740000" data-end="10.940000">her</span> <span id="word_28" data-start="10.940000" data-end="11.060000">fingers.</span> <span id="word_29" data-start="11.060000" data-end="11.420000">One</span> <span id="word_30" data-start="11.420000" data-end="11.880000">sunny</span> <span id="word_31" data-start="12.600000" data-end="12.800000">afternoon,</span> <span id="word_32" data-start="12.800000" data-end="13.160000">while</span> <span id="word_33" data-start="13.160000" data-end="13.460000">playing</span> <span id="word_34" data-start="13.460000" data-end="13.920000">near</span> <span id="word_35" data-start="13.920000" data-end="14.240000">the</span> <span id="word_36" data-start="14.240000" data-end="14.460000">neighborhood</span> <span id="word_37" data-start="14.460000" data-end="14.740000">playground,</span> <span id="word_38" data-start="14.740000" data-end="15.000000">Luna</span> <span id="word_39" data-start="15.000000" data-end="15.380000">noticed</span> <span id="word_40" data-start="16.920000" data-end="17.680000">something</span> <span id="word_41" data-start="17.680000" data-end="18.080000">special</span> <span id="word_42" data-start="18.640000" data-end="19.280000">behind</span> <span id="word_43" data-start="19.280000" data-end="20.220000">the</span> <span id="word_44" data-start="20.220000" data-end="20.640000">old</span> <span id="word_45" data-start="20.640000" data-end="20.840000">wooden</span> <span id="word_46" data-start="20.840000" data-end="21.140000">fence.</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image1.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation1.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span id="word_47" data-start="21.140000" data-end="21.540000">Luna's</span> <span id="word_48" data-start="21.540000" data-end="21.840000">heart</span> <span id="word_49" data-start="21.840000" data-end="22.160000">filled</span> <span id="word_50" data-start="22.160000" data-end="22.620000">with</span> <span id="word_51" data-start="23.360000" data-end="23.640000">excitement.</span> <span id="word_52" data-start="23.980000" data-end="24.200000">She</span> <span id="word_53" data-start="24.200000" data-end="24.420000">ran</span> <span id="word_54" data-start="24.420000" data-end="24.860000">back</span> <span id="word_55" data-start="25.300000" data-end="25.440000">to</span> <span id="word_56" data-start="25.440000" data-end="25.540000">the</span> <span id="word_57" data-start="25.540000" data-end="25.980000">playground</span> <span id="word_58" data-start="25.980000" data-end="26.420000">where</span> <span id="word_59" data-start="26.420000" data-end="26.680000">her</span> <span id="word_60" data-start="26.680000" data-end="27.940000">friends</span> <span id="word_61" data-start="27.940000" data-end="28.240000">were</span> <span id="word_62" data-start="28.240000" data-end="28.860000">playing</span> <span id="word_63" data-start="28.860000" data-end="29.040000">on</span> <span id="word_64" data-start="29.040000" data-end="29.400000">the</span> <span id="word_65" data-start="29.760000" data-end="29.940000">swings.</span> <span id="word_66" data-start="29.940000" data-end="30.060000">"Everyone,</span> <span id="word_67" data-start="30.060000" data-end="30.380000">come</span> <span id="word_68" data-start="30.380000" data-end="30.640000">quick!</span> <span id="word_69" data-start="30.640000" data-end="31.100000">I</span> <span id="word_70" data-start="31.100000" data-end="31.420000">found</span> <span id="word_71" data-start="31.420000" data-end="31.760000">something</span> <span id="word_72" data-start="32.420000" data-end="32.640000">amazing!"</span> <span id="word_73" data-start="32.640000" data-end="32.840000">Her</span> <span id="word_74" data-start="32.840000" data-end="33.100000">friends</span> <span id="word_75" data-start="33.100000" data-end="33.460000">gathered</span> <span id="word_76" data-start="33.460000" data-end="33.680000">around</span> <span id="word_77" data-start="33.680000" data-end="34.020000">as</span> <span id="word_78" data-start="35.180000" data-end="35.700000">Luna</span> <span id="word_79" data-start="35.700000" data-end="35.980000">told</span> <span id="word_80" data-start="35.980000" data-end="36.160000">them</span> <span id="word_81" data-start="36.160000" data-end="36.400000">about</span> <span id="word_82" data-start="36.400000" data-end="36.680000">the</span> <span id="word_83" data-start="36.680000" data-end="36.900000">secret</span> <span id="word_84" data-start="36.900000" data-end="37.160000">garden.</span> <span id="word_85" data-start="37.160000" data-end="37.320000">"It</span> <span id="word_86" data-start="37.320000" data-end="37.500000">needs</span> <span id="word_87" data-start="37.500000" data-end="37.640000">our</span> <span id="word_88" data-start="37.640000" data-end="37.840000">help,"</span> <span id="word_89" data-start="37.840000" data-end="38.160000">Luna</span> <span id="word_90" data-start="38.920000" data-end="39.160000">explained.</span> <span id="word_91" data-start="39.160000" data-end="39.680000">"If</span> <span id="word_92" data-start="39.680000" data-end="39.800000">we</span> <span id="word_93" data-start="39.800000" data-end="40.160000">work</span> <span id="word_94" data-start="41.120000" data-end="41.360000">together,</span> <span id="word_95" data-start="41.360000" data-end="41.460000">we</span> <span id="word_96" data-start="43.800000" data-end="44.320000">can</span> <span id="word_97" data-start="44.320000" data-end="44.520000">make</span> <span id="word_98" data-start="44.520000" data-end="44.880000">it</span> <span id="word_99" data-start="44.880000" data-end="45.080000">beautiful</span> <span id="word_100" data-start="45.080000" data-end="45.500000">again!"</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image2.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation2.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span id="word_101" data-start="46.280000" data-end="46.500000">She</span> <span id="word_102" data-start="46.500000" data-end="46.720000">pushed</span> <span id="word_103" data-start="46.720000" data-end="46.960000">aside</span> <span id="word_104" data-start="46.960000" data-end="47.120000">the</span> <span id="word_105" data-start="47.120000" data-end="47.240000">tall</span> <span id="word_106" data-start="47.240000" data-end="47.580000">weeds</span> <span id="word_107" data-start="47.580000" data-end="47.820000">and</span> <span id="word_108" data-start="47.820000" data-end="47.980000">tangled</span> <span id="word_109" data-start="47.980000" data-end="48.220000">vines.</span> <span id="word_110" data-start="48.220000" data-end="48.380000">There,</span> <span id="word_111" data-start="48.380000" data-end="48.680000">hidden</span> <span id="word_112" data-start="48.680000" data-end="48.860000">from</span> <span id="word_113" data-start="48.860000" data-end="48.980000">everyone,</span> <span id="word_114" data-start="48.980000" data-end="49.220000">was</span> <span id="word_115" data-start="50.140000" data-end="50.660000">a</span> <span id="word_116" data-start="50.660000" data-end="50.940000">forgotten</span> <span id="word_117" data-start="50.940000" data-end="51.260000">garden!</span> <span id="word_118" data-start="51.380000" data-end="51.460000">The</span> <span id="word_119" data-start="51.460000" data-end="51.640000">space</span> <span id="word_120" data-start="51.640000" data-end="51.900000">was</span> <span id="word_121" data-start="51.900000" data-end="52.380000">overgrown</span> <span id="word_122" data-start="52.380000" data-end="52.940000">with</span> <span id="word_123" data-start="52.940000" data-end="54.220000">weeds</span> <span id="word_124" data-start="54.220000" data-end="54.540000">and</span> <span id="word_125" data-start="54.540000" data-end="54.980000">the</span> <span id="word_126" data-start="54.980000" data-end="55.180000">soil</span> <span id="word_127" data-start="55.180000" data-end="55.420000">looked</span> <span id="word_128" data-start="55.420000" data-end="55.700000">tired</span> <span id="word_129" data-start="55.700000" data-end="55.880000">and</span> <span id="word_130" data-start="55.880000" data-end="56.060000">brown,</span> <span id="word_131" data-start="56.060000" data-end="56.260000">but</span> <span id="word_132" data-start="56.260000" data-end="56.540000">Luna</span> <span id="word_133" data-start="56.540000" data-end="56.880000">could</span> <span id="word_134" data-start="57.840000" data-end="58.400000">see</span> <span id="word_135" data-start="58.400000" data-end="58.680000">its</span> <span id="word_136" data-start="58.680000" data-end="58.840000">magic.</span> <span id="word_137" data-start="58.840000" data-end="59.120000">"This</span> <span id="word_138" data-start="59.520000" data-end="59.720000">garden</span> <span id="word_139" data-start="59.720000" data-end="60.040000">is</span> <span id="word_140" data-start="60.980000" data-end="61.180000">just</span> <span id="word_141" data-start="61.180000" data-end="61.300000">waiting</span> <span id="word_142" data-start="61.300000" data-end="61.460000">for</span> <span id="word_143" data-start="61.460000" data-end="61.860000">someone</span> <span id="word_144" data-start="62.400000" data-end="62.480000">to</span> <span id="word_145" data-start="62.480000" data-end="62.640000">help</span> <span id="word_146" data-start="62.640000" data-end="62.860000">it</span> <span id="word_147" data-start="62.860000" data-end="63.000000">bloom</span> <span id="word_148" data-start="63.000000" data-end="63.540000">again,"</span> <span id="word_149" data-start="63.540000" data-end="64.000000">she</span> <span id="word_150" data-start="64.800000" data-end="64.940000">whispered</span> <span id="word_151" data-start="64.940000" data-end="65.360000">to</span> <span id="word_152" data-start="65.360000" data-end="65.700000">herself.</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image3.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation3.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span id="word_153" data-start="65.700000" data-end="65.960000">The</span> <span id="word_154" data-start="65.960000" data-end="66.760000">next</span> <span id="word_155" data-start="67.680000" data-end="68.320000">day,</span> <span id="word_156" data-start="68.320000" data-end="68.520000">Luna</span> <span id="word_157" data-start="68.520000" data-end="68.920000">and</span> <span id="word_158" data-start="69.240000" data-end="69.420000">her</span> <span id="word_159" data-start="69.420000" data-end="69.640000">friends</span> <span id="word_160" data-start="69.640000" data-end="69.760000">arrived</span> <span id="word_161" data-start="69.760000" data-end="70.100000">with</span> <span id="word_162" data-start="70.100000" data-end="70.480000">small</span> <span id="word_163" data-start="70.480000" data-end="70.760000">gloves</span> <span id="word_164" data-start="70.760000" data-end="71.200000">and</span> <span id="word_165" data-start="71.200000" data-end="71.640000">garden</span> <span id="word_166" data-start="71.640000" data-end="71.840000">tools.</span> <span id="word_167" data-start="71.840000" data-end="72.120000">There</span> <span id="word_168" data-start="72.120000" data-end="72.520000">was</span> <span id="word_169" data-start="73.600000" data-end="73.840000">Maya</span> <span id="word_170" data-start="73.840000" data-end="74.020000">with</span> <span id="word_171" data-start="74.020000" data-end="74.380000">her</span> <span id="word_172" data-start="74.380000" data-end="74.660000">bright</span> <span id="word_173" data-start="74.660000" data-end="74.780000">red</span> <span id="word_174" data-start="74.780000" data-end="75.080000">hat,</span> <span id="word_175" data-start="75.080000" data-end="75.340000">Sam</span> <span id="word_176" data-start="75.340000" data-end="75.680000">carrying</span> <span id="word_177" data-start="76.160000" data-end="76.480000">a</span> <span id="word_178" data-start="76.480000" data-end="76.940000">tiny</span> <span id="word_179" data-start="76.940000" data-end="77.180000">rake,</span> <span id="word_180" data-start="77.180000" data-end="77.400000">and</span> <span id="word_181" data-start="77.400000" data-end="77.720000">Noah</span> <span id="word_182" data-start="78.260000" data-end="78.420000">with</span> <span id="word_183" data-start="78.420000" data-end="78.680000">a</span> <span id="word_184" data-start="78.680000" data-end="79.000000">basket</span> <span id="word_185" data-start="79.000000" data-end="79.080000">for</span> <span id="word_186" data-start="79.080000" data-end="79.440000">collecting</span> <span id="word_187" data-start="79.440000" data-end="79.700000">weeds.</span> <span id="word_188" data-start="79.700000" data-end="80.080000">Together,</span> <span id="word_189" data-start="80.080000" data-end="80.460000">they</span> <span id="word_190" data-start="81.140000" data-end="81.740000">worked</span> <span id="word_191" data-start="82.040000" data-end="82.120000">as</span> <span id="word_192" data-start="82.120000" data-end="82.380000">a</span> <span id="word_193" data-start="82.380000" data-end="82.560000">team.</span> <span id="word_194" data-start="82.560000" data-end="82.660000">Luna</span> <span id="word_195" data-start="82.660000" data-end="82.940000">showed</span> <span id="word_196" data-start="83.860000" data-end="84.100000">them</span> <span id="word_197" data-start="84.100000" data-end="84.420000">how</span> <span id="word_198" data-start="84.420000" data-end="84.600000">to</span> <span id="word_199" data-start="84.600000" data-end="84.760000">pull</span> <span id="word_200" data-start="84.760000" data-end="84.840000">weeds</span> <span id="word_201" data-start="84.840000" data-end="85.080000">gently</span> <span id="word_202" data-start="85.080000" data-end="85.540000">from</span> <span id="word_203" data-start="85.540000" data-end="85.940000">the</span> <span id="word_204" data-start="85.940000" data-end="86.260000">roots.</span> <span id="word_205" data-start="86.260000" data-end="86.380000">Sam</span> <span id="word_206" data-start="86.380000" data-end="86.660000">raked</span> <span id="word_207" data-start="87.660000" data-end="88.240000">the</span> <span id="word_208" data-start="88.240000" data-end="88.560000">soil</span> <span id="word_209" data-start="88.560000" data-end="88.760000">smooth.</span> <span id="word_210" data-start="88.760000" data-end="89.020000">Maya</span> <span id="word_211" data-start="89.020000" data-end="89.460000">and</span> <span id="word_212" data-start="90.540000" data-end="90.940000">Noah</span> <span id="word_213" data-start="90.940000" data-end="91.180000">cleared</span> <span id="word_214" data-start="91.180000" data-end="91.440000">away</span> <span id="word_215" data-start="91.440000" data-end="91.860000">old</span> <span id="word_216" data-start="91.860000" data-end="92.120000">leaves</span> <span id="word_217" data-start="92.120000" data-end="92.580000">and</span> <span id="word_218" data-start="92.580000" data-end="92.960000">sticks.</span> <span id="word_219" data-start="92.960000" data-end="93.160000">Even</span> <span id="word_220" data-start="93.160000" data-end="93.460000">though</span> <span id="word_221" data-start="94.360000" data-end="94.700000">it</span> <span id="word_222" data-start="94.700000" data-end="94.940000">was</span> <span id="word_223" data-start="94.940000" data-end="95.100000">hard</span> <span id="word_224" data-start="95.100000" data-end="95.220000">work,</span> <span id="word_225" data-start="95.220000" data-end="95.520000">they</span> <span id="word_226" data-start="95.520000" data-end="95.780000">laughed</span> <span id="word_227" data-start="96.300000" data-end="96.440000">and</span> <span id="word_228" data-start="96.440000" data-end="96.800000">sang</span> <span id="word_229" data-start="96.800000" data-end="97.020000">songs</span> <span id="word_230" data-start="97.020000" data-end="97.220000">while</span> <span id="word_231" data-start="97.220000" data-end="97.700000">they</span> <span id="word_232" data-start="99.260000" data-end="99.800000">worked.</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image4.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation4.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span id="word_233" data-start="99.800000" data-end="100.100000">When</span> <span id="word_234" data-start="100.100000" data-end="100.300000">the</span> <span id="word_235" data-start="101.520000" data-end="102.120000">garden</span> <span id="word_236" data-start="102.120000" data-end="102.720000">space</span> <span id="word_237" data-start="102.720000" data-end="102.940000">was</span> <span id="word_238" data-start="102.940000" data-end="103.180000">clean</span> <span id="word_239" data-start="103.180000" data-end="103.480000">and</span> <span id="word_240" data-start="103.480000" data-end="103.840000">ready,</span> <span id="word_241" data-start="103.840000" data-end="104.040000">Luna</span> <span id="word_242" data-start="104.040000" data-end="104.280000">carefully</span> <span id="word_243" data-start="104.920000" data-end="105.100000">opened</span> <span id="word_244" data-start="105.100000" data-end="105.540000">several</span> <span id="word_245" data-start="105.540000" data-end="105.960000">packets</span> <span id="word_246" data-start="105.960000" data-end="106.340000">of</span> <span id="word_247" data-start="106.340000" data-end="106.740000">flower</span> <span id="word_248" data-start="106.740000" data-end="106.980000">seeds.</span> <span id="word_249" data-start="106.980000" data-end="107.220000">"These</span> <span id="word_250" data-start="107.220000" data-end="107.580000">are</span> <span id="word_251" data-start="108.500000" data-end="109.140000">sunflower</span> <span id="word_252" data-start="109.140000" data-end="109.400000">seeds,"</span> <span id="word_253" data-start="109.400000" data-end="109.900000">she</span> <span id="word_254" data-start="109.900000" data-end="110.380000">explained,</span> <span id="word_255" data-start="110.900000" data-end="111.080000">showing</span> <span id="word_256" data-start="111.080000" data-end="111.560000">the</span> <span id="word_257" data-start="112.160000" data-end="112.440000">small</span> <span id="word_258" data-start="112.440000" data-end="112.640000">seeds</span> <span id="word_259" data-start="112.640000" data-end="112.900000">to</span> <span id="word_260" data-start="112.900000" data-end="113.280000">her</span> <span id="word_261" data-start="113.280000" data-end="113.480000">friends.</span> <span id="word_262" data-start="113.480000" data-end="113.620000">"And</span> <span id="word_263" data-start="113.620000" data-end="113.920000">these</span> <span id="word_264" data-start="114.660000" data-end="114.920000">will</span> <span id="word_265" data-start="114.920000" data-end="115.120000">grow</span> <span id="word_266" data-start="115.120000" data-end="115.340000">into</span> <span id="word_267" data-start="115.340000" data-end="115.580000">purple</span> <span id="word_268" data-start="115.580000" data-end="115.800000">lavender.</span> <span id="word_269" data-start="115.800000" data-end="116.120000">These</span> <span id="word_270" data-start="116.120000" data-end="116.540000">pink</span> <span id="word_271" data-start="117.520000" data-end="117.840000">ones</span> <span id="word_272" data-start="117.840000" data-end="118.080000">will</span> <span id="word_273" data-start="118.080000" data-end="118.380000">become</span> <span id="word_274" data-start="118.380000" data-end="118.540000">zinnias!"</span> <span id="word_275" data-start="118.540000" data-end="118.900000">Each</span> <span id="word_276" data-start="118.900000" data-end="119.600000">friend</span> <span id="word_277" data-start="120.080000" data-end="120.560000">took</span> <span id="word_278" data-start="120.560000" data-end="120.780000">turns</span> <span id="word_279" data-start="120.780000" data-end="121.180000">pressing</span> <span id="word_280" data-start="121.180000" data-end="121.520000">seeds</span> <span id="word_281" data-start="121.520000" data-end="122.060000">into</span> <span id="word_282" data-start="122.060000" data-end="122.280000">the</span> <span id="word_283" data-start="122.280000" data-end="122.460000">soft</span> <span id="word_284" data-start="122.460000" data-end="122.780000">soil.</span> <span id="word_285" data-start="122.780000" data-end="123.140000">Luna</span> <span id="word_286" data-start="124.060000" data-end="124.400000">taught</span> <span id="word_287" data-start="124.400000" data-end="124.720000">them</span> <span id="word_288" data-start="124.720000" data-end="124.960000">to</span> <span id="word_289" data-start="124.960000" data-end="125.120000">make</span> <span id="word_290" data-start="125.120000" data-end="125.300000">small</span> <span id="word_291" data-start="125.300000" data-end="125.640000">holes</span> <span id="word_292" data-start="125.640000" data-end="126.060000">with</span> <span id="word_293" data-start="126.060000" data-end="126.300000">their</span> <span id="word_294" data-start="126.300000" data-end="126.420000">fingers,</span> <span id="word_295" data-start="126.420000" data-end="126.780000">drop</span> <span id="word_296" data-start="127.640000" data-end="127.980000">in</span> <span id="word_297" data-start="127.980000" data-end="128.180000">a</span> <span id="word_298" data-start="128.180000" data-end="128.300000">seed,</span> <span id="word_299" data-start="128.300000" data-end="128.600000">and</span> <span id="word_300" data-start="128.600000" data-end="129.200000">cover</span> <span id="word_301" data-start="129.200000" data-end="129.460000">it</span> <span id="word_302" data-start="129.460000" data-end="129.640000">gently</span> <span id="word_303" data-start="129.640000" data-end="129.960000">with</span> <span id="word_304" data-start="129.960000" data-end="130.220000">earth.</span> <span id="word_305" data-start="130.220000" data-end="130.480000">"Gardens</span> <span id="word_306" data-start="131.540000" data-end="132.120000">teach</span> <span id="word_307" data-start="132.120000" data-end="132.560000">us</span> <span id="word_308" data-start="132.560000" data-end="132.760000">to</span> <span id="word_309" data-start="132.760000" data-end="132.920000">be</span> <span id="word_310" data-start="132.920000" data-end="133.020000">patient,"</span> <span id="word_311" data-start="133.020000" data-end="133.480000">Luna</span> <span id="word_312" data-start="133.980000" data-end="134.240000">said</span> <span id="word_313" data-start="134.240000" data-end="134.420000">wisely.</span> <span id="word_314" data-start="134.420000" data-end="134.840000">"Seeds</span> <span id="word_315" data-start="135.640000" data-end="136.080000">need</span> <span id="word_316" data-start="136.080000" data-end="136.240000">time</span> <span id="word_317" data-start="136.240000" data-end="136.500000">to</span> <span id="word_318" data-start="136.500000" data-end="136.660000">grow,</span> <span id="word_319" data-start="136.660000" data-end="136.960000">just</span> <span id="word_320" data-start="137.320000" data-end="137.500000">like</span> <span id="word_321" data-start="137.500000" data-end="137.760000">friendships</span> <span id="word_322" data-start="137.760000" data-end="138.140000">need</span> <span id="word_323" data-start="138.140000" data-end="138.480000">time</span> <span id="word_324" data-start="140.900000" data-end="141.580000">to</span> <span id="word_325" data-start="141.580000" data-end="142.160000">grow</span> <span id="word_326" data-start="143.080000" data-end="143.760000">strong."</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image5.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation5.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span id="word_327" data-start="143.760000" data-end="144.020000">Every</span> <span id="word_328" data-start="144.020000" data-end="144.300000">day</span> <span id="word_329" data-start="144.300000" data-end="144.620000">after</span> <span id="word_330" data-start="145.000000" data-end="145.080000">that,</span> <span id="word_331" data-start="145.080000" data-end="145.400000">the</span> <span id="word_332" data-start="145.400000" data-end="145.780000">friends</span> <span id="word_333" data-start="145.780000" data-end="146.040000">visited</span> <span id="word_334" data-start="146.040000" data-end="146.340000">their</span> <span id="word_335" data-start="146.340000" data-end="146.700000">garden</span> <span id="word_336" data-start="147.660000" data-end="147.880000">together.</span> <span id="word_337" data-start="147.880000" data-end="148.100000">They</span> <span id="word_338" data-start="148.100000" data-end="148.500000">brought</span> <span id="word_339" data-start="148.500000" data-end="148.840000">watering</span> <span id="word_340" data-start="148.840000" data-end="149.260000">cans</span> <span id="word_341" data-start="149.260000" data-end="149.500000">filled</span> <span id="word_342" data-start="149.500000" data-end="149.780000">with</span> <span id="word_343" data-start="149.780000" data-end="150.100000">cool</span> <span id="word_344" data-start="150.100000" data-end="150.640000">water</span> <span id="word_345" data-start="150.640000" data-end="151.140000">and</span> <span id="word_346" data-start="151.140000" data-end="151.320000">sprinkled</span> <span id="word_347" data-start="151.320000" data-end="151.600000">the</span> <span id="word_348" data-start="151.600000" data-end="152.020000">thirsty</span> <span id="word_349" data-start="153.100000" data-end="153.640000">soil.</span> <span id="word_350" data-start="153.640000" data-end="154.080000">Luna</span> <span id="word_351" data-start="154.080000" data-end="154.420000">reminded</span> <span id="word_352" data-start="154.420000" data-end="154.740000">everyone</span> <span id="word_353" data-start="154.740000" data-end="155.080000">that</span> <span id="word_354" data-start="155.080000" data-end="155.420000">plants</span> <span id="word_355" data-start="155.420000" data-end="155.780000">need</span> <span id="word_356" data-start="156.320000" data-end="156.780000">water,</span> <span id="word_357" data-start="157.100000" data-end="157.260000">sunshine,</span> <span id="word_358" data-start="157.260000" data-end="157.620000">and</span> <span id="word_359" data-start="157.620000" data-end="157.860000">love</span> <span id="word_360" data-start="157.860000" data-end="158.120000">to</span> <span id="word_361" data-start="159.420000" data-end="159.860000">grow.</span> <span id="word_362" data-start="159.860000" data-end="160.080000">"We're</span> <span id="word_363" data-start="160.080000" data-end="160.420000">taking</span> <span id="word_364" data-start="160.420000" data-end="160.520000">care</span> <span id="word_365" data-start="160.520000" data-end="160.720000">of</span> <span id="word_366" data-start="160.720000" data-end="161.200000">something</span> <span id="word_367" data-start="161.780000" data-end="162.100000">together,"</span> <span id="word_368" data-start="162.100000" data-end="162.280000">she</span> <span id="word_369" data-start="162.280000" data-end="162.440000">told</span> <span id="word_370" data-start="162.440000" data-end="162.780000">her</span> <span id="word_371" data-start="163.600000" data-end="163.900000">friends.</span> <span id="word_372" data-start="163.900000" data-end="164.120000">"That</span> <span id="word_373" data-start="164.120000" data-end="164.300000">makes</span> <span id="word_374" data-start="164.300000" data-end="164.700000">our</span> <span id="word_375" data-start="164.700000" data-end="165.020000">friendship</span> <span id="word_376" data-start="165.020000" data-end="165.260000">even</span> <span id="word_377" data-start="168.040000" data-end="168.640000">more</span> <span id="word_378" data-start="168.640000" data-end="168.900000">special."</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image6.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation6.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span id="word_379" data-start="168.900000" data-end="169.200000">Weeks</span> <span id="word_380" data-start="169.200000" data-end="169.420000">passed,</span> <span id="word_381" data-start="169.420000" data-end="169.700000">and</span> <span id="word_382" data-start="169.700000" data-end="169.900000">Luna</span> <span id="word_383" data-start="169.900000" data-end="170.140000">checked</span> <span id="word_384" data-start="170.140000" data-end="170.640000">the</span> <span id="word_385" data-start="170.640000" data-end="170.960000">garden</span> <span id="word_386" data-start="170.960000" data-end="171.240000">every</span> <span id="word_387" data-start="171.240000" data-end="171.680000">morning</span> <span id="word_388" data-start="172.380000" data-end="172.740000">before</span> <span id="word_389" data-start="172.740000" data-end="173.040000">school.</span> <span id="word_390" data-start="173.340000" data-end="173.580000">At</span> <span id="word_391" data-start="173.580000" data-end="173.900000">first,</span> <span id="word_392" data-start="173.900000" data-end="174.040000">nothing</span> <span id="word_393" data-start="174.040000" data-end="174.340000">seemed</span> <span id="word_394" data-start="174.900000" data-end="175.220000">to</span> <span id="word_395" data-start="175.220000" data-end="175.460000">happen.</span> <span id="word_396" data-start="175.460000" data-end="175.820000">But</span> <span id="word_397" data-start="175.820000" data-end="176.140000">Luna</span> <span id="word_398" data-start="177.200000" data-end="177.500000">wasn't</span> <span id="word_399" data-start="177.500000" data-end="177.780000">worried.</span> <span id="word_400" data-start="177.780000" data-end="178.040000">"Good</span> <span id="word_401" data-start="178.040000" data-end="178.480000">things</span> <span id="word_402" data-start="179.260000" data-end="179.500000">take</span> <span id="word_403" data-start="179.500000" data-end="179.800000">time,"</span> <span id="word_404" data-start="179.800000" data-end="180.280000">she</span> <span id="word_405" data-start="181.420000" data-end="181.920000">reminded</span> <span id="word_406" data-start="181.920000" data-end="182.060000">herself.</span> <span id="word_407" data-start="182.060000" data-end="182.400000">Then</span> <span id="word_408" data-start="182.400000" data-end="182.700000">one</span> <span id="word_409" data-start="182.700000" data-end="183.000000">morning,</span> <span id="word_410" data-start="183.000000" data-end="183.240000">she</span> <span id="word_411" data-start="183.780000" data-end="184.060000">saw</span> <span id="word_412" data-start="184.060000" data-end="184.440000">them—tiny</span> <span id="word_413" data-start="184.440000" data-end="184.820000">green</span> <span id="word_414" data-start="184.820000" data-end="185.380000">sprouts</span> <span id="word_415" data-start="185.380000" data-end="185.620000">pushing</span> <span id="word_416" data-start="185.620000" data-end="185.780000">up</span> <span id="word_417" data-start="185.780000" data-end="185.900000">through</span> <span id="word_418" data-start="185.900000" data-end="186.180000">the</span> <span id="word_419" data-start="187.240000" data-end="187.700000">soil!</span> <span id="word_420" data-start="187.700000" data-end="187.920000">Luna</span> <span id="word_421" data-start="187.920000" data-end="188.200000">felt</span> <span id="word_422" data-start="188.200000" data-end="188.560000">so</span> <span id="word_423" data-start="188.560000" data-end="188.760000">happy</span> <span id="word_424" data-start="188.760000" data-end="188.900000">she</span> <span id="word_425" data-start="188.900000" data-end="189.200000">could</span> <span id="word_426" data-start="189.200000" data-end="189.560000">hardly</span> <span id="word_427" data-start="189.560000" data-end="189.900000">stand</span> <span id="word_428" data-start="190.720000" data-end="191.400000">still.</span> <span id="word_429" data-start="191.400000" data-end="191.680000">She</span> <span id="word_430" data-start="191.680000" data-end="191.940000">touched</span> <span id="word_431" data-start="191.940000" data-end="192.080000">the</span> <span id="word_432" data-start="192.080000" data-end="192.520000">little</span> <span id="word_433" data-start="192.520000" data-end="192.940000">sprouts</span> <span id="word_434" data-start="192.940000" data-end="193.240000">gently</span> <span id="word_435" data-start="193.240000" data-end="193.420000">with</span> <span id="word_436" data-start="193.420000" data-end="193.760000">one</span> <span id="word_437" data-start="194.800000" data-end="195.480000">finger.</span> <span id="word_438" data-start="195.480000" data-end="195.760000">"Hello,</span> <span id="word_439" data-start="195.760000" data-end="196.240000">little</span> <span id="word_440" data-start="196.660000" data-end="196.940000">plants,"</span> <span id="word_441" data-start="196.940000" data-end="197.460000">she</span> <span id="word_442" data-start="197.960000" data-end="198.180000">whispered.</span> <span id="word_443" data-start="198.180000" data-end="198.580000">"Keep</span> <span id="word_444" data-start="198.580000" data-end="199.060000">growing</span> <span id="word_445" data-start="200.920000" data-end="201.600000">strong."</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image7.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation7.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span id="word_446" data-start="201.600000" data-end="201.860000">More</span> <span id="word_447" data-start="201.860000" data-end="202.120000">weeks</span> <span id="word_448" data-start="203.260000" data-end="203.920000">went</span> <span id="word_449" data-start="203.920000" data-end="204.120000">by,</span> <span id="word_450" data-start="204.120000" data-end="205.080000">and</span> <span id="word_451" data-start="205.860000" data-end="206.000000">something</span> <span id="word_452" data-start="206.000000" data-end="206.280000">magical</span> <span id="word_453" data-start="206.280000" data-end="207.040000">happened.</span> <span id="word_454" data-start="207.040000" data-end="207.420000">The</span> <span id="word_455" data-start="207.420000" data-end="207.780000">garden</span> <span id="word_456" data-start="208.640000" data-end="208.900000">exploded</span> <span id="word_457" data-start="208.900000" data-end="209.140000">with</span> <span id="word_458" data-start="209.140000" data-end="209.860000">color!</span> <span id="word_459" data-start="209.860000" data-end="210.120000">Bright</span> <span id="word_460" data-start="210.120000" data-end="210.540000">yellow</span> <span id="word_461" data-start="210.540000" data-end="210.740000">sunflowers</span> <span id="word_462" data-start="210.740000" data-end="210.960000">stretched</span> <span id="word_463" data-start="210.960000" data-end="211.220000">tall</span> <span id="word_464" data-start="212.040000" data-end="212.340000">toward</span> <span id="word_465" data-start="212.340000" data-end="212.720000">the</span> <span id="word_466" data-start="212.720000" data-end="213.360000">sky.</span> <span id="word_467" data-start="213.360000" data-end="213.460000">Purple</span> <span id="word_468" data-start="213.460000" data-end="213.540000">lavender</span> <span id="word_469" data-start="213.540000" data-end="213.860000">swayed</span> <span id="word_470" data-start="214.340000" data-end="214.560000">in</span> <span id="word_471" data-start="214.560000" data-end="214.780000">the</span> <span id="word_472" data-start="214.780000" data-end="214.960000">breeze,</span> <span id="word_473" data-start="214.960000" data-end="215.120000">filling</span> <span id="word_474" data-start="215.120000" data-end="215.460000">the</span> <span id="word_475" data-start="215.460000" data-end="215.800000">air</span> <span id="word_476" data-start="216.760000" data-end="217.040000">with</span> <span id="word_477" data-start="217.040000" data-end="217.300000">sweet</span> <span id="word_478" data-start="217.300000" data-end="217.600000">scent.</span> <span id="word_479" data-start="217.600000" data-end="218.200000">Pink</span> <span id="word_480" data-start="218.200000" data-end="218.520000">and</span> <span id="word_481" data-start="218.520000" data-end="218.740000">red</span> <span id="word_482" data-start="218.740000" data-end="219.040000">zinnias</span> <span id="word_483" data-start="219.040000" data-end="219.420000">opened</span> <span id="word_484" data-start="220.120000" data-end="220.760000">their</span> <span id="word_485" data-start="220.760000" data-end="221.400000">petals</span> <span id="word_486" data-start="221.400000" data-end="221.900000">wide.</span> <span id="word_487" data-start="221.900000" data-end="222.040000">Orange</span> <span id="word_488" data-start="222.040000" data-end="222.340000">marigolds</span> <span id="word_489" data-start="222.340000" data-end="223.000000">glowed</span> <span id="word_490" data-start="223.940000" data-end="224.160000">like</span> <span id="word_491" data-start="224.160000" data-end="224.540000">little</span> <span id="word_492" data-start="224.540000" data-end="224.680000">suns.</span> <span id="word_493" data-start="224.680000" data-end="224.920000">Blue</span> <span id="word_494" data-start="224.920000" data-end="225.260000">forget-me-nots</span> <span id="word_495" data-start="225.260000" data-end="225.480000">dotted</span> <span id="word_496" data-start="225.480000" data-end="225.740000">the</span> <span id="word_497" data-start="225.740000" data-end="225.980000">garden</span> <span id="word_498" data-start="225.980000" data-end="226.340000">like</span> <span id="word_499" data-start="226.340000" data-end="226.720000">tiny</span> <span id="word_500" data-start="227.840000" data-end="228.100000">stars.</span> <span id="word_501" data-start="228.100000" data-end="228.320000">When</span> <span id="word_502" data-start="228.320000" data-end="228.520000">Luna</span> <span id="word_503" data-start="228.520000" data-end="228.660000">and</span> <span id="word_504" data-start="228.660000" data-end="228.920000">her</span> <span id="word_505" data-start="228.920000" data-end="229.200000">friends</span> <span id="word_506" data-start="229.200000" data-end="229.440000">arrived</span> <span id="word_507" data-start="229.440000" data-end="229.880000">that</span> <span id="word_508" data-start="230.300000" data-end="230.420000">afternoon,</span> <span id="word_509" data-start="230.420000" data-end="230.960000">they</span> <span id="word_510" data-start="230.960000" data-end="231.100000">gasped</span> <span id="word_511" data-start="231.100000" data-end="231.380000">with</span> <span id="word_512" data-start="232.240000" data-end="232.660000">wonder.</span> <span id="word_513" data-start="232.660000" data-end="233.060000">Butterflies</span> <span id="word_514" data-start="233.060000" data-end="233.360000">danced</span> <span id="word_515" data-start="233.360000" data-end="233.720000">from</span> <span id="word_516" data-start="233.720000" data-end="233.940000">flower</span> <span id="word_517" data-start="233.940000" data-end="234.200000">to</span> <span id="word_518" data-start="235.020000" data-end="235.480000">flower.</span> <span id="word_519" data-start="235.480000" data-end="235.840000">Bees</span> <span id="word_520" data-start="235.840000" data-end="236.100000">hummed</span> <span id="word_521" data-start="236.100000" data-end="236.380000">happy</span> <span id="word_522" data-start="237.360000" data-end="238.000000">songs.</span> <span id="word_523" data-start="238.000000" data-end="238.180000">"We</span> <span id="word_524" data-start="238.180000" data-end="238.360000">did</span> <span id="word_525" data-start="238.360000" data-end="238.740000">this</span> <span id="word_526" data-start="239.280000" data-end="239.560000">together!"</span> <span id="word_527" data-start="239.560000" data-end="239.940000">Maya</span> <span id="word_528" data-start="240.520000" data-end="240.680000">cheered.</span> <span id="word_529" data-start="240.680000" data-end="241.040000">"Our</span> <span id="word_530" data-start="241.040000" data-end="241.280000">garden</span> <span id="word_531" data-start="241.280000" data-end="241.440000">is</span> <span id="word_532" data-start="241.440000" data-end="241.560000">like</span> <span id="word_533" data-start="241.560000" data-end="241.940000">a</span> <span id="word_534" data-start="243.700000" data-end="244.200000">rainbow!"</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image8.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation8.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span id="word_535" data-start="244.200000" data-end="244.440000">The</span> <span id="word_536" data-start="245.580000" data-end="246.120000">colorful</span> <span id="word_537" data-start="246.120000" data-end="246.420000">garden</span> <span id="word_538" data-start="246.420000" data-end="246.840000">became</span> <span id="word_539" data-start="246.840000" data-end="247.160000">a</span> <span id="word_540" data-start="247.160000" data-end="247.380000">special</span> <span id="word_541" data-start="247.380000" data-end="247.740000">place</span> <span id="word_542" data-start="247.740000" data-end="248.080000">for</span> <span id="word_543" data-start="248.080000" data-end="248.320000">everyone</span> <span id="word_544" data-start="248.320000" data-end="248.860000">in</span> <span id="word_545" data-start="248.860000" data-end="249.120000">the</span> <span id="word_546" data-start="249.120000" data-end="249.220000">neighborhood.</span> <span id="word_547" data-start="249.220000" data-end="249.560000">Families</span> <span id="word_548" data-start="250.500000" data-end="251.140000">came</span> <span id="word_549" data-start="251.140000" data-end="251.440000">to</span> <span id="word_550" data-start="251.440000" data-end="251.640000">admire</span> <span id="word_551" data-start="251.640000" data-end="252.000000">the</span> <span id="word_552" data-start="252.000000" data-end="252.200000">flowers</span> <span id="word_553" data-start="252.200000" data-end="252.560000">and</span> <span id="word_554" data-start="252.560000" data-end="252.960000">rest</span> <span id="word_555" data-start="252.960000" data-end="253.280000">on</span> <span id="word_556" data-start="253.280000" data-end="253.480000">the</span> <span id="word_557" data-start="253.480000" data-end="253.580000">soft</span> <span id="word_558" data-start="253.580000" data-end="253.840000">grass.</span> <span id="word_559" data-start="253.840000" data-end="254.220000">Luna</span> <span id="word_560" data-start="255.380000" data-end="255.920000">and</span> <span id="word_561" data-start="255.920000" data-end="256.180000">her</span> <span id="word_562" data-start="256.180000" data-end="256.340000">friends</span> <span id="word_563" data-start="256.340000" data-end="256.660000">felt</span> <span id="word_564" data-start="256.660000" data-end="256.940000">proud</span> <span id="word_565" data-start="256.940000" data-end="257.400000">every</span> <span id="word_566" data-start="257.400000" data-end="257.900000">time</span> <span id="word_567" data-start="257.900000" data-end="258.220000">someone</span> <span id="word_568" data-start="258.220000" data-end="258.580000">smiled</span> <span id="word_569" data-start="258.580000" data-end="259.020000">at</span> <span id="word_570" data-start="259.020000" data-end="259.220000">their</span> <span id="word_571" data-start="259.220000" data-end="259.340000">beautiful</span> <span id="word_572" data-start="259.340000" data-end="259.780000">creation.</span> <span id="word_573" data-start="259.780000" data-end="260.320000">"Remember</span> <span id="word_574" data-start="261.420000" data-end="262.040000">when</span> <span id="word_575" data-start="262.040000" data-end="262.360000">this</span> <span id="word_576" data-start="262.360000" data-end="262.540000">was</span> <span id="word_577" data-start="262.540000" data-end="262.720000">just</span> <span id="word_578" data-start="262.720000" data-end="263.040000">weeds</span> <span id="word_579" data-start="263.040000" data-end="263.420000">and</span> <span id="word_580" data-start="263.420000" data-end="263.640000">dirt?"</span> <span id="word_581" data-start="263.640000" data-end="263.860000">Sam</span> <span id="word_582" data-start="264.660000" data-end="265.100000">asked.</span> <span id="word_583" data-start="265.100000" data-end="265.500000">Luna</span> <span id="word_584" data-start="266.400000" data-end="266.740000">nodded,</span> <span id="word_585" data-start="266.740000" data-end="267.160000">her</span> <span id="word_586" data-start="267.480000" data-end="267.620000">heart</span> <span id="word_587" data-start="267.620000" data-end="267.860000">full</span> <span id="word_588" data-start="267.860000" data-end="268.160000">of</span> <span id="word_589" data-start="268.160000" data-end="268.280000">happiness.</span> <span id="word_590" data-start="268.280000" data-end="268.600000">"We</span> <span id="word_591" data-start="269.760000" data-end="270.400000">learned</span> <span id="word_592" data-start="270.400000" data-end="270.760000">something</span> <span id="word_593" data-start="270.760000" data-end="271.100000">important,"</span> <span id="word_594" data-start="271.100000" data-end="271.720000">she</span> <span id="word_595" data-start="272.460000" data-end="272.680000">said.</span> <span id="word_596" data-start="272.680000" data-end="272.940000">"When</span> <span id="word_597" data-start="273.820000" data-end="274.140000">friends</span> <span id="word_598" data-start="274.140000" data-end="274.480000">work</span> <span id="word_599" data-start="274.480000" data-end="274.760000">together</span> <span id="word_600" data-start="274.760000" data-end="275.100000">and</span> <span id="word_601" data-start="275.100000" data-end="275.420000">take</span> <span id="word_602" data-start="275.420000" data-end="275.600000">care</span> <span id="word_603" data-start="275.600000" data-end="275.860000">of</span> <span id="word_604" data-start="275.860000" data-end="275.980000">something</span> <span id="word_605" data-start="275.980000" data-end="276.220000">with</span> <span id="word_606" data-start="276.220000" data-end="276.480000">patience</span> <span id="word_607" data-start="276.480000" data-end="276.920000">and</span> <span id="word_608" data-start="276.920000" data-end="277.180000">love,</span> <span id="word_609" data-start="277.180000" data-end="277.500000">magical</span> <span id="word_610" data-start="278.380000" data-end="278.780000">things</span> <span id="word_611" data-start="278.780000" data-end="279.220000">can</span> <span id="word_612" data-start="279.220000" data-end="279.460000">happen."</span> <span id="word_613" data-start="279.460000" data-end="279.800000">The</span> <span id="word_614" data-start="280.900000" data-end="281.400000">garden</span> <span id="word_615" data-start="281.400000" data-end="281.660000">wasn't</span> <span id="word_616" data-start="281.660000" data-end="282.080000">just</span> <span id="word_617" data-start="282.080000" data-end="282.240000">full</span> <span id="word_618" data-start="282.240000" data-end="282.560000">of</span> <span id="word_619" data-start="282.560000" data-end="282.700000">beautiful</span> <span id="word_620" data-start="282.700000" data-end="282.940000">flowers—it</span> <span id="word_621" data-start="282.940000" data-end="283.440000">was</span> <span id="word_622" data-start="284.280000" data-end="284.520000">full</span> <span id="word_623" data-start="284.520000" data-end="284.720000">of</span> <span id="word_624" data-start="284.720000" data-end="284.980000">friendship,</span> <span id="word_625" data-start="284.980000" data-end="285.120000">teamwork,</span> <span id="word_626" data-start="285.120000" data-end="285.640000">and</span> <span id="word_627" data-start="286.460000" data-end="286.940000">the</span> <span id="word_628" data-start="287.540000" data-end="287.980000">wonderful</span> <span id="word_629" data-start="287.980000" data-end="288.100000">feeling</span> <span id="word_630" data-start="288.100000" data-end="288.540000">that</span> <span id="word_631" data-start="288.540000" data-end="288.960000">comes</span> <span id="word_632" data-start="288.960000" data-end="289.220000">from</span> <span id="word_633" data-start="289.220000" data-end="289.520000">making</span> <span id="word_634" data-start="289.520000" data-end="289.780000">the</span> <span id="word_635" data-start="289.780000" data-end="290.040000">world</span> <span id="word_636" data-start="290.040000" data-end="290.300000">a</span> <span id="word_637" data-start="290.300000" data-end="290.680000">little</span> <span id="word_638" data-start="290.680000" data-end="291.220000">more</span> <span id="word_639" data-start="291.220000" data-end="291.500000">colorful.</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image9.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation9.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span id="word_640" data-start="291.500000" data-end="291.800000">The</span> <span id="word_641" data-start="291.800000" data-end="292.240000">End</span> <br/></div>
+
 <div class="questions-container" id="questionsContainer" style="display:none;">
 <h2 class="questions-title">Discussion Questions</h2>
 <div class="question-text">
@@ -8128,61 +8145,15 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
     Have you ever worked together with friends to create something special? How did it make you feel?
   </div>
 </div>
-<script id="sb-questions-script">
-(function(){
-  // Reveal questions AFTER end animation + completion sound finish (~8 seconds after audio ends)
-  var QUESTIONS_DELAY = 8000;  // 6s animation + 2s buffer for completion sound
 
-  function revealNow(){
-    var qc = document.getElementById('questionsContainer');
-    if (qc && qc.style.display !== 'block') {
-      qc.style.display = 'block'; qc.style.marginTop = '50px';
-      // Smooth scroll to questions section
-      setTimeout(function(){
-        qc.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 500);
-    }
-  }
-  function resolveAudio(){
-    return (
-      document.getElementById('audio') ||
-      document.getElementById('storyAudio') ||
-      document.querySelector('.audio-box audio') ||
-      document.querySelector('audio#story-audio') ||
-      document.querySelector('audio')
-    );
-  }
-
-  var audio = resolveAudio();
-  if (!audio) {
-    // No audio found - don't show questions automatically
-    console.log('[Questions] No audio element found');
-    return;
-  }
-
-  var revealed = false;
-
-  // Wait for end animation + completion sound before showing questions
-  audio.addEventListener('ended', function(){
-    if (!revealed) {
-      revealed = true;
-      // Delay questions until after animation and completion sound finish
-      setTimeout(revealNow, QUESTIONS_DELAY);
-    }
-  });
-})();
-</script>
-<div id="sb-end-anim-wrap" style="display:none; margin-top:16px; width:100%; text-align:left; position:relative;"><div id="sb-end-anim-holder" style="display:inline-block;"><div id="sb-end-anim-frame" style="display:inline-block; overflow:hidden; border-radius:16px; width:60vw; max-width:320px; aspect-ratio:1/1; position:relative;"><video controlslist="nodownload noplaybackrate noremoteplayback" disablepictureinpicture="" id="sb-end-anim" muted="True" playsinline="True" preload="auto" webkit-playsinline=""><source src="index_items/sbell_story.webm" type="video/webm"/><source src="index_items/sbell_story.mp4" type="video/mp4"/></video></div></div></div>
+<div id="sb-end-anim-wrap" style="display:none; margin-top:16px; width:100%; text-align:left; position:relative;"><div id="sb-end-anim-holder" style="display:inline-block;"><div id="sb-end-anim-frame" style="display:inline-block; overflow:hidden; border-radius:16px; width:60vw; max-width:320px; aspect-ratio:1/1; position:relative;"><video controlslist="nodownload noplaybackrate noremoteplayback" disablepictureinpicture="" id="sb-end-anim" muted="" playsinline="" preload="auto" webkit-playsinline=""><source src="index_items/sbell_story.mp4" type="video/mp4"/><source src="index_items/sbell_story.webm" type="video/webm"/></video></div></div></div>
 </div>
-
-
-
 <div class="audio-sticky-bottom">
 <div class="audio-box" style=";overflow:visible;position:relative;">
 <audio autoplay="" controls="" controlslist="nodownload" id="audio">
-<source src="lunas-colorful-garden/StoryAudio.mp3" type="audio/mpeg"/>
-<source src="/lunas-colorful-garden/StoryAudio.mp3" type="audio/mpeg"/>
-<source src="/lunas-colorful-garden/StoryAudio.mp3" type="audio/mpeg"/>
+<source src="lunas-colorful-garden/lunas-colorful-garden-audio.mp3" type="audio/mpeg"/>
+<source src="/lunas-colorful-garden/lunas-colorful-garden-audio.mp3" type="audio/mpeg"/>
+<source src="/lunas-colorful-garden/lunas-colorful-garden-audio.mp3" type="audio/mpeg"/>
         Your browser does not support the audio element.
       </audio>
 <button aria-label="Playback speed" class="sb-dots-overlay" id="sb-dots"><span class="dots-text">⋮</span><svg aria-hidden="true" class="dots-svg" height="14" viewbox="0 0 8 14" width="8" xmlns="http://www.w3.org/2000/svg">
@@ -9705,6 +9676,647 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 <script>
 var wordTimings = [
+{"start":0.000,"end":1.080},
+{"start":1.700,"end":2.060},
+{"start":2.060,"end":2.340},
+{"start":2.340,"end":2.520},
+{"start":2.520,"end":2.640},
+{"start":2.640,"end":2.980},
+{"start":2.980,"end":3.420},
+{"start":3.900,"end":4.040},
+{"start":4.040,"end":4.400},
+{"start":4.400,"end":4.720},
+{"start":4.720,"end":4.900},
+{"start":4.900,"end":5.240},
+{"start":5.720,"end":5.920},
+{"start":5.920,"end":6.020},
+{"start":6.020,"end":6.320},
+{"start":6.320,"end":6.480},
+{"start":6.480,"end":6.760},
+{"start":6.760,"end":7.160},
+{"start":7.160,"end":7.480},
+{"start":7.480,"end":7.660},
+{"start":7.660,"end":7.940},
+{"start":8.840,"end":9.240},
+{"start":9.240,"end":9.480},
+{"start":9.480,"end":10.000},
+{"start":10.320,"end":10.420},
+{"start":10.420,"end":10.740},
+{"start":10.740,"end":10.940},
+{"start":10.940,"end":11.060},
+{"start":11.060,"end":11.420},
+{"start":11.420,"end":11.880},
+{"start":12.600,"end":12.800},
+{"start":12.800,"end":13.160},
+{"start":13.160,"end":13.460},
+{"start":13.460,"end":13.920},
+{"start":13.920,"end":14.240},
+{"start":14.240,"end":14.460},
+{"start":14.460,"end":14.740},
+{"start":14.740,"end":15.000},
+{"start":15.000,"end":15.380},
+{"start":16.920,"end":17.680},
+{"start":17.680,"end":18.080},
+{"start":18.640,"end":19.280},
+{"start":19.280,"end":20.220},
+{"start":20.220,"end":20.640},
+{"start":20.640,"end":20.840},
+{"start":20.840,"end":21.140},
+{"start":21.140,"end":21.540},
+{"start":21.540,"end":21.840},
+{"start":21.840,"end":22.160},
+{"start":22.160,"end":22.620},
+{"start":23.360,"end":23.640},
+{"start":23.980,"end":24.200},
+{"start":24.200,"end":24.420},
+{"start":24.420,"end":24.860},
+{"start":25.300,"end":25.440},
+{"start":25.440,"end":25.540},
+{"start":25.540,"end":25.980},
+{"start":25.980,"end":26.420},
+{"start":26.420,"end":26.680},
+{"start":26.680,"end":27.940},
+{"start":27.940,"end":28.240},
+{"start":28.240,"end":28.860},
+{"start":28.860,"end":29.040},
+{"start":29.040,"end":29.400},
+{"start":29.760,"end":29.940},
+{"start":29.940,"end":30.060},
+{"start":30.060,"end":30.380},
+{"start":30.380,"end":30.640},
+{"start":30.640,"end":31.100},
+{"start":31.100,"end":31.420},
+{"start":31.420,"end":31.760},
+{"start":32.420,"end":32.640},
+{"start":32.640,"end":32.840},
+{"start":32.840,"end":33.100},
+{"start":33.100,"end":33.460},
+{"start":33.460,"end":33.680},
+{"start":33.680,"end":34.020},
+{"start":35.180,"end":35.700},
+{"start":35.700,"end":35.980},
+{"start":35.980,"end":36.160},
+{"start":36.160,"end":36.400},
+{"start":36.400,"end":36.680},
+{"start":36.680,"end":36.900},
+{"start":36.900,"end":37.160},
+{"start":37.160,"end":37.320},
+{"start":37.320,"end":37.500},
+{"start":37.500,"end":37.640},
+{"start":37.640,"end":37.840},
+{"start":37.840,"end":38.160},
+{"start":38.920,"end":39.160},
+{"start":39.160,"end":39.680},
+{"start":39.680,"end":39.800},
+{"start":39.800,"end":40.160},
+{"start":41.120,"end":41.360},
+{"start":41.360,"end":41.460},
+{"start":43.800,"end":44.320},
+{"start":44.320,"end":44.520},
+{"start":44.520,"end":44.880},
+{"start":44.880,"end":45.080},
+{"start":45.080,"end":45.500},
+{"start":46.280,"end":46.500},
+{"start":46.500,"end":46.720},
+{"start":46.720,"end":46.960},
+{"start":46.960,"end":47.120},
+{"start":47.120,"end":47.240},
+{"start":47.240,"end":47.580},
+{"start":47.580,"end":47.820},
+{"start":47.820,"end":47.980},
+{"start":47.980,"end":48.220},
+{"start":48.220,"end":48.380},
+{"start":48.380,"end":48.680},
+{"start":48.680,"end":48.860},
+{"start":48.860,"end":48.980},
+{"start":48.980,"end":49.220},
+{"start":50.140,"end":50.660},
+{"start":50.660,"end":50.940},
+{"start":50.940,"end":51.260},
+{"start":51.380,"end":51.460},
+{"start":51.460,"end":51.640},
+{"start":51.640,"end":51.900},
+{"start":51.900,"end":52.380},
+{"start":52.380,"end":52.940},
+{"start":52.940,"end":54.220},
+{"start":54.220,"end":54.540},
+{"start":54.540,"end":54.980},
+{"start":54.980,"end":55.180},
+{"start":55.180,"end":55.420},
+{"start":55.420,"end":55.700},
+{"start":55.700,"end":55.880},
+{"start":55.880,"end":56.060},
+{"start":56.060,"end":56.260},
+{"start":56.260,"end":56.540},
+{"start":56.540,"end":56.880},
+{"start":57.840,"end":58.400},
+{"start":58.400,"end":58.680},
+{"start":58.680,"end":58.840},
+{"start":58.840,"end":59.120},
+{"start":59.520,"end":59.720},
+{"start":59.720,"end":60.040},
+{"start":60.980,"end":61.180},
+{"start":61.180,"end":61.300},
+{"start":61.300,"end":61.460},
+{"start":61.460,"end":61.860},
+{"start":62.400,"end":62.480},
+{"start":62.480,"end":62.640},
+{"start":62.640,"end":62.860},
+{"start":62.860,"end":63.000},
+{"start":63.000,"end":63.540},
+{"start":63.540,"end":64.000},
+{"start":64.800,"end":64.940},
+{"start":64.940,"end":65.360},
+{"start":65.360,"end":65.700},
+{"start":65.700,"end":65.960},
+{"start":65.960,"end":66.760},
+{"start":67.680,"end":68.320},
+{"start":68.320,"end":68.520},
+{"start":68.520,"end":68.920},
+{"start":69.240,"end":69.420},
+{"start":69.420,"end":69.640},
+{"start":69.640,"end":69.760},
+{"start":69.760,"end":70.100},
+{"start":70.100,"end":70.480},
+{"start":70.480,"end":70.760},
+{"start":70.760,"end":71.200},
+{"start":71.200,"end":71.640},
+{"start":71.640,"end":71.840},
+{"start":71.840,"end":72.120},
+{"start":72.120,"end":72.520},
+{"start":73.600,"end":73.840},
+{"start":73.840,"end":74.020},
+{"start":74.020,"end":74.380},
+{"start":74.380,"end":74.660},
+{"start":74.660,"end":74.780},
+{"start":74.780,"end":75.080},
+{"start":75.080,"end":75.340},
+{"start":75.340,"end":75.680},
+{"start":76.160,"end":76.480},
+{"start":76.480,"end":76.940},
+{"start":76.940,"end":77.180},
+{"start":77.180,"end":77.400},
+{"start":77.400,"end":77.720},
+{"start":78.260,"end":78.420},
+{"start":78.420,"end":78.680},
+{"start":78.680,"end":79.000},
+{"start":79.000,"end":79.080},
+{"start":79.080,"end":79.440},
+{"start":79.440,"end":79.700},
+{"start":79.700,"end":80.080},
+{"start":80.080,"end":80.460},
+{"start":81.140,"end":81.740},
+{"start":82.040,"end":82.120},
+{"start":82.120,"end":82.380},
+{"start":82.380,"end":82.560},
+{"start":82.560,"end":82.660},
+{"start":82.660,"end":82.940},
+{"start":83.860,"end":84.100},
+{"start":84.100,"end":84.420},
+{"start":84.420,"end":84.600},
+{"start":84.600,"end":84.760},
+{"start":84.760,"end":84.840},
+{"start":84.840,"end":85.080},
+{"start":85.080,"end":85.540},
+{"start":85.540,"end":85.940},
+{"start":85.940,"end":86.260},
+{"start":86.260,"end":86.380},
+{"start":86.380,"end":86.660},
+{"start":87.660,"end":88.240},
+{"start":88.240,"end":88.560},
+{"start":88.560,"end":88.760},
+{"start":88.760,"end":89.020},
+{"start":89.020,"end":89.460},
+{"start":90.540,"end":90.940},
+{"start":90.940,"end":91.180},
+{"start":91.180,"end":91.440},
+{"start":91.440,"end":91.860},
+{"start":91.860,"end":92.120},
+{"start":92.120,"end":92.580},
+{"start":92.580,"end":92.960},
+{"start":92.960,"end":93.160},
+{"start":93.160,"end":93.460},
+{"start":94.360,"end":94.700},
+{"start":94.700,"end":94.940},
+{"start":94.940,"end":95.100},
+{"start":95.100,"end":95.220},
+{"start":95.220,"end":95.520},
+{"start":95.520,"end":95.780},
+{"start":96.300,"end":96.440},
+{"start":96.440,"end":96.800},
+{"start":96.800,"end":97.020},
+{"start":97.020,"end":97.220},
+{"start":97.220,"end":97.700},
+{"start":99.260,"end":99.800},
+{"start":99.800,"end":100.100},
+{"start":100.100,"end":100.300},
+{"start":101.520,"end":102.120},
+{"start":102.120,"end":102.720},
+{"start":102.720,"end":102.940},
+{"start":102.940,"end":103.180},
+{"start":103.180,"end":103.480},
+{"start":103.480,"end":103.840},
+{"start":103.840,"end":104.040},
+{"start":104.040,"end":104.280},
+{"start":104.920,"end":105.100},
+{"start":105.100,"end":105.540},
+{"start":105.540,"end":105.960},
+{"start":105.960,"end":106.340},
+{"start":106.340,"end":106.740},
+{"start":106.740,"end":106.980},
+{"start":106.980,"end":107.220},
+{"start":107.220,"end":107.580},
+{"start":108.500,"end":109.140},
+{"start":109.140,"end":109.400},
+{"start":109.400,"end":109.900},
+{"start":109.900,"end":110.380},
+{"start":110.900,"end":111.080},
+{"start":111.080,"end":111.560},
+{"start":112.160,"end":112.440},
+{"start":112.440,"end":112.640},
+{"start":112.640,"end":112.900},
+{"start":112.900,"end":113.280},
+{"start":113.280,"end":113.480},
+{"start":113.480,"end":113.620},
+{"start":113.620,"end":113.920},
+{"start":114.660,"end":114.920},
+{"start":114.920,"end":115.120},
+{"start":115.120,"end":115.340},
+{"start":115.340,"end":115.580},
+{"start":115.580,"end":115.800},
+{"start":115.800,"end":116.120},
+{"start":116.120,"end":116.540},
+{"start":117.520,"end":117.840},
+{"start":117.840,"end":118.080},
+{"start":118.080,"end":118.380},
+{"start":118.380,"end":118.540},
+{"start":118.540,"end":118.900},
+{"start":118.900,"end":119.600},
+{"start":120.080,"end":120.560},
+{"start":120.560,"end":120.780},
+{"start":120.780,"end":121.180},
+{"start":121.180,"end":121.520},
+{"start":121.520,"end":122.060},
+{"start":122.060,"end":122.280},
+{"start":122.280,"end":122.460},
+{"start":122.460,"end":122.780},
+{"start":122.780,"end":123.140},
+{"start":124.060,"end":124.400},
+{"start":124.400,"end":124.720},
+{"start":124.720,"end":124.960},
+{"start":124.960,"end":125.120},
+{"start":125.120,"end":125.300},
+{"start":125.300,"end":125.640},
+{"start":125.640,"end":126.060},
+{"start":126.060,"end":126.300},
+{"start":126.300,"end":126.420},
+{"start":126.420,"end":126.780},
+{"start":127.640,"end":127.980},
+{"start":127.980,"end":128.180},
+{"start":128.180,"end":128.300},
+{"start":128.300,"end":128.600},
+{"start":128.600,"end":129.200},
+{"start":129.200,"end":129.460},
+{"start":129.460,"end":129.640},
+{"start":129.640,"end":129.960},
+{"start":129.960,"end":130.220},
+{"start":130.220,"end":130.480},
+{"start":131.540,"end":132.120},
+{"start":132.120,"end":132.560},
+{"start":132.560,"end":132.760},
+{"start":132.760,"end":132.920},
+{"start":132.920,"end":133.020},
+{"start":133.020,"end":133.480},
+{"start":133.980,"end":134.240},
+{"start":134.240,"end":134.420},
+{"start":134.420,"end":134.840},
+{"start":135.640,"end":136.080},
+{"start":136.080,"end":136.240},
+{"start":136.240,"end":136.500},
+{"start":136.500,"end":136.660},
+{"start":136.660,"end":136.960},
+{"start":137.320,"end":137.500},
+{"start":137.500,"end":137.760},
+{"start":137.760,"end":138.140},
+{"start":138.140,"end":138.480},
+{"start":140.900,"end":141.580},
+{"start":141.580,"end":142.160},
+{"start":143.080,"end":143.760},
+{"start":143.760,"end":144.020},
+{"start":144.020,"end":144.300},
+{"start":144.300,"end":144.620},
+{"start":145.000,"end":145.080},
+{"start":145.080,"end":145.400},
+{"start":145.400,"end":145.780},
+{"start":145.780,"end":146.040},
+{"start":146.040,"end":146.340},
+{"start":146.340,"end":146.700},
+{"start":147.660,"end":147.880},
+{"start":147.880,"end":148.100},
+{"start":148.100,"end":148.500},
+{"start":148.500,"end":148.840},
+{"start":148.840,"end":149.260},
+{"start":149.260,"end":149.500},
+{"start":149.500,"end":149.780},
+{"start":149.780,"end":150.100},
+{"start":150.100,"end":150.640},
+{"start":150.640,"end":151.140},
+{"start":151.140,"end":151.320},
+{"start":151.320,"end":151.600},
+{"start":151.600,"end":152.020},
+{"start":153.100,"end":153.640},
+{"start":153.640,"end":154.080},
+{"start":154.080,"end":154.420},
+{"start":154.420,"end":154.740},
+{"start":154.740,"end":155.080},
+{"start":155.080,"end":155.420},
+{"start":155.420,"end":155.780},
+{"start":156.320,"end":156.780},
+{"start":157.100,"end":157.260},
+{"start":157.260,"end":157.620},
+{"start":157.620,"end":157.860},
+{"start":157.860,"end":158.120},
+{"start":159.420,"end":159.860},
+{"start":159.860,"end":160.080},
+{"start":160.080,"end":160.420},
+{"start":160.420,"end":160.520},
+{"start":160.520,"end":160.720},
+{"start":160.720,"end":161.200},
+{"start":161.780,"end":162.100},
+{"start":162.100,"end":162.280},
+{"start":162.280,"end":162.440},
+{"start":162.440,"end":162.780},
+{"start":163.600,"end":163.900},
+{"start":163.900,"end":164.120},
+{"start":164.120,"end":164.300},
+{"start":164.300,"end":164.700},
+{"start":164.700,"end":165.020},
+{"start":165.020,"end":165.260},
+{"start":168.040,"end":168.640},
+{"start":168.640,"end":168.900},
+{"start":168.900,"end":169.200},
+{"start":169.200,"end":169.420},
+{"start":169.420,"end":169.700},
+{"start":169.700,"end":169.900},
+{"start":169.900,"end":170.140},
+{"start":170.140,"end":170.640},
+{"start":170.640,"end":170.960},
+{"start":170.960,"end":171.240},
+{"start":171.240,"end":171.680},
+{"start":172.380,"end":172.740},
+{"start":172.740,"end":173.040},
+{"start":173.340,"end":173.580},
+{"start":173.580,"end":173.900},
+{"start":173.900,"end":174.040},
+{"start":174.040,"end":174.340},
+{"start":174.900,"end":175.220},
+{"start":175.220,"end":175.460},
+{"start":175.460,"end":175.820},
+{"start":175.820,"end":176.140},
+{"start":177.200,"end":177.500},
+{"start":177.500,"end":177.780},
+{"start":177.780,"end":178.040},
+{"start":178.040,"end":178.480},
+{"start":179.260,"end":179.500},
+{"start":179.500,"end":179.800},
+{"start":179.800,"end":180.280},
+{"start":181.420,"end":181.920},
+{"start":181.920,"end":182.060},
+{"start":182.060,"end":182.400},
+{"start":182.400,"end":182.700},
+{"start":182.700,"end":183.000},
+{"start":183.000,"end":183.240},
+{"start":183.780,"end":184.060},
+{"start":184.060,"end":184.440},
+{"start":184.440,"end":184.820},
+{"start":184.820,"end":185.380},
+{"start":185.380,"end":185.620},
+{"start":185.620,"end":185.780},
+{"start":185.780,"end":185.900},
+{"start":185.900,"end":186.180},
+{"start":187.240,"end":187.700},
+{"start":187.700,"end":187.920},
+{"start":187.920,"end":188.200},
+{"start":188.200,"end":188.560},
+{"start":188.560,"end":188.760},
+{"start":188.760,"end":188.900},
+{"start":188.900,"end":189.200},
+{"start":189.200,"end":189.560},
+{"start":189.560,"end":189.900},
+{"start":190.720,"end":191.400},
+{"start":191.400,"end":191.680},
+{"start":191.680,"end":191.940},
+{"start":191.940,"end":192.080},
+{"start":192.080,"end":192.520},
+{"start":192.520,"end":192.940},
+{"start":192.940,"end":193.240},
+{"start":193.240,"end":193.420},
+{"start":193.420,"end":193.760},
+{"start":194.800,"end":195.480},
+{"start":195.480,"end":195.760},
+{"start":195.760,"end":196.240},
+{"start":196.660,"end":196.940},
+{"start":196.940,"end":197.460},
+{"start":197.960,"end":198.180},
+{"start":198.180,"end":198.580},
+{"start":198.580,"end":199.060},
+{"start":200.920,"end":201.600},
+{"start":201.600,"end":201.860},
+{"start":201.860,"end":202.120},
+{"start":203.260,"end":203.920},
+{"start":203.920,"end":204.120},
+{"start":204.120,"end":205.080},
+{"start":205.860,"end":206.000},
+{"start":206.000,"end":206.280},
+{"start":206.280,"end":207.040},
+{"start":207.040,"end":207.420},
+{"start":207.420,"end":207.780},
+{"start":208.640,"end":208.900},
+{"start":208.900,"end":209.140},
+{"start":209.140,"end":209.860},
+{"start":209.860,"end":210.120},
+{"start":210.120,"end":210.540},
+{"start":210.540,"end":210.740},
+{"start":210.740,"end":210.960},
+{"start":210.960,"end":211.220},
+{"start":212.040,"end":212.340},
+{"start":212.340,"end":212.720},
+{"start":212.720,"end":213.360},
+{"start":213.360,"end":213.460},
+{"start":213.460,"end":213.540},
+{"start":213.540,"end":213.860},
+{"start":214.340,"end":214.560},
+{"start":214.560,"end":214.780},
+{"start":214.780,"end":214.960},
+{"start":214.960,"end":215.120},
+{"start":215.120,"end":215.460},
+{"start":215.460,"end":215.800},
+{"start":216.760,"end":217.040},
+{"start":217.040,"end":217.300},
+{"start":217.300,"end":217.600},
+{"start":217.600,"end":218.200},
+{"start":218.200,"end":218.520},
+{"start":218.520,"end":218.740},
+{"start":218.740,"end":219.040},
+{"start":219.040,"end":219.420},
+{"start":220.120,"end":220.760},
+{"start":220.760,"end":221.400},
+{"start":221.400,"end":221.900},
+{"start":221.900,"end":222.040},
+{"start":222.040,"end":222.340},
+{"start":222.340,"end":223.000},
+{"start":223.940,"end":224.160},
+{"start":224.160,"end":224.540},
+{"start":224.540,"end":224.680},
+{"start":224.680,"end":224.920},
+{"start":224.920,"end":225.260},
+{"start":225.260,"end":225.480},
+{"start":225.480,"end":225.740},
+{"start":225.740,"end":225.980},
+{"start":225.980,"end":226.340},
+{"start":226.340,"end":226.720},
+{"start":227.840,"end":228.100},
+{"start":228.100,"end":228.320},
+{"start":228.320,"end":228.520},
+{"start":228.520,"end":228.660},
+{"start":228.660,"end":228.920},
+{"start":228.920,"end":229.200},
+{"start":229.200,"end":229.440},
+{"start":229.440,"end":229.880},
+{"start":230.300,"end":230.420},
+{"start":230.420,"end":230.960},
+{"start":230.960,"end":231.100},
+{"start":231.100,"end":231.380},
+{"start":232.240,"end":232.660},
+{"start":232.660,"end":233.060},
+{"start":233.060,"end":233.360},
+{"start":233.360,"end":233.720},
+{"start":233.720,"end":233.940},
+{"start":233.940,"end":234.200},
+{"start":235.020,"end":235.480},
+{"start":235.480,"end":235.840},
+{"start":235.840,"end":236.100},
+{"start":236.100,"end":236.380},
+{"start":237.360,"end":238.000},
+{"start":238.000,"end":238.180},
+{"start":238.180,"end":238.360},
+{"start":238.360,"end":238.740},
+{"start":239.280,"end":239.560},
+{"start":239.560,"end":239.940},
+{"start":240.520,"end":240.680},
+{"start":240.680,"end":241.040},
+{"start":241.040,"end":241.280},
+{"start":241.280,"end":241.440},
+{"start":241.440,"end":241.560},
+{"start":241.560,"end":241.940},
+{"start":243.700,"end":244.200},
+{"start":244.200,"end":244.440},
+{"start":245.580,"end":246.120},
+{"start":246.120,"end":246.420},
+{"start":246.420,"end":246.840},
+{"start":246.840,"end":247.160},
+{"start":247.160,"end":247.380},
+{"start":247.380,"end":247.740},
+{"start":247.740,"end":248.080},
+{"start":248.080,"end":248.320},
+{"start":248.320,"end":248.860},
+{"start":248.860,"end":249.120},
+{"start":249.120,"end":249.220},
+{"start":249.220,"end":249.560},
+{"start":250.500,"end":251.140},
+{"start":251.140,"end":251.440},
+{"start":251.440,"end":251.640},
+{"start":251.640,"end":252.000},
+{"start":252.000,"end":252.200},
+{"start":252.200,"end":252.560},
+{"start":252.560,"end":252.960},
+{"start":252.960,"end":253.280},
+{"start":253.280,"end":253.480},
+{"start":253.480,"end":253.580},
+{"start":253.580,"end":253.840},
+{"start":253.840,"end":254.220},
+{"start":255.380,"end":255.920},
+{"start":255.920,"end":256.180},
+{"start":256.180,"end":256.340},
+{"start":256.340,"end":256.660},
+{"start":256.660,"end":256.940},
+{"start":256.940,"end":257.400},
+{"start":257.400,"end":257.900},
+{"start":257.900,"end":258.220},
+{"start":258.220,"end":258.580},
+{"start":258.580,"end":259.020},
+{"start":259.020,"end":259.220},
+{"start":259.220,"end":259.340},
+{"start":259.340,"end":259.780},
+{"start":259.780,"end":260.320},
+{"start":261.420,"end":262.040},
+{"start":262.040,"end":262.360},
+{"start":262.360,"end":262.540},
+{"start":262.540,"end":262.720},
+{"start":262.720,"end":263.040},
+{"start":263.040,"end":263.420},
+{"start":263.420,"end":263.640},
+{"start":263.640,"end":263.860},
+{"start":264.660,"end":265.100},
+{"start":265.100,"end":265.500},
+{"start":266.400,"end":266.740},
+{"start":266.740,"end":267.160},
+{"start":267.480,"end":267.620},
+{"start":267.620,"end":267.860},
+{"start":267.860,"end":268.160},
+{"start":268.160,"end":268.280},
+{"start":268.280,"end":268.600},
+{"start":269.760,"end":270.400},
+{"start":270.400,"end":270.760},
+{"start":270.760,"end":271.100},
+{"start":271.100,"end":271.720},
+{"start":272.460,"end":272.680},
+{"start":272.680,"end":272.940},
+{"start":273.820,"end":274.140},
+{"start":274.140,"end":274.480},
+{"start":274.480,"end":274.760},
+{"start":274.760,"end":275.100},
+{"start":275.100,"end":275.420},
+{"start":275.420,"end":275.600},
+{"start":275.600,"end":275.860},
+{"start":275.860,"end":275.980},
+{"start":275.980,"end":276.220},
+{"start":276.220,"end":276.480},
+{"start":276.480,"end":276.920},
+{"start":276.920,"end":277.180},
+{"start":277.180,"end":277.500},
+{"start":278.380,"end":278.780},
+{"start":278.780,"end":279.220},
+{"start":279.220,"end":279.460},
+{"start":279.460,"end":279.800},
+{"start":280.900,"end":281.400},
+{"start":281.400,"end":281.660},
+{"start":281.660,"end":282.080},
+{"start":282.080,"end":282.240},
+{"start":282.240,"end":282.560},
+{"start":282.560,"end":282.700},
+{"start":282.700,"end":282.940},
+{"start":282.940,"end":283.440},
+{"start":284.280,"end":284.520},
+{"start":284.520,"end":284.720},
+{"start":284.720,"end":284.980},
+{"start":284.980,"end":285.120},
+{"start":285.120,"end":285.640},
+{"start":286.460,"end":286.940},
+{"start":287.540,"end":287.980},
+{"start":287.980,"end":288.100},
+{"start":288.100,"end":288.540},
+{"start":288.540,"end":288.960},
+{"start":288.960,"end":289.220},
+{"start":289.220,"end":289.520},
+{"start":289.520,"end":289.780},
+{"start":289.780,"end":290.040},
+{"start":290.040,"end":290.300},
+{"start":290.300,"end":290.680},
+{"start":290.680,"end":291.220},
+{"start":291.220,"end":291.500},
+{"start":291.500,"end":291.800},
+{"start":291.800,"end":292.240}
 ];
 </script>
 <script id="sb-glow-wand-script">
@@ -9821,7 +10433,7 @@ var wordTimings = [
   function ensureSrc(a){
     try {
       if (!a.querySelector('source') && !a.getAttribute('src')) {
-        a.setAttribute('/lunas-colorful-garden/StoryAudio.mp3');
+        a.setAttribute('/lunas-colorful-garden/lunas-colorful-garden-audio.mp3');
       }
     } catch(e) {}
   }
@@ -9870,26 +10482,7 @@ var wordTimings = [
 })();
 </script>
 <!-- SB_AUTOPLAY_V1 END -->
-<!-- SB_GLOW_BOOST_START -->
-<style id="sb-glow-boost">
-/* Stronger two-word glow — override only */
-#transcript span.highlight,
-#transcript span.glow {
-  color: #ffffff !important;
-  /* heavier + wider multi-layer glow */
-  text-shadow:
-    0 0 10px rgba(255,232,40,1.00),
-    0 0 18px rgba(255,196,0,0.95),
-    0 0 34px rgba(255,150,0,0.85),
-    0 0 56px rgba(255,130,0,0.70),
-    0 0 84px rgba(255,110,0,0.55);
-}
-/* keep previous word slightly dimmed but still glowing */
-#transcript span.prev {
-  opacity: .98;
-}
-</style>
-<!-- SB_GLOW_BOOST_END -->
+
 <!-- SB_AUTODETECT10_BOTTOMAWARE_V1 -->
 <style id="sb-scroll-behavior-off">html{scroll-behavior:auto!important}</style>
 <script id="SB_AUTODETECT10_BOTTOMAWARE_V1">
@@ -10463,88 +11056,58 @@ var wordTimings = [
 </script>
 <script id="sb-end-anim-replay-js">
 (function(){
-  // IDs expected from your existing injector:
-  // wrap: #sb-end-anim-wrap, video: #sb-end-anim
   var wrap = document.getElementById('sb-end-anim-wrap');
   var vid  = document.getElementById('sb-end-anim');
   if (!wrap || !vid) return;
 
-  // Prefer the main audio; fallbacks keep it resilient.
-  var audio = document.getElementById('audio')
-          || document.querySelector('.audio-box audio')
-          || document.querySelector('audio');
-  if (!audio) return;
-
-  // ---- Completion sound (index_items/complete.mp3) ----
-  // Create once, reuse every cycle.
-  var COMPLETE_ID = 'sb-complete-audio';
-  var complete = document.getElementById(COMPLETE_ID);
-  if (!complete) {
-    complete = document.createElement('audio');
-    complete.id = COMPLETE_ID;
-    complete.preload = 'auto';
-    complete.src = 'index_items/complete.mp3';
-    complete.setAttribute('playsinline','');
-    // Optionally set a default volume (0.0 - 1.0):
-    // complete.volume = 1.0;
-    document.body.appendChild(complete);
-  }
-
-  // Helper: if your page defines alignUnderAnchor(), reuse it to keep positioning tidy.
-  function alignIfAvailable(){
-    try {
-      if (typeof alignUnderAnchor === 'function') { alignUnderAnchor(); }
-    } catch(e){}
-  }
+  var audio = document.getElementById('audio') || document.querySelector('.audio-box audio') || document.querySelector('audio');
+  var complete = document.getElementById('sb-complete-audio');
 
   function hideAnim(){
     wrap.style.display = 'none';
     try { vid.pause(); } catch(e){}
-    try { vid.currentTime = 0; } catch(e){}
-    try { complete.pause(); complete.currentTime = 0; } catch(e){}
+    if (complete) try { complete.pause(); complete.currentTime = 0; } catch(e){}
   }
 
   function playAnimOnce(){
+    // 1. Show container
     wrap.style.display = 'block';
-    alignIfAvailable();
-    try { vid.currentTime = 0; } catch(e){}
-    try { vid.play(); } catch(e){}
-    // play completion MP3 DURING the animation
-    try { complete.currentTime = 0; complete.play(); } catch(e){}
+    
+    // 2. iOS FIX: Wait for paint before playing
+    requestAnimationFrame(function(){
+        setTimeout(function(){
+            try { 
+                vid.currentTime = 0; 
+                // Promise handling for modern browsers
+                var p = vid.play();
+                if (p !== undefined) {
+                    p.catch(error => {
+                        console.log("Auto-play prevented by browser:", error);
+                    });
+                }
+            } catch(e){}
+        }, 50); // 50ms delay is crucial for iPhone
+    });
+
+    // Play sound
+    if (complete) try { complete.currentTime = 0; complete.play(); } catch(e){}
   }
 
-  // When the animation video ends, briefly hold last frame then hide.
   vid.addEventListener('ended', function(){
-    try {
-      if (isFinite(vid.duration) && vid.duration > 0) {
-        var hold = Math.max(0, vid.duration - 0.05);
-        vid.currentTime = hold;
-      }
-      vid.pause();
-    } catch(e){}
+    try { vid.pause(); } catch(e){}
     wrap.style.display = 'none';
   });
 
-  // --- Replay logic: animation shows every time audio completes,
-  //     BUT completion MP3 plays only once per page load.
-  function resetForNewPlayback(){
-    hideAnim();
+  if(audio){
+      var _playedOnce = false;
+      audio.addEventListener('ended', function(){
+        if (_playedOnce) return;
+        _playedOnce = true;
+        playAnimOnce();
+      });
+      audio.addEventListener('play', hideAnim);
   }
-
-  audio.addEventListener('play',    resetForNewPlayback);
-  audio.addEventListener('seeking', resetForNewPlayback);
-  audio.addEventListener('seeked',  resetForNewPlayback);
-
-  // >>>>> Option A guard (ONCE per page load) <<<<<
-  var _playedOnce = false;
-  audio.addEventListener('ended', function(){
-    if (_playedOnce) return;
-    _playedOnce = true;
-    playAnimOnce();
-  });
-
-  // Initial state
-  hideAnim();
+  hideAnim(); 
 })();
 </script>
 <script id="sb-glowwand-hide-js">
@@ -10778,5 +11341,76 @@ var wordTimings = [
     wire();
   }
 })();
-</script></body>
+</script>
+<script id="sb-questions-script">
+(function(){
+  var containerId = 'questionsContainer';
+  var showed = false;
+
+  function showQuestions(){
+    if(showed) return;
+    showed = true;
+    var el = document.getElementById(containerId);
+    if(el) {
+        el.style.display = 'block';
+        el.style.visibility = 'visible';
+        el.style.opacity = '1';
+        
+        // Force scroll to questions so user sees them
+        setTimeout(function(){
+            el.scrollIntoView({behavior: "smooth", block: "center"});
+        }, 500);
+    }
+  }
+
+  var audio = document.getElementById('audio') || document.querySelector('audio');
+  
+  if(audio){
+      // 1. Normal Trigger: When audio ends
+      audio.addEventListener('ended', showQuestions);
+      
+      // 2. Backup Trigger: Near end of audio
+      audio.addEventListener('timeupdate', function(){
+        if(!showed && (audio.duration - audio.currentTime) < 0.5){
+            showQuestions();
+        }
+      });
+      
+      // 3. Safety Net: If audio is really long, ensure we don't wait forever if paused
+      // This calculates duration and sets a one-time timer
+      audio.addEventListener('play', function() {
+          if(!showed && audio.duration > 0 && audio.duration < 600) { // limit to 10 mins
+              var timeLeftMs = (audio.duration - audio.currentTime) * 1000;
+              // Set a timeout for the exact remainder + 1 second buffer
+              setTimeout(showQuestions, timeLeftMs + 1000);
+          }
+      }, {once:true});
+  } else {
+      // No audio found? Show questions after 3 seconds automatically
+      setTimeout(showQuestions, 3000);
+  }
+})();
+</script>
+
+<!-- SB_GLOW_BOOST_START -->
+<style id="sb-glow-boost">
+/* Stronger two-word glow — override only */
+#transcript span.highlight,
+#transcript span.glow {
+  color: #ffffff !important;
+  /* heavier + wider multi-layer glow */
+  text-shadow:
+    0 0 10px rgba(255,232,40,1.00),
+    0 0 18px rgba(255,196,0,0.95),
+    0 0 34px rgba(255,150,0,0.85),
+    0 0 56px rgba(255,130,0,0.70),
+    0 0 84px rgba(255,110,0,0.55);
+}
+/* keep previous word slightly dimmed but still glowing */
+#transcript span.prev {
+  opacity: .98;
+}
+</style>
+<!-- SB_GLOW_BOOST_END -->
+</body>
 </html>
