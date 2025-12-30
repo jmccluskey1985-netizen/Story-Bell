@@ -4565,5 +4565,144 @@ window.onOpenAuthModalHook = function(){
     });
   }catch(_){}
 })();
-</script></body>
+</script>
+<!-- Auth Bindings (injected by inject_auth.py) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script id="firebase-auth-bindings-injected">
+(function(){
+  if (window.__SB_AUTH_INJECTED__) return;
+  window.__SB_AUTH_INJECTED__ = true;
+
+  function ensureUI() {
+    if (!(window.firebase && firebase.auth && window.firebaseui)) {
+      console.warn("[Auth] Firebase/FirebaseUI not ready");
+      return null;
+    }
+    var ui = window.firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
+    return ui;
+  }
+
+  // Email signup form handler
+  function setupEmailForm() {
+    var form = document.getElementById('sb-email-form');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var emailInput = document.getElementById('sb-email-input');
+      var statusEl = document.getElementById('sb-email-status');
+      var submitBtn = document.getElementById('sb-email-submit');
+      var email = emailInput.value.trim();
+
+      if (!email) return;
+
+      // Disable button while submitting
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Saving...';
+
+      // Save to Firestore
+      if (window.firebase && firebase.firestore) {
+        var db = firebase.firestore();
+        db.collection('email_signups').add({
+          email: email,
+          source: window.location.pathname,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          userAgent: navigator.userAgent.substring(0, 200)
+        }).then(function() {
+          statusEl.textContent = 'Thanks for subscribing!';
+          statusEl.style.color = '#4CAF50';
+          statusEl.style.display = 'block';
+          emailInput.value = '';
+          submitBtn.textContent = 'Subscribed!';
+          setTimeout(function() { window.closeAuthModal(); }, 2000);
+        }).catch(function(err) {
+          console.error('[Auth] Email save error:', err);
+          statusEl.textContent = 'Error saving. Please try again.';
+          statusEl.style.color = '#f44336';
+          statusEl.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Subscribe';
+        });
+      } else {
+        console.warn('[Auth] Firestore not available');
+        statusEl.textContent = 'Service unavailable. Please try again later.';
+        statusEl.style.color = '#f44336';
+        statusEl.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Subscribe';
+      }
+    });
+  }
+
+  window.openAuthModal = function(e){
+    if (e && e.preventDefault) e.preventDefault();
+    var modal = document.getElementById('auth-modal');
+    if (modal) modal.style.display = 'flex';
+
+    // Setup email form
+    setupEmailForm();
+
+    var ui = ensureUI();
+    if (!ui) return;
+
+    ui.start('#firebaseui-auth-container', {
+      signInFlow: 'popup',
+      signInOptions: [
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+      ],
+      callbacks: {
+        signInSuccessWithAuthResult: function(authResult) {
+          try { window.closeAuthModal(); } catch(_) {}
+          console.log("[Auth] Signed in:", authResult.user && (authResult.user.email || authResult.user.uid));
+          return false;
+        }
+      }
+    });
+  };
+
+  window.closeAuthModal = function(){
+    var modal = document.getElementById('auth-modal');
+    if (modal) modal.style.display = 'none';
+  };
+
+  // Close on X button or backdrop click
+  document.addEventListener('click', function(ev){
+    if (ev.target && ev.target.id === 'auth-close') window.closeAuthModal();
+    if (ev.target && ev.target.id === 'auth-modal') window.closeAuthModal();
+  });
+
+  // Bind ALL login/signup buttons (header, footer, subscribe box)
+  var selectors = [
+    '.login-cta-header',
+    '.login-mobile a',
+    '[href*="#login"]',
+    '[href*="login"]',
+    '.subscribe-box',
+    '.subscribe-text',
+    '[data-auth-cta]',
+    'a[href$="#login"]'
+  ];
+  selectors.forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(el){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        window.openAuthModal(e);
+      });
+    });
+  });
+
+  // Handle #login hash
+  if (window.location.hash === '#login') {
+    setTimeout(function(){ window.openAuthModal(); }, 500);
+  }
+  window.addEventListener('hashchange', function(){
+    if (window.location.hash === '#login') window.openAuthModal();
+  });
+})();
+</script>
+<!-- End Auth Bindings -->
+
+</body>
 </html>

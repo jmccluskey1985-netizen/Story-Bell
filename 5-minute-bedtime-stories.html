@@ -2526,7 +2526,28 @@ nav ul > li:focus-within > .dropdown {
       font-size: 35px !important;
     }
   }
-</style></head>
+</style>
+<!-- Firebase Auth Scripts (injected by inject_auth.py) -->
+<link rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css">
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
+<script id="firebase-init">
+if (!window.__FIREBASE_INIT__) {
+  window.__FIREBASE_INIT__ = true;
+  firebase.initializeApp({
+    apiKey: "AIzaSyC9vYsSvGN7zSDfkIcByvBZDOQnRyUPIBo",
+    authDomain: "storybellkids.firebaseapp.com",
+    projectId: "storybellkids",
+    storageBucket: "storybellkids.firebasestorage.app",
+    messagingSenderId: "107989104962",
+    appId: "1:107989104962:web:a93c5a427353a87111b0db"
+  });
+}
+</script>
+<!-- End Firebase Auth Scripts -->
+
+</head>
 <body class="seo-page">
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>
@@ -4263,5 +4284,175 @@ nav ul > li:focus-within > .dropdown {
     });
   }catch(_){}
 })();
-</script></body>
+</script>
+<!-- Auth Modal (injected by inject_auth.py) -->
+<div id="auth-modal" style="display:none;position:fixed;inset:0;z-index:2147483647;align-items:center;justify-content:center;background:rgba(0,0,0,0.55);backdrop-filter:blur(3px);">
+  <div style="background:#111;color:#fff;border-radius:12px;max-width:520px;width:90%;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.35);">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <h3 style="margin:0;font-family:inherit;font-weight:600;">Join Story Bell</h3>
+      <button id="auth-close" aria-label="Close" style="background:transparent;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1;">&times;</button>
+    </div>
+
+    <!-- Email Signup Form -->
+    <div id="email-signup-form" style="margin-bottom:20px;">
+      <p style="margin:0 0 12px 0;color:#ccc;font-size:14px;">Get free kids' stories and updates:</p>
+      <form id="sb-email-form" style="display:flex;gap:8px;flex-wrap:wrap;">
+        <input type="email" id="sb-email-input" placeholder="Enter your email" required
+          style="flex:1;min-width:200px;padding:12px;border-radius:8px;border:1px solid #333;background:#222;color:#fff;font-size:16px;">
+        <button type="submit" id="sb-email-submit"
+          style="padding:12px 20px;border-radius:8px;border:none;background:#FFEB3B;color:#000;font-weight:600;cursor:pointer;font-size:14px;">
+          Subscribe
+        </button>
+      </form>
+      <p id="sb-email-status" style="margin:8px 0 0 0;font-size:13px;color:#4CAF50;display:none;"></p>
+    </div>
+
+    <div style="border-top:1px solid #333;padding-top:16px;margin-top:8px;">
+      <p style="margin:0 0 12px 0;color:#888;font-size:13px;text-align:center;">Or sign in with:</p>
+      <div id="firebaseui-auth-container"></div>
+    </div>
+  </div>
+</div>
+<!-- End Auth Modal -->
+
+
+<!-- Auth Bindings (injected by inject_auth.py) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script id="firebase-auth-bindings-injected">
+(function(){
+  if (window.__SB_AUTH_INJECTED__) return;
+  window.__SB_AUTH_INJECTED__ = true;
+
+  function ensureUI() {
+    if (!(window.firebase && firebase.auth && window.firebaseui)) {
+      console.warn("[Auth] Firebase/FirebaseUI not ready");
+      return null;
+    }
+    var ui = window.firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
+    return ui;
+  }
+
+  // Email signup form handler
+  function setupEmailForm() {
+    var form = document.getElementById('sb-email-form');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var emailInput = document.getElementById('sb-email-input');
+      var statusEl = document.getElementById('sb-email-status');
+      var submitBtn = document.getElementById('sb-email-submit');
+      var email = emailInput.value.trim();
+
+      if (!email) return;
+
+      // Disable button while submitting
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Saving...';
+
+      // Save to Firestore
+      if (window.firebase && firebase.firestore) {
+        var db = firebase.firestore();
+        db.collection('email_signups').add({
+          email: email,
+          source: window.location.pathname,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          userAgent: navigator.userAgent.substring(0, 200)
+        }).then(function() {
+          statusEl.textContent = 'Thanks for subscribing!';
+          statusEl.style.color = '#4CAF50';
+          statusEl.style.display = 'block';
+          emailInput.value = '';
+          submitBtn.textContent = 'Subscribed!';
+          setTimeout(function() { window.closeAuthModal(); }, 2000);
+        }).catch(function(err) {
+          console.error('[Auth] Email save error:', err);
+          statusEl.textContent = 'Error saving. Please try again.';
+          statusEl.style.color = '#f44336';
+          statusEl.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Subscribe';
+        });
+      } else {
+        console.warn('[Auth] Firestore not available');
+        statusEl.textContent = 'Service unavailable. Please try again later.';
+        statusEl.style.color = '#f44336';
+        statusEl.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Subscribe';
+      }
+    });
+  }
+
+  window.openAuthModal = function(e){
+    if (e && e.preventDefault) e.preventDefault();
+    var modal = document.getElementById('auth-modal');
+    if (modal) modal.style.display = 'flex';
+
+    // Setup email form
+    setupEmailForm();
+
+    var ui = ensureUI();
+    if (!ui) return;
+
+    ui.start('#firebaseui-auth-container', {
+      signInFlow: 'popup',
+      signInOptions: [
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+      ],
+      callbacks: {
+        signInSuccessWithAuthResult: function(authResult) {
+          try { window.closeAuthModal(); } catch(_) {}
+          console.log("[Auth] Signed in:", authResult.user && (authResult.user.email || authResult.user.uid));
+          return false;
+        }
+      }
+    });
+  };
+
+  window.closeAuthModal = function(){
+    var modal = document.getElementById('auth-modal');
+    if (modal) modal.style.display = 'none';
+  };
+
+  // Close on X button or backdrop click
+  document.addEventListener('click', function(ev){
+    if (ev.target && ev.target.id === 'auth-close') window.closeAuthModal();
+    if (ev.target && ev.target.id === 'auth-modal') window.closeAuthModal();
+  });
+
+  // Bind ALL login/signup buttons (header, footer, subscribe box)
+  var selectors = [
+    '.login-cta-header',
+    '.login-mobile a',
+    '[href*="#login"]',
+    '[href*="login"]',
+    '.subscribe-box',
+    '.subscribe-text',
+    '[data-auth-cta]',
+    'a[href$="#login"]'
+  ];
+  selectors.forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(el){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        window.openAuthModal(e);
+      });
+    });
+  });
+
+  // Handle #login hash
+  if (window.location.hash === '#login') {
+    setTimeout(function(){ window.openAuthModal(); }, 500);
+  }
+  window.addEventListener('hashchange', function(){
+    if (window.location.hash === '#login') window.openAuthModal();
+  });
+})();
+</script>
+<!-- End Auth Bindings -->
+
+</body>
 </html>
