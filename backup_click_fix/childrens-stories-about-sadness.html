@@ -6886,5 +6886,36 @@ window.onOpenAuthModalHook = function(){
 </script>
 <!-- End Auth Bindings -->
 
+
+<!-- Auth Modal (injected by inject_auth.py) -->
+<div id="auth-modal" style="display:none;position:fixed;inset:0;z-index:2147483647;align-items:center;justify-content:center;background:rgba(0,0,0,0.55);backdrop-filter:blur(3px);">
+  <div style="background:#111;color:#fff;border-radius:12px;max-width:520px;width:90%;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.35);">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <h3 style="margin:0;font-family:inherit;font-weight:600;">Join Story Bell</h3>
+      <button id="auth-close" aria-label="Close" style="background:transparent;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1;">&times;</button>
+    </div>
+
+    <!-- Email Signup Form -->
+    <div id="email-signup-form" style="margin-bottom:20px;">
+      <p style="margin:0 0 12px 0;color:#ccc;font-size:14px;">Get free kids' stories and updates:</p>
+      <form id="sb-email-form" style="display:flex;gap:8px;flex-wrap:wrap;">
+        <input type="email" id="sb-email-input" placeholder="Enter your email" required
+          style="flex:1;min-width:200px;padding:12px;border-radius:8px;border:1px solid #333;background:#222;color:#fff;font-size:16px;">
+        <button type="submit" id="sb-email-submit"
+          style="padding:12px 20px;border-radius:8px;border:none;background:#FFEB3B;color:#000;font-weight:600;cursor:pointer;font-size:14px;">
+          Subscribe
+        </button>
+      </form>
+      <p id="sb-email-status" style="margin:8px 0 0 0;font-size:13px;color:#4CAF50;display:none;"></p>
+    </div>
+
+    <div style="border-top:1px solid #333;padding-top:16px;margin-top:8px;">
+      <p style="margin:0 0 12px 0;color:#888;font-size:13px;text-align:center;">Or sign in with:</p>
+      <div id="firebaseui-auth-container"></div>
+    </div>
+  </div>
+</div>
+<!-- End Auth Modal -->
+
 </body>
 </html>
