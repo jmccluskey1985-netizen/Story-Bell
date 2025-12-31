@@ -3582,7 +3582,7 @@ window.openAuthModal = function(){
       if(!(window.firebase && window.firebaseui && firebase.auth)) return false;
       var ui = window.firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
       var cfg = {
-        signInFlow: 'popup',
+        signInFlow: 'redirect',
         credentialHelper: (window.firebaseui && firebaseui.auth && firebaseui.auth.CredentialHelper) ? firebaseui.auth.CredentialHelper.NONE : undefined,
         signInOptions: [
           firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -3665,7 +3665,7 @@ window.onOpenAuthModalHook = function(){
     }
     // Start UI
     ui.start(containerSel, {
-      signInFlow: 'popup',
+      signInFlow: 'redirect',
       credentialHelper: firebaseui.auth.CredentialHelper.NONE,
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
