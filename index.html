@@ -3640,30 +3640,6 @@ document.addEventListener('click', function(e){
 });
 
 
-// Guard sign-in behind consent checkbox
-(function(){
-  function enforceConsent(){
-    var c = document.getElementById('sb-consent');
-    if (!c || c.checked) return true;
-    alert('Please agree to the Terms & Privacy Policy to continue.');
-    return false;
-  }
-  // Intercept clicks inside the FirebaseUI area
-  document.addEventListener('click', function(e){
-    var modal = document.getElementById('auth-modal');
-    var container = document.getElementById('firebaseui-auth-container');
-    if (!modal || !container) return;
-    if (modal.style.display !== 'flex') return;
-    if (container.contains(e.target)) {
-      if (!enforceConsent()){
-        e.stopPropagation();
-        e.preventDefault();
-        return false;
-      }
-    }
-  }, true);
-})();
-</script><script id="subscribe-bar-handler">// disabled: restrict auth to CTAs only</script><script>// removed broad auth click listener</script><script>// removed broad auth click listener</script><div class="menu-overlay"></div><script id="firebaseui-init-hook">
 // Start/refresh FirebaseUI with Google + Email when auth modal opens
 window.onOpenAuthModalHook = function(){
   try {
