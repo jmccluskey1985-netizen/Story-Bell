@@ -1,4 +1,4 @@
-<!-- UPDATED: 2026-01-02 00:30 UTC -->
+<!-- UPDATED: 2026-01-02 00:45 UTC -->
 <!DOCTYPE html>
 
 <html lang="en">
@@ -3875,14 +3875,28 @@ if (window.firebase && firebase.auth) {
 }
 
 // Also check for localStorage user on page load (for email sign-up users)
-// Run immediately since script is at bottom of page (DOM already loaded)
-(function checkLocalUser() {
+// Run after DOM is ready to ensure header elements exist
+function initLocalUserAuth() {
+  console.log('[SB] initLocalUserAuth running...');
   var localUser = getLocalUser();
+  console.log('[SB] localStorage user:', localUser);
+
+  var loginBtns = document.querySelectorAll('.login-cta-header, .login-mobile a[href*="signin"]');
+  var profileEls = document.querySelectorAll('.sb-user-profile');
+  console.log('[SB] Found loginBtns:', loginBtns.length, 'profileEls:', profileEls.length);
+
   if (localUser) {
-    console.log('[SB] Found localStorage user:', localUser.name || localUser.email);
+    console.log('[SB] Calling updateHeaderAuth for:', localUser.name || localUser.email);
     updateHeaderAuth(null); // Pass null for firebase, will use localStorage
   }
-})();
+}
+
+// Run when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initLocalUserAuth);
+} else {
+  initLocalUserAuth();
+}
 
 document.addEventListener('click', function(e){
   const m = document.getElementById('auth-modal');
