@@ -308,10 +308,12 @@
   });
 
 <style id="firebaseui-visibility-fix">
-/* Ensure FirebaseUI list shows normally inside #auth-modal */
-#auth-modal #firebaseui-auth-container .firebaseui-idp-list { display:block !important; }
-#auth-modal #firebaseui-auth-container .firebaseui-list-item { display:block !important; }
-#auth-modal #firebaseui-auth-container { min-width: 280px; }
+/* Ensure FirebaseUI Google button shows properly */
+#firebaseui-auth-container { min-width: 280px; display: block !important; }
+#firebaseui-auth-container .firebaseui-idp-list { display: block !important; }
+#firebaseui-auth-container .firebaseui-list-item { display: block !important; margin: 0 auto !important; }
+#firebaseui-auth-container .firebaseui-idp-button { min-width: 220px !important; }
+.firebaseui-card-content, .firebaseui-card-actions { padding: 8px !important; }
 </style><style>
    .carousel-track {
   display: flex;
