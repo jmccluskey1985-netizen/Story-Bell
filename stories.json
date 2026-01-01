@@ -23,11 +23,7 @@
       "family",
       "problem-solving"
     ],
-    "emotions": [
-      "Frustrated",
-      "Proud",
-      "Happiness"
-    ],
+    "emotions": [],
     "keywords": [
       "Maya",
       "problem solving",
@@ -111,42 +107,54 @@
   {
     "id": "milo_the_mouse",
     "title": "Milo the Mouse",
-    "description": "A poem about friendship",
-    "author": "Jon McCluskey",
+    "description": "A gentle rhyming poem about Milo, a small brown mouse who discovers the joy of friendship through kindness and sharing.",
+    "author": "Story Bell",
     "image": "icon/milo-the-mouse-icon.webp",
     "audio": "milo-the-mouse/milo-the-mouse-audio.mp3",
     "categories": [
       "childrens-stories-ages-4-6",
       "5-minute-childrens-stories",
       "childrens-poems-and-rhymes",
-      "childrens-stories-about-sadness",
-      "kids-stories-about-feelings"
+      "emotional-intelligence-happiness",
+      "friendship-stories",
+      "animal-stories",
+      "childrens-stories-about-happiness"
     ],
     "html": "milo-the-mouse.html",
-    "date_added": "",
+    "date_added": "2025-01-13",
     "slug": "milo-the-mouse",
     "url": "https://storybellkids.com/milo-the-mouse.html",
     "inLanguage": "en",
     "duration_min": 5,
     "age_bracket": "4-6",
     "themes": [
+      "friendship",
+      "kindness",
+      "sharing",
+      "emotional-intelligence-happiness",
       "animals",
-      "friendship"
+      "helping-others"
     ],
     "emotions": [
-      "Sadness"
+      "happiness",
+      "loneliness (turning to joy)"
     ],
     "keywords": [
       "mouse",
       "friendship",
       "poem",
       "animal story",
-      "children's story"
+      "children's story",
+      "rhyming poem",
+      "kindness",
+      "sharing",
+      "making friends",
+      "forest animals"
     ],
     "schema": {
       "@type": "CreativeWork",
       "name": "Milo the Mouse",
-      "description": "A poem about friendship",
+      "description": "A gentle rhyming poem about Milo, a small brown mouse who discovers the joy of friendship through kindness and sharing.",
       "url": "https://storybellkids.com/milo-the-mouse.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
@@ -157,23 +165,35 @@
       "timeRequired": "PT5M",
       "typicalAgeRange": "4-6",
       "genre": [
-        "Poem",
-        "Animals",
-        "Friendship"
+        "Children's poem",
+        "Animal story",
+        "Friendship story"
       ],
       "about": [
         {
           "@type": "Thing",
-          "name": "Animals"
+          "name": "Friendship"
         },
         {
           "@type": "Thing",
-          "name": "Friendship"
+          "name": "Kindness"
+        },
+        {
+          "@type": "Thing",
+          "name": "Sharing"
+        },
+        {
+          "@type": "Thing",
+          "name": "Emotional-Intelligence-Happiness"
+        },
+        {
+          "@type": "Thing",
+          "name": "Animals"
         }
       ],
       "author": {
         "@type": "Person",
-        "name": "Jon McCluskey"
+        "name": "Story Bell"
       },
       "audio": {
         "@type": "AudioObject",
@@ -181,8 +201,8 @@
         "encodingFormat": "audio/mpeg",
         "name": "Story Audio"
       },
-      "datePublished": "2025-10-06",
-      "dateModified": "2025-10-06",
+      "datePublished": "2025-01-13",
+      "dateModified": "2025-01-13",
       "mainEntityOfPage": "https://storybellkids.com/milo-the-mouse.html",
       "publisher": {
         "@type": "Organization",
@@ -772,7 +792,7 @@
   {
     "id": "tommy_and_the_lost_toy",
     "title": "Tommy and the Lost Toy",
-    "description": "Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.",
+    "description": "Tommy learns about anger when he can\u2019t find his favourite truck, but Mummy helps him talk about his feelings.",
     "author": "AI Generated",
     "image": "icon/tommy-and-the-lost-toy-icon.webp",
     "audio": "tommy-and-the-lost-toy/tommy-and-the-lost-toy-audio.mp3",
@@ -806,7 +826,7 @@
     "schema": {
       "@type": "CreativeWork",
       "name": "Tommy and the Lost Toy",
-      "description": "Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.",
+      "description": "Tommy learns about anger when he can\u2019t find his favourite truck, but Mummy helps him talk about his feelings.",
       "url": "https://storybellkids.com/tommy-and-the-lost-toy.html",
       "inLanguage": "en",
       "isFamilyFriendly": true,
@@ -1704,6 +1724,825 @@
       "genre": [
         "Children's Story",
         "Family"
+      ]
+    }
+  },
+  {
+    "id": "the_magic_paintbrush",
+    "title": "The Magic Paintbrush",
+    "description": "Aria discovers a magical paintbrush that brings her drawings to life, and learns that creativity comes with responsibility.",
+    "author": "AI Generated",
+    "image": "icon/the-magic-paintbrush-icon.webp",
+    "audio": "the-magic-paintbrush/the-magic-paintbrush-audio.mp3",
+    "categories": [
+      "childrens-stories-ages-7-9",
+      "fantasy-stories",
+      "creativity-stories",
+      "responsibility-stories"
+    ],
+    "html": "the-magic-paintbrush.html",
+    "date_added": "2025-11-26",
+    "slug": "the-magic-paintbrush",
+    "url": "https://storybellkids.com/the-magic-paintbrush.html",
+    "inLanguage": "en",
+    "duration_min": 8,
+    "age_bracket": "7-9",
+    "themes": [
+      "creativity",
+      "responsibility",
+      "imagination",
+      "consequences"
+    ],
+    "emotions": [
+      "wonder",
+      "excitement",
+      "thoughtfulness",
+      "joy"
+    ],
+    "keywords": [
+      "magic",
+      "paintbrush",
+      "creativity",
+      "art",
+      "responsibility",
+      "imagination"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "The Magic Paintbrush",
+      "description": "Aria discovers a magical paintbrush that brings her drawings to life, and learns that creativity comes with responsibility.",
+      "url": "https://storybellkids.com/the-magic-paintbrush.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://storybellkids.com/icon/the-magic-paintbrush-icon.webp"
+      },
+      "timeRequired": "PT8M",
+      "typicalAgeRange": "7-9",
+      "genre": [
+        "Childrens Stories Ages 7 9",
+        "Fantasy Stories",
+        "Creativity Stories"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Creativity"
+        },
+        {
+          "@type": "Thing",
+          "name": "Responsibility"
+        },
+        {
+          "@type": "Thing",
+          "name": "Imagination"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://storybellkids.com/the-magic-paintbrush/the-magic-paintbrush-audio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
+      },
+      "datePublished": "2025-11-26",
+      "dateModified": "2025-11-26",
+      "mainEntityOfPage": "https://storybellkids.com/the-magic-paintbrush.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://storybellkids.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://storybellkids.com/assets/logo-512.png"
+        }
+      },
+      "headline": "The Magic Paintbrush",
+      "suggestedMinAge": 7,
+      "suggestedMaxAge": 9,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://storybellkids.com/ages-7-9/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
+    }
+  },
+  {
+    "id": "olivers_ocean_quest",
+    "title": "Oliver's Ocean Quest",
+    "description": "Oliver explores tide pools at the beach with his dad and discovers the wonders of ocean life.",
+    "author": "AI Generated",
+    "image": "icon/olivers-ocean-quest-icon.webp",
+    "audio": "olivers-ocean-quest/olivers-ocean-quest-audio.mp3",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "nature-stories",
+      "adventure-stories",
+      "family-stories"
+    ],
+    "html": "olivers-ocean-quest.html",
+    "date_added": "2025-11-26",
+    "slug": "olivers-ocean-quest",
+    "url": "https://storybellkids.com/olivers-ocean-quest.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "4-6",
+    "themes": [
+      "curiosity",
+      "nature",
+      "learning",
+      "family bonding"
+    ],
+    "emotions": [
+      "curiosity",
+      "wonder",
+      "excitement",
+      "joy"
+    ],
+    "keywords": [
+      "ocean",
+      "tide pools",
+      "beach",
+      "sea creatures",
+      "discovery",
+      "family"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "Oliver's Ocean Quest",
+      "description": "Oliver explores tide pools at the beach with his dad and discovers the wonders of ocean life.",
+      "url": "https://storybellkids.com/olivers-ocean-quest.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://storybellkids.com/icon/olivers-ocean-quest-icon.webp"
+      },
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "4-6",
+      "genre": [
+        "Childrens Stories Ages 4 6",
+        "Nature Stories",
+        "Adventure Stories"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Curiosity"
+        },
+        {
+          "@type": "Thing",
+          "name": "Nature"
+        },
+        {
+          "@type": "Thing",
+          "name": "Learning"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://storybellkids.com/olivers-ocean-quest/olivers-ocean-quest-audio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
+      },
+      "datePublished": "2025-11-26",
+      "dateModified": "2025-11-26",
+      "mainEntityOfPage": "https://storybellkids.com/olivers-ocean-quest.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://storybellkids.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://storybellkids.com/assets/logo-512.png"
+        }
+      },
+      "headline": "Oliver's Ocean Quest",
+      "suggestedMinAge": 4,
+      "suggestedMaxAge": 6,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://storybellkids.com/ages-4-6/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
+    }
+  },
+  {
+    "id": "the_lost_puppy",
+    "title": "The Lost Puppy",
+    "description": "Emma finds a lost puppy in the park and works with her community to reunite it with its family.",
+    "author": "AI Generated",
+    "image": "icon/the-lost-puppy-icon.webp",
+    "audio": "the-lost-puppy/the-lost-puppy-audio.mp3",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "animal-stories",
+      "kindness-stories",
+      "community-stories"
+    ],
+    "html": "the-lost-puppy.html",
+    "date_added": "2025-11-26",
+    "slug": "the-lost-puppy",
+    "url": "https://storybellkids.com/the-lost-puppy.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "4-6",
+    "themes": [
+      "kindness",
+      "community",
+      "responsibility",
+      "empathy"
+    ],
+    "emotions": [
+      "concern",
+      "determination",
+      "joy",
+      "love"
+    ],
+    "keywords": [
+      "puppy",
+      "lost",
+      "kindness",
+      "helping",
+      "community",
+      "reunion"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "The Lost Puppy",
+      "description": "Emma finds a lost puppy in the park and works with her community to reunite it with its family.",
+      "url": "https://storybellkids.com/the-lost-puppy.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://storybellkids.com/icon/the-lost-puppy-icon.webp"
+      },
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "4-6",
+      "genre": [
+        "Childrens Stories Ages 4 6",
+        "Animal Stories",
+        "Kindness Stories"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Kindness"
+        },
+        {
+          "@type": "Thing",
+          "name": "Community"
+        },
+        {
+          "@type": "Thing",
+          "name": "Responsibility"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://storybellkids.com/the-lost-puppy/the-lost-puppy-audio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
+      },
+      "datePublished": "2025-11-26",
+      "dateModified": "2025-11-26",
+      "mainEntityOfPage": "https://storybellkids.com/the-lost-puppy.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://storybellkids.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://storybellkids.com/assets/logo-512.png"
+        }
+      },
+      "headline": "The Lost Puppy",
+      "suggestedMinAge": 4,
+      "suggestedMaxAge": 6,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://storybellkids.com/ages-4-6/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
+    }
+  },
+  {
+    "id": "jacks_jungle_dream",
+    "title": "Jack's Jungle Dream",
+    "description": "Jack has a magical dream where he explores a colorful jungle and makes friends with amazing animals.",
+    "author": "AI Generated",
+    "image": "icon/jacks-jungle-dream-icon.webp",
+    "audio": "jacks-jungle-dream/jacks-jungle-dream-audio.mp3",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "dream-stories",
+      "animal-stories",
+      "adventure-stories"
+    ],
+    "html": "jacks-jungle-dream.html",
+    "date_added": "2025-11-26",
+    "slug": "jacks-jungle-dream",
+    "url": "https://storybellkids.com/jacks-jungle-dream.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "4-6",
+    "themes": [
+      "imagination",
+      "friendship",
+      "adventure",
+      "dreams"
+    ],
+    "emotions": [
+      "excitement",
+      "wonder",
+      "joy",
+      "playfulness"
+    ],
+    "keywords": [
+      "jungle",
+      "dream",
+      "animals",
+      "adventure",
+      "imagination",
+      "friendship"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "Jack's Jungle Dream",
+      "description": "Jack has a magical dream where he explores a colorful jungle and makes friends with amazing animals.",
+      "url": "https://storybellkids.com/jacks-jungle-dream.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://storybellkids.com/icon/jacks-jungle-dream-icon.webp"
+      },
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "4-6",
+      "genre": [
+        "Childrens Stories Ages 4 6",
+        "Dream Stories",
+        "Animal Stories"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Imagination"
+        },
+        {
+          "@type": "Thing",
+          "name": "Friendship"
+        },
+        {
+          "@type": "Thing",
+          "name": "Adventure"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://storybellkids.com/jacks-jungle-dream/jacks-jungle-dream-audio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
+      },
+      "datePublished": "2025-11-26",
+      "dateModified": "2025-11-26",
+      "mainEntityOfPage": "https://storybellkids.com/jacks-jungle-dream.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://storybellkids.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://storybellkids.com/assets/logo-512.png"
+        }
+      },
+      "headline": "Jack's Jungle Dream",
+      "suggestedMinAge": 4,
+      "suggestedMaxAge": 6,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://storybellkids.com/ages-4-6/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
+    }
+  },
+  {
+    "id": "the_tiny_fairy",
+    "title": "The Tiny Fairy",
+    "description": "Lily discovers a tiny fairy named Shimmer in her garden, who teaches her about the magic of nature.",
+    "author": "AI Generated",
+    "image": "icon/the-tiny-fairy-icon.webp",
+    "audio": "the-tiny-fairy/the-tiny-fairy-audio.mp3",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "fantasy-stories",
+      "nature-stories",
+      "friendship-stories"
+    ],
+    "html": "the-tiny-fairy.html",
+    "date_added": "2025-11-26",
+    "slug": "the-tiny-fairy",
+    "url": "https://storybellkids.com/the-tiny-fairy.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "4-6",
+    "themes": [
+      "friendship",
+      "nature",
+      "wonder",
+      "magic"
+    ],
+    "emotions": [
+      "wonder",
+      "delight",
+      "friendship",
+      "joy"
+    ],
+    "keywords": [
+      "fairy",
+      "garden",
+      "magic",
+      "nature",
+      "friendship",
+      "flowers"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "The Tiny Fairy",
+      "description": "Lily discovers a tiny fairy named Shimmer in her garden, who teaches her about the magic of nature.",
+      "url": "https://storybellkids.com/the-tiny-fairy.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://storybellkids.com/icon/the-tiny-fairy-icon.webp"
+      },
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "4-6",
+      "genre": [
+        "Childrens Stories Ages 4 6",
+        "Fantasy Stories",
+        "Nature Stories"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Friendship"
+        },
+        {
+          "@type": "Thing",
+          "name": "Nature"
+        },
+        {
+          "@type": "Thing",
+          "name": "Wonder"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://storybellkids.com/the-tiny-fairy/the-tiny-fairy-audio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
+      },
+      "datePublished": "2025-11-26",
+      "dateModified": "2025-11-26",
+      "mainEntityOfPage": "https://storybellkids.com/the-tiny-fairy.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://storybellkids.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://storybellkids.com/assets/logo-512.png"
+        }
+      },
+      "headline": "The Tiny Fairy",
+      "suggestedMinAge": 4,
+      "suggestedMaxAge": 6,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://storybellkids.com/ages-4-6/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
+    }
+  },
+  {
+    "id": "bennys_big_helpers",
+    "title": "Benny's Big Helpers",
+    "description": "Benny learns to help around the house and discovers the joy of being a contributing family member.",
+    "author": "AI Generated",
+    "image": "icon/bennys-big-helpers-icon.webp",
+    "audio": "bennys-big-helpers/bennys-big-helpers-audio.mp3",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "family-stories",
+      "responsibility-stories",
+      "helping-at-home"
+    ],
+    "html": "bennys-big-helpers.html",
+    "date_added": "2025-11-26",
+    "slug": "bennys-big-helpers",
+    "url": "https://storybellkids.com/bennys-big-helpers.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "4-6",
+    "themes": [
+      "responsibility",
+      "helpfulness",
+      "family teamwork",
+      "growing up"
+    ],
+    "emotions": [
+      "eagerness",
+      "pride",
+      "joy",
+      "love"
+    ],
+    "keywords": [
+      "helping",
+      "chores",
+      "family",
+      "responsibility",
+      "pride",
+      "growing up"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "Benny's Big Helpers",
+      "description": "Benny learns to help around the house and discovers the joy of being a contributing family member.",
+      "url": "https://storybellkids.com/bennys-big-helpers.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://storybellkids.com/icon/bennys-big-helpers-icon.webp"
+      },
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "4-6",
+      "genre": [
+        "Childrens Stories Ages 4 6",
+        "Family Stories",
+        "Responsibility Stories"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Responsibility"
+        },
+        {
+          "@type": "Thing",
+          "name": "Helpfulness"
+        },
+        {
+          "@type": "Thing",
+          "name": "Family Teamwork"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://storybellkids.com/bennys-big-helpers/bennys-big-helpers-audio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
+      },
+      "datePublished": "2025-11-26",
+      "dateModified": "2025-11-26",
+      "mainEntityOfPage": "https://storybellkids.com/bennys-big-helpers.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://storybellkids.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://storybellkids.com/assets/logo-512.png"
+        }
+      },
+      "headline": "Benny's Big Helpers",
+      "suggestedMinAge": 4,
+      "suggestedMaxAge": 6,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://storybellkids.com/ages-4-6/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
+      ]
+    }
+  },
+  {
+    "id": "the_wishing_star",
+    "title": "The Wishing Star",
+    "description": "Stella discovers a fallen star that offers her three wishes, and learns that gratitude is more powerful than wishing.",
+    "author": "AI Generated",
+    "image": "icon/the-wishing-star-icon.webp",
+    "audio": "the-wishing-star/the-wishing-star-audio.mp3",
+    "categories": [
+      "childrens-stories-ages-7-9",
+      "fantasy-stories",
+      "wisdom-stories",
+      "gratitude-and-thankfulness"
+    ],
+    "html": "the-wishing-star.html",
+    "date_added": "2025-11-26",
+    "slug": "the-wishing-star",
+    "url": "https://storybellkids.com/the-wishing-star.html",
+    "inLanguage": "en",
+    "duration_min": 8,
+    "age_bracket": "7-9",
+    "themes": [
+      "gratitude",
+      "wisdom",
+      "decision-making",
+      "appreciating what we have"
+    ],
+    "emotions": [
+      "wonder",
+      "thoughtfulness",
+      "joy",
+      "gratitude"
+    ],
+    "keywords": [
+      "star",
+      "wishes",
+      "gratitude",
+      "wisdom",
+      "magic",
+      "family"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "The Wishing Star",
+      "description": "Stella discovers a fallen star that offers her three wishes, and learns that gratitude is more powerful than wishing.",
+      "url": "https://storybellkids.com/the-wishing-star.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://storybellkids.com/icon/the-wishing-star-icon.webp"
+      },
+      "timeRequired": "PT8M",
+      "typicalAgeRange": "7-9",
+      "genre": [
+        "Childrens Stories Ages 7 9",
+        "Fantasy Stories",
+        "Wisdom Stories"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Gratitude"
+        },
+        {
+          "@type": "Thing",
+          "name": "Wisdom"
+        },
+        {
+          "@type": "Thing",
+          "name": "Decision-Making"
+        }
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "AI Generated"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://storybellkids.com/the-wishing-star/the-wishing-star-audio.mp3",
+        "encodingFormat": "audio/mpeg",
+        "name": "Story Audio"
+      },
+      "datePublished": "2025-11-26",
+      "dateModified": "2025-11-26",
+      "mainEntityOfPage": "https://storybellkids.com/the-wishing-star.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Story Bell",
+        "url": "https://storybellkids.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://storybellkids.com/assets/logo-512.png"
+        }
+      },
+      "headline": "The Wishing Star",
+      "suggestedMinAge": 7,
+      "suggestedMaxAge": 9,
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "url": "https://storybellkids.com/ages-7-9/"
+      },
+      "isAccessibleForFree": true,
+      "accessMode": [
+        "auditory",
+        "textual",
+        "visual"
+      ],
+      "accessibilityFeature": [
+        "readingOrder"
+      ],
+      "learningResourceType": "short story",
+      "educationalUse": [
+        "read-aloud",
+        "literacy"
       ]
     }
   }

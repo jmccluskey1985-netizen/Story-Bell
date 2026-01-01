@@ -14,11 +14,7 @@
       "family",
       "problem-solving"
     ],
-    "emotions": [
-      "Frustrated",
-      "Proud",
-      "Happiness"
-    ],
+    "emotions": [],
     "keywords": [
       "Maya",
       "problem solving",
@@ -27,35 +23,47 @@
       "happiness",
       "children's story"
     ],
-    "image": "/icon/mayas-missing-mittens-imagetitle.webp"
+    "image": "/icon/mayas-missing-mittens-icon.webp"
   },
   {
     "title": "Milo the Mouse",
     "url": "/https://storybellkids.com/milo-the-mouse.html",
-    "description": "A poem about friendship",
+    "description": "A gentle rhyming poem about Milo, a small brown mouse who discovers the joy of friendship through kindness and sharing.",
     "age": "4-6",
     "categories": [
       "childrens-stories-ages-4-6",
       "5-minute-childrens-stories",
       "childrens-poems-and-rhymes",
-      "childrens-stories-about-sadness",
-      "kids-stories-about-feelings"
+      "emotional-intelligence-happiness",
+      "friendship-stories",
+      "animal-stories",
+      "childrens-stories-about-happiness"
     ],
     "themes": [
+      "friendship",
+      "kindness",
+      "sharing",
+      "emotional-intelligence-happiness",
       "animals",
-      "friendship"
+      "helping-others"
     ],
     "emotions": [
-      "Sadness"
+      "happiness",
+      "loneliness (turning to joy)"
     ],
     "keywords": [
       "mouse",
       "friendship",
       "poem",
       "animal story",
-      "children's story"
+      "children's story",
+      "rhyming poem",
+      "kindness",
+      "sharing",
+      "making friends",
+      "forest animals"
     ],
-    "image": "/icon/milo-the-mouse-imagetitle.webp"
+    "image": "/icon/milo-the-mouse-icon.webp"
   },
   {
     "title": "Luna's Colorful Garden",
@@ -79,7 +87,7 @@
       "magical",
       "children's story"
     ],
-    "image": "/icon/lunas-colorful-garden-imagetitle.webp"
+    "image": "/icon/lunas-colorful-garden-icon.webp"
   },
   {
     "title": "The Tiniest Rainbow",
@@ -109,7 +117,7 @@
       "toddlers",
       "short story"
     ],
-    "image": "/icon/the-tiniest-rainbow-imagetitle.webp"
+    "image": "/icon/the-tiniest-rainbow-icon.webp"
   },
   {
     "title": "Owl in the Dark Forest",
@@ -137,7 +145,7 @@
       "forest",
       "adventure"
     ],
-    "image": "/icon/owl-in-the-dark-forest-imagetitle.webp"
+    "image": "/icon/owl-in-the-dark-forest-icon.webp"
   },
   {
     "title": "The Lonely Leaf",
@@ -165,7 +173,7 @@
       "friendship",
       "nature"
     ],
-    "image": "/icon/the-lonely-leaf-imagetitle.webp"
+    "image": "/icon/the-lonely-leaf-icon.webp"
   },
   {
     "title": "Emma and the Surprise Party",
@@ -193,7 +201,7 @@
       "granddad",
       "celebration"
     ],
-    "image": "/icon/emma-and-the-surprise-party-imagetitle.webp"
+    "image": "/icon/emma-and-the-surprise-party-icon.webp"
   },
   {
     "title": "Tommy and the Lost Toy",
@@ -220,7 +228,7 @@
       "toddler",
       "family"
     ],
-    "image": "/icon/tommy-and-the-lost-toy-imagetitle.webp"
+    "image": "/icon/tommy-and-the-lost-toy-icon.webp"
   },
   {
     "title": "Melody and the Muddy Puppy",
@@ -249,7 +257,7 @@
       "park",
       "animals"
     ],
-    "image": "/icon/melody-and-the-muddy-puppy-imagetitle.webp"
+    "image": "/icon/melody-and-the-muddy-puppy-icon.webp"
   },
   {
     "title": "The Brave Little Duckling",
@@ -277,7 +285,7 @@
       "animals",
       "swimming"
     ],
-    "image": "/icon/the-brave-little-duckling-imagetitle.webp"
+    "image": "/icon/the-brave-little-duckling-icon.webp"
   },
   {
     "title": "Stars in My Window",
@@ -307,7 +315,7 @@
       "comfort",
       "happiness"
     ],
-    "image": "/icon/stars-in-my-window-imagetitle.webp"
+    "image": "/icon/stars-in-my-window-icon.webp"
   },
   {
     "title": "Grumpy Grandpa and the Silly Hat",
@@ -334,7 +342,7 @@
       "family",
       "feelings"
     ],
-    "image": "/icon/grumpy-grandpa-and-the-silly-hat-imagetitle.webp"
+    "image": "/icon/grumpy-grandpa-and-the-silly-hat-icon.webp"
   },
   {
     "title": "The Secret in the Library",
@@ -362,7 +370,7 @@
       "adventure",
       "friends"
     ],
-    "image": "/icon/the-secret-in-the-library-imagetitle.webp"
+    "image": "/icon/the-secret-in-the-library-icon.webp"
   },
   {
     "title": "Lily and the Blue Balloon",
@@ -389,7 +397,7 @@
       "balloon",
       "feelings"
     ],
-    "image": "/icon/lily-and-the-blue-balloon-imagetitle.webp"
+    "image": "/icon/lily-and-the-blue-balloon-icon.webp"
   },
   {
     "title": "The Case of the Gross Green Socks",
@@ -417,7 +425,7 @@
       "detective",
       "laundry"
     ],
-    "image": "/icon/the-case-of-the-gross-green-socks-imagetitle.webp"
+    "image": "/icon/the-case-of-the-gross-green-socks-icon.webp"
   },
   {
     "title": "Cousins' Countryside Adventure",
@@ -449,6 +457,237 @@
       "nature",
       "butterflies"
     ],
-    "image": "/icon/cousins-countryside-adventure-imagetitle.webp"
+    "image": "/icon/cousins-countryside-adventure-icon.webp"
+  },
+  {
+    "title": "The Magic Paintbrush",
+    "url": "/https://storybellkids.com/the-magic-paintbrush.html",
+    "description": "Aria discovers a magical paintbrush that brings her drawings to life, and learns that creativity comes with responsibility.",
+    "age": "7-9",
+    "categories": [
+      "childrens-stories-ages-7-9",
+      "fantasy-stories",
+      "creativity-stories",
+      "responsibility-stories"
+    ],
+    "themes": [
+      "creativity",
+      "responsibility",
+      "imagination",
+      "consequences"
+    ],
+    "emotions": [
+      "wonder",
+      "excitement",
+      "thoughtfulness",
+      "joy"
+    ],
+    "keywords": [
+      "magic",
+      "paintbrush",
+      "creativity",
+      "art",
+      "responsibility",
+      "imagination"
+    ],
+    "image": "/icon/the-magic-paintbrush-icon.webp"
+  },
+  {
+    "title": "Oliver's Ocean Quest",
+    "url": "/https://storybellkids.com/olivers-ocean-quest.html",
+    "description": "Oliver explores tide pools at the beach with his dad and discovers the wonders of ocean life.",
+    "age": "4-6",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "nature-stories",
+      "adventure-stories",
+      "family-stories"
+    ],
+    "themes": [
+      "curiosity",
+      "nature",
+      "learning",
+      "family bonding"
+    ],
+    "emotions": [
+      "curiosity",
+      "wonder",
+      "excitement",
+      "joy"
+    ],
+    "keywords": [
+      "ocean",
+      "tide pools",
+      "beach",
+      "sea creatures",
+      "discovery",
+      "family"
+    ],
+    "image": "/icon/olivers-ocean-quest-icon.webp"
+  },
+  {
+    "title": "The Lost Puppy",
+    "url": "/https://storybellkids.com/the-lost-puppy.html",
+    "description": "Emma finds a lost puppy in the park and works with her community to reunite it with its family.",
+    "age": "4-6",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "animal-stories",
+      "kindness-stories",
+      "community-stories"
+    ],
+    "themes": [
+      "kindness",
+      "community",
+      "responsibility",
+      "empathy"
+    ],
+    "emotions": [
+      "concern",
+      "determination",
+      "joy",
+      "love"
+    ],
+    "keywords": [
+      "puppy",
+      "lost",
+      "kindness",
+      "helping",
+      "community",
+      "reunion"
+    ],
+    "image": "/icon/the-lost-puppy-icon.webp"
+  },
+  {
+    "title": "Jack's Jungle Dream",
+    "url": "/https://storybellkids.com/jacks-jungle-dream.html",
+    "description": "Jack has a magical dream where he explores a colorful jungle and makes friends with amazing animals.",
+    "age": "4-6",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "dream-stories",
+      "animal-stories",
+      "adventure-stories"
+    ],
+    "themes": [
+      "imagination",
+      "friendship",
+      "adventure",
+      "dreams"
+    ],
+    "emotions": [
+      "excitement",
+      "wonder",
+      "joy",
+      "playfulness"
+    ],
+    "keywords": [
+      "jungle",
+      "dream",
+      "animals",
+      "adventure",
+      "imagination",
+      "friendship"
+    ],
+    "image": "/icon/jacks-jungle-dream-icon.webp"
+  },
+  {
+    "title": "The Tiny Fairy",
+    "url": "/https://storybellkids.com/the-tiny-fairy.html",
+    "description": "Lily discovers a tiny fairy named Shimmer in her garden, who teaches her about the magic of nature.",
+    "age": "4-6",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "fantasy-stories",
+      "nature-stories",
+      "friendship-stories"
+    ],
+    "themes": [
+      "friendship",
+      "nature",
+      "wonder",
+      "magic"
+    ],
+    "emotions": [
+      "wonder",
+      "delight",
+      "friendship",
+      "joy"
+    ],
+    "keywords": [
+      "fairy",
+      "garden",
+      "magic",
+      "nature",
+      "friendship",
+      "flowers"
+    ],
+    "image": "/icon/the-tiny-fairy-icon.webp"
+  },
+  {
+    "title": "Benny's Big Helpers",
+    "url": "/https://storybellkids.com/bennys-big-helpers.html",
+    "description": "Benny learns to help around the house and discovers the joy of being a contributing family member.",
+    "age": "4-6",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "family-stories",
+      "responsibility-stories",
+      "helping-at-home"
+    ],
+    "themes": [
+      "responsibility",
+      "helpfulness",
+      "family teamwork",
+      "growing up"
+    ],
+    "emotions": [
+      "eagerness",
+      "pride",
+      "joy",
+      "love"
+    ],
+    "keywords": [
+      "helping",
+      "chores",
+      "family",
+      "responsibility",
+      "pride",
+      "growing up"
+    ],
+    "image": "/icon/bennys-big-helpers-icon.webp"
+  },
+  {
+    "title": "The Wishing Star",
+    "url": "/https://storybellkids.com/the-wishing-star.html",
+    "description": "Stella discovers a fallen star that offers her three wishes, and learns that gratitude is more powerful than wishing.",
+    "age": "7-9",
+    "categories": [
+      "childrens-stories-ages-7-9",
+      "fantasy-stories",
+      "wisdom-stories",
+      "gratitude-and-thankfulness"
+    ],
+    "themes": [
+      "gratitude",
+      "wisdom",
+      "decision-making",
+      "appreciating what we have"
+    ],
+    "emotions": [
+      "wonder",
+      "thoughtfulness",
+      "joy",
+      "gratitude"
+    ],
+    "keywords": [
+      "star",
+      "wishes",
+      "gratitude",
+      "wisdom",
+      "magic",
+      "family"
+    ],
+    "image": "/icon/the-wishing-star-icon.webp"
   }
 ]
