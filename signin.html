@@ -254,6 +254,30 @@
     }
   }
 
+  // Send signup emails (welcome to user + notification to admin)
+  function sendSignupEmail(email, childName) {
+    if (!email) return;
+    // Check if email was already sent for this user
+    var emailSentKey = 'storybell_email_sent_' + email.replace(/[^a-z0-9]/gi, '_');
+    if (localStorage.getItem(emailSentKey)) {
+      console.log('[SB] Welcome email already sent for this user');
+      return;
+    }
+    fetch('https://editor.readaloudstories.com/signup-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, childName: childName || 'Reader', isNewUser: true })
+    }).then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.success) {
+          console.log('[SB] Signup emails sent successfully');
+          localStorage.setItem(emailSentKey, Date.now());
+        } else {
+          console.warn('[SB] Email sending failed:', data.error);
+        }
+      }).catch(function(e) { console.warn('[SB] Email error:', e); });
+  }
+
   // Start FirebaseUI when page loads (Google only - email handled separately)
   document.addEventListener('DOMContentLoaded', function() {
     var ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
@@ -301,6 +325,8 @@
             createdAt: Date.now()
           }));
           localStorage.removeItem('storybell_pending_name');
+          // Send welcome + notification emails
+          sendSignupEmail(user.email, pendingName);
           window.location.href = '/';
         }
       }
@@ -2844,6 +2870,8 @@ function createAccount() {
           age: '',
           createdAt: Date.now()
         }));
+        // Send welcome + notification emails
+        sendSignupEmail(sbUserEmail, sbUserName);
         // Redirect to home
         window.location.href = '/';
       });
