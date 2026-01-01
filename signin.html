@@ -2548,7 +2548,7 @@ nav ul > li:focus-within > .dropdown {
   }
 </style><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
 <body>
-<img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
+<img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:none; position:fixed; pointer-events:none; z-index:9999;"/>
 <header>
 <div class="header-left">
 <a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
@@ -3162,16 +3162,7 @@ document.addEventListener('keypress', function(e) {
 <button class="queue-control-btn" disabled="" id="queue-next" title="Next Story">▶</button>
 <button class="queue-control-btn" disabled="" id="queue-clear" title="Clear Queue">🗑️</button>
 </div>
-</div><!-- Auth Modal (injected if missing) -->
-<div id="auth-modal" style="display:none;position:fixed;inset:0;z-index:2147483647;align-items:center;justify-content:center;background:rgba(0,0,0,0.55);backdrop-filter:blur(3px);">
-<div style="background:#111;color:#fff;border-radius:12px;max-width:520px;width:90%;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.35);">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-<h3 style="margin:0;font-family:inherit;font-weight:600;">Sign in</h3>
-<button aria-label="Close" id="auth-close" style="background:transparent;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1;">×</button>
-</div>
-<div id="firebaseui-auth-container"></div>
-</div>
-</div>
+</div><!-- Auth Modal removed - signin.html has its own UI -->
 <script id="firebase-auth-bindings">
 (function(){
   // Guard to avoid double-binding
