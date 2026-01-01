@@ -3799,21 +3799,39 @@ window.signOutFirebase = function(){
   }
 };
 
-// Child profile storage
+// Child profile storage (for Google sign-in users)
 function getChildProfile(uid) {
   try { return JSON.parse(localStorage.getItem('storybell_child_' + uid) || 'null'); }
   catch(e) { return null; }
 }
 
-// Update header UI based on auth state
-function updateHeaderAuth(user) {
+// Get localStorage user (for email sign-up users)
+function getLocalUser() {
+  try { return JSON.parse(localStorage.getItem('storybell_user') || 'null'); }
+  catch(e) { return null; }
+}
+
+// Update header UI based on auth state (supports both Firebase and localStorage users)
+function updateHeaderAuth(firebaseUser) {
   var loginBtns = document.querySelectorAll('.login-cta-header, .login-mobile a[href*="signin"]');
   var profileEls = document.querySelectorAll('.sb-user-profile');
 
-  if (user) {
-    var profile = getChildProfile(user.uid);
-    // Priority: child name > Firebase displayName > email prefix > 'Reader'
-    var displayName = (profile && profile.name) || user.displayName || (user.email ? user.email.split('@')[0] : 'Reader');
+  // Check for email-based user in localStorage
+  var localUser = getLocalUser();
+
+  // Either Firebase user OR localStorage user counts as "signed in"
+  var isSignedIn = firebaseUser || localUser;
+
+  if (isSignedIn) {
+    var displayName;
+    if (firebaseUser) {
+      // Firebase user (Google sign-in): check child profile first
+      var profile = getChildProfile(firebaseUser.uid);
+      displayName = (profile && profile.name) || firebaseUser.displayName || (firebaseUser.email ? firebaseUser.email.split('@')[0] : 'Reader');
+    } else {
+      // localStorage user (email sign-up): use stored name or email prefix
+      displayName = localUser.name || (localUser.email ? localUser.email.split('@')[0] : 'Reader');
+    }
 
     loginBtns.forEach(function(el){ el.style.display = 'none'; });
     profileEls.forEach(function(el){
@@ -3821,28 +3839,48 @@ function updateHeaderAuth(user) {
       var nameEl = el.querySelector('.sb-user-name');
       if (nameEl) nameEl.textContent = displayName;
     });
+    console.log('[SB] Header updated: showing', displayName);
   } else {
     loginBtns.forEach(function(el){ el.style.display = ''; });
     profileEls.forEach(function(el){ el.style.display = 'none'; });
+    console.log('[SB] Header updated: showing login button');
   }
 }
 
-// Sign out function
+// Sign out function (clears both Firebase and localStorage)
 window.signOutStoryBell = function(){
+  // Clear localStorage user (email sign-up)
+  localStorage.removeItem('storybell_user');
+
+  // Also sign out Firebase (Google users)
   if (window.firebase && firebase.auth) {
     firebase.auth().signOut().then(function(){
       window.location.href = '/';
-    }).catch(function(e){ console.error('[SB] Sign out error:', e); });
+    }).catch(function(e){
+      console.error('[SB] Sign out error:', e);
+      window.location.href = '/';
+    });
+  } else {
+    window.location.href = '/';
   }
 };
 
-// Auth state listener to update header
+// Auth state listener to update header (for Firebase/Google users)
 if (window.firebase && firebase.auth) {
   firebase.auth().onAuthStateChanged(function(u){
-    console.log("[SB] Auth state:", u ? "SIGNED IN" : "SIGNED OUT");
+    console.log("[SB] Firebase auth state:", u ? "SIGNED IN" : "SIGNED OUT");
     updateHeaderAuth(u);
   });
 }
+
+// Also check for localStorage user on page load (for email sign-up users)
+document.addEventListener('DOMContentLoaded', function() {
+  var localUser = getLocalUser();
+  if (localUser) {
+    console.log('[SB] Found localStorage user:', localUser.name || localUser.email);
+    updateHeaderAuth(null); // Pass null for firebase, will use localStorage
+  }
+});
 
 document.addEventListener('click', function(e){
   const m = document.getElementById('auth-modal');

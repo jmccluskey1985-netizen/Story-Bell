@@ -2735,12 +2735,12 @@ nav ul > li:focus-within > .dropdown {
 <span style="color: #FFEB3B; padding: 0 15px; font-family: 'Coming Soon', cursive;">or</span>
 <div style="flex: 1; height: 1px; background: #FFEB3B44;"></div>
 </div>
-<!-- Email Input (Passwordless - sends magic link) -->
+<!-- Email Sign-up (no verification required) -->
 <div id="sb-email-section">
 <input id="sb-email-input" placeholder="Your email" style="width: 100%; max-width: 300px; padding: 14px 18px; font-size: 16px; border: none; border-radius: 8px; background: #fff; color: #333; font-family: 'Coming Soon', cursive; box-sizing: border-box;" type="email"/>
 <div style="margin-top: 12px;">
-<button onclick="sendEmailLink()" style="background: #FFEB3B; color: #001f3f; font-weight: bold; font-size: 16px; padding: 12px 30px; border: none; border-radius: 20px; cursor: pointer; font-family: 'Coming Soon', cursive;">
-        Send Sign-in Link
+<button onclick="signUpWithEmail()" style="background: #FFEB3B; color: #001f3f; font-weight: bold; font-size: 16px; padding: 12px 30px; border: none; border-radius: 20px; cursor: pointer; font-family: 'Coming Soon', cursive;">
+        Sign Up
       </button>
 </div>
 <p id="sb-email-error" style="color: #ff6b6b; font-size: 13px; margin-top: 10px; display: none;"></p>
@@ -2761,67 +2761,60 @@ function hideAllErrors() {
   if (el) el.style.display = 'none';
 }
 
-// Passwordless Email Link Sign-in
-function sendEmailLink() {
-  console.log('[SB] sendEmailLink called');
-
-  // Check Firebase is ready
-  if (!window.firebase || !firebase.auth) {
-    console.error('[SB] Firebase not ready');
-    showError('sb-email-error', 'Please wait for the page to load fully and try again');
-    return;
-  }
-
+// Simple Email Sign-up (No verification required)
+function signUpWithEmail() {
+  console.log('[SB] signUpWithEmail called');
   hideAllErrors();
+
   var name = document.getElementById('sb-name-input').value.trim();
   var email = document.getElementById('sb-email-input').value.trim();
   console.log('[SB] Name:', name, 'Email:', email);
 
   if (!name) {
     showError('sb-email-error', 'Please enter the child\'s name');
-    console.log('[SB] Error: No name');
     return;
   }
   if (!email || !email.includes('@')) {
     showError('sb-email-error', 'Please enter a valid email address');
-    console.log('[SB] Error: Invalid email');
     return;
   }
-
-  // Save name and email to localStorage (will be retrieved after email link click)
-  localStorage.setItem('storybell_pending_name', name);
-  localStorage.setItem('storybell_pending_email', email);
-
-  // Firebase Email Link settings
-  var actionCodeSettings = {
-    url: window.location.origin + '/signin.html',  // Redirect back here after clicking link
-    handleCodeInApp: true
-  };
 
   // Show loading state
   var btn = document.querySelector('#sb-email-section button');
   var originalText = btn.textContent;
-  btn.textContent = 'Sending...';
+  btn.textContent = 'Signing up...';
   btn.disabled = true;
 
-  console.log('[SB] Calling sendSignInLinkToEmail with:', email, actionCodeSettings);
-  firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
-    .then(function() {
-      console.log('[SB] Email link sent successfully');
-      // Show success message
-      document.getElementById('sb-email-section').style.display = 'none';
-      var successEl = document.getElementById('sb-email-success');
-      successEl.innerHTML = '✨ Magic link sent to <strong>' + email + '</strong>!<br>Check your inbox and click the link to sign in.';
-      successEl.style.display = 'block';
-      // Send notification email via EmailJS
-      sendSignupEmail(email, name);
-    })
-    .catch(function(err) {
-      console.error('[SB] sendSignInLinkToEmail error:', err.code, err.message);
-      btn.textContent = originalText;
-      btn.disabled = false;
-      showError('sb-email-error', err.message);
-    });
+  // Generate a simple user ID (no Firebase auth needed for email signup)
+  var odiyId = 'email_' + Date.now();
+
+  // Save user profile to localStorage
+  localStorage.setItem('storybell_user', JSON.stringify({
+    id: odiyId,
+    name: name,
+    email: email,
+    createdAt: Date.now()
+  }));
+  console.log('[SB] User profile saved to localStorage');
+
+  // Send welcome email via EmailJS
+  sendSignupEmail(email, name);
+
+  // Show success briefly then redirect
+  var successEl = document.getElementById('sb-email-success');
+  successEl.innerHTML = '✨ Welcome, ' + name + '! Redirecting...';
+  successEl.style.display = 'block';
+  document.getElementById('sb-email-section').style.display = 'none';
+
+  // Redirect to homepage after brief delay
+  setTimeout(function() {
+    window.location.href = '/';
+  }, 1500);
+}
+
+// Alias for backwards compatibility with button onclick
+function sendEmailLink() {
+  signUpWithEmail();
 }
 
 // Handle email link sign-in (when user clicks the magic link)
