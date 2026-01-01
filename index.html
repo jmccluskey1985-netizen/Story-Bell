@@ -3794,8 +3794,8 @@ window.closeAuthModal = function(){
   if (m) m.style.display = 'none';
 };
 window.signOutFirebase = function(){
-  if (firebase?.auth) {
-    firebase.auth().signOut().then(()=&gt;alert('Signed out')).catch(console.error);
+  if (firebase && firebase.auth) {
+    firebase.auth().signOut().then(function(){ alert('Signed out'); }).catch(console.error);
   }
 };
 
