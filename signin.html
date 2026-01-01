@@ -229,8 +229,7 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
-<script>
-  <script id="firebase-init">
+<script id="firebase-init">
   // Story Bell — Firebase config + single-init (compat)
   const firebaseConfig = {
     apiKey: "AIzaSyC9vYsSvGN7zSDfkIcByvBZDOQnRyUPIBo",
@@ -242,14 +241,12 @@
     measurementId: "G-F64PJ8CCZQ"
   };
   if (!window.firebase) { console.error("Firebase SDK not found"); }
-  else if (!firebase.apps.length) { if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); } }
-</script>
-  if (!firebase.apps.length) if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+  else if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
 
   // Save child name before Google redirect
   function saveNameBeforeRedirect() {
     var nameInput = document.getElementById('sb-name-input');
-    if (nameInput &amp;&amp; nameInput.value.trim()) {
+    if (nameInput && nameInput.value.trim()) {
       localStorage.setItem('storybell_pending_name', nameInput.value.trim());
     }
   }
@@ -257,7 +254,6 @@
   // Send signup emails (welcome to user + notification to admin)
   function sendSignupEmail(email, childName) {
     if (!email) return;
-    // Check if email was already sent for this user
     var emailSentKey = 'storybell_email_sent_' + email.replace(/[^a-z0-9]/gi, '_');
     if (localStorage.getItem(emailSentKey)) {
       console.log('[SB] Welcome email already sent for this user');
@@ -289,11 +285,9 @@
       ],
       callbacks: {
         signInSuccessWithAuthResult: function(authResult) {
-          // This runs after successful sign-in
           var user = authResult.user;
           var pendingName = localStorage.getItem('storybell_pending_name');
-          if (pendingName &amp;&amp; user) {
-            // Save to localStorage profile
+          if (pendingName && user) {
             localStorage.setItem('storybell_child_' + user.uid, JSON.stringify({
               name: pendingName,
               age: '',
@@ -305,7 +299,6 @@
           return false;
         },
         uiShown: function() {
-          // Save name when UI is shown (before redirect)
           var googleBtn = document.querySelector('.firebaseui-idp-google');
           if (googleBtn) {
             googleBtn.addEventListener('click', saveNameBeforeRedirect);
@@ -314,7 +307,7 @@
       }
     });
 
-    // Also check on page load if returning from Google redirect
+    // Check on page load if returning from Google redirect
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         var pendingName = localStorage.getItem('storybell_pending_name');
@@ -325,14 +318,13 @@
             createdAt: Date.now()
           }));
           localStorage.removeItem('storybell_pending_name');
-          // Send welcome + notification emails
           sendSignupEmail(user.email, pendingName);
           window.location.href = '/';
         }
       }
     });
   });
-
+</script>
 <style id="firebaseui-visibility-fix">
 /* Ensure FirebaseUI Google button shows properly */
 #firebaseui-auth-container { min-width: 280px; display: block !important; }
