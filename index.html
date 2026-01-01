@@ -3961,8 +3961,7 @@ window.onOpenAuthModalHook = function(){
     if(!el) return false;
     var text = (el.innerText || '').toLowerCase();
     return el.hasAttribute('data-auth-cta')
-      || (el.matches && (el.matches('a[href="signin.html"]') || el.matches('#subscribe-box, .subscribe-box, .subscribe-text')))
-      || (text.includes('log in') && text.includes('create account'))
+      || (el.matches && el.matches('#subscribe-box, .subscribe-box, .subscribe-text'))
       || text.includes('subscribe to story bell');
   }
   document.addEventListener('click', function(e){
