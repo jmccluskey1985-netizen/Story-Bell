@@ -2287,7 +2287,7 @@ nav ul > li:focus-within > .dropdown {
   overflow: visible !important;
 }
 </style>
-<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Ages 4–6","url":"https://storybellkids.com/BlanK_HTML.html","inLanguage":"en","description":"© 2025 Story Bell. All rights reserved.","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script></head>
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Ages 4–6","url":"https://storybellkids.com/signin.html","inLanguage":"en","description":"Sign in to save your favorite stories and create reading lists","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script></head>
 <body>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>
@@ -2405,8 +2405,113 @@ nav ul > li:focus-within > .dropdown {
 </h1>
 <!-- FEATURED STORIES CAROUSEL HERE -->
 </div>
-<div class="main-blank" style="max-width: 500px; margin: 40px auto; padding: 30px;"><h1 style="color: #FFEB3B; text-align: center; margin-bottom: 10px; font-family: 'Georgia', serif; text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099;">Sign In to Story Bell</h1><p style="color: #fff; text-align: center; margin-bottom: 30px;">Sign in to save your favorite stories and create reading lists</p><div id="firebaseui-auth-container" style="min-height: 200px;"></div><p style="color: #aaa; font-size: 12px; text-align: center; margin-top: 20px;">By signing in, you agree to our <a href="terms.html" style="color: #FFEB3B;">Terms</a> and <a href="privacy.html" style="color: #FFEB3B;">Privacy Policy</a></p>
+<div class="main-blank" style="max-width: 500px; margin: 40px auto; padding: 30px;">
+<h1 style="color: #FFEB3B; text-align: center; margin-bottom: 10px; font-family: 'Georgia', serif; text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099;">Sign In to Story Bell</h1>
+<p id="signin-subtitle" style="color: #fff; text-align: center; margin-bottom: 30px;">Sign in to save your favorite stories and create reading lists</p>
+<div id="firebaseui-auth-container" style="min-height: 200px;"></div>
+<!-- Child Profile Collection Form (shown after auth) -->
+<div id="sb-profile-form" style="display:none; text-align:center; padding: 20px 0;">
+<h2 style="color:#FFEB3B; font-family:Georgia,serif; text-shadow:0 0 12px #ffff66, 0 0 24px #ffaa0099; margin-bottom: 20px;">Welcome to Story Bell!</h2>
+<p style="color:#fff; margin-bottom: 25px;">Tell us about your little reader:</p>
+<div style="margin-bottom: 20px;">
+<input id="sb-child-name" placeholder="Child's name" style="width: 100%; max-width: 280px; padding: 12px 16px; font-size: 16px; border: 2px solid #FFEB3B; border-radius: 8px; background: #001f3f; color: #fff; font-family: 'Coming Soon', cursive;" type="text"/>
 </div>
+<div style="margin-bottom: 25px;">
+<select id="sb-child-age" style="width: 100%; max-width: 280px; padding: 12px 16px; font-size: 16px; border: 2px solid #FFEB3B; border-radius: 8px; background: #001f3f; color: #fff; font-family: 'Coming Soon', cursive; cursor: pointer;">
+<option value="">Select age group</option>
+<option value="0-2">0-2 years</option>
+<option value="3-4">3-4 years</option>
+<option value="5-6">5-6 years</option>
+<option value="7-8">7-8 years</option>
+<option value="9-12">9-12 years</option>
+</select>
+</div>
+<button onclick="saveChildProfile()" style="background: #FFEB3B; color: #001f3f; font-weight: bold; font-size: 18px; padding: 14px 40px; border: none; border-radius: 25px; cursor: pointer; font-family: 'Coming Soon', cursive; box-shadow: 0 4px 15px rgba(255,235,59,0.3); transition: transform 0.2s, box-shadow 0.2s;">
+      Start Reading!
+    </button>
+</div>
+<p id="signin-terms" style="color: #aaa; font-size: 12px; text-align: center; margin-top: 20px;">By signing in, you agree to our <a href="terms.html" style="color: #FFEB3B;">Terms</a> and <a href="privacy.html" style="color: #FFEB3B;">Privacy Policy</a></p>
+</div>
+<script id="sb-profile-handler">
+(function(){
+  // Wait for Firebase to be ready
+  function initProfileHandler() {
+    if (!window.firebase || !firebase.auth) {
+      setTimeout(initProfileHandler, 100);
+      return;
+    }
+
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // Check if profile exists
+        var profileKey = 'storybell_child_' + user.uid;
+        var profile = null;
+        try { profile = JSON.parse(localStorage.getItem(profileKey) || 'null'); } catch(e) {}
+
+        if (profile && profile.name) {
+          // Already has profile, redirect home
+          window.location.href = '/';
+        } else {
+          // Show profile form, hide auth UI
+          var authContainer = document.getElementById('firebaseui-auth-container');
+          var profileForm = document.getElementById('sb-profile-form');
+          var subtitle = document.getElementById('signin-subtitle');
+          var terms = document.getElementById('signin-terms');
+
+          if (authContainer) authContainer.style.display = 'none';
+          if (profileForm) profileForm.style.display = 'block';
+          if (subtitle) subtitle.style.display = 'none';
+          if (terms) terms.style.display = 'none';
+        }
+      }
+    });
+  }
+
+  // Save child profile function
+  window.saveChildProfile = function() {
+    if (!window.firebase || !firebase.auth) {
+      alert('Please wait for the page to load');
+      return;
+    }
+
+    var user = firebase.auth().currentUser;
+    if (!user) {
+      alert('Please sign in first');
+      return;
+    }
+
+    var nameInput = document.getElementById('sb-child-name');
+    var ageSelect = document.getElementById('sb-child-age');
+
+    var name = (nameInput.value || '').trim();
+    var age = ageSelect.value;
+
+    if (!name) {
+      alert('Please enter your child\'s name');
+      nameInput.focus();
+      return;
+    }
+
+    // Save to localStorage
+    var profileKey = 'storybell_child_' + user.uid;
+    localStorage.setItem(profileKey, JSON.stringify({
+      name: name,
+      age: age,
+      createdAt: Date.now()
+    }));
+
+    // Redirect to homepage
+    window.location.href = '/';
+  };
+
+  // Initialize when DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProfileHandler);
+  } else {
+    initProfileHandler();
+  }
+})();
+</script>
 <script>
    // Wand cursor & sparkle logic
     const wand = document.getElementById("wand");
@@ -2521,6 +2626,5 @@ nav ul > li:focus-within > .dropdown {
   onReady(function(){ applyLayout(document); window.addEventListener('resize', function(){ applyLayout(document); }); });
 })();
 </script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script><script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script><script>  const firebaseConfig = {    apiKey: "AIzaSyC9vYsSvGN7zSDfkIcByvBZDOQnRyUPIBo",    authDomain: "storybellkids.firebaseapp.com",    projectId: "storybellkids",    storageBucket: "storybellkids.firebasestorage.app",    messagingSenderId: "107989104962",    appId: "1:107989104962:web:a93c5a427353a87111b0db"  };  if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);  var ui = new firebaseui.auth.AuthUI(firebase.auth());  ui.start("#firebaseui-auth-container", {    signInFlow: "redirect",    signInSuccessUrl: "/",    signInOptions: [      firebase.auth.GoogleAuthProvider.PROVIDER_ID,      firebase.auth.EmailAuthProvider.PROVIDER_ID    ]  });</script>
 </body>
 </html>
