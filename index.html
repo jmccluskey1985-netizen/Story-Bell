@@ -2772,11 +2772,13 @@ html body #story-queue-menu.active{display:flex !important;}
 
 
 
-<section aria-label="Subscribe to Story Bell newsletter" class="subscribe-box" onclick="if(typeof openAuthModal==='function'){openAuthModal();} return false;" style="cursor: pointer">
+<a href="signin.html" style="text-decoration: none;">
+<section aria-label="Subscribe to Story Bell newsletter" class="subscribe-box" style="cursor: pointer">
 <div aria-hidden="true" class="subscribe-starfield">
 </div>
-<div class="subscribe-text" style="cursor: pointer">Subscribe to Story Bell for free kids’ stories, updates &amp; new releases</div>
+<div class="subscribe-text" style="cursor: pointer">Subscribe to Story Bell for free kids' stories, updates &amp; new releases</div>
 </section>
+</a>
 <h1 class="index-body-title" style="font-family: 'Georgia', serif !important;">
     Story Bell
    </h1>
@@ -3338,7 +3340,7 @@ html body #story-queue-menu.active{display:flex !important;}
 <div style="background:#001020; padding:30px 10px; text-align:center;">
 <!-- Signup button -->
 <div style="margin:16px 0;">
-<a href="signin.html" onclick="return window.sbFooterOpenAuth &amp;&amp; sbFooterOpenAuth(this);" style="display:inline-block; background:#FFEB3B; color:#001f3f; font-weight:bold; padding:10px 20px; border-radius:6px; text-decoration:none; cursor:pointer;">
+<a href="signin.html" style="display:inline-block; background:#FFEB3B; color:#001f3f; font-weight:bold; padding:10px 20px; border-radius:6px; text-decoration:none; cursor:pointer;">
       Sign Up to Story Bell
     </a>
 </div>
@@ -3959,13 +3961,10 @@ window.onOpenAuthModalHook = function(){
 (function(){
   function wantsAuth(el){
     if(!el) return false;
-    var text = (el.innerText || '').toLowerCase();
-    return el.hasAttribute('data-auth-cta')
-      || (el.matches && el.matches('#subscribe-box, .subscribe-box, .subscribe-text'))
-      || text.includes('subscribe to story bell');
+    return el.hasAttribute('data-auth-cta');
   }
   document.addEventListener('click', function(e){
-    var t = e.target.closest('[data-auth-cta], #subscribe-box, .subscribe-box, .subscribe-text, .header-login-button, .mobile-login-button');
+    var t = e.target.closest('[data-auth-cta]');
     if(!t && wantsAuth(e.target)) t = e.target;
     if(t){
       try { e.preventDefault(); } catch(_){}
@@ -4131,7 +4130,7 @@ window.onOpenAuthModalHook = function(){
 </script>
 <script id="auth-guard-openauth">
 (function(){
-  var ALLOWED = '.subscribe-box, .subscribe-text, [data-auth-cta="auth"]';
+  var ALLOWED = '[data-auth-cta="auth"]';
   // Capture last click target (capture phase to beat bubbling handlers)
   document.addEventListener('click', function(e){
     window.__sbLastClickTarget = e.target || null;
