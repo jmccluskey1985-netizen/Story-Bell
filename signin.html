@@ -2732,43 +2732,16 @@ nav ul > li:focus-within > .dropdown {
 <span style="color: #FFEB3B; padding: 0 15px; font-family: 'Coming Soon', cursive;">or</span>
 <div style="flex: 1; height: 1px; background: #FFEB3B44;"></div>
 </div>
-<!-- Email Input -->
+<!-- Email Input (Passwordless - sends magic link) -->
 <div id="sb-email-section">
 <input id="sb-email-input" placeholder="Your email" style="width: 100%; max-width: 300px; padding: 14px 18px; font-size: 16px; border: none; border-radius: 8px; background: #fff; color: #333; font-family: 'Coming Soon', cursive; box-sizing: border-box;" type="email"/>
 <div style="margin-top: 12px;">
-<button onclick="continueWithEmail()" style="background: #FFEB3B; color: #001f3f; font-weight: bold; font-size: 16px; padding: 12px 30px; border: none; border-radius: 20px; cursor: pointer; font-family: 'Coming Soon', cursive;">
-        Continue with Email
+<button onclick="sendEmailLink()" style="background: #FFEB3B; color: #001f3f; font-weight: bold; font-size: 16px; padding: 12px 30px; border: none; border-radius: 20px; cursor: pointer; font-family: 'Coming Soon', cursive;">
+        Send Sign-in Link
       </button>
 </div>
 <p id="sb-email-error" style="color: #ff6b6b; font-size: 13px; margin-top: 10px; display: none;"></p>
-</div>
-<!-- Password Section (shown after email) -->
-<div id="sb-password-section" style="display: none;">
-<p style="color: #fff; margin-bottom: 15px;">Enter your password:</p>
-<input id="sb-password-input" placeholder="Password" style="width: 100%; max-width: 300px; padding: 14px 18px; font-size: 16px; border: none; border-radius: 8px; background: #fff; color: #333; font-family: 'Coming Soon', cursive; box-sizing: border-box;" type="password"/>
-<div style="margin-top: 12px;">
-<button onclick="signInWithPassword()" style="background: #FFEB3B; color: #001f3f; font-weight: bold; font-size: 16px; padding: 12px 30px; border: none; border-radius: 20px; cursor: pointer; font-family: 'Coming Soon', cursive;">
-        Sign In
-      </button>
-</div>
-<p style="margin-top: 10px;">
-<a href="#" onclick="showCreateAccount(); return false;" style="color: #FFEB3B; font-size: 13px;">Create new account</a>
-<span style="color: #666; margin: 0 8px;">|</span>
-<a href="#" onclick="resetPassword(); return false;" style="color: #FFEB3B; font-size: 13px;">Forgot password?</a>
-</p>
-<p id="sb-password-error" style="color: #ff6b6b; font-size: 13px; margin-top: 10px; display: none;"></p>
-</div>
-<!-- Create Account Section -->
-<div id="sb-create-section" style="display: none;">
-<p style="color: #fff; margin-bottom: 15px;">Create a password:</p>
-<input id="sb-new-password" placeholder="Choose a password (min 6 characters)" style="width: 100%; max-width: 300px; padding: 14px 18px; font-size: 16px; border: none; border-radius: 8px; background: #fff; color: #333; font-family: 'Coming Soon', cursive; box-sizing: border-box; margin-bottom: 10px;" type="password"/>
-<input id="sb-confirm-password" placeholder="Confirm password" style="width: 100%; max-width: 300px; padding: 14px 18px; font-size: 16px; border: none; border-radius: 8px; background: #fff; color: #333; font-family: 'Coming Soon', cursive; box-sizing: border-box;" type="password"/>
-<div style="margin-top: 12px;">
-<button onclick="createAccount()" style="background: #FFEB3B; color: #001f3f; font-weight: bold; font-size: 16px; padding: 12px 30px; border: none; border-radius: 20px; cursor: pointer; font-family: 'Coming Soon', cursive;">
-        Create Account
-      </button>
-</div>
-<p id="sb-create-error" style="color: #ff6b6b; font-size: 13px; margin-top: 10px; display: none;"></p>
+<p id="sb-email-success" style="color: #90EE90; font-size: 14px; margin-top: 10px; display: none;"></p>
 </div>
 </div>
 <script id="sb-email-auth">
@@ -2781,150 +2754,110 @@ function showError(sectionId, msg) {
 }
 
 function hideAllErrors() {
-  ['sb-email-error', 'sb-password-error', 'sb-create-error'].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) el.style.display = 'none';
-  });
+  var el = document.getElementById('sb-email-error');
+  if (el) el.style.display = 'none';
 }
 
-function continueWithEmail() {
+// Passwordless Email Link Sign-in
+function sendEmailLink() {
   hideAllErrors();
   var name = document.getElementById('sb-name-input').value.trim();
   var email = document.getElementById('sb-email-input').value.trim();
 
   if (!name) {
-    showError('sb-email-error', 'Please enter your name');
+    showError('sb-email-error', 'Please enter the child\'s name');
     return;
   }
   if (!email || !email.includes('@')) {
     showError('sb-email-error', 'Please enter a valid email address');
     return;
   }
-  sbUserName = name;
-  sbUserEmail = email;
 
-  // Check if user exists
-  firebase.auth().fetchSignInMethodsForEmail(email)
-    .then(function(methods) {
+  // Save name and email to localStorage (will be retrieved after email link click)
+  localStorage.setItem('storybell_pending_name', name);
+  localStorage.setItem('storybell_pending_email', email);
+
+  // Firebase Email Link settings
+  var actionCodeSettings = {
+    url: window.location.origin + '/signin.html',  // Redirect back here after clicking link
+    handleCodeInApp: true
+  };
+
+  // Show loading state
+  var btn = document.querySelector('#sb-email-section button');
+  var originalText = btn.textContent;
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
+    .then(function() {
+      // Show success message
       document.getElementById('sb-email-section').style.display = 'none';
-      if (methods.length > 0) {
-        // User exists, show password
-        document.getElementById('sb-password-section').style.display = 'block';
-        document.getElementById('sb-password-input').focus();
-      } else {
-        // New user, show create account
-        document.getElementById('sb-create-section').style.display = 'block';
-        document.getElementById('sb-new-password').focus();
-      }
+      var successEl = document.getElementById('sb-email-success');
+      successEl.innerHTML = '✨ Magic link sent to <strong>' + email + '</strong>!<br>Check your inbox and click the link to sign in.';
+      successEl.style.display = 'block';
+      // Send notification email via EmailJS
+      sendSignupEmail(email, name);
     })
     .catch(function(err) {
+      btn.textContent = originalText;
+      btn.disabled = false;
       showError('sb-email-error', err.message);
     });
 }
 
-function signInWithPassword() {
-  hideAllErrors();
-  var password = document.getElementById('sb-password-input').value;
-  if (!password) {
-    showError('sb-password-error', 'Please enter your password');
-    return;
+// Handle email link sign-in (when user clicks the magic link)
+function handleEmailLinkSignIn() {
+  if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
+    var email = localStorage.getItem('storybell_pending_email');
+    var name = localStorage.getItem('storybell_pending_name');
+
+    if (!email) {
+      // User opened link on different device, ask for email
+      email = window.prompt('Please enter your email to confirm sign-in:');
+    }
+
+    if (email) {
+      firebase.auth().signInWithEmailLink(email, window.location.href)
+        .then(function(result) {
+          // Clear pending data
+          localStorage.removeItem('storybell_pending_email');
+
+          var user = result.user;
+          var displayName = name || localStorage.getItem('storybell_pending_name') || '';
+          localStorage.removeItem('storybell_pending_name');
+
+          // Update Firebase profile with name
+          if (displayName) {
+            user.updateProfile({ displayName: displayName });
+          }
+
+          // Save child profile to localStorage
+          localStorage.setItem('storybell_child_' + user.uid, JSON.stringify({
+            name: displayName || user.displayName || email.split('@')[0],
+            age: '',
+            createdAt: Date.now()
+          }));
+
+          // Redirect to home
+          window.location.href = '/';
+        })
+        .catch(function(err) {
+          showError('sb-email-error', 'Sign-in failed: ' + err.message);
+        });
+    }
   }
-
-  firebase.auth().signInWithEmailAndPassword(sbUserEmail, password)
-    .then(function(userCredential) {
-      // Update name if provided and different
-      var user = userCredential.user;
-      if (sbUserName && sbUserName !== user.displayName) {
-        user.updateProfile({ displayName: sbUserName });
-      }
-      // Save/update localStorage profile with name
-      var existingProfile = null;
-      try { existingProfile = JSON.parse(localStorage.getItem('storybell_child_' + user.uid) || 'null'); } catch(e) {}
-      localStorage.setItem('storybell_child_' + user.uid, JSON.stringify({
-        name: sbUserName || (existingProfile && existingProfile.name) || user.displayName || 'Reader',
-        age: (existingProfile && existingProfile.age) || '',
-        createdAt: (existingProfile && existingProfile.createdAt) || Date.now()
-      }));
-      // Redirect to home
-      window.location.href = '/';
-    })
-    .catch(function(err) {
-      if (err.code === 'auth/wrong-password') {
-        showError('sb-password-error', 'Incorrect password. Try again or reset it.');
-      } else {
-        showError('sb-password-error', err.message);
-      }
-    });
 }
 
-function showCreateAccount() {
-  hideAllErrors();
-  document.getElementById('sb-password-section').style.display = 'none';
-  document.getElementById('sb-create-section').style.display = 'block';
-  document.getElementById('sb-new-password').focus();
-}
+// Check for email link on page load
+handleEmailLinkSignIn();
 
-function createAccount() {
-  hideAllErrors();
-  var password = document.getElementById('sb-new-password').value;
-  var confirm = document.getElementById('sb-confirm-password').value;
-
-  if (password.length < 6) {
-    showError('sb-create-error', 'Password must be at least 6 characters');
-    return;
-  }
-  if (password !== confirm) {
-    showError('sb-create-error', 'Passwords do not match');
-    return;
-  }
-
-  firebase.auth().createUserWithEmailAndPassword(sbUserEmail, password)
-    .then(function(userCredential) {
-      // Update display name in Firebase
-      return userCredential.user.updateProfile({
-        displayName: sbUserName
-      }).then(function() {
-        // Save to localStorage as child profile
-        localStorage.setItem('storybell_child_' + userCredential.user.uid, JSON.stringify({
-          name: sbUserName,
-          age: '',
-          createdAt: Date.now()
-        }));
-        // Send welcome + notification emails
-        sendSignupEmail(sbUserEmail, sbUserName);
-        // Redirect to home
-        window.location.href = '/';
-      });
-    })
-    .catch(function(err) {
-      showError('sb-create-error', err.message);
-    });
-}
-
-function resetPassword() {
-  hideAllErrors();
-  firebase.auth().sendPasswordResetEmail(sbUserEmail)
-    .then(function() {
-      alert('Password reset email sent to ' + sbUserEmail);
-    })
-    .catch(function(err) {
-      showError('sb-password-error', err.message);
-    });
-}
-
-// Handle Enter key
+// Handle Enter key - send magic link
 document.addEventListener('keypress', function(e) {
   if (e.key === 'Enter') {
     var emailSection = document.getElementById('sb-email-section');
-    var passwordSection = document.getElementById('sb-password-section');
-    var createSection = document.getElementById('sb-create-section');
-
     if (emailSection && emailSection.style.display !== 'none') {
-      continueWithEmail();
-    } else if (passwordSection && passwordSection.style.display !== 'none') {
-      signInWithPassword();
-    } else if (createSection && createSection.style.display !== 'none') {
-      createAccount();
+      sendEmailLink();
     }
   }
 });
