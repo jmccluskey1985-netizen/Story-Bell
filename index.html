@@ -4131,7 +4131,7 @@ window.onOpenAuthModalHook = function(){
 </script>
 <script id="auth-guard-openauth">
 (function(){
-  var ALLOWED = '.login-cta-header, .login-mobile a, .subscribe-box, .subscribe-text, [data-auth-cta="auth"]';
+  var ALLOWED = '.subscribe-box, .subscribe-text, [data-auth-cta="auth"]';
   // Capture last click target (capture phase to beat bubbling handlers)
   document.addEventListener('click', function(e){
     window.__sbLastClickTarget = e.target || null;
