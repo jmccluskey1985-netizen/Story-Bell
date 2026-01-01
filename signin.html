@@ -2739,7 +2739,7 @@ nav ul > li:focus-within > .dropdown {
 <div id="sb-email-section">
 <input id="sb-email-input" placeholder="Your email" style="width: 100%; max-width: 300px; padding: 14px 18px; font-size: 16px; border: none; border-radius: 8px; background: #fff; color: #333; font-family: 'Coming Soon', cursive; box-sizing: border-box;" type="email"/>
 <div style="margin-top: 12px;">
-<button onclick="signUpWithEmail()" style="background: #FFEB3B; color: #001f3f; font-weight: bold; font-size: 16px; padding: 12px 30px; border: none; border-radius: 20px; cursor: pointer; font-family: 'Coming Soon', cursive;">
+<button onclick="alert('Button clicked!'); signUpWithEmail();" style="background: #FFEB3B; color: #001f3f; font-weight: bold; font-size: 16px; padding: 12px 30px; border: none; border-radius: 20px; cursor: pointer; font-family: 'Coming Soon', cursive;">
         Sign Up
       </button>
 </div>
@@ -2788,14 +2788,22 @@ function signUpWithEmail() {
   // Generate a simple user ID (no Firebase auth needed for email signup)
   var odiyId = 'email_' + Date.now();
 
-  // Save user profile to localStorage
-  localStorage.setItem('storybell_user', JSON.stringify({
+  // Save user profile to localStorage (multiple keys for compatibility)
+  var userProfile = {
     id: odiyId,
     name: name,
     email: email,
     createdAt: Date.now()
+  };
+  localStorage.setItem('storybell_user', JSON.stringify(userProfile));
+  localStorage.setItem('storybell_simple_user', JSON.stringify(userProfile));
+  // Also save in the format the header expects
+  localStorage.setItem('storybell_child_' + odiyId, JSON.stringify({
+    name: name,
+    age: '',
+    createdAt: Date.now()
   }));
-  console.log('[SB] User profile saved to localStorage');
+  console.log('[SB] User profile saved to localStorage with id:', odiyId);
 
   // Send welcome email via EmailJS
   sendSignupEmail(email, name);

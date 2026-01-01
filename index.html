@@ -3851,6 +3851,7 @@ function updateHeaderAuth(firebaseUser) {
 window.signOutStoryBell = function(){
   // Clear localStorage user (email sign-up)
   localStorage.removeItem('storybell_user');
+  localStorage.removeItem('storybell_simple_user');
 
   // Also sign out Firebase (Google users)
   if (window.firebase && firebase.auth) {
