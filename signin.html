@@ -240,6 +240,14 @@
   };
   if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 
+  // Save child name before Google redirect
+  function saveNameBeforeRedirect() {
+    var nameInput = document.getElementById('sb-name-input');
+    if (nameInput && nameInput.value.trim()) {
+      localStorage.setItem('storybell_pending_name', nameInput.value.trim());
+    }
+  }
+
   // Start FirebaseUI when page loads (Google only - email handled separately)
   document.addEventListener('DOMContentLoaded', function() {
     var ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
@@ -248,7 +256,48 @@
       signInSuccessUrl: '/signin.html',
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID
-      ]
+      ],
+      callbacks: {
+        signInSuccessWithAuthResult: function(authResult) {
+          // This runs after successful sign-in
+          var user = authResult.user;
+          var pendingName = localStorage.getItem('storybell_pending_name');
+          if (pendingName && user) {
+            // Save to localStorage profile
+            localStorage.setItem('storybell_child_' + user.uid, JSON.stringify({
+              name: pendingName,
+              age: '',
+              createdAt: Date.now()
+            }));
+            localStorage.removeItem('storybell_pending_name');
+          }
+          window.location.href = '/';
+          return false;
+        },
+        uiShown: function() {
+          // Save name when UI is shown (before redirect)
+          var googleBtn = document.querySelector('.firebaseui-idp-google');
+          if (googleBtn) {
+            googleBtn.addEventListener('click', saveNameBeforeRedirect);
+          }
+        }
+      }
+    });
+
+    // Also check on page load if returning from Google redirect
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        var pendingName = localStorage.getItem('storybell_pending_name');
+        if (pendingName) {
+          localStorage.setItem('storybell_child_' + user.uid, JSON.stringify({
+            name: pendingName,
+            age: '',
+            createdAt: Date.now()
+          }));
+          localStorage.removeItem('storybell_pending_name');
+          window.location.href = '/';
+        }
+      }
     });
   });
 </script>
@@ -2438,6 +2487,12 @@ nav ul > li:focus-within > .dropdown {
 
 <!-- Custom Sign-in UI -->
 <div id="sb-custom-auth" style="text-align: center;">
+  <!-- Child Name Input (shared by Google & Email) -->
+  <div style="margin-bottom: 20px;">
+    <input id="sb-name-input" type="text" placeholder="Child's name"
+      style="width: 100%; max-width: 300px; padding: 14px 18px; font-size: 16px; border: none; border-radius: 8px; background: #fff; color: #333; font-family: 'Coming Soon', cursive; box-sizing: border-box;">
+  </div>
+
   <!-- Google Sign-in Button -->
   <div id="firebaseui-auth-container" style="min-height: 60px;"></div>
 
@@ -2448,10 +2503,8 @@ nav ul > li:focus-within > .dropdown {
     <div style="flex: 1; height: 1px; background: #FFEB3B44;"></div>
   </div>
 
-  <!-- Name & Email Input -->
+  <!-- Email Input -->
   <div id="sb-email-section">
-    <input id="sb-name-input" type="text" placeholder="Your name"
-      style="width: 100%; max-width: 300px; padding: 14px 18px; font-size: 16px; border: none; border-radius: 8px; background: #fff; color: #333; font-family: 'Coming Soon', cursive; box-sizing: border-box; margin-bottom: 12px;">
     <input id="sb-email-input" type="email" placeholder="Your email"
       style="width: 100%; max-width: 300px; padding: 14px 18px; font-size: 16px; border: none; border-radius: 8px; background: #fff; color: #333; font-family: 'Coming Soon', cursive; box-sizing: border-box;">
     <div style="margin-top: 12px;">
