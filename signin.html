@@ -2764,6 +2764,14 @@ function hideAllErrors() {
 // Passwordless Email Link Sign-in
 function sendEmailLink() {
   console.log('[SB] sendEmailLink called');
+
+  // Check Firebase is ready
+  if (!window.firebase || !firebase.auth) {
+    console.error('[SB] Firebase not ready');
+    showError('sb-email-error', 'Please wait for the page to load fully and try again');
+    return;
+  }
+
   hideAllErrors();
   var name = document.getElementById('sb-name-input').value.trim();
   var email = document.getElementById('sb-email-input').value.trim();
@@ -2859,8 +2867,14 @@ function handleEmailLinkSignIn() {
   }
 }
 
-// Check for email link on page load
-handleEmailLinkSignIn();
+// Check for email link on page load (with safety wrapper)
+try {
+  if (window.firebase && firebase.auth) {
+    handleEmailLinkSignIn();
+  }
+} catch(e) {
+  console.error('[SB] handleEmailLinkSignIn error:', e);
+}
 
 // Handle Enter key - send magic link
 document.addEventListener('keypress', function(e) {
