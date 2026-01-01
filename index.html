@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head><!-- Updated: 2026-01-01 13:30 -->
+<head>
 <!-- BEGIN SWIPE-CAROUSEL-STYLE -->
 <!-- BEGIN HAMBURGER-MENU-CSS -->
 <!-- END HAMBURGER-MENU-CSS -->
@@ -3793,7 +3793,8 @@ function updateHeaderAuth(user) {
 
   if (user) {
     var profile = getChildProfile(user.uid);
-    var displayName = (profile && profile.name) || user.displayName || 'Reader';
+    // Priority: child name > Firebase displayName > email prefix > 'Reader'
+    var displayName = (profile && profile.name) || user.displayName || (user.email ? user.email.split('@')[0] : 'Reader');
 
     loginBtns.forEach(function(el){ el.style.display = 'none'; });
     profileEls.forEach(function(el){

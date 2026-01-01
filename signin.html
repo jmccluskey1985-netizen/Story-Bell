@@ -229,6 +229,7 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script id="firebase-init">
   // Story Bell — Firebase config + single-init (compat)
   const firebaseConfig = {
@@ -251,27 +252,54 @@
     }
   }
 
+  // EmailJS Configuration - Story Bell
+  var EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';  // Replace with your EmailJS public key
+  var EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';  // Replace with your EmailJS service ID
+  var EMAILJS_TEMPLATE_WELCOME = 'template_welcome';  // Template for user welcome email
+  var EMAILJS_TEMPLATE_ADMIN = 'template_admin';  // Template for admin notification
+
+  // Initialize EmailJS
+  if (window.emailjs) {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  }
+
   // Send signup emails (welcome to user + notification to admin)
-  function sendSignupEmail(email, childName) {
-    if (!email) return;
-    var emailSentKey = 'storybell_email_sent_' + email.replace(/[^a-z0-9]/gi, '_');
+  function sendSignupEmail(userEmail, childName) {
+    if (!userEmail || !window.emailjs || EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+      console.log('[SB] EmailJS not configured or no email provided');
+      return;
+    }
+
+    var emailSentKey = 'storybell_email_sent_' + userEmail.replace(/[^a-z0-9]/gi, '_');
     if (localStorage.getItem(emailSentKey)) {
       console.log('[SB] Welcome email already sent for this user');
       return;
     }
-    fetch('https://editor.readaloudstories.com/signup-email', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, childName: childName || 'Reader', isNewUser: true })
-    }).then(function(r) { return r.json(); })
-      .then(function(data) {
-        if (data.success) {
-          console.log('[SB] Signup emails sent successfully');
-          localStorage.setItem(emailSentKey, Date.now());
-        } else {
-          console.warn('[SB] Email sending failed:', data.error);
-        }
-      }).catch(function(e) { console.warn('[SB] Email error:', e); });
+
+    var displayName = childName || userEmail.split('@')[0];
+
+    // Send welcome email to user
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_WELCOME, {
+      to_email: userEmail,
+      to_name: displayName,
+      child_name: displayName
+    }).then(function() {
+      console.log('[SB] Welcome email sent to user');
+    }).catch(function(e) {
+      console.warn('[SB] Welcome email failed:', e);
+    });
+
+    // Send notification to admin
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ADMIN, {
+      user_email: userEmail,
+      child_name: displayName,
+      signup_time: new Date().toLocaleString()
+    }).then(function() {
+      console.log('[SB] Admin notification sent');
+      localStorage.setItem(emailSentKey, Date.now());
+    }).catch(function(e) {
+      console.warn('[SB] Admin notification failed:', e);
+    });
   }
 
   // Start FirebaseUI when page loads (Google only - email handled separately)
