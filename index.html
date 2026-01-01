@@ -2663,7 +2663,7 @@ html body #story-queue-menu.active{display:flex !important;}
      ☰
     </button>
 <nav>
-<ul><li class="login-mobile"><a data-auth-cta="auth" href="#login" style="background:#FFEB3B; color:#003366; font-weight:bold; border-radius:12px; text-decoration:none; display:block; padding:8px 14px; margin:6px 10px; text-align:left; white-space:nowrap;">Log in / Create Account</a></li>
+<ul><li class="login-mobile"><a href="signin.html" style="background:#FFEB3B; color:#003366; font-weight:bold; border-radius:12px; text-decoration:none; display:block; padding:8px 14px; margin:6px 10px; text-align:left; white-space:nowrap;">Log in / Create Account</a></li>
 <li style="position:relative;">
 <a href="#" style="cursor:pointer;">
         Age Group
@@ -2753,7 +2753,7 @@ html body #story-queue-menu.active{display:flex !important;}
 <line x1="16.65" x2="21" y1="16.65" y2="21"></line>
 </svg>
 </button>
-<a class="login-cta-header" data-auth-cta="" href="#login" rel="noopener" style="margin-top: 14px; background: #FFEB3B; color: #003366; font-family: 'Coming Soon', cursive !important; font-size: 16px; font-weight: bold; border-radius: 20px; padding: 9px 22px 9px 32px; text-decoration: none; box-shadow: 0 2px 8px rgba(255,235,59,0.22); display: flex; align-items: center; transition: background 0.2s;" target="_blank">Log in/<br/>Create Account</a>
+<a class="login-cta-header" data-auth-cta="" href="signin.html" rel="noopener" style="margin-top: 14px; background: #FFEB3B; color: #003366; font-family: 'Coming Soon', cursive !important; font-size: 16px; font-weight: bold; border-radius: 20px; padding: 9px 22px 9px 32px; text-decoration: none; box-shadow: 0 2px 8px rgba(255,235,59,0.22); display: flex; align-items: center; transition: background 0.2s;" target="_blank">Log in/<br/>Create Account</a>
 <div class="subscribe-text"></div></div>
 </header>
 <div style="max-width: 1100px; margin: 0 auto; cursor: pointer">
@@ -3338,7 +3338,7 @@ html body #story-queue-menu.active{display:flex !important;}
 <div style="background:#001020; padding:30px 10px; text-align:center;">
 <!-- Signup button -->
 <div style="margin:16px 0;">
-<a data-auth-cta="auth" href="#login" onclick="return window.sbFooterOpenAuth &amp;&amp; sbFooterOpenAuth(this);" style="display:inline-block; background:#FFEB3B; color:#001f3f; font-weight:bold; padding:10px 20px; border-radius:6px; text-decoration:none; cursor:pointer;">
+<a href="signin.html" onclick="return window.sbFooterOpenAuth &amp;&amp; sbFooterOpenAuth(this);" style="display:inline-block; background:#FFEB3B; color:#001f3f; font-weight:bold; padding:10px 20px; border-radius:6px; text-decoration:none; cursor:pointer;">
       Sign Up to Story Bell
     </a>
 </div>
@@ -3961,12 +3961,12 @@ window.onOpenAuthModalHook = function(){
     if(!el) return false;
     var text = (el.innerText || '').toLowerCase();
     return el.hasAttribute('data-auth-cta')
-      || (el.matches && (el.matches('a[href="#login"]') || el.matches('#subscribe-box, .subscribe-box, .subscribe-text')))
+      || (el.matches && (el.matches('a[href="signin.html"]') || el.matches('#subscribe-box, .subscribe-box, .subscribe-text')))
       || (text.includes('log in') && text.includes('create account'))
       || text.includes('subscribe to story bell');
   }
   document.addEventListener('click', function(e){
-    var t = e.target.closest('[data-auth-cta], a[href="#login"], #subscribe-box, .subscribe-box, .subscribe-text, .header-login-button, .mobile-login-button');
+    var t = e.target.closest('[data-auth-cta], a[href="signin.html"], #subscribe-box, .subscribe-box, .subscribe-text, .header-login-button, .mobile-login-button');
     if(!t && wantsAuth(e.target)) t = e.target;
     if(t){
       try { e.preventDefault(); } catch(_){}
