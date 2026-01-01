@@ -5227,54 +5227,7 @@ window.onOpenAuthModalHook = function(){
     });
   });
 
-  // Debug log for duplicates
-  try {
-    console.log("[SB] firebase apps:", (window.firebase && firebase.apps) ? firebase.apps.length : "no firebase");
-  } catch(e){}
-
-  // Child profile storage
-  function getChildProfile(uid) {
-    try { return JSON.parse(localStorage.getItem('storybell_child_' + uid) || 'null'); }
-    catch(e) { return null; }
-  }
-
-  // Update header UI based on auth state
-  function updateHeaderAuth(user) {
-    var loginBtns = document.querySelectorAll('.login-cta-header, .login-mobile a[href*="signin"]');
-    var profileEls = document.querySelectorAll('.sb-user-profile');
-
-    if (user) {
-      var profile = getChildProfile(user.uid);
-      var displayName = (profile && profile.name) || user.displayName || 'Reader';
-
-      loginBtns.forEach(function(el){ el.style.display = 'none'; });
-      profileEls.forEach(function(el){
-        el.style.display = 'flex';
-        var nameEl = el.querySelector('.sb-user-name');
-        if (nameEl) nameEl.textContent = displayName;
-      });
-    } else {
-      loginBtns.forEach(function(el){ el.style.display = ''; });
-      profileEls.forEach(function(el){ el.style.display = 'none'; });
-    }
-  }
-
-  // Sign out function
-  window.signOutStoryBell = function(){
-    if (window.firebase && firebase.auth) {
-      firebase.auth().signOut().then(function(){
-        window.location.href = '/';
-      }).catch(function(e){ console.error('[SB] Sign out error:', e); });
-    }
-  };
-
-  // Enhanced auth state listener
-  if (window.firebase && firebase.auth) {
-    firebase.auth().onAuthStateChanged(function(u){
-      console.log("[SB] Auth state:", u ? "SIGNED IN" : "SIGNED OUT");
-      updateHeaderAuth(u);
-    });
-  }
+  // Auth code handled above - no duplicate needed here
 })();
 </script>
 </body>
