@@ -3874,13 +3874,14 @@ if (window.firebase && firebase.auth) {
 }
 
 // Also check for localStorage user on page load (for email sign-up users)
-document.addEventListener('DOMContentLoaded', function() {
+// Run immediately since script is at bottom of page (DOM already loaded)
+(function checkLocalUser() {
   var localUser = getLocalUser();
   if (localUser) {
     console.log('[SB] Found localStorage user:', localUser.name || localUser.email);
     updateHeaderAuth(null); // Pass null for firebase, will use localStorage
   }
-});
+})();
 
 document.addEventListener('click', function(e){
   const m = document.getElementById('auth-modal');
