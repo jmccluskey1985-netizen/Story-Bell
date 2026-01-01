@@ -2448,9 +2448,11 @@ nav ul > li:focus-within > .dropdown {
     <div style="flex: 1; height: 1px; background: #FFEB3B44;"></div>
   </div>
 
-  <!-- Email Input -->
+  <!-- Name & Email Input -->
   <div id="sb-email-section">
-    <input id="sb-email-input" type="email" placeholder="Enter your email"
+    <input id="sb-name-input" type="text" placeholder="Your name"
+      style="width: 100%; max-width: 300px; padding: 14px 18px; font-size: 16px; border: none; border-radius: 8px; background: #fff; color: #333; font-family: 'Coming Soon', cursive; box-sizing: border-box; margin-bottom: 12px;">
+    <input id="sb-email-input" type="email" placeholder="Your email"
       style="width: 100%; max-width: 300px; padding: 14px 18px; font-size: 16px; border: none; border-radius: 8px; background: #fff; color: #333; font-family: 'Coming Soon', cursive; box-sizing: border-box;">
     <div style="margin-top: 12px;">
       <button onclick="continueWithEmail()"
@@ -2499,6 +2501,7 @@ nav ul > li:focus-within > .dropdown {
 
 <script id="sb-email-auth">
 var sbUserEmail = '';
+var sbUserName = '';
 
 function showError(sectionId, msg) {
   var el = document.getElementById(sectionId);
@@ -2514,11 +2517,18 @@ function hideAllErrors() {
 
 function continueWithEmail() {
   hideAllErrors();
+  var name = document.getElementById('sb-name-input').value.trim();
   var email = document.getElementById('sb-email-input').value.trim();
+
+  if (!name) {
+    showError('sb-email-error', 'Please enter your name');
+    return;
+  }
   if (!email || !email.includes('@')) {
     showError('sb-email-error', 'Please enter a valid email address');
     return;
   }
+  sbUserName = name;
   sbUserEmail = email;
 
   // Check if user exists
@@ -2549,8 +2559,22 @@ function signInWithPassword() {
   }
 
   firebase.auth().signInWithEmailAndPassword(sbUserEmail, password)
-    .then(function() {
-      // Success - auth state listener will handle redirect
+    .then(function(userCredential) {
+      // Update name if provided and different
+      var user = userCredential.user;
+      if (sbUserName && sbUserName !== user.displayName) {
+        user.updateProfile({ displayName: sbUserName });
+      }
+      // Save/update localStorage profile with name
+      var existingProfile = null;
+      try { existingProfile = JSON.parse(localStorage.getItem('storybell_child_' + user.uid) || 'null'); } catch(e) {}
+      localStorage.setItem('storybell_child_' + user.uid, JSON.stringify({
+        name: sbUserName || (existingProfile && existingProfile.name) || user.displayName || 'Reader',
+        age: (existingProfile && existingProfile.age) || '',
+        createdAt: (existingProfile && existingProfile.createdAt) || Date.now()
+      }));
+      // Redirect to home
+      window.location.href = '/';
     })
     .catch(function(err) {
       if (err.code === 'auth/wrong-password') {
@@ -2583,8 +2607,20 @@ function createAccount() {
   }
 
   firebase.auth().createUserWithEmailAndPassword(sbUserEmail, password)
-    .then(function() {
-      // Success - auth state listener will handle redirect
+    .then(function(userCredential) {
+      // Update display name in Firebase
+      return userCredential.user.updateProfile({
+        displayName: sbUserName
+      }).then(function() {
+        // Save to localStorage as child profile
+        localStorage.setItem('storybell_child_' + userCredential.user.uid, JSON.stringify({
+          name: sbUserName,
+          age: '',
+          createdAt: Date.now()
+        }));
+        // Redirect to home
+        window.location.href = '/';
+      });
     })
     .catch(function(err) {
       showError('sb-create-error', err.message);
