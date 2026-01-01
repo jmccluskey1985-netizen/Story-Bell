@@ -240,15 +240,14 @@
   };
   if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 
-  // Start FirebaseUI when page loads
+  // Start FirebaseUI when page loads (Google only - email handled separately)
   document.addEventListener('DOMContentLoaded', function() {
     var ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
     ui.start('#firebaseui-auth-container', {
       signInFlow: 'redirect',
       signInSuccessUrl: '/signin.html',
       signInOptions: [
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        firebase.auth.EmailAuthProvider.PROVIDER_ID
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID
       ]
     });
   });
@@ -2436,7 +2435,190 @@ nav ul > li:focus-within > .dropdown {
 <div class="main-blank" style="max-width: 500px; margin: 40px auto; padding: 30px;">
 <h1 style="color: #FFEB3B; text-align: center; margin-bottom: 10px; font-family: 'Georgia', serif; text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099;">Sign In to Story Bell</h1>
 <p id="signin-subtitle" style="color: #fff; text-align: center; margin-bottom: 30px;">Sign in to save your favorite stories and create reading lists</p>
-<div id="firebaseui-auth-container" style="min-height: 200px;"></div>
+
+<!-- Custom Sign-in UI -->
+<div id="sb-custom-auth" style="text-align: center;">
+  <!-- Google Sign-in Button -->
+  <div id="firebaseui-auth-container" style="min-height: 60px;"></div>
+
+  <!-- Divider -->
+  <div style="display: flex; align-items: center; margin: 20px 0;">
+    <div style="flex: 1; height: 1px; background: #FFEB3B44;"></div>
+    <span style="color: #FFEB3B; padding: 0 15px; font-family: 'Coming Soon', cursive;">or</span>
+    <div style="flex: 1; height: 1px; background: #FFEB3B44;"></div>
+  </div>
+
+  <!-- Email Input -->
+  <div id="sb-email-section">
+    <input id="sb-email-input" type="email" placeholder="Enter your email"
+      style="width: 100%; max-width: 300px; padding: 14px 18px; font-size: 16px; border: none; border-radius: 8px; background: #fff; color: #333; font-family: 'Coming Soon', cursive; box-sizing: border-box;">
+    <div style="margin-top: 12px;">
+      <button onclick="continueWithEmail()"
+        style="background: #FFEB3B; color: #001f3f; font-weight: bold; font-size: 16px; padding: 12px 30px; border: none; border-radius: 20px; cursor: pointer; font-family: 'Coming Soon', cursive;">
+        Continue with Email
+      </button>
+    </div>
+    <p id="sb-email-error" style="color: #ff6b6b; font-size: 13px; margin-top: 10px; display: none;"></p>
+  </div>
+
+  <!-- Password Section (shown after email) -->
+  <div id="sb-password-section" style="display: none;">
+    <p style="color: #fff; margin-bottom: 15px;">Enter your password:</p>
+    <input id="sb-password-input" type="password" placeholder="Password"
+      style="width: 100%; max-width: 300px; padding: 14px 18px; font-size: 16px; border: none; border-radius: 8px; background: #fff; color: #333; font-family: 'Coming Soon', cursive; box-sizing: border-box;">
+    <div style="margin-top: 12px;">
+      <button onclick="signInWithPassword()"
+        style="background: #FFEB3B; color: #001f3f; font-weight: bold; font-size: 16px; padding: 12px 30px; border: none; border-radius: 20px; cursor: pointer; font-family: 'Coming Soon', cursive;">
+        Sign In
+      </button>
+    </div>
+    <p style="margin-top: 10px;">
+      <a href="#" onclick="showCreateAccount(); return false;" style="color: #FFEB3B; font-size: 13px;">Create new account</a>
+      <span style="color: #666; margin: 0 8px;">|</span>
+      <a href="#" onclick="resetPassword(); return false;" style="color: #FFEB3B; font-size: 13px;">Forgot password?</a>
+    </p>
+    <p id="sb-password-error" style="color: #ff6b6b; font-size: 13px; margin-top: 10px; display: none;"></p>
+  </div>
+
+  <!-- Create Account Section -->
+  <div id="sb-create-section" style="display: none;">
+    <p style="color: #fff; margin-bottom: 15px;">Create a password:</p>
+    <input id="sb-new-password" type="password" placeholder="Choose a password (min 6 characters)"
+      style="width: 100%; max-width: 300px; padding: 14px 18px; font-size: 16px; border: none; border-radius: 8px; background: #fff; color: #333; font-family: 'Coming Soon', cursive; box-sizing: border-box; margin-bottom: 10px;">
+    <input id="sb-confirm-password" type="password" placeholder="Confirm password"
+      style="width: 100%; max-width: 300px; padding: 14px 18px; font-size: 16px; border: none; border-radius: 8px; background: #fff; color: #333; font-family: 'Coming Soon', cursive; box-sizing: border-box;">
+    <div style="margin-top: 12px;">
+      <button onclick="createAccount()"
+        style="background: #FFEB3B; color: #001f3f; font-weight: bold; font-size: 16px; padding: 12px 30px; border: none; border-radius: 20px; cursor: pointer; font-family: 'Coming Soon', cursive;">
+        Create Account
+      </button>
+    </div>
+    <p id="sb-create-error" style="color: #ff6b6b; font-size: 13px; margin-top: 10px; display: none;"></p>
+  </div>
+</div>
+
+<script id="sb-email-auth">
+var sbUserEmail = '';
+
+function showError(sectionId, msg) {
+  var el = document.getElementById(sectionId);
+  if (el) { el.textContent = msg; el.style.display = 'block'; }
+}
+
+function hideAllErrors() {
+  ['sb-email-error', 'sb-password-error', 'sb-create-error'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+}
+
+function continueWithEmail() {
+  hideAllErrors();
+  var email = document.getElementById('sb-email-input').value.trim();
+  if (!email || !email.includes('@')) {
+    showError('sb-email-error', 'Please enter a valid email address');
+    return;
+  }
+  sbUserEmail = email;
+
+  // Check if user exists
+  firebase.auth().fetchSignInMethodsForEmail(email)
+    .then(function(methods) {
+      document.getElementById('sb-email-section').style.display = 'none';
+      if (methods.length > 0) {
+        // User exists, show password
+        document.getElementById('sb-password-section').style.display = 'block';
+        document.getElementById('sb-password-input').focus();
+      } else {
+        // New user, show create account
+        document.getElementById('sb-create-section').style.display = 'block';
+        document.getElementById('sb-new-password').focus();
+      }
+    })
+    .catch(function(err) {
+      showError('sb-email-error', err.message);
+    });
+}
+
+function signInWithPassword() {
+  hideAllErrors();
+  var password = document.getElementById('sb-password-input').value;
+  if (!password) {
+    showError('sb-password-error', 'Please enter your password');
+    return;
+  }
+
+  firebase.auth().signInWithEmailAndPassword(sbUserEmail, password)
+    .then(function() {
+      // Success - auth state listener will handle redirect
+    })
+    .catch(function(err) {
+      if (err.code === 'auth/wrong-password') {
+        showError('sb-password-error', 'Incorrect password. Try again or reset it.');
+      } else {
+        showError('sb-password-error', err.message);
+      }
+    });
+}
+
+function showCreateAccount() {
+  hideAllErrors();
+  document.getElementById('sb-password-section').style.display = 'none';
+  document.getElementById('sb-create-section').style.display = 'block';
+  document.getElementById('sb-new-password').focus();
+}
+
+function createAccount() {
+  hideAllErrors();
+  var password = document.getElementById('sb-new-password').value;
+  var confirm = document.getElementById('sb-confirm-password').value;
+
+  if (password.length < 6) {
+    showError('sb-create-error', 'Password must be at least 6 characters');
+    return;
+  }
+  if (password !== confirm) {
+    showError('sb-create-error', 'Passwords do not match');
+    return;
+  }
+
+  firebase.auth().createUserWithEmailAndPassword(sbUserEmail, password)
+    .then(function() {
+      // Success - auth state listener will handle redirect
+    })
+    .catch(function(err) {
+      showError('sb-create-error', err.message);
+    });
+}
+
+function resetPassword() {
+  hideAllErrors();
+  firebase.auth().sendPasswordResetEmail(sbUserEmail)
+    .then(function() {
+      alert('Password reset email sent to ' + sbUserEmail);
+    })
+    .catch(function(err) {
+      showError('sb-password-error', err.message);
+    });
+}
+
+// Handle Enter key
+document.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    var emailSection = document.getElementById('sb-email-section');
+    var passwordSection = document.getElementById('sb-password-section');
+    var createSection = document.getElementById('sb-create-section');
+
+    if (emailSection && emailSection.style.display !== 'none') {
+      continueWithEmail();
+    } else if (passwordSection && passwordSection.style.display !== 'none') {
+      signInWithPassword();
+    } else if (createSection && createSection.style.display !== 'none') {
+      createAccount();
+    }
+  }
+});
+</script>
 <!-- Child Profile Collection Form (shown after auth) -->
 <div id="sb-profile-form" style="display:none; text-align:center; padding: 20px 0;">
 <h2 style="color:#FFEB3B; font-family:Georgia,serif; text-shadow:0 0 12px #ffff66, 0 0 24px #ffaa0099; margin-bottom: 20px;">Welcome to Story Bell!</h2>
