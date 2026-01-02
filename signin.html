@@ -45,9 +45,7 @@
 <!-- END CAROUSEL-DESKTOP-FIX -->
 <link href="https://fonts.googleapis.com/css?family=Coming+Soon&amp;display=swap" rel="stylesheet"/>
 <meta charset="utf-8"/>
-<title>
-   Ages 4–6
-  </title>
+<title>Sign In - Story Bell</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
    body.no-scroll { overflow: hidden; }
@@ -232,8 +230,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script id="firebase-init">
   // Story Bell — Firebase config + single-init (compat)
-  <script id="firebase-init">
-  // Story Bell — Firebase config + single-init (compat)
   const firebaseConfig = {
     apiKey: "AIzaSyC9vYsSvGN7zSDfkIcByvBZDOQnRyUPIBo",
     authDomain: "storybellkids.firebaseapp.com",
@@ -244,15 +240,12 @@
     measurementId: "G-F64PJ8CCZQ"
   };
   if (!window.firebase) { console.error("Firebase SDK not found"); }
-  else if (!firebase.apps.length) { if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); } }
-</script>
-  if (!window.firebase) { console.error("Firebase SDK not found"); }
-  else if (!firebase.apps.length) { if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); } }
+  else if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
 
   // Save child name before Google redirect
   function saveNameBeforeRedirect() {
     var nameInput = document.getElementById('sb-name-input');
-    if (nameInput &amp;&amp; nameInput.value.trim()) {
+    if (nameInput && nameInput.value.trim()) {
       localStorage.setItem('storybell_pending_name', nameInput.value.trim());
     }
   }
@@ -322,7 +315,7 @@
           console.log('[SB-signin] signInSuccessWithAuthResult:', authResult.user ? authResult.user.email : 'no user');
           var user = authResult.user;
           var pendingName = localStorage.getItem('storybell_pending_name');
-          if (pendingName &amp;&amp; user) {
+          if (pendingName && user) {
             localStorage.setItem('storybell_child_' + user.uid, JSON.stringify({
               name: pendingName,
               age: '',
@@ -336,7 +329,7 @@
             var profileKey = 'storybell_child_' + user.uid;
             var profile = null;
             try { profile = JSON.parse(localStorage.getItem(profileKey) || 'null'); } catch(e) {}
-            if (profile &amp;&amp; profile.name) {
+            if (profile && profile.name) {
               console.log('[SB-signin] Profile exists, redirecting home');
               window.location.href = 'index.html';
             } else {
@@ -374,7 +367,7 @@
           sendSignupEmail(user.email, pendingName);
           console.log('[SB-signin] New user profile saved, redirecting home');
           window.location.href = 'index.html';
-        } else if (existingProfile &amp;&amp; existingProfile.name) {
+        } else if (existingProfile && existingProfile.name) {
           // Returning user with existing profile
           console.log('[SB-signin] Returning user, redirecting home');
           window.location.href = 'index.html';
@@ -3117,7 +3110,7 @@ document.addEventListener('keypress', function(e) {
 <div style="background:#001020; padding:30px 10px; text-align:center;">
 <!-- Signup button -->
 <div style="margin:16px 0;">
-<a data-auth-cta="auth" href="#login" onclick="return window.sbFooterOpenAuth &amp;&amp; sbFooterOpenAuth(this);" style="display:inline-block; background:#FFEB3B; color:#001f3f; font-weight:bold; padding:10px 20px; border-radius:6px; text-decoration:none; cursor:pointer;">
+<a data-auth-cta="auth" href="#login" onclick="return window.sbFooterOpenAuth && sbFooterOpenAuth(this);" style="display:inline-block; background:#FFEB3B; color:#001f3f; font-weight:bold; padding:10px 20px; border-radius:6px; text-decoration:none; cursor:pointer;">
       Sign Up to Story Bell
     </a>
 </div>
