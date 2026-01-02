@@ -357,7 +357,7 @@
         try { existingProfile = JSON.parse(localStorage.getItem(profileKey) || 'null'); } catch(e) {}
 
         if (pendingName) {
-          // New signup with name entered
+          // New signup with name entered - redirect to home
           localStorage.setItem(profileKey, JSON.stringify({
             name: pendingName,
             age: '',
@@ -368,22 +368,43 @@
           console.log('[SB-signin] New user profile saved, redirecting home');
           window.location.href = 'index.html';
         } else if (existingProfile && existingProfile.name) {
-          // Returning user with existing profile
-          console.log('[SB-signin] Returning user, redirecting home');
-          window.location.href = 'index.html';
+          // Returning user - show "already signed in" message instead of redirecting
+          console.log('[SB-signin] Returning user, showing already signed in message');
+          showAlreadySignedIn(existingProfile.name);
         } else {
-          // User signed in but no profile - use Google display name or email
+          // User signed in but no profile - create profile and show message
           var displayName = user.displayName || (user.email ? user.email.split('@')[0] : 'Reader');
           localStorage.setItem(profileKey, JSON.stringify({
             name: displayName,
             age: '',
             createdAt: Date.now()
           }));
-          console.log('[SB-signin] Created profile from Google name, redirecting home');
-          window.location.href = 'index.html';
+          console.log('[SB-signin] Created profile from Google name, showing message');
+          showAlreadySignedIn(displayName);
         }
       }
     });
+
+    // Show "already signed in" overlay instead of auto-redirecting
+    function showAlreadySignedIn(name) {
+      var signinBox = document.querySelector('.signin-container, [style*="max-width: 420px"]');
+      if (signinBox) {
+        signinBox.innerHTML = '<div style="text-align:center;padding:40px 20px;">' +
+          '<h2 style="color:#FFEB3B;font-family:Coming Soon,cursive;margin-bottom:20px;">Welcome back, ' + name + '!</h2>' +
+          '<p style="color:#fff;margin-bottom:30px;">You\'re already signed in.</p>' +
+          '<a href="index.html" style="display:inline-block;background:#FFEB3B;color:#001f3f;font-weight:bold;padding:14px 30px;border-radius:25px;text-decoration:none;font-family:Coming Soon,cursive;margin-right:10px;">Go to Stories</a>' +
+          '<button onclick="signOutAndStay()" style="background:transparent;border:2px solid #FFEB3B;color:#FFEB3B;padding:12px 25px;border-radius:25px;cursor:pointer;font-family:Coming Soon,cursive;">Sign Out</button>' +
+          '</div>';
+      }
+    }
+
+    // Sign out but stay on signin page to create new account
+    window.signOutAndStay = function() {
+      firebase.auth().signOut().then(function() {
+        localStorage.removeItem('storybell_pending_name');
+        window.location.reload();
+      });
+    };
   });
 </script>
 <style id="firebaseui-visibility-fix">
@@ -3030,8 +3051,9 @@ document.addEventListener('keypress', function(e) {
         try { profile = JSON.parse(localStorage.getItem(profileKey) || 'null'); } catch(e) {}
 
         if (profile && profile.name) {
-          // Already has profile, redirect home
-          window.location.href = 'index.html';
+          // Already has profile - let main handler show message (don't redirect)
+          console.log('[SB-profile] Profile exists, main handler will show message');
+          return;
         } else {
           // Show profile form, hide auth UI
           var authContainer = document.getElementById('firebaseui-auth-container');
