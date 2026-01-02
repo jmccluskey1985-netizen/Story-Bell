@@ -331,6 +331,7 @@ nav ul > li > a {
 <style id="subscribe-box-style">
    /* === SEO-friendly Subscribe Box (styled like question box) === */
 .subscribe-box {
+  display: block;
   background: linear-gradient(180deg, #FFD700, #FFEB3B);
   color: #000;
   padding: 14px 18px;
@@ -3850,7 +3851,7 @@ function updateHeaderAuth(firebaseUser) {
     if (profileMobile) profileMobile.style.display = 'none';
 
     // Show subscribe box for logged-out users
-    if (subscribeBox) subscribeBox.style.display = '';
+    if (subscribeBox) subscribeBox.style.display = 'block';
 
     console.log('[SB] Header updated: showing login button');
   }
