@@ -1,4 +1,4 @@
-<!-- UPDATED: 2026-01-02 01:20 UTC -->
+<!-- UPDATED: 2026-01-02 01:25 UTC -->
 <!DOCTYPE html>
 
 <html lang="en">
@@ -3718,7 +3718,7 @@ window.openAuthModal = function(){
       if(!(window.firebase && window.firebaseui && firebase.auth)) return false;
       var ui = window.firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
       var cfg = {
-        signInFlow: 'redirect',
+        signInFlow: 'popup',
         credentialHelper: (window.firebaseui && firebaseui.auth && firebaseui.auth.CredentialHelper) ? firebaseui.auth.CredentialHelper.NONE : undefined,
         signInOptions: [
           firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -3920,7 +3920,7 @@ window.onOpenAuthModalHook = function(){
     }
     // Start UI
     ui.start(containerSel, {
-      signInFlow: 'redirect',
+      signInFlow: 'popup',
       credentialHelper: firebaseui.auth.CredentialHelper.NONE,
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
