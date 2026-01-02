@@ -3785,6 +3785,12 @@ function getLocalUser() {
   catch(e) { return null; }
 }
 
+// Capitalize first letter of a string
+function capitalizeFirst(str) {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 // Update header UI based on auth state (supports both Firebase and localStorage users)
 function updateHeaderAuth(firebaseUser) {
   // Desktop elements
@@ -3812,6 +3818,8 @@ function updateHeaderAuth(firebaseUser) {
       // localStorage user (email sign-up): use stored name or email prefix
       displayName = localUser.name || (localUser.email ? localUser.email.split('@')[0] : 'Reader');
     }
+    // Capitalize first letter
+    displayName = capitalizeFirst(displayName);
 
     // Desktop: hide login, show profile with name
     if (loginBtnDesktop) loginBtnDesktop.style.display = 'none';
