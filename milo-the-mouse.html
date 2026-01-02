@@ -3057,7 +3057,20 @@ nav ul > li:focus-within > .dropdown {
       font-size: 35px !important;
     }
   }
-</style></head>
+</style>
+<style id="sb-header-auth-fix">
+/* Desktop: hide mobile auth elements */
+@media (min-width: 801px) {
+  .login-mobile { display: none !important; }
+  .login-mobile-profile { display: none !important; }
+}
+/* Mobile: hide desktop auth elements */
+@media (max-width: 800px) {
+  .login-cta-header { display: none !important; }
+  .sb-user-profile { display: none !important; }
+}
+</style>
+</head>
 <body><div style="background:red;color:white;padding:10px;text-align:center;font-weight:bold;position:fixed;top:0;left:0;right:0;z-index:9999;">TEST v1.8 - Dec 7 17:00 UTC - scale 1.8</div><h1 class="sr-only" id="story-title">Ages 4–6</h1>
 <div id="sb-test-banner">TEST PAGE - STAGING - 2025-12-07 12:00:04</div>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>

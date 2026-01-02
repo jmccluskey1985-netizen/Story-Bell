@@ -2772,6 +2772,16 @@ nav ul > li:focus-within > .dropdown {
 </a>
 <div class="subscribe-text"></div></div>
 </header>
+
+<style id="sb-auth-page-hide">
+/* Hide login buttons on auth pages - you're already here! */
+.login-cta-header,
+.login-mobile,
+a[href="signin.html"].login-cta-header {
+  display: none !important;
+}
+</style>
+
 <style>
 /* Hide login buttons on signin page - you're already here! */
 .login-cta-header,

@@ -3150,7 +3150,20 @@ nav ul > li:focus-within > .dropdown {
       font-size: 35px !important;
     }
   }
-</style><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
+</style><link href="favicon.ico" rel="icon" type="image/x-icon"/>
+<style id="sb-header-auth-fix">
+/* Desktop: hide mobile auth elements */
+@media (min-width: 801px) {
+  .login-mobile { display: none !important; }
+  .login-mobile-profile { display: none !important; }
+}
+/* Mobile: hide desktop auth elements */
+@media (max-width: 800px) {
+  .login-cta-header { display: none !important; }
+  .sb-user-profile { display: none !important; }
+}
+</style>
+</head>
 <body><div id="sb-test-iteration" style="width:100%; box-sizing:border-box; padding:10px 14px; margin:0;background:#1d1d1d; color:#ffeb3b; font-weight:700;font-size:15px; font-family:Arial,sans-serif; text-align:center;border-bottom:3px solid #ffeb3b; box-shadow:0 3px 10px #0008;position:relative; z-index:9999;">TEST PAGE v34 (not for production)</div><h1 class="sr-only" id="story-title">Ages 4–6</h1>
 <div id="sb-test-banner">TEST PAGE - STAGING - 2025-11-29 17:01:29</div>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
