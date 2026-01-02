@@ -3150,6 +3150,68 @@ document.addEventListener('keypress', function(e) {
   onReady(function(){ applyLayout(document); window.addEventListener('resize', function(){ applyLayout(document); }); });
 })();
 </script>
+<script id="sb-hamburger-menu">
+// Hamburger Menu Toggle
+(function () {
+  const nav = document.querySelector(".header-right nav");
+  const body = document.body;
+  if (!nav) return;
+
+  let toggleBtn = document.getElementById("menu-toggle");
+  if (!toggleBtn) {
+    const headerRight = document.querySelector(".header-right");
+    if (headerRight) {
+      toggleBtn = document.createElement("button");
+      toggleBtn.id = "menu-toggle";
+      toggleBtn.setAttribute("aria-label","Open menu");
+      toggleBtn.textContent = "☰";
+      toggleBtn.style.display = "none";
+      headerRight.insertBefore(toggleBtn, headerRight.firstChild);
+    }
+  }
+
+  let overlay = document.querySelector(".menu-overlay");
+  if (!overlay) {
+    const header = document.querySelector("header");
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    if (header && header.parentNode) {
+      header.parentNode.insertBefore(overlay, header.nextSibling);
+    } else {
+      document.body.appendChild(overlay);
+    }
+  }
+
+  function openMenu() {
+    nav.classList.add("open");
+    body.classList.add("menu-open");
+    overlay.classList.add("active");
+  }
+  function closeMenu() {
+    nav.classList.remove("open");
+    body.classList.remove("menu-open");
+    overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (nav.classList.contains("open")) closeMenu(); else openMenu();
+    });
+  }
+  overlay.addEventListener("click", (e) => { e.stopPropagation(); closeMenu(); });
+
+  nav.querySelectorAll("ul > li > a").forEach(link => {
+    link.addEventListener("click", function(e){
+      if (window.matchMedia("(max-width: 900px)").matches && this.href && !this.href.endsWith("#")) {
+        closeMenu();
+      }
+    });
+  });
+})();
+</script>
 <script id="sb-header-auth">
 // Header Auth Update Functions
 function getLocalUser() {
