@@ -1,4 +1,4 @@
-<!-- UPDATED: 2026-01-02 01:25 UTC -->
+<!-- UPDATED: 2026-01-02 01:45 UTC -->
 <!DOCTYPE html>
 
 <html lang="en">
@@ -1660,10 +1660,12 @@ header nav ul li .dropdown li a {
 /* === Mobile header login placement === */
 @media (max-width: 800px){
   .login-cta-header { display: none !important; }        /* remove header button on mobile */
-  .login-mobile { display: block !important; }           /* show first item in hamburger */
+  .sb-user-profile { display: none !important; }         /* hide header profile on mobile */
+  .login-mobile { display: block !important; }           /* show login in hamburger */
 }
 @media (min-width: 801px){
   .login-mobile { display: none !important; }            /* hide hamburger login on desktop */
+  .login-mobile-profile { display: none !important; }    /* hide hamburger profile on desktop */
 }
 
 /* === Smaller Firebase modal on mobile === */
@@ -2660,6 +2662,7 @@ html body #story-queue-menu.active{display:flex !important;}
     </button>
 <nav>
 <ul><li class="login-mobile"><a href="signin.html" style="background:#FFEB3B; color:#003366; font-weight:bold; border-radius:12px; text-decoration:none; display:block; padding:8px 14px; margin:6px 10px; text-align:left; white-space:nowrap;">Log in / Create Account</a></li>
+<li class="login-mobile-profile" style="display:none;"><div style="padding:8px 14px; margin:6px 10px;"><span class="sb-user-name-mobile" style="color:#FFEB3B; font-family:'Coming Soon',cursive; font-weight:bold; font-size:15px;"></span><br/><a href="#" onclick="signOutStoryBell(); return false;" style="color:#FFEB3B; font-size:13px; text-decoration:underline;">Sign Out</a></div></li>
 <li style="position:relative;">
 <a href="#" style="cursor:pointer;">
         Age Group
@@ -3784,8 +3787,14 @@ function getLocalUser() {
 
 // Update header UI based on auth state (supports both Firebase and localStorage users)
 function updateHeaderAuth(firebaseUser) {
-  var loginBtns = document.querySelectorAll('.login-cta-header, .login-mobile a[href*="signin"]');
-  var profileEls = document.querySelectorAll('.sb-user-profile');
+  // Desktop elements
+  var loginBtnDesktop = document.querySelector('.login-cta-header');
+  var profileDesktop = document.querySelector('.sb-user-profile');
+
+  // Mobile hamburger elements
+  var loginMobile = document.querySelector('.login-mobile');
+  var profileMobile = document.querySelector('.login-mobile-profile');
+  var nameMobile = document.querySelector('.sb-user-name-mobile');
 
   // Check for email-based user in localStorage
   var localUser = getLocalUser();
@@ -3804,16 +3813,29 @@ function updateHeaderAuth(firebaseUser) {
       displayName = localUser.name || (localUser.email ? localUser.email.split('@')[0] : 'Reader');
     }
 
-    loginBtns.forEach(function(el){ el.style.display = 'none'; });
-    profileEls.forEach(function(el){
-      el.style.display = 'flex';
-      var nameEl = el.querySelector('.sb-user-name');
+    // Desktop: hide login, show profile with name
+    if (loginBtnDesktop) loginBtnDesktop.style.display = 'none';
+    if (profileDesktop) {
+      profileDesktop.style.display = 'flex';
+      var nameEl = profileDesktop.querySelector('.sb-user-name');
       if (nameEl) nameEl.textContent = displayName;
-    });
+    }
+
+    // Mobile hamburger: hide login, show profile with name
+    if (loginMobile) loginMobile.style.display = 'none';
+    if (profileMobile) profileMobile.style.display = 'block';
+    if (nameMobile) nameMobile.textContent = displayName;
+
     console.log('[SB] Header updated: showing', displayName);
   } else {
-    loginBtns.forEach(function(el){ el.style.display = ''; });
-    profileEls.forEach(function(el){ el.style.display = 'none'; });
+    // Desktop: show login, hide profile
+    if (loginBtnDesktop) loginBtnDesktop.style.display = '';
+    if (profileDesktop) profileDesktop.style.display = 'none';
+
+    // Mobile hamburger: show login, hide profile
+    if (loginMobile) loginMobile.style.display = '';
+    if (profileMobile) profileMobile.style.display = 'none';
+
     console.log('[SB] Header updated: showing login button');
   }
 }
