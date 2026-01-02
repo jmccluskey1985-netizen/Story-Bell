@@ -304,15 +304,16 @@
 
   // Start FirebaseUI when page loads (Google only - email handled separately)
   document.addEventListener('DOMContentLoaded', function() {
+    console.log('[SB-signin] DOMContentLoaded, starting FirebaseUI');
     var ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
     ui.start('#firebaseui-auth-container', {
-      signInFlow: 'redirect',
-      signInSuccessUrl: '/signin.html',
+      signInFlow: 'popup',
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID
       ],
       callbacks: {
         signInSuccessWithAuthResult: function(authResult) {
+          console.log('[SB-signin] signInSuccessWithAuthResult:', authResult.user ? authResult.user.email : 'no user');
           var user = authResult.user;
           var pendingName = localStorage.getItem('storybell_pending_name');
           if (pendingName && user) {
@@ -322,8 +323,20 @@
               createdAt: Date.now()
             }));
             localStorage.removeItem('storybell_pending_name');
+            console.log('[SB-signin] Saved profile with pendingName, redirecting home');
+            window.location.href = '/';
+          } else if (user) {
+            console.log('[SB-signin] User signed in, checking for existing profile');
+            var profileKey = 'storybell_child_' + user.uid;
+            var profile = null;
+            try { profile = JSON.parse(localStorage.getItem(profileKey) || 'null'); } catch(e) {}
+            if (profile && profile.name) {
+              console.log('[SB-signin] Profile exists, redirecting home');
+              window.location.href = '/';
+            } else {
+              console.log('[SB-signin] No profile, will show profile form');
+            }
           }
-          window.location.href = '/';
           return false;
         },
         uiShown: function() {
