@@ -1,4 +1,4 @@
-<!-- UPDATED: 2026-01-02 01:15 UTC -->
+<!-- UPDATED: 2026-01-02 01:20 UTC -->
 <!DOCTYPE html>
 
 <html lang="en">
@@ -3839,15 +3839,24 @@ window.signOutStoryBell = function(){
 
 // Auth state listener to update header (for Firebase/Google users)
 if (window.firebase && firebase.auth) {
+  console.log("[SB] Firebase initialized, checking auth...");
+
   // Handle redirect result first (for Google sign-in redirect flow)
   firebase.auth().getRedirectResult().then(function(result) {
-    if (result.user) {
+    console.log("[SB] getRedirectResult:", result);
+    if (result && result.user) {
       console.log("[SB] Redirect sign-in successful:", result.user.displayName || result.user.email);
       updateHeaderAuth(result.user);
+    } else {
+      console.log("[SB] No redirect result (user may not have just signed in via redirect)");
     }
   }).catch(function(error) {
-    console.log("[SB] Redirect result error:", error.message);
+    console.error("[SB] Redirect result error:", error.code, error.message);
   });
+
+  // Check current user immediately
+  var currentUser = firebase.auth().currentUser;
+  console.log("[SB] Current user on load:", currentUser ? currentUser.email : "none");
 
   // Also listen for auth state changes
   firebase.auth().onAuthStateChanged(function(u){
