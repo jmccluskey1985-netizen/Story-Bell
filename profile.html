@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="https://fonts.googleapis.com/css?family=Coming+Soon&amp;display=swap" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<title>My Profile - Story Bell</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
+body.no-scroll { overflow: hidden; }
+</style>
+<style>
+.featured-header {
+  font-size: 1.7em;
+  color: #fff;
+  margin: 0 0 10px 0;
+  font-weight: bold;
+  text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099;
+  font-family: 'Georgia', serif;
+  text-align: left;
+  padding-left: 6px;
+  letter-spacing: 1px;
+}
+@media (max-width: 700px) {
+  .featured-header { font-size: 1.3em; }
+}
+</style>
+<style>
+nav a:hover { background: #003366; text-decoration: underline; }
+.main-blank {
+  min-height: 90vh; max-width: 900px; margin: 0 auto;
+  color: #fff; display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-start;
+  font-size: 1.25em; letter-spacing: 0.03em; padding-top: 40px; padding-bottom: 48px;
+}
+.main-blank p {
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 0 8px #ffff6699, 0 0 10px #ffaa0044;
+  margin-bottom: 1.3em;
+  margin-top: 0.7em;
+}
+@media (max-width: 700px) {
+  .main-blank { font-size: 1em; padding-top: 18px;}
+}
+</style>
+<style>
+/* Profile page specific styles */
+.profile-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.profile-card {
+  background: linear-gradient(135deg, rgba(0, 51, 102, 0.9), rgba(0, 30, 60, 0.95));
+  border: 2px solid #FFEB3B;
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(255, 235, 59, 0.3), 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px auto;
+  background: linear-gradient(180deg, #FFD700, #FFEB3B);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(255, 235, 59, 0.5);
+}
+
+.profile-avatar svg {
+  width: 60px;
+  height: 60px;
+  fill: #003366;
+}
+
+.profile-welcome {
+  color: #fff;
+  font-family: 'Georgia', serif;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  text-shadow: 0 0 8px #ffff6699;
+}
+
+.profile-name {
+  color: #FFEB3B;
+  font-family: 'Coming Soon', cursive;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099;
+}
+
+.profile-field {
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.profile-field label {
+  display: block;
+  color: #fff;
+  font-family: 'Coming Soon', cursive;
+  font-size: 1em;
+  margin-bottom: 8px;
+  text-shadow: 0 0 6px #ffff6699;
+}
+
+.profile-field select {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #FFEB3B;
+  border-radius: 10px;
+  background: #fff;
+  color: #003366;
+  font-family: 'Coming Soon', cursive;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.profile-field select:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+}
+
+.profile-signout-btn {
+  width: 100%;
+  padding: 14px 24px;
+  font-size: 1.1em;
+  font-weight: bold;
+  font-family: 'Coming Soon', cursive;
+  background: linear-gradient(180deg, #FFD700, #FFEB3B);
+  color: #003366;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 0 15px rgba(255, 235, 59, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.profile-signout-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 235, 59, 0.6);
+}
+
+.profile-saved {
+  color: #90EE90;
+  font-family: 'Coming Soon', cursive;
+  font-size: 0.9em;
+  margin-top: 8px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.profile-saved.show {
+  opacity: 1;
+}
+
+.profile-not-logged-in {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.profile-not-logged-in p {
+  margin-bottom: 20px;
+}
+
+.profile-login-btn {
+  display: inline-block;
+  padding: 14px 30px;
+  font-size: 1.1em;
+  font-weight: bold;
+  font-family: 'Coming Soon', cursive;
+  background: linear-gradient(180deg, #FFD700, #FFEB3B);
+  color: #003366;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 0 15px rgba(255, 235, 59, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.profile-login-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 235, 59, 0.6);
+}
+
+@media (max-width: 600px) {
+  .profile-container {
+    padding: 20px 15px;
+    margin: 10px auto;
+  }
+  .profile-card {
+    padding: 30px 20px;
+  }
+  .profile-avatar {
+    width: 80px;
+    height: 80px;
+  }
+  .profile-avatar svg {
+    width: 48px;
+    height: 48px;
+  }
+  .profile-name {
+    font-size: 1.6em;
+  }
+  .profile-signout-btn {
+    width: 100%;
+  }
+}
+</style>
+<style>
+/* MOBILE OVERRIDE: Prevent hover/focus-within from keeping submenus open on touch */
+@media (max-width: 800px) {
+  nav ul > li:hover > .dropdown,
+  nav ul > li:focus-within > .dropdown {
+    display: none !important;
+  }
+  nav ul > li.open > .dropdown {
+    display: block !important;
+  }
+}
+</style>
+<style>
+/* === StoryBell: Mobile header IDEAL settings (locks Chrome/Edge parity) === */
+@media (max-width: 800px){
+  header .header-left{ padding-right:96px !important; min-width:0 !important; display:flex !important; align-items:center !important; gap:0 !important; }
+  header .header-right{ position:relative !important; width:96px !important; flex:0 0 96px !important; display:flex !important; justify-content:flex-end !important; align-items:center !important; }
+  header .header-right .sb-search-icon{ position: absolute !important; right:42px !important; }
+  header .header-right .hamburger{ position: absolute !important; right:0px !important; }
+  .storybell-header-video, .mascot-logo{ width:120px !important; min-width:120px !important; max-width:120px !important; height:auto !important; transform:none !important; object-fit:contain !important; display:block !important; }
+  .site-title{ font-size:28px !important; line-height:1.2 !important; margin-left:-4px !important; white-space:nowrap !important; overflow:hidden !important; text-overflow:ellipsis !important; max-width:calc(100% - 96px) !important; }
+}
+</style>
+<style>
+/* Scale hamburger and magnifier 15% smaller for all browsers (mobile only) */
+@media (max-width: 800px){
+  .sb-search-icon,
+  .hamburger{
+    transform: scale(0.85) !important;
+    transform-origin: center center !important;
+  }
+}
+</style>
+<style>
+/* Desktop-only header link sizing */
+@media (min-width: 900px) {
+  header a,
+  .nav a,
+  .menu a,
+  .header-right a,
+  .header-left a,
+  .login-btn,
+  .signup-btn {
+    font-size: 16px !important;
+    line-height: 1.1 !important;
+  }
+  .site-title,
+  .site-title a {
+    font-size: 35px !important;
+  }
+}
+</style>
+<link href="favicon.ico" rel="icon" type="image/x-icon"/>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script id="firebase-init">
+// Story Bell — Firebase config + single-init (compat)
+const firebaseConfig = {
+  apiKey: "AIzaSyC9vYsSvGN7zSDfkIcByvBZDOQnRyUPIBo",
+  authDomain: "storybellkids.firebaseapp.com",
+  projectId: "storybellkids",
+  storageBucket: "storybellkids.firebasestorage.app",
+  messagingSenderId: "107989104962",
+  appId: "1:107989104962:web:a93c5a427353a87111b0db",
+  measurementId: "G-F64PJ8CCZQ"
+};
+if (!window.firebase) { console.error("Firebase SDK not found"); }
+else if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+</script>
+</head>
+<body>
+<img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:none; position:fixed; pointer-events:none; z-index:9999;"/>
+<header>
+<div class="header-left">
+<a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
+<img alt="Story Bell Logo" src="index_items/logo.webp" style="height:80px; margin-right:8px;"/>
+<span class="site-title" style="font-size:35px; font-family:'Georgia',serif !important; margin:0;">
+      Story Bell
+     </span>
+</a>
+</div>
+<div class="header-right" style="cursor: pointer">
+<button aria-label="Open menu" id="menu-toggle">
+     ☰
+    </button>
+<nav>
+<ul><li class="login-mobile"><a href="signin.html" style="background:#FFEB3B; color:#003366; font-weight:bold; border-radius:12px; text-decoration:none; display:block; padding:8px 14px; margin:6px 10px; text-align:left; white-space:nowrap;">Log in / Create Account</a></li>
+<li class="login-mobile-profile" style="display:none;"><a href="profile.html" style="background:#FFEB3B; color:#003366; font-weight:bold; border-radius:12px; display:block; padding:8px 14px; margin:6px 10px; text-decoration:none;"><span class="sb-user-name-mobile" style="font-family:'Coming Soon',cursive; font-size:15px;"></span></a></li>
+<li style="position:relative;">
+<a href="#" style="cursor:pointer;">
+        Age Group
+       </a>
+<ul class="dropdown">
+<li><a href="childrens-stories-ages-0-3.html">0–3 Years Old</a></li>
+<li><a href="childrens-stories-ages-4-6.html">4–6 Years Old</a></li>
+<li><a href="childrens-stories-ages-7-12.html">7–12 Years Old</a></li>
+</ul>
+</li>
+<li style="position:relative;">
+<a href="#" style="cursor:pointer;">
+        Emotion Themed<br/>Stories
+       </a>
+<ul class="dropdown">
+<li><a href="childrens-stories-about-happiness.html">Happiness</a></li>
+<li><a href="childrens-stories-about-sadness.html">Sadness</a></li>
+<li><a href="childrens-stories-about-fear.html">Fear</a></li>
+<li><a href="childrens-stories-about-anger.html">Anger</a></li>
+<li><a href="childrens-stories-about-disgust.html">Disgust</a></li>
+<li><a href="childrens-stories-about-surprise.html">Surprise</a></li>
+</ul>
+</li>
+<li style="position:relative;">
+<a href="#" style="cursor:pointer;">Story Length/<br/>Type</a>
+<ul class="dropdown">
+<li><a href="5-minute-childrens-stories.html">Short Stories</a></li>
+<li><a href="10-minute-childrens-stories.html">Medium Length Stories</a></li>
+<li><a href="childrens-poems-and-rhymes.html">Poems</a></li>
+</ul>
+</li>
+<li><a href="parent-playground.html">Parents<br/>Playground</a></li>
+<li><a href="https://www.story-bell.shop" rel="noopener" target="_blank">Store</a></li>
+</ul>
+</nav>
+<button aria-label="Search" class="sb-search-icon sb-search-icon--force" data-sb-search-trigger="" title="Search" type="button">
+<svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20">
+<circle cx="11" cy="11" r="7"></circle>
+<line x1="16.65" x2="21" y1="16.65" y2="21"></line>
+</svg>
+</button>
+<a class="login-cta-header" data-auth-cta="" href="#login" rel="noopener" style="margin-top: 14px; background: #FFEB3B; color: #003366; font-family: 'Coming Soon', cursive !important; font-size: 16px; font-weight: bold; border-radius: 20px; padding: 9px 22px 9px 32px; text-decoration: none; box-shadow: 0 2px 8px rgba(255,235,59,0.22); display: flex; align-items: center; transition: background 0.2s;">Log in/<br/>Create Account</a>
+<!-- User Profile (shown when signed in) - links to profile page -->
+<a href="profile.html" class="sb-user-profile" style="display:none; align-items:center; gap:8px; margin-top:14px; margin-left:8px; text-decoration:none;">
+<svg style="width:32px;height:32px;fill:#FFEB3B;" viewbox="0 0 24 24">
+<path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+</svg>
+<span class="sb-user-name" style="color:#FFEB3B; font-family:'Coming Soon',cursive; font-weight:bold; font-size:15px;"></span>
+</a>
+<div class="subscribe-text"></div></div>
+</header>
+
+<div class="main-blank profile-container">
+<h1 style="color: #FFEB3B; text-align: center; margin-bottom: 30px; font-family: 'Georgia', serif; text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099;">My Profile</h1>
+
+<!-- Profile Card (shown when logged in) -->
+<div id="profile-card" class="profile-card" style="display:none;">
+  <div class="profile-avatar">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+    </svg>
+  </div>
+  <div class="profile-welcome">Welcome back,</div>
+  <div class="profile-name" id="profile-display-name">Reader</div>
+
+  <div class="profile-field">
+    <label for="profile-age-select">Age:</label>
+    <select id="profile-age-select" onchange="saveAge()">
+      <option value="">Select age...</option>
+      <option value="3">3 years old</option>
+      <option value="4">4 years old</option>
+      <option value="5">5 years old</option>
+      <option value="6">6 years old</option>
+      <option value="7">7 years old</option>
+      <option value="8">8 years old</option>
+      <option value="9">9 years old</option>
+      <option value="10">10 years old</option>
+      <option value="11">11 years old</option>
+      <option value="12">12 years old</option>
+    </select>
+    <div class="profile-saved" id="age-saved-msg">Saved!</div>
+  </div>
+
+  <button class="profile-signout-btn" onclick="signOutStoryBell()">Sign Out</button>
+</div>
+
+<!-- Not logged in message -->
+<div id="profile-not-logged" class="profile-not-logged-in" style="display:none;">
+  <p style="font-family: 'Coming Soon', cursive; font-size: 1.2em;">You're not signed in yet.</p>
+  <a href="signin.html" class="profile-login-btn">Sign In / Create Account</a>
+</div>
+</div>
+
+<footer style="color: #fff; text-align: center; padding: 10px 20px; font-family: 'Georgia', serif; margin-top: 80px; position: relative;">
+<div style="background:#001020; padding:30px 10px; text-align:center;">
+<div style="margin:16px 0;">
+<a data-auth-cta="auth" href="#login" onclick="return window.sbFooterOpenAuth && sbFooterOpenAuth(this);" style="display:inline-block; background:#FFEB3B; color:#001f3f; font-weight:bold; padding:10px 20px; border-radius:6px; text-decoration:none; cursor:pointer;">
+      Sign Up to Story Bell
+    </a>
+</div>
+<div class="sb-socials" style="margin:12px 0; font-size:0; color:#FFEB3B;">
+<a aria-label="Facebook" href="https://facebook.com" style="filter: drop-shadow(0 0 4px #000);" target="_blank">
+<svg fill="#FFEB3B" height="28" viewbox="0 0 24 24" width="28">
+<path d="M22 12a10 10 0 10-11.6 9.9v-7h-2v-2.9h2v-2.2c0-2 1.2-3.1 3-3.1.9 0 1.9.2 1.9.2v2.1h-1.1c-1.1 0-1.4.7-1.4 1.4v1.6h2.4l-.4 2.9h-2v7A10 10 0 0022 12z"></path>
+</svg>
+</a>
+<a aria-label="Instagram" href="https://instagram.com" style="filter: drop-shadow(0 0 4px #000);" target="_blank">
+<svg fill="#FFEB3B" height="28" viewbox="0 0 24 24" width="28">
+<path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 2 .3 2.5.5a4.5 4.5 0 011.6 1.1 4.5 4.5 0 011.1 1.6c.2.5.4 1.3.5 2.5.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.3 2-.5 2.5a4.5 4.5 0 01-1.1 1.6 4.5 4.5 0 01-1.6 1.1c-.5.2-1.3.4-2.5.5-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-2-.3-2.5-.5a4.5 4.5 0 01-1.6-1.1 4.5 4.5 0 01-1.1-1.6c-.2-.5-.4-1.3-.5-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.3-2 .5-2.5a4.5 4.5 0 011.1-1.6 4.5 4.5 0 011.6-1.1c.5-.2 1.3-.4 2.5-.5C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1 .1-1.6.3-2 .5-.5.2-.9.5-1.3.9-.4.4-.7.8-.9 1.3-.2.4-.4 1-.5 2-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .3 1.6.5 2 .2.5.5.9.9 1.3.4.4.8.7 1.3.9.4.2 1 .4 2 .5 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.3 2-.5a3 3 0 001.3-.9c.4-.4.7-.8.9-1.3.2-.4.4-1 .5-2 .1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.3-1.6-.5-2a3 3 0 00-.9-1.3 3 3 0 00-1.3-.9c-.4-.2-1-.4-2-.5-1.2-.1-1.6-.1-4.7-.1zM12 6.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11zm0 1.8a3.7 3.7 0 100 7.4 3.7 3.7 0 000-7.4zm5.5-2.2a1.3 1.3 0 110 2.6 1.3 1.3 0 010-2.6z"></path>
+</svg>
+</a>
+<a aria-label="Twitter (X)" href="https://twitter.com" style="filter: drop-shadow(0 0 4px #000);" target="_blank">
+<svg fill="#FFEB3B" height="28" viewbox="0 0 24 24" width="28">
+<path d="M22 4.01c-.8.4-1.6.7-2.4.8.9-.5 1.5-1.4 1.8-2.3-.9.5-1.8.9-2.7 1.1a4.2 4.2 0 00-7.2 3.8c-3.4-.2-6.4-1.8-8.4-4.2a4.2 4.2 0 001.3 5.7c-.7 0-1.4-.2-2-.5 0 2 1.4 3.8 3.4 4.2-.7.2-1.3.2-2 .1a4.2 4.2 0 003.9 2.9A8.5 8.5 0 012 19.6a11.8 11.8 0 006.3 1.8c7.5 0 11.6-6.2 11.6-11.6v-.5a8.2 8.2 0 002-2.1z"></path>
+</svg>
+</a>
+</div>
+<p style="color:#FFEB3B; margin-top:14px;">© 2025 Story Bell. All rights reserved.</p>
+<div id="footer-legal-links" style="margin-top:8px; font-size:12px; color:#FFEB3B; text-align:center;">
+<a href="./terms.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">Terms &amp; Conditions</a> |
+    <a href="./privacy.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">Privacy Policy</a> |
+    <a href="./about.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">About</a> |
+    <a href="Reviews.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">Reviews</a> |
+    <a href="./contact.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">Contact</a>
+</div>
+</div>
+</footer>
+
+<script id="profile-logic">
+// Profile page logic
+function getLocalUser() {
+  try { return JSON.parse(localStorage.getItem('storybell_user') || 'null'); }
+  catch(e) { return null; }
+}
+
+function getChildProfile(uid) {
+  try { return JSON.parse(localStorage.getItem('storybell_child_' + uid) || 'null'); }
+  catch(e) { return null; }
+}
+
+function capitalizeFirst(str) {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function saveAge() {
+  var ageSelect = document.getElementById('profile-age-select');
+  var age = ageSelect.value;
+  var savedMsg = document.getElementById('age-saved-msg');
+
+  // Get current user
+  var localUser = getLocalUser();
+  var firebaseUser = (window.firebase && firebase.auth) ? firebase.auth().currentUser : null;
+
+  if (localUser) {
+    // Email signup user
+    localUser.age = age;
+    localStorage.setItem('storybell_user', JSON.stringify(localUser));
+  } else if (firebaseUser) {
+    // Firebase user
+    var profileKey = 'storybell_child_' + firebaseUser.uid;
+    var profile = getChildProfile(firebaseUser.uid) || { name: '', createdAt: Date.now() };
+    profile.age = age;
+    localStorage.setItem(profileKey, JSON.stringify(profile));
+  }
+
+  // Show saved message
+  savedMsg.classList.add('show');
+  setTimeout(function() {
+    savedMsg.classList.remove('show');
+  }, 2000);
+}
+
+function loadProfile() {
+  var profileCard = document.getElementById('profile-card');
+  var notLoggedIn = document.getElementById('profile-not-logged');
+  var displayNameEl = document.getElementById('profile-display-name');
+  var ageSelect = document.getElementById('profile-age-select');
+
+  var localUser = getLocalUser();
+  var firebaseUser = (window.firebase && firebase.auth) ? firebase.auth().currentUser : null;
+
+  if (localUser || firebaseUser) {
+    // User is logged in
+    profileCard.style.display = 'block';
+    notLoggedIn.style.display = 'none';
+
+    var displayName, age;
+    if (firebaseUser) {
+      var profile = getChildProfile(firebaseUser.uid);
+      displayName = (profile && profile.name) || firebaseUser.displayName || (firebaseUser.email ? firebaseUser.email.split('@')[0] : 'Reader');
+      age = profile ? profile.age : '';
+    } else {
+      displayName = localUser.name || (localUser.email ? localUser.email.split('@')[0] : 'Reader');
+      age = localUser.age || '';
+    }
+
+    displayNameEl.textContent = capitalizeFirst(displayName);
+    if (age) {
+      ageSelect.value = age;
+    }
+  } else {
+    // Not logged in
+    profileCard.style.display = 'none';
+    notLoggedIn.style.display = 'block';
+  }
+}
+
+window.signOutStoryBell = function(){
+  localStorage.removeItem('storybell_user');
+  localStorage.removeItem('storybell_simple_user');
+  if (window.firebase && firebase.auth) {
+    firebase.auth().signOut().then(function(){ window.location.href = '/'; }).catch(function(e){ console.error('[SB] Sign out error:', e); window.location.href = '/'; });
+  } else {
+    window.location.href = '/';
+  }
+};
+
+// Load profile on page load
+document.addEventListener('DOMContentLoaded', function() {
+  loadProfile();
+});
+
+// Also check Firebase auth state
+if (window.firebase && firebase.auth) {
+  firebase.auth().onAuthStateChanged(function(user) {
+    loadProfile();
+  });
+}
+</script>
+
+<script id="sb-hamburger-menu">
+// Hamburger Menu Toggle
+(function () {
+  const nav = document.querySelector(".header-right nav");
+  const body = document.body;
+  if (!nav) return;
+
+  let toggleBtn = document.getElementById("menu-toggle");
+  if (!toggleBtn) {
+    const headerRight = document.querySelector(".header-right");
+    if (headerRight) {
+      toggleBtn = document.createElement("button");
+      toggleBtn.id = "menu-toggle";
+      toggleBtn.setAttribute("aria-label","Open menu");
+      toggleBtn.textContent = "☰";
+      toggleBtn.style.display = "none";
+      headerRight.insertBefore(toggleBtn, headerRight.firstChild);
+    }
+  }
+
+  let overlay = document.querySelector(".menu-overlay");
+  if (!overlay) {
+    const header = document.querySelector("header");
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    if (header && header.parentNode) {
+      header.parentNode.insertBefore(overlay, header.nextSibling);
+    } else {
+      document.body.appendChild(overlay);
+    }
+  }
+
+  function openMenu() {
+    nav.classList.add("open");
+    body.classList.add("menu-open");
+    overlay.classList.add("active");
+  }
+  function closeMenu() {
+    nav.classList.remove("open");
+    body.classList.remove("menu-open");
+    overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (nav.classList.contains("open")) closeMenu(); else openMenu();
+    });
+  }
+  overlay.addEventListener("click", (e) => { e.stopPropagation(); closeMenu(); });
+
+  nav.querySelectorAll("ul > li > a").forEach(link => {
+    link.addEventListener("click", function(e){
+      if (window.matchMedia("(max-width: 900px)").matches && this.href && !this.href.endsWith("#")) {
+        closeMenu();
+      }
+    });
+  });
+})();
+</script>
+
+<script id="sb-header-auth">
+// Header Auth Update Functions (for profile page header)
+function updateHeaderAuth(firebaseUser) {
+  var loginBtnDesktop = document.querySelector('.login-cta-header');
+  var profileDesktop = document.querySelector('.sb-user-profile');
+  var loginMobile = document.querySelector('.login-mobile');
+  var profileMobile = document.querySelector('.login-mobile-profile');
+  var nameMobile = document.querySelector('.sb-user-name-mobile');
+  var localUser = getLocalUser();
+  var isSignedIn = firebaseUser || localUser;
+  if (isSignedIn) {
+    var displayName;
+    if (firebaseUser) {
+      var profile = getChildProfile(firebaseUser.uid);
+      displayName = (profile && profile.name) || firebaseUser.displayName || (firebaseUser.email ? firebaseUser.email.split('@')[0] : 'Reader');
+    } else {
+      displayName = localUser.name || (localUser.email ? localUser.email.split('@')[0] : 'Reader');
+    }
+    displayName = capitalizeFirst(displayName);
+    if (loginBtnDesktop) loginBtnDesktop.style.display = 'none';
+    if (profileDesktop) {
+      profileDesktop.style.display = 'flex';
+      var nameEl = profileDesktop.querySelector('.sb-user-name');
+      if (nameEl) nameEl.textContent = displayName;
+    }
+    if (loginMobile) loginMobile.style.display = 'none';
+    if (profileMobile) profileMobile.style.display = 'block';
+    if (nameMobile) nameMobile.textContent = displayName;
+    console.log('[SB] Header updated: showing', displayName);
+  } else {
+    if (loginBtnDesktop) loginBtnDesktop.style.display = '';
+    if (profileDesktop) profileDesktop.style.display = 'none';
+    if (loginMobile) loginMobile.style.display = '';
+    if (profileMobile) profileMobile.style.display = 'none';
+    console.log('[SB] Header updated: showing login button');
+  }
+}
+
+// Check localStorage user immediately
+(function checkLocalUser() {
+  var localUser = getLocalUser();
+  if (localUser) {
+    console.log('[SB] Found localStorage user:', localUser.name || localUser.email);
+    updateHeaderAuth(null);
+  }
+})();
+
+// Firebase auth state listener
+if (window.firebase && firebase.auth) {
+  firebase.auth().onAuthStateChanged(function(u){
+    console.log("[SB] Auth state:", u ? "SIGNED IN" : "SIGNED OUT");
+    updateHeaderAuth(u);
+  });
+}
+</script>
+</body>
+</html>
