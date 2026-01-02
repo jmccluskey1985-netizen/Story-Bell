@@ -2732,9 +2732,41 @@ nav ul > li:focus-within > .dropdown {
 </div>
 <div class="subscribe-text"></div></div>
 </header>
-<div class="main-blank" style="max-width: 500px; margin: 20px auto; padding: 30px;">
-<h1 style="color: #FFEB3B; text-align: center; margin-bottom: 10px; font-family: 'Georgia', serif; text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099; white-space: nowrap;">Sign In to Story Bell</h1>
-<p id="signin-subtitle" style="color: #fff; text-align: center; margin-bottom: 30px; white-space: nowrap;">Save your favorite stories and create reading lists</p>
+<style>
+/* Mobile-friendly signin styles */
+.signin-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 30px;
+  box-sizing: border-box;
+}
+@media (max-width: 600px) {
+  .signin-container {
+    padding: 20px 15px;
+    margin: 10px auto;
+  }
+  .signin-container h1 {
+    font-size: 1.5em !important;
+  }
+  .signin-container input {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .signin-container button {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  #firebaseui-auth-container {
+    width: 100% !important;
+  }
+  #firebaseui-auth-container .firebaseui-idp-button {
+    max-width: 100% !important;
+  }
+}
+</style>
+<div class="main-blank signin-container">
+<h1 style="color: #FFEB3B; text-align: center; margin-bottom: 10px; font-family: 'Georgia', serif; text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099;">Sign In to Story Bell</h1>
+<p id="signin-subtitle" style="color: #fff; text-align: center; margin-bottom: 30px;">Save your favorite stories and create reading lists</p>
 <!-- Custom Sign-in UI -->
 <div id="sb-custom-auth" style="text-align: center;">
 <!-- Child Name Input (shared by Google & Email) -->
@@ -3117,6 +3149,80 @@ document.addEventListener('keypress', function(e) {
   function onReady(fn){ if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, {once:true}); else fn(); }
   onReady(function(){ applyLayout(document); window.addEventListener('resize', function(){ applyLayout(document); }); });
 })();
+</script>
+<script id="sb-header-auth">
+// Header Auth Update Functions
+function getLocalUser() {
+  try { return JSON.parse(localStorage.getItem('storybell_user') || 'null'); }
+  catch(e) { return null; }
+}
+function getChildProfile(uid) {
+  try { return JSON.parse(localStorage.getItem('storybell_child_' + uid) || 'null'); }
+  catch(e) { return null; }
+}
+function capitalizeFirst(str) {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+function updateHeaderAuth(firebaseUser) {
+  var loginBtnDesktop = document.querySelector('.login-cta-header');
+  var profileDesktop = document.querySelector('.sb-user-profile');
+  var loginMobile = document.querySelector('.login-mobile');
+  var profileMobile = document.querySelector('.login-mobile-profile');
+  var nameMobile = document.querySelector('.sb-user-name-mobile');
+  var localUser = getLocalUser();
+  var isSignedIn = firebaseUser || localUser;
+  if (isSignedIn) {
+    var displayName;
+    if (firebaseUser) {
+      var profile = getChildProfile(firebaseUser.uid);
+      displayName = (profile && profile.name) || firebaseUser.displayName || (firebaseUser.email ? firebaseUser.email.split('@')[0] : 'Reader');
+    } else {
+      displayName = localUser.name || (localUser.email ? localUser.email.split('@')[0] : 'Reader');
+    }
+    displayName = capitalizeFirst(displayName);
+    if (loginBtnDesktop) loginBtnDesktop.style.display = 'none';
+    if (profileDesktop) {
+      profileDesktop.style.display = 'flex';
+      var nameEl = profileDesktop.querySelector('.sb-user-name');
+      if (nameEl) nameEl.textContent = displayName;
+    }
+    if (loginMobile) loginMobile.style.display = 'none';
+    if (profileMobile) profileMobile.style.display = 'block';
+    if (nameMobile) nameMobile.textContent = displayName;
+    console.log('[SB] Header updated: showing', displayName);
+  } else {
+    if (loginBtnDesktop) loginBtnDesktop.style.display = '';
+    if (profileDesktop) profileDesktop.style.display = 'none';
+    if (loginMobile) loginMobile.style.display = '';
+    if (profileMobile) profileMobile.style.display = 'none';
+    console.log('[SB] Header updated: showing login button');
+  }
+}
+window.signOutStoryBell = function(){
+  localStorage.removeItem('storybell_user');
+  localStorage.removeItem('storybell_simple_user');
+  if (window.firebase && firebase.auth) {
+    firebase.auth().signOut().then(function(){ window.location.href = '/'; }).catch(function(e){ console.error('[SB] Sign out error:', e); window.location.href = '/'; });
+  } else {
+    window.location.href = '/';
+  }
+};
+// Check localStorage user immediately
+(function checkLocalUser() {
+  var localUser = getLocalUser();
+  if (localUser) {
+    console.log('[SB] Found localStorage user:', localUser.name || localUser.email);
+    updateHeaderAuth(null);
+  }
+})();
+// Firebase auth state listener
+if (window.firebase && firebase.auth) {
+  firebase.auth().onAuthStateChanged(function(u){
+    console.log("[SB] Auth state:", u ? "SIGNED IN" : "SIGNED OUT");
+    updateHeaderAuth(u);
+  });
+}
 </script>
 </body>
 </html>
