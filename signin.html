@@ -324,7 +324,7 @@
             }));
             localStorage.removeItem('storybell_pending_name');
             console.log('[SB-signin] Saved profile with pendingName, redirecting home');
-            window.location.href = '/';
+            window.location.href = 'index.html';
           } else if (user) {
             console.log('[SB-signin] User signed in, checking for existing profile');
             var profileKey = 'storybell_child_' + user.uid;
@@ -332,7 +332,7 @@
             try { profile = JSON.parse(localStorage.getItem(profileKey) || 'null'); } catch(e) {}
             if (profile && profile.name) {
               console.log('[SB-signin] Profile exists, redirecting home');
-              window.location.href = '/';
+              window.location.href = 'index.html';
             } else {
               console.log('[SB-signin] No profile, will show profile form');
             }
@@ -367,11 +367,11 @@
           localStorage.removeItem('storybell_pending_name');
           sendSignupEmail(user.email, pendingName);
           console.log('[SB-signin] New user profile saved, redirecting home');
-          window.location.href = '/';
+          window.location.href = 'index.html';
         } else if (existingProfile && existingProfile.name) {
           // Returning user with existing profile
           console.log('[SB-signin] Returning user, redirecting home');
-          window.location.href = '/';
+          window.location.href = 'index.html';
         } else {
           // User signed in but no profile - use Google display name or email
           var displayName = user.displayName || (user.email ? user.email.split('@')[0] : 'Reader');
@@ -381,7 +381,7 @@
             createdAt: Date.now()
           }));
           console.log('[SB-signin] Created profile from Google name, redirecting home');
-          window.location.href = '/';
+          window.location.href = 'index.html';
         }
       }
     });
@@ -2951,7 +2951,7 @@ function signUpWithEmail() {
 
   // Redirect to homepage after brief delay
   setTimeout(function() {
-    window.location.href = '/';
+    window.location.href = 'index.html';
   }, 1500);
 }
 
@@ -2994,7 +2994,7 @@ function handleEmailLinkSignIn() {
           }));
 
           // Redirect to home
-          window.location.href = '/';
+          window.location.href = 'index.html';
         })
         .catch(function(err) {
           showError('sb-email-error', 'Sign-in failed: ' + err.message);
@@ -3063,7 +3063,7 @@ document.addEventListener('keypress', function(e) {
 
         if (profile && profile.name) {
           // Already has profile, redirect home
-          window.location.href = '/';
+          window.location.href = 'index.html';
         } else {
           // Show profile form, hide auth UI
           var authContainer = document.getElementById('firebaseui-auth-container');
@@ -3114,7 +3114,7 @@ document.addEventListener('keypress', function(e) {
     }));
 
     // Redirect to homepage
-    window.location.href = '/';
+    window.location.href = 'index.html';
   };
 
   // Initialize when DOM ready
@@ -3354,9 +3354,9 @@ window.signOutStoryBell = function(){
   localStorage.removeItem('storybell_user');
   localStorage.removeItem('storybell_simple_user');
   if (window.firebase && firebase.auth) {
-    firebase.auth().signOut().then(function(){ window.location.href = '/'; }).catch(function(e){ console.error('[SB] Sign out error:', e); window.location.href = '/'; });
+    firebase.auth().signOut().then(function(){ window.location.href = 'index.html'; }).catch(function(e){ console.error('[SB] Sign out error:', e); window.location.href = 'index.html'; });
   } else {
-    window.location.href = '/';
+    window.location.href = 'index.html';
   }
 };
 // Check localStorage user immediately
