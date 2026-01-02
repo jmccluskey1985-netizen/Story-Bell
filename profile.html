@@ -2329,11 +2329,11 @@ nav ul > li:focus-within > .dropdown {
 </button>
 <!-- Login button hidden on profile page -->
 <!-- User Profile (shown when signed in) -->
-<a href="profile.html" class="sb-user-profile" style="display:none; align-items:center; gap:8px; margin-top:14px; margin-left:8px; text-decoration:none;">
-<svg style="width:32px;height:32px;fill:#FFEB3B;" viewbox="0 0 24 24">
+<a href="profile.html" class="sb-user-profile" style="display:none; align-items:center; gap:8px; margin-top:14px; background:#FFEB3B; color:#003366; border-radius:20px; padding:8px 16px; text-decoration:none; box-shadow:0 2px 8px rgba(255,235,59,0.22);">
+<svg style="width:24px;height:24px;fill:#003366;" viewbox="0 0 24 24">
 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
 </svg>
-<span class="sb-user-name" style="color:#FFEB3B; font-family:'Coming Soon',cursive; font-weight:bold; font-size:15px;"></span>
+<span class="sb-user-name" style="color:#003366; font-family:'Coming Soon',cursive; font-weight:bold; font-size:15px;"></span>
 </a>
 <div class="subscribe-text"></div></div>
 </header>
@@ -2454,12 +2454,69 @@ nav ul > li:focus-within > .dropdown {
   text-decoration: none;
   box-shadow: 0 0 15px rgba(255, 235, 59, 0.4);
 }
+/* Edit name styles */
+.profile-edit-btn, .profile-save-btn, .profile-cancel-btn {
+  padding: 6px 14px;
+  font-size: 0.85em;
+  font-family: 'Coming Soon', cursive;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: transform 0.2s;
+}
+.profile-edit-btn {
+  background: #FFEB3B;
+  color: #003366;
+}
+.profile-save-btn {
+  background: #4CAF50;
+  color: #fff;
+}
+.profile-cancel-btn {
+  background: #888;
+  color: #fff;
+}
+.profile-edit-btn:hover, .profile-save-btn:hover, .profile-cancel-btn:hover {
+  transform: scale(1.05);
+}
+#profile-name-input {
+  padding: 8px 12px;
+  font-size: 1em;
+  font-family: 'Coming Soon', cursive;
+  border: 2px solid #FFEB3B;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.9);
+  color: #003366;
+  width: 150px;
+  margin-right: 5px;
+}
+#name-display-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+#name-edit-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+#name-edit-section label {
+  color: #FFEB3B;
+  font-family: 'Coming Soon', cursive;
+}
 @media (max-width: 600px) {
   .profile-container { padding: 20px 15px; margin: 10px auto; }
   .profile-card { padding: 30px 20px; }
   .profile-avatar { width: 80px; height: 80px; }
   .profile-avatar svg { width: 48px; height: 48px; }
   .profile-name { font-size: 1.6em; }
+  #profile-name-input { width: 120px; }
 }
 </style>
 <div class="main-blank profile-container">
@@ -2470,7 +2527,21 @@ nav ul > li:focus-within > .dropdown {
     <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
   </div>
   <div class="profile-welcome">Welcome back,</div>
-  <div class="profile-name" id="profile-display-name">Reader</div>
+
+  <!-- Name display/edit -->
+  <div class="profile-field" id="name-display-section">
+    <span class="profile-name" id="profile-display-name">Reader</span>
+    <button class="profile-edit-btn" onclick="showNameEdit()">Edit</button>
+  </div>
+  <div class="profile-field" id="name-edit-section" style="display:none;">
+    <label for="profile-name-input">Name:</label>
+    <input type="text" id="profile-name-input" maxlength="30" placeholder="Enter name">
+    <button class="profile-save-btn" onclick="saveName()">Save</button>
+    <button class="profile-cancel-btn" onclick="cancelNameEdit()">Cancel</button>
+    <div class="profile-saved" id="name-saved-msg">Saved!</div>
+  </div>
+
+  <!-- Age dropdown -->
   <div class="profile-field">
     <label for="profile-age-select">Age:</label>
     <select id="profile-age-select" onchange="saveAge()">
@@ -2488,6 +2559,8 @@ nav ul > li:focus-within > .dropdown {
     </select>
     <div class="profile-saved" id="age-saved-msg">Saved!</div>
   </div>
+
+  <!-- Sign Out -->
   <button class="profile-signout-btn" onclick="signOutStoryBell()">Sign Out</button>
 </div>
 
@@ -2524,6 +2597,38 @@ function saveAge() {
     profile.age = age;
     localStorage.setItem('storybell_child_' + firebaseUser.uid, JSON.stringify(profile));
   }
+  savedMsg.classList.add('show');
+  setTimeout(function() { savedMsg.classList.remove('show'); }, 2000);
+}
+function showNameEdit() {
+  document.getElementById('name-display-section').style.display = 'none';
+  document.getElementById('name-edit-section').style.display = 'flex';
+  var currentName = document.getElementById('profile-display-name').textContent;
+  document.getElementById('profile-name-input').value = currentName;
+  document.getElementById('profile-name-input').focus();
+}
+function cancelNameEdit() {
+  document.getElementById('name-edit-section').style.display = 'none';
+  document.getElementById('name-display-section').style.display = 'flex';
+}
+function saveName() {
+  var nameInput = document.getElementById('profile-name-input');
+  var newName = nameInput.value.trim();
+  if (!newName) { alert('Please enter a name'); return; }
+  var savedMsg = document.getElementById('name-saved-msg');
+  var localUser = getLocalUser();
+  var firebaseUser = (window.firebase && firebase.auth) ? firebase.auth().currentUser : null;
+  if (localUser) {
+    localUser.name = newName;
+    localStorage.setItem('storybell_user', JSON.stringify(localUser));
+  } else if (firebaseUser) {
+    var profile = getChildProfile(firebaseUser.uid) || { createdAt: Date.now() };
+    profile.name = newName;
+    localStorage.setItem('storybell_child_' + firebaseUser.uid, JSON.stringify(profile));
+  }
+  document.getElementById('profile-display-name').textContent = capitalizeFirst(newName);
+  document.getElementById('name-edit-section').style.display = 'none';
+  document.getElementById('name-display-section').style.display = 'flex';
   savedMsg.classList.add('show');
   setTimeout(function() { savedMsg.classList.remove('show'); }, 2000);
 }
