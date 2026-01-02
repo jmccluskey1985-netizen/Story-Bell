@@ -3801,6 +3801,9 @@ function updateHeaderAuth(firebaseUser) {
   var profileMobile = document.querySelector('.login-mobile-profile');
   var nameMobile = document.querySelector('.sb-user-name-mobile');
 
+  // Subscribe box (hide when logged in)
+  var subscribeBox = document.querySelector('.subscribe-box');
+
   // Check for email-based user in localStorage
   var localUser = getLocalUser();
 
@@ -3833,6 +3836,9 @@ function updateHeaderAuth(firebaseUser) {
     if (profileMobile) profileMobile.style.display = 'block';
     if (nameMobile) nameMobile.textContent = displayName;
 
+    // Hide subscribe box for logged-in users
+    if (subscribeBox) subscribeBox.style.display = 'none';
+
     console.log('[SB] Header updated: showing', displayName);
   } else {
     // Desktop: show login, hide profile
@@ -3842,6 +3848,9 @@ function updateHeaderAuth(firebaseUser) {
     // Mobile hamburger: show login, hide profile
     if (loginMobile) loginMobile.style.display = '';
     if (profileMobile) profileMobile.style.display = 'none';
+
+    // Show subscribe box for logged-out users
+    if (subscribeBox) subscribeBox.style.display = '';
 
     console.log('[SB] Header updated: showing login button');
   }
