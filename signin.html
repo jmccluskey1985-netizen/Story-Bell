@@ -351,15 +351,36 @@
     // Check on page load if returning from Google redirect
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
+        console.log('[SB-signin] User detected:', user.email);
         var pendingName = localStorage.getItem('storybell_pending_name');
+        var profileKey = 'storybell_child_' + user.uid;
+        var existingProfile = null;
+        try { existingProfile = JSON.parse(localStorage.getItem(profileKey) || 'null'); } catch(e) {}
+
         if (pendingName) {
-          localStorage.setItem('storybell_child_' + user.uid, JSON.stringify({
+          // New signup with name entered
+          localStorage.setItem(profileKey, JSON.stringify({
             name: pendingName,
             age: '',
             createdAt: Date.now()
           }));
           localStorage.removeItem('storybell_pending_name');
           sendSignupEmail(user.email, pendingName);
+          console.log('[SB-signin] New user profile saved, redirecting home');
+          window.location.href = '/';
+        } else if (existingProfile && existingProfile.name) {
+          // Returning user with existing profile
+          console.log('[SB-signin] Returning user, redirecting home');
+          window.location.href = '/';
+        } else {
+          // User signed in but no profile - use Google display name or email
+          var displayName = user.displayName || (user.email ? user.email.split('@')[0] : 'Reader');
+          localStorage.setItem(profileKey, JSON.stringify({
+            name: displayName,
+            age: '',
+            createdAt: Date.now()
+          }));
+          console.log('[SB-signin] Created profile from Google name, redirecting home');
           window.location.href = '/';
         }
       }
