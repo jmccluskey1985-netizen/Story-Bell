@@ -2,7 +2,7 @@
   {
     "title": "Maya's Missing Mittens",
     "url": "/mayas-missing-mittens.html",
-    "description": "A story about problem solving with Mummy",
+    "summary": "A story about problem solving with Mummy",
     "age": "4-6",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -23,12 +23,12 @@
       "happiness",
       "children's story"
     ],
-    "image": "/icon/mayas-missing-mittens-icon.webp"
+    "cover": "/icon/mayas-missing-mittens-icon.webp"
   },
   {
     "title": "Milo the Mouse",
     "url": "/milo-the-mouse.html",
-    "description": "A gentle rhyming poem about Milo, a small brown mouse who discovers the joy of friendship through kindness and sharing.",
+    "summary": "A gentle rhyming poem about Milo, a small brown mouse who discovers the joy of friendship through kindness and sharing.",
     "age": "4-6",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -63,12 +63,12 @@
       "making friends",
       "forest animals"
     ],
-    "image": "/icon/milo-the-mouse-icon.webp"
+    "cover": "/icon/milo-the-mouse-icon.webp"
   },
   {
     "title": "Luna's Colorful Garden",
     "url": "/lunas-colorful-garden.html",
-    "description": "A story about helping friends create a magical garden.",
+    "summary": "A story about helping friends create a magical garden.",
     "age": "4-6",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -87,12 +87,12 @@
       "magical",
       "children's story"
     ],
-    "image": "/icon/lunas-colorful-garden-icon.webp"
+    "cover": "/icon/lunas-colorful-garden-icon.webp"
   },
   {
     "title": "The Tiniest Rainbow",
     "url": "/the-tiniest-rainbow.html",
-    "description": "A gentle bedtime story for toddlers about discovering happiness on a rainy day.",
+    "summary": "A gentle bedtime story for toddlers about discovering happiness on a rainy day.",
     "age": "0-3",
     "categories": [
       "childrens-stories-ages-0-3",
@@ -117,12 +117,12 @@
       "toddlers",
       "short story"
     ],
-    "image": "/icon/the-tiniest-rainbow-icon.webp"
+    "cover": "/icon/the-tiniest-rainbow-icon.webp"
   },
   {
     "title": "Owl in the Dark Forest",
     "url": "/owl-in-the-dark-forest.html",
-    "description": "A brave little owl faces fear while searching for her way home.",
+    "summary": "A brave little owl faces fear while searching for her way home.",
     "age": "7-12",
     "categories": [
       "childrens-stories-ages-7-12",
@@ -145,12 +145,12 @@
       "forest",
       "adventure"
     ],
-    "image": "/icon/owl-in-the-dark-forest-icon.webp"
+    "cover": "/icon/owl-in-the-dark-forest-icon.webp"
   },
   {
     "title": "The Lonely Leaf",
     "url": "/the-lonely-leaf.html",
-    "description": "A poem about sadness and finding new friends in autumn.",
+    "summary": "A poem about sadness and finding new friends in autumn.",
     "age": "4-6",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -173,12 +173,12 @@
       "friendship",
       "nature"
     ],
-    "image": "/icon/the-lonely-leaf-icon.webp"
+    "cover": "/icon/the-lonely-leaf-icon.webp"
   },
   {
     "title": "Emma and the Surprise Party",
     "url": "/emma-and-the-surprise-party.html",
-    "description": "Emma plans a secret party for her granddad and learns the joy of surprises.",
+    "summary": "Emma plans a secret party for her granddad and learns the joy of surprises.",
     "age": "7-12",
     "categories": [
       "childrens-stories-ages-7-12",
@@ -201,12 +201,12 @@
       "granddad",
       "celebration"
     ],
-    "image": "/icon/emma-and-the-surprise-party-icon.webp"
+    "cover": "/icon/emma-and-the-surprise-party-icon.webp"
   },
   {
     "title": "Tommy and the Lost Toy",
     "url": "/tommy-and-the-lost-toy.html",
-    "description": "Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.",
+    "summary": "Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.",
     "age": "0-3",
     "categories": [
       "childrens-stories-ages-0-3",
@@ -228,12 +228,12 @@
       "toddler",
       "family"
     ],
-    "image": "/icon/tommy-and-the-lost-toy-icon.webp"
+    "cover": "/icon/tommy-and-the-lost-toy-icon.webp"
   },
   {
     "title": "Melody and the Muddy Puppy",
     "url": "/melody-and-the-muddy-puppy.html",
-    "description": "A silly story about a girl and her puppy, who both discover the meaning of disgust after a very messy day in the park.",
+    "summary": "A silly story about a girl and her puppy, who both discover the meaning of disgust after a very messy day in the park.",
     "age": "4-6",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -257,12 +257,12 @@
       "park",
       "animals"
     ],
-    "image": "/icon/melody-and-the-muddy-puppy-icon.webp"
+    "cover": "/icon/melody-and-the-muddy-puppy-icon.webp"
   },
   {
     "title": "The Brave Little Duckling",
     "url": "/the-brave-little-duckling.html",
-    "description": "A duckling faces his fear of swimming and discovers courage.",
+    "summary": "A duckling faces his fear of swimming and discovers courage.",
     "age": "0-3",
     "categories": [
       "childrens-stories-ages-0-3",
@@ -285,12 +285,12 @@
       "animals",
       "swimming"
     ],
-    "image": "/icon/the-brave-little-duckling-icon.webp"
+    "cover": "/icon/the-brave-little-duckling-icon.webp"
   },
   {
     "title": "Stars in My Window",
     "url": "/stars-in-my-window.html",
-    "description": "A bedtime poem about finding comfort in the night sky.",
+    "summary": "A bedtime poem about finding comfort in the night sky.",
     "age": "0-3",
     "categories": [
       "childrens-stories-ages-0-3",
@@ -315,12 +315,12 @@
       "comfort",
       "happiness"
     ],
-    "image": "/icon/stars-in-my-window-icon.webp"
+    "cover": "/icon/stars-in-my-window-icon.webp"
   },
   {
     "title": "Grumpy Grandpa and the Silly Hat",
     "url": "/grumpy-grandpa-and-the-silly-hat.html",
-    "description": "Grandpa is feeling angry until his granddaughter makes him laugh with a silly hat.",
+    "summary": "Grandpa is feeling angry until his granddaughter makes him laugh with a silly hat.",
     "age": "4-6",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -342,12 +342,12 @@
       "family",
       "feelings"
     ],
-    "image": "/icon/grumpy-grandpa-and-the-silly-hat-icon.webp"
+    "cover": "/icon/grumpy-grandpa-and-the-silly-hat-icon.webp"
   },
   {
     "title": "The Secret in the Library",
     "url": "/the-secret-in-the-library.html",
-    "description": "An adventure about two friends solving a mystery, and the surprise they find.",
+    "summary": "An adventure about two friends solving a mystery, and the surprise they find.",
     "age": "7-12",
     "categories": [
       "childrens-stories-ages-7-12",
@@ -370,12 +370,12 @@
       "adventure",
       "friends"
     ],
-    "image": "/icon/the-secret-in-the-library-icon.webp"
+    "cover": "/icon/the-secret-in-the-library-icon.webp"
   },
   {
     "title": "Lily and the Blue Balloon",
     "url": "/lily-and-the-blue-balloon.html",
-    "description": "Lily feels sad when her balloon floats away, but she finds hope in a new friend.",
+    "summary": "Lily feels sad when her balloon floats away, but she finds hope in a new friend.",
     "age": "4-6",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -397,12 +397,12 @@
       "balloon",
       "feelings"
     ],
-    "image": "/icon/lily-and-the-blue-balloon-icon.webp"
+    "cover": "/icon/lily-and-the-blue-balloon-icon.webp"
   },
   {
     "title": "The Case of the Gross Green Socks",
     "url": "/the-case-of-the-gross-green-socks.html",
-    "description": "A detective story about disgust, lost laundry, and learning to help with chores.",
+    "summary": "A detective story about disgust, lost laundry, and learning to help with chores.",
     "age": "7-12",
     "categories": [
       "childrens-stories-ages-7-12",
@@ -425,12 +425,12 @@
       "detective",
       "laundry"
     ],
-    "image": "/icon/the-case-of-the-gross-green-socks-icon.webp"
+    "cover": "/icon/the-case-of-the-gross-green-socks-icon.webp"
   },
   {
     "title": "Cousins' Countryside Adventure",
     "url": "/cousins-countryside-adventure.html",
-    "description": "Join Sophia, Isabelle, Juliette, and Rory as four little cousins explore the countryside together, discovering butterflies, a babbling brook, and the joy of family.",
+    "summary": "Join Sophia, Isabelle, Juliette, and Rory as four little cousins explore the countryside together, discovering butterflies, a babbling brook, and the joy of family.",
     "age": "0-3",
     "categories": [
       "childrens-stories-ages-0-3",
@@ -457,12 +457,12 @@
       "nature",
       "butterflies"
     ],
-    "image": "/icon/cousins-countryside-adventure-icon.webp"
+    "cover": "/icon/cousins-countryside-adventure-icon.webp"
   },
   {
     "title": "The Magic Paintbrush",
     "url": "/the-magic-paintbrush.html",
-    "description": "Aria discovers a magical paintbrush that brings her drawings to life, and learns that creativity comes with responsibility.",
+    "summary": "Aria discovers a magical paintbrush that brings her drawings to life, and learns that creativity comes with responsibility.",
     "age": "7-9",
     "categories": [
       "childrens-stories-ages-7-9",
@@ -490,12 +490,12 @@
       "responsibility",
       "imagination"
     ],
-    "image": "/icon/the-magic-paintbrush-icon.webp"
+    "cover": "/icon/the-magic-paintbrush-icon.webp"
   },
   {
     "title": "Oliver's Ocean Quest",
     "url": "/olivers-ocean-quest.html",
-    "description": "Oliver explores tide pools at the beach with his dad and discovers the wonders of ocean life.",
+    "summary": "Oliver explores tide pools at the beach with his dad and discovers the wonders of ocean life.",
     "age": "4-6",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -523,12 +523,12 @@
       "discovery",
       "family"
     ],
-    "image": "/icon/olivers-ocean-quest-icon.webp"
+    "cover": "/icon/olivers-ocean-quest-icon.webp"
   },
   {
     "title": "The Lost Puppy",
     "url": "/the-lost-puppy.html",
-    "description": "Emma finds a lost puppy in the park and works with her community to reunite it with its family.",
+    "summary": "Emma finds a lost puppy in the park and works with her community to reunite it with its family.",
     "age": "4-6",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -556,12 +556,12 @@
       "community",
       "reunion"
     ],
-    "image": "/icon/the-lost-puppy-icon.webp"
+    "cover": "/icon/the-lost-puppy-icon.webp"
   },
   {
     "title": "Jack's Jungle Dream",
     "url": "/jacks-jungle-dream.html",
-    "description": "Jack has a magical dream where he explores a colorful jungle and makes friends with amazing animals.",
+    "summary": "Jack has a magical dream where he explores a colorful jungle and makes friends with amazing animals.",
     "age": "4-6",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -589,12 +589,12 @@
       "imagination",
       "friendship"
     ],
-    "image": "/icon/jacks-jungle-dream-icon.webp"
+    "cover": "/icon/jacks-jungle-dream-icon.webp"
   },
   {
     "title": "The Tiny Fairy",
     "url": "/the-tiny-fairy.html",
-    "description": "Lily discovers a tiny fairy named Shimmer in her garden, who teaches her about the magic of nature.",
+    "summary": "Lily discovers a tiny fairy named Shimmer in her garden, who teaches her about the magic of nature.",
     "age": "4-6",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -622,12 +622,12 @@
       "friendship",
       "flowers"
     ],
-    "image": "/icon/the-tiny-fairy-icon.webp"
+    "cover": "/icon/the-tiny-fairy-icon.webp"
   },
   {
     "title": "Benny's Big Helpers",
     "url": "/bennys-big-helpers.html",
-    "description": "Benny learns to help around the house and discovers the joy of being a contributing family member.",
+    "summary": "Benny learns to help around the house and discovers the joy of being a contributing family member.",
     "age": "4-6",
     "categories": [
       "childrens-stories-ages-4-6",
@@ -655,12 +655,12 @@
       "pride",
       "growing up"
     ],
-    "image": "/icon/bennys-big-helpers-icon.webp"
+    "cover": "/icon/bennys-big-helpers-icon.webp"
   },
   {
     "title": "The Wishing Star",
     "url": "/the-wishing-star.html",
-    "description": "Stella discovers a fallen star that offers her three wishes, and learns that gratitude is more powerful than wishing.",
+    "summary": "Stella discovers a fallen star that offers her three wishes, and learns that gratitude is more powerful than wishing.",
     "age": "7-9",
     "categories": [
       "childrens-stories-ages-7-9",
@@ -688,6 +688,6 @@
       "magic",
       "family"
     ],
-    "image": "/icon/the-wishing-star-icon.webp"
+    "cover": "/icon/the-wishing-star-icon.webp"
   }
 ]
