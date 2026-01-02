@@ -2502,6 +2502,50 @@ nav ul > li:focus-within > .dropdown {
   font-family: 'Coming Soon', cursive;
   box-sizing: border-box;
 }
+.profile-save-btn {
+  width: 100%;
+  padding: 14px 24px;
+  font-size: 1.1em;
+  font-weight: bold;
+  font-family: 'Coming Soon', cursive;
+  background: linear-gradient(180deg, #4CAF50, #66BB6A);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.profile-save-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(76, 175, 80, 0.6);
+}
+.profile-save-btn.saving {
+  background: linear-gradient(180deg, #2196F3, #42A5F5);
+  pointer-events: none;
+}
+.profile-save-btn.saved {
+  background: linear-gradient(180deg, #4CAF50, #81C784);
+}
+@keyframes saveSuccess {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.1); }
+  40% { transform: scale(0.95); }
+  60% { transform: scale(1.05); }
+  80% { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
+@keyframes saveGlow {
+  0% { box-shadow: 0 0 15px rgba(76, 175, 80, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(76, 175, 80, 0.9), 0 0 60px rgba(129, 199, 132, 0.6); }
+  100% { box-shadow: 0 0 15px rgba(76, 175, 80, 0.4); }
+}
+.profile-save-btn.saved {
+  animation: saveSuccess 0.6s ease-out, saveGlow 1s ease-in-out;
+}
 .profile-signout-btn {
   width: 100%;
   padding: 14px 24px;
@@ -2513,7 +2557,7 @@ nav ul > li:focus-within > .dropdown {
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 12px;
   box-shadow: 0 0 15px rgba(255, 235, 59, 0.4);
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -2605,6 +2649,11 @@ nav ul > li:focus-within > .dropdown {
     </div>
   </div>
 
+  <!-- Save Button -->
+  <button class="profile-save-btn" id="profile-save-btn" onclick="saveProfile()">
+    <span id="save-btn-text">Save Changes</span>
+  </button>
+
   <!-- Log Out -->
   <button class="profile-signout-btn" onclick="signOutStoryBell()">Log Out</button>
 </div>
@@ -2662,6 +2711,52 @@ function saveAge() {
   }
   savedMsg.classList.add('show');
   setTimeout(function() { savedMsg.classList.remove('show'); }, 2000);
+}
+function saveProfile() {
+  var saveBtn = document.getElementById('profile-save-btn');
+  var saveBtnText = document.getElementById('save-btn-text');
+  var nameInput = document.getElementById('profile-name-input');
+  var ageSelect = document.getElementById('profile-age-select');
+  var newName = nameInput.value.trim();
+  var age = ageSelect.value;
+
+  // Show saving state
+  saveBtn.classList.add('saving');
+  saveBtn.classList.remove('saved');
+  saveBtnText.textContent = 'Saving...';
+
+  var localUser = getLocalUser();
+  var firebaseUser = (window.firebase && firebase.auth) ? firebase.auth().currentUser : null;
+
+  // Simulate brief delay for visual feedback
+  setTimeout(function() {
+    if (localUser) {
+      if (newName) localUser.name = newName;
+      if (age) localUser.age = age;
+      localStorage.setItem('storybell_user', JSON.stringify(localUser));
+    } else if (firebaseUser) {
+      var profile = getChildProfile(firebaseUser.uid) || { createdAt: Date.now() };
+      if (newName) profile.name = newName;
+      if (age) profile.age = age;
+      localStorage.setItem('storybell_child_' + firebaseUser.uid, JSON.stringify(profile));
+    }
+
+    // Update header with new name
+    if (typeof updateHeaderAuth === 'function') {
+      updateHeaderAuth(firebaseUser);
+    }
+
+    // Show saved animation
+    saveBtn.classList.remove('saving');
+    saveBtn.classList.add('saved');
+    saveBtnText.textContent = 'Saved!';
+
+    // Reset button after animation
+    setTimeout(function() {
+      saveBtn.classList.remove('saved');
+      saveBtnText.textContent = 'Save Changes';
+    }, 2000);
+  }, 400);
 }
 function loadProfile() {
   var profileCard = document.getElementById('profile-card');
