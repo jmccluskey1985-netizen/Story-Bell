@@ -2395,7 +2395,8 @@ nav ul > li:focus-within > .dropdown {
   font-size: 1em;
   margin-bottom: 8px;
 }
-.profile-field select {
+.profile-field select,
+.profile-field input[type="text"] {
   width: 100%;
   padding: 12px 16px;
   font-size: 16px;
@@ -2404,7 +2405,36 @@ nav ul > li:focus-within > .dropdown {
   background: #fff;
   color: #003366;
   font-family: 'Coming Soon', cursive;
+  box-sizing: border-box;
+}
+.profile-field select {
   cursor: pointer;
+}
+.profile-field input[type="text"]:focus {
+  outline: none;
+  border-color: #FFD700;
+  box-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+}
+.profile-input-row {
+  position: relative;
+}
+.profile-input-row .profile-saved {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+.profile-email-display {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid rgba(255, 235, 59, 0.3);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ccc;
+  font-family: 'Coming Soon', cursive;
+  box-sizing: border-box;
 }
 .profile-signout-btn {
   width: 100%;
@@ -2454,69 +2484,15 @@ nav ul > li:focus-within > .dropdown {
   text-decoration: none;
   box-shadow: 0 0 15px rgba(255, 235, 59, 0.4);
 }
-/* Edit name styles */
-.profile-edit-btn, .profile-save-btn, .profile-cancel-btn {
-  padding: 6px 14px;
-  font-size: 0.85em;
-  font-family: 'Coming Soon', cursive;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-left: 10px;
-  transition: transform 0.2s;
-}
-.profile-edit-btn {
-  background: #FFEB3B;
-  color: #003366;
-}
-.profile-save-btn {
-  background: #4CAF50;
-  color: #fff;
-}
-.profile-cancel-btn {
-  background: #888;
-  color: #fff;
-}
-.profile-edit-btn:hover, .profile-save-btn:hover, .profile-cancel-btn:hover {
-  transform: scale(1.05);
-}
-#profile-name-input {
-  padding: 8px 12px;
-  font-size: 1em;
-  font-family: 'Coming Soon', cursive;
-  border: 2px solid #FFEB3B;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.9);
-  color: #003366;
-  width: 150px;
-  margin-right: 5px;
-}
-#name-display-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-#name-edit-section {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 15px;
-}
-#name-edit-section label {
-  color: #FFEB3B;
-  font-family: 'Coming Soon', cursive;
-}
 @media (max-width: 600px) {
   .profile-container { padding: 20px 15px; margin: 10px auto; }
   .profile-card { padding: 30px 20px; }
   .profile-avatar { width: 80px; height: 80px; }
   .profile-avatar svg { width: 48px; height: 48px; }
-  .profile-name { font-size: 1.6em; }
-  #profile-name-input { width: 120px; }
+  .profile-field label { font-size: 0.95em; }
+  .profile-field select,
+  .profile-field input[type="text"],
+  .profile-email-display { font-size: 15px; padding: 10px 14px; }
 }
 </style>
 <div class="main-blank profile-container">
@@ -2526,42 +2502,45 @@ nav ul > li:focus-within > .dropdown {
   <div class="profile-avatar">
     <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
   </div>
-  <div class="profile-welcome">Welcome back,</div>
 
-  <!-- Name display/edit -->
-  <div class="profile-field" id="name-display-section">
-    <span class="profile-name" id="profile-display-name">Reader</span>
-    <button class="profile-edit-btn" onclick="showNameEdit()">Edit</button>
+  <!-- Child Name (editable) -->
+  <div class="profile-field">
+    <label for="profile-name-input">Child's Name</label>
+    <div class="profile-input-row">
+      <input type="text" id="profile-name-input" maxlength="30" placeholder="Enter child's name" onchange="saveName()">
+      <div class="profile-saved" id="name-saved-msg">Saved!</div>
+    </div>
   </div>
-  <div class="profile-field" id="name-edit-section" style="display:none;">
-    <label for="profile-name-input">Name:</label>
-    <input type="text" id="profile-name-input" maxlength="30" placeholder="Enter name">
-    <button class="profile-save-btn" onclick="saveName()">Save</button>
-    <button class="profile-cancel-btn" onclick="cancelNameEdit()">Cancel</button>
-    <div class="profile-saved" id="name-saved-msg">Saved!</div>
+
+  <!-- Parent Email (read-only) -->
+  <div class="profile-field">
+    <label>Parent Email</label>
+    <div class="profile-email-display" id="profile-email-display">email@example.com</div>
   </div>
 
   <!-- Age dropdown -->
   <div class="profile-field">
-    <label for="profile-age-select">Age:</label>
-    <select id="profile-age-select" onchange="saveAge()">
-      <option value="">Select age...</option>
-      <option value="3">3 years old</option>
-      <option value="4">4 years old</option>
-      <option value="5">5 years old</option>
-      <option value="6">6 years old</option>
-      <option value="7">7 years old</option>
-      <option value="8">8 years old</option>
-      <option value="9">9 years old</option>
-      <option value="10">10 years old</option>
-      <option value="11">11 years old</option>
-      <option value="12">12 years old</option>
-    </select>
-    <div class="profile-saved" id="age-saved-msg">Saved!</div>
+    <label for="profile-age-select">Child's Age</label>
+    <div class="profile-input-row">
+      <select id="profile-age-select" onchange="saveAge()">
+        <option value="">Select age...</option>
+        <option value="3">3 years old</option>
+        <option value="4">4 years old</option>
+        <option value="5">5 years old</option>
+        <option value="6">6 years old</option>
+        <option value="7">7 years old</option>
+        <option value="8">8 years old</option>
+        <option value="9">9 years old</option>
+        <option value="10">10 years old</option>
+        <option value="11">11 years old</option>
+        <option value="12">12 years old</option>
+      </select>
+      <div class="profile-saved" id="age-saved-msg">Saved!</div>
+    </div>
   </div>
 
-  <!-- Sign Out -->
-  <button class="profile-signout-btn" onclick="signOutStoryBell()">Sign Out</button>
+  <!-- Log Out -->
+  <button class="profile-signout-btn" onclick="signOutStoryBell()">Log Out</button>
 </div>
 
 <div id="profile-not-logged" class="profile-not-logged-in" style="display:block;">
@@ -2583,6 +2562,24 @@ function capitalizeFirst(str) {
   if (!str) return str;
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+function saveName() {
+  var nameInput = document.getElementById('profile-name-input');
+  var newName = nameInput.value.trim();
+  if (!newName) return;
+  var savedMsg = document.getElementById('name-saved-msg');
+  var localUser = getLocalUser();
+  var firebaseUser = (window.firebase && firebase.auth) ? firebase.auth().currentUser : null;
+  if (localUser) {
+    localUser.name = newName;
+    localStorage.setItem('storybell_user', JSON.stringify(localUser));
+  } else if (firebaseUser) {
+    var profile = getChildProfile(firebaseUser.uid) || { createdAt: Date.now() };
+    profile.name = newName;
+    localStorage.setItem('storybell_child_' + firebaseUser.uid, JSON.stringify(profile));
+  }
+  savedMsg.classList.add('show');
+  setTimeout(function() { savedMsg.classList.remove('show'); }, 2000);
+}
 function saveAge() {
   var ageSelect = document.getElementById('profile-age-select');
   var age = ageSelect.value;
@@ -2600,58 +2597,31 @@ function saveAge() {
   savedMsg.classList.add('show');
   setTimeout(function() { savedMsg.classList.remove('show'); }, 2000);
 }
-function showNameEdit() {
-  document.getElementById('name-display-section').style.display = 'none';
-  document.getElementById('name-edit-section').style.display = 'flex';
-  var currentName = document.getElementById('profile-display-name').textContent;
-  document.getElementById('profile-name-input').value = currentName;
-  document.getElementById('profile-name-input').focus();
-}
-function cancelNameEdit() {
-  document.getElementById('name-edit-section').style.display = 'none';
-  document.getElementById('name-display-section').style.display = 'flex';
-}
-function saveName() {
-  var nameInput = document.getElementById('profile-name-input');
-  var newName = nameInput.value.trim();
-  if (!newName) { alert('Please enter a name'); return; }
-  var savedMsg = document.getElementById('name-saved-msg');
-  var localUser = getLocalUser();
-  var firebaseUser = (window.firebase && firebase.auth) ? firebase.auth().currentUser : null;
-  if (localUser) {
-    localUser.name = newName;
-    localStorage.setItem('storybell_user', JSON.stringify(localUser));
-  } else if (firebaseUser) {
-    var profile = getChildProfile(firebaseUser.uid) || { createdAt: Date.now() };
-    profile.name = newName;
-    localStorage.setItem('storybell_child_' + firebaseUser.uid, JSON.stringify(profile));
-  }
-  document.getElementById('profile-display-name').textContent = capitalizeFirst(newName);
-  document.getElementById('name-edit-section').style.display = 'none';
-  document.getElementById('name-display-section').style.display = 'flex';
-  savedMsg.classList.add('show');
-  setTimeout(function() { savedMsg.classList.remove('show'); }, 2000);
-}
 function loadProfile() {
   var profileCard = document.getElementById('profile-card');
   var notLoggedIn = document.getElementById('profile-not-logged');
-  var displayNameEl = document.getElementById('profile-display-name');
+  var nameInput = document.getElementById('profile-name-input');
+  var emailDisplay = document.getElementById('profile-email-display');
   var ageSelect = document.getElementById('profile-age-select');
   var localUser = getLocalUser();
   var firebaseUser = (window.firebase && firebase.auth) ? firebase.auth().currentUser : null;
   if (localUser || firebaseUser) {
     profileCard.style.display = 'block';
     notLoggedIn.style.display = 'none';
-    var displayName, age;
+    var displayName, email, age;
     if (firebaseUser) {
       var profile = getChildProfile(firebaseUser.uid);
-      displayName = (profile && profile.name) || firebaseUser.displayName || (firebaseUser.email ? firebaseUser.email.split('@')[0] : 'Reader');
+      displayName = (profile && profile.name) || firebaseUser.displayName || '';
+      email = firebaseUser.email || 'Google Account';
       age = profile ? profile.age : '';
     } else {
-      displayName = localUser.name || (localUser.email ? localUser.email.split('@')[0] : 'Reader');
+      displayName = localUser.name || '';
+      email = localUser.email || '';
       age = localUser.age || '';
     }
-    displayNameEl.textContent = capitalizeFirst(displayName);
+    // Populate fields
+    nameInput.value = displayName;
+    emailDisplay.textContent = email;
     if (age) ageSelect.value = age;
   } else {
     profileCard.style.display = 'none';
