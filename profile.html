@@ -263,8 +263,6 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
 <script id="firebase-init">
-// Firebase config for storybellkids
-<script id="firebase-init">
   // Story Bell — Firebase config + single-init (compat)
   const firebaseConfig = {
     apiKey: "AIzaSyC9vYsSvGN7zSDfkIcByvBZDOQnRyUPIBo",
@@ -276,9 +274,8 @@
     measurementId: "G-F64PJ8CCZQ"
   };
   if (!window.firebase) { console.error("Firebase SDK not found"); }
-  else if (!firebase.apps.length) { if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); } }
+  else if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
 </script>
-if (!firebase.apps.length) if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
 
 <style id="sb-cards-base">
 .cards-grid{
@@ -2701,9 +2698,9 @@ window.signOutStoryBell = function(){
   localStorage.removeItem('storybell_user');
   localStorage.removeItem('storybell_simple_user');
   if (window.firebase && firebase.auth) {
-    firebase.auth().signOut().then(function(){ window.location.href = '/'; }).catch(function(e){ window.location.href = '/'; });
+    firebase.auth().signOut().then(function(){ window.location.href = 'index.html'; }).catch(function(e){ window.location.href = 'index.html'; });
   } else {
-    window.location.href = '/';
+    window.location.href = 'index.html';
   }
 };
 document.addEventListener('DOMContentLoaded', function() { loadProfile(); });
