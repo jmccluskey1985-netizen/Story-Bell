@@ -439,8 +439,6 @@ header .site-title {
 </style><style>
    /* Hamburger Button */
 
-
-
 /* Responsive for Mobile */
 @media (max-width: 900px) {
   
@@ -1246,7 +1244,6 @@ header .site-title {
   nav a { width: 100%; text-align: left; font-size: 18px; }
 }
 
-
 /* General improvements for small screens */
 @media (max-width: 600px) {
   .site-title { font-size: 35px; }
@@ -1254,11 +1251,9 @@ header .site-title {
   nav a { font-size: 15px; padding: 8px 14px; }
 }
 
-
 body, body * {
   font-family: 'Coming Soon', cursive !important;
 }
-
 
 .about-header h1,
 .section-title,
@@ -1267,7 +1262,6 @@ body, body * {
 h1.main-title {
   font-family: 'Coming Soon', cursive !important;
 }
-
 
 .header-right, .header-right nav, .header-right nav a, .header-right nav ul, .header-right nav ul li, .header-right nav ul li a,
 .header-left a:not(.site-title), 
@@ -1917,7 +1911,7 @@ nav ul > li:focus-within > .dropdown {
       font-size: 35px !important;
     }
   }
-</style><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+</style><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
 .carousel-section .carousel-desc{
@@ -2085,7 +2079,26 @@ nav ul > li:focus-within > .dropdown {
   z-index: 20001 !important;
   pointer-events: none !important;
 }
-</style></head>
+</style><!-- Firebase (compat) + FirebaseUI -->
+<link href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css" rel="stylesheet"/>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
+<script id="firebase-init">
+  // Story Bell — Firebase config + single-init (compat)
+  const firebaseConfig = {
+    apiKey: "AIzaSyC9vYsSvGN7zSDfkIcByvBZDOQnRyUPIBo",
+    authDomain: "storybellkids.firebaseapp.com",
+    projectId: "storybellkids",
+    storageBucket: "storybellkids.firebasestorage.app",
+    messagingSenderId: "107989104962",
+    appId: "1:107989104962:web:a93c5a427353a87111b0db",
+    measurementId: "G-F64PJ8CCZQ"
+  };
+  if (!window.firebase) { console.error("Firebase SDK not found"); }
+  else if (!firebase.apps.length) { if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); } }
+</script>
+</head>
 <body>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>
@@ -2493,7 +2506,7 @@ document.addEventListener('DOMContentLoaded', updateStars);
 
   document.addEventListener("DOMContentLoaded", disableWandOnMobile);
   window.addEventListener("resize", disableWandOnMobile);
-})();</script><link href="queue_assets/queue.css" rel="stylesheet"/><script>
+})();</script><link href="queue_assets/queue.css" rel="stylesheet"><script>
    // Wand cursor & sparkle logic
     const wand = document.getElementById("wand");
     const WAND_OFFSET_X = 15;
@@ -3644,7 +3657,7 @@ document.addEventListener('DOMContentLoaded', updateStars);
     });
   }catch(_){}
 })();
-</script><style id="sb-mobile-carousel-typography-override">
+</script><link href="queue_assets/queue.css" rel="stylesheet"/><style id="sb-mobile-carousel-typography-override">
 @media (max-width: 800px){
   /* Remove the extra line break between title and description */
   .carousel-section .carousel-item br{
@@ -3710,5 +3723,128 @@ document.addEventListener('DOMContentLoaded', updateStars);
 <button class="queue-control-btn" disabled="" id="queue-next" title="Next Story">▶</button>
 <button class="queue-control-btn" disabled="" id="queue-clear" title="Clear Queue">🗑️</button>
 </div>
-</div></body>
+</div><!-- Auth Modal (injected if missing) -->
+<div id="auth-modal" style="display:none;position:fixed;inset:0;z-index:2147483647;align-items:center;justify-content:center;background:rgba(0,0,0,0.55);backdrop-filter:blur(3px);">
+<div style="background:#111;color:#fff;border-radius:12px;max-width:520px;width:90%;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.35);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+<h3 style="margin:0;font-family:inherit;font-weight:600;">Sign in</h3>
+<button aria-label="Close" id="auth-close" style="background:transparent;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1;">×</button>
+</div>
+<div id="firebaseui-auth-container"></div>
+</div>
+</div>
+<script id="firebase-auth-bindings">
+(function(){
+  // Guard to avoid double-binding
+  if (window.__SB_AUTH_BOUND__) return; window.__SB_AUTH_BOUND__ = true;
+
+  function ensureUI() {
+    if (!(window.firebase && firebase.auth && window.firebaseui)) {
+      console.warn("[SB] Firebase/FirebaseUI not ready");
+      return null;
+    }
+    var ui = window.firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
+    return ui;
+  }
+
+  function openAuthModal(e){
+    if (e && e.preventDefault) e.preventDefault();
+    var modal = document.getElementById('auth-modal');
+    if (modal) modal.style.display = 'flex';
+
+    var ui = ensureUI();
+    if (!ui) return;
+
+    ui.start('#firebaseui-auth-container', {
+      signInFlow: 'popup',
+      signInOptions: [
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+      ],
+      callbacks: {
+        signInSuccessWithAuthResult: function(authResult) {
+          try { closeAuthModal(); } catch(_) {}
+          console.log("[SB] Signed in:", authResult.user && (authResult.user.email || authResult.user.uid));
+          return false; // stay on page
+        },
+        uiShown: function(){ console.log("[SB] FirebaseUI shown"); }
+      }
+    });
+  }
+
+  function closeAuthModal(){
+    var modal = document.getElementById('auth-modal');
+    if (modal) modal.style.display = 'none';
+  }
+  window.openAuthModal = openAuthModal;
+  window.closeAuthModal = closeAuthModal;
+
+  // Close button + backdrop click
+  document.addEventListener('click', function(ev){
+    if (ev.target && ev.target.id === 'auth-close') closeAuthModal();
+    if (ev.target && ev.target.id === 'auth-modal') closeAuthModal();
+  }, { passive: true });
+
+  // Universal bindings (don’t change header layout; just listen)
+  var selectors = ['#loginBtn', '.login', '.login a', '.login-mobile a', '[data-auth-cta]'];
+  selectors.forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(el){
+      ['click','touchend','pointerup'].forEach(function(evt){
+        el.addEventListener(evt, openAuthModal, { passive:false });
+      });
+    });
+  });
+
+  // Debug log for duplicates
+  try {
+    console.log("[SB] firebase apps:", (window.firebase && firebase.apps) ? firebase.apps.length : "no firebase");
+  } catch(e){}
+
+  // Child profile storage
+  function getChildProfile(uid) {
+    try { return JSON.parse(localStorage.getItem('storybell_child_' + uid) || 'null'); }
+    catch(e) { return null; }
+  }
+
+  // Update header UI based on auth state
+  function updateHeaderAuth(user) {
+    var loginBtns = document.querySelectorAll('.login-cta-header, .login-mobile a[href*="signin"]');
+    var profileEls = document.querySelectorAll('.sb-user-profile');
+
+    if (user) {
+      var profile = getChildProfile(user.uid);
+      // Priority: child name > Firebase displayName > email prefix > 'Reader'
+      var displayName = (profile && profile.name) || user.displayName || (user.email ? user.email.split('@')[0] : 'Reader');
+
+      loginBtns.forEach(function(el){ el.style.display = 'none'; });
+      profileEls.forEach(function(el){
+        el.style.display = 'flex';
+        var nameEl = el.querySelector('.sb-user-name');
+        if (nameEl) nameEl.textContent = displayName;
+      });
+    } else {
+      loginBtns.forEach(function(el){ el.style.display = ''; });
+      profileEls.forEach(function(el){ el.style.display = 'none'; });
+    }
+  }
+
+  // Sign out function
+  window.signOutStoryBell = function(){
+    if (window.firebase && firebase.auth) {
+      firebase.auth().signOut().then(function(){
+        window.location.href = '/';
+      }).catch(function(e){ console.error('[SB] Sign out error:', e); });
+    }
+  };
+
+  // Enhanced auth state listener
+  if (window.firebase && firebase.auth) {
+    firebase.auth().onAuthStateChanged(function(u){
+      console.log("[SB] Auth state:", u ? "SIGNED IN" : "SIGNED OUT");
+      updateHeaderAuth(u);
+    });
+  }
+})();
+</script>
+</link></body>
 </html>

@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Story Bell</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
+    body { margin: 0; font-family: 'Georgia', serif; background-color: #001f3f; min-height: 100vh; cursor: none;}
+    header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
+    .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .site-title { font-size: 28px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
+    .header-left a:hover .site-title { color: #fffde6; }
+    nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
+    nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s;}
+    nav a:hover, nav a:focus { background: #003366; text-decoration: underline; }
+    nav ul > li { position: relative; }
+    .dropdown {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 110%;
+      background: #003366;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px #001a30cc;
+      padding: 0.5em 0;
+      min-width: 250px;
+      z-index: 999;
+      list-style: none;
+      margin: 0;
+      transition: opacity 0.14s;
+    }
+    nav ul > li:hover > .dropdown,
+    nav ul > li:focus-within > .dropdown {
+      display: block !important;
+    }
+    .dropdown-item {
+      display: block;
+      color: #FFEB3B;
+      text-decoration: none;
+      font-family: 'Georgia', serif;
+      font-size: 16px;
+      padding: 10px 24px;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.13s;
+      user-select: none;
+    }
+    .dropdown-item:hover,
+    .dropdown-item:focus {
+      background: #184a73 !important;
+      color: #fffbe9 !important;
+      outline: none;
+    }
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      width: 22px;
+      height: 22px;
+      background: transparent;
+      z-index: 9999;
+      animation: sparkle-fade 0.9s linear forwards;
+    }
+    .sparkle::after {
+      content: "★";
+      color: #ffeb3b;
+      font-size: 22px;
+      filter: drop-shadow(0 0 8px #ffe066) drop-shadow(0 0 16px #fffde0cc);
+      opacity: 0.9;
+    }
+    @keyframes sparkle-fade {
+      0%   { opacity: 1; transform: scale(1) translateY(0); }
+      60%  { opacity: 0.8; transform: scale(1.18) translateY(-4px);}
+      80%  { opacity: 0.8; }
+      100% { opacity: 0; transform: scale(0.8) translateY(-22px);}
+    }
+    .main-blank { min-height: 90vh; max-width: 900px; margin: 0 auto; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 2em; letter-spacing: 0.03em; padding-top: 24px; padding-bottom: 68px; }
+    .audio-sticky-bottom { position: sticky; bottom: 0; width: 100vw; background: transparent; z-index: 3000; display: flex; justify-content: center;}
+    .audio-box { background: #FFFDE6; border: 0.5px solid #FFEB3B; border-radius: 14px 14px 0 0; padding: 3px 10px; box-shadow: 0 -2px 9px #ffe06633; display: flex; align-items: center; justify-content: center; margin: 2px 0 0 0;}
+    .audio-box audio { width: 260px; height: 32px; accent-color: #FFEB3B; background: transparent; display: block;}
+    #wand { position: absolute; left: 0; top: 0; width: 48px; height: 48px; z-index: 9999; pointer-events: none; user-select: none; filter: drop-shadow(0 0 8px #ffeb3b); transition: none !important; }
+    @media (max-width: 800px) {.main-blank { font-size: 1.1em; } header { max-width: 100vw; } .site-title { font-size: 22px; } .audio-box audio { width: 65vw; min-width: 110px; } .audio-box { padding: 3px 2vw; } #wand { width: 32px; height: 32px; }}
+    @media (max-width: 600px) {.audio-box audio { width: 94vw; min-width: 80px; } .audio-box { padding: 3px 1vw;} nav a { font-size: 16px; } #wand { width: 28px; height: 28px; }}
+  </style>
+<style id="__glow_css__">
+.glow{background:#fffbe9;color:#333;border-radius:6px;box-shadow:0 0 16px #ffeb3b,0 0 2px #ffe066;transition:background .12s;}
+</style>
+<style id="__tight_spacing_css__">
+.main-blank { padding-top: 0 !important; }
+#transcript { margin: 0.5em auto !important; padding-top: 0 !important; }
+#transcript img.story-image:first-of-type {
+  margin-top: 0 !important;
+  margin-bottom: 0.2em !important;
+}
+</style>
+<style id="sb_glow_fixed_css">
+#transcript .highlight{
+  color:#ffffff!important;
+  text-shadow:
+    0 0 6px #ffd700,
+    0 0 14px #ffae00,
+    0 0 26px rgba(255,174,0,.85),
+    0 0 40px rgba(255,174,0,.55);
+  text-decoration:none!important;
+  font-weight:inherit!important;
+  transform:none!important;
+  transition:text-shadow .18s ease, color .18s ease;
+}
+#transcript .prev{
+  opacity:.95;
+  text-decoration:none!important;
+  font-weight:inherit!important;
+  transform:none!important;
+}
+#transcript [id^="word_"]{ background:none!important; display:inline; }
+</style><style>.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style><style>.sb-firstline {
+  font-weight:700;
+  color:#ffffff;
+  text-decoration:underline;
+  font-size:1.25em;
+}</style>
+<style id="sb-test-banner-style">
+  body { padding-top: 46px !important; }
+  #sb-test-banner {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #d22;
+    color: #fff;
+    text-align: center;
+    font: bold 14px/32px Arial, sans-serif;
+    z-index: 99999;
+    padding: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.25);
+  }
+</style>
+<!-- Firebase Auth Scripts (injected by inject_auth.py) -->
+<link href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css" rel="stylesheet"/>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
+<script id="firebase-init">
+if (!window.__FIREBASE_INIT__) {
+  window.__FIREBASE_INIT__ = true;
+  firebase.initializeApp({
+    apiKey: "AIzaSyC9vYsSvGN7zSDfkIcByvBZDOQnRyUPIBo",
+    authDomain: "storybellkids.firebaseapp.com",
+    projectId: "storybellkids",
+    storageBucket: "storybellkids.firebasestorage.app",
+    messagingSenderId: "107989104962",
+    appId: "1:107989104962:web:a93c5a427353a87111b0db"
+  });
+}
+</script>
+<!-- End Firebase Auth Scripts -->
+<style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+
+/* Always show a subtle light-blue chip behind descriptions */
+.carousel-section .carousel-desc{
+  background: rgba(173, 216, 230, 0.18); /* light blue */
+  padding: 0.25em 0.5em;
+  border-radius: 10px;
+  display: inline-block;
+  color: #ffffff !important;
+}
+
+/* Make sure carousels don't block vertical page scroll on touch devices */
+.carousel-section .carousel-track{
+  touch-action: auto !important;             /* allow vertical swipes to bubble */
+  overscroll-behavior-x: contain !important; /* keep horizontal bounce inside */
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;             /* gentler snapping */
+}
+
+/* --- Mobile-only refinements --- */
+@media (max-width: 800px){
+
+  /* Hide explicit <br> between title and description to save space */
+  .carousel-section .carousel-item br{ display: none !important; }
+
+  /* Title: smaller than before, tighter line-height, stays white */
+  .carousel-section .carousel-item .carousel-title,
+  .carousel-section a.carousel-title-link .carousel-title,
+  .carousel-section .carousel-title{
+    font-size: 0.74em !important;            /* smaller, still > description */
+    line-height: 1.06em !important;          /* much tighter for 2-line titles */
+    color: #ffffff !important;
+    margin: 0.10em 0 0.06em !important;      /* bring closer to desc */
+  }
+  .carousel-section .carousel-title-link,
+  .carousel-section .carousel-title-link:link,
+  .carousel-section .carousel-title-link:visited{
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+
+  /* Description: compact, white, sits in the blue chip */
+  .carousel-section .carousel-desc{
+    font-size: 0.56em !important;
+    line-height: 1.12em !important;          /* tighter */
+    color: #ffffff !important;
+    padding: 0.22em 0.45em;                   /* a bit tighter on mobile */
+  }
+
+  /* Categories: same size as desc, bold, white; closer spacing */
+  .carousel-section .carousel-category{
+    font-size: 0.56em !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+  .carousel-section .carousel-categories{
+    margin-top: 0.06em !important;           /* closer to description */
+  }
+}</style><style id="sb-carousel-perf-ux">/* === Carousel performance + UX smoothing === */
+
+/* 1) Promote images to their own compositor layer; confine paints */
+.carousel-section .carousel-item img,
+.carousel-section .carousel-card img{
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+  contain: paint; /* shadows/borders don't spill to ancestors */
+}
+
+/* 2) Track tuned for momentum but lets vertical page scroll through */
+.carousel-section .carousel-track{
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;    /* gentler snap reduces jerk */
+  touch-action: auto !important;     /* allow vertical swipes */
+  overscroll-behavior-x: contain;    /* keep bounce inside track */
+  will-change: scroll-position;
+}
+
+/* 3) Tighter two-line titles (carousels only) */
+.carousel-section .carousel-item .carousel-title,
+.carousel-section a.carousel-title-link .carousel-title,
+.carousel-section .carousel-title{
+  line-height: 1.06em !important;   /* reduce big interline gap */
+  margin: 0.10em 0 0.06em !important;
+  color: #fff !important;           /* keep white */
+}
+
+/* 4) Light blue chip behind description (carousels only) */
+.carousel-section .carousel-desc{
+  background: rgba(173, 216, 230, 0.18);
+  padding: 0.25em 0.5em;
+  border-radius: 10px;
+  display: inline-block;
+  color: #ffffff !important;
+}
+
+/* 5) Mobile-only: cheaper shadows + compact spacing */
+@media (max-width: 800px){
+  .carousel-section .carousel-item br{ display:none !important; } /* save vertical space */
+  .carousel-section .carousel-item img,
+  .carousel-section .carousel-card img{
+    box-shadow: 0 0 8px 2px rgba(255,223,0,.35) !important; /* lighter than desktop */
+  }
+  .carousel-section .carousel-desc{
+    line-height: 1.12em !important;
+    padding: 0.22em 0.45em;
+  }
+  .carousel-section .carousel-categories{ margin-top: 0.06em !important; }
+}</style><style id="sb-android-smoothing">
+/* --- Android/Samsung smoothing tweaks (carousels only) --- */
+
+/* Promote the horizontal track to its own layer to avoid repaint storms */
+.carousel-section .carousel-track{
+  transform: translateZ(0);           /* GPU layer */
+  will-change: scroll-position;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;      /* gentler snapping */
+  overscroll-behavior-x: contain;
+  touch-action: auto !important;      /* allow vertical scroll to pass through */
+}
+
+/* Isolate each card so its paints don't spill to neighbors */
+.carousel-section .carousel-item,
+.carousel-section .carousel-card{
+  contain: content;                    /* size+layout+paint isolation */
+}
+
+/* Images: keep compositor-friendly; lighten paints on mobile */
+@media (max-width: 800px){
+  .carousel-section .carousel-item img,
+  .carousel-section .carousel-card img{
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+    /* Lighter glow on mobile, and don't animate box-shadow (expensive) */
+    box-shadow: 0 0 6px 2px rgba(255,223,0,.28) !important;
+    transition: transform .2s ease !important;  /* drop shadow animation */
+  }
+}
+
+/* Tighter two-line titles to avoid big gaps */
+.carousel-section .carousel-item .carousel-title,
+.carousel-section a.carousel-title-link .carousel-title,
+.carousel-section .carousel-title{
+  line-height: 1.06em !important;
+  margin: 0.10em 0 0.06em !important;
+  color: #fff !important;
+}
+
+/* Keep the light-blue chip on description */
+.carousel-section .carousel-desc{
+  background: rgba(173,216,230,0.18);
+  color: #fff !important;
+  padding: 0.22em 0.45em;
+  border-radius: 10px;
+  display: inline-block;
+}
+</style><style id="sb-carousel-nosnap-mobile">
+/* === Force-disable carousel snap + recentering on mobile === */
+@media (max-width: 900px){
+  /* Container: no snap + no smooth 'auto-return' */
+  .carousel-track{
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Items: make sure nothing can snap to them either */
+  .carousel-card, .story-card{
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+    contain: paint;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    overflow: visible;
+  }
+}
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='../index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='../index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
+/* Keep wand always visible above menus, and never block clicks */
+#wand {
+  position: fixed !important;
+  z-index: 20001 !important;
+  pointer-events: none !important;
+}
+</style><script id="firebase-init">
+  // Story Bell — Firebase config + single-init (compat)
+  const firebaseConfig = {
+    apiKey: "AIzaSyC9vYsSvGN7zSDfkIcByvBZDOQnRyUPIBo",
+    authDomain: "storybellkids.firebaseapp.com",
+    projectId: "storybellkids",
+    storageBucket: "storybellkids.firebasestorage.app",
+    messagingSenderId: "107989104962",
+    appId: "1:107989104962:web:a93c5a427353a87111b0db",
+    measurementId: "G-F64PJ8CCZQ"
+  };
+  if (!window.firebase) { console.error("Firebase SDK not found"); }
+  else if (!firebase.apps.length) { if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); } }
+</script>
+<link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
+<body><h1 class="sr-only" id="story-title">Story Bell</h1>
+<div id="sb-test-banner">TEST PAGE - STAGING - 2025-12-11 13:59</div>
+<img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
+<header>
+<div class="header-left">
+<a href="index.html">
+<img alt="Story Bell Logo" src="index_items/logo.webp" style="height: 52px; margin-right: 10px;"/>
+<span class="site-title">Story Bell</span>
+</a>
+</div>
+<div class="header-right">
+<nav>
+<ul>
+<li style="position: relative;">
+<a href="#" style="cursor:pointer;">Stories</a>
+<ul class="dropdown" style="text-align: left;">
+<li><a class="dropdown-item" href="lt4.html">4 Years and Under</a></li>
+<li><a class="dropdown-item" href="4_7.html">4–7 Years Old</a></li>
+<li><a class="dropdown-item" href="8plus.html">8 Years and Over</a></li>
+<li><a class="dropdown-item" href="5min.html">Short (&lt;5 Minutes)</a></li>
+<li><a class="dropdown-item" href="10min.html">Medium (&gt;10 Minutes)</a></li>
+<li><a class="dropdown-item" href="poems.html">Poems</a></li>
+</ul>
+</li>
+<li><a href="about.html">About</a></li>
+</ul>
+</nav>
+<!-- Mailchimp Email Signup -->
+<a href="https://YOUR-MAILCHIMP-FORM-URL" style="background: #FFEB3B; color: #003366; font-family: 'Georgia', serif; font-size: 16px; font-weight: bold; border-radius: 20px; padding: 9px 22px 9px 32px; text-decoration: none; box-shadow: 0 2px 8px rgba(255,235,59,0.22); display: flex; align-items: center; transition: background 0.2s;" target="_blank">
+<svg fill="#003366" height="21" style="margin-right:10px;" viewbox="0 0 24 24" width="21" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18V8.83l7.88 7.88a.996.996 0 001.41 0L20 8.83V18H4z"></path></svg>
+        Join Email List
+      </a>
+</div>
+</header>
+<div class="main-blank"><div id="transcript"><img alt="Illustration 3 from Story Bell" class="story-image sb-firstline" src="milo-the-mouse/milo-the-mouse-imagetitle.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px"/> <br/> <span class="glow-title" data-end="0.472000" data-start="0.031000" id="word_1">Milo</span> <span class="glow-title" data-end="0.592000" data-start="0.512000" id="word_2">the</span> <span class="glow-title" data-end="0.932000" data-start="0.632000" id="word_3">Mouse</span> <br/> <span data-end="1.193000" data-start="1.072000" id="word_4">By</span> <span data-end="1.834000" data-start="1.253000" id="word_5">Story</span> <span data-end="2.975000" data-start="2.915000" id="word_6">Bell</span> <br/> <span data-end="3.055000" data-start="3.035000" id="word_7">In</span> <span data-end="3.316000" data-start="3.115000" id="word_8">a</span> <span data-end="3.636000" data-start="3.376000" id="word_9">nook</span> <span data-end="3.736000" data-start="3.716000" id="word_10">beneath</span> <span data-end="4.017000" data-start="3.796000" id="word_11">a</span> <span data-end="4.297000" data-start="4.097000" id="word_12">tree</span> <span data-end="4.778000" data-start="4.397000" id="word_13">so</span> <span data-end="5.198000" data-start="4.898000" id="word_14">small</span> <img alt="Illustration 4 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="5.659000" data-start="5.318000" id="word_15">Lived</span> <span data-end="5.999000" data-start="5.699000" id="word_16">Milo</span> <span data-end="6.620000" data-start="6.520000" id="word_17">Mouse</span> <img alt="Illustration 5 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="7.161000" data-start="6.660000" id="word_18">the</span> <span data-end="7.281000" data-start="7.221000" id="word_19">tiniest</span> <span data-end="7.522000" data-start="7.401000" id="word_20">of</span> <span data-end="8.603000" data-start="8.463000" id="word_21">all</span> <img alt="Illustration 6 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="9.084000" data-start="8.683000" id="word_22">With</span> <span data-end="9.544000" data-start="9.204000" id="word_23">whiskers</span> <span data-end="9.645000" data-start="9.584000" id="word_24">soft</span> <span data-end="9.885000" data-start="9.745000" id="word_25">and</span> <span data-end="10.165000" data-start="9.985000" id="word_26">eyes</span> <span data-end="10.546000" data-start="10.245000" id="word_27">so</span> <span data-end="11.307000" data-start="11.147000" id="word_28">bright</span> <img alt="Illustration 7 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="11.567000" data-start="11.367000" id="word_29">He'd</span> <span data-end="12.068000" data-start="11.627000" id="word_30">peek</span> <span data-end="12.188000" data-start="12.148000" id="word_31">outside</span> <span data-end="12.509000" data-start="12.248000" id="word_32">at</span> <span data-end="12.749000" data-start="12.549000" id="word_33">morning</span> <span data-end="13.770000" data-start="13.650000" id="word_34">light</span> <img alt="Illustration 8 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="14.191000" data-start="13.830000" id="word_35">But</span> <span data-end="14.451000" data-start="14.251000" id="word_36">Milo</span> <span data-end="14.792000" data-start="14.592000" id="word_37">felt</span> <span data-end="15.112000" data-start="14.992000" id="word_38">so</span> <span data-end="15.473000" data-start="15.172000" id="word_39">all</span> <span data-end="16.054000" data-start="15.493000" id="word_40">alone</span> <img alt="Illustration 9 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 10 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image1.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="16.214000" data-start="16.094000" id="word_41">In</span> <span data-end="16.674000" data-start="16.334000" id="word_42">his</span> <span data-end="16.955000" data-start="16.735000" id="word_43">quiet</span> <span data-end="17.255000" data-start="16.995000" id="word_44">little</span> <span data-end="17.355000" data-start="17.315000" id="word_45">home</span> <span data-end="17.816000" data-start="17.476000" id="word_46">of</span> <span data-end="19.238000" data-start="19.158000" id="word_47">stone</span> <img alt="Illustration 11 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 12 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="19.699000" data-start="19.358000" id="word_48">I</span> <span data-end="20.500000" data-start="20.400000" id="word_49">wish</span> <img alt="Illustration 13 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <img alt="Illustration 14 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <span data-end="20.940000" data-start="20.580000" id="word_50">he</span> <span data-end="21.061000" data-start="21.001000" id="word_51">squeaked</span> <span data-end="21.401000" data-start="21.141000" id="word_52">in</span> <span data-end="21.621000" data-start="21.441000" id="word_53">voice</span> <span data-end="22.042000" data-start="21.682000" id="word_54">so</span> <span data-end="22.783000" data-start="22.743000" id="word_55">small</span> <img alt="Illustration 15 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 16 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="22.943000" data-start="22.843000" id="word_56">I</span> <span data-end="23.023000" data-start="23.003000" id="word_57">had</span> <span data-end="23.384000" data-start="23.104000" id="word_58">a</span> <span data-end="23.544000" data-start="23.444000" id="word_59">friend</span> <span data-end="23.825000" data-start="23.624000" id="word_60">to</span> <span data-end="23.925000" data-start="23.885000" id="word_61">share</span> <span data-end="24.165000" data-start="24.005000" id="word_62">it</span> <span data-end="25.803000" data-start="25.462000" id="word_63">all</span> <img alt="Illustration 17 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <img alt="Illustration 18 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <span data-end="26.003000" data-start="25.883000" id="word_64">So</span> <span data-end="26.164000" data-start="26.063000" id="word_65">out</span> <span data-end="26.504000" data-start="26.264000" id="word_66">he</span> <span data-end="26.685000" data-start="26.605000" id="word_67">crept</span> <span data-end="27.046000" data-start="26.745000" id="word_68">on</span> <span data-end="27.386000" data-start="27.126000" id="word_69">tiny</span> <span data-end="28.048000" data-start="27.847000" id="word_70">feet</span> <img alt="Illustration 19 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 20 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image2.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="28.369000" data-start="28.108000" id="word_71">Through</span> <span data-end="28.770000" data-start="28.429000" id="word_72">dewy</span> <span data-end="28.990000" data-start="28.830000" id="word_73">grass</span> <span data-end="29.431000" data-start="29.110000" id="word_74">so</span> <span data-end="29.632000" data-start="29.551000" id="word_75">cool</span> <span data-end="30.053000" data-start="29.772000" id="word_76">and</span> <span data-end="31.155000" data-start="30.874000" id="word_77">sweet</span> <img alt="Illustration 21 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"> <br/> <span data-end="31.576000" data-start="31.255000" id="word_78">Past</span> <span data-end="31.736000" data-start="31.656000" id="word_79">ferns</span> <span data-end="32.258000" data-start="31.797000" id="word_80">and</span> <span data-end="33.120000" data-start="32.799000" id="word_81">flowers</span> <img alt="Illustration 22 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="33.340000" data-start="33.260000" id="word_82">bright</span> <span data-end="33.621000" data-start="33.420000" id="word_83">and</span> <span data-end="34.603000" data-start="33.661000" id="word_84">new</span> <img alt="Illustration 23 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="34.723000" data-start="34.703000" id="word_85">Beneath</span> <span data-end="35.104000" data-start="34.803000" id="word_86">a</span> <span data-end="35.204000" data-start="35.164000" id="word_87">sky</span> <span data-end="35.706000" data-start="35.325000" id="word_88">of</span> <span data-end="36.066000" data-start="35.786000" id="word_89">clearest</span> <span data-end="37.129000" data-start="36.086000" id="word_90">blue</span> <img alt="Illustration 24 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="37.409000" data-start="37.189000" id="word_91">And</span> <span data-end="37.570000" data-start="37.470000" id="word_92">there</span> <span data-end="37.770000" data-start="37.630000" id="word_93">he</span> <span data-end="37.830000" data-start="37.810000" id="word_94">met</span> <span data-end="38.131000" data-start="37.870000" id="word_95">a</span> <span data-end="38.632000" data-start="38.251000" id="word_96">bunny</span> <span data-end="39.194000" data-start="39.073000" id="word_97">small</span> <img alt="Illustration 25 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 26 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image3.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="39.454000" data-start="39.254000" id="word_98">Who</span> <span data-end="39.895000" data-start="39.514000" id="word_99">sat</span> <span data-end="40.035000" data-start="39.955000" id="word_100">beside</span> <span data-end="40.356000" data-start="40.076000" id="word_101">the</span> <span data-end="40.737000" data-start="40.396000" id="word_102">garden</span> <span data-end="42.119000" data-start="41.999000" id="word_103">wall</span> <img alt="Illustration 27 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="42.380000" data-start="42.139000" id="word_104">The</span> <span data-end="42.840000" data-start="42.480000" id="word_105">bunny</span> <span data-end="43.922000" data-start="43.802000" id="word_106">sighed</span> <img alt="Illustration 28 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <img alt="Illustration 29 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="44.243000" data-start="44.002000" id="word_107">I'm</span> <span data-end="44.583000" data-start="44.283000" id="word_108">sad</span> <span data-end="44.623000" data-start="44.603000" id="word_109">today</span> <img alt="Illustration 30 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="45.485000" data-start="45.365000" id="word_110">I</span> <span data-end="45.685000" data-start="45.565000" id="word_111">have</span> <span data-end="45.846000" data-start="45.765000" id="word_112">no</span> <span data-end="45.986000" data-start="45.886000" id="word_113">one</span> <span data-end="46.166000" data-start="46.026000" id="word_114">with</span> <span data-end="46.286000" data-start="46.226000" id="word_115">whom</span> <span data-end="46.587000" data-start="46.326000" id="word_116">to</span> <span data-end="47.488000" data-start="47.328000" id="word_117">play</span> <img alt="Illustration 31 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"> <img alt="Illustration 32 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <span data-end="47.889000" data-start="47.568000" id="word_118">Said</span> <span data-end="48.049000" data-start="47.929000" id="word_119">Milo</span> <span data-end="48.109000" data-start="48.089000" id="word_120">with</span> <span data-end="48.470000" data-start="48.170000" id="word_121">a</span> <span data-end="48.871000" data-start="48.510000" id="word_122">gentle</span> <span data-end="50.013000" data-start="49.812000" id="word_123">smile</span> <img alt="Illustration 33 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 34 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image4.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <img alt="Illustration 35 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="50.193000" data-start="50.053000" id="word_124">Let's</span> <span data-end="50.534000" data-start="50.213000" id="word_125">sit</span> <span data-end="50.714000" data-start="50.574000" id="word_126">together</span> <span data-end="50.794000" data-start="50.774000" id="word_127">for</span> <span data-end="51.115000" data-start="50.834000" id="word_128">a</span> <span data-end="51.896000" data-start="51.155000" id="word_129">while</span> <img alt="Illustration 36 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="52.056000" data-start="51.936000" id="word_130">I</span> <span data-end="52.236000" data-start="52.096000" id="word_131">have</span> <span data-end="52.697000" data-start="52.297000" id="word_132">some</span> <span data-end="53.258000" data-start="53.078000" id="word_133">berries</span> <img alt="Illustration 37 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"> <span data-end="53.398000" data-start="53.318000" id="word_134">red</span> <span data-end="53.799000" data-start="53.499000" id="word_135">and</span> <span data-end="54.620000" data-start="54.300000" id="word_136">sweet</span> <img alt="Illustration 38 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="54.821000" data-start="54.661000" id="word_137">Sharing</span> <span data-end="55.001000" data-start="54.881000" id="word_138">makes</span> <span data-end="55.181000" data-start="55.041000" id="word_139">them</span> <span data-end="55.322000" data-start="55.262000" id="word_140">more</span> <span data-end="55.642000" data-start="55.342000" id="word_141">a</span> <span data-end="56.884000" data-start="56.804000" id="word_142">treat</span> <img alt="Illustration 39 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <img alt="Illustration 40 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <span data-end="57.225000" data-start="56.944000" id="word_143">The</span> <span data-end="57.485000" data-start="57.345000" id="word_144">bunny's</span> <span data-end="57.806000" data-start="57.545000" id="word_145">eyes</span> <span data-end="57.906000" data-start="57.846000" id="word_146">began</span> <span data-end="58.267000" data-start="57.966000" id="word_147">to</span> <span data-end="59.188000" data-start="58.307000" id="word_148">shine</span> <img alt="Illustration 41 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 42 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="59.549000" data-start="59.288000" id="word_149">How</span> <span data-end="59.649000" data-start="59.609000" id="word_150">kind</span> <span data-end="59.829000" data-start="59.689000" id="word_151">of</span> <span data-end="60.611000" data-start="60.470000" id="word_152">you</span> <img alt="Illustration 43 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <span data-end="60.951000" data-start="60.711000" id="word_153">How</span> <span data-end="61.352000" data-start="61.031000" id="word_154">very</span> <span data-end="62.334000" data-start="61.392000" id="word_155">fine</span> <img alt="Illustration 44 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <br/> <span data-end="62.594000" data-start="62.394000" id="word_156">To</span> <span data-end="62.774000" data-start="62.634000" id="word_157">share</span> <span data-end="63.015000" data-start="62.814000" id="word_158">your</span> <span data-end="63.195000" data-start="63.075000" id="word_159">food</span> <span data-end="63.415000" data-start="63.295000" id="word_160">with</span> <span data-end="63.636000" data-start="63.476000" id="word_161">one</span> <span data-end="63.956000" data-start="63.736000" id="word_162">so</span> <span data-end="64.858000" data-start="63.996000" id="word_163">new</span> <img alt="Illustration 45 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"> <br/> <span data-end="65.058000" data-start="64.898000" id="word_164">I'd</span> <span data-end="65.158000" data-start="65.098000" id="word_165">like</span> <span data-end="65.319000" data-start="65.198000" id="word_166">to</span> <span data-end="65.399000" data-start="65.359000" id="word_167">be</span> <span data-end="65.699000" data-start="65.479000" id="word_168">a</span> <span data-end="65.820000" data-start="65.739000" id="word_169">friend</span> <span data-end="66.100000" data-start="65.860000" id="word_170">to</span> <span data-end="67.357000" data-start="67.177000" id="word_171">you</span> <img alt="Illustration 46 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <img alt="Illustration 47 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <span data-end="67.758000" data-start="67.417000" id="word_172">Then</span> <span data-end="68.019000" data-start="67.918000" id="word_173">walking</span> <span data-end="68.540000" data-start="68.439000" id="word_174">on</span> <img alt="Illustration 48 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="68.780000" data-start="68.600000" id="word_175">they</span> <span data-end="68.840000" data-start="68.820000" id="word_176">saw</span> <span data-end="69.201000" data-start="68.900000" id="word_177">a</span> <span data-end="70.063000" data-start="69.963000" id="word_178">bird</span> <img alt="Illustration 49 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 50 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image5.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="70.544000" data-start="70.123000" id="word_179">The</span> <span data-end="70.985000" data-start="70.604000" id="word_180">smallest</span> <span data-end="71.205000" data-start="71.045000" id="word_181">bluebird</span> <span data-end="71.566000" data-start="71.385000" id="word_182">they'd</span> <span data-end="71.866000" data-start="71.626000" id="word_183">ever</span> <span data-end="73.489000" data-start="73.389000" id="word_184">heard</span> <img alt="Illustration 51 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 52 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="73.810000" data-start="73.570000" id="word_185">My</span> <span data-end="74.051000" data-start="73.870000" id="word_186">nest</span> <span data-end="74.351000" data-start="74.091000" id="word_187">fell</span> <span data-end="74.972000" data-start="74.411000" id="word_188">down</span> <img alt="Illustration 53 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="75.133000" data-start="75.013000" id="word_189">I'm</span> <span data-end="75.514000" data-start="75.213000" id="word_190">all</span> <span data-end="75.954000" data-start="75.574000" id="word_191">alone</span> <img alt="Illustration 54 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="76.255000" data-start="75.994000" id="word_192">I</span> <span data-end="76.556000" data-start="76.335000" id="word_193">cannot</span> <span data-end="76.636000" data-start="76.596000" id="word_194">build</span> <span data-end="76.776000" data-start="76.716000" id="word_195">it</span> <span data-end="76.916000" data-start="76.816000" id="word_196">on</span> <span data-end="77.157000" data-start="77.037000" id="word_197">my</span> <span data-end="78.539000" data-start="77.197000" id="word_198">own</span> <img alt="Illustration 55 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <img alt="Illustration 56 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <img alt="Illustration 57 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="78.760000" data-start="78.580000" id="word_199">We'll</span> <span data-end="79.020000" data-start="78.840000" id="word_200">help</span> <span data-end="80.123000" data-start="79.081000" id="word_201">you</span> <img alt="Illustration 58 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <img alt="Illustration 59 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <span data-end="80.523000" data-start="80.203000" id="word_202">Milo</span> <span data-end="80.664000" data-start="80.564000" id="word_203">squeaked</span> <span data-end="81.044000" data-start="80.764000" id="word_204">with</span> <span data-end="81.726000" data-start="81.525000" id="word_205">cheer</span> <img alt="Illustration 60 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 61 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"> <span data-end="81.866000" data-start="81.766000" id="word_206">That's</span> <span data-end="82.207000" data-start="81.946000" id="word_207">what</span> <span data-end="82.367000" data-start="82.267000" id="word_208">friends</span> <span data-end="82.748000" data-start="82.487000" id="word_209">are</span> <span data-end="82.988000" data-start="82.808000" id="word_210">for</span> <img alt="Illustration 62 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="83.249000" data-start="83.028000" id="word_211">my</span> <span data-end="84.612000" data-start="83.289000" id="word_212">dear</span> <img alt="Illustration 63 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <img alt="Illustration 64 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <span data-end="85.012000" data-start="84.652000" id="word_213">They</span> <span data-end="85.533000" data-start="85.092000" id="word_214">gathered</span> <span data-end="85.694000" data-start="85.614000" id="word_215">twigs</span> <span data-end="86.034000" data-start="85.734000" id="word_216">and</span> <span data-end="86.275000" data-start="86.114000" id="word_217">moss</span> <span data-end="86.696000" data-start="86.355000" id="word_218">so</span> <span data-end="87.317000" data-start="87.237000" id="word_219">soft</span> <img alt="Illustration 65 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="87.537000" data-start="87.357000" id="word_220">And</span> <span data-end="87.638000" data-start="87.617000" id="word_221">built</span> <span data-end="88.018000" data-start="87.738000" id="word_222">a</span> <span data-end="88.299000" data-start="88.098000" id="word_223">nest</span> <span data-end="88.419000" data-start="88.359000" id="word_224">high</span> <span data-end="89.421000" data-start="88.479000" id="word_225">up</span> <span data-end="89.914000" data-start="89.654000" id="word_226">aloft</span> <img alt="Illustration 66 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="90.255000" data-start="90.014000" id="word_227">Now</span> <span data-end="90.695000" data-start="90.355000" id="word_228">three</span> <span data-end="91.016000" data-start="90.795000" id="word_229">friends</span> <span data-end="91.136000" data-start="91.056000" id="word_230">played</span> <span data-end="91.616000" data-start="91.236000" id="word_231">in</span> <span data-end="91.737000" data-start="91.676000" id="word_232">fields</span> <span data-end="92.157000" data-start="91.817000" id="word_233">of</span> <span data-end="92.858000" data-start="92.738000" id="word_234">green</span> <img alt="Illustration 67 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 68 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image6.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="93.419000" data-start="92.938000" id="word_235">The</span> <span data-end="93.779000" data-start="93.499000" id="word_236">happiest</span> <span data-end="93.999000" data-start="93.819000" id="word_237">friends</span> <span data-end="94.340000" data-start="94.179000" id="word_238">you've</span> <span data-end="94.680000" data-start="94.420000" id="word_239">ever</span> <span data-end="95.761000" data-start="95.621000" id="word_240">seen</span> <img alt="Illustration 69 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <br/> <span data-end="96.162000" data-start="95.821000" id="word_241">They</span> <span data-end="96.302000" data-start="96.222000" id="word_242">hopped</span> <span data-end="96.682000" data-start="96.402000" id="word_243">and</span> <span data-end="96.823000" data-start="96.743000" id="word_244">jumped</span> <span data-end="97.223000" data-start="96.963000" id="word_245">and</span> <span data-end="97.383000" data-start="97.263000" id="word_246">sang</span> <span data-end="97.804000" data-start="97.483000" id="word_247">with</span> <span data-end="98.645000" data-start="97.844000" id="word_248">glee</span> <img alt="Illustration 70 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="99.205000" data-start="98.805000" id="word_249">As</span> <span data-end="99.326000" data-start="99.266000" id="word_250">joyful</span> <span data-end="99.618" data-start="99.406" id="word_251">as</span> <span data-end="100.001" data-start="99.698" id="word_252">could</span> <span data-end="100.384" data-start="100.081" id="word_253">ever</span> <span data-end="100.676" data-start="100.464" id="word_254">be</span> <img alt="Illustration 71 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 72 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="100.968" data-start="100.756" id="word_255">I</span> <span data-end="101.351" data-start="101.048" id="word_256">understand</span> <span data-end="101.734" data-start="101.431" id="word_257">now</span> <img alt="Illustration 73 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <img alt="Illustration 74 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <span data-end="102.238" data-start="101.814" id="word_258">Milo</span> <span data-end="102.621" data-start="102.318" id="word_259">said</span> <img alt="Illustration 75 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 76 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image7.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="102.913" data-start="102.701" id="word_260">As</span> <span data-end="103.296" data-start="102.993" id="word_261">stars</span> <span data-end="103.679" data-start="103.376" id="word_262">appeared</span> <span data-end="104.062" data-start="103.759" id="word_263">overhead</span> <img alt="Illustration 77 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 78 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="104.445" data-start="104.142" id="word_264">When</span> <span data-end="104.828" data-start="104.525" id="word_265">you're</span> <span data-end="105.211" data-start="104.908" id="word_266">kind</span> <span data-end="105.503" data-start="105.291" id="word_267">and</span> <span data-end="105.886" data-start="105.583" id="word_268">when</span> <span data-end="106.178" data-start="105.966" id="word_269">you</span> <span data-end="106.561" data-start="106.258" id="word_270">share</span> <img alt="Illustration 79 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"> <br/> <span data-end="107.065" data-start="106.641" id="word_271">Friends</span> <span data-end="107.448" data-start="107.145" id="word_272">appear</span> <span data-end="107.831" data-start="107.528" id="word_273">from</span> <span data-end="108.335" data-start="107.911" id="word_274">everywhere</span> <img alt="Illustration 80 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <img alt="Illustration 81 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <span data-end="108.627" data-start="108.415" id="word_275">So</span> <span data-end="108.919" data-start="108.707" id="word_276">if</span> <span data-end="109.211" data-start="108.999" id="word_277">you</span> <span data-end="109.594" data-start="109.291" id="word_278">ever</span> <span data-end="109.977" data-start="109.674" id="word_279">feel</span> <span data-end="110.36" data-start="110.057" id="word_280">alone</span> <img alt="Illustration 82 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 83 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image8.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="110.864" data-start="110.44" id="word_281">Remember</span> <span data-end="111.247" data-start="110.944" id="word_282">little</span> <span data-end="111.751" data-start="111.327" id="word_283">Milo's</span> <span data-end="112.134" data-start="111.831" id="word_284">home</span> <img alt="Illustration 84 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="112.517" data-start="112.214" id="word_285">Reach</span> <span data-end="112.9" data-start="112.597" id="word_286">out</span> <span data-end="113.283" data-start="112.98" id="word_287">with</span> <span data-end="113.787" data-start="113.363" id="word_288">kindness</span> <img alt="Illustration 85 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="114.17" data-start="113.867" id="word_289">try</span> <span data-end="114.462" data-start="114.25" id="word_290">and</span> <span data-end="114.845" data-start="114.542" id="word_291">see</span> <img alt="Illustration 86 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="115.228" data-start="114.925" id="word_292">How</span> <span data-end="115.611" data-start="115.308" id="word_293">happy</span> <span data-end="115.994" data-start="115.691" id="word_294">friends</span> <span data-end="116.377" data-start="116.074" id="word_295">will</span> <span data-end="116.76" data-start="116.457" id="word_296">always</span> <span data-end="117.052" data-start="116.84" id="word_297">be</span> <img alt="Illustration 87 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"> <br/> <span data-end="117.435" data-start="117.132" id="word_298">The</span> <span data-end="117.939" data-start="117.515" id="word_299">End</span> <br/></img></img></img></img></img></img></img></div></div>
+<div class="audio-sticky-bottom">
+<div class="audio-box">
+<audio controls="" controlslist="nodownload" id="audio">
+<source src="milo-the-mouse/milo-the-mouse/milo-the-mouse-storyaudio.mp3" type="audio/mpeg"/>
+<source src="/milo-the-mouse/milo-the-mouse/milo-the-mouse-storyaudio.mp3" type="audio/mpeg"/>
+<source src="/milo-the-mouse/milo-the-mouse/milo-the-mouse-storyaudio.mp3" type="audio/mpeg"/>
+        Your browser does not support the audio element.
+      </audio>
+</div>
+</div>
+<script>
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8;
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script>
+<script>
+    document.querySelectorAll('nav > ul > li > a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const dropdown = this.parentElement.querySelector('.dropdown');
+        if (dropdown) {
+          e.preventDefault();
+          dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+      });
+    });
+    document.addEventListener('click', function(event) {
+      document.querySelectorAll('.dropdown').forEach(drop => {
+        if (!drop.contains(event.target) && !drop.parentElement.contains(event.target)) {
+          drop.style.display = 'none';
+        }
+      });
+    });
+  </script>
+<script>
+(function(){
+  const audio=document.getElementById("audio");
+  if(!audio) return;
+  const wordTimings=[{"id": 1, "start": 0.031, "end": 0.472}, {"id": 2, "start": 0.512, "end": 0.592}, {"id": 3, "start": 0.632, "end": 0.932}, {"id": 4, "start": 1.072, "end": 1.193}, {"id": 5, "start": 1.253, "end": 1.834}, {"id": 6, "start": 2.915, "end": 2.975}, {"id": 7, "start": 3.035, "end": 3.055}, {"id": 8, "start": 3.115, "end": 3.316}, {"id": 9, "start": 3.376, "end": 3.636}, {"id": 10, "start": 3.716, "end": 3.736}, {"id": 11, "start": 3.796, "end": 4.017}, {"id": 12, "start": 4.097, "end": 4.297}, {"id": 13, "start": 4.397, "end": 4.778}, {"id": 14, "start": 4.898, "end": 5.198}, {"id": 15, "start": 5.318, "end": 5.659}, {"id": 16, "start": 5.699, "end": 5.999}, {"id": 17, "start": 6.52, "end": 6.62}, {"id": 18, "start": 6.66, "end": 7.161}, {"id": 19, "start": 7.221, "end": 7.281}, {"id": 20, "start": 7.401, "end": 7.522}, {"id": 21, "start": 8.463, "end": 8.603}, {"id": 22, "start": 8.683, "end": 9.084}, {"id": 23, "start": 9.204, "end": 9.544}, {"id": 24, "start": 9.584, "end": 9.645}, {"id": 25, "start": 9.745, "end": 9.885}, {"id": 26, "start": 9.985, "end": 10.165}, {"id": 27, "start": 10.245, "end": 10.546}, {"id": 28, "start": 11.147, "end": 11.307}, {"id": 29, "start": 11.367, "end": 11.567}, {"id": 30, "start": 11.627, "end": 12.068}, {"id": 31, "start": 12.148, "end": 12.188}, {"id": 32, "start": 12.248, "end": 12.509}, {"id": 33, "start": 12.549, "end": 12.749}, {"id": 34, "start": 13.65, "end": 13.77}, {"id": 35, "start": 13.83, "end": 14.191}, {"id": 36, "start": 14.251, "end": 14.451}, {"id": 37, "start": 14.592, "end": 14.792}, {"id": 38, "start": 14.992, "end": 15.112}, {"id": 39, "start": 15.172, "end": 15.473}, {"id": 40, "start": 15.493, "end": 16.054}, {"id": 41, "start": 16.094, "end": 16.214}, {"id": 42, "start": 16.334, "end": 16.674}, {"id": 43, "start": 16.735, "end": 16.955}, {"id": 44, "start": 16.995, "end": 17.255}, {"id": 45, "start": 17.315, "end": 17.355}, {"id": 46, "start": 17.476, "end": 17.816}, {"id": 47, "start": 19.158, "end": 19.238}, {"id": 48, "start": 19.358, "end": 19.699}, {"id": 49, "start": 20.4, "end": 20.5}, {"id": 50, "start": 20.58, "end": 20.94}, {"id": 51, "start": 21.001, "end": 21.061}, {"id": 52, "start": 21.141, "end": 21.401}, {"id": 53, "start": 21.441, "end": 21.621}, {"id": 54, "start": 21.682, "end": 22.042}, {"id": 55, "start": 22.743, "end": 22.783}, {"id": 56, "start": 22.843, "end": 22.943}, {"id": 57, "start": 23.003, "end": 23.023}, {"id": 58, "start": 23.104, "end": 23.384}, {"id": 59, "start": 23.444, "end": 23.544}, {"id": 60, "start": 23.624, "end": 23.825}, {"id": 61, "start": 23.885, "end": 23.925}, {"id": 62, "start": 24.005, "end": 24.165}, {"id": 63, "start": 25.462, "end": 25.803}, {"id": 64, "start": 25.883, "end": 26.003}, {"id": 65, "start": 26.063, "end": 26.164}, {"id": 66, "start": 26.264, "end": 26.504}, {"id": 67, "start": 26.605, "end": 26.685}, {"id": 68, "start": 26.745, "end": 27.046}, {"id": 69, "start": 27.126, "end": 27.386}, {"id": 70, "start": 27.847, "end": 28.048}, {"id": 71, "start": 28.108, "end": 28.369}, {"id": 72, "start": 28.429, "end": 28.77}, {"id": 73, "start": 28.83, "end": 28.99}, {"id": 74, "start": 29.11, "end": 29.431}, {"id": 75, "start": 29.551, "end": 29.632}, {"id": 76, "start": 29.772, "end": 30.053}, {"id": 77, "start": 30.874, "end": 31.155}, {"id": 78, "start": 31.255, "end": 31.576}, {"id": 79, "start": 31.656, "end": 31.736}, {"id": 80, "start": 31.797, "end": 32.258}, {"id": 81, "start": 32.799, "end": 33.12}, {"id": 82, "start": 33.26, "end": 33.34}, {"id": 83, "start": 33.42, "end": 33.621}, {"id": 84, "start": 33.661, "end": 34.603}, {"id": 85, "start": 34.703, "end": 34.723}, {"id": 86, "start": 34.803, "end": 35.104}, {"id": 87, "start": 35.164, "end": 35.204}, {"id": 88, "start": 35.325, "end": 35.706}, {"id": 89, "start": 35.786, "end": 36.066}, {"id": 90, "start": 36.086, "end": 37.129}, {"id": 91, "start": 37.189, "end": 37.409}, {"id": 92, "start": 37.47, "end": 37.57}, {"id": 93, "start": 37.63, "end": 37.77}, {"id": 94, "start": 37.81, "end": 37.83}, {"id": 95, "start": 37.87, "end": 38.131}, {"id": 96, "start": 38.251, "end": 38.632}, {"id": 97, "start": 39.073, "end": 39.194}, {"id": 98, "start": 39.254, "end": 39.454}, {"id": 99, "start": 39.514, "end": 39.895}, {"id": 100, "start": 39.955, "end": 40.035}, {"id": 101, "start": 40.076, "end": 40.356}, {"id": 102, "start": 40.396, "end": 40.737}, {"id": 103, "start": 41.999, "end": 42.119}, {"id": 104, "start": 42.139, "end": 42.38}, {"id": 105, "start": 42.48, "end": 42.84}, {"id": 106, "start": 43.802, "end": 43.922}, {"id": 107, "start": 44.002, "end": 44.243}, {"id": 108, "start": 44.283, "end": 44.583}, {"id": 109, "start": 44.603, "end": 44.623}, {"id": 110, "start": 45.365, "end": 45.485}, {"id": 111, "start": 45.565, "end": 45.685}, {"id": 112, "start": 45.765, "end": 45.846}, {"id": 113, "start": 45.886, "end": 45.986}, {"id": 114, "start": 46.026, "end": 46.166}, {"id": 115, "start": 46.226, "end": 46.286}, {"id": 116, "start": 46.326, "end": 46.587}, {"id": 117, "start": 47.328, "end": 47.488}, {"id": 118, "start": 47.568, "end": 47.889}, {"id": 119, "start": 47.929, "end": 48.049}, {"id": 120, "start": 48.089, "end": 48.109}, {"id": 121, "start": 48.17, "end": 48.47}, {"id": 122, "start": 48.51, "end": 48.871}, {"id": 123, "start": 49.812, "end": 50.013}, {"id": 124, "start": 50.053, "end": 50.193}, {"id": 125, "start": 50.213, "end": 50.534}, {"id": 126, "start": 50.574, "end": 50.714}, {"id": 127, "start": 50.774, "end": 50.794}, {"id": 128, "start": 50.834, "end": 51.115}, {"id": 129, "start": 51.155, "end": 51.896}, {"id": 130, "start": 51.936, "end": 52.056}, {"id": 131, "start": 52.096, "end": 52.236}, {"id": 132, "start": 52.297, "end": 52.697}, {"id": 133, "start": 53.078, "end": 53.258}, {"id": 134, "start": 53.318, "end": 53.398}, {"id": 135, "start": 53.499, "end": 53.799}, {"id": 136, "start": 54.3, "end": 54.62}, {"id": 137, "start": 54.661, "end": 54.821}, {"id": 138, "start": 54.881, "end": 55.001}, {"id": 139, "start": 55.041, "end": 55.181}, {"id": 140, "start": 55.262, "end": 55.322}, {"id": 141, "start": 55.342, "end": 55.642}, {"id": 142, "start": 56.804, "end": 56.884}, {"id": 143, "start": 56.944, "end": 57.225}, {"id": 144, "start": 57.345, "end": 57.485}, {"id": 145, "start": 57.545, "end": 57.806}, {"id": 146, "start": 57.846, "end": 57.906}, {"id": 147, "start": 57.966, "end": 58.267}, {"id": 148, "start": 58.307, "end": 59.188}, {"id": 149, "start": 59.288, "end": 59.549}, {"id": 150, "start": 59.609, "end": 59.649}, {"id": 151, "start": 59.689, "end": 59.829}, {"id": 152, "start": 60.47, "end": 60.611}, {"id": 153, "start": 60.711, "end": 60.951}, {"id": 154, "start": 61.031, "end": 61.352}, {"id": 155, "start": 61.392, "end": 62.334}, {"id": 156, "start": 62.394, "end": 62.594}, {"id": 157, "start": 62.634, "end": 62.774}, {"id": 158, "start": 62.814, "end": 63.015}, {"id": 159, "start": 63.075, "end": 63.195}, {"id": 160, "start": 63.295, "end": 63.415}, {"id": 161, "start": 63.476, "end": 63.636}, {"id": 162, "start": 63.736, "end": 63.956}, {"id": 163, "start": 63.996, "end": 64.858}, {"id": 164, "start": 64.898, "end": 65.058}, {"id": 165, "start": 65.098, "end": 65.158}, {"id": 166, "start": 65.198, "end": 65.319}, {"id": 167, "start": 65.359, "end": 65.399}, {"id": 168, "start": 65.479, "end": 65.699}, {"id": 169, "start": 65.739, "end": 65.82}, {"id": 170, "start": 65.86, "end": 66.1}, {"id": 171, "start": 67.177, "end": 67.357}, {"id": 172, "start": 67.417, "end": 67.758}, {"id": 173, "start": 67.918, "end": 68.019}, {"id": 174, "start": 68.439, "end": 68.54}, {"id": 175, "start": 68.6, "end": 68.78}, {"id": 176, "start": 68.82, "end": 68.84}, {"id": 177, "start": 68.9, "end": 69.201}, {"id": 178, "start": 69.963, "end": 70.063}, {"id": 179, "start": 70.123, "end": 70.544}, {"id": 180, "start": 70.604, "end": 70.985}, {"id": 181, "start": 71.045, "end": 71.205}, {"id": 182, "start": 71.385, "end": 71.566}, {"id": 183, "start": 71.626, "end": 71.866}, {"id": 184, "start": 73.389, "end": 73.489}, {"id": 185, "start": 73.57, "end": 73.81}, {"id": 186, "start": 73.87, "end": 74.051}, {"id": 187, "start": 74.091, "end": 74.351}, {"id": 188, "start": 74.411, "end": 74.972}, {"id": 189, "start": 75.013, "end": 75.133}, {"id": 190, "start": 75.213, "end": 75.514}, {"id": 191, "start": 75.574, "end": 75.954}, {"id": 192, "start": 75.994, "end": 76.255}, {"id": 193, "start": 76.335, "end": 76.556}, {"id": 194, "start": 76.596, "end": 76.636}, {"id": 195, "start": 76.716, "end": 76.776}, {"id": 196, "start": 76.816, "end": 76.916}, {"id": 197, "start": 77.037, "end": 77.157}, {"id": 198, "start": 77.197, "end": 78.539}, {"id": 199, "start": 78.58, "end": 78.76}, {"id": 200, "start": 78.84, "end": 79.02}, {"id": 201, "start": 79.081, "end": 80.123}, {"id": 202, "start": 80.203, "end": 80.523}, {"id": 203, "start": 80.564, "end": 80.664}, {"id": 204, "start": 80.764, "end": 81.044}, {"id": 205, "start": 81.525, "end": 81.726}, {"id": 206, "start": 81.766, "end": 81.866}, {"id": 207, "start": 81.946, "end": 82.207}, {"id": 208, "start": 82.267, "end": 82.367}, {"id": 209, "start": 82.487, "end": 82.748}, {"id": 210, "start": 82.808, "end": 82.988}, {"id": 211, "start": 83.028, "end": 83.249}, {"id": 212, "start": 83.289, "end": 84.612}, {"id": 213, "start": 84.652, "end": 85.012}, {"id": 214, "start": 85.092, "end": 85.533}, {"id": 215, "start": 85.614, "end": 85.694}, {"id": 216, "start": 85.734, "end": 86.034}, {"id": 217, "start": 86.114, "end": 86.275}, {"id": 218, "start": 86.355, "end": 86.696}, {"id": 219, "start": 87.237, "end": 87.317}, {"id": 220, "start": 87.357, "end": 87.537}, {"id": 221, "start": 87.617, "end": 87.638}, {"id": 222, "start": 87.738, "end": 88.018}, {"id": 223, "start": 88.098, "end": 88.299}, {"id": 224, "start": 88.359, "end": 88.419}, {"id": 225, "start": 88.479, "end": 89.421}, {"id": 226, "start": 89.654, "end": 89.914}, {"id": 227, "start": 90.014, "end": 90.255}, {"id": 228, "start": 90.355, "end": 90.695}, {"id": 229, "start": 90.795, "end": 91.016}, {"id": 230, "start": 91.056, "end": 91.136}, {"id": 231, "start": 91.236, "end": 91.616}, {"id": 232, "start": 91.676, "end": 91.737}, {"id": 233, "start": 91.817, "end": 92.157}, {"id": 234, "start": 92.738, "end": 92.858}, {"id": 235, "start": 92.938, "end": 93.419}, {"id": 236, "start": 93.499, "end": 93.779}, {"id": 237, "start": 93.819, "end": 93.999}, {"id": 238, "start": 94.179, "end": 94.34}, {"id": 239, "start": 94.42, "end": 94.68}, {"id": 240, "start": 95.621, "end": 95.761}, {"id": 241, "start": 95.821, "end": 96.162}, {"id": 242, "start": 96.222, "end": 96.302}, {"id": 243, "start": 96.402, "end": 96.682}, {"id": 244, "start": 96.743, "end": 96.823}, {"id": 245, "start": 96.963, "end": 97.223}, {"id": 246, "start": 97.263, "end": 97.383}, {"id": 247, "start": 97.483, "end": 97.804}, {"id": 248, "start": 97.844, "end": 98.645}, {"id": 249, "start": 98.805, "end": 99.205}, {"id": 250, "start": 99.266, "end": 99.326}, {"id": 251, "start": 99.406, "end": 99.618}, {"id": 252, "start": 99.698, "end": 100.001}, {"id": 253, "start": 100.081, "end": 100.384}, {"id": 254, "start": 100.464, "end": 100.676}, {"id": 255, "start": 100.756, "end": 100.968}, {"id": 256, "start": 101.048, "end": 101.351}, {"id": 257, "start": 101.431, "end": 101.734}, {"id": 258, "start": 101.814, "end": 102.238}, {"id": 259, "start": 102.318, "end": 102.621}, {"id": 260, "start": 102.701, "end": 102.913}, {"id": 261, "start": 102.993, "end": 103.296}, {"id": 262, "start": 103.376, "end": 103.679}, {"id": 263, "start": 103.759, "end": 104.062}, {"id": 264, "start": 104.142, "end": 104.445}, {"id": 265, "start": 104.525, "end": 104.828}, {"id": 266, "start": 104.908, "end": 105.211}, {"id": 267, "start": 105.291, "end": 105.503}, {"id": 268, "start": 105.583, "end": 105.886}, {"id": 269, "start": 105.966, "end": 106.178}, {"id": 270, "start": 106.258, "end": 106.561}, {"id": 271, "start": 106.641, "end": 107.065}, {"id": 272, "start": 107.145, "end": 107.448}, {"id": 273, "start": 107.528, "end": 107.831}, {"id": 274, "start": 107.911, "end": 108.335}, {"id": 275, "start": 108.415, "end": 108.627}, {"id": 276, "start": 108.707, "end": 108.919}, {"id": 277, "start": 108.999, "end": 109.211}, {"id": 278, "start": 109.291, "end": 109.594}, {"id": 279, "start": 109.674, "end": 109.977}, {"id": 280, "start": 110.057, "end": 110.36}, {"id": 281, "start": 110.44, "end": 110.864}, {"id": 282, "start": 110.944, "end": 111.247}, {"id": 283, "start": 111.327, "end": 111.751}, {"id": 284, "start": 111.831, "end": 112.134}, {"id": 285, "start": 112.214, "end": 112.517}, {"id": 286, "start": 112.597, "end": 112.9}, {"id": 287, "start": 112.98, "end": 113.283}, {"id": 288, "start": 113.363, "end": 113.787}, {"id": 289, "start": 113.867, "end": 114.17}, {"id": 290, "start": 114.25, "end": 114.462}, {"id": 291, "start": 114.542, "end": 114.845}, {"id": 292, "start": 114.925, "end": 115.228}, {"id": 293, "start": 115.308, "end": 115.611}, {"id": 294, "start": 115.691, "end": 115.994}, {"id": 295, "start": 116.074, "end": 116.377}, {"id": 296, "start": 116.457, "end": 116.76}, {"id": 297, "start": 116.84, "end": 117.052}, {"id": 298, "start": 117.132, "end": 117.435}, {"id": 299, "start": 117.515, "end": 117.939}];
+  function redraw(t){
+    let prev=-1, next=wordTimings.length, active=new Set();
+    for(let i=0;i<wordTimings.length;i++){
+      const w=wordTimings[i];
+      if(t>=w.start && t<=w.end) active.add(w.id);
+      if(w.end < t) prev=i;
+      if(w.start > t && next===wordTimings.length) next=i;
+    }
+    if(active.size===0 && prev>=0 && next<wordTimings.length && prev+1<next){
+      for(let i=prev+1;i<next;i++) active.add(wordTimings[i].id);
+    }
+    for(const w of wordTimings){
+      const el=document.getElementById("word_"+w.id);
+      if(el) el.classList.toggle("glow", active.has(w.id));
+    }
+  }
+  audio.addEventListener("timeupdate", ()=>redraw(audio.currentTime));
+})();
+</script>
+<!-- SB_AUTOPLAY_V1 START -->
+<script>
+(function(){
+  // Unmuted-only autoplay:
+  // 1) Try to play unmuted on load.
+  // 2) If blocked by policy, wait for first user gesture, then unmute+play.
+  function resolveAudio(){
+    let a = document.getElementById('audio');
+    if (!a) a = document.querySelector('audio');
+    return a;
+  }
+  function ensureSrc(a){
+    try {
+      if (!a.querySelector('source') && !a.getAttribute('src')) {
+        a.setAttribute('/milo-the-mouse/milo-the-mouse/milo-the-mouse-storyaudio.mp3');
+      }
+    } catch(e) {}
+  }
+  function tryPlayUnmuted(){
+    const a = resolveAudio();
+    if (!a) return;
+    try { a.muted = false; a.removeAttribute('muted'); } catch(e) {}
+    a.setAttribute('preload','auto');
+    a.setAttribute('playsinline','');
+    a.autoplay = true;
+    ensureSrc(a);
+    const p = a.play();
+    if (p && typeof p.catch === 'function') {
+      p.catch(() => { /* Autoplay blocked; wait for gesture */ });
+    }
+  }
+  function onFirstUserGesture(){
+    const a = resolveAudio();
+    if (a) {
+      try { a.muted = false; a.removeAttribute('muted'); } catch(e) {}
+      if (a.paused) a.play().catch(()=>{});
+    }
+    cleanupUserGesture();
+  }
+  function cleanupUserGesture(){
+    ['click','touchstart','pointerdown','keydown','mousedown'].forEach(ev =>
+      window.removeEventListener(ev, onFirstUserGesture, {capture:true})
+    );
+    document.removeEventListener('visibilitychange', onVis);
+  }
+  function onVis(){
+    if (document.visibilityState === 'visible') tryPlayUnmuted();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', tryPlayUnmuted, {once:true});
+  } else {
+    tryPlayUnmuted();
+  }
+
+  // Fallback: first interaction or tab refocus
+  ['click','touchstart','pointerdown','keydown','mousedown'].forEach(ev =>
+    window.addEventListener(ev, onFirstUserGesture, {capture:true, passive:true})
+  );
+  document.addEventListener('visibilitychange', onVis);
+})();
+</script>
+<!-- SB_AUTOPLAY_V1 END -->
+<script id="sb_wordtimings_inline_v1">window.words_flat = [{"id": 1, "start": 0.031, "end": 0.472, "word": "Milo"}, {"id": 2, "start": 0.512, "end": 0.592, "word": "the"}, {"id": 3, "start": 0.632, "end": 0.932, "word": "Mouse"}, {"id": 4, "start": 1.072, "end": 1.193, "word": "by"}, {"id": 5, "start": 1.253, "end": 1.834, "word": "Storybell."}, {"id": 6, "start": 2.915, "end": 2.975, "word": "In"}, {"id": 7, "start": 3.035, "end": 3.055, "word": "a"}, {"id": 8, "start": 3.115, "end": 3.316, "word": "nook"}, {"id": 9, "start": 3.376, "end": 3.636, "word": "beneath"}, {"id": 10, "start": 3.716, "end": 3.736, "word": "a"}, {"id": 11, "start": 3.796, "end": 4.017, "word": "tree"}, {"id": 12, "start": 4.097, "end": 4.297, "word": "so"}, {"id": 13, "start": 4.397, "end": 4.778, "word": "small"}, {"id": 14, "start": 4.898, "end": 5.198, "word": "lived"}, {"id": 15, "start": 5.318, "end": 5.659, "word": "Milo"}, {"id": 16, "start": 5.699, "end": 5.999, "word": "Mouse,"}, {"id": 17, "start": 6.52, "end": 6.62, "word": "the"}, {"id": 18, "start": 6.66, "end": 7.161, "word": "tiniest"}, {"id": 19, "start": 7.221, "end": 7.281, "word": "of"}, {"id": 20, "start": 7.401, "end": 7.522, "word": "all."}, {"id": 21, "start": 8.463, "end": 8.603, "word": "With"}, {"id": 22, "start": 8.683, "end": 9.084, "word": "whiskers"}, {"id": 23, "start": 9.204, "end": 9.544, "word": "soft"}, {"id": 24, "start": 9.584, "end": 9.645, "word": "and"}, {"id": 25, "start": 9.745, "end": 9.885, "word": "eyes"}, {"id": 26, "start": 9.985, "end": 10.165, "word": "so"}, {"id": 27, "start": 10.245, "end": 10.546, "word": "bright,"}, {"id": 28, "start": 11.147, "end": 11.307, "word": "he'd"}, {"id": 29, "start": 11.367, "end": 11.567, "word": "peek"}, {"id": 30, "start": 11.627, "end": 12.068, "word": "outside"}, {"id": 31, "start": 12.148, "end": 12.188, "word": "at"}, {"id": 32, "start": 12.248, "end": 12.509, "word": "morning"}, {"id": 33, "start": 12.549, "end": 12.749, "word": "light."}, {"id": 34, "start": 13.65, "end": 13.77, "word": "But"}, {"id": 35, "start": 13.83, "end": 14.191, "word": "Milo"}, {"id": 36, "start": 14.251, "end": 14.451, "word": "felt"}, {"id": 37, "start": 14.592, "end": 14.792, "word": "so"}, {"id": 38, "start": 14.992, "end": 15.112, "word": "all"}, {"id": 39, "start": 15.172, "end": 15.473, "word": "alone"}, {"id": 40, "start": 15.493, "end": 16.054, "word": "in"}, {"id": 41, "start": 16.094, "end": 16.214, "word": "his"}, {"id": 42, "start": 16.334, "end": 16.674, "word": "quiet"}, {"id": 43, "start": 16.735, "end": 16.955, "word": "little"}, {"id": 44, "start": 16.995, "end": 17.255, "word": "home"}, {"id": 45, "start": 17.315, "end": 17.355, "word": "of"}, {"id": 46, "start": 17.476, "end": 17.816, "word": "stone."}, {"id": 47, "start": 19.158, "end": 19.238, "word": "I"}, {"id": 48, "start": 19.358, "end": 19.699, "word": "wish,"}, {"id": 49, "start": 20.4, "end": 20.5, "word": "he"}, {"id": 50, "start": 20.58, "end": 20.94, "word": "squeaked"}, {"id": 51, "start": 21.001, "end": 21.061, "word": "in"}, {"id": 52, "start": 21.141, "end": 21.401, "word": "voice"}, {"id": 53, "start": 21.441, "end": 21.621, "word": "so"}, {"id": 54, "start": 21.682, "end": 22.042, "word": "small,"}, {"id": 55, "start": 22.743, "end": 22.783, "word": "I"}, {"id": 56, "start": 22.843, "end": 22.943, "word": "had"}, {"id": 57, "start": 23.003, "end": 23.023, "word": "a"}, {"id": 58, "start": 23.104, "end": 23.384, "word": "friend"}, {"id": 59, "start": 23.444, "end": 23.544, "word": "to"}, {"id": 60, "start": 23.624, "end": 23.825, "word": "share"}, {"id": 61, "start": 23.885, "end": 23.925, "word": "it"}, {"id": 62, "start": 24.005, "end": 24.165, "word": "all."}, {"id": 63, "start": 25.462, "end": 25.803, "word": "So"}, {"id": 64, "start": 25.883, "end": 26.003, "word": "out"}, {"id": 65, "start": 26.063, "end": 26.164, "word": "he"}, {"id": 66, "start": 26.264, "end": 26.504, "word": "crept"}, {"id": 67, "start": 26.605, "end": 26.685, "word": "on"}, {"id": 68, "start": 26.745, "end": 27.046, "word": "tiny"}, {"id": 69, "start": 27.126, "end": 27.386, "word": "feet,"}, {"id": 70, "start": 27.847, "end": 28.048, "word": "through"}, {"id": 71, "start": 28.108, "end": 28.369, "word": "dewy"}, {"id": 72, "start": 28.429, "end": 28.77, "word": "grass"}, {"id": 73, "start": 28.83, "end": 28.99, "word": "so"}, {"id": 74, "start": 29.11, "end": 29.431, "word": "cool"}, {"id": 75, "start": 29.551, "end": 29.632, "word": "and"}, {"id": 76, "start": 29.772, "end": 30.053, "word": "sweet."}, {"id": 77, "start": 30.874, "end": 31.155, "word": "Past"}, {"id": 78, "start": 31.255, "end": 31.576, "word": "ferns"}, {"id": 79, "start": 31.656, "end": 31.736, "word": "and"}, {"id": 80, "start": 31.797, "end": 32.258, "word": "flowers,"}, {"id": 81, "start": 32.799, "end": 33.12, "word": "bright"}, {"id": 82, "start": 33.26, "end": 33.34, "word": "and"}, {"id": 83, "start": 33.42, "end": 33.621, "word": "new,"}, {"id": 84, "start": 33.661, "end": 34.603, "word": "beneath"}, {"id": 85, "start": 34.703, "end": 34.723, "word": "a"}, {"id": 86, "start": 34.803, "end": 35.104, "word": "sky"}, {"id": 87, "start": 35.164, "end": 35.204, "word": "of"}, {"id": 88, "start": 35.325, "end": 35.706, "word": "clearest"}, {"id": 89, "start": 35.786, "end": 36.066, "word": "blue."}, {"id": 90, "start": 36.086, "end": 37.129, "word": "And"}, {"id": 91, "start": 37.189, "end": 37.409, "word": "there"}, {"id": 92, "start": 37.47, "end": 37.57, "word": "he"}, {"id": 93, "start": 37.63, "end": 37.77, "word": "met"}, {"id": 94, "start": 37.81, "end": 37.83, "word": "a"}, {"id": 95, "start": 37.87, "end": 38.131, "word": "bunny"}, {"id": 96, "start": 38.251, "end": 38.632, "word": "small,"}, {"id": 97, "start": 39.073, "end": 39.194, "word": "who"}, {"id": 98, "start": 39.254, "end": 39.454, "word": "sat"}, {"id": 99, "start": 39.514, "end": 39.895, "word": "beside"}, {"id": 100, "start": 39.955, "end": 40.035, "word": "the"}, {"id": 101, "start": 40.076, "end": 40.356, "word": "garden"}, {"id": 102, "start": 40.396, "end": 40.737, "word": "wall."}, {"id": 103, "start": 41.999, "end": 42.119, "word": "The"}, {"id": 104, "start": 42.139, "end": 42.38, "word": "bunny"}, {"id": 105, "start": 42.48, "end": 42.84, "word": "sighed,"}, {"id": 106, "start": 43.802, "end": 43.922, "word": "I'm"}, {"id": 107, "start": 44.002, "end": 44.243, "word": "sad"}, {"id": 108, "start": 44.283, "end": 44.583, "word": "today."}, {"id": 109, "start": 44.603, "end": 44.623, "word": "I"}, {"id": 110, "start": 45.365, "end": 45.485, "word": "have"}, {"id": 111, "start": 45.565, "end": 45.685, "word": "no"}, {"id": 112, "start": 45.765, "end": 45.846, "word": "one"}, {"id": 113, "start": 45.886, "end": 45.986, "word": "with"}, {"id": 114, "start": 46.026, "end": 46.166, "word": "whom"}, {"id": 115, "start": 46.226, "end": 46.286, "word": "to"}, {"id": 116, "start": 46.326, "end": 46.587, "word": "play,"}, {"id": 117, "start": 47.328, "end": 47.488, "word": "said"}, {"id": 118, "start": 47.568, "end": 47.889, "word": "Milo"}, {"id": 119, "start": 47.929, "end": 48.049, "word": "with"}, {"id": 120, "start": 48.089, "end": 48.109, "word": "a"}, {"id": 121, "start": 48.17, "end": 48.47, "word": "gentle"}, {"id": 122, "start": 48.51, "end": 48.871, "word": "smile."}, {"id": 123, "start": 49.812, "end": 50.013, "word": "Let's"}, {"id": 124, "start": 50.053, "end": 50.193, "word": "sit"}, {"id": 125, "start": 50.213, "end": 50.534, "word": "together"}, {"id": 126, "start": 50.574, "end": 50.714, "word": "for"}, {"id": 127, "start": 50.774, "end": 50.794, "word": "a"}, {"id": 128, "start": 50.834, "end": 51.115, "word": "while."}, {"id": 129, "start": 51.155, "end": 51.896, "word": "I"}, {"id": 130, "start": 51.936, "end": 52.056, "word": "have"}, {"id": 131, "start": 52.096, "end": 52.236, "word": "some"}, {"id": 132, "start": 52.297, "end": 52.697, "word": "berries,"}, {"id": 133, "start": 53.078, "end": 53.258, "word": "red"}, {"id": 134, "start": 53.318, "end": 53.398, "word": "and"}, {"id": 135, "start": 53.499, "end": 53.799, "word": "sweet."}, {"id": 136, "start": 54.3, "end": 54.62, "word": "Sharing"}, {"id": 137, "start": 54.661, "end": 54.821, "word": "makes"}, {"id": 138, "start": 54.881, "end": 55.001, "word": "them"}, {"id": 139, "start": 55.041, "end": 55.181, "word": "more"}, {"id": 140, "start": 55.262, "end": 55.322, "word": "a"}, {"id": 141, "start": 55.342, "end": 55.642, "word": "treat."}, {"id": 142, "start": 56.804, "end": 56.884, "word": "The"}, {"id": 143, "start": 56.944, "end": 57.225, "word": "bunny's"}, {"id": 144, "start": 57.345, "end": 57.485, "word": "eyes"}, {"id": 145, "start": 57.545, "end": 57.806, "word": "began"}, {"id": 146, "start": 57.846, "end": 57.906, "word": "to"}, {"id": 147, "start": 57.966, "end": 58.267, "word": "shine."}, {"id": 148, "start": 58.307, "end": 59.188, "word": "How"}, {"id": 149, "start": 59.288, "end": 59.549, "word": "kind"}, {"id": 150, "start": 59.609, "end": 59.649, "word": "of"}, {"id": 151, "start": 59.689, "end": 59.829, "word": "you,"}, {"id": 152, "start": 60.47, "end": 60.611, "word": "how"}, {"id": 153, "start": 60.711, "end": 60.951, "word": "very"}, {"id": 154, "start": 61.031, "end": 61.352, "word": "fine."}, {"id": 155, "start": 61.392, "end": 62.334, "word": "To"}, {"id": 156, "start": 62.394, "end": 62.594, "word": "share"}, {"id": 157, "start": 62.634, "end": 62.774, "word": "your"}, {"id": 158, "start": 62.814, "end": 63.015, "word": "food"}, {"id": 159, "start": 63.075, "end": 63.195, "word": "with"}, {"id": 160, "start": 63.295, "end": 63.415, "word": "one"}, {"id": 161, "start": 63.476, "end": 63.636, "word": "so"}, {"id": 162, "start": 63.736, "end": 63.956, "word": "new,"}, {"id": 163, "start": 63.996, "end": 64.858, "word": "I'd"}, {"id": 164, "start": 64.898, "end": 65.058, "word": "like"}, {"id": 165, "start": 65.098, "end": 65.158, "word": "to"}, {"id": 166, "start": 65.198, "end": 65.319, "word": "be"}, {"id": 167, "start": 65.359, "end": 65.399, "word": "a"}, {"id": 168, "start": 65.479, "end": 65.699, "word": "friend"}, {"id": 169, "start": 65.739, "end": 65.82, "word": "to"}, {"id": 170, "start": 65.86, "end": 66.1, "word": "you."}, {"id": 171, "start": 67.177, "end": 67.357, "word": "Then"}, {"id": 172, "start": 67.417, "end": 67.758, "word": "walking"}, {"id": 173, "start": 67.918, "end": 68.019, "word": "on,"}, {"id": 174, "start": 68.439, "end": 68.54, "word": "they"}, {"id": 175, "start": 68.6, "end": 68.78, "word": "saw"}, {"id": 176, "start": 68.82, "end": 68.84, "word": "a"}, {"id": 177, "start": 68.9, "end": 69.201, "word": "bird,"}, {"id": 178, "start": 69.963, "end": 70.063, "word": "the"}, {"id": 179, "start": 70.123, "end": 70.544, "word": "smallest"}, {"id": 180, "start": 70.604, "end": 70.985, "word": "bluebird"}, {"id": 181, "start": 71.045, "end": 71.205, "word": "they'd"}, {"id": 182, "start": 71.385, "end": 71.566, "word": "ever"}, {"id": 183, "start": 71.626, "end": 71.866, "word": "heard."}, {"id": 184, "start": 73.389, "end": 73.489, "word": "My"}, {"id": 185, "start": 73.57, "end": 73.81, "word": "nest"}, {"id": 186, "start": 73.87, "end": 74.051, "word": "fell"}, {"id": 187, "start": 74.091, "end": 74.351, "word": "down,"}, {"id": 188, "start": 74.411, "end": 74.972, "word": "I'm"}, {"id": 189, "start": 75.013, "end": 75.133, "word": "all"}, {"id": 190, "start": 75.213, "end": 75.514, "word": "alone,"}, {"id": 191, "start": 75.574, "end": 75.954, "word": "I"}, {"id": 192, "start": 75.994, "end": 76.255, "word": "cannot"}, {"id": 193, "start": 76.335, "end": 76.556, "word": "build"}, {"id": 194, "start": 76.596, "end": 76.636, "word": "it"}, {"id": 195, "start": 76.716, "end": 76.776, "word": "on"}, {"id": 196, "start": 76.816, "end": 76.916, "word": "my"}, {"id": 197, "start": 77.037, "end": 77.157, "word": "own."}, {"id": 198, "start": 77.197, "end": 78.539, "word": "We'll"}, {"id": 199, "start": 78.58, "end": 78.76, "word": "help"}, {"id": 200, "start": 78.84, "end": 79.02, "word": "you,"}, {"id": 201, "start": 79.081, "end": 80.123, "word": "Milo"}, {"id": 202, "start": 80.203, "end": 80.523, "word": "squeaked"}, {"id": 203, "start": 80.564, "end": 80.664, "word": "with"}, {"id": 204, "start": 80.764, "end": 81.044, "word": "cheer."}, {"id": 205, "start": 81.525, "end": 81.726, "word": "That's"}, {"id": 206, "start": 81.766, "end": 81.866, "word": "what"}, {"id": 207, "start": 81.946, "end": 82.207, "word": "friends"}, {"id": 208, "start": 82.267, "end": 82.367, "word": "are"}, {"id": 209, "start": 82.487, "end": 82.748, "word": "for,"}, {"id": 210, "start": 82.808, "end": 82.988, "word": "my"}, {"id": 211, "start": 83.028, "end": 83.249, "word": "dear."}, {"id": 212, "start": 83.289, "end": 84.612, "word": "They"}, {"id": 213, "start": 84.652, "end": 85.012, "word": "gathered"}, {"id": 214, "start": 85.092, "end": 85.533, "word": "twigs"}, {"id": 215, "start": 85.614, "end": 85.694, "word": "and"}, {"id": 216, "start": 85.734, "end": 86.034, "word": "moss"}, {"id": 217, "start": 86.114, "end": 86.275, "word": "so"}, {"id": 218, "start": 86.355, "end": 86.696, "word": "soft"}, {"id": 219, "start": 87.237, "end": 87.317, "word": "and"}, {"id": 220, "start": 87.357, "end": 87.537, "word": "built"}, {"id": 221, "start": 87.617, "end": 87.638, "word": "a"}, {"id": 222, "start": 87.738, "end": 88.018, "word": "nest"}, {"id": 223, "start": 88.098, "end": 88.299, "word": "high"}, {"id": 224, "start": 88.359, "end": 88.419, "word": "up"}, {"id": 225, "start": 88.479, "end": 89.421, "word": "aloft."}, {"id": 226, "start": 89.654, "end": 89.914, "word": "Now"}, {"id": 227, "start": 90.014, "end": 90.255, "word": "three"}, {"id": 228, "start": 90.355, "end": 90.695, "word": "friends"}, {"id": 229, "start": 90.795, "end": 91.016, "word": "played"}, {"id": 230, "start": 91.056, "end": 91.136, "word": "in"}, {"id": 231, "start": 91.236, "end": 91.616, "word": "fields"}, {"id": 232, "start": 91.676, "end": 91.737, "word": "of"}, {"id": 233, "start": 91.817, "end": 92.157, "word": "green,"}, {"id": 234, "start": 92.738, "end": 92.858, "word": "the"}, {"id": 235, "start": 92.938, "end": 93.419, "word": "happiest"}, {"id": 236, "start": 93.499, "end": 93.779, "word": "friends"}, {"id": 237, "start": 93.819, "end": 93.999, "word": "you've"}, {"id": 238, "start": 94.179, "end": 94.34, "word": "ever"}, {"id": 239, "start": 94.42, "end": 94.68, "word": "seen."}, {"id": 240, "start": 95.621, "end": 95.761, "word": "They"}, {"id": 241, "start": 95.821, "end": 96.162, "word": "hopped"}, {"id": 242, "start": 96.222, "end": 96.302, "word": "and"}, {"id": 243, "start": 96.402, "end": 96.682, "word": "jumped"}, {"id": 244, "start": 96.743, "end": 96.823, "word": "and"}, {"id": 245, "start": 96.963, "end": 97.223, "word": "sang"}, {"id": 246, "start": 97.263, "end": 97.383, "word": "with"}, {"id": 247, "start": 97.483, "end": 97.804, "word": "glee,"}, {"id": 248, "start": 97.844, "end": 98.645, "word": "as"}, {"id": 249, "start": 98.805, "end": 99.205, "word": "joyful"}, {"id": 250, "start": 99.266, "end": 99.326, "word": "as"}, {"id": 251, "word": "as", "start": 99.406, "end": 99.618}, {"id": 252, "word": "could", "start": 99.698, "end": 100.001}, {"id": 253, "word": "ever", "start": 100.081, "end": 100.384}, {"id": 254, "word": "be", "start": 100.464, "end": 100.676}, {"id": 255, "word": "I", "start": 100.756, "end": 100.968}, {"id": 256, "word": "understand", "start": 101.048, "end": 101.351}, {"id": 257, "word": "now", "start": 101.431, "end": 101.734}, {"id": 258, "word": "Milo", "start": 101.814, "end": 102.238}, {"id": 259, "word": "said", "start": 102.318, "end": 102.621}, {"id": 260, "word": "As", "start": 102.701, "end": 102.913}, {"id": 261, "word": "stars", "start": 102.993, "end": 103.296}, {"id": 262, "word": "appeared", "start": 103.376, "end": 103.679}, {"id": 263, "word": "overhead", "start": 103.759, "end": 104.062}, {"id": 264, "word": "When", "start": 104.142, "end": 104.445}, {"id": 265, "word": "you're", "start": 104.525, "end": 104.828}, {"id": 266, "word": "kind", "start": 104.908, "end": 105.211}, {"id": 267, "word": "and", "start": 105.291, "end": 105.503}, {"id": 268, "word": "when", "start": 105.583, "end": 105.886}, {"id": 269, "word": "you", "start": 105.966, "end": 106.178}, {"id": 270, "word": "share", "start": 106.258, "end": 106.561}, {"id": 271, "word": "Friends", "start": 106.641, "end": 107.065}, {"id": 272, "word": "appear", "start": 107.145, "end": 107.448}, {"id": 273, "word": "from", "start": 107.528, "end": 107.831}, {"id": 274, "word": "everywhere", "start": 107.911, "end": 108.335}, {"id": 275, "word": "So", "start": 108.415, "end": 108.627}, {"id": 276, "word": "if", "start": 108.707, "end": 108.919}, {"id": 277, "word": "you", "start": 108.999, "end": 109.211}, {"id": 278, "word": "ever", "start": 109.291, "end": 109.594}, {"id": 279, "word": "feel", "start": 109.674, "end": 109.977}, {"id": 280, "word": "alone", "start": 110.057, "end": 110.36}, {"id": 281, "word": "Remember", "start": 110.44, "end": 110.864}, {"id": 282, "word": "little", "start": 110.944, "end": 111.247}, {"id": 283, "word": "Milo's", "start": 111.327, "end": 111.751}, {"id": 284, "word": "home", "start": 111.831, "end": 112.134}, {"id": 285, "word": "Reach", "start": 112.214, "end": 112.517}, {"id": 286, "word": "out", "start": 112.597, "end": 112.9}, {"id": 287, "word": "with", "start": 112.98, "end": 113.283}, {"id": 288, "word": "kindness", "start": 113.363, "end": 113.787}, {"id": 289, "word": "try", "start": 113.867, "end": 114.17}, {"id": 290, "word": "and", "start": 114.25, "end": 114.462}, {"id": 291, "word": "see", "start": 114.542, "end": 114.845}, {"id": 292, "word": "How", "start": 114.925, "end": 115.228}, {"id": 293, "word": "happy", "start": 115.308, "end": 115.611}, {"id": 294, "word": "friends", "start": 115.691, "end": 115.994}, {"id": 295, "word": "will", "start": 116.074, "end": 116.377}, {"id": 296, "word": "always", "start": 116.457, "end": 116.76}, {"id": 297, "word": "be", "start": 116.84, "end": 117.052}, {"id": 298, "word": "The", "start": 117.132, "end": 117.435}, {"id": 299, "word": "End", "start": 117.515, "end": 117.939}];</script><script id="sb_glow_fixed_js">
+(function(){
+  const audio = document.getElementById('storyAudio')
+             || document.querySelector('.audio-box audio')
+             || document.querySelector('audio');
+  const root  = document.getElementById('transcript') || document.body;
+  if(!audio || !root) return;
+  const spans = Array.from(root.querySelectorAll('span[id^="word_"], span[data-word]'));
+  if(!spans.length) return;
+
+  function ds(s){
+    const a = parseFloat(s.getAttribute('data-start'));
+    const b = parseFloat(s.getAttribute('data-end'));
+    return Number.isFinite(a)&&Number.isFinite(b)?[a,b]:null;
+  }
+
+  let base=[];
+  if (spans.every(s => s.hasAttribute('data-start') && s.hasAttribute('data-end'))) {
+    base = spans.map((s,i)=>{const t=ds(s); return {i, start:t[0], end:t[1]};});
+  } else if (Array.isArray(window.words_flat) && window.words_flat.length >= spans.length) {
+    base = spans.map((_,i)=>({i, start:+window.words_flat[i].start, end:+window.words_flat[i].end}));
+  } else { return; }
+
+  const byTime = base.slice().sort((a,b)=>a.start-b.start);
+
+  function findIdx(t){
+    let lo=0, hi=byTime.length-1, mid;
+    while(lo<=hi){
+      mid=(lo+hi)>>1; const g=byTime[mid];
+      if (t<g.start) hi=mid-1;
+      else if (t>g.end) lo=mid+1;
+      else return mid;
+    }
+    return Math.max(0, Math.min(lo, byTime.length-1));
+  }
+
+  let lastSpan=-1, lastPrev=-1, lastTick=0, raf=false;
+
+  function applyActive(timeIdx, t){
+    const seg = byTime[timeIdx]; if(!seg) return;
+    const activeTimeIdx = (t>=seg.start && t<=seg.end) ? timeIdx
+                         : (t<seg.start ? Math.max(0,timeIdx-1) : timeIdx);
+    const curSeg = byTime[activeTimeIdx];
+    const curIdx  = curSeg.i;
+    const prevIdx = Math.max(0, curIdx-1);
+
+    if (curIdx===lastSpan && prevIdx===lastPrev) return;
+
+    if (lastSpan>=0){ spans[lastSpan]?.classList.remove('highlight','prev'); }
+    if (lastPrev>=0 && lastPrev!==lastSpan){ spans[lastPrev]?.classList.remove('highlight','prev'); }
+
+    const cur  = spans[curIdx];
+    const prev = spans[prevIdx];
+    if (cur)  cur.classList.add('highlight');
+    if (prev && prev!==cur){ prev.classList.add('prev','highlight'); } // TWO glowing words
+
+    window.__sb_prev_word = prev || null;
+    window.__sb_cur_word  = cur  || null;
+
+    lastSpan = curIdx; lastPrev = prevIdx;
+  }
+
+  function tick(){
+    const now = performance.now();
+    if (now - lastTick < 40) return;
+    lastTick = now;
+    const t = audio.currentTime || 0;
+    const idx = findIdx(t);
+    if (!raf){ raf=true; requestAnimationFrame(()=>{ applyActive(idx, t); raf=false; }); }
+  }
+
+  audio.addEventListener('timeupdate', tick);
+  audio.addEventListener('seeked', ()=>{ lastSpan=-1; lastPrev=-1; tick(); });
+  audio.addEventListener('play', tick);
+  if (!audio.paused) tick();
+})();
+</script><script id="sb_wand_follow_prev_js_v5">
+(function(){
+  const root = document.getElementById('transcript') || document.body;
+  if (!root) return;
+
+  let wand = document.getElementById('wand_prev_img');
+  if (!wand){
+    wand = document.createElement('img');
+    wand.id = 'wand_prev_img';
+    wand.src = 'index_items/wand_reader.png';
+    wand.alt = '';
+    Object.assign(wand.style, {
+      position:'absolute', zIndex:9999, pointerEvents:'none',
+      width:'44px', height:'auto', display:'none',
+      transform:'translate(-10px,-20px) rotate(-12deg)',
+      filter:'drop-shadow(0 1px 1px rgba(0,0,0,.35)) drop-shadow(0 0 6px rgba(255,200,0,.25))'
+    });
+    document.body.appendChild(wand);
+  }
+
+  function moveToPrev(){
+    const el = window.__sb_prev_word || window.__sb_cur_word;
+    if (!el){ wand.style.display='none'; return; }
+    try{
+      const r = el.getBoundingClientRect();
+      wand.style.left = (window.scrollX + r.left) + 'px';
+      wand.style.top  = (window.scrollY + r.top)  + 'px';
+      wand.style.display = 'block';
+    }catch(e){}
+  }
+
+  const obs = new MutationObserver((muts)=>{
+    for (const m of muts){
+      if (m.type!=='attributes' || m.attributeName!=='class') continue;
+      const el = m.target;
+      if (!/^word_\d+$/i.test(el.id)) continue;
+      if (el.classList.contains('highlight')){ requestAnimationFrame(moveToPrev); break; }
+    }
+  });
+  obs.observe(root, {subtree:true, attributes:true, attributeFilter:['class']});
+
+  document.addEventListener('visibilitychange', ()=>{
+    if (document.visibilityState !== 'visible') wand.style.display='none';
+  });
+
+  requestAnimationFrame(moveToPrev);
+})();
+</script>
+<!-- SB_AUTODETECT10_BOTTOMAWARE_V1 -->
+<style id="sb-scroll-behavior-off">html{scroll-behavior:auto!important}</style>
+<script id="SB_AUTODETECT10_BOTTOMAWARE_V1">
+(function(){
+  const STORAGE_SPEED='sb_speed', STORAGE_SCROLL='sb_autoscroll';
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- Occluder (sticky audio bar) measurement ----
+  let sbOccluderPx = 0;
+  function measureOccluder(){
+    try{
+      const bar =
+        document.querySelector('.audio-sticky-bottom') ||
+        document.querySelector('.audio-box') ||
+        null;
+      let h = 0;
+      if (bar){
+        const r = bar.getBoundingClientRect();
+        h = Math.max(r.height || 0, parseFloat(getComputedStyle(bar).height)||0);
+      } else {
+        const audio = document.querySelector('.audio-sticky-bottom .audio-box audio') || document.querySelector('audio');
+        if (audio){
+          const r = audio.getBoundingClientRect();
+          h = r.height || 0;
+        }
+      }
+      // small cushion + safe-area inset if any
+      const vv = window.visualViewport;
+      const inset = (vv && vv.height && (window.innerHeight - vv.height)) ? (window.innerHeight - vv.height) : 0;
+      sbOccluderPx = Math.max(0, Math.round(h) + 8 + Math.max(0, inset));
+    }catch(_){ sbOccluderPx = 0; }
+  }
+  function vhAvail(){ return Math.max(0, (window.innerHeight || document.documentElement.clientHeight) - sbOccluderPx); }
+  function bottomLimit(){ return vhAvail(); }
+
+  // Re-measure on key moments
+  measureOccluder();
+  addEventListener('resize', measureOccluder, {passive:true});
+  document.addEventListener('DOMContentLoaded', measureOccluder, {once:true});
+  setTimeout(measureOccluder, 500);
+  setTimeout(measureOccluder, 1500);
+
+  const audio = document.querySelector('.audio-sticky-bottom .audio-box audio') || document.querySelector('audio');
+  const speedSel = document.getElementById('sb-speed');
+
+  // ---- Speed control (parity) ----
+  function getSpeed(){ const v=localStorage.getItem(STORAGE_SPEED); const n=v?parseFloat(v):1; return (isFinite(n)&&n>0)?n:1; }
+  function applySpeed(r){
+    try{
+      if(!audio) return;
+      audio.playbackRate=r;
+      if('preservesPitch' in audio) audio.preservesPitch=true;
+      if('mozPreservesPitch' in audio) audio.mozPreservesPitch=true;
+      if('webkitPreservesPitch' in audio) audio.webkitPreservesPitch=true;
+    }catch(_){}
+  }
+  const initSpeed=getSpeed(); if(speedSel) speedSel.value=String(initSpeed); applySpeed(initSpeed);
+  if(speedSel) speedSel.addEventListener('change', ()=>{ const r=parseFloat(speedSel.value||'1')||1; localStorage.setItem(STORAGE_SPEED,String(r)); applySpeed(r); try{localStorage.setItem('__sb_speed_ping',String(Date.now()))}catch(_){}});
+
+  // ---- Toggle wiring (V4 switch parity) ----
+  function autoEnabled(){
+    try {
+      const v = localStorage.getItem(STORAGE_SCROLL);
+      return (v===null) ? true : (v==='true');
+    } catch(_){ return true; }
+  }
+  (function wireV4(){
+    const chk = document.getElementById('sb_v4_autoscroll');
+    if(!chk) return;
+    function apply(){ chk.checked = autoEnabled(); }
+    function setStored(val){ localStorage.setItem(STORAGE_SCROLL, String(!!val)); try{window.dispatchEvent(new StorageEvent('storage',{key:STORAGE_SCROLL}))}catch(_){ } }
+    apply();
+    chk.addEventListener('change', ()=> setStored(chk.checked));
+    chk.addEventListener('keydown', e=>{ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); chk.checked=!chk.checked; chk.dispatchEvent(new Event('change')); }});
+    addEventListener('storage', (e)=>{ if(e && e.key===STORAGE_SCROLL) apply(); });
+  })();
+
+  // ---- User interaction guard (skip next programmatic scroll after manual input) ----
+  let skipNext=false;
+  function onUserScroll(){ skipNext=true; setTimeout(()=>{skipNext=false;},400); }
+  addEventListener('wheel', onUserScroll, {passive:true});
+  addEventListener('touchmove', onUserScroll, {passive:true});
+  addEventListener('keydown', e=>{
+    if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(e.key)) onUserScroll();
+  }, {passive:true});
+
+  // ---- Helpers for viewport math (bottom-aware) ----
+  const transcript = document.getElementById('transcript') || document.querySelector('.main-blank') || document.body;
+  function isInViewport(el){
+    if(!el) return false;
+    const r = el.getBoundingClientRect();
+    return r.bottom > 0 && r.top < bottomLimit();
+  }
+  function visibleFrac(el){
+    if(!el) return 0;
+    const r = el.getBoundingClientRect();
+    const top = Math.max(r.top, 0);
+    const bot = Math.min(r.bottom, bottomLimit());
+    const vis = Math.max(0, bot - top);
+    return Math.max(0, Math.min(1, vis / Math.max(1, r.height||1)));
+  }
+  function smooth(){ return prefersReduced ? 'auto' : 'smooth'; }
+  function downOnlyScrollTo(y){
+    const cur = window.pageYOffset || document.documentElement.scrollTop || 0;
+    window.scrollTo({top: Math.max(cur, Math.floor(y||0)), behavior: smooth()});
+  }
+
+  // ---- Active-word recentring (down-only, bottom-aware) ----
+  const WORD_CLASS_RX = /(active|glow|highlight)/i;
+  function scrollWordIntoView(wordEl){
+    try{
+      const r = wordEl.getBoundingClientRect();
+      const y0 = window.pageYOffset || document.documentElement.scrollTop || 0;
+      const vha = vhAvail();
+      if (r.top > 0.75*vha + sbOccluderPx || r.bottom > 0.88*vha + sbOccluderPx){
+        const target = y0 + r.top - Math.floor(0.25*vha);
+        downOnlyScrollTo(target);
+      }
+    }catch(_){}
+  }
+
+  // ---- Pause-driven image interludes (Autodetect-10 parity) ----
+  function getPauseMs(){ const v=parseFloat(localStorage.getItem('sb_pause_ms')||'1000'); return (isFinite(v)&&v>0)?v:1000; }
+  function getMaxJumpPx(){ const v=parseFloat(localStorage.getItem('sb_img_max_jump_px')||'900'); return (isFinite(v)&&v>0)?v:900; }
+
+  let interlude={pendingImg:null,startTime:null,endTime:null,scrolled:false};
+
+  function findNextImageBelow(wordEl){
+    if(!transcript) return null;
+    const wt = wordEl.getBoundingClientRect().top;
+    let best=null, bestTop=Infinity;
+    transcript.querySelectorAll('img').forEach(img=>{
+      const t = img.getBoundingClientRect().top;
+      if (t > wt && t < bestTop){ best = img; bestTop = t; }
+    });
+    return best;
+  }
+
+  function armInterludeIfNeeded(wordEl){
+    try{
+      const m=(wordEl.id||'').match(/^word_(\d+)$/i); if(!m) return;
+      const idx=parseInt(m[1],10)-1;
+      if(!Array.isArray(window.wordTimings)||!window.wordTimings[idx]) return;
+      const thisWord=window.wordTimings[idx], nextWord=window.wordTimings[idx+1];
+      if(!nextWord){ interlude.pendingImg=null; return; }
+
+      const t=(wordEl.textContent||'').trim();
+      const endsSentence=/[.!?]["”']?$/.test(t);
+      const gapSec=Math.max(0,(nextWord.start||0)-((thisWord.end!=null?thisWord.end:thisWord.start)||0));
+      const gapMs=gapSec*1000, longPause=gapMs>=getPauseMs();
+
+      if(endsSentence && longPause){
+        let img=findNextImageBelow(wordEl);
+        if(img){
+          try{
+            const vhA=vhAvail();
+            const y0=pageYOffset||document.documentElement.scrollTop||0;
+            const ir=img.getBoundingClientRect(); const imgTopGlobal=y0+ir.top;
+            const viewportBottom=y0+vhA;  // bottom visible above the bar
+            const maxJump=getMaxJumpPx();
+
+            const wrect=wordEl.getBoundingClientRect(); const wordTopGlobal=y0+wrect.top;
+            const nearViewportAhead=(imgTopGlobal>=y0)&&((imgTopGlobal-viewportBottom)<=maxJump);
+            const nearWord=(imgTopGlobal-wordTopGlobal)<=Math.max(700,0.75*vhA);
+
+            // NO-SKIP guard: don't jump past next unread word
+            const nextEl=document.getElementById('word_'+(idx+2));
+            let notPastNext=true;
+            if(nextEl){
+              const nr=nextEl.getBoundingClientRect(); const nextTopGlobal=y0+nr.top;
+              const TOL=Math.max(120,0.12*vhA);
+              if((imgTopGlobal-nextTopGlobal)>TOL) notPastNext=false;
+            }
+            if(!(nearViewportAhead && nearWord && notPastNext)) img=null;
+          }catch(_){}
+        }
+        if(img){
+          interlude.pendingImg=img;
+          interlude.startTime=(thisWord.end!=null?thisWord.end:thisWord.start)||0;
+          interlude.endTime=nextWord.start||(interlude.startTime+gapSec);
+          interlude.scrolled=false;
+        } else {
+          interlude.pendingImg=null;
+        }
+      } else {
+        interlude.pendingImg=null;
+      }
+    }catch(_){}
+  }
+
+  // ---- Mutation observer: watch word highlight ----
+  const observer=new MutationObserver(muts=>{
+    if(!autoEnabled()) return;
+    for(const mut of muts){
+      if(mut.type==='attributes' && mut.attributeName==='class' && mut.target instanceof HTMLElement){
+        const el=mut.target;
+        if((el.id||'').startsWith('word_') && WORD_CLASS_RX.test(el.className||'')){
+          armInterludeIfNeeded(el);
+          if(skipNext){ skipNext=false; return; }
+          scrollWordIntoView(el);
+          break;
+        }
+      }
+    }
+  });
+  if(transcript) observer.observe(transcript,{subtree:true,attributes:true,attributeFilter:['class']});
+
+  // ---- Image-aware edge-down driver (linger / pull-in / reveal-more) ----
+  function findPrevImageAbove(elWord){
+    if(!elWord || !transcript) return null;
+    const wt = elWord.getBoundingClientRect().top;
+    let best=null, bestBottom=-Infinity;
+    transcript.querySelectorAll('img').forEach(img=>{
+      const b = img.getBoundingClientRect().bottom;
+      if (b <= wt && b > bestBottom){ best = img; bestBottom = b; }
+    });
+    return best;
+  }
+
+  const cfg = {
+    driverMs: parseInt(localStorage.getItem("sb_driver_ms")||"150",10),
+    imgNearBottomPx: parseInt(localStorage.getItem("sb_img_near_bottom_px")||"240",10),
+    imgVisibleFrac: Math.max(0, Math.min(1, parseFloat(localStorage.getItem("sb_img_visible_frac")||"0.60"))),
+    wordTopPadPx: parseInt(localStorage.getItem("sb_word_top_pad_px")||"8",10),
+  };
+
+  function lingerOnImageIfNeeded(img, elWord){
+    if(!img || !elWord || !isInViewport(img)) return false;
+    const wr = elWord.getBoundingClientRect();
+    const ir = img.getBoundingClientRect();
+
+    // If the word is below the image, creep just enough to keep the word bottom visible above the bar
+    if (wr.top >= ir.bottom){
+      const bottom = bottomLimit();
+      if (wr.bottom > bottom){
+        const delta = wr.bottom - bottom;
+        if (delta > 1){ downOnlyScrollTo((window.scrollY||0) + delta); return true; }
+      }
+      // Linger while image is still nicely visible
+      if (visibleFrac(img) >= Math.max(0.62, cfg.imgVisibleFrac)) return true;
+    }
+    return false;
+  }
+
+  function pullInNearImage(nextImg, elWord){
+    if(!nextImg || !elWord) return false;
+    const r = nextImg.getBoundingClientRect();
+    const below = (r.top >= bottomLimit());
+    const near  = below && ((r.top - bottomLimit()) < cfg.imgNearBottomPx);
+    if(!near) return false;
+
+    const wr = elWord.getBoundingClientRect();
+    const safeBudget = Math.max(0, wr.bottom - (bottomLimit() - cfg.wordTopPadPx));
+    const need = Math.max(0, r.bottom - bottomLimit());
+    const delta = Math.min(need, safeBudget);
+    if (delta > 1){ downOnlyScrollTo((window.scrollY||0) + delta); return true; }
+    return false;
+  }
+
+  function revealMoreIfPartial(img, elWord){
+    if(!img || !elWord || !isInViewport(img)) return false;
+    if(visibleFrac(img) >= cfg.imgVisibleFrac) return false;
+
+    const wr = elWord.getBoundingClientRect();
+    const safeBudget = Math.max(0, wr.bottom - (bottomLimit() - cfg.wordTopPadPx));
+    const ir = img.getBoundingClientRect();
+    const needBottom = Math.max(0, ir.bottom - bottomLimit());
+    const delta = Math.min(needBottom > 0 ? needBottom : 140, safeBudget);
+    if (delta > 1){ downOnlyScrollTo((window.scrollY||0) + delta); return true; }
+    return false;
+  }
+
+  let driverId=null;
+  function startDriver(){
+    if (driverId) return;
+    driverId = setInterval(()=>{
+      if(!autoEnabled()) return;
+      // Find the latest highlighted word
+      const candidates = transcript ? Array.prototype.slice.call(transcript.querySelectorAll('[id^="word_"]')).filter(el => WORD_CLASS_RX.test(el.className||"")) : [];
+      const word = candidates.length ? candidates[candidates.length-1] : null;
+      if(!word) return;
+
+      const nearAhead = findNextImageBelow(word);
+      const prevAbove = findPrevImageAbove(word);
+
+      if (lingerOnImageIfNeeded(prevAbove, word)) return;
+      if (pullInNearImage(nearAhead, word)) return;
+      if (revealMoreIfPartial(prevAbove || nearAhead, word)) return;
+    }, Math.max(60, cfg.driverMs||150));
+  }
+  function stopDriver(){ if(driverId){ clearInterval(driverId); driverId=null; } }
+
+  startDriver();
+  addEventListener("storage", (e)=>{
+    if (e && e.key === STORAGE_SCROLL){ autoEnabled() ? startDriver() : stopDriver(); }
+  });
+
+  // Audio tweaks (parity)
+  if(audio){
+    audio.setAttribute('controlsList', ((audio.getAttribute('controlsList')||'')+' nodownload noplaybackrate').trim());
+    audio.addEventListener('timeupdate', ()=>{
+      // Interlude pull on pause gaps
+      if(!interlude.pendingImg || interlude.scrolled) return;
+      const t=audio.currentTime||0;
+      if(t>=(interlude.startTime||0) && t<(interlude.endTime||0)){
+        try{
+          const y0=pageYOffset||document.documentElement.scrollTop||0;
+          const ir=interlude.pendingImg.getBoundingClientRect();
+          const imgTopGlobal=y0+ir.top;
+          const bottomVis=y0+bottomLimit();
+          const nearAhead=(imgTopGlobal>=y0)&&((imgTopGlobal-bottomVis)<=getMaxJumpPx());
+          if(!nearAhead) return;
+          const targetTop=y0+ir.top-8;
+          downOnlyScrollTo(targetTop);
+          interlude.scrolled=true;
+        }catch(_){}
+      }
+    });
+    audio.addEventListener('play', ()=>{ skipNext=false; });
+    audio.addEventListener('loadedmetadata', measureOccluder);
+  }
+})();
+</script>
+<!-- Auth Modal (injected by inject_auth.py) -->
+<div id="auth-modal" style="display:none;position:fixed;inset:0;z-index:2147483647;align-items:center;justify-content:center;background:rgba(0,0,0,0.55);backdrop-filter:blur(3px);">
+<div style="background:#111;color:#fff;border-radius:12px;max-width:520px;width:90%;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.35);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+<h3 style="margin:0;font-family:inherit;font-weight:600;">Join Story Bell</h3>
+<button aria-label="Close" id="auth-close" style="background:transparent;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1;">×</button>
+</div>
+<!-- Email Signup Form -->
+<div id="email-signup-form" style="margin-bottom:20px;">
+<p style="margin:0 0 12px 0;color:#ccc;font-size:14px;">Get free kids' stories and updates:</p>
+<form id="sb-email-form" style="display:flex;gap:8px;flex-wrap:wrap;">
+<input id="sb-email-input" placeholder="Enter your email" required="" style="flex:1;min-width:200px;padding:12px;border-radius:8px;border:1px solid #333;background:#222;color:#fff;font-size:16px;" type="email"/>
+<button id="sb-email-submit" style="padding:12px 20px;border-radius:8px;border:none;background:#FFEB3B;color:#000;font-weight:600;cursor:pointer;font-size:14px;" type="submit">
+          Subscribe
+        </button>
+</form>
+<p id="sb-email-status" style="margin:8px 0 0 0;font-size:13px;color:#4CAF50;display:none;"></p>
+</div>
+<div style="border-top:1px solid #333;padding-top:16px;margin-top:8px;">
+<p style="margin:0 0 12px 0;color:#888;font-size:13px;text-align:center;">Or sign in with:</p>
+<div id="firebaseui-auth-container"></div>
+</div>
+</div>
+</div>
+<!-- End Auth Modal -->
+<!-- Auth Bindings (injected by inject_auth.py) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script id="firebase-auth-bindings-injected">
+(function(){
+  if (window.__SB_AUTH_INJECTED__) return;
+  window.__SB_AUTH_INJECTED__ = true;
+
+  function ensureUI() {
+    if (!(window.firebase && firebase.auth && window.firebaseui)) {
+      console.warn("[Auth] Firebase/FirebaseUI not ready");
+      return null;
+    }
+    var ui = window.firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
+    return ui;
+  }
+
+  // Email signup form handler
+  function setupEmailForm() {
+    var form = document.getElementById('sb-email-form');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var emailInput = document.getElementById('sb-email-input');
+      var statusEl = document.getElementById('sb-email-status');
+      var submitBtn = document.getElementById('sb-email-submit');
+      var email = emailInput.value.trim();
+
+      if (!email) return;
+
+      // Disable button while submitting
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Saving...';
+
+      // Save to Firestore
+      if (window.firebase && firebase.firestore) {
+        var db = firebase.firestore();
+        db.collection('email_signups').add({
+          email: email,
+          source: window.location.pathname,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          userAgent: navigator.userAgent.substring(0, 200)
+        }).then(function() {
+          statusEl.textContent = 'Thanks for subscribing!';
+          statusEl.style.color = '#4CAF50';
+          statusEl.style.display = 'block';
+          emailInput.value = '';
+          submitBtn.textContent = 'Subscribed!';
+          setTimeout(function() { window.closeAuthModal(); }, 2000);
+        }).catch(function(err) {
+          console.error('[Auth] Email save error:', err);
+          statusEl.textContent = 'Error saving. Please try again.';
+          statusEl.style.color = '#f44336';
+          statusEl.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Subscribe';
+        });
+      } else {
+        console.warn('[Auth] Firestore not available');
+        statusEl.textContent = 'Service unavailable. Please try again later.';
+        statusEl.style.color = '#f44336';
+        statusEl.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Subscribe';
+      }
+    });
+  }
+
+  window.openAuthModal = function(e){
+    if (e && e.preventDefault) e.preventDefault();
+    var modal = document.getElementById('auth-modal');
+    if (modal) modal.style.display = 'flex';
+
+    // Setup email form
+    setupEmailForm();
+
+    var ui = ensureUI();
+    if (!ui) return;
+
+    ui.start('#firebaseui-auth-container', {
+      signInFlow: 'popup',
+      signInOptions: [
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+      ],
+      callbacks: {
+        signInSuccessWithAuthResult: function(authResult) {
+          try { window.closeAuthModal(); } catch(_) {}
+          console.log("[Auth] Signed in:", authResult.user && (authResult.user.email || authResult.user.uid));
+          return false;
+        }
+      }
+    });
+  };
+
+  window.closeAuthModal = function(){
+    var modal = document.getElementById('auth-modal');
+    if (modal) modal.style.display = 'none';
+  };
+
+  // Close on X button or backdrop click
+  document.addEventListener('click', function(ev){
+    if (ev.target && ev.target.id === 'auth-close') window.closeAuthModal();
+    if (ev.target && ev.target.id === 'auth-modal') window.closeAuthModal();
+  });
+
+  // Bind ALL login/signup buttons (header, footer, subscribe box)
+  var selectors = [
+    '.login-cta-header',
+    '.login-mobile a',
+    '[href*="#login"]',
+    '[href*="login"]',
+    '.subscribe-box',
+    '.subscribe-text',
+    '[data-auth-cta]',
+    'a[href$="#login"]'
+  ];
+  selectors.forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(el){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        window.openAuthModal(e);
+      });
+    });
+  });
+
+  // Handle #login hash
+  if (window.location.hash === '#login') {
+    setTimeout(function(){ window.openAuthModal(); }, 500);
+  }
+  window.addEventListener('hashchange', function(){
+    if (window.location.hash === '#login') window.openAuthModal();
+  });
+})();
+</script>
+<!-- End Auth Bindings -->
+<style id="sb-mobile-carousel-typography-override">
+@media (max-width: 800px){
+  /* Remove the extra line break between title and description */
+  .carousel-section .carousel-item br{
+    display: none !important;
+  }
+
+  /* Title: smaller than before, but still larger than description; keep white */
+  .carousel-section .carousel-item .carousel-title,
+  .carousel-section a.carousel-title-link .carousel-title,
+  .carousel-section .carousel-title{
+    font-size: 0.74em !important;   /* adjust as needed */
+    line-height: 1.12em !important;
+    color: #ffffff !important;
+    margin: 0.15em 0 0.08em !important;  /* tighter */
+  }
+  /* Ensure the title link itself stays white and un-underlined */
+  .carousel-section .carousel-title-link,
+  .carousel-section .carousel-title-link:link,
+  .carousel-section .carousel-title-link:visited{
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+
+  /* Description: compact, white */
+  .carousel-section .carousel-desc{
+    font-size: 0.56em !important;
+    line-height: 1.18em !important;
+    color: #ffffff !important;
+    margin: 0.05em 0 0.05em !important;  /* tighter */
+  }
+
+  /* Categories: same size as description, bold, white */
+  .carousel-section .carousel-category{
+    font-size: 0.56em !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+  .carousel-section .carousel-categories{
+    margin-top: 0.06em !important;  /* tighter */
+  }
+}
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><div aria-label="Open story queue" id="story-queue-button" role="button" tabindex="0" title="Open story queue">
+<img alt="Make Reading List" class="book-img" src="../index_items/make-reading-list.png"/>
+</div><div aria-hidden="true" id="sbq-toggle-wrap">
+<span class="label">Queue</span>
+<span aria-pressed="false" class="sbq-toggle" data-on="false" id="sbq-toggle" role="button">
+<input aria-label="Toggle Queue Mode" type="checkbox"/>
+<span class="knob"></span>
+</span>
+</div><div aria-labelledby="sbq-title" aria-modal="true" id="story-queue-menu" role="dialog">
+<div class="queue-menu-header">
+<button aria-label="Close" class="queue-menu-close">×</button>
+<h2 class="queue-menu-title" id="sbq-title">✨ My Story List ✨</h2>
+</div>
+<div class="queue-menu-list" id="queue-list">
+<div class="queue-empty-message">✨ Tap stories to add to your list ✨</div>
+</div>
+<div class="queue-menu-controls">
+<button id="queue-shuffle" title="Shuffle Queue">🔀</button>
+<button class="queue-control-btn" id="queue-play" title="Play Queue">▶</button>
+<button class="queue-control-btn" disabled="" id="queue-prev" title="Previous Story">◀</button>
+<button class="queue-control-btn" disabled="" id="queue-next" title="Next Story">▶</button>
+<button class="queue-control-btn" disabled="" id="queue-clear" title="Clear Queue">🗑️</button>
+</div>
+</div><script id="firebase-auth-bindings">
+(function(){
+  // Guard to avoid double-binding
+  if (window.__SB_AUTH_BOUND__) return; window.__SB_AUTH_BOUND__ = true;
+
+  function ensureUI() {
+    if (!(window.firebase && firebase.auth && window.firebaseui)) {
+      console.warn("[SB] Firebase/FirebaseUI not ready");
+      return null;
+    }
+    var ui = window.firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
+    return ui;
+  }
+
+  function openAuthModal(e){
+    if (e && e.preventDefault) e.preventDefault();
+    var modal = document.getElementById('auth-modal');
+    if (modal) modal.style.display = 'flex';
+
+    var ui = ensureUI();
+    if (!ui) return;
+
+    ui.start('#firebaseui-auth-container', {
+      signInFlow: 'popup',
+      signInOptions: [
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+      ],
+      callbacks: {
+        signInSuccessWithAuthResult: function(authResult) {
+          try { closeAuthModal(); } catch(_) {}
+          console.log("[SB] Signed in:", authResult.user && (authResult.user.email || authResult.user.uid));
+          return false; // stay on page
+        },
+        uiShown: function(){ console.log("[SB] FirebaseUI shown"); }
+      }
+    });
+  }
+
+  function closeAuthModal(){
+    var modal = document.getElementById('auth-modal');
+    if (modal) modal.style.display = 'none';
+  }
+  window.openAuthModal = openAuthModal;
+  window.closeAuthModal = closeAuthModal;
+
+  // Close button + backdrop click
+  document.addEventListener('click', function(ev){
+    if (ev.target && ev.target.id === 'auth-close') closeAuthModal();
+    if (ev.target && ev.target.id === 'auth-modal') closeAuthModal();
+  }, { passive: true });
+
+  // Universal bindings (don’t change header layout; just listen)
+  var selectors = ['#loginBtn', '.login', '.login a', '.login-mobile a', '[data-auth-cta]'];
+  selectors.forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(el){
+      ['click','touchend','pointerup'].forEach(function(evt){
+        el.addEventListener(evt, openAuthModal, { passive:false });
+      });
+    });
+  });
+
+  // Debug log for duplicates
+  try {
+    console.log("[SB] firebase apps:", (window.firebase && firebase.apps) ? firebase.apps.length : "no firebase");
+  } catch(e){}
+
+  // Child profile storage
+  function getChildProfile(uid) {
+    try { return JSON.parse(localStorage.getItem('storybell_child_' + uid) || 'null'); }
+    catch(e) { return null; }
+  }
+
+  // Update header UI based on auth state
+  function updateHeaderAuth(user) {
+    var loginBtns = document.querySelectorAll('.login-cta-header, .login-mobile a[href*="signin"]');
+    var profileEls = document.querySelectorAll('.sb-user-profile');
+
+    if (user) {
+      var profile = getChildProfile(user.uid);
+      // Priority: child name > Firebase displayName > email prefix > 'Reader'
+      var displayName = (profile && profile.name) || user.displayName || (user.email ? user.email.split('@')[0] : 'Reader');
+
+      loginBtns.forEach(function(el){ el.style.display = 'none'; });
+      profileEls.forEach(function(el){
+        el.style.display = 'flex';
+        var nameEl = el.querySelector('.sb-user-name');
+        if (nameEl) nameEl.textContent = displayName;
+      });
+    } else {
+      loginBtns.forEach(function(el){ el.style.display = ''; });
+      profileEls.forEach(function(el){ el.style.display = 'none'; });
+    }
+  }
+
+  // Sign out function
+  window.signOutStoryBell = function(){
+    if (window.firebase && firebase.auth) {
+      firebase.auth().signOut().then(function(){
+        window.location.href = '/';
+      }).catch(function(e){ console.error('[SB] Sign out error:', e); });
+    }
+  };
+
+  // Enhanced auth state listener
+  if (window.firebase && firebase.auth) {
+    firebase.auth().onAuthStateChanged(function(u){
+      console.log("[SB] Auth state:", u ? "SIGNED IN" : "SIGNED OUT");
+      updateHeaderAuth(u);
+    });
+  }
+})();
+</script>
+</body>
+</html>

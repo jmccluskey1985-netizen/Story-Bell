@@ -5,83 +5,6 @@
 <meta charset="utf-8"/>
 <title>Story Bell</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<style>
-    body { margin: 0; font-family: 'Georgia', serif; background-color: #001f3f; min-height: 100vh; cursor: none;}
-    header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
-    .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-    .header-right { display: flex; align-items: center; gap: 10px; }
-    .site-title { font-size: 28px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
-    .header-left a:hover .site-title { color: #fffde6; }
-    nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
-    nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s;}
-    nav a:hover, nav a:focus { background: #003366; text-decoration: underline; }
-    nav ul > li { position: relative; }
-    .dropdown {
-      display: none;
-      position: absolute;
-      left: 0;
-      top: 110%;
-      background: #003366;
-      border-radius: 12px;
-      box-shadow: 0 4px 18px #001a30cc;
-      padding: 0.5em 0;
-      min-width: 250px;
-      z-index: 999;
-      list-style: none;
-      margin: 0;
-      transition: opacity 0.14s;
-    }
-    nav ul > li:hover > .dropdown,
-    nav ul > li:focus-within > .dropdown {
-      display: block !important;
-    }
-    .dropdown-item {
-      display: block;
-      color: #FFEB3B;
-      text-decoration: none;
-      font-family: 'Georgia', serif;
-      font-size: 16px;
-      padding: 10px 24px;
-      border-radius: 8px;
-      transition: background 0.2s, color 0.13s;
-      user-select: none;
-    }
-    .dropdown-item:hover,
-    .dropdown-item:focus {
-      background: #184a73 !important;
-      color: #fffbe9 !important;
-      outline: none;
-    }
-    .sparkle {
-      position: fixed;
-      pointer-events: none;
-      width: 22px;
-      height: 22px;
-      background: transparent;
-      z-index: 9999;
-      animation: sparkle-fade 0.9s linear forwards;
-    }
-    .sparkle::after {
-      content: "★";
-      color: #ffeb3b;
-      font-size: 22px;
-      filter: drop-shadow(0 0 8px #ffe066) drop-shadow(0 0 16px #fffde0cc);
-      opacity: 0.9;
-    }
-    @keyframes sparkle-fade {
-      0%   { opacity: 1; transform: scale(1) translateY(0); }
-      60%  { opacity: 0.8; transform: scale(1.18) translateY(-4px);}
-      80%  { opacity: 0.8; }
-      100% { opacity: 0; transform: scale(0.8) translateY(-22px);}
-    }
-    .main-blank { min-height: 90vh; max-width: 900px; margin: 0 auto; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 2em; letter-spacing: 0.03em; padding-top: 24px; padding-bottom: 68px; }
-    .audio-sticky-bottom { position: sticky; bottom: 0; width: 100vw; background: transparent; z-index: 3000; display: flex; justify-content: center;}
-    .audio-box { background: #FFFDE6; border: 0.5px solid #FFEB3B; border-radius: 14px 14px 0 0; padding: 3px 10px; box-shadow: 0 -2px 9px #ffe06633; display: flex; align-items: center; justify-content: center; margin: 2px 0 0 0;}
-    .audio-box audio { width: 260px; height: 32px; accent-color: #FFEB3B; background: transparent; display: block;}
-    #wand { position: absolute; left: 0; top: 0; width: 48px; height: 48px; z-index: 9999; pointer-events: none; user-select: none; filter: drop-shadow(0 0 8px #ffeb3b); transition: none !important; }
-    @media (max-width: 800px) {.main-blank { font-size: 1.1em; } header { max-width: 100vw; } .site-title { font-size: 22px; } .audio-box audio { width: 65vw; min-width: 110px; } .audio-box { padding: 3px 2vw; } #wand { width: 32px; height: 32px; }}
-    @media (max-width: 600px) {.audio-box audio { width: 94vw; min-width: 80px; } .audio-box { padding: 3px 1vw;} nav a { font-size: 16px; } #wand { width: 28px; height: 28px; }}
-  </style>
 <style id="__glow_css__">
 .glow{background:#fffbe9;color:#333;border-radius:6px;box-shadow:0 0 16px #ffeb3b,0 0 2px #ffe066;transition:background .12s;}
 </style>
@@ -133,9 +56,8 @@
     box-shadow: 0 2px 8px rgba(0,0,0,.25);
   }
 </style>
-
 <!-- Firebase Auth Scripts (injected by inject_auth.py) -->
-<link rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css">
+<link href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css" rel="stylesheet"/>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
@@ -153,51 +75,1995 @@ if (!window.__FIREBASE_INIT__) {
 }
 </script>
 <!-- End Firebase Auth Scripts -->
+<style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
-</head>
+/* Always show a subtle light-blue chip behind descriptions */
+.carousel-section .carousel-desc{
+  background: rgba(173, 216, 230, 0.18); /* light blue */
+  padding: 0.25em 0.5em;
+  border-radius: 10px;
+  display: inline-block;
+  color: #ffffff !important;
+}
+
+/* Make sure carousels don't block vertical page scroll on touch devices */
+.carousel-section .carousel-track{
+  touch-action: auto !important;             /* allow vertical swipes to bubble */
+  overscroll-behavior-x: contain !important; /* keep horizontal bounce inside */
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;             /* gentler snapping */
+}
+
+/* --- Mobile-only refinements --- */
+@media (max-width: 800px){
+
+  /* Hide explicit <br> between title and description to save space */
+  .carousel-section .carousel-item br{ display: none !important; }
+
+  /* Title: smaller than before, tighter line-height, stays white */
+  .carousel-section .carousel-item .carousel-title,
+  .carousel-section a.carousel-title-link .carousel-title,
+  .carousel-section .carousel-title{
+    font-size: 0.74em !important;            /* smaller, still > description */
+    line-height: 1.06em !important;          /* much tighter for 2-line titles */
+    color: #ffffff !important;
+    margin: 0.10em 0 0.06em !important;      /* bring closer to desc */
+  }
+  .carousel-section .carousel-title-link,
+  .carousel-section .carousel-title-link:link,
+  .carousel-section .carousel-title-link:visited{
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+
+  /* Description: compact, white, sits in the blue chip */
+  .carousel-section .carousel-desc{
+    font-size: 0.56em !important;
+    line-height: 1.12em !important;          /* tighter */
+    color: #ffffff !important;
+    padding: 0.22em 0.45em;                   /* a bit tighter on mobile */
+  }
+
+  /* Categories: same size as desc, bold, white; closer spacing */
+  .carousel-section .carousel-category{
+    font-size: 0.56em !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+  .carousel-section .carousel-categories{
+    margin-top: 0.06em !important;           /* closer to description */
+  }
+}</style><style id="sb-carousel-perf-ux">/* === Carousel performance + UX smoothing === */
+
+/* 1) Promote images to their own compositor layer; confine paints */
+.carousel-section .carousel-item img,
+.carousel-section .carousel-card img{
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+  contain: paint; /* shadows/borders don't spill to ancestors */
+}
+
+/* 2) Track tuned for momentum but lets vertical page scroll through */
+.carousel-section .carousel-track{
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;    /* gentler snap reduces jerk */
+  touch-action: auto !important;     /* allow vertical swipes */
+  overscroll-behavior-x: contain;    /* keep bounce inside track */
+  will-change: scroll-position;
+}
+
+/* 3) Tighter two-line titles (carousels only) */
+.carousel-section .carousel-item .carousel-title,
+.carousel-section a.carousel-title-link .carousel-title,
+.carousel-section .carousel-title{
+  line-height: 1.06em !important;   /* reduce big interline gap */
+  margin: 0.10em 0 0.06em !important;
+  color: #fff !important;           /* keep white */
+}
+
+/* 4) Light blue chip behind description (carousels only) */
+.carousel-section .carousel-desc{
+  background: rgba(173, 216, 230, 0.18);
+  padding: 0.25em 0.5em;
+  border-radius: 10px;
+  display: inline-block;
+  color: #ffffff !important;
+}
+
+/* 5) Mobile-only: cheaper shadows + compact spacing */
+@media (max-width: 800px){
+  .carousel-section .carousel-item br{ display:none !important; } /* save vertical space */
+  .carousel-section .carousel-item img,
+  .carousel-section .carousel-card img{
+    box-shadow: 0 0 8px 2px rgba(255,223,0,.35) !important; /* lighter than desktop */
+  }
+  .carousel-section .carousel-desc{
+    line-height: 1.12em !important;
+    padding: 0.22em 0.45em;
+  }
+  .carousel-section .carousel-categories{ margin-top: 0.06em !important; }
+}</style><style id="sb-android-smoothing">
+/* --- Android/Samsung smoothing tweaks (carousels only) --- */
+
+/* Promote the horizontal track to its own layer to avoid repaint storms */
+.carousel-section .carousel-track{
+  transform: translateZ(0);           /* GPU layer */
+  will-change: scroll-position;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;      /* gentler snapping */
+  overscroll-behavior-x: contain;
+  touch-action: auto !important;      /* allow vertical scroll to pass through */
+}
+
+/* Isolate each card so its paints don't spill to neighbors */
+.carousel-section .carousel-item,
+.carousel-section .carousel-card{
+  contain: content;                    /* size+layout+paint isolation */
+}
+
+/* Images: keep compositor-friendly; lighten paints on mobile */
+@media (max-width: 800px){
+  .carousel-section .carousel-item img,
+  .carousel-section .carousel-card img{
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+    /* Lighter glow on mobile, and don't animate box-shadow (expensive) */
+    box-shadow: 0 0 6px 2px rgba(255,223,0,.28) !important;
+    transition: transform .2s ease !important;  /* drop shadow animation */
+  }
+}
+
+/* Tighter two-line titles to avoid big gaps */
+.carousel-section .carousel-item .carousel-title,
+.carousel-section a.carousel-title-link .carousel-title,
+.carousel-section .carousel-title{
+  line-height: 1.06em !important;
+  margin: 0.10em 0 0.06em !important;
+  color: #fff !important;
+}
+
+/* Keep the light-blue chip on description */
+.carousel-section .carousel-desc{
+  background: rgba(173,216,230,0.18);
+  color: #fff !important;
+  padding: 0.22em 0.45em;
+  border-radius: 10px;
+  display: inline-block;
+}
+</style><style id="sb-carousel-nosnap-mobile">
+/* === Force-disable carousel snap + recentering on mobile === */
+@media (max-width: 900px){
+  /* Container: no snap + no smooth 'auto-return' */
+  .carousel-track{
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Items: make sure nothing can snap to them either */
+  .carousel-card, .story-card{
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+    contain: paint;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    overflow: visible;
+  }
+}
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><script>window.SBQ_STILL_FIRST='../index_items/make-reading-list.png';window.SBQ_COUNTDOWN_URL='../index_items/countdown.wav';</script><script defer="True" src="queue_assets/queue.js"></script><style>#story-queue-menu{display:none!important;}body.sbq-open #story-queue-menu{display:flex!important;}body:not(.sbq-open) #story-queue-button:hover + #story-queue-menu{display:none!important;}body.sbq-open     #story-queue-button:hover + #story-queue-menu{display:flex!important;}</style><style id="wand-top-style">
+/* Keep wand always visible above menus, and never block clicks */
+#wand {
+  position: fixed !important;
+  z-index: 20001 !important;
+  pointer-events: none !important;
+}
+</style><script id="firebase-init">
+  // Story Bell — Firebase config + single-init (compat)
+  const firebaseConfig = {
+    apiKey: "AIzaSyC9vYsSvGN7zSDfkIcByvBZDOQnRyUPIBo",
+    authDomain: "storybellkids.firebaseapp.com",
+    projectId: "storybellkids",
+    storageBucket: "storybellkids.firebasestorage.app",
+    messagingSenderId: "107989104962",
+    appId: "1:107989104962:web:a93c5a427353a87111b0db",
+    measurementId: "G-F64PJ8CCZQ"
+  };
+  if (!window.firebase) { console.error("Firebase SDK not found"); }
+  else if (!firebase.apps.length) { if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); } }
+</script>
+<style id="wand-pointer-events-fix">/* auto patch */
+#wand, .cursor-wand, .sparkle { pointer-events: none !important; }</style><style>
+   body { margin: 0;  background-color: #001f3f; min-height: 100vh; cursor: none;}
+    header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
+    .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .login-cta-header {
+      margin-top: 14px;
+      background: #FFEB3B !important;
+      color: #003366 !important;
+      font-family: 'Coming Soon', cursive !important;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 25px !important;
+      padding: 10px 24px !important;
+      text-decoration: none !important;
+      box-shadow: 0 2px 8px rgba(255,235,59,0.3);
+      display: flex;
+      align-items: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .login-cta-header:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 16px rgba(255,235,59,0.5);
+      text-decoration: none !important;
+      background: #FFD700 !important;
+    }
+    .mascot-logo { height: 56px; width: 56px; border-radius: 50%; object-fit: cover; background: #ffeb3b33; box-shadow: 0 2px 10px #2227; }
+    .site-title {margin-top: 14px !important;  font-size: 28px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
+    .header-left a:hover .site-title {margin-top: 14px !important;  color: #fffde6; }
+    nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
+    nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s; }
+
+nav ul > li > a {
+  padding-top: 18px !important;
+  padding-bottom: 4px !important;
+  display: inline-block;
+}
+
+    nav a:hover { background: #003366; text-decoration: underline; }
+    .main-blank {
+      min-height: 90vh; max-width: 900px; margin: 0 auto;
+      color: #fff; display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-start;
+      font-size: 1.25em; letter-spacing: 0.03em; padding-top: 40px; padding-bottom: 48px;
+    }
+    .about-header {
+      display: flex; align-items: center; justify-content: center; gap: 28px;
+      margin-bottom: 10px;
+    }
+    .about-header img {
+      height: 112px; width: 112px; border-radius: 50%; object-fit: cover;
+      background: #FFEB3B22; box-shadow: 0 2px 18px #FFEB3B22;
+    }
+    .about-header h1 {
+      font-size: 2.7em;
+      color: #fff;
+      margin: 0;
+      font-weight: bold;
+      text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099;
+      font-family: 'Georgia', serif;
+    }
+    .section-title {
+      font-size: 2em;
+      margin-top: 44px;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: 0 0 10px #ffeb3b99, 0 0 20px #ffaa0033;
+      margin-bottom: 0.5em;
+      font-family: 'Georgia', serif;
+      text-align: center;
+    }
+    .main-blank p {
+      text-align: center;
+      color: #fff;
+      text-shadow: 0 0 8px #ffff6699, 0 0 10px #ffaa0044;
+      margin-bottom: 1.3em;
+      margin-top: 0.7em;
+      line-height: 1.7;
+      font-size: 1.08em;
+      letter-spacing: 0.02em;
+      font-family: 'Georgia', serif;
+    }
+    ul {
+      color: #fffde7;
+      font-size: 1em;
+      padding: 0;
+      margin: 1.3em auto;
+      list-style: none;
+      display: inline-block;
+      text-align: center;
+    }
+    li {
+      text-align: center;
+      font-size: 1.1em;
+      margin-bottom: 0.7em;
+      font-family: 'Georgia', serif;
+    }
+    @media (max-width: 700px) {
+      .main-blank { font-size: 1em; padding-top: 18px;}
+      .about-header { flex-direction: column; gap: 12px;}
+      .about-header img { height: 56px; width: 56px; }
+      .about-header h1 { font-size: 1.24em; }
+      .section-title { font-size: 1.09em; }
+    }
+
+    /* Sparkle star styling */
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      width: 22px;
+      height: 22px;
+      background: transparent;
+      z-index: 9999;
+      animation: sparkle-fade 0.9s linear forwards;
+    }
+    .sparkle::after {
+      content: "★";
+      color: #ffeb3b;
+      font-size: 22px;
+      filter: drop-shadow(0 0 8px #ffe066) drop-shadow(0 0 16px #fffde0cc);
+      opacity: 0.9;
+    }
+    @keyframes sparkle-fade {
+      0%   { opacity: 1; transform: scale(1) translateY(0); }
+      60%  { opacity: 0.8; transform: scale(1.18) translateY(-4px);}
+      80%  { opacity: 0.8; }
+      100% { opacity: 0; transform: scale(0.8) translateY(-22px);}
+    }
+  </style><style>
+   header, .header-left, .header-right, 
+.header-left a, 
+.header-left img {
+  vertical-align: top !important;
+  align-self: flex-start !important;
+  margin-top: 0 !important;
+}
+.site-title {
+  margin-top: 14px !important;
+  line-height: 1.1 !important;
+  display: inline-block;
+}
+  </style><style>
+   header, .header-left, .header-right, 
+.header-left a, 
+.header-left img {
+  vertical-align: top !important;
+  align-self: flex-start !important;
+  margin-top: 0 !important;
+}
+.site-title {
+  margin-top: 14px !important;
+  line-height: 1.1 !important;
+  display: inline-block;
+}
+  </style><style>
+   /* Show video in header, hide logo on mobile; reverse on desktop */
+@media (max-width:800px) {
+  .header-left img[alt="Story Bell Logo"] { display: none !important; }
+  .storybell-header-video { display: block !important; }
+}
+@media (min-width:801px) {
+  .header-left img[alt="Story Bell Logo"] { display: block !important; }
+  .storybell-header-video { display: none !important; }
+}
+  </style><style>
+/* Align logo and Story Bell text beside each other */
+header .header-left {
+  display: flex !important;
+  align-items: center !important;
+}
+header .header-left video,
+header .header-left img {
+  margin-right: 8px !important;
+}
+header .site-title {
+  text-align: left !important;
+  margin: 0 !important;
+}
+</style><style>
+   /* Hamburger Button */
+
+/* Responsive for Mobile */
+@media (max-width: 900px) {
+  
+  .header-right nav {
+    width: 100vw;
+    max-width: 400px;
+    min-width: 230px;
+    background: #001f3f;
+    position: absolute;
+    right: 0; top: 54px;
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 8px 32px #0005;
+    z-index: 3999;
+    display: none;
+    padding-bottom: 14px;
+    animation: fadeDown 0.17s;
+  }
+  .header-right.nav-open nav {
+    display: block !important;
+  }
+  .header-right nav ul {
+    flex-direction: column;
+    width: 100%;
+    margin: 0; padding: 0;
+    background: none;
+  }
+  .header-right nav ul > li {
+    width: 100%;
+    position: relative;
+    text-align: left;
+  }
+  .header-right nav a {
+    width: 100%;
+    font-size: 18px;
+    text-align: left;
+    border-radius: 8px;
+    padding: 13px 22px;
+    display: block;
+    color: #FFEB3B;
+    background: none;
+  }
+  .header-right nav ul .dropdown {
+    display: none;
+    background: #003366;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px #001a30cc;
+    padding: 0.7em 0;
+    min-width: 180px;
+    z-index: 4050;
+    margin-top: 0.1em;
+    position: static;
+  }
+  .header-right nav ul li.open > .dropdown {
+    display: block;
+  }
+}
+@keyframes fadeDown { from {opacity:0;transform:translateY(-16px);} to {opacity:1;transform:translateY(0);} }
+  </style><style>
+   @media (max-width: 800px) {
+  #menu-toggle {
+    display: block !important;
+    position: absolute;
+    right: 10px;
+    top: -60px;
+    z-index: 5000;
+    background: none;
+    border: none;
+    color: #FFEB3B;
+    font-size: 2.1em;
+    cursor: pointer;
+    padding: 7px 10px;
+    line-height: 1;
+    font-family: 'Coming Soon', cursive !important;
+  }
+  .header-right {
+    position: relative;
+    min-height: 50px;
+  }
+  .header-right > a[href*="mailchimp"] {
+    display: none !important;
+  }
+  .header-right nav {
+    position: fixed !important;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    max-width: 98vw;
+    height: 100vh;
+    background: #001f3f;
+    z-index: 10000;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.5);
+    transition: right 0.3s cubic-bezier(.5,1.7,.49,1.06);
+    overflow-y: auto;
+    padding-top: 60px;
+    display: block !important;
+    transform: translateX(0);
+  }
+  .header-right nav.open {
+    right: 0 !important;
+  }
+  .header-right nav::before {
+    content: "×";
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2.4em;
+    color: #FFEB3B;
+    cursor: pointer;
+    line-height: 1;
+    font-family: 'Georgia', serif;
+    z-index: 4001;
+  }
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    background: transparent !important;
+    gap: 0;
+    margin: 0;
+    padding: 10px 0;
+    position: static !important;
+    box-shadow: none !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    border-radius: 0 !important;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+  nav ul > li {
+    width: 100%;
+    position: relative;
+  }
+  nav ul > li > a {
+    width: 100%;
+    display: block !important;
+    text-align: left !important;
+    font-size: 17px !important;
+    padding: 12px 14px !important;
+    border-bottom: 1px solid rgba(255,235,59,0.13);
+    color: #FFEB3B;
+    position: relative;
+    font-family: 'Coming Soon', cursive !important;
+    text-decoration: none !important;
+  }
+  nav ul > li > a:hover {
+    background: rgba(255,235,59,0.13);
+  }
+  nav ul > li:has(.dropdown) > a:after {
+    content: "▼";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9em;
+    opacity: 0.6;
+    transition: transform 0.3s;
+  }
+  li.open > a:after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  .dropdown {
+    display: none !important;
+    position: static !important;
+    background: rgba(0,0,0,0.22) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    max-width: 95vw;
+    min-width: 120px !important;
+    top: auto !important;
+    left: auto !important;
+  }
+  li.open > .dropdown {
+    display: block !important;
+  }
+  .dropdown li a,
+  .dropdown-item {
+    padding: 10px 28px !important;
+    font-size: 15px !important;
+    text-align: left !important;
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255,235,59,0.07);
+    display: block !important;
+    font-family: 'Coming Soon', cursive !important;
+    text-decoration: none !important;
+    color: #FFEB3B !important;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+  .dropdown li a:hover,
+  .dropdown-item:hover {
+    background: rgba(255,235,59,0.18) !important;
+  }
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 280px;
+    bottom: 0;
+    background: rgba(0,0,0,0.46);
+    z-index: 9999;
+  }
+  .menu-overlay.active {
+    display: block;
+  }
+  body.menu-open {
+    overflow: hidden;
+  }
+  .mailchimp-link-mobile {
+    display: none !important;
+  }
+}
+@media (min-width: 801px) {
+  #menu-toggle {
+    display: none !important;
+  }
+  .menu-overlay {
+    display: none !important;
+  }
+  .header-right nav {
+    display: block !important;
+    position: static !important;
+    right: auto !important;
+    width: auto !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    transition: none !important;
+  }
+  .mailchimp-link-mobile {
+    display: none !important;
+  }
+}
+  </style><style>
+   /* --- Hamburger Menu Styles --- */
+@media (max-width: 800px) {
+  
+  .header-right {
+    position: relative;
+    min-height: 50px;
+  }
+  /* Hide mailchimp/email links on mobile/hamburger only */
+  .header-right a[href*="mailchimp"],
+  .header-right a[aria-label*="mailchimp"],
+  .header-right a[title*="mailchimp"],
+  .header-right a[href*="email"],
+  .header-right a[aria-label*="email"],
+  .header-right a[title*="email"],
+  .header-right button[href*="mailchimp"],
+  .header-right button[aria-label*="mailchimp"],
+  .header-right button[title*="mailchimp"],
+  .header-right button[href*="email"],
+  .header-right button[aria-label*="email"],
+  .header-right button[title*="email"],
+  .header-right li.mailchimp-link-mobile,
+  .header-right li.mailchimp-link,
+  .header-right .mailchimp-link-mobile,
+  .header-right .mailchimp-link
+  {
+    display: none !important;
+  }
+  .header-right nav {
+    position: fixed !important;
+    top: 0;
+    right: -220px; /* Hidden off-screen, wider menu */
+    width: 240px;
+    max-width: 98vw;
+    height: 100vh;
+    background: #001f3f;
+    background-image:
+      radial-gradient(circle, rgba(255, 238, 136, 0.3) 1px, transparent 1px),
+      radial-gradient(circle, rgba(255, 238, 136, 0.3) 1px, transparent 1px);
+    background-position: 0 0, 25px 25px;
+    background-size: 50px 50px;
+    z-index: 10000;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.5);
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    padding-top: 60px;
+    display: block !important;
+    transform: translateX(0);
+  }
+  .header-right nav.open {
+    right: 0 !important;
+  }
+  .header-right nav::before {
+    content: "×";
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2.5em;
+    color: #FFEB3B;
+    cursor: pointer;
+    line-height: 1;
+    font-family: 'Georgia', serif;
+    z-index: 4001;
+  }
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    background: transparent !important;
+    gap: 0;
+    margin: 0;
+    padding: 10px 0;
+    position: static !important;
+    box-shadow: none !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    border-radius: 0 !important;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+  nav ul > li {
+    width: 100%;
+    position: relative;
+  }
+  nav ul > li > a {
+    width: 100%;
+    display: block !important;
+    text-align: left !important;
+    font-size: 17px !important;
+    padding: 12px 14px !important;
+    border-bottom: 1px solid rgba(255,235,59,0.1);
+    color: #FFEB3B;
+    position: relative;
+    font-family: 'Coming Soon', cursive !important;
+    text-decoration: none !important;
+  }
+  nav ul > li > a:hover {
+    background: rgba(255,235,59,0.1);
+  }
+  nav ul > li:has(.dropdown) > a:after {
+    content: "▼";
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    opacity: 0.6;
+    transition: transform 0.3s;
+  }
+  li.open > a:after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  .dropdown {
+    display: none !important;
+    position: static !important;
+    background: rgba(0,0,0,0.3) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    width: 220px !important;
+    max-width: 98vw !important;
+    min-width: 90px !important;
+    top: auto !important;
+    left: auto !important;
+  }
+  li.open > .dropdown {
+    display: block !important;
+  }
+  .dropdown li a,
+  .dropdown-item {
+    padding: 8px 24px !important;
+    font-size: 15px !important;
+    text-align: left !important;
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255,235,59,0.05);
+    display: block !important;
+    font-family: 'Coming Soon', cursive !important;
+    text-decoration: none !important;
+    color: #FFEB3B !important;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+  .dropdown li a:hover,
+  .dropdown-item:hover {
+    background: rgba(255,235,59,0.15) !important;
+  }
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 240px;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+  }
+  .menu-overlay.active {
+    display: block;
+  }
+  body.menu-open {
+    overflow: hidden;
+  }
+  .mailchimp-link-mobile a {
+    background: #FFEB3B !important;
+    color: #003366 !important;
+    margin: 10px 14px !important;
+    border-radius: 20px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    border-bottom: none !important;
+  }
+}
+/* Desktop styles - ensure hamburger is hidden */
+@media (min-width: 801px) {
+  
+  .menu-overlay {
+    display: none !important;
+  }
+  .header-right nav {
+    display: block !important;
+    position: static !important;
+    right: auto !important;
+    width: auto !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    transition: none !important;
+  }
+  .mailchimp-link-mobile {
+    display: none !important;
+  }
+}
+  </style><style>
+   /* --- Hamburger Menu Styles --- */
+@media (max-width: 800px) {
+  
+  .header-right {
+    position: relative;
+    min-height: 50px;
+  }
+  .header-right > a[href*="mailchimp"] {
+    display: none !important;
+  }
+  .header-right nav {
+    position: fixed !important;
+    top: 0;
+    right: -220px; /* Hidden off-screen, wider menu */
+    width: 240px;
+    max-width: 98vw;
+    height: 100vh;
+    background: #001f3f;
+    background-image:
+      radial-gradient(circle, rgba(255, 238, 136, 0.3) 1px, transparent 1px),
+      radial-gradient(circle, rgba(255, 238, 136, 0.3) 1px, transparent 1px);
+    background-position: 0 0, 25px 25px;
+    background-size: 50px 50px;
+    z-index: 10000;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.5);
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    padding-top: 60px;
+    display: block !important;
+    transform: translateX(0);
+  }
+  .header-right nav.open {
+    right: 0 !important;
+  }
+  .header-right nav::before {
+    content: "×";
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2.5em;
+    color: #FFEB3B;
+    cursor: pointer;
+    line-height: 1;
+    font-family: 'Georgia', serif;
+    z-index: 4001;
+  }
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    background: transparent !important;
+    gap: 0;
+    margin: 0;
+    padding: 10px 0;
+    position: static !important;
+    box-shadow: none !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    border-radius: 0 !important;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+  nav ul > li {
+    width: 100%;
+    position: relative;
+  }
+  nav ul > li > a {
+    width: 100%;
+    display: block !important;
+    text-align: left !important;
+    font-size: 17px !important;
+    padding: 12px 14px !important;
+    border-bottom: 1px solid rgba(255,235,59,0.1);
+    color: #FFEB3B;
+    position: relative;
+    font-family: 'Coming Soon', cursive !important;
+    text-decoration: none !important;
+  }
+  nav ul > li > a:hover {
+    background: rgba(255,235,59,0.1);
+  }
+  nav ul > li:has(.dropdown) > a:after {
+    content: "▼";
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    opacity: 0.6;
+    transition: transform 0.3s;
+  }
+  li.open > a:after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  .dropdown {
+    display: none !important;
+    position: static !important;
+    background: rgba(0,0,0,0.3) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    width: 220px !important;
+    max-width: 98vw !important;
+    min-width: 90px !important;
+    top: auto !important;
+    left: auto !important;
+  }
+  li.open > .dropdown {
+    display: block !important;
+  }
+  .dropdown li a,
+  .dropdown-item {
+    padding: 8px 24px !important;
+    font-size: 15px !important;
+    text-align: left !important;
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255,235,59,0.05);
+    display: block !important;
+    font-family: 'Coming Soon', cursive !important;
+    text-decoration: none !important;
+    color: #FFEB3B !important;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+  .dropdown li a:hover,
+  .dropdown-item:hover {
+    background: rgba(255,235,59,0.15) !important;
+  }
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 240px;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+  }
+  .menu-overlay.active {
+    display: block;
+  }
+  body.menu-open {
+    overflow: hidden;
+  }
+  .mailchimp-link-mobile a {
+    background: #FFEB3B !important;
+    color: #003366 !important;
+    margin: 10px 14px !important;
+    border-radius: 20px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    border-bottom: none !important;
+  }
+}
+/* Desktop styles - ensure hamburger is hidden */
+@media (min-width: 801px) {
+  
+  .menu-overlay {
+    display: none !important;
+  }
+  .header-right nav {
+    display: block !important;
+    position: static !important;
+    right: auto !important;
+    width: auto !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    transition: none !important;
+  }
+  .mailchimp-link-mobile {
+    display: none !important;
+  }
+}
+  </style><style>
+   @media (max-width: 800px) {
+  
+  .header-right {
+    position: relative;
+    min-height: 50px;
+  }
+  .header-right > a[href*="mailchimp"] {
+    display: none !important;
+  }
+  .header-right nav {
+    position: fixed !important;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    max-width: 98vw;
+    height: 100vh;
+    background: #001f3f;
+    z-index: 10000;
+    box-shadow: -4px 0 20px rgba(0,0,0,0.5);
+    transition: right 0.3s cubic-bezier(.5,1.7,.49,1.06);
+    overflow-y: auto;
+    padding-top: 60px;
+    display: block !important;
+    transform: translateX(0);
+  }
+  .header-right nav.open {
+    right: 0 !important;
+  }
+  .header-right nav::before {
+    content: "×";
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2.4em;
+    color: #FFEB3B;
+    cursor: pointer;
+    line-height: 1;
+    font-family: 'Georgia', serif;
+    z-index: 4001;
+  }
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    background: transparent !important;
+    gap: 0;
+    margin: 0;
+    padding: 10px 0;
+    position: static !important;
+    box-shadow: none !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    border-radius: 0 !important;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+  nav ul > li {
+    width: 100%;
+    position: relative;
+  }
+  nav ul > li > a {
+    width: 100%;
+    display: block !important;
+    text-align: left !important;
+    font-size: 17px !important;
+    padding: 12px 14px !important;
+    border-bottom: 1px solid rgba(255,235,59,0.13);
+    color: #FFEB3B;
+    position: relative;
+    font-family: 'Coming Soon', cursive !important;
+    text-decoration: none !important;
+  }
+  nav ul > li > a:hover {
+    background: rgba(255,235,59,0.13);
+  }
+  nav ul > li:has(.dropdown) > a:after {
+    content: "▼";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9em;
+    opacity: 0.6;
+    transition: transform 0.3s;
+  }
+  li.open > a:after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  .dropdown {
+    display: none !important;
+    position: static !important;
+    background: rgba(0,0,0,0.22) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    max-width: 95vw;
+    min-width: 120px !important;
+    top: auto !important;
+    left: auto !important;
+  }
+  li.open > .dropdown {
+    display: block !important;
+  }
+  .dropdown li a,
+  .dropdown-item {
+    padding: 10px 28px !important;
+    font-size: 15px !important;
+    text-align: left !important;
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255,235,59,0.07);
+    display: block !important;
+    font-family: 'Coming Soon', cursive !important;
+    text-decoration: none !important;
+    color: #FFEB3B !important;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+  .dropdown li a:hover,
+  .dropdown-item:hover {
+    background: rgba(255,235,59,0.18) !important;
+  }
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 280px;
+    bottom: 0;
+    background: rgba(0,0,0,0.46);
+    z-index: 9999;
+  }
+  .menu-overlay.active {
+    display: block;
+  }
+  body.menu-open {
+    overflow: hidden;
+  }
+  .mailchimp-link-mobile {
+    display: none !important;
+  }
+}
+@media (min-width: 801px) {
+  
+  .menu-overlay {
+    display: none !important;
+  }
+  .header-right nav {
+    display: block !important;
+    position: static !important;
+    right: auto !important;
+    width: auto !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    transition: none !important;
+  }
+  .mailchimp-link-mobile {
+    display: none !important;
+  }
+}
+  </style><style>
+   /* --- Responsive Styles for Mobile/Tablet (NO Hamburger Menu) --- */
+@media (max-width: 800px) {
+  header { flex-direction: column; align-items: stretch !important; }
+  .header-right {
+    width: 100%;
+    justify-content: flex-end;
+    padding: 0;
+    margin: 0;
+    position: relative;
+  }
+  nav {
+    width: 100%;
+    margin-top: 8px;
+  }
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    background: #001f3f;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 6px 24px #0005;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    display: none; /* keep closed by default */
+    position: absolute;
+    left: 0; right: 0; top: 45px;
+    z-index: 3000;
+  }
+  nav ul > li { width: 100%; }
+  nav a { width: 100%; text-align: left; font-size: 18px; }
+}
+
+/* General improvements for small screens */
+@media (max-width: 600px) {
+  .site-title { font-size: 35px; }
+  header { padding: 5px 2px; }
+  nav a { font-size: 15px; padding: 8px 14px; }
+}
+
+body, body * {
+  font-family: 'Coming Soon', cursive !important;
+}
+
+.about-header h1,
+.section-title,
+.main-blank h1,
+.main-blank > h1,
+h1.main-title {
+  font-family: 'Coming Soon', cursive !important;
+}
+
+.header-right, .header-right nav, .header-right nav a, .header-right nav ul, .header-right nav ul li, .header-right nav ul li a,
+.header-left a:not(.site-title), 
+header nav a, header nav ul, header nav ul li, header nav ul li a
+{
+  font-family: 'Coming Soon', cursive !important;
+}
+
+body {
+  margin: 0;
+  
+  background-color: #001f3f;
+  background-image:
+    radial-gradient(circle, #ffee88 1px, transparent 1px),
+    radial-gradient(circle, #ffee88 1px, transparent 1px),
+    radial-gradient(circle, #ffffff 1px, transparent 1px),
+    radial-gradient(circle, #88ccff 1px, transparent 1px);
+  background-position:
+    10px 20px,
+    80px 150px,
+    200px 100px,
+    120px 250px;
+  background-size: 300px 300px;
+  background-repeat: repeat;
+  cursor: none;
+}
+h1 {
+  font-size: 60px;
+  color: #FFD700;
+  text-align: center;
+}
+.tagline {
+  font-size: 24px;
+  text-align: center;
+  font-style: italic;
+  color: white;
+}
+.tagline span {
+  display: inline-block;
+  animation: glowTrail 3s infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+@keyframes glowTrail {
+  0%, 100% { text-shadow: 0 0 0px yellow; }
+  50% { text-shadow: 0 0 10px yellow, 0 0 20px gold; }
+}
+header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
+.header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.header-right { display: flex; align-items: center; gap: 10px; }
+.site-title {margin-top: 14px !important;  font-size: 35px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
+.header-left a:hover .site-title {margin-top: 14px !important;  color: #fffde6; }
+nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
+nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s;}
+
+nav ul > li > a {
+  padding-top: 18px !important;
+  padding-bottom: 4px !important;
+  display: inline-block;
+}
+
+nav a:hover, nav a:focus { background: #003366; text-decoration: underline; }
+nav ul > li { position: relative; }
+.dropdown {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 110%;
+  background: #003366;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px #001a30cc;
+  padding: 0.5em 0;
+  min-width: 150px;
+  z-index: 999;
+  list-style: none;
+  margin: 0;
+  transition: opacity 0.14s;
+}
+nav ul > li:hover > .dropdown,
+nav ul > li:focus-within > .dropdown {
+  display: block !important;
+}
+.dropdown-item {
+  display: block;
+  color: #FFEB3B;
+  text-decoration: none;
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.13s;
+  user-select: none;
+
+  text-align: center;
+}
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: #184a73 !important;
+  color: #fffbe9 !important;
+  outline: none;
+}
+/* Sparkle star styling */
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  width: 22px;
+  height: 22px;
+  background: transparent;
+  z-index: 9999;
+  animation: sparkle-fade 0.9s linear forwards;
+}
+.sparkle::after {
+  content: "★";
+  color: #ffeb3b;
+  font-size: 22px;
+  filter: drop-shadow(0 0 8px #ffe066) drop-shadow(0 0 16px #fffde0cc);
+  opacity: 0.9;
+}
+@keyframes sparkle-fade {
+  0%   { opacity: 1; transform: scale(1) translateY(0); }
+  60%  { opacity: 0.8; transform: scale(1.18) translateY(-4px);}
+  80%  { opacity: 0.8; }
+  100% { opacity: 0; transform: scale(0.8) translateY(-22px);}
+}
+@media (max-width: 700px) {
+  nav ul { gap: 10px; }
+}
+
+/* Force dropdown menu links to be center-aligned */
+.dropdown li a {
+  text-align: center !important;
+  display: block !important;
+}
+  </style><style>
+   body { margin: 0;  background-color: #001f3f; min-height: 100vh; cursor: none;}
+header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
+.header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.header-right { display: flex; align-items: center; gap: 10px; }
+.site-title {margin-top: 14px !important;  font-size: 35px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
+.header-left a:hover .site-title {margin-top: 14px !important;  color: #fffde6; }
+nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
+nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s;}
+
+nav ul > li > a {
+  padding-top: 18px !important;
+  padding-bottom: 4px !important;
+  display: inline-block;
+}
+
+nav a:hover, nav a:focus { background: #003366; text-decoration: underline; }
+nav ul > li { position: relative; }
+.dropdown {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 110%;
+  background: #003366;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px #001a30cc;
+  padding: 0.5em 0;
+  min-width: 150px;
+  z-index: 999;
+  list-style: none;
+  margin: 0;
+  transition: opacity 0.14s;
+}
+nav ul > li:hover > .dropdown,
+nav ul > li:focus-within > .dropdown {
+  display: block !important;
+}
+.dropdown-item {
+  display: block;
+  color: #FFEB3B;
+  text-decoration: none;
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.13s;
+  user-select: none;
+
+  text-align: center;
+}
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: #184a73 !important;
+  color: #fffbe9 !important;
+  outline: none;
+}
+/* Sparkle star styling */
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  width: 22px;
+  height: 22px;
+  background: transparent;
+  z-index: 9999;
+  animation: sparkle-fade 0.9s linear forwards;
+}
+.sparkle::after {
+  content: "★";
+  color: #ffeb3b;
+  font-size: 22px;
+  filter: drop-shadow(0 0 8px #ffe066) drop-shadow(0 0 16px #fffde0cc);
+  opacity: 0.9;
+}
+@keyframes sparkle-fade {
+  0%   { opacity: 1; transform: scale(1) translateY(0); }
+  60%  { opacity: 0.8; transform: scale(1.18) translateY(-4px);}
+  80%  { opacity: 0.8; }
+  100% { opacity: 0; transform: scale(0.8) translateY(-22px);}
+}
+@media (max-width: 700px) {
+  nav ul { gap: 10px; }
+}
+  </style><style>
+   @media (max-width: 900px){
+  body.menu-open header{ z-index: 11000 !important; position: sticky; top: 0; }
+  .header-right #menu-toggle{
+    display:block !important; position:absolute !important; right:10px; top:10px;
+    z-index:11002; background:none; border:0; color:#FFEB3B; font-size:2.1em;
+    padding:7px 10px; line-height:1; cursor:pointer;
+  }
+  .header-right nav{
+    position:fixed !important; top:0; right:-280px !important;
+    width:280px; max-width:98vw; height:100vh; background:#001f3f;
+    box-shadow:-4px 0 20px rgba(0,0,0,.5); overflow-y:auto; padding-top:60px;
+    transition:right .28s cubic-bezier(.5,1.7,.49,1.06); z-index:11001; display:block !important;
+  }
+  .header-right nav.open{ right:0 !important; }
+  .menu-overlay{
+    position:fixed; inset:0; background:rgba(0,0,0,.25);
+    display:none; z-index:10000;
+  }
+  .menu-overlay.active{ display:block !important; }
+  body.menu-open{ overflow:hidden !important; }
+
+  .header-right nav>ul{ display:none !important; flex-direction:column; margin:0; padding:10px 0; max-height:calc(100vh - 80px); overflow-y:auto; }
+  .header-right nav.open>ul{ display:flex !important; }
+
+  /* Disable hover/focus in mobile completely */
+  .header-right nav ul>li:hover>.dropdown, .header-right nav ul>li:focus-within>.dropdown{ display:none !important; }
+
+  /* Submenu base style */
+  .header-right nav ul>li>.dropdown{
+    display:none !important; position:static !important; background:transparent !important;
+    margin:0 !important; padding:0 !important; width:100% !important;
+  }
+  .header-right nav ul>li.open>.dropdown{ display:block !important; }
+
+  /* Submenu links: left align + indent */
+  .header-right nav ul>li>.dropdown li a{
+    padding-left: 24px !important;
+    font-size: 0.9em !important;
+    text-align: left !important;
+  }
+
+  /* Indicator arrows */
+  .header-right nav ul>li:has(> .dropdown) > a::after{
+    content:"▼"; position:absolute; right:18px; top:50%; transform:translateY(-50%);
+    font-size:.85em; opacity:.85;
+  }
+  .header-right nav ul>li.open > a::after{ transform:translateY(-50%) rotate(180deg); }
+}
+@media (min-width:901px){
+  .header-right #menu-toggle{ display:none !important; }
+  .menu-overlay{ display:none !important; }
+}
+  </style><style>
+   @media (max-width: 900px){
+  body.menu-open header{ z-index: 11000 !important; }
+  .header-right nav{ z-index: 11001 !important; }
+  .header-right #menu-toggle{ z-index: 11002 !important; }
+  .menu-overlay{ z-index: 10000 !important; }
+}
+  </style><style>
+   @media (max-width: 900px){
+  header .header-right #menu-toggle{
+    position: static !important;   /* keep flex alignment */
+    margin-left: -36px !important; /* nudge closer to "Story Bell" */
+    margin-right: 0 !important;
+    transform: none !important;    /* remove any transforms */
+  }
+}
+  </style><style>
+/* Mobile-only tweaks for Login button and hamburger */
+@media (max-width: 800px){
+  .login-mobile a {
+    font-size: 12px !important;
+    padding: 4px 8px !important;
+    width: auto !important;
+    display: inline-block !important;
+    margin: 6px 10px !important;
+    border-radius: 12px !important;
+    text-align: left !important; /* Left align text */
+  }
+  header .hamburger {
+    margin-left: auto !important; /* push hamburger to far right */
+    margin-right: 8px !important;
+    float: right !important;
+  }
+}
+</style><style>
+@media (max-width: 800px){
+  .login-mobile a {
+    font-size: 12px !important;
+    padding: 4px 8px !important;
+    width: auto !important;
+    display: inline-block !important;
+    margin: 6px 10px !important;
+    border-radius: 12px !important;
+    text-align: left !important;
+  }
+  header .hamburger {
+    margin-left: auto !important;
+    margin-right: 8px !important;
+    float: right !important;
+  }
+  .login-cta-header { display: none !important; } /* Hide header login button on mobile */
+}
+</style><style>
+@media (max-width: 800px){
+  header .hamburger, header .menu-toggle, header .nav-toggle, header #menu-toggle, header .mobile-menu-toggle, header .menu-btn, header .burger {
+    margin-left: auto !important;
+    margin-right: 8px !important;
+    float: right !important;
+  }
+}
+</style><style>
+@media (max-width: 800px){
+  /* Move hamburger toggle down */
+  header .hamburger,
+  header .menu-toggle,
+  header .nav-toggle,
+  header #menu-toggle,
+  header .mobile-menu-toggle,
+  header .menu-btn,
+  header .burger {
+    margin-top: 6px !important;
+    margin-left: auto !important;
+    margin-right: 8px !important;
+    float: right !important;
+  }
+
+  /* Make login button single-row and wider */
+  .login-mobile a {
+    font-size: 13px !important;
+    padding: 8px 16px !important;
+    display: block !important;
+    width: 90% !important;
+    margin: 8px auto !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+  }
+}
+</style><style>
+   @media (max-width: 900px){
+  header{
+    display:flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+  }
+  .header-left{
+    display:flex !important;
+    align-items:center !important;
+    gap: 8px !important;
+    white-space: nowrap !important;
+  }
+  .header-left h1, .header-left h2, .header-left span{
+    white-space: nowrap !important;
+  }
+  .header-right{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    position: relative !important;
+    min-height: unset !important;
+    margin-right: 6px !important;
+  }
+
+  /* Animation */
+  .storybell-header-video{
+    display:block !important;
+    max-width: 120px !important;
+    height:auto !important;
+    margin-left:-4px !important;
+    margin-right:8px !important;
+  }
+
+  /* Hamburger icon - further left enforced */
+  .header-right #menu-toggle{
+    position: static !important;
+    margin-left: -60px !important; /* force bigger left shift */
+    margin-top: 12px !important;
+    z-index: 11002 !important;
+    background: none !important;
+    border: none !important;
+    color: #FFEB3B !important;
+    font-size: 2.1em !important;
+    padding: 4px 6px !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+  }
+
+  /* Drawer 20% narrower enforced */
+  .header-right nav{
+    width: 156px !important; /* reduced from 196px */
+    max-width: 60vw !important; /* narrower relative width */
+  }
+
+  /* Bold main menu items */
+  .header-right nav ul > li > a{
+    padding: 6px 14px !important;
+    font-weight: bold !important;
+  }
+
+  /* Compact submenu items */
+  .header-right nav ul > li > .dropdown li a{
+    padding: 4px 20px !important;
+    line-height: 1.1 !important;
+    font-size: 0.85em !important;
+    text-align: left !important;
+    font-weight: normal !important;
+  }
+}
+  </style><style>
+.sb-search-icon{
+  display:inline-flex !important; align-items:center !important; justify-content:center !important;
+  width:38px !important; height:38px !important; margin-right:8px !important;
+  border-radius:9999px !important; flex:0 0 auto !important;
+  border:2px solid #FFEB3B !important; background:#001f3f !important; color:#FFEB3B !important;
+  cursor:pointer !important; transition:background .2s,box-shadow .2s,transform .15s !important;
+  z-index: 5001 !important;
+}
+.sb-search-icon:hover{ background:#002a66 !important; box-shadow:0 0 12px rgba(255,235,59,.6) !important; transform:scale(1.05) !important; }
+.sb-search-icon svg{ stroke:currentColor !important; display:block !important; }
+@media (max-width:800px){ .sb-search-icon{ width:34px !important; height:34px !important; margin-right:6px !important; } }
+</style><style>
+/* Force search icon to the LEFT of hamburger on mobile */
+@media (max-width: 800px) {
+  .header-right { position: relative; min-height: 44px; }
+  .header-right .hamburger {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+  }
+  .header-right .sb-search-icon {
+    position: absolute; right: 56px; top: 50%; transform: translateY(-50%);
+    margin: 0; /* avoid pushing layout */
+    width: 32px; height: 32px;
+  }
+  /* optional: keep login hidden on mobile if your CSS doesn't already */
+  .header-right .login-cta-header { display: none !important; }
+}
+</style><style>
+@media (max-width: 800px) {
+  /* Tight logo/text spacing */
+  .header-left a { gap: 0 !important; }
+  .mascot-logo { margin-right: 0 !important; }
+  .site-title { margin-left: -6px !important; }
+
+  /* Reserve a fixed lane for icons on the right to avoid overlap, without pushing content off-screen */
+  .header-right { position: relative !important; width: 90px !important; padding-right: 0 !important; }
+  .header-left  { max-width: calc(100% - 90px) !important; }  /* keep title within remaining space */
+
+  /* Ensure header doesn't add extra padding to the right */
+  header { padding-right: 0 !important; }
+
+  /* Icon positions */
+  .header-right .hamburger     { right: 0px !important; }
+  .header-right .sb-search-icon { right: 30px !important; }
+}
+</style><style>
+@media (max-width: 800px) {
+  .mascot-logo {
+    transform: scale(0.8);
+    transform-origin: left center;
+    margin-right: 0 !important;
+  }
+  .header-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0 !important;
+  }
+  .site-title {
+    margin-left: -4px !important;
+  }
+
+  /* Adjust magnifying glass position */
+  .header-right .hamburger { right: 0px !important; }
+  .header-right .sb-search-icon { right: 43px !important; }
+}
+</style><style>
+@media (max-width: 800px) {
+  /* Reserve lane for icons so text doesn't overlap (Edge + Chrome consistent) */
+  .header-left {
+    max-width: calc(100% - 90px) !important;
+    overflow: hidden;
+  }
+  .header-right {
+    position: relative !important;
+    width: 90px !important;
+    flex-shrink: 0;
+  }
+
+  /* Icon positions within reserved lane */
+  .header-right .hamburger { right: 0px !important; }
+  .header-right .sb-search-icon { right: 43px !important; }
+}
+</style><style>
+@supports (-ms-ime-align:auto) {
+  @media (max-width: 800px) {
+    /* Reserve space for icons without moving them; keep Edge text away from icon lane */
+    .header-left {
+      padding-right: 100px !important;  /* matches icon lane */
+      display: flex !important;
+      align-items: center !important;
+      gap: 0 !important;
+      min-width: 0 !important;
+    }
+
+    /* Match Chrome's title size/spacing */
+    .site-title {
+      font-size: 28px !important;      /* Chrome baseline */
+      line-height: 1.2 !important;
+      margin-left: -4px !important;     /* snug to logo */
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      max-width: calc(100% - 100px) !important; /* hard stop before icon lane */
+    }
+
+    /* Match Chrome's MP4/logo size (20% smaller than 90px) */
+    .storybell-header-video,
+    .mascot-logo {
+      width: 72px !important;           /* 90px * 0.8 */
+      height: auto !important;
+      max-width: none !important;
+      transform: none !important;
+      display: block !important;
+      object-fit: contain;
+      margin-right: 0 !important;
+    }
+  }
+}
+</style><style>
+@supports (-ms-ime-align:auto) {
+  @media (max-width: 800px) {
+    /* Hard-lock MP4/logo to 72px width on Edge mobile */
+    .storybell-header-video,
+    .mascot-logo,
+    video.storybell-header-video,
+    video.mascot-logo {
+      width: 72px !important;
+      max-width: 72px !important;
+      min-width: 72px !important;
+      height: auto !important;
+      max-height: none !important;
+      transform: none !important;
+      aspect-ratio: auto !important;
+      object-fit: contain !important;
+      display: block !important;
+    }
+    /* Ensure its container doesn't stretch it */
+    .header-left .mascot-logo,
+    .header-left .storybell-header-video {
+      flex: 0 0 72px !important;
+    }
+  }
+}
+</style><style>
+@media (max-width: 800px) {
+  .edge header .storybell-header-video {
+    height: 72px !important;
+    width: auto !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+  }
+  .edge header .header-left {
+    align-items: center !important;
+  }
+  .edge header .site-title {
+    font-size: 35px !important;
+    line-height: 1.1 !important;
+    margin: 0 0 0 2px !important;
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+  }
+  .edge header {
+    min-height: 72px !important;
+  }
+  .edge .header-right #menu-toggle {
+    margin-top: 6px !important;
+    margin-right: 8px !important;
+  }
+}
+</style><style>
+
+/* === StoryBell: Mobile header IDEAL settings (locks Chrome/Edge parity) === */
+@media (max-width: 800px){
+  header .header-left{ padding-right:96px !important; min-width:0 !important; display:flex !important; align-items:center !important; gap:0 !important; }
+  header .header-right{ position:relative !important; width:96px !important; flex:0 0 96px !important; display:flex !important; justify-content:flex-end !important; align-items:center !important; }
+  header .header-right .sb-search-icon{ position: absolute !important; right:42px !important; }
+  header .header-right .hamburger{ position: absolute !important; right:0px !important; }
+  .storybell-header-video, .mascot-logo{ width:120px !important; min-width:120px !important; max-width:120px !important; height:auto !important; transform:none !important; object-fit:contain !important; display:block !important; }
+  .site-title{ font-size:28px !important; line-height:1.2 !important; margin-left:-4px !important; white-space:nowrap !important; overflow:hidden !important; text-overflow:ellipsis !important; max-width:calc(100% - 96px) !important; }
+}
+
+</style><style>
+/* Scale hamburger and magnifier 15% smaller for all browsers (mobile only) */
+@media (max-width: 800px){
+  .sb-search-icon,
+  .hamburger{
+    transform: scale(0.85) !important;
+    transform-origin: center center !important;
+  }
+}
+</style><style>
+@media (max-width: 800px){
+  /* Chrome + all non-Edge browsers */
+  html:not(.is-edge) .sb-search-icon {
+    transform: scale(0.85) translate(0px, -15px) !important;
+    transform-origin: center center !important;
+  }
+
+  /* Edge only */
+  html.is-edge .sb-search-icon {
+    transform: scale(0.85) translate(-15px, -15px) !important;
+    transform-origin: center center !important;
+  }
+}
+</style><style>
+  /* Desktop-only header link sizing */
+  @media (min-width: 900px) {
+    header a,
+    .nav a,
+    .menu a,
+    .header-right a,
+    .header-left a,
+    .login-btn,
+    .signup-btn {
+      font-size: 16px !important;
+      line-height: 1.1 !important;
+    }
+    /* Keep the main title the same */
+    .site-title,
+    .site-title a {
+      font-size: 35px !important;
+    }
+  }
+</style><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
 <body><h1 class="sr-only" id="story-title">Story Bell</h1>
 <div id="sb-test-banner">TEST PAGE - STAGING - 2025-12-11 13:59</div>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>
 <div class="header-left">
-<a href="index.html">
-<img alt="Story Bell Logo" src="index_items/logo.jpg" style="height: 52px; margin-right: 10px;"/>
-<span class="site-title">Story Bell</span>
+<a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
+<video autoplay="" class="storybell-header-video" controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture="" muted="" playsinline="" style="max-width:90px; height:auto; display:none; margin-right:10px;max-width:90px; height:auto; margin-right:8px;">
+<source src="index_items/animationSB.mp4" type="video/mp4"/>
+</video>
+<img alt="Story Bell Logo" src="index_items/logo.webp" style="height:80px; margin-right:8px;"/>
+<span class="site-title" style="font-size:35px; font-family:'Georgia',serif !important; margin:0;">
+      Story Bell
+     </span>
 </a>
 </div>
-<div class="header-right">
+<div class="header-right" style="cursor: pointer">
+<button aria-label="Open menu" id="menu-toggle">
+     ☰
+    </button>
 <nav>
-<ul>
-<li style="position: relative;">
-<a href="#" style="cursor:pointer;">Stories</a>
-<ul class="dropdown" style="text-align: left;">
-<li><a class="dropdown-item" href="lt4.html">4 Years and Under</a></li>
-<li><a class="dropdown-item" href="4_7.html">4–7 Years Old</a></li>
-<li><a class="dropdown-item" href="8plus.html">8 Years and Over</a></li>
-<li><a class="dropdown-item" href="5min.html">Short (&lt;5 Minutes)</a></li>
-<li><a class="dropdown-item" href="10min.html">Medium (&gt;10 Minutes)</a></li>
-<li><a class="dropdown-item" href="poems.html">Poems</a></li>
+<ul><li class="login-mobile"><a href="signin.html" style="background:#FFEB3B; color:#003366; font-weight:bold; border-radius:12px; text-decoration:none; display:block; padding:8px 14px; margin:6px 10px; text-align:left; white-space:nowrap;">Log in / Create Account</a></li>
+<li class="login-mobile-profile" style="display:none;"><a href="profile.html" style="background:#FFEB3B; color:#003366; font-weight:bold; border-radius:12px; display:block; padding:8px 14px; margin:6px 10px; text-decoration:none;"><span class="sb-user-name-mobile" style="font-family:'Coming Soon',cursive; font-size:15px;"></span></a></li>
+<li style="position:relative;">
+<a href="#" style="cursor:pointer;">
+        Age Group
+       </a>
+<ul class="dropdown">
+<li>
+<a href="childrens-stories-ages-0-3.html">
+          0–3 Years Old
+         </a>
+</li>
+<li>
+<a href="childrens-stories-ages-4-6.html">
+          4–6 Years Old
+         </a>
+</li>
+<li>
+<a href="childrens-stories-ages-7-12.html">
+          7–12 Years Old
+         </a>
+</li>
 </ul>
 </li>
-<li><a href="about.html">About</a></li>
+<li style="position:relative;">
+<a href="#" style="cursor:pointer;">
+        Emotion Themed
+        <br/>
+        Stories
+       </a>
+<ul class="dropdown">
+<li>
+<a href="childrens-stories-about-happiness.html">
+          Happiness
+         </a>
+</li>
+<li>
+<a href="childrens-stories-about-sadness.html">
+          Sadness
+         </a>
+</li>
+<li>
+<a href="childrens-stories-about-fear.html">
+          Fear
+         </a>
+</li>
+<li>
+<a href="childrens-stories-about-anger.html">
+          Anger
+         </a>
+</li>
+<li>
+<a href="childrens-stories-about-disgust.html">
+          Disgust
+         </a>
+</li>
+<li>
+<a href="childrens-stories-about-surprise.html">
+          Surprise
+         </a>
+</li>
+</ul>
+</li>
+<li style="position:relative;">
+<a href="#" style="cursor:pointer;">Story Length/<br/>Type</a>
+<ul class="dropdown">
+<li>
+<a href="5-minute-childrens-stories.html">
+          Short Stories
+         </a>
+</li>
+<li>
+<a href="10-minute-childrens-stories.html">
+          Medium Length Stories
+         </a>
+</li>
+<li><a href="childrens-poems-and-rhymes.html">Poems</a></li></ul>
+</li>
+<li>
+<a href="parent-playground.html">Parents<br/>Playground</a>
+</li><li><a href="https://www.story-bell.shop" rel="noopener" target="_blank">Store</a></li>
 </ul>
 </nav>
 <!-- Mailchimp Email Signup -->
-<a href="https://YOUR-MAILCHIMP-FORM-URL" style="background: #FFEB3B; color: #003366; font-family: 'Georgia', serif; font-size: 16px; font-weight: bold; border-radius: 20px; padding: 9px 22px 9px 32px; text-decoration: none; box-shadow: 0 2px 8px rgba(255,235,59,0.22); display: flex; align-items: center; transition: background 0.2s;" target="_blank">
-<svg fill="#003366" height="21" style="margin-right:10px;" viewbox="0 0 24 24" width="21" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18V8.83l7.88 7.88a.996.996 0 001.41 0L20 8.83V18H4z"></path></svg>
-        Join Email List
-      </a>
-</div>
+<!-- SB: Search Icon Button (fixed position in header-right) -->
+<button aria-label="Search" class="sb-search-icon sb-search-icon--force" data-sb-search-trigger="" title="Search" type="button">
+<svg aria-hidden="true" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20">
+<circle cx="11" cy="11" r="7"></circle>
+<line x1="16.65" x2="21" y1="16.65" y2="21"></line>
+</svg>
+</button>
+<a class="login-cta-header" href="signin.html" rel="noopener">Log in/<br/>Create Account</a>
+<!-- User Profile (shown when signed in) -->
+<a class="sb-user-profile" href="profile.html" style="display:none; align-items:center; gap:8px; margin-top:14px; background:#FFEB3B; color:#003366; border-radius:20px; padding:8px 16px; text-decoration:none; box-shadow:0 2px 8px rgba(255,235,59,0.22);">
+<svg style="width:24px;height:24px;fill:#003366;" viewbox="0 0 24 24">
+<path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+</svg>
+<span class="sb-user-name" style="color:#003366; font-family:'Coming Soon',cursive; font-weight:bold; font-size:15px;"></span>
+</a>
+<div class="subscribe-text"></div></div>
 </header>
-<div class="main-blank"><div id="transcript"><img alt="Illustration 3 from Story Bell" class="story-image sb-firstline" src="milo-the-mouse/milo-the-mouse-imagetitle.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px"/> <br/> <span class="glow-title" data-end="0.472000" data-start="0.031000" id="word_1">Milo</span> <span class="glow-title" data-end="0.592000" data-start="0.512000" id="word_2">the</span> <span class="glow-title" data-end="0.932000" data-start="0.632000" id="word_3">Mouse</span> <br/> <span data-end="1.193000" data-start="1.072000" id="word_4">By</span> <span data-end="1.834000" data-start="1.253000" id="word_5">Story</span> <span data-end="2.975000" data-start="2.915000" id="word_6">Bell</span> <br/> <span data-end="3.055000" data-start="3.035000" id="word_7">In</span> <span data-end="3.316000" data-start="3.115000" id="word_8">a</span> <span data-end="3.636000" data-start="3.376000" id="word_9">nook</span> <span data-end="3.736000" data-start="3.716000" id="word_10">beneath</span> <span data-end="4.017000" data-start="3.796000" id="word_11">a</span> <span data-end="4.297000" data-start="4.097000" id="word_12">tree</span> <span data-end="4.778000" data-start="4.397000" id="word_13">so</span> <span data-end="5.198000" data-start="4.898000" id="word_14">small</span> <img alt="Illustration 4 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="5.659000" data-start="5.318000" id="word_15">Lived</span> <span data-end="5.999000" data-start="5.699000" id="word_16">Milo</span> <span data-end="6.620000" data-start="6.520000" id="word_17">Mouse</span> <img alt="Illustration 5 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="7.161000" data-start="6.660000" id="word_18">the</span> <span data-end="7.281000" data-start="7.221000" id="word_19">tiniest</span> <span data-end="7.522000" data-start="7.401000" id="word_20">of</span> <span data-end="8.603000" data-start="8.463000" id="word_21">all</span> <img alt="Illustration 6 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="9.084000" data-start="8.683000" id="word_22">With</span> <span data-end="9.544000" data-start="9.204000" id="word_23">whiskers</span> <span data-end="9.645000" data-start="9.584000" id="word_24">soft</span> <span data-end="9.885000" data-start="9.745000" id="word_25">and</span> <span data-end="10.165000" data-start="9.985000" id="word_26">eyes</span> <span data-end="10.546000" data-start="10.245000" id="word_27">so</span> <span data-end="11.307000" data-start="11.147000" id="word_28">bright</span> <img alt="Illustration 7 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="11.567000" data-start="11.367000" id="word_29">He'd</span> <span data-end="12.068000" data-start="11.627000" id="word_30">peek</span> <span data-end="12.188000" data-start="12.148000" id="word_31">outside</span> <span data-end="12.509000" data-start="12.248000" id="word_32">at</span> <span data-end="12.749000" data-start="12.549000" id="word_33">morning</span> <span data-end="13.770000" data-start="13.650000" id="word_34">light</span> <img alt="Illustration 8 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="14.191000" data-start="13.830000" id="word_35">But</span> <span data-end="14.451000" data-start="14.251000" id="word_36">Milo</span> <span data-end="14.792000" data-start="14.592000" id="word_37">felt</span> <span data-end="15.112000" data-start="14.992000" id="word_38">so</span> <span data-end="15.473000" data-start="15.172000" id="word_39">all</span> <span data-end="16.054000" data-start="15.493000" id="word_40">alone</span> <img alt="Illustration 9 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 10 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image1.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="16.214000" data-start="16.094000" id="word_41">In</span> <span data-end="16.674000" data-start="16.334000" id="word_42">his</span> <span data-end="16.955000" data-start="16.735000" id="word_43">quiet</span> <span data-end="17.255000" data-start="16.995000" id="word_44">little</span> <span data-end="17.355000" data-start="17.315000" id="word_45">home</span> <span data-end="17.816000" data-start="17.476000" id="word_46">of</span> <span data-end="19.238000" data-start="19.158000" id="word_47">stone</span> <img alt="Illustration 11 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 12 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"> <span data-end="19.699000" data-start="19.358000" id="word_48">I</span> <span data-end="20.500000" data-start="20.400000" id="word_49">wish</span> <img alt="Illustration 13 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <img alt="Illustration 14 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <span data-end="20.940000" data-start="20.580000" id="word_50">he</span> <span data-end="21.061000" data-start="21.001000" id="word_51">squeaked</span> <span data-end="21.401000" data-start="21.141000" id="word_52">in</span> <span data-end="21.621000" data-start="21.441000" id="word_53">voice</span> <span data-end="22.042000" data-start="21.682000" id="word_54">so</span> <span data-end="22.783000" data-start="22.743000" id="word_55">small</span> <img alt="Illustration 15 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 16 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="22.943000" data-start="22.843000" id="word_56">I</span> <span data-end="23.023000" data-start="23.003000" id="word_57">had</span> <span data-end="23.384000" data-start="23.104000" id="word_58">a</span> <span data-end="23.544000" data-start="23.444000" id="word_59">friend</span> <span data-end="23.825000" data-start="23.624000" id="word_60">to</span> <span data-end="23.925000" data-start="23.885000" id="word_61">share</span> <span data-end="24.165000" data-start="24.005000" id="word_62">it</span> <span data-end="25.803000" data-start="25.462000" id="word_63">all</span> <img alt="Illustration 17 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <img alt="Illustration 18 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <span data-end="26.003000" data-start="25.883000" id="word_64">So</span> <span data-end="26.164000" data-start="26.063000" id="word_65">out</span> <span data-end="26.504000" data-start="26.264000" id="word_66">he</span> <span data-end="26.685000" data-start="26.605000" id="word_67">crept</span> <span data-end="27.046000" data-start="26.745000" id="word_68">on</span> <span data-end="27.386000" data-start="27.126000" id="word_69">tiny</span> <span data-end="28.048000" data-start="27.847000" id="word_70">feet</span> <img alt="Illustration 19 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 20 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image2.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="28.369000" data-start="28.108000" id="word_71">Through</span> <span data-end="28.770000" data-start="28.429000" id="word_72">dewy</span> <span data-end="28.990000" data-start="28.830000" id="word_73">grass</span> <span data-end="29.431000" data-start="29.110000" id="word_74">so</span> <span data-end="29.632000" data-start="29.551000" id="word_75">cool</span> <span data-end="30.053000" data-start="29.772000" id="word_76">and</span> <span data-end="31.155000" data-start="30.874000" id="word_77">sweet</span> <img alt="Illustration 21 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="31.576000" data-start="31.255000" id="word_78">Past</span> <span data-end="31.736000" data-start="31.656000" id="word_79">ferns</span> <span data-end="32.258000" data-start="31.797000" id="word_80">and</span> <span data-end="33.120000" data-start="32.799000" id="word_81">flowers</span> <img alt="Illustration 22 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"> <span data-end="33.340000" data-start="33.260000" id="word_82">bright</span> <span data-end="33.621000" data-start="33.420000" id="word_83">and</span> <span data-end="34.603000" data-start="33.661000" id="word_84">new</span> <img alt="Illustration 23 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="34.723000" data-start="34.703000" id="word_85">Beneath</span> <span data-end="35.104000" data-start="34.803000" id="word_86">a</span> <span data-end="35.204000" data-start="35.164000" id="word_87">sky</span> <span data-end="35.706000" data-start="35.325000" id="word_88">of</span> <span data-end="36.066000" data-start="35.786000" id="word_89">clearest</span> <span data-end="37.129000" data-start="36.086000" id="word_90">blue</span> <img alt="Illustration 24 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="37.409000" data-start="37.189000" id="word_91">And</span> <span data-end="37.570000" data-start="37.470000" id="word_92">there</span> <span data-end="37.770000" data-start="37.630000" id="word_93">he</span> <span data-end="37.830000" data-start="37.810000" id="word_94">met</span> <span data-end="38.131000" data-start="37.870000" id="word_95">a</span> <span data-end="38.632000" data-start="38.251000" id="word_96">bunny</span> <span data-end="39.194000" data-start="39.073000" id="word_97">small</span> <img alt="Illustration 25 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 26 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image3.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="39.454000" data-start="39.254000" id="word_98">Who</span> <span data-end="39.895000" data-start="39.514000" id="word_99">sat</span> <span data-end="40.035000" data-start="39.955000" id="word_100">beside</span> <span data-end="40.356000" data-start="40.076000" id="word_101">the</span> <span data-end="40.737000" data-start="40.396000" id="word_102">garden</span> <span data-end="42.119000" data-start="41.999000" id="word_103">wall</span> <img alt="Illustration 27 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="42.380000" data-start="42.139000" id="word_104">The</span> <span data-end="42.840000" data-start="42.480000" id="word_105">bunny</span> <span data-end="43.922000" data-start="43.802000" id="word_106">sighed</span> <img alt="Illustration 28 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"> <img alt="Illustration 29 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="44.243000" data-start="44.002000" id="word_107">I'm</span> <span data-end="44.583000" data-start="44.283000" id="word_108">sad</span> <span data-end="44.623000" data-start="44.603000" id="word_109">today</span> <img alt="Illustration 30 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="45.485000" data-start="45.365000" id="word_110">I</span> <span data-end="45.685000" data-start="45.565000" id="word_111">have</span> <span data-end="45.846000" data-start="45.765000" id="word_112">no</span> <span data-end="45.986000" data-start="45.886000" id="word_113">one</span> <span data-end="46.166000" data-start="46.026000" id="word_114">with</span> <span data-end="46.286000" data-start="46.226000" id="word_115">whom</span> <span data-end="46.587000" data-start="46.326000" id="word_116">to</span> <span data-end="47.488000" data-start="47.328000" id="word_117">play</span> <img alt="Illustration 31 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <img alt="Illustration 32 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <span data-end="47.889000" data-start="47.568000" id="word_118">Said</span> <span data-end="48.049000" data-start="47.929000" id="word_119">Milo</span> <span data-end="48.109000" data-start="48.089000" id="word_120">with</span> <span data-end="48.470000" data-start="48.170000" id="word_121">a</span> <span data-end="48.871000" data-start="48.510000" id="word_122">gentle</span> <span data-end="50.013000" data-start="49.812000" id="word_123">smile</span> <img alt="Illustration 33 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 34 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image4.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <img alt="Illustration 35 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="50.193000" data-start="50.053000" id="word_124">Let's</span> <span data-end="50.534000" data-start="50.213000" id="word_125">sit</span> <span data-end="50.714000" data-start="50.574000" id="word_126">together</span> <span data-end="50.794000" data-start="50.774000" id="word_127">for</span> <span data-end="51.115000" data-start="50.834000" id="word_128">a</span> <span data-end="51.896000" data-start="51.155000" id="word_129">while</span> <img alt="Illustration 36 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"> <br/> <span data-end="52.056000" data-start="51.936000" id="word_130">I</span> <span data-end="52.236000" data-start="52.096000" id="word_131">have</span> <span data-end="52.697000" data-start="52.297000" id="word_132">some</span> <span data-end="53.258000" data-start="53.078000" id="word_133">berries</span> <img alt="Illustration 37 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="53.398000" data-start="53.318000" id="word_134">red</span> <span data-end="53.799000" data-start="53.499000" id="word_135">and</span> <span data-end="54.620000" data-start="54.300000" id="word_136">sweet</span> <img alt="Illustration 38 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="54.821000" data-start="54.661000" id="word_137">Sharing</span> <span data-end="55.001000" data-start="54.881000" id="word_138">makes</span> <span data-end="55.181000" data-start="55.041000" id="word_139">them</span> <span data-end="55.322000" data-start="55.262000" id="word_140">more</span> <span data-end="55.642000" data-start="55.342000" id="word_141">a</span> <span data-end="56.884000" data-start="56.804000" id="word_142">treat</span> <img alt="Illustration 39 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <img alt="Illustration 40 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <span data-end="57.225000" data-start="56.944000" id="word_143">The</span> <span data-end="57.485000" data-start="57.345000" id="word_144">bunny's</span> <span data-end="57.806000" data-start="57.545000" id="word_145">eyes</span> <span data-end="57.906000" data-start="57.846000" id="word_146">began</span> <span data-end="58.267000" data-start="57.966000" id="word_147">to</span> <span data-end="59.188000" data-start="58.307000" id="word_148">shine</span> <img alt="Illustration 41 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 42 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="59.549000" data-start="59.288000" id="word_149">How</span> <span data-end="59.649000" data-start="59.609000" id="word_150">kind</span> <span data-end="59.829000" data-start="59.689000" id="word_151">of</span> <span data-end="60.611000" data-start="60.470000" id="word_152">you</span> <img alt="Illustration 43 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <span data-end="60.951000" data-start="60.711000" id="word_153">How</span> <span data-end="61.352000" data-start="61.031000" id="word_154">very</span> <span data-end="62.334000" data-start="61.392000" id="word_155">fine</span> <img alt="Illustration 44 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <br/> <span data-end="62.594000" data-start="62.394000" id="word_156">To</span> <span data-end="62.774000" data-start="62.634000" id="word_157">share</span> <span data-end="63.015000" data-start="62.814000" id="word_158">your</span> <span data-end="63.195000" data-start="63.075000" id="word_159">food</span> <span data-end="63.415000" data-start="63.295000" id="word_160">with</span> <span data-end="63.636000" data-start="63.476000" id="word_161">one</span> <span data-end="63.956000" data-start="63.736000" id="word_162">so</span> <span data-end="64.858000" data-start="63.996000" id="word_163">new</span> <img alt="Illustration 45 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="65.058000" data-start="64.898000" id="word_164">I'd</span> <span data-end="65.158000" data-start="65.098000" id="word_165">like</span> <span data-end="65.319000" data-start="65.198000" id="word_166">to</span> <span data-end="65.399000" data-start="65.359000" id="word_167">be</span> <span data-end="65.699000" data-start="65.479000" id="word_168">a</span> <span data-end="65.820000" data-start="65.739000" id="word_169">friend</span> <span data-end="66.100000" data-start="65.860000" id="word_170">to</span> <span data-end="67.357000" data-start="67.177000" id="word_171">you</span> <img alt="Illustration 46 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <img alt="Illustration 47 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <span data-end="67.758000" data-start="67.417000" id="word_172">Then</span> <span data-end="68.019000" data-start="67.918000" id="word_173">walking</span> <span data-end="68.540000" data-start="68.439000" id="word_174">on</span> <img alt="Illustration 48 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="68.780000" data-start="68.600000" id="word_175">they</span> <span data-end="68.840000" data-start="68.820000" id="word_176">saw</span> <span data-end="69.201000" data-start="68.900000" id="word_177">a</span> <span data-end="70.063000" data-start="69.963000" id="word_178">bird</span> <img alt="Illustration 49 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 50 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image5.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="70.544000" data-start="70.123000" id="word_179">The</span> <span data-end="70.985000" data-start="70.604000" id="word_180">smallest</span> <span data-end="71.205000" data-start="71.045000" id="word_181">bluebird</span> <span data-end="71.566000" data-start="71.385000" id="word_182">they'd</span> <span data-end="71.866000" data-start="71.626000" id="word_183">ever</span> <span data-end="73.489000" data-start="73.389000" id="word_184">heard</span> <img alt="Illustration 51 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 52 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"> <span data-end="73.810000" data-start="73.570000" id="word_185">My</span> <span data-end="74.051000" data-start="73.870000" id="word_186">nest</span> <span data-end="74.351000" data-start="74.091000" id="word_187">fell</span> <span data-end="74.972000" data-start="74.411000" id="word_188">down</span> <img alt="Illustration 53 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="75.133000" data-start="75.013000" id="word_189">I'm</span> <span data-end="75.514000" data-start="75.213000" id="word_190">all</span> <span data-end="75.954000" data-start="75.574000" id="word_191">alone</span> <img alt="Illustration 54 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="76.255000" data-start="75.994000" id="word_192">I</span> <span data-end="76.556000" data-start="76.335000" id="word_193">cannot</span> <span data-end="76.636000" data-start="76.596000" id="word_194">build</span> <span data-end="76.776000" data-start="76.716000" id="word_195">it</span> <span data-end="76.916000" data-start="76.816000" id="word_196">on</span> <span data-end="77.157000" data-start="77.037000" id="word_197">my</span> <span data-end="78.539000" data-start="77.197000" id="word_198">own</span> <img alt="Illustration 55 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <img alt="Illustration 56 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <img alt="Illustration 57 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="78.760000" data-start="78.580000" id="word_199">We'll</span> <span data-end="79.020000" data-start="78.840000" id="word_200">help</span> <span data-end="80.123000" data-start="79.081000" id="word_201">you</span> <img alt="Illustration 58 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <img alt="Illustration 59 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <span data-end="80.523000" data-start="80.203000" id="word_202">Milo</span> <span data-end="80.664000" data-start="80.564000" id="word_203">squeaked</span> <span data-end="81.044000" data-start="80.764000" id="word_204">with</span> <span data-end="81.726000" data-start="81.525000" id="word_205">cheer</span> <img alt="Illustration 60 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 61 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="81.866000" data-start="81.766000" id="word_206">That's</span> <span data-end="82.207000" data-start="81.946000" id="word_207">what</span> <span data-end="82.367000" data-start="82.267000" id="word_208">friends</span> <span data-end="82.748000" data-start="82.487000" id="word_209">are</span> <span data-end="82.988000" data-start="82.808000" id="word_210">for</span> <img alt="Illustration 62 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="83.249000" data-start="83.028000" id="word_211">my</span> <span data-end="84.612000" data-start="83.289000" id="word_212">dear</span> <img alt="Illustration 63 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <img alt="Illustration 64 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <span data-end="85.012000" data-start="84.652000" id="word_213">They</span> <span data-end="85.533000" data-start="85.092000" id="word_214">gathered</span> <span data-end="85.694000" data-start="85.614000" id="word_215">twigs</span> <span data-end="86.034000" data-start="85.734000" id="word_216">and</span> <span data-end="86.275000" data-start="86.114000" id="word_217">moss</span> <span data-end="86.696000" data-start="86.355000" id="word_218">so</span> <span data-end="87.317000" data-start="87.237000" id="word_219">soft</span> <img alt="Illustration 65 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="87.537000" data-start="87.357000" id="word_220">And</span> <span data-end="87.638000" data-start="87.617000" id="word_221">built</span> <span data-end="88.018000" data-start="87.738000" id="word_222">a</span> <span data-end="88.299000" data-start="88.098000" id="word_223">nest</span> <span data-end="88.419000" data-start="88.359000" id="word_224">high</span> <span data-end="89.421000" data-start="88.479000" id="word_225">up</span> <span data-end="89.914000" data-start="89.654000" id="word_226">aloft</span> <img alt="Illustration 66 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="90.255000" data-start="90.014000" id="word_227">Now</span> <span data-end="90.695000" data-start="90.355000" id="word_228">three</span> <span data-end="91.016000" data-start="90.795000" id="word_229">friends</span> <span data-end="91.136000" data-start="91.056000" id="word_230">played</span> <span data-end="91.616000" data-start="91.236000" id="word_231">in</span> <span data-end="91.737000" data-start="91.676000" id="word_232">fields</span> <span data-end="92.157000" data-start="91.817000" id="word_233">of</span> <span data-end="92.858000" data-start="92.738000" id="word_234">green</span> <img alt="Illustration 67 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 68 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image6.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="93.419000" data-start="92.938000" id="word_235">The</span> <span data-end="93.779000" data-start="93.499000" id="word_236">happiest</span> <span data-end="93.999000" data-start="93.819000" id="word_237">friends</span> <span data-end="94.340000" data-start="94.179000" id="word_238">you've</span> <span data-end="94.680000" data-start="94.420000" id="word_239">ever</span> <span data-end="95.761000" data-start="95.621000" id="word_240">seen</span> <img alt="Illustration 69 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <br/> <span data-end="96.162000" data-start="95.821000" id="word_241">They</span> <span data-end="96.302000" data-start="96.222000" id="word_242">hopped</span> <span data-end="96.682000" data-start="96.402000" id="word_243">and</span> <span data-end="96.823000" data-start="96.743000" id="word_244">jumped</span> <span data-end="97.223000" data-start="96.963000" id="word_245">and</span> <span data-end="97.383000" data-start="97.263000" id="word_246">sang</span> <span data-end="97.804000" data-start="97.483000" id="word_247">with</span> <span data-end="98.645000" data-start="97.844000" id="word_248">glee</span> <img alt="Illustration 70 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"> <br/> <span data-end="99.205000" data-start="98.805000" id="word_249">As</span> <span data-end="99.326000" data-start="99.266000" id="word_250">joyful</span> <span data-end="99.618" data-start="99.406" id="word_251">as</span> <span data-end="100.001" data-start="99.698" id="word_252">could</span> <span data-end="100.384" data-start="100.081" id="word_253">ever</span> <span data-end="100.676" data-start="100.464" id="word_254">be</span> <img alt="Illustration 71 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 72 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="100.968" data-start="100.756" id="word_255">I</span> <span data-end="101.351" data-start="101.048" id="word_256">understand</span> <span data-end="101.734" data-start="101.431" id="word_257">now</span> <img alt="Illustration 73 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <img alt="Illustration 74 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <span data-end="102.238" data-start="101.814" id="word_258">Milo</span> <span data-end="102.621" data-start="102.318" id="word_259">said</span> <img alt="Illustration 75 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 76 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image7.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="102.913" data-start="102.701" id="word_260">As</span> <span data-end="103.296" data-start="102.993" id="word_261">stars</span> <span data-end="103.679" data-start="103.376" id="word_262">appeared</span> <span data-end="104.062" data-start="103.759" id="word_263">overhead</span> <img alt="Illustration 77 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 78 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"> <span data-end="104.445" data-start="104.142" id="word_264">When</span> <span data-end="104.828" data-start="104.525" id="word_265">you're</span> <span data-end="105.211" data-start="104.908" id="word_266">kind</span> <span data-end="105.503" data-start="105.291" id="word_267">and</span> <span data-end="105.886" data-start="105.583" id="word_268">when</span> <span data-end="106.178" data-start="105.966" id="word_269">you</span> <span data-end="106.561" data-start="106.258" id="word_270">share</span> <img alt="Illustration 79 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="107.065" data-start="106.641" id="word_271">Friends</span> <span data-end="107.448" data-start="107.145" id="word_272">appear</span> <span data-end="107.831" data-start="107.528" id="word_273">from</span> <span data-end="108.335" data-start="107.911" id="word_274">everywhere</span> <img alt="Illustration 80 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <img alt="Illustration 81 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <span data-end="108.627" data-start="108.415" id="word_275">So</span> <span data-end="108.919" data-start="108.707" id="word_276">if</span> <span data-end="109.211" data-start="108.999" id="word_277">you</span> <span data-end="109.594" data-start="109.291" id="word_278">ever</span> <span data-end="109.977" data-start="109.674" id="word_279">feel</span> <span data-end="110.36" data-start="110.057" id="word_280">alone</span> <img alt="Illustration 82 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 83 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image8.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="110.864" data-start="110.44" id="word_281">Remember</span> <span data-end="111.247" data-start="110.944" id="word_282">little</span> <span data-end="111.751" data-start="111.327" id="word_283">Milo's</span> <span data-end="112.134" data-start="111.831" id="word_284">home</span> <img alt="Illustration 84 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="112.517" data-start="112.214" id="word_285">Reach</span> <span data-end="112.9" data-start="112.597" id="word_286">out</span> <span data-end="113.283" data-start="112.98" id="word_287">with</span> <span data-end="113.787" data-start="113.363" id="word_288">kindness</span> <img alt="Illustration 85 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"> <span data-end="114.17" data-start="113.867" id="word_289">try</span> <span data-end="114.462" data-start="114.25" id="word_290">and</span> <span data-end="114.845" data-start="114.542" id="word_291">see</span> <img alt="Illustration 86 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="115.228" data-start="114.925" id="word_292">How</span> <span data-end="115.611" data-start="115.308" id="word_293">happy</span> <span data-end="115.994" data-start="115.691" id="word_294">friends</span> <span data-end="116.377" data-start="116.074" id="word_295">will</span> <span data-end="116.76" data-start="116.457" id="word_296">always</span> <span data-end="117.052" data-start="116.84" id="word_297">be</span> <img alt="Illustration 87 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <br/> <span data-end="117.435" data-start="117.132" id="word_298">The</span> <span data-end="117.939" data-start="117.515" id="word_299">End</span> <br/></img></img></img></img></img></img></img></img></div></div>
+<div class="main-blank"><div id="transcript"><img alt="Illustration 3 from Story Bell" class="story-image sb-firstline" src="milo-the-mouse/milo-the-mouse-imagetitle.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px"/> <br/> <span class="glow-title" data-end="0.472000" data-start="0.031000" id="word_1">Milo</span> <span class="glow-title" data-end="0.592000" data-start="0.512000" id="word_2">the</span> <span class="glow-title" data-end="0.932000" data-start="0.632000" id="word_3">Mouse</span> <br/> <span data-end="1.193000" data-start="1.072000" id="word_4">By</span> <span data-end="1.834000" data-start="1.253000" id="word_5">Story</span> <span data-end="2.975000" data-start="2.915000" id="word_6">Bell</span> <br/> <span data-end="3.055000" data-start="3.035000" id="word_7">In</span> <span data-end="3.316000" data-start="3.115000" id="word_8">a</span> <span data-end="3.636000" data-start="3.376000" id="word_9">nook</span> <span data-end="3.736000" data-start="3.716000" id="word_10">beneath</span> <span data-end="4.017000" data-start="3.796000" id="word_11">a</span> <span data-end="4.297000" data-start="4.097000" id="word_12">tree</span> <span data-end="4.778000" data-start="4.397000" id="word_13">so</span> <span data-end="5.198000" data-start="4.898000" id="word_14">small</span> <img alt="Illustration 4 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="5.659000" data-start="5.318000" id="word_15">Lived</span> <span data-end="5.999000" data-start="5.699000" id="word_16">Milo</span> <span data-end="6.620000" data-start="6.520000" id="word_17">Mouse</span> <img alt="Illustration 5 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="7.161000" data-start="6.660000" id="word_18">the</span> <span data-end="7.281000" data-start="7.221000" id="word_19">tiniest</span> <span data-end="7.522000" data-start="7.401000" id="word_20">of</span> <span data-end="8.603000" data-start="8.463000" id="word_21">all</span> <img alt="Illustration 6 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="9.084000" data-start="8.683000" id="word_22">With</span> <span data-end="9.544000" data-start="9.204000" id="word_23">whiskers</span> <span data-end="9.645000" data-start="9.584000" id="word_24">soft</span> <span data-end="9.885000" data-start="9.745000" id="word_25">and</span> <span data-end="10.165000" data-start="9.985000" id="word_26">eyes</span> <span data-end="10.546000" data-start="10.245000" id="word_27">so</span> <span data-end="11.307000" data-start="11.147000" id="word_28">bright</span> <img alt="Illustration 7 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="11.567000" data-start="11.367000" id="word_29">He'd</span> <span data-end="12.068000" data-start="11.627000" id="word_30">peek</span> <span data-end="12.188000" data-start="12.148000" id="word_31">outside</span> <span data-end="12.509000" data-start="12.248000" id="word_32">at</span> <span data-end="12.749000" data-start="12.549000" id="word_33">morning</span> <span data-end="13.770000" data-start="13.650000" id="word_34">light</span> <img alt="Illustration 8 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="14.191000" data-start="13.830000" id="word_35">But</span> <span data-end="14.451000" data-start="14.251000" id="word_36">Milo</span> <span data-end="14.792000" data-start="14.592000" id="word_37">felt</span> <span data-end="15.112000" data-start="14.992000" id="word_38">so</span> <span data-end="15.473000" data-start="15.172000" id="word_39">all</span> <span data-end="16.054000" data-start="15.493000" id="word_40">alone</span> <img alt="Illustration 9 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 10 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image1.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="16.214000" data-start="16.094000" id="word_41">In</span> <span data-end="16.674000" data-start="16.334000" id="word_42">his</span> <span data-end="16.955000" data-start="16.735000" id="word_43">quiet</span> <span data-end="17.255000" data-start="16.995000" id="word_44">little</span> <span data-end="17.355000" data-start="17.315000" id="word_45">home</span> <span data-end="17.816000" data-start="17.476000" id="word_46">of</span> <span data-end="19.238000" data-start="19.158000" id="word_47">stone</span> <img alt="Illustration 11 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 12 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="19.699000" data-start="19.358000" id="word_48">I</span> <span data-end="20.500000" data-start="20.400000" id="word_49">wish</span> <img alt="Illustration 13 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <img alt="Illustration 14 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <span data-end="20.940000" data-start="20.580000" id="word_50">he</span> <span data-end="21.061000" data-start="21.001000" id="word_51">squeaked</span> <span data-end="21.401000" data-start="21.141000" id="word_52">in</span> <span data-end="21.621000" data-start="21.441000" id="word_53">voice</span> <span data-end="22.042000" data-start="21.682000" id="word_54">so</span> <span data-end="22.783000" data-start="22.743000" id="word_55">small</span> <img alt="Illustration 15 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 16 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="22.943000" data-start="22.843000" id="word_56">I</span> <span data-end="23.023000" data-start="23.003000" id="word_57">had</span> <span data-end="23.384000" data-start="23.104000" id="word_58">a</span> <span data-end="23.544000" data-start="23.444000" id="word_59">friend</span> <span data-end="23.825000" data-start="23.624000" id="word_60">to</span> <span data-end="23.925000" data-start="23.885000" id="word_61">share</span> <span data-end="24.165000" data-start="24.005000" id="word_62">it</span> <span data-end="25.803000" data-start="25.462000" id="word_63">all</span> <img alt="Illustration 17 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <img alt="Illustration 18 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <span data-end="26.003000" data-start="25.883000" id="word_64">So</span> <span data-end="26.164000" data-start="26.063000" id="word_65">out</span> <span data-end="26.504000" data-start="26.264000" id="word_66">he</span> <span data-end="26.685000" data-start="26.605000" id="word_67">crept</span> <span data-end="27.046000" data-start="26.745000" id="word_68">on</span> <span data-end="27.386000" data-start="27.126000" id="word_69">tiny</span> <span data-end="28.048000" data-start="27.847000" id="word_70">feet</span> <img alt="Illustration 19 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 20 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image2.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="28.369000" data-start="28.108000" id="word_71">Through</span> <span data-end="28.770000" data-start="28.429000" id="word_72">dewy</span> <span data-end="28.990000" data-start="28.830000" id="word_73">grass</span> <span data-end="29.431000" data-start="29.110000" id="word_74">so</span> <span data-end="29.632000" data-start="29.551000" id="word_75">cool</span> <span data-end="30.053000" data-start="29.772000" id="word_76">and</span> <span data-end="31.155000" data-start="30.874000" id="word_77">sweet</span> <img alt="Illustration 21 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="31.576000" data-start="31.255000" id="word_78">Past</span> <span data-end="31.736000" data-start="31.656000" id="word_79">ferns</span> <span data-end="32.258000" data-start="31.797000" id="word_80">and</span> <span data-end="33.120000" data-start="32.799000" id="word_81">flowers</span> <img alt="Illustration 22 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="33.340000" data-start="33.260000" id="word_82">bright</span> <span data-end="33.621000" data-start="33.420000" id="word_83">and</span> <span data-end="34.603000" data-start="33.661000" id="word_84">new</span> <img alt="Illustration 23 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"> <br/> <span data-end="34.723000" data-start="34.703000" id="word_85">Beneath</span> <span data-end="35.104000" data-start="34.803000" id="word_86">a</span> <span data-end="35.204000" data-start="35.164000" id="word_87">sky</span> <span data-end="35.706000" data-start="35.325000" id="word_88">of</span> <span data-end="36.066000" data-start="35.786000" id="word_89">clearest</span> <span data-end="37.129000" data-start="36.086000" id="word_90">blue</span> <img alt="Illustration 24 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="37.409000" data-start="37.189000" id="word_91">And</span> <span data-end="37.570000" data-start="37.470000" id="word_92">there</span> <span data-end="37.770000" data-start="37.630000" id="word_93">he</span> <span data-end="37.830000" data-start="37.810000" id="word_94">met</span> <span data-end="38.131000" data-start="37.870000" id="word_95">a</span> <span data-end="38.632000" data-start="38.251000" id="word_96">bunny</span> <span data-end="39.194000" data-start="39.073000" id="word_97">small</span> <img alt="Illustration 25 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 26 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image3.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="39.454000" data-start="39.254000" id="word_98">Who</span> <span data-end="39.895000" data-start="39.514000" id="word_99">sat</span> <span data-end="40.035000" data-start="39.955000" id="word_100">beside</span> <span data-end="40.356000" data-start="40.076000" id="word_101">the</span> <span data-end="40.737000" data-start="40.396000" id="word_102">garden</span> <span data-end="42.119000" data-start="41.999000" id="word_103">wall</span> <img alt="Illustration 27 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="42.380000" data-start="42.139000" id="word_104">The</span> <span data-end="42.840000" data-start="42.480000" id="word_105">bunny</span> <span data-end="43.922000" data-start="43.802000" id="word_106">sighed</span> <img alt="Illustration 28 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <img alt="Illustration 29 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="44.243000" data-start="44.002000" id="word_107">I'm</span> <span data-end="44.583000" data-start="44.283000" id="word_108">sad</span> <span data-end="44.623000" data-start="44.603000" id="word_109">today</span> <img alt="Illustration 30 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="45.485000" data-start="45.365000" id="word_110">I</span> <span data-end="45.685000" data-start="45.565000" id="word_111">have</span> <span data-end="45.846000" data-start="45.765000" id="word_112">no</span> <span data-end="45.986000" data-start="45.886000" id="word_113">one</span> <span data-end="46.166000" data-start="46.026000" id="word_114">with</span> <span data-end="46.286000" data-start="46.226000" id="word_115">whom</span> <span data-end="46.587000" data-start="46.326000" id="word_116">to</span> <span data-end="47.488000" data-start="47.328000" id="word_117">play</span> <img alt="Illustration 31 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <img alt="Illustration 32 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <span data-end="47.889000" data-start="47.568000" id="word_118">Said</span> <span data-end="48.049000" data-start="47.929000" id="word_119">Milo</span> <span data-end="48.109000" data-start="48.089000" id="word_120">with</span> <span data-end="48.470000" data-start="48.170000" id="word_121">a</span> <span data-end="48.871000" data-start="48.510000" id="word_122">gentle</span> <span data-end="50.013000" data-start="49.812000" id="word_123">smile</span> <img alt="Illustration 33 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"> <br/> <br/> <img alt="Illustration 34 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image4.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <img alt="Illustration 35 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="50.193000" data-start="50.053000" id="word_124">Let's</span> <span data-end="50.534000" data-start="50.213000" id="word_125">sit</span> <span data-end="50.714000" data-start="50.574000" id="word_126">together</span> <span data-end="50.794000" data-start="50.774000" id="word_127">for</span> <span data-end="51.115000" data-start="50.834000" id="word_128">a</span> <span data-end="51.896000" data-start="51.155000" id="word_129">while</span> <img alt="Illustration 36 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="52.056000" data-start="51.936000" id="word_130">I</span> <span data-end="52.236000" data-start="52.096000" id="word_131">have</span> <span data-end="52.697000" data-start="52.297000" id="word_132">some</span> <span data-end="53.258000" data-start="53.078000" id="word_133">berries</span> <img alt="Illustration 37 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="53.398000" data-start="53.318000" id="word_134">red</span> <span data-end="53.799000" data-start="53.499000" id="word_135">and</span> <span data-end="54.620000" data-start="54.300000" id="word_136">sweet</span> <img alt="Illustration 38 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="54.821000" data-start="54.661000" id="word_137">Sharing</span> <span data-end="55.001000" data-start="54.881000" id="word_138">makes</span> <span data-end="55.181000" data-start="55.041000" id="word_139">them</span> <span data-end="55.322000" data-start="55.262000" id="word_140">more</span> <span data-end="55.642000" data-start="55.342000" id="word_141">a</span> <span data-end="56.884000" data-start="56.804000" id="word_142">treat</span> <img alt="Illustration 39 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"> <img alt="Illustration 40 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <span data-end="57.225000" data-start="56.944000" id="word_143">The</span> <span data-end="57.485000" data-start="57.345000" id="word_144">bunny's</span> <span data-end="57.806000" data-start="57.545000" id="word_145">eyes</span> <span data-end="57.906000" data-start="57.846000" id="word_146">began</span> <span data-end="58.267000" data-start="57.966000" id="word_147">to</span> <span data-end="59.188000" data-start="58.307000" id="word_148">shine</span> <img alt="Illustration 41 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 42 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="59.549000" data-start="59.288000" id="word_149">How</span> <span data-end="59.649000" data-start="59.609000" id="word_150">kind</span> <span data-end="59.829000" data-start="59.689000" id="word_151">of</span> <span data-end="60.611000" data-start="60.470000" id="word_152">you</span> <img alt="Illustration 43 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <span data-end="60.951000" data-start="60.711000" id="word_153">How</span> <span data-end="61.352000" data-start="61.031000" id="word_154">very</span> <span data-end="62.334000" data-start="61.392000" id="word_155">fine</span> <img alt="Illustration 44 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <br/> <span data-end="62.594000" data-start="62.394000" id="word_156">To</span> <span data-end="62.774000" data-start="62.634000" id="word_157">share</span> <span data-end="63.015000" data-start="62.814000" id="word_158">your</span> <span data-end="63.195000" data-start="63.075000" id="word_159">food</span> <span data-end="63.415000" data-start="63.295000" id="word_160">with</span> <span data-end="63.636000" data-start="63.476000" id="word_161">one</span> <span data-end="63.956000" data-start="63.736000" id="word_162">so</span> <span data-end="64.858000" data-start="63.996000" id="word_163">new</span> <img alt="Illustration 45 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="65.058000" data-start="64.898000" id="word_164">I'd</span> <span data-end="65.158000" data-start="65.098000" id="word_165">like</span> <span data-end="65.319000" data-start="65.198000" id="word_166">to</span> <span data-end="65.399000" data-start="65.359000" id="word_167">be</span> <span data-end="65.699000" data-start="65.479000" id="word_168">a</span> <span data-end="65.820000" data-start="65.739000" id="word_169">friend</span> <span data-end="66.100000" data-start="65.860000" id="word_170">to</span> <span data-end="67.357000" data-start="67.177000" id="word_171">you</span> <img alt="Illustration 46 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <img alt="Illustration 47 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"> <br/> <span data-end="67.758000" data-start="67.417000" id="word_172">Then</span> <span data-end="68.019000" data-start="67.918000" id="word_173">walking</span> <span data-end="68.540000" data-start="68.439000" id="word_174">on</span> <img alt="Illustration 48 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="68.780000" data-start="68.600000" id="word_175">they</span> <span data-end="68.840000" data-start="68.820000" id="word_176">saw</span> <span data-end="69.201000" data-start="68.900000" id="word_177">a</span> <span data-end="70.063000" data-start="69.963000" id="word_178">bird</span> <img alt="Illustration 49 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 50 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image5.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="70.544000" data-start="70.123000" id="word_179">The</span> <span data-end="70.985000" data-start="70.604000" id="word_180">smallest</span> <span data-end="71.205000" data-start="71.045000" id="word_181">bluebird</span> <span data-end="71.566000" data-start="71.385000" id="word_182">they'd</span> <span data-end="71.866000" data-start="71.626000" id="word_183">ever</span> <span data-end="73.489000" data-start="73.389000" id="word_184">heard</span> <img alt="Illustration 51 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 52 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="73.810000" data-start="73.570000" id="word_185">My</span> <span data-end="74.051000" data-start="73.870000" id="word_186">nest</span> <span data-end="74.351000" data-start="74.091000" id="word_187">fell</span> <span data-end="74.972000" data-start="74.411000" id="word_188">down</span> <img alt="Illustration 53 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="75.133000" data-start="75.013000" id="word_189">I'm</span> <span data-end="75.514000" data-start="75.213000" id="word_190">all</span> <span data-end="75.954000" data-start="75.574000" id="word_191">alone</span> <img alt="Illustration 54 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="76.255000" data-start="75.994000" id="word_192">I</span> <span data-end="76.556000" data-start="76.335000" id="word_193">cannot</span> <span data-end="76.636000" data-start="76.596000" id="word_194">build</span> <span data-end="76.776000" data-start="76.716000" id="word_195">it</span> <span data-end="76.916000" data-start="76.816000" id="word_196">on</span> <span data-end="77.157000" data-start="77.037000" id="word_197">my</span> <span data-end="78.539000" data-start="77.197000" id="word_198">own</span> <img alt="Illustration 55 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <img alt="Illustration 56 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <img alt="Illustration 57 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="78.760000" data-start="78.580000" id="word_199">We'll</span> <span data-end="79.020000" data-start="78.840000" id="word_200">help</span> <span data-end="80.123000" data-start="79.081000" id="word_201">you</span> <img alt="Illustration 58 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <img alt="Illustration 59 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <span data-end="80.523000" data-start="80.203000" id="word_202">Milo</span> <span data-end="80.664000" data-start="80.564000" id="word_203">squeaked</span> <span data-end="81.044000" data-start="80.764000" id="word_204">with</span> <span data-end="81.726000" data-start="81.525000" id="word_205">cheer</span> <img alt="Illustration 60 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 61 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="81.866000" data-start="81.766000" id="word_206">That's</span> <span data-end="82.207000" data-start="81.946000" id="word_207">what</span> <span data-end="82.367000" data-start="82.267000" id="word_208">friends</span> <span data-end="82.748000" data-start="82.487000" id="word_209">are</span> <span data-end="82.988000" data-start="82.808000" id="word_210">for</span> <img alt="Illustration 62 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="83.249000" data-start="83.028000" id="word_211">my</span> <span data-end="84.612000" data-start="83.289000" id="word_212">dear</span> <img alt="Illustration 63 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"> <img alt="Illustration 64 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <br/> <span data-end="85.012000" data-start="84.652000" id="word_213">They</span> <span data-end="85.533000" data-start="85.092000" id="word_214">gathered</span> <span data-end="85.694000" data-start="85.614000" id="word_215">twigs</span> <span data-end="86.034000" data-start="85.734000" id="word_216">and</span> <span data-end="86.275000" data-start="86.114000" id="word_217">moss</span> <span data-end="86.696000" data-start="86.355000" id="word_218">so</span> <span data-end="87.317000" data-start="87.237000" id="word_219">soft</span> <img alt="Illustration 65 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="87.537000" data-start="87.357000" id="word_220">And</span> <span data-end="87.638000" data-start="87.617000" id="word_221">built</span> <span data-end="88.018000" data-start="87.738000" id="word_222">a</span> <span data-end="88.299000" data-start="88.098000" id="word_223">nest</span> <span data-end="88.419000" data-start="88.359000" id="word_224">high</span> <span data-end="89.421000" data-start="88.479000" id="word_225">up</span> <span data-end="89.914000" data-start="89.654000" id="word_226">aloft</span> <img alt="Illustration 66 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="90.255000" data-start="90.014000" id="word_227">Now</span> <span data-end="90.695000" data-start="90.355000" id="word_228">three</span> <span data-end="91.016000" data-start="90.795000" id="word_229">friends</span> <span data-end="91.136000" data-start="91.056000" id="word_230">played</span> <span data-end="91.616000" data-start="91.236000" id="word_231">in</span> <span data-end="91.737000" data-start="91.676000" id="word_232">fields</span> <span data-end="92.157000" data-start="91.817000" id="word_233">of</span> <span data-end="92.858000" data-start="92.738000" id="word_234">green</span> <img alt="Illustration 67 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 68 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image6.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="93.419000" data-start="92.938000" id="word_235">The</span> <span data-end="93.779000" data-start="93.499000" id="word_236">happiest</span> <span data-end="93.999000" data-start="93.819000" id="word_237">friends</span> <span data-end="94.340000" data-start="94.179000" id="word_238">you've</span> <span data-end="94.680000" data-start="94.420000" id="word_239">ever</span> <span data-end="95.761000" data-start="95.621000" id="word_240">seen</span> <img alt="Illustration 69 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <br/> <span data-end="96.162000" data-start="95.821000" id="word_241">They</span> <span data-end="96.302000" data-start="96.222000" id="word_242">hopped</span> <span data-end="96.682000" data-start="96.402000" id="word_243">and</span> <span data-end="96.823000" data-start="96.743000" id="word_244">jumped</span> <span data-end="97.223000" data-start="96.963000" id="word_245">and</span> <span data-end="97.383000" data-start="97.263000" id="word_246">sang</span> <span data-end="97.804000" data-start="97.483000" id="word_247">with</span> <span data-end="98.645000" data-start="97.844000" id="word_248">glee</span> <img alt="Illustration 70 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="99.205000" data-start="98.805000" id="word_249">As</span> <span data-end="99.326000" data-start="99.266000" id="word_250">joyful</span> <span data-end="99.618" data-start="99.406" id="word_251">as</span> <span data-end="100.001" data-start="99.698" id="word_252">could</span> <span data-end="100.384" data-start="100.081" id="word_253">ever</span> <span data-end="100.676" data-start="100.464" id="word_254">be</span> <img alt="Illustration 71 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 72 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="100.968" data-start="100.756" id="word_255">I</span> <span data-end="101.351" data-start="101.048" id="word_256">understand</span> <span data-end="101.734" data-start="101.431" id="word_257">now</span> <img alt="Illustration 73 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <img alt="Illustration 74 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"/> <span data-end="102.238" data-start="101.814" id="word_258">Milo</span> <span data-end="102.621" data-start="102.318" id="word_259">said</span> <img alt="Illustration 75 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 76 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image7.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="102.913" data-start="102.701" id="word_260">As</span> <span data-end="103.296" data-start="102.993" id="word_261">stars</span> <span data-end="103.679" data-start="103.376" id="word_262">appeared</span> <span data-end="104.062" data-start="103.759" id="word_263">overhead</span> <img alt="Illustration 77 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <img alt="Illustration 78 from Story Bell" class="punct-img quote-odd" src="punctuation/quotation_mark_odd.png" style="height:0.2em;vertical-align:-30px;margin-right:-0.05em;"/> <span data-end="104.445" data-start="104.142" id="word_264">When</span> <span data-end="104.828" data-start="104.525" id="word_265">you're</span> <span data-end="105.211" data-start="104.908" id="word_266">kind</span> <span data-end="105.503" data-start="105.291" id="word_267">and</span> <span data-end="105.886" data-start="105.583" id="word_268">when</span> <span data-end="106.178" data-start="105.966" id="word_269">you</span> <span data-end="106.561" data-start="106.258" id="word_270">share</span> <img alt="Illustration 79 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="107.065" data-start="106.641" id="word_271">Friends</span> <span data-end="107.448" data-start="107.145" id="word_272">appear</span> <span data-end="107.831" data-start="107.528" id="word_273">from</span> <span data-end="108.335" data-start="107.911" id="word_274">everywhere</span> <img alt="Illustration 80 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <img alt="Illustration 81 from Story Bell" class="punct-img quote-even" src="punctuation/quotation_mark_even.png" style="height:0.2em;vertical-align:-30px;margin-left:-0.05em;"> <br/> <span data-end="108.627" data-start="108.415" id="word_275">So</span> <span data-end="108.919" data-start="108.707" id="word_276">if</span> <span data-end="109.211" data-start="108.999" id="word_277">you</span> <span data-end="109.594" data-start="109.291" id="word_278">ever</span> <span data-end="109.977" data-start="109.674" id="word_279">feel</span> <span data-end="110.36" data-start="110.057" id="word_280">alone</span> <img alt="Illustration 82 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <br/> <img alt="Illustration 83 from Story Bell" class="story-image" src="milo-the-mouse/milo-the-mouse-image8.webp" style="display:block;margin:1em auto;width:100%;max-width:600px;border-radius:12px;"/> <br/> <span data-end="110.864" data-start="110.44" id="word_281">Remember</span> <span data-end="111.247" data-start="110.944" id="word_282">little</span> <span data-end="111.751" data-start="111.327" id="word_283">Milo's</span> <span data-end="112.134" data-start="111.831" id="word_284">home</span> <img alt="Illustration 84 from Story Bell" class="punct-img fullstop" src="punctuation/full_stop_white_on_blue_cutout_cropped.png" style="height:0.115em;vertical-align:0.0em;margin-left:-0.25em;"/> <br/> <span data-end="112.517" data-start="112.214" id="word_285">Reach</span> <span data-end="112.9" data-start="112.597" id="word_286">out</span> <span data-end="113.283" data-start="112.98" id="word_287">with</span> <span data-end="113.787" data-start="113.363" id="word_288">kindness</span> <img alt="Illustration 85 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <span data-end="114.17" data-start="113.867" id="word_289">try</span> <span data-end="114.462" data-start="114.25" id="word_290">and</span> <span data-end="114.845" data-start="114.542" id="word_291">see</span> <img alt="Illustration 86 from Story Bell" class="punct-img comma" src="punctuation/comma_white_on_blue_cutout_cropped.png" style="height:0.28em;vertical-align:-0.2em;margin-left:-0.25em;"/> <br/> <span data-end="115.228" data-start="114.925" id="word_292">How</span> <span data-end="115.611" data-start="115.308" id="word_293">happy</span> <span data-end="115.994" data-start="115.691" id="word_294">friends</span> <span data-end="116.377" data-start="116.074" id="word_295">will</span> <span data-end="116.76" data-start="116.457" id="word_296">always</span> <span data-end="117.052" data-start="116.84" id="word_297">be</span> <img alt="Illustration 87 from Story Bell" class="punct-img normalsize" src="punctuation/exclamation_white_on_blue_cutout_cropped.png" style="height:0.8em;vertical-align:baseline;margin-left:-0.2em;"/> <br/> <span data-end="117.435" data-start="117.132" id="word_298">The</span> <span data-end="117.939" data-start="117.515" id="word_299">End</span> <br/></img></img></img></img></img></img></div></div>
 <div class="audio-sticky-bottom">
 <div class="audio-box">
 <audio controls="" controlslist="nodownload" id="audio">
 <source src="milo-the-mouse/milo-the-mouse/milo-the-mouse-storyaudio.mp3" type="audio/mpeg"/>
 <source src="/milo-the-mouse/milo-the-mouse/milo-the-mouse-storyaudio.mp3" type="audio/mpeg"/>
-<source src="/milo-the-mouse/milo-the-mouse/milo-the-mouse-storyaudio.mp3" type="audio/mpeg">
+<source src="/milo-the-mouse/milo-the-mouse/milo-the-mouse-storyaudio.mp3" type="audio/mpeg"/>
         Your browser does not support the audio element.
-      </source></audio>
+      </audio>
 </div>
 </div>
 <script>
@@ -206,7 +2072,7 @@ if (!window.__FIREBASE_INIT__) {
     const WAND_OFFSET_Y = 8;
     wand.style.position = "fixed";
     wand.style.pointerEvents = "none";
-    wand.style.zIndex = 9998;
+    wand.style.zIndex = 20001;
     let lastSparkleTime = 0;
     document.body.addEventListener("mousemove", (e) => {
       wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
@@ -456,7 +2322,6 @@ if (!window.__FIREBASE_INIT__) {
   requestAnimationFrame(moveToPrev);
 })();
 </script>
-
 <!-- SB_AUTODETECT10_BOTTOMAWARE_V1 -->
 <style id="sb-scroll-behavior-off">html{scroll-behavior:auto!important}</style>
 <script id="SB_AUTODETECT10_BOTTOMAWARE_V1">
@@ -780,39 +2645,31 @@ if (!window.__FIREBASE_INIT__) {
   }
 })();
 </script>
-
-
 <!-- Auth Modal (injected by inject_auth.py) -->
 <div id="auth-modal" style="display:none;position:fixed;inset:0;z-index:2147483647;align-items:center;justify-content:center;background:rgba(0,0,0,0.55);backdrop-filter:blur(3px);">
-  <div style="background:#111;color:#fff;border-radius:12px;max-width:520px;width:90%;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.35);">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-      <h3 style="margin:0;font-family:inherit;font-weight:600;">Join Story Bell</h3>
-      <button id="auth-close" aria-label="Close" style="background:transparent;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1;">&times;</button>
-    </div>
-
-    <!-- Email Signup Form -->
-    <div id="email-signup-form" style="margin-bottom:20px;">
-      <p style="margin:0 0 12px 0;color:#ccc;font-size:14px;">Get free kids' stories and updates:</p>
-      <form id="sb-email-form" style="display:flex;gap:8px;flex-wrap:wrap;">
-        <input type="email" id="sb-email-input" placeholder="Enter your email" required
-          style="flex:1;min-width:200px;padding:12px;border-radius:8px;border:1px solid #333;background:#222;color:#fff;font-size:16px;">
-        <button type="submit" id="sb-email-submit"
-          style="padding:12px 20px;border-radius:8px;border:none;background:#FFEB3B;color:#000;font-weight:600;cursor:pointer;font-size:14px;">
+<div style="background:#111;color:#fff;border-radius:12px;max-width:520px;width:90%;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.35);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+<h3 style="margin:0;font-family:inherit;font-weight:600;">Join Story Bell</h3>
+<button aria-label="Close" id="auth-close" style="background:transparent;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1;">×</button>
+</div>
+<!-- Email Signup Form -->
+<div id="email-signup-form" style="margin-bottom:20px;">
+<p style="margin:0 0 12px 0;color:#ccc;font-size:14px;">Get free kids' stories and updates:</p>
+<form id="sb-email-form" style="display:flex;gap:8px;flex-wrap:wrap;">
+<input id="sb-email-input" placeholder="Enter your email" required="" style="flex:1;min-width:200px;padding:12px;border-radius:8px;border:1px solid #333;background:#222;color:#fff;font-size:16px;" type="email"/>
+<button id="sb-email-submit" style="padding:12px 20px;border-radius:8px;border:none;background:#FFEB3B;color:#000;font-weight:600;cursor:pointer;font-size:14px;" type="submit">
           Subscribe
         </button>
-      </form>
-      <p id="sb-email-status" style="margin:8px 0 0 0;font-size:13px;color:#4CAF50;display:none;"></p>
-    </div>
-
-    <div style="border-top:1px solid #333;padding-top:16px;margin-top:8px;">
-      <p style="margin:0 0 12px 0;color:#888;font-size:13px;text-align:center;">Or sign in with:</p>
-      <div id="firebaseui-auth-container"></div>
-    </div>
-  </div>
+</form>
+<p id="sb-email-status" style="margin:8px 0 0 0;font-size:13px;color:#4CAF50;display:none;"></p>
+</div>
+<div style="border-top:1px solid #333;padding-top:16px;margin-top:8px;">
+<p style="margin:0 0 12px 0;color:#888;font-size:13px;text-align:center;">Or sign in with:</p>
+<div id="firebaseui-auth-container"></div>
+</div>
+</div>
 </div>
 <!-- End Auth Modal -->
-
-
 <!-- Auth Bindings (injected by inject_auth.py) -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script id="firebase-auth-bindings-injected">
@@ -950,6 +2807,1031 @@ if (!window.__FIREBASE_INIT__) {
 })();
 </script>
 <!-- End Auth Bindings -->
+<style id="sb-mobile-carousel-typography-override">
+@media (max-width: 800px){
+  /* Remove the extra line break between title and description */
+  .carousel-section .carousel-item br{
+    display: none !important;
+  }
 
-</body>
+  /* Title: smaller than before, but still larger than description; keep white */
+  .carousel-section .carousel-item .carousel-title,
+  .carousel-section a.carousel-title-link .carousel-title,
+  .carousel-section .carousel-title{
+    font-size: 0.74em !important;   /* adjust as needed */
+    line-height: 1.12em !important;
+    color: #ffffff !important;
+    margin: 0.15em 0 0.08em !important;  /* tighter */
+  }
+  /* Ensure the title link itself stays white and un-underlined */
+  .carousel-section .carousel-title-link,
+  .carousel-section .carousel-title-link:link,
+  .carousel-section .carousel-title-link:visited{
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+
+  /* Description: compact, white */
+  .carousel-section .carousel-desc{
+    font-size: 0.56em !important;
+    line-height: 1.18em !important;
+    color: #ffffff !important;
+    margin: 0.05em 0 0.05em !important;  /* tighter */
+  }
+
+  /* Categories: same size as description, bold, white */
+  .carousel-section .carousel-category{
+    font-size: 0.56em !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+  .carousel-section .carousel-categories{
+    margin-top: 0.06em !important;  /* tighter */
+  }
+}
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><div aria-label="Open story queue" id="story-queue-button" role="button" tabindex="0" title="Open story queue">
+<img alt="Make Reading List" class="book-img" src="../index_items/make-reading-list.png"/>
+</div><div aria-hidden="true" id="sbq-toggle-wrap">
+<span class="label">Queue</span>
+<span aria-pressed="false" class="sbq-toggle" data-on="false" id="sbq-toggle" role="button">
+<input aria-label="Toggle Queue Mode" type="checkbox"/>
+<span class="knob"></span>
+</span>
+</div><div aria-labelledby="sbq-title" aria-modal="true" id="story-queue-menu" role="dialog">
+<div class="queue-menu-header">
+<button aria-label="Close" class="queue-menu-close">×</button>
+<h2 class="queue-menu-title" id="sbq-title">✨ My Story List ✨</h2>
+</div>
+<div class="queue-menu-list" id="queue-list">
+<div class="queue-empty-message">✨ Tap stories to add to your list ✨</div>
+</div>
+<div class="queue-menu-controls">
+<button id="queue-shuffle" title="Shuffle Queue">🔀</button>
+<button class="queue-control-btn" id="queue-play" title="Play Queue">▶</button>
+<button class="queue-control-btn" disabled="" id="queue-prev" title="Previous Story">◀</button>
+<button class="queue-control-btn" disabled="" id="queue-next" title="Next Story">▶</button>
+<button class="queue-control-btn" disabled="" id="queue-clear" title="Clear Queue">🗑️</button>
+</div>
+</div><script id="firebase-auth-bindings">
+(function(){
+  // Guard to avoid double-binding
+  if (window.__SB_AUTH_BOUND__) return; window.__SB_AUTH_BOUND__ = true;
+
+  function ensureUI() {
+    if (!(window.firebase && firebase.auth && window.firebaseui)) {
+      console.warn("[SB] Firebase/FirebaseUI not ready");
+      return null;
+    }
+    var ui = window.firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
+    return ui;
+  }
+
+  function openAuthModal(e){
+    if (e && e.preventDefault) e.preventDefault();
+    var modal = document.getElementById('auth-modal');
+    if (modal) modal.style.display = 'flex';
+
+    var ui = ensureUI();
+    if (!ui) return;
+
+    ui.start('#firebaseui-auth-container', {
+      signInFlow: 'popup',
+      signInOptions: [
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+      ],
+      callbacks: {
+        signInSuccessWithAuthResult: function(authResult) {
+          try { closeAuthModal(); } catch(_) {}
+          console.log("[SB] Signed in:", authResult.user && (authResult.user.email || authResult.user.uid));
+          return false; // stay on page
+        },
+        uiShown: function(){ console.log("[SB] FirebaseUI shown"); }
+      }
+    });
+  }
+
+  function closeAuthModal(){
+    var modal = document.getElementById('auth-modal');
+    if (modal) modal.style.display = 'none';
+  }
+  window.openAuthModal = openAuthModal;
+  window.closeAuthModal = closeAuthModal;
+
+  // Close button + backdrop click
+  document.addEventListener('click', function(ev){
+    if (ev.target && ev.target.id === 'auth-close') closeAuthModal();
+    if (ev.target && ev.target.id === 'auth-modal') closeAuthModal();
+  }, { passive: true });
+
+  // Universal bindings (don’t change header layout; just listen)
+  var selectors = ['#loginBtn', '.login', '.login a', '.login-mobile a', '[data-auth-cta]'];
+  selectors.forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(el){
+      ['click','touchend','pointerup'].forEach(function(evt){
+        el.addEventListener(evt, openAuthModal, { passive:false });
+      });
+    });
+  });
+
+  // Debug log for duplicates
+  try {
+    console.log("[SB] firebase apps:", (window.firebase && firebase.apps) ? firebase.apps.length : "no firebase");
+  } catch(e){}
+
+  // Child profile storage
+  function getChildProfile(uid) {
+    try { return JSON.parse(localStorage.getItem('storybell_child_' + uid) || 'null'); }
+    catch(e) { return null; }
+  }
+
+  // Update header UI based on auth state
+  function updateHeaderAuth(user) {
+    var loginBtns = document.querySelectorAll('.login-cta-header, .login-mobile a[href*="signin"]');
+    var profileEls = document.querySelectorAll('.sb-user-profile');
+
+    if (user) {
+      var profile = getChildProfile(user.uid);
+      // Priority: child name > Firebase displayName > email prefix > 'Reader'
+      var displayName = (profile && profile.name) || user.displayName || (user.email ? user.email.split('@')[0] : 'Reader');
+
+      loginBtns.forEach(function(el){ el.style.display = 'none'; });
+      profileEls.forEach(function(el){
+        el.style.display = 'flex';
+        var nameEl = el.querySelector('.sb-user-name');
+        if (nameEl) nameEl.textContent = displayName;
+      });
+    } else {
+      loginBtns.forEach(function(el){ el.style.display = ''; });
+      profileEls.forEach(function(el){ el.style.display = 'none'; });
+    }
+  }
+
+  // Sign out function
+  window.signOutStoryBell = function(){
+    if (window.firebase && firebase.auth) {
+      firebase.auth().signOut().then(function(){
+        window.location.href = '/';
+      }).catch(function(e){ console.error('[SB] Sign out error:', e); });
+    }
+  };
+
+  // Enhanced auth state listener
+  if (window.firebase && firebase.auth) {
+    firebase.auth().onAuthStateChanged(function(u){
+      console.log("[SB] Auth state:", u ? "SIGNED IN" : "SIGNED OUT");
+      updateHeaderAuth(u);
+    });
+  }
+})();
+</script>
+<script>
+   // Wand cursor & sparkle logic
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   document.querySelectorAll('.carousel-track').forEach(function(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    e.preventDefault();
+  });
+  track.addEventListener('mouseleave', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    track.scrollLeft = scrollLeft - walk;
+  });
+  // Touch events for mobile
+  let startTouchX = 0, startScroll = 0;
+  track.addEventListener('touchstart', function(e) {
+    startTouchX = e.touches[0].pageX;
+    startScroll = track.scrollLeft;
+  }, {passive:true});
+  track.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      let dx = e.touches[0].pageX - startTouchX;
+      track.scrollLeft = startScroll - dx;
+    }
+  }, {passive:true});
+});
+  </script><script data-copied-from-id="mobile-disable-wand-js">
+   (function(){
+  function isMobile(){
+    return window.matchMedia("(max-width: 800px)").matches || ("ontouchstart" in window);
+  }
+  function disableWandOnMobile(){
+    if(!isMobile()) return;
+
+    // Remove wand image if present
+    var wand = document.getElementById("wand");
+    if (wand) { try { wand.remove(); } catch(e){} }
+
+    // Remove any existing sparkles
+    try { document.querySelectorAll(".sparkle").forEach(function(n){ n.remove(); }); } catch(e){}
+
+    // Block mousemove sparkle creators (capture phase)
+    try {
+      document.addEventListener("mousemove", function(e){ e.stopImmediatePropagation(); }, true);
+    } catch(e){}
+
+    // MutationObserver to auto-remove any sparkles added later
+    try {
+      var mo = new MutationObserver(function(muts){
+        for (var i=0;i<muts.length;i++){
+          var ad = muts[i].addedNodes || [];
+          for (var j=0;j<ad.length;j++){
+            var n = ad[j];
+            if (n && n.nodeType === 1){
+              if (n.classList && n.classList.contains("sparkle")) { n.remove(); continue; }
+              if (n.querySelectorAll){
+                n.querySelectorAll(".sparkle").forEach(function(el){ el.remove(); });
+              }
+            }
+          }
+        }
+      });
+      mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
+    } catch(e){}
+  }
+
+  document.addEventListener("DOMContentLoaded", disableWandOnMobile);
+  window.addEventListener("resize", disableWandOnMobile);
+})();
+  </script><script>
+// Delegated handler to ensure Login/Subscribe CTAs always open the auth modal (desktop & mobile).
+(function(){
+  function wantsAuth(el){
+    if(!el) return false;
+    return el.hasAttribute('data-auth-cta');
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-auth-cta]');
+    if(!t && wantsAuth(e.target)) t = e.target;
+    if(t){
+      try { e.preventDefault(); } catch(_){}
+      try { e.stopPropagation(); } catch(_){}
+      if(typeof window.openAuthModal === 'function'){ window.openAuthModal(); }
+    }
+  }, {passive:false, capture:true});
+})();
+</script><script>
+// --- Robust Auth Modal Open/Close (v3) ---
+(function(){
+  // Ensure functions exist on window
+  window.closeAuthModal = function(){
+    try {
+      var m = document.getElementById('auth-modal');
+      if (!m) return;
+      m.style.display = 'none';
+      // If FirebaseUI mounted, optionally reset container (prevents stale state)
+      var c = document.getElementById('firebaseui-auth-container');
+      if (c) { c.innerHTML = ''; }
+    } catch(e){ console.error('closeAuthModal error:', e); }
+  };
+
+  // Overlay + X + Esc close behavior
+  function bindModalClose(){
+    var m = document.getElementById('auth-modal');
+    if (!m) return;
+    var content = m.querySelector('.auth-modal-content, .modal-content, [role="dialog"]') || m;
+    // Close on overlay click (but not when clicking the content box)
+    m.addEventListener('click', function(ev){
+      if (!content.contains(ev.target)) return; // inside content: ignore
+      // If click target is *exactly* the overlay (m), close
+      if (ev.target === m) { window.closeAuthModal(); }
+    }, {capture: true});
+
+    // Bind buttons/links that look like close
+    var closeSelectors = [
+      '.auth-close', '.modal-close', '.close', '[data-close]', '[aria-label="Close"]', '.firebaseui-idp-cancel'
+    ];
+    closeSelectors.forEach(function(sel){
+      m.querySelectorAll(sel).forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          window.closeAuthModal();
+        }, {passive:false});
+      });
+    });
+
+    // Esc key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') window.closeAuthModal();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindModalClose);
+  } else {
+    bindModalClose();
+  }
+
+  // Make sure the hamburger's login button also opens the modal
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.hamburger-login, .hamburger .login, .mobile-login-button, #mobileLoginBtn, [data-hamburger-login]');
+    if (t){
+      try { e.preventDefault(); e.stopPropagation(); } catch(_){}
+      if (typeof window.openAuthModal === 'function') window.openAuthModal();
+    }
+  }, {capture:true, passive:false});
+})();
+</script><script>
+   (function () {
+  const nav = document.querySelector(".header-right nav");
+  const body = document.body;
+  if (!nav) return;
+
+  let toggleBtn = document.getElementById("menu-toggle");
+  if (!toggleBtn) {
+    // try to insert after .header-right open tag
+    const headerRight = document.querySelector(".header-right");
+    if (headerRight) {
+      toggleBtn = document.createElement("button");
+      toggleBtn.id = "menu-toggle";
+      toggleBtn.setAttribute("aria-label","Open menu");
+      toggleBtn.textContent = "☰";
+      toggleBtn.style.display = "none"; // your CSS shows it on mobile
+      headerRight.insertBefore(toggleBtn, headerRight.firstChild);
+    }
+  }
+
+  // ensure overlay exists (sibling after header)
+  let overlay = document.querySelector(".menu-overlay");
+  if (!overlay) {
+    const header = document.querySelector("header");
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    if (header && header.parentNode) {
+      header.parentNode.insertBefore(overlay, header.nextSibling);
+    } else {
+      document.body.appendChild(overlay);
+    }
+  }
+
+  function openMenu() {
+    nav.classList.add("open");
+    body.classList.add("menu-open");
+    overlay.classList.add("active");
+  }
+  function closeMenu() {
+    nav.classList.remove("open");
+    body.classList.remove("menu-open");
+    overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (nav.classList.contains("open")) closeMenu(); else openMenu();
+    });
+  }
+  overlay.addEventListener("click", (e) => { e.stopPropagation(); closeMenu(); });
+
+  // close on route click (mobile) when link navigates
+  nav.querySelectorAll("ul > li > a").forEach(link => {
+    link.addEventListener("click", function(e){
+      if (window.matchMedia("(max-width: 900px)").matches && this.href && !this.href.endsWith("#")) {
+        closeMenu();
+      }
+    });
+  });
+})();
+  </script><script>
+   (function () {
+  const nav = document.querySelector(".header-right nav");
+  const body = document.body;
+  if (!nav) return;
+
+  // Ensure toggle button exists
+  let toggleBtn = document.getElementById("menu-toggle");
+  if (!toggleBtn) {
+    const headerRight = document.querySelector(".header-right");
+    if (headerRight) {
+      toggleBtn = document.createElement("button");
+      toggleBtn.id = "menu-toggle";
+      toggleBtn.setAttribute("aria-label","Open menu");
+      toggleBtn.textContent = "☰";
+      toggleBtn.style.display = "none"; // CSS will unhide on mobile
+      headerRight.insertBefore(toggleBtn, headerRight.firstChild);
+    }
+  }
+  // Ensure overlay exists
+  let overlay = document.querySelector(".menu-overlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    const header = document.querySelector("header");
+    if (header && header.parentNode) header.parentNode.insertBefore(overlay, header.nextSibling);
+    else document.body.appendChild(overlay);
+  }
+
+  const openMenu = () => { nav.classList.add("open"); body.classList.add("menu-open"); overlay.classList.add("active"); };
+  const closeMenu = () => {
+    nav.classList.remove("open"); body.classList.remove("menu-open"); overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
+  };
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault(); e.stopPropagation();
+      nav.classList.contains("open") ? closeMenu() : openMenu();
+    });
+  }
+  overlay.addEventListener("click", (e) => { e.stopPropagation(); closeMenu(); });
+
+  // Close when navigating to a real href on mobile
+  nav.querySelectorAll("ul > li > a").forEach(link => {
+    link.addEventListener("click", function() {
+      if (window.matchMedia("(max-width: 900px)").matches && this.href && !this.href.endsWith("#")) {
+        closeMenu();
+      }
+    });
+  });
+})();
+  </script><script>
+   (function(){
+  const nav = document.querySelector(".header-right nav");
+  const btn = document.getElementById("menu-toggle");
+  let overlay = document.querySelector(".menu-overlay");
+  if (!nav || !btn) return;
+  if (!overlay){
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    const header = document.querySelector("header");
+    (header && header.parentNode ? header.parentNode : document.body)
+      .insertBefore(overlay, header ? header.nextSibling : null);
+  }
+  const body = document.body;
+  const isMobile = () => matchMedia("(max-width:900px)").matches;
+
+  let justOpenedUntil = 0;
+  const armGuard = () => { justOpenedUntil = Date.now() + 180; };
+
+  const openMenu = ()=>{
+    nav.classList.add("open");
+    body.classList.add("menu-open");
+    overlay.classList.add("active");
+    armGuard();
+  };
+  const closeMenu = ()=>{
+    nav.classList.remove("open");
+    body.classList.remove("menu-open");
+    overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li=>li.classList.remove("open"));
+  };
+
+  // Rebind elements to clear old listeners
+  const rebind = (el)=>{ const c = el.cloneNode(true); el.parentNode.replaceChild(c, el); return c; };
+  const _btn = rebind(btn);
+  overlay = rebind(overlay);
+
+  // Button uses pointerup only
+  _btn.addEventListener("pointerup", (e)=>{
+    e.preventDefault(); e.stopPropagation();
+    nav.classList.contains("open") ? closeMenu() : openMenu();
+  }, {passive:false});
+
+  // Overlay click closes, but not during guard window
+  overlay.addEventListener("click", (e)=>{
+    if (Date.now() < justOpenedUntil) { e.preventDefault(); return; }
+    e.preventDefault(); closeMenu();
+  }, {passive:false});
+
+  // Submenu: pointerup only (no click). Toggle .open on the parent <li>.
+  const onPointerUp = (e)=>{
+    if (!isMobile()) return;
+    const a = e.target.closest("nav ul > li > a");
+    if (!a || !nav.contains(a)) return;
+    const dd = a.nextElementSibling;
+    const hasDropdown = dd && dd.classList && dd.classList.contains("dropdown");
+    if (!hasDropdown) return;
+    e.preventDefault(); e.stopPropagation();
+    const li = a.parentElement;
+    const willOpen = !li.classList.contains("open");
+    nav.querySelectorAll("li.open").forEach(x=>{ if (x!==li) x.classList.remove("open"); });
+    li.classList.toggle("open", willOpen);
+  };
+  nav.addEventListener("pointerup", onPointerUp, {passive:false});
+
+  // Close on real link tap inside drawer
+  nav.addEventListener("pointerup", (e)=>{
+    if (!isMobile()) return;
+    const a = e.target.closest("nav ul > li > a");
+    if (!a || !nav.contains(a)) return;
+    const dd = a.nextElementSibling;
+    if (dd && dd.classList && dd.classList.contains("dropdown")) return; // parent; handled above
+    const href = a.getAttribute("href");
+    if (href && href !== "#") { e.preventDefault(); closeMenu(); location.href = href; }
+  }, {passive:false});
+
+  addEventListener("resize", ()=>{ if (!isMobile()) closeMenu(); });
+})();
+  </script><script>
+(() => {
+  const modal = document.getElementById('sb-search-modal');
+  const input = document.getElementById('sb-search-input');
+  const closeBtn = document.getElementById('sb-search-close');
+  const resultsEl = document.getElementById('sb-search-results');
+  if(resultsEl) resultsEl.style.display='none';
+  let fuse, data = [], loaded = false;
+  function render(items){
+    if(!items || items.length===0){ resultsEl.innerHTML=''; resultsEl.style.display='none'; return; }
+    resultsEl.style.display='block';
+    resultsEl.innerHTML = items.slice(0,30).map(x=>{ const it=x.item||x; return `
+      <a href="${it.url||'#'}" style="display:flex;gap:12px;padding:10px;border-radius:12px;text-decoration:none;color:inherit;border:1px solid #eee;margin:8px">
+        <img src="${it.cover||'/index_items/placeholder.webp'}" alt="${it.title||'Story'} cover"
+             style="width:64px;height:64px;object-fit:cover;border-radius:12px;border:1px solid #f2f2f2">
+        <div><div style="font-weight:700">${it.title||'Untitled'}</div>
+        <div style="font-size:13px;color:#444;margin-top:2px">${(it.summary||'').slice(0,160)}</div>
+        <div style="font-size:12px;color:#666;margin-top:6px">Age: ${it.age||'—'} · ${(it.categories||[]).join(', ')}</div></div>
+      </a>`; }).join('');
+  }
+  async function ensureLoaded(){ if(loaded) return; try{ const res=await fetch('/search-index.json',{cache:'no-store'}); data=await res.json(); }catch(e){ data=[]; }
+    fuse=new Fuse(data,{includeScore:true,threshold:0.35,keys:[{name:'title',weight:0.6},{name:'summary',weight:0.2},{name:'categories',weight:0.15},{name:'age',weight:0.05}]});
+    loaded=true;
+  }
+  function openModal(){ modal.style.display='block'; modal.setAttribute('aria-hidden','false'); setTimeout(()=>input&&input.focus(),0); render([]); }
+  function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); if(input) input.value=''; }
+  function onTriggerClick(e){ e.preventDefault(); ensureLoaded().then(openModal); }
+  const attach=()=>{ document.querySelectorAll('[data-sb-search-trigger]').forEach(el=>{ if(!el._sbBound){ el.addEventListener('click', onTriggerClick); el._sbBound=true; } }); };
+  attach(); new MutationObserver(attach).observe(document.body,{childList:true,subtree:true});
+  if(closeBtn) closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
+  window.addEventListener('keydown', async e=>{ if(e.key==='/'&&!e.metaKey&&!e.ctrlKey&&!e.altKey){ e.preventDefault(); await ensureLoaded(); openModal(); } else if(e.key==='Escape'){ closeModal(); } });
+  if(input){ input.addEventListener('input', ()=>{ const q=input.value.trim(); if(!q){ render([]); return; } const out=fuse.search(q); render(out); }); }
+})();
+</script><script>
+(function(){
+  function bySel(s){ return document.querySelector(s); }
+  function closeMenu(){
+    try {
+      var nav = document.querySelector('.header-right nav');
+      var overlay = document.querySelector('.menu-overlay');
+      document.body.classList.remove('menu-open');
+      if (nav) nav.classList.remove('open');
+      if (overlay){ overlay.classList.remove('active'); overlay.style.display = 'none'; }
+      if (nav) nav.querySelectorAll('li.open').forEach(li => li.classList.remove('open'));
+    } catch(e){}
+  }
+  function openAuth(link){
+    // mark last click for guard
+    window.__sbLastClickTarget = link;
+    if (typeof window.openAuthModal === 'function'){ return window.openAuthModal(); }
+    var m = document.getElementById('auth-modal');
+    if (m){
+      m.style.display = 'flex';
+      try { if (typeof window.onOpenAuthModalHook === 'function') window.onOpenAuthModalHook(); } catch(e){}
+      return true;
+    }
+    console.warn('auth-mobile-direct: auth modal not found');
+    return false;
+  }
+  function bind(){
+    var link = bySel('.login-mobile a');
+    if(!link) return;
+    // Defensive: ensure it has explicit CTA marker
+    if(!link.hasAttribute('data-auth-cta')) link.setAttribute('data-auth-cta','auth');
+    ['click','touchend','pointerup'].forEach(function(evt){
+      link.addEventListener(evt, function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        closeMenu();
+        setTimeout(function(){ openAuth(link); }, 0);
+        return false;
+      }, {passive:false, capture:true});
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', bind, {once:true});
+  } else {
+    bind();
+  }
+})();
+</script><div aria-hidden="true" id="sb-search-modal" style="position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:10001">
+<div aria-label="Search stories" aria-modal="true" role="dialog" style="max-width:720px;margin:8vh auto;background:white;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)">
+<div style="padding:14px 16px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px">
+<input id="sb-search-input" placeholder="Search stories, poems, emotions, ages… ( / )" style="flex:1;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:16px;outline:none" type="search"/>
+<button aria-label="Close" id="sb-search-close" style="border:0;background:transparent;font-size:18px;cursor:pointer;padding:8px">✕</button>
+</div>
+<div id="sb-search-results" style="max-height:60vh;overflow:auto;padding:8px 8px 12px"></div>
+</div>
+</div><script>
+   // Wand cursor & sparkle logic
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   document.querySelectorAll('.carousel-track').forEach(function(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    e.preventDefault();
+  });
+  track.addEventListener('mouseleave', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    track.scrollLeft = scrollLeft - walk;
+  });
+  // Touch events for mobile
+  let startTouchX = 0, startScroll = 0;
+  track.addEventListener('touchstart', function(e) {
+    startTouchX = e.touches[0].pageX;
+    startScroll = track.scrollLeft;
+  }, {passive:true});
+  track.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      let dx = e.touches[0].pageX - startTouchX;
+      track.scrollLeft = startScroll - dx;
+    }
+  }, {passive:true});
+});
+  </script><script data-copied-from-id="mobile-disable-wand-js">
+   (function(){
+  function isMobile(){
+    return window.matchMedia("(max-width: 800px)").matches || ("ontouchstart" in window);
+  }
+  function disableWandOnMobile(){
+    if(!isMobile()) return;
+
+    // Remove wand image if present
+    var wand = document.getElementById("wand");
+    if (wand) { try { wand.remove(); } catch(e){} }
+
+    // Remove any existing sparkles
+    try { document.querySelectorAll(".sparkle").forEach(function(n){ n.remove(); }); } catch(e){}
+
+    // Block mousemove sparkle creators (capture phase)
+    try {
+      document.addEventListener("mousemove", function(e){ e.stopImmediatePropagation(); }, true);
+    } catch(e){}
+
+    // MutationObserver to auto-remove any sparkles added later
+    try {
+      var mo = new MutationObserver(function(muts){
+        for (var i=0;i<muts.length;i++){
+          var ad = muts[i].addedNodes || [];
+          for (var j=0;j<ad.length;j++){
+            var n = ad[j];
+            if (n && n.nodeType === 1){
+              if (n.classList && n.classList.contains("sparkle")) { n.remove(); continue; }
+              if (n.querySelectorAll){
+                n.querySelectorAll(".sparkle").forEach(function(el){ el.remove(); });
+              }
+            }
+          }
+        }
+      });
+      mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
+    } catch(e){}
+  }
+
+  document.addEventListener("DOMContentLoaded", disableWandOnMobile);
+  window.addEventListener("resize", disableWandOnMobile);
+})();
+  </script><script>
+   (function () {
+  const nav = document.querySelector(".header-right nav");
+  const body = document.body;
+  if (!nav) return;
+
+  let toggleBtn = document.getElementById("menu-toggle");
+  if (!toggleBtn) {
+    // try to insert after .header-right open tag
+    const headerRight = document.querySelector(".header-right");
+    if (headerRight) {
+      toggleBtn = document.createElement("button");
+      toggleBtn.id = "menu-toggle";
+      toggleBtn.setAttribute("aria-label","Open menu");
+      toggleBtn.textContent = "☰";
+      toggleBtn.style.display = "none"; // your CSS shows it on mobile
+      headerRight.insertBefore(toggleBtn, headerRight.firstChild);
+    }
+  }
+
+  // ensure overlay exists (sibling after header)
+  let overlay = document.querySelector(".menu-overlay");
+  if (!overlay) {
+    const header = document.querySelector("header");
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    if (header && header.parentNode) {
+      header.parentNode.insertBefore(overlay, header.nextSibling);
+    } else {
+      document.body.appendChild(overlay);
+    }
+  }
+
+  function openMenu() {
+    nav.classList.add("open");
+    body.classList.add("menu-open");
+    overlay.classList.add("active");
+  }
+  function closeMenu() {
+    nav.classList.remove("open");
+    body.classList.remove("menu-open");
+    overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (nav.classList.contains("open")) closeMenu(); else openMenu();
+    });
+  }
+  overlay.addEventListener("click", (e) => { e.stopPropagation(); closeMenu(); });
+
+  // close on route click (mobile) when link navigates
+  nav.querySelectorAll("ul > li > a").forEach(link => {
+    link.addEventListener("click", function(e){
+      if (window.matchMedia("(max-width: 900px)").matches && this.href && !this.href.endsWith("#")) {
+        closeMenu();
+      }
+    });
+  });
+})();
+  </script><script>
+   (function () {
+  const nav = document.querySelector(".header-right nav");
+  const body = document.body;
+  if (!nav) return;
+
+  // Ensure toggle button exists
+  let toggleBtn = document.getElementById("menu-toggle");
+  if (!toggleBtn) {
+    const headerRight = document.querySelector(".header-right");
+    if (headerRight) {
+      toggleBtn = document.createElement("button");
+      toggleBtn.id = "menu-toggle";
+      toggleBtn.setAttribute("aria-label","Open menu");
+      toggleBtn.textContent = "☰";
+      toggleBtn.style.display = "none"; // CSS will unhide on mobile
+      headerRight.insertBefore(toggleBtn, headerRight.firstChild);
+    }
+  }
+  // Ensure overlay exists
+  let overlay = document.querySelector(".menu-overlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    const header = document.querySelector("header");
+    if (header && header.parentNode) header.parentNode.insertBefore(overlay, header.nextSibling);
+    else document.body.appendChild(overlay);
+  }
+
+  const openMenu = () => { nav.classList.add("open"); body.classList.add("menu-open"); overlay.classList.add("active"); };
+  const closeMenu = () => {
+    nav.classList.remove("open"); body.classList.remove("menu-open"); overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
+  };
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault(); e.stopPropagation();
+      nav.classList.contains("open") ? closeMenu() : openMenu();
+    });
+  }
+  overlay.addEventListener("click", (e) => { e.stopPropagation(); closeMenu(); });
+
+  // Close when navigating to a real href on mobile
+  nav.querySelectorAll("ul > li > a").forEach(link => {
+    link.addEventListener("click", function() {
+      if (window.matchMedia("(max-width: 900px)").matches && this.href && !this.href.endsWith("#")) {
+        closeMenu();
+      }
+    });
+  });
+})();
+  </script><script>
+// Delegated handler to ensure Login/Subscribe CTAs always open the auth modal (desktop & mobile).
+(function(){
+  function wantsAuth(el){
+    if(!el) return false;
+    return el.hasAttribute('data-auth-cta');
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-auth-cta]');
+    if(!t && wantsAuth(e.target)) t = e.target;
+    if(t){
+      try { e.preventDefault(); } catch(_){}
+      try { e.stopPropagation(); } catch(_){}
+      if(typeof window.openAuthModal === 'function'){ window.openAuthModal(); }
+    }
+  }, {passive:false, capture:true});
+})();
+</script><script>
+// --- Robust Auth Modal Open/Close (v3) ---
+(function(){
+  // Ensure functions exist on window
+  window.closeAuthModal = function(){
+    try {
+      var m = document.getElementById('auth-modal');
+      if (!m) return;
+      m.style.display = 'none';
+      // If FirebaseUI mounted, optionally reset container (prevents stale state)
+      var c = document.getElementById('firebaseui-auth-container');
+      if (c) { c.innerHTML = ''; }
+    } catch(e){ console.error('closeAuthModal error:', e); }
+  };
+
+  // Overlay + X + Esc close behavior
+  function bindModalClose(){
+    var m = document.getElementById('auth-modal');
+    if (!m) return;
+    var content = m.querySelector('.auth-modal-content, .modal-content, [role="dialog"]') || m;
+    // Close on overlay click (but not when clicking the content box)
+    m.addEventListener('click', function(ev){
+      if (!content.contains(ev.target)) return; // inside content: ignore
+      // If click target is *exactly* the overlay (m), close
+      if (ev.target === m) { window.closeAuthModal(); }
+    }, {capture: true});
+
+    // Bind buttons/links that look like close
+    var closeSelectors = [
+      '.auth-close', '.modal-close', '.close', '[data-close]', '[aria-label="Close"]', '.firebaseui-idp-cancel'
+    ];
+    closeSelectors.forEach(function(sel){
+      m.querySelectorAll(sel).forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          window.closeAuthModal();
+        }, {passive:false});
+      });
+    });
+
+    // Esc key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') window.closeAuthModal();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindModalClose);
+  } else {
+    bindModalClose();
+  }
+
+  // Make sure the hamburger's login button also opens the modal
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.hamburger-login, .hamburger .login, .mobile-login-button, #mobileLoginBtn, [data-hamburger-login]');
+    if (t){
+      try { e.preventDefault(); e.stopPropagation(); } catch(_){}
+      if (typeof window.openAuthModal === 'function') window.openAuthModal();
+    }
+  }, {capture:true, passive:false});
+})();
+</script><script data-copied-from-id="auth-mobile-direct">
+(function(){
+  function bySel(s){ return document.querySelector(s); }
+  function closeMenu(){
+    try {
+      var nav = document.querySelector('.header-right nav');
+      var overlay = document.querySelector('.menu-overlay');
+      document.body.classList.remove('menu-open');
+      if (nav) nav.classList.remove('open');
+      if (overlay){ overlay.classList.remove('active'); overlay.style.display = 'none'; }
+      if (nav) nav.querySelectorAll('li.open').forEach(li => li.classList.remove('open'));
+    } catch(e){}
+  }
+  function openAuth(link){
+    // mark last click for guard
+    window.__sbLastClickTarget = link;
+    if (typeof window.openAuthModal === 'function'){ return window.openAuthModal(); }
+    var m = document.getElementById('auth-modal');
+    if (m){
+      m.style.display = 'flex';
+      try { if (typeof window.onOpenAuthModalHook === 'function') window.onOpenAuthModalHook(); } catch(e){}
+      return true;
+    }
+    console.warn('auth-mobile-direct: auth modal not found');
+    return false;
+  }
+  function bind(){
+    var link = bySel('.login-mobile a');
+    if(!link) return;
+    // Defensive: ensure it has explicit CTA marker
+    if(!link.hasAttribute('data-auth-cta')) link.setAttribute('data-auth-cta','auth');
+    ['click','touchend','pointerup'].forEach(function(evt){
+      link.addEventListener(evt, function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        closeMenu();
+        setTimeout(function(){ openAuth(link); }, 0);
+        return false;
+      }, {passive:false, capture:true});
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', bind, {once:true});
+  } else {
+    bind();
+  }
+})();
+</script><script id="sb-search-fallback-opener">
+(function(){
+  try{
+    var btn = document.querySelector('[data-sb-search-trigger]');
+    var modal = document.getElementById('sb-search-modal');
+    if(!btn || !modal) return;
+    function openModal(){
+      modal.style.display = 'block';
+      document.documentElement.classList.add('sb-search-open');
+      setTimeout(function(){
+        var q = modal.querySelector('input[type="search"], input[type="text"]');
+        if(q) { try{ q.focus(); }catch(e){} }
+      }, 0);
+    }
+    function closeModal(){
+      modal.style.display = 'none';
+      document.documentElement.classList.remove('sb-search-open');
+    }
+    if(!btn._sbFallbackBound){
+      btn.addEventListener('click', function(e){ e.preventDefault(); openModal(); }, true);
+      btn._sbFallbackBound = true;
+    }
+    modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); }, true);
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); }, true);
+    (modal.querySelectorAll('[data-sb-search-close]')||[]).forEach(function(x){
+      x.addEventListener('click', function(e){ e.preventDefault(); closeModal(); }, true);
+    });
+  }catch(_){}
+})();
+</script></body>
 </html>
