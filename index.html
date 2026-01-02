@@ -1,4 +1,4 @@
-<!-- UPDATED: 2026-01-02 00:45 UTC -->
+<!-- UPDATED: 2026-01-02 00:55 UTC -->
 <!DOCTYPE html>
 
 <html lang="en">
@@ -3536,35 +3536,6 @@ html body #story-queue-menu.active{display:flex !important;}
 </div>
 </footer>
 <script>
-   var wand = window.wand ||  document.getElementById("wand");
-    // Wand offset: tweak for your image so tip matches cursor position
-    const WAND_OFFSET_X = 15;
-    const WAND_OFFSET_Y = 8;
-    wand.style.position = "fixed";
-    wand.style.pointerEvents = "none";
-    wand.style.zIndex = 9998;
-    let lastSparkleTime = 0;
-    document.body.addEventListener("mousemove", (e) => {
-      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
-      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
-      wand.style.transition = "none";
-      wand.style.opacity = "1";
-      // Sparkle at wand tip
-      const now = Date.now();
-      if (now - lastSparkleTime > 16) {
-        const sparkle = document.createElement("div");
-        sparkle.className = "sparkle";
-        sparkle.style.left = `${e.clientX - 11}px`;
-        sparkle.style.top  = `${e.clientY - 11}px`;
-        document.body.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), 900);
-        lastSparkleTime = now;
-      }
-    });
-    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
-    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
-  </script>
-<script>
    function getFavorites() {
   try { return JSON.parse(localStorage.getItem('favorites') || "[]"); }
   catch { return []; }
@@ -3946,6 +3917,7 @@ window.onOpenAuthModalHook = function(){
     console.error('onOpenAuthModalHook error:', e);
   }
 };
+</script>
 <script>
    // Desktop-only hover open/close for dropdowns
 (function () {
