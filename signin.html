@@ -385,7 +385,7 @@
       }
     });
   });
-
+</script>
 <style id="firebaseui-visibility-fix">
 /* Ensure FirebaseUI Google button shows properly */
 #firebaseui-auth-container { min-width: 280px; display: block !important; }
@@ -2773,6 +2773,13 @@ nav ul > li:focus-within > .dropdown {
 <div class="subscribe-text"></div></div>
 </header>
 <style>
+/* Hide login buttons on signin page - you're already here! */
+.login-cta-header,
+.login-mobile,
+a[href="signin.html"].login-cta-header {
+  display: none !important;
+}
+
 /* Mobile-friendly signin styles */
 .signin-container {
   max-width: 500px;
