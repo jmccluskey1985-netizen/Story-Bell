@@ -1,5 +1,6 @@
 [
   {
+    "type": "story",
     "title": "Maya's Missing Mittens",
     "url": "/mayas-missing-mittens.html",
     "summary": "A story about problem solving with Mummy",
@@ -26,6 +27,7 @@
     "cover": "/icon/mayas-missing-mittens-icon.webp"
   },
   {
+    "type": "story",
     "title": "Milo the Mouse",
     "url": "/milo-the-mouse.html",
     "summary": "A gentle rhyming poem about Milo, a small brown mouse who discovers the joy of friendship through kindness and sharing.",
@@ -66,6 +68,7 @@
     "cover": "/icon/milo-the-mouse-icon.webp"
   },
   {
+    "type": "story",
     "title": "Luna's Colorful Garden",
     "url": "/lunas-colorful-garden.html",
     "summary": "A story about helping friends create a magical garden.",
@@ -90,6 +93,7 @@
     "cover": "/icon/lunas-colorful-garden-icon.webp"
   },
   {
+    "type": "story",
     "title": "The Tiniest Rainbow",
     "url": "/the-tiniest-rainbow.html",
     "summary": "A gentle bedtime story for toddlers about discovering happiness on a rainy day.",
@@ -120,6 +124,7 @@
     "cover": "/icon/the-tiniest-rainbow-icon.webp"
   },
   {
+    "type": "story",
     "title": "Owl in the Dark Forest",
     "url": "/owl-in-the-dark-forest.html",
     "summary": "A brave little owl faces fear while searching for her way home.",
@@ -148,6 +153,7 @@
     "cover": "/icon/owl-in-the-dark-forest-icon.webp"
   },
   {
+    "type": "story",
     "title": "The Lonely Leaf",
     "url": "/the-lonely-leaf.html",
     "summary": "A poem about sadness and finding new friends in autumn.",
@@ -176,6 +182,7 @@
     "cover": "/icon/the-lonely-leaf-icon.webp"
   },
   {
+    "type": "story",
     "title": "Emma and the Surprise Party",
     "url": "/emma-and-the-surprise-party.html",
     "summary": "Emma plans a secret party for her granddad and learns the joy of surprises.",
@@ -204,6 +211,7 @@
     "cover": "/icon/emma-and-the-surprise-party-icon.webp"
   },
   {
+    "type": "story",
     "title": "Tommy and the Lost Toy",
     "url": "/tommy-and-the-lost-toy.html",
     "summary": "Tommy learns about anger when he can’t find his favourite truck, but Mummy helps him talk about his feelings.",
@@ -231,6 +239,7 @@
     "cover": "/icon/tommy-and-the-lost-toy-icon.webp"
   },
   {
+    "type": "story",
     "title": "Melody and the Muddy Puppy",
     "url": "/melody-and-the-muddy-puppy.html",
     "summary": "A silly story about a girl and her puppy, who both discover the meaning of disgust after a very messy day in the park.",
@@ -260,6 +269,7 @@
     "cover": "/icon/melody-and-the-muddy-puppy-icon.webp"
   },
   {
+    "type": "story",
     "title": "The Brave Little Duckling",
     "url": "/the-brave-little-duckling.html",
     "summary": "A duckling faces his fear of swimming and discovers courage.",
@@ -288,6 +298,7 @@
     "cover": "/icon/the-brave-little-duckling-icon.webp"
   },
   {
+    "type": "story",
     "title": "Stars in My Window",
     "url": "/stars-in-my-window.html",
     "summary": "A bedtime poem about finding comfort in the night sky.",
@@ -318,6 +329,7 @@
     "cover": "/icon/stars-in-my-window-icon.webp"
   },
   {
+    "type": "story",
     "title": "Grumpy Grandpa and the Silly Hat",
     "url": "/grumpy-grandpa-and-the-silly-hat.html",
     "summary": "Grandpa is feeling angry until his granddaughter makes him laugh with a silly hat.",
@@ -345,6 +357,7 @@
     "cover": "/icon/grumpy-grandpa-and-the-silly-hat-icon.webp"
   },
   {
+    "type": "story",
     "title": "The Secret in the Library",
     "url": "/the-secret-in-the-library.html",
     "summary": "An adventure about two friends solving a mystery, and the surprise they find.",
@@ -373,6 +386,7 @@
     "cover": "/icon/the-secret-in-the-library-icon.webp"
   },
   {
+    "type": "story",
     "title": "Lily and the Blue Balloon",
     "url": "/lily-and-the-blue-balloon.html",
     "summary": "Lily feels sad when her balloon floats away, but she finds hope in a new friend.",
@@ -400,6 +414,7 @@
     "cover": "/icon/lily-and-the-blue-balloon-icon.webp"
   },
   {
+    "type": "story",
     "title": "The Case of the Gross Green Socks",
     "url": "/the-case-of-the-gross-green-socks.html",
     "summary": "A detective story about disgust, lost laundry, and learning to help with chores.",
@@ -428,6 +443,7 @@
     "cover": "/icon/the-case-of-the-gross-green-socks-icon.webp"
   },
   {
+    "type": "story",
     "title": "Cousins' Countryside Adventure",
     "url": "/cousins-countryside-adventure.html",
     "summary": "Join Sophia, Isabelle, Juliette, and Rory as four little cousins explore the countryside together, discovering butterflies, a babbling brook, and the joy of family.",
@@ -460,6 +476,7 @@
     "cover": "/icon/cousins-countryside-adventure-icon.webp"
   },
   {
+    "type": "story",
     "title": "The Magic Paintbrush",
     "url": "/the-magic-paintbrush.html",
     "summary": "Aria discovers a magical paintbrush that brings her drawings to life, and learns that creativity comes with responsibility.",
@@ -493,6 +510,7 @@
     "cover": "/icon/the-magic-paintbrush-icon.webp"
   },
   {
+    "type": "story",
     "title": "Oliver's Ocean Quest",
     "url": "/olivers-ocean-quest.html",
     "summary": "Oliver explores tide pools at the beach with his dad and discovers the wonders of ocean life.",
@@ -526,6 +544,7 @@
     "cover": "/icon/olivers-ocean-quest-icon.webp"
   },
   {
+    "type": "story",
     "title": "The Lost Puppy",
     "url": "/the-lost-puppy.html",
     "summary": "Emma finds a lost puppy in the park and works with her community to reunite it with its family.",
@@ -559,6 +578,7 @@
     "cover": "/icon/the-lost-puppy-icon.webp"
   },
   {
+    "type": "story",
     "title": "Jack's Jungle Dream",
     "url": "/jacks-jungle-dream.html",
     "summary": "Jack has a magical dream where he explores a colorful jungle and makes friends with amazing animals.",
@@ -592,6 +612,7 @@
     "cover": "/icon/jacks-jungle-dream-icon.webp"
   },
   {
+    "type": "story",
     "title": "The Tiny Fairy",
     "url": "/the-tiny-fairy.html",
     "summary": "Lily discovers a tiny fairy named Shimmer in her garden, who teaches her about the magic of nature.",
@@ -625,6 +646,7 @@
     "cover": "/icon/the-tiny-fairy-icon.webp"
   },
   {
+    "type": "story",
     "title": "Benny's Big Helpers",
     "url": "/bennys-big-helpers.html",
     "summary": "Benny learns to help around the house and discovers the joy of being a contributing family member.",
@@ -658,6 +680,7 @@
     "cover": "/icon/bennys-big-helpers-icon.webp"
   },
   {
+    "type": "story",
     "title": "The Wishing Star",
     "url": "/the-wishing-star.html",
     "summary": "Stella discovers a fallen star that offers her three wishes, and learns that gratitude is more powerful than wishing.",
@@ -689,5 +712,217 @@
       "family"
     ],
     "cover": "/icon/the-wishing-star-icon.webp"
+  },
+  {
+    "type": "category",
+    "title": "Stories About Sadness",
+    "url": "/childrens-stories-about-sadness.html",
+    "summary": "Gentle stories to help children understand and process feelings of sadness.",
+    "keywords": [
+      "sadness",
+      "sad",
+      "crying",
+      "tears",
+      "emotions",
+      "feelings"
+    ],
+    "mp4": "/index_items/childrens-stories-about-sadness.mp4",
+    "cover": "/index_items/childrens-stories-about-sadness.webp"
+  },
+  {
+    "type": "category",
+    "title": "Stories About Happiness",
+    "url": "/childrens-stories-about-happiness.html",
+    "summary": "Joyful stories celebrating happiness, laughter, and positive emotions.",
+    "keywords": [
+      "happiness",
+      "happy",
+      "joy",
+      "joyful",
+      "smile",
+      "laugh",
+      "emotions"
+    ],
+    "mp4": "/index_items/childrens-stories-about-happiness.mp4",
+    "cover": "/index_items/childrens-stories-about-happiness.webp"
+  },
+  {
+    "type": "category",
+    "title": "Stories About Fear",
+    "url": "/childrens-stories-about-fear.html",
+    "summary": "Comforting stories to help children understand and overcome their fears.",
+    "keywords": [
+      "fear",
+      "scared",
+      "afraid",
+      "brave",
+      "courage",
+      "emotions"
+    ],
+    "mp4": "/index_items/childrens-stories-about-fear.mp4",
+    "cover": "/index_items/childrens-stories-about-fear.webp"
+  },
+  {
+    "type": "category",
+    "title": "Stories About Anger",
+    "url": "/childrens-stories-about-anger.html",
+    "summary": "Stories that help children understand and manage feelings of anger.",
+    "keywords": [
+      "anger",
+      "angry",
+      "mad",
+      "frustrated",
+      "calm",
+      "emotions"
+    ],
+    "mp4": "/index_items/childrens-stories-about-anger.mp4",
+    "cover": "/index_items/childrens-stories-about-anger.webp"
+  },
+  {
+    "type": "category",
+    "title": "Stories About Surprise",
+    "url": "/childrens-stories-about-surprise.html",
+    "summary": "Exciting stories full of wonder, surprise, and unexpected moments.",
+    "keywords": [
+      "surprise",
+      "surprised",
+      "wonder",
+      "amazed",
+      "unexpected",
+      "emotions"
+    ],
+    "mp4": "/index_items/childrens-stories-about-surprise.mp4",
+    "cover": "/index_items/childrens-stories-about-surprise.webp"
+  },
+  {
+    "type": "category",
+    "title": "Stories About Disgust",
+    "url": "/childrens-stories-about-disgust.html",
+    "summary": "Stories exploring feelings of disgust and learning to understand them.",
+    "keywords": [
+      "disgust",
+      "yucky",
+      "gross",
+      "ew",
+      "emotions"
+    ],
+    "mp4": "/index_items/childrens-stories-about-disgust.mp4",
+    "cover": "/index_items/childrens-stories-about-disgust.webp"
+  },
+  {
+    "type": "category",
+    "title": "Stories About Feelings",
+    "url": "/kids-stories-about-feelings.html",
+    "summary": "A collection of stories exploring all kinds of emotions and feelings.",
+    "keywords": [
+      "feelings",
+      "emotions",
+      "emotional",
+      "feel"
+    ],
+    "mp4": "/index_items/animationSB.mp4",
+    "cover": "/index_items/animationSB.webp"
+  },
+  {
+    "type": "category",
+    "title": "Stories for Ages 0-3",
+    "url": "/childrens-stories-ages-0-3.html",
+    "summary": "Simple, gentle stories perfect for babies and toddlers.",
+    "keywords": [
+      "baby",
+      "toddler",
+      "0-3",
+      "infant",
+      "young"
+    ],
+    "mp4": "/index_items/animationSB.mp4",
+    "cover": "/index_items/animationSB.webp"
+  },
+  {
+    "type": "category",
+    "title": "Stories for Ages 4-6",
+    "url": "/childrens-stories-ages-4-6.html",
+    "summary": "Engaging stories for preschoolers and early readers.",
+    "keywords": [
+      "preschool",
+      "4-6",
+      "kindergarten",
+      "early reader"
+    ],
+    "mp4": "/index_items/animationSB.mp4",
+    "cover": "/index_items/animationSB.webp"
+  },
+  {
+    "type": "category",
+    "title": "Stories for Ages 7-12",
+    "url": "/childrens-stories-ages-7-12.html",
+    "summary": "Longer, more complex stories for older children.",
+    "keywords": [
+      "7-12",
+      "older kids",
+      "chapter",
+      "longer"
+    ],
+    "mp4": "/index_items/animationSB.mp4",
+    "cover": "/index_items/animationSB.webp"
+  },
+  {
+    "type": "category",
+    "title": "5-Minute Stories",
+    "url": "/5-minute-childrens-stories.html",
+    "summary": "Quick stories perfect for busy moments or short attention spans.",
+    "keywords": [
+      "5 minute",
+      "quick",
+      "short",
+      "fast",
+      "brief"
+    ],
+    "mp4": "/index_items/animationSB.mp4",
+    "cover": "/index_items/animationSB.webp"
+  },
+  {
+    "type": "category",
+    "title": "10-Minute Stories",
+    "url": "/10-minute-childrens-stories.html",
+    "summary": "Medium-length stories ideal for bedtime reading.",
+    "keywords": [
+      "10 minute",
+      "bedtime",
+      "medium"
+    ],
+    "mp4": "/index_items/animationSB.mp4",
+    "cover": "/index_items/animationSB.webp"
+  },
+  {
+    "type": "category",
+    "title": "Kindness Stories",
+    "url": "/bedtime-stories-about-kindness.html",
+    "summary": "Heartwarming stories about kindness, sharing, and being good to others.",
+    "keywords": [
+      "kindness",
+      "kind",
+      "sharing",
+      "caring",
+      "nice",
+      "helpful"
+    ],
+    "mp4": "/index_items/animationSB.mp4",
+    "cover": "/index_items/animationSB.webp"
+  },
+  {
+    "type": "category",
+    "title": "Poems & Rhymes",
+    "url": "/childrens-poems-and-rhymes.html",
+    "summary": "Fun, rhythmic poems and rhymes for children of all ages.",
+    "keywords": [
+      "poem",
+      "rhyme",
+      "poetry",
+      "verse",
+      "rhythm"
+    ],
+    "mp4": "/index_items/animationSB.mp4",
+    "cover": "/index_items/animationSB.webp"
   }
 ]

@@ -2697,7 +2697,7 @@ nav ul > li:focus-within > .dropdown {
     </p><div class="section-title">✨ Our Promise</div><p>
       Stories that speak, words that glow.<br/>
       Every page of Story Bell is built to support young readers with care, clarity, and a little bit of magic.
-    </p></div><!-- BEGIN SWIPE-CAROUSEL-JS --><!-- END SWIPE-CAROUSEL-JS --><div data-auth-cta="" style="position:fixed; inset:0; background:rgba(0,0,0,0.65); display:none; align-items:center; justify-content:center; z-index:12000;"><div style="background:#001f3f; border:2px solid #FFEB3B; border-radius:16px; box-shadow:0 0 28px #ffeb3bcc; width:min(92vw,520px); max-height:85vh; overflow:auto; padding:18px; color:#fff; font-family:'Coming Soon',cursive; position:relative;"><h2 style="margin:0 0 8px 0; text-align:center; color:#FFEB3B;">Sign in or Create Account</h2><button aria-label="Close auth modal" onclick="closeAuthModal()" style="position:absolute; top:10px; right:16px; font-size:28px; background:none; border:none; color:#FFEB3B; cursor:pointer;">×</button><div style="margin:10px 0 0 0; font-size:12px; line-height:1.4; color:#fff; text-align:center;"><label for="sb-consent"><input checked="True" type="checkbox"/> I agree to the <a href="terms.html" rel="noopener" style="color:#FFEB3B; text-decoration:underline;" target="_blank">Terms &amp; Conditions</a> and <a href="privacy.html" rel="noopener" style="color:#FFEB3B; text-decoration:underline;" target="_blank">Privacy Policy</a></label></div></div></div><!-- SB Search Modal (Fuse.js) --><div aria-hidden="true" style="position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:10001"><div aria-label="Search stories" aria-modal="true" role="dialog" style="max-width:720px;margin:8vh auto;background:white;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)"><div style="padding:14px 16px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px"><input placeholder="Search stories, poems, emotions, ages… ( / )" style="flex:1;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:16px;outline:none" type="search"/><button aria-label="Close" style="border:0;background:transparent;font-size:18px;cursor:pointer;padding:8px">✕</button></div></div></div><!-- === BEGIN: Minimal Wand + Feature MP4 Uniformizer (no header/layout changes) === --><!-- === END: Minimal Wand + Feature MP4 Uniformizer === --><!-- === BEGIN: RESPONSIVE MP4 Uniformizer (no header/layout changes) === --><!-- === END: RESPONSIVE MP4 Uniformizer === --><!-- === BEGIN: Mobile Fill & Bigger Containers (videos fill containers on mobile) === --><!-- === END: Mobile Fill & Bigger Containers === --><!-- === BEGIN: Restore Mobile Video Fill (ensure MP4s visible) === --><!-- === END: Restore Mobile Video Fill === --></main>
+    </p></div><!-- BEGIN SWIPE-CAROUSEL-JS --><!-- END SWIPE-CAROUSEL-JS --><div data-auth-cta="" style="position:fixed; inset:0; background:rgba(0,0,0,0.65); display:none; align-items:center; justify-content:center; z-index:12000;"><div style="background:#001f3f; border:2px solid #FFEB3B; border-radius:16px; box-shadow:0 0 28px #ffeb3bcc; width:min(92vw,520px); max-height:85vh; overflow:auto; padding:18px; color:#fff; font-family:'Coming Soon',cursive; position:relative;"><h2 style="margin:0 0 8px 0; text-align:center; color:#FFEB3B;">Sign in or Create Account</h2><button aria-label="Close auth modal" onclick="closeAuthModal()" style="position:absolute; top:10px; right:16px; font-size:28px; background:none; border:none; color:#FFEB3B; cursor:pointer;">×</button><div style="margin:10px 0 0 0; font-size:12px; line-height:1.4; color:#fff; text-align:center;"><label for="sb-consent"><input checked="True" type="checkbox"/> I agree to the <a href="terms.html" rel="noopener" style="color:#FFEB3B; text-decoration:underline;" target="_blank">Terms &amp; Conditions</a> and <a href="privacy.html" rel="noopener" style="color:#FFEB3B; text-decoration:underline;" target="_blank">Privacy Policy</a></label></div></div></div><!-- === BEGIN: Minimal Wand + Feature MP4 Uniformizer (no header/layout changes) === --><!-- === END: Minimal Wand + Feature MP4 Uniformizer === --><!-- === BEGIN: RESPONSIVE MP4 Uniformizer (no header/layout changes) === --><!-- === END: RESPONSIVE MP4 Uniformizer === --><!-- === BEGIN: Mobile Fill & Bigger Containers (videos fill containers on mobile) === --><!-- === END: Mobile Fill & Bigger Containers === --><!-- === BEGIN: Restore Mobile Video Fill (ensure MP4s visible) === --><!-- === END: Restore Mobile Video Fill === --></main>
 <div style="max-width: 1100px; margin: 0 auto; cursor: pointer">
 <h1 class="featured-header">
 </h1>
@@ -3855,5 +3855,79 @@ nav ul > li:focus-within > .dropdown {
     });
   }catch(_){}
 })();
-</script></body>
+</script><!-- SB Search Modal (Fuse.js) - Injected -->
+<script defer src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+<div aria-hidden="true" id="sb-search-modal" style="position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:10001">
+<div aria-label="Search stories" aria-modal="true" role="dialog" style="max-width:720px;margin:8vh auto;background:white;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)">
+<div style="padding:14px 16px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px">
+<input id="sb-search-input" placeholder="Search stories, categories, emotions… ( / )" style="flex:1;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:16px;outline:none" type="search"/>
+<button aria-label="Close" id="sb-search-close" style="border:0;background:transparent;font-size:18px;cursor:pointer;padding:8px">✕</button>
+</div>
+<div id="sb-search-results" style="max-height:60vh;overflow:auto;padding:8px 8px 12px"></div>
+</div>
+</div>
+<script id="sb-search-script">
+(() => {
+  const modal = document.getElementById('sb-search-modal');
+  const input = document.getElementById('sb-search-input');
+  const closeBtn = document.getElementById('sb-search-close');
+  const resultsEl = document.getElementById('sb-search-results');
+  if(!modal || !input) return;
+  if(resultsEl) resultsEl.style.display='none';
+  let fuse, data = [], loaded = false;
+
+  function renderMedia(it) {
+    // For categories with MP4, show video; otherwise show image
+    if (it.type === 'category' && it.mp4) {
+      return `<video autoplay loop muted playsinline style="width:80px;height:80px;object-fit:cover;border-radius:12px;border:1px solid #f2f2f2;background:#000">
+        <source src="${it.mp4}" type="video/mp4">
+      </video>`;
+    }
+    return `<img src="${it.cover||'/index_items/placeholder.webp'}" alt="${it.title||'Story'}"
+         style="width:64px;height:64px;object-fit:cover;border-radius:12px;border:1px solid #f2f2f2"
+         onerror="this.src='/index_items/placeholder.webp'">`;
+  }
+
+  function renderMeta(it) {
+    if (it.type === 'category') {
+      return `<span style="background:#FFEB3B;color:#003366;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:bold">CATEGORY</span>`;
+    }
+    return `Age: ${it.age||'—'} · ${(it.categories||[]).slice(0,2).join(', ')}`;
+  }
+
+  function render(items){
+    if(!items || items.length===0){ resultsEl.innerHTML=''; resultsEl.style.display='none'; return; }
+    resultsEl.style.display='block';
+    resultsEl.innerHTML = items.slice(0,30).map(x=>{ const it=x.item||x; return `
+      <a href="${it.url||'#'}" style="display:flex;gap:12px;padding:10px;border-radius:12px;text-decoration:none;color:inherit;border:1px solid #eee;margin:8px;${it.type==='category'?'background:#fffef0;':''}"
+         onmouseenter="this.querySelector('video')?.play()" onmouseleave="this.querySelector('video')?.pause()">
+        ${renderMedia(it)}
+        <div style="flex:1"><div style="font-weight:700">${it.title||'Untitled'}</div>
+        <div style="font-size:13px;color:#444;margin-top:2px">${(it.summary||'').slice(0,140)}</div>
+        <div style="font-size:12px;color:#666;margin-top:6px">${renderMeta(it)}</div></div>
+      </a>`; }).join('');
+  }
+  async function ensureLoaded(){
+    if(loaded) return;
+    try{
+      const res=await fetch('/search-index.json',{cache:'no-store'});
+      data=await res.json();
+    }catch(e){ data=[]; }
+    fuse=new Fuse(data,{includeScore:true,threshold:0.35,keys:[{name:'title',weight:0.5},{name:'summary',weight:0.15},{name:'keywords',weight:0.25},{name:'categories',weight:0.1}]});
+    loaded=true;
+  }
+  function openModal(){ modal.style.display='block'; modal.setAttribute('aria-hidden','false'); setTimeout(()=>input&&input.focus(),0); render([]); }
+  function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); if(input) input.value=''; }
+  function onTriggerClick(e){ e.preventDefault(); ensureLoaded().then(openModal); }
+  const attach=()=>{ document.querySelectorAll('[data-sb-search-trigger]').forEach(el=>{ if(!el._sbBound){ el.addEventListener('click', onTriggerClick); el._sbBound=true; } }); };
+  attach(); new MutationObserver(attach).observe(document.body,{childList:true,subtree:true});
+  if(closeBtn) closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
+  window.addEventListener('keydown', async e=>{ if(e.key==='/'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&document.activeElement.tagName!=='INPUT'&&document.activeElement.tagName!=='TEXTAREA'){ e.preventDefault(); await ensureLoaded(); openModal(); } else if(e.key==='Escape'){ closeModal(); } });
+  if(input){ input.addEventListener('input', ()=>{ const q=input.value.trim(); if(!q){ render([]); return; } const out=fuse.search(q); render(out); }); }
+})();
+</script>
+<!-- END SB Search Modal -->
+
+</body>
 </html>
