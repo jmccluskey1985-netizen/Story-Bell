@@ -278,7 +278,7 @@
 
     // Send welcome email to user
     emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_WELCOME, {
-      to_email: userEmail,
+      email: userEmail,
       to_name: displayName,
       child_name: displayName
     }).then(function() {
