@@ -5100,54 +5100,7 @@ window.onOpenAuthModalHook = function(){
   }, true);
 })();
 </script>
-<script id="auth-mobile-direct">
-(function(){
-  function bySel(s){ return document.querySelector(s); }
-  function closeMenu(){
-    try {
-      var nav = document.querySelector('.header-right nav');
-      var overlay = document.querySelector('.menu-overlay');
-      document.body.classList.remove('menu-open');
-      if (nav) nav.classList.remove('open');
-      if (overlay){ overlay.classList.remove('active'); overlay.style.display = 'none'; }
-      if (nav) nav.querySelectorAll('li.open').forEach(li => li.classList.remove('open'));
-    } catch(e){}
-  }
-  function openAuth(link){
-    // mark last click for guard
-    window.__sbLastClickTarget = link;
-    if (typeof window.openAuthModal === 'function'){ return window.openAuthModal(); }
-    var m = document.getElementById('auth-modal');
-    if (m){
-      m.style.display = 'flex';
-      try { if (typeof window.onOpenAuthModalHook === 'function') window.onOpenAuthModalHook(); } catch(e){}
-      return true;
-    }
-    console.warn('auth-mobile-direct: auth modal not found');
-    return false;
-  }
-  function bind(){
-    var link = bySel('.login-mobile a');
-    if(!link) return;
-    // Defensive: ensure it has explicit CTA marker
-    if(!link.hasAttribute('data-auth-cta')) link.setAttribute('data-auth-cta','auth');
-    ['click','touchend','pointerup'].forEach(function(evt){
-      link.addEventListener(evt, function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        closeMenu();
-        setTimeout(function(){ openAuth(link); }, 0);
-        return false;
-      }, {passive:false, capture:true});
-    });
-  }
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', bind, {once:true});
-  } else {
-    bind();
-  }
-})();
-</script>
+<!-- auth-mobile-direct removed: mobile login now navigates to signin.html -->
 <script id="auth-footer-handler">
 (function(){
   var TARGET_TEXT = "sign up to story bell"; // case-insensitive match
@@ -5575,7 +5528,7 @@ window.onOpenAuthModalHook = function(){
   }, { passive: true });
 
   // Universal bindings (don’t change header layout; just listen)
-  var selectors = ['#loginBtn', '.login', '.login a', '.login-mobile a', '[data-auth-cta]'];
+  var selectors = ['#loginBtn', '.login', '.login a', '[data-auth-cta]'];  // removed .login-mobile a - navigates to signin.html
   selectors.forEach(function(sel){
     document.querySelectorAll(sel).forEach(function(el){
       ['click','touchend','pointerup'].forEach(function(evt){
