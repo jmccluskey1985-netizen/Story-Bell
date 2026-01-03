@@ -347,6 +347,20 @@
       }
     });
 
+    // Explicitly process redirect result (required for Firebase 10.x)
+    firebase.auth().getRedirectResult().then(function(result) {
+      console.log('[SB-signin] getRedirectResult:', result ? (result.user ? result.user.email : 'no user in result') : 'null result');
+      if (result && result.user) {
+        console.log('[SB-signin] Got user from redirect:', result.user.email);
+        // User signed in via redirect - the onAuthStateChanged will handle the rest
+      }
+    }).catch(function(error) {
+      console.error('[SB-signin] getRedirectResult error:', error.code, error.message);
+      if (error.code === 'auth/unauthorized-domain') {
+        alert('Error: This domain is not authorized for Firebase Auth. Please add it to Firebase Console.');
+      }
+    });
+
     // Check on page load if returning from Google redirect
     firebase.auth().onAuthStateChanged(function(user) {
       console.log('[SB-signin] onAuthStateChanged fired, user:', user ? user.email : 'null');
