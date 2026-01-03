@@ -349,8 +349,11 @@
 
     // Check on page load if returning from Google redirect
     firebase.auth().onAuthStateChanged(function(user) {
+      console.log('[SB-signin] onAuthStateChanged fired, user:', user ? user.email : 'null');
       if (user) {
         console.log('[SB-signin] User detected:', user.email);
+        // DEBUG: Show alert to confirm auth is working
+        alert('Signed in as: ' + (user.displayName || user.email) + '\\nRedirecting to homepage...');
         var pendingName = localStorage.getItem('storybell_pending_name');
         var profileKey = 'storybell_child_' + user.uid;
         var existingProfile = null;
