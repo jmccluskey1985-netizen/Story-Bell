@@ -5599,6 +5599,7 @@ window.onOpenAuthModalHook = function(){
   function updateHeaderAuth(user) {
     var loginBtns = document.querySelectorAll('.login-cta-header, .login-mobile a[href*="signin"]');
     var profileEls = document.querySelectorAll('.sb-user-profile');
+    var subscribeBox = document.querySelector('.subscribe-box');
 
     if (user) {
       var profile = getChildProfile(user.uid);
@@ -5611,9 +5612,13 @@ window.onOpenAuthModalHook = function(){
         var nameEl = el.querySelector('.sb-user-name');
         if (nameEl) nameEl.textContent = displayName;
       });
+      // Hide subscribe box for logged-in users
+      if (subscribeBox) subscribeBox.style.display = 'none';
     } else {
       loginBtns.forEach(function(el){ el.style.display = ''; });
       profileEls.forEach(function(el){ el.style.display = 'none'; });
+      // Show subscribe box for logged-out users
+      if (subscribeBox) subscribeBox.style.display = 'block';
     }
   }
 
