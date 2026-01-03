@@ -76,6 +76,12 @@
       text-decoration: none !important;
       background: #FFD700 !important;
     }
+    .sb-user-profile:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 16px rgba(255,235,59,0.5);
+      text-decoration: none !important;
+      background: #FFD700 !important;
+    }
     .mascot-logo { height: 56px; width: 56px; border-radius: 50%; object-fit: cover; background: #ffeb3b33; box-shadow: 0 2px 10px #2227; }
     .site-title {margin-top: 14px !important;  font-size: 28px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
     .header-left a:hover .site-title {margin-top: 14px !important;  color: #fffde6; }
@@ -2780,11 +2786,11 @@ html body #story-queue-menu.active{display:flex !important;}
 </button>
 <a class="login-cta-header" href="signin.html" rel="noopener">Log in/<br/>Create Account</a>
 <!-- User Profile (shown when signed in) -->
-<a class="sb-user-profile" href="profile.html" style="display:none; align-items:center; gap:8px; margin-top:14px; background:#FFEB3B; color:#003366; border-radius:20px; padding:8px 16px; text-decoration:none; box-shadow:0 2px 8px rgba(255,235,59,0.22);">
-<svg style="width:24px;height:24px;fill:#003366;" viewbox="0 0 24 24">
+<a class="sb-user-profile" href="profile.html" style="display:none; align-items:center; gap:8px; margin-top:14px; background:#FFEB3B; color:#003366; border-radius:25px; padding:10px 20px; text-decoration:none; box-shadow:0 2px 8px rgba(255,235,59,0.3); transition: transform 0.2s, box-shadow 0.2s;">
+<svg style="width:24px; height:24px; fill:#003366;" viewbox="0 0 24 24">
 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
 </svg>
-<span class="sb-user-name" style="color:#003366; font-family:'Coming Soon',cursive; font-weight:bold; font-size:15px;"></span>
+<span class="sb-user-name" style="color:#003366; font-family:'Coming Soon',cursive; font-weight:bold; font-size:16px;"></span>
 </a>
 <div class="subscribe-text"></div></div>
 </header>
@@ -4503,7 +4509,7 @@ function updateHeaderAuth(firebaseUser) {
     // Capitalize first letter
     displayName = capitalizeFirst(displayName);
 
-    // Desktop: hide login, show profile with name
+    // Desktop: hide login, show profile with icon and name
     if (loginBtnDesktop) loginBtnDesktop.style.display = 'none';
     if (profileDesktop) {
       profileDesktop.style.display = 'flex';
