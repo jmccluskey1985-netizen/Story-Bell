@@ -2604,7 +2604,7 @@ nav ul > li:focus-within > .dropdown {
   }, { passive: true });
 
   // Universal bindings (don’t change header layout; just listen)
-  var selectors = ['#loginBtn', '.login', '.login a', '.login-mobile a', '[data-auth-cta]'];
+  var selectors = ['#loginBtn', '.login', '.login a', '[data-auth-cta]'];  // removed .login-mobile a - navigates to signin.html
   selectors.forEach(function(sel){
     document.querySelectorAll(sel).forEach(function(el){
       ['click','touchend','pointerup'].forEach(function(evt){

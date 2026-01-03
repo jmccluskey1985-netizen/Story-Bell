@@ -3558,54 +3558,9 @@ document.addEventListener('keypress', function(e) {
 
   addEventListener("resize", ()=>{ if (!isMobile()) closeMenu(); });
 })();
-  </script><script>
-(function(){
-  function bySel(s){ return document.querySelector(s); }
-  function closeMenu(){
-    try {
-      var nav = document.querySelector('.header-right nav');
-      var overlay = document.querySelector('.menu-overlay');
-      document.body.classList.remove('menu-open');
-      if (nav) nav.classList.remove('open');
-      if (overlay){ overlay.classList.remove('active'); overlay.style.display = 'none'; }
-      if (nav) nav.querySelectorAll('li.open').forEach(li => li.classList.remove('open'));
-    } catch(e){}
-  }
-  function openAuth(link){
-    // mark last click for guard
-    window.__sbLastClickTarget = link;
-    if (typeof window.openAuthModal === 'function'){ return window.openAuthModal(); }
-    var m = document.getElementById('auth-modal');
-    if (m){
-      m.style.display = 'flex';
-      try { if (typeof window.onOpenAuthModalHook === 'function') window.onOpenAuthModalHook(); } catch(e){}
-      return true;
-    }
-    console.warn('auth-mobile-direct: auth modal not found');
-    return false;
-  }
-  function bind(){
-    var link = bySel('.login-mobile a');
-    if(!link) return;
-    // Defensive: ensure it has explicit CTA marker
-    if(!link.hasAttribute('data-auth-cta')) link.setAttribute('data-auth-cta','auth');
-    ['click','touchend','pointerup'].forEach(function(evt){
-      link.addEventListener(evt, function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        closeMenu();
-        setTimeout(function(){ openAuth(link); }, 0);
-        return false;
-      }, {passive:false, capture:true});
-    });
-  }
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', bind, {once:true});
-  } else {
-    bind();
-  }
-})();
-</script><script>
+  </script>
+<!-- duplicate auth-mobile-direct removed -->
+<script>
    (function () {
   const nav = document.querySelector(".header-right nav");
   const body = document.body;
@@ -3798,54 +3753,9 @@ document.addEventListener('keypress', function(e) {
     }
   }, {capture:true, passive:false});
 })();
-</script><script data-copied-from-id="auth-mobile-direct">
-(function(){
-  function bySel(s){ return document.querySelector(s); }
-  function closeMenu(){
-    try {
-      var nav = document.querySelector('.header-right nav');
-      var overlay = document.querySelector('.menu-overlay');
-      document.body.classList.remove('menu-open');
-      if (nav) nav.classList.remove('open');
-      if (overlay){ overlay.classList.remove('active'); overlay.style.display = 'none'; }
-      if (nav) nav.querySelectorAll('li.open').forEach(li => li.classList.remove('open'));
-    } catch(e){}
-  }
-  function openAuth(link){
-    // mark last click for guard
-    window.__sbLastClickTarget = link;
-    if (typeof window.openAuthModal === 'function'){ return window.openAuthModal(); }
-    var m = document.getElementById('auth-modal');
-    if (m){
-      m.style.display = 'flex';
-      try { if (typeof window.onOpenAuthModalHook === 'function') window.onOpenAuthModalHook(); } catch(e){}
-      return true;
-    }
-    console.warn('auth-mobile-direct: auth modal not found');
-    return false;
-  }
-  function bind(){
-    var link = bySel('.login-mobile a');
-    if(!link) return;
-    // Defensive: ensure it has explicit CTA marker
-    if(!link.hasAttribute('data-auth-cta')) link.setAttribute('data-auth-cta','auth');
-    ['click','touchend','pointerup'].forEach(function(evt){
-      link.addEventListener(evt, function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        closeMenu();
-        setTimeout(function(){ openAuth(link); }, 0);
-        return false;
-      }, {passive:false, capture:true});
-    });
-  }
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', bind, {once:true});
-  } else {
-    bind();
-  }
-})();
-</script><script id="sb-search-fallback-opener">
+</script>
+<!-- auth-mobile-direct removed: signin.html is the auth page itself -->
+<script id="sb-search-fallback-opener">
 (function(){
   try{
     var btn = document.querySelector('[data-sb-search-trigger]');
