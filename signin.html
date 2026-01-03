@@ -305,7 +305,7 @@
     console.log('[SB-signin] DOMContentLoaded, starting FirebaseUI');
     var ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
     ui.start('#firebaseui-auth-container', {
-      signInFlow: 'redirect',
+      signInFlow: 'popup',
       signInSuccessUrl: 'signin.html',
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID
