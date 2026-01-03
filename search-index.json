@@ -820,8 +820,8 @@
       "emotional",
       "feel"
     ],
-    "mp4": "/index_items/animationSB.mp4",
-    "cover": "/index_items/animationSB.webp"
+    "mp4": null,
+    "cover": "/index_items/animationSB.mp4"
   },
   {
     "type": "category",
@@ -835,8 +835,8 @@
       "infant",
       "young"
     ],
-    "mp4": "/index_items/animationSB.mp4",
-    "cover": "/index_items/animationSB.webp"
+    "mp4": null,
+    "cover": "/index_items/childrens-stories-ages-0-3.webp"
   },
   {
     "type": "category",
@@ -849,8 +849,8 @@
       "kindergarten",
       "early reader"
     ],
-    "mp4": "/index_items/animationSB.mp4",
-    "cover": "/index_items/animationSB.webp"
+    "mp4": null,
+    "cover": "/index_items/childrens-stories-ages-4-6.webp"
   },
   {
     "type": "category",
@@ -863,8 +863,8 @@
       "chapter",
       "longer"
     ],
-    "mp4": "/index_items/animationSB.mp4",
-    "cover": "/index_items/animationSB.webp"
+    "mp4": null,
+    "cover": "/index_items/childrens-stories-ages-7-12.webp"
   },
   {
     "type": "category",
@@ -878,8 +878,8 @@
       "fast",
       "brief"
     ],
-    "mp4": "/index_items/animationSB.mp4",
-    "cover": "/index_items/animationSB.webp"
+    "mp4": null,
+    "cover": "/index_items/5-minute-childrens-stories.webp"
   },
   {
     "type": "category",
@@ -891,8 +891,8 @@
       "bedtime",
       "medium"
     ],
-    "mp4": "/index_items/animationSB.mp4",
-    "cover": "/index_items/animationSB.webp"
+    "mp4": null,
+    "cover": "/index_items/10-minute-childrens-stories.webp"
   },
   {
     "type": "category",
@@ -907,8 +907,8 @@
       "nice",
       "helpful"
     ],
-    "mp4": "/index_items/animationSB.mp4",
-    "cover": "/index_items/animationSB.webp"
+    "mp4": null,
+    "cover": "/index_items/animationSB.mp4"
   },
   {
     "type": "category",
@@ -922,7 +922,7 @@
       "verse",
       "rhythm"
     ],
-    "mp4": "/index_items/animationSB.mp4",
-    "cover": "/index_items/animationSB.webp"
+    "mp4": null,
+    "cover": "/index_items/childrens-poems-and-rhymes.webp"
   }
 ]
