@@ -4351,9 +4351,8 @@ document.addEventListener('DOMContentLoaded', updateStars);
   margin-right: auto !important;
   display: block !important;
 }
-</style><div style="background:#001f3f; border:2px solid #FFEB3B; border-radius:16px; box-shadow:0 0 28px #ffeb3bcc; width:min(92vw,520px); max-height:85vh; overflow:auto; padding:18px; color:#fff; font-family:'Coming Soon',cursive; position:relative;"><h2 style="margin:0 0 8px 0; text-align:center; color:#FFEB3B;">Sign in or Create Account</h2><button aria-label="Close auth modal" onclick="closeAuthModal()" style="position:absolute; top:10px; right:16px; font-size:28px; background:none; border:none; color:#FFEB3B; cursor:pointer;">×</button><div id="sb-consent-wrap" style="margin:10px 0 0 0; font-size:12px; line-height:1.4; color:#fff; text-align:center;"><label for="sb-consent"><input checked="True" id="sb-consent" type="checkbox"/> I agree to the <a href="terms.html" rel="noopener" style="color:#FFEB3B; text-decoration:underline;" target="_blank">Terms &amp; Conditions</a> and <a href="privacy.html" rel="noopener" style="color:#FFEB3B; text-decoration:underline;" target="_blank">Privacy Policy</a></label><div id="firebaseui-auth-container"></div></div></div></div><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script><script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script><script id="firebase-init">
-  // Story Bell — Firebase config + single-init (compat)
-  <script id="firebase-init">
+</style><div style="background:#001f3f; border:2px solid #FFEB3B; border-radius:16px; box-shadow:0 0 28px #ffeb3bcc; width:min(92vw,520px); max-height:85vh; overflow:auto; padding:18px; color:#fff; font-family:'Coming Soon',cursive; position:relative;"><h2 style="margin:0 0 8px 0; text-align:center; color:#FFEB3B;">Sign in or Create Account</h2><button aria-label="Close auth modal" onclick="closeAuthModal()" style="position:absolute; top:10px; right:16px; font-size:28px; background:none; border:none; color:#FFEB3B; cursor:pointer;">×</button><div id="sb-consent-wrap" style="margin:10px 0 0 0; font-size:12px; line-height:1.4; color:#fff; text-align:center;"><label for="sb-consent"><input checked="True" id="sb-consent" type="checkbox"/> I agree to the <a href="terms.html" rel="noopener" style="color:#FFEB3B; text-decoration:underline;" target="_blank">Terms &amp; Conditions</a> and <a href="privacy.html" rel="noopener" style="color:#FFEB3B; text-decoration:underline;" target="_blank">Privacy Policy</a></label><div id="firebaseui-auth-container"></div></div></div></div><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script><script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
+<script id="firebase-init">
   // Story Bell — Firebase config + single-init (compat)
   const firebaseConfig = {
     apiKey: "AIzaSyC9vYsSvGN7zSDfkIcByvBZDOQnRyUPIBo",
@@ -4365,10 +4364,9 @@ document.addEventListener('DOMContentLoaded', updateStars);
     measurementId: "G-F64PJ8CCZQ"
   };
   if (!window.firebase) { console.error("Firebase SDK not found"); }
-  else if (!firebase.apps.length) { if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); } }
+  else if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
 </script>
-  if (!window.firebase) { console.error("Firebase SDK not found"); }
-  else if (!firebase.apps.length) { if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); } }
+if (!window.firebase) { console.error("Firebase SDK not found"); }
 
 let _sbUI;
 function ensureUI(){

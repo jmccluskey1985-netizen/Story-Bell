@@ -130,17 +130,18 @@ document.addEventListener('DOMContentLoaded', updateStars);
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
 <script id="firebase-init">
-if (!window.__FIREBASE_INIT__) {
-  window.__FIREBASE_INIT__ = true;
-  firebase.initializeApp({
+  // Story Bell — Firebase config + single-init (compat)
+  const firebaseConfig = {
     apiKey: "AIzaSyC9vYsSvGN7zSDfkIcByvBZDOQnRyUPIBo",
     authDomain: "storybellkids.firebaseapp.com",
     projectId: "storybellkids",
     storageBucket: "storybellkids.firebasestorage.app",
     messagingSenderId: "107989104962",
-    appId: "1:107989104962:web:a93c5a427353a87111b0db"
-  });
-}
+    appId: "1:107989104962:web:a93c5a427353a87111b0db",
+    measurementId: "G-F64PJ8CCZQ"
+  };
+  if (!window.firebase) { console.error("Firebase SDK not found"); }
+  else if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
 </script>
 <!-- End Firebase Auth Scripts -->
 <style id="sb-cards-grid-clean">
@@ -366,21 +367,7 @@ html body #story-queue-menu.active{display:flex !important;}
   z-index: 20001 !important;
   pointer-events: none !important;
 }
-</style><script id="firebase-init">
-  // Story Bell — Firebase config + single-init (compat)
-  const firebaseConfig = {
-    apiKey: "AIzaSyC9vYsSvGN7zSDfkIcByvBZDOQnRyUPIBo",
-    authDomain: "storybellkids.firebaseapp.com",
-    projectId: "storybellkids",
-    storageBucket: "storybellkids.firebasestorage.app",
-    messagingSenderId: "107989104962",
-    appId: "1:107989104962:web:a93c5a427353a87111b0db",
-    measurementId: "G-F64PJ8CCZQ"
-  };
-  if (!window.firebase) { console.error("Firebase SDK not found"); }
-  else if (!firebase.apps.length) { if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); } }
-</script>
-<style>
+</style><style>
    body { margin: 0;  background-color: #001f3f; min-height: 100vh; cursor: none;}
     header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
     .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
