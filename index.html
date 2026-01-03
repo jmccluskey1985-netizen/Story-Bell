@@ -1686,6 +1686,7 @@ header nav ul li .dropdown li a {
   .login-cta-header { display: none !important; }        /* remove header button on mobile */
   .sb-user-profile { display: none !important; }         /* hide header profile on mobile */
   .login-mobile { display: block !important; }           /* show login in hamburger */
+  .login-mobile.sb-auth-hidden { display: none !important; }  /* JS hides when logged in */
 }
 @media (min-width: 801px){
   .login-mobile { display: none !important; }            /* hide hamburger login on desktop */
@@ -4510,7 +4511,7 @@ function updateHeaderAuth(firebaseUser) {
     }
 
     // Mobile hamburger: hide login, show profile with name
-    if (loginMobile) loginMobile.style.display = 'none';
+    if (loginMobile) loginMobile.classList.add('sb-auth-hidden');
     if (profileMobile) profileMobile.style.display = 'block';
     if (nameMobile) nameMobile.textContent = displayName;
 
@@ -4524,7 +4525,7 @@ function updateHeaderAuth(firebaseUser) {
     if (profileDesktop) profileDesktop.style.display = 'none';
 
     // Mobile hamburger: show login, hide profile
-    if (loginMobile) loginMobile.style.display = '';
+    if (loginMobile) loginMobile.classList.remove('sb-auth-hidden');
     if (profileMobile) profileMobile.style.display = 'none';
 
     // Show subscribe box for logged-out users
@@ -5571,7 +5572,7 @@ window.onOpenAuthModalHook = function(){
         if (nameEl) nameEl.textContent = displayName;
       });
       // Mobile hamburger: hide login, show profile with icon + name
-      if (loginMobile) loginMobile.style.display = 'none';
+      if (loginMobile) loginMobile.classList.add('sb-auth-hidden');
       if (profileMobile) profileMobile.style.display = 'block';
       if (nameMobile) nameMobile.textContent = displayName;
       // Hide subscribe box for logged-in users
@@ -5581,7 +5582,7 @@ window.onOpenAuthModalHook = function(){
       loginBtns.forEach(function(el){ el.style.display = ''; });
       profileEls.forEach(function(el){ el.style.display = 'none'; });
       // Mobile hamburger: show login, hide profile
-      if (loginMobile) loginMobile.style.display = '';
+      if (loginMobile) loginMobile.classList.remove('sb-auth-hidden');
       if (profileMobile) profileMobile.style.display = 'none';
       // Show subscribe box for logged-out users
       if (subscribeBox) subscribeBox.style.display = 'block';

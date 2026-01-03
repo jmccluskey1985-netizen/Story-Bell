@@ -392,6 +392,7 @@ header nav ul li .dropdown li a {
 @media (max-width: 800px){
   .login-cta-header { display: none !important; }        /* remove header button on mobile */
   .login-mobile { display: block !important; }           /* show first item in hamburger */
+  .login-mobile.sb-auth-hidden { display: none !important; }  /* JS hides when logged in */
 }
 @media (min-width: 801px){
   .login-mobile { display: none !important; }            /* hide hamburger login on desktop */

@@ -3601,7 +3601,7 @@ nav ul > li:focus-within > .dropdown {
         if (nameEl) nameEl.textContent = displayName;
       });
       // Mobile hamburger: hide login, show profile with icon + name
-      if (loginMobile) loginMobile.style.display = 'none';
+      if (loginMobile) loginMobile.classList.add('sb-auth-hidden');
       if (profileMobile) profileMobile.style.display = 'block';
       if (nameMobile) nameMobile.textContent = displayName;
     } else {
