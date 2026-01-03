@@ -2792,10 +2792,13 @@ nav ul > li:focus-within > .dropdown {
 <div class="subscribe-text"></div></div>
 </header>
 <style>
-/* Hide login buttons on signin page - you're already here! */
+/* Hide ALL auth buttons on signin page - you're already here! */
 .login-cta-header,
 .login-mobile,
-a[href="signin.html"].login-cta-header {
+.sb-user-profile,
+.login-mobile-profile,
+a[href="signin.html"].login-cta-header,
+a[href="profile.html"].sb-user-profile {
   display: none !important;
 }
 

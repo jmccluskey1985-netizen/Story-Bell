@@ -2357,6 +2357,17 @@ nav ul > li:focus-within > .dropdown {
 <div class="subscribe-text"></div></div>
 </header>
 <style>
+/* Hide ALL auth buttons on profile page - you're already here! */
+.login-cta-header,
+.login-mobile,
+.sb-user-profile,
+.login-mobile-profile,
+a[href="signin.html"].login-cta-header,
+a[href="profile.html"].sb-user-profile {
+  display: none !important;
+}
+</style>
+<style>
 /* Profile page styles */
 .profile-container {
   max-width: 500px;
