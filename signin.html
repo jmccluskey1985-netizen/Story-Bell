@@ -394,6 +394,7 @@
             age: '',
             createdAt: Date.now()
           }));
+          sendSignupEmail(user.email, displayName);
           console.log('[SB-signin] Created profile from Google name, redirecting home');
           window.location.href = 'index.html';
         }
