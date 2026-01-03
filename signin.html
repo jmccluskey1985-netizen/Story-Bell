@@ -230,6 +230,8 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script id="firebase-init">
   // Story Bell — Firebase config + single-init (compat)
+  <script id="firebase-init">
+  // Story Bell — Firebase config + single-init (compat)
   const firebaseConfig = {
     apiKey: "AIzaSyC9vYsSvGN7zSDfkIcByvBZDOQnRyUPIBo",
     authDomain: "storybellkids.firebaseapp.com",
@@ -240,12 +242,15 @@
     measurementId: "G-F64PJ8CCZQ"
   };
   if (!window.firebase) { console.error("Firebase SDK not found"); }
-  else if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+  else if (!firebase.apps.length) { if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); } }
+</script>
+  if (!window.firebase) { console.error("Firebase SDK not found"); }
+  else if (!firebase.apps.length) { if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); } }
 
   // Save child name before Google redirect
   function saveNameBeforeRedirect() {
     var nameInput = document.getElementById('sb-name-input');
-    if (nameInput && nameInput.value.trim()) {
+    if (nameInput &amp;&amp; nameInput.value.trim()) {
       localStorage.setItem('storybell_pending_name', nameInput.value.trim());
     }
   }
@@ -315,7 +320,7 @@
           console.log('[SB-signin] signInSuccessWithAuthResult:', authResult.user ? authResult.user.email : 'no user');
           var user = authResult.user;
           var pendingName = localStorage.getItem('storybell_pending_name');
-          if (pendingName && user) {
+          if (pendingName &amp;&amp; user) {
             localStorage.setItem('storybell_child_' + user.uid, JSON.stringify({
               name: pendingName,
               age: '',
@@ -329,7 +334,7 @@
             var profileKey = 'storybell_child_' + user.uid;
             var profile = null;
             try { profile = JSON.parse(localStorage.getItem(profileKey) || 'null'); } catch(e) {}
-            if (profile && profile.name) {
+            if (profile &amp;&amp; profile.name) {
               console.log('[SB-signin] Profile exists, redirecting home');
               window.location.href = 'index.html';
             } else {
@@ -357,7 +362,7 @@
         try { existingProfile = JSON.parse(localStorage.getItem(profileKey) || 'null'); } catch(e) {}
 
         if (pendingName) {
-          // New signup with name entered - redirect to home
+          // New signup with name entered
           localStorage.setItem(profileKey, JSON.stringify({
             name: pendingName,
             age: '',
@@ -367,46 +372,25 @@
           sendSignupEmail(user.email, pendingName);
           console.log('[SB-signin] New user profile saved, redirecting home');
           window.location.href = 'index.html';
-        } else if (existingProfile && existingProfile.name) {
-          // Returning user - show "already signed in" message instead of redirecting
-          console.log('[SB-signin] Returning user, showing already signed in message');
-          showAlreadySignedIn(existingProfile.name);
+        } else if (existingProfile &amp;&amp; existingProfile.name) {
+          // Returning user with existing profile
+          console.log('[SB-signin] Returning user, redirecting home');
+          window.location.href = 'index.html';
         } else {
-          // User signed in but no profile - create profile and show message
+          // User signed in but no profile - use Google display name or email
           var displayName = user.displayName || (user.email ? user.email.split('@')[0] : 'Reader');
           localStorage.setItem(profileKey, JSON.stringify({
             name: displayName,
             age: '',
             createdAt: Date.now()
           }));
-          console.log('[SB-signin] Created profile from Google name, showing message');
-          showAlreadySignedIn(displayName);
+          console.log('[SB-signin] Created profile from Google name, redirecting home');
+          window.location.href = 'index.html';
         }
       }
     });
-
-    // Show "already signed in" overlay instead of auto-redirecting
-    function showAlreadySignedIn(name) {
-      var signinBox = document.querySelector('.signin-container, [style*="max-width: 420px"]');
-      if (signinBox) {
-        signinBox.innerHTML = '<div style="text-align:center;padding:40px 20px;">' +
-          '<h2 style="color:#FFEB3B;font-family:Coming Soon,cursive;margin-bottom:20px;">Welcome back, ' + name + '!</h2>' +
-          '<p style="color:#fff;margin-bottom:30px;">You\'re already signed in.</p>' +
-          '<a href="index.html" style="display:inline-block;background:#FFEB3B;color:#001f3f;font-weight:bold;padding:14px 30px;border-radius:25px;text-decoration:none;font-family:Coming Soon,cursive;margin-right:10px;">Go to Stories</a>' +
-          '<button onclick="signOutAndStay()" style="background:transparent;border:2px solid #FFEB3B;color:#FFEB3B;padding:12px 25px;border-radius:25px;cursor:pointer;font-family:Coming Soon,cursive;">Sign Out</button>' +
-          '</div>';
-      }
-    }
-
-    // Sign out but stay on signin page to create new account
-    window.signOutAndStay = function() {
-      firebase.auth().signOut().then(function() {
-        localStorage.removeItem('storybell_pending_name');
-        window.location.reload();
-      });
-    };
   });
-</script>
+
 <style id="firebaseui-visibility-fix">
 /* Ensure FirebaseUI Google button shows properly */
 #firebaseui-auth-container { min-width: 280px; display: block !important; }
@@ -794,6 +778,7 @@ header .site-title {
 }
 </style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><link href="queue_assets/queue.css" rel="stylesheet"/><style></style><style id="wand-pointer-events-fix">/* auto patch */
 #wand, .cursor-wand, .sparkle { pointer-events: none !important; }</style><link href="favicon.ico" rel="icon" type="image/x-icon"/>
+<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
 <style id="sb-cards-grid-clean">
 .cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
   display: flex !important;
@@ -846,7 +831,7 @@ header .site-title {
   overflow: visible !important;
 }
 </style>
-<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Ages 4–6","url":"https://storybellkids.com/signin.html","inLanguage":"en","description":"Save your favorite stories and create reading lists","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Sign In - Story Bell","url":"https://storybellkids.com/signin.html","inLanguage":"en","description":"Save your favorite stories and create reading lists","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
 .carousel-section .carousel-desc{
@@ -2793,16 +2778,6 @@ nav ul > li:focus-within > .dropdown {
 </a>
 <div class="subscribe-text"></div></div>
 </header>
-
-<style id="sb-auth-page-hide">
-/* Hide login buttons on auth pages - you're already here! */
-.login-cta-header,
-.login-mobile,
-a[href="signin.html"].login-cta-header {
-  display: none !important;
-}
-</style>
-
 <style>
 /* Hide login buttons on signin page - you're already here! */
 .login-cta-header,
@@ -3051,9 +3026,8 @@ document.addEventListener('keypress', function(e) {
         try { profile = JSON.parse(localStorage.getItem(profileKey) || 'null'); } catch(e) {}
 
         if (profile && profile.name) {
-          // Already has profile - let main handler show message (don't redirect)
-          console.log('[SB-profile] Profile exists, main handler will show message');
-          return;
+          // Already has profile, redirect home
+          window.location.href = 'index.html';
         } else {
           // Show profile form, hide auth UI
           var authContainer = document.getElementById('firebaseui-auth-container');
@@ -3149,7 +3123,7 @@ document.addEventListener('keypress', function(e) {
 <div style="background:#001020; padding:30px 10px; text-align:center;">
 <!-- Signup button -->
 <div style="margin:16px 0;">
-<a data-auth-cta="auth" href="#login" onclick="return window.sbFooterOpenAuth && sbFooterOpenAuth(this);" style="display:inline-block; background:#FFEB3B; color:#001f3f; font-weight:bold; padding:10px 20px; border-radius:6px; text-decoration:none; cursor:pointer;">
+<a data-auth-cta="auth" href="#login" onclick="return window.sbFooterOpenAuth &amp;&amp; sbFooterOpenAuth(this);" style="display:inline-block; background:#FFEB3B; color:#001f3f; font-weight:bold; padding:10px 20px; border-radius:6px; text-decoration:none; cursor:pointer;">
       Sign Up to Story Bell
     </a>
 </div>
