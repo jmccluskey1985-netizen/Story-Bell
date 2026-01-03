@@ -3007,38 +3007,10 @@ document.addEventListener('keypress', function(e) {
 </div>
 <script id="sb-profile-handler">
 (function(){
-  // Wait for Firebase to be ready
-  function initProfileHandler() {
-    if (!window.firebase || !firebase.auth) {
-      setTimeout(initProfileHandler, 100);
-      return;
-    }
-
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        // Check if profile exists
-        var profileKey = 'storybell_child_' + user.uid;
-        var profile = null;
-        try { profile = JSON.parse(localStorage.getItem(profileKey) || 'null'); } catch(e) {}
-
-        if (profile && profile.name) {
-          // Already has profile, redirect home
-          window.location.href = 'index.html';
-        } else {
-          // Show profile form, hide auth UI
-          var authContainer = document.getElementById('firebaseui-auth-container');
-          var profileForm = document.getElementById('sb-profile-form');
-          var subtitle = document.getElementById('signin-subtitle');
-          var terms = document.getElementById('signin-terms');
-
-          if (authContainer) authContainer.style.display = 'none';
-          if (profileForm) profileForm.style.display = 'block';
-          if (subtitle) subtitle.style.display = 'none';
-          if (terms) terms.style.display = 'none';
-        }
-      }
-    });
-  }
+  // Profile handler removed - the main onAuthStateChanged at line 351 handles everything:
+  // - Creates profile from Google displayName if missing
+  // - Redirects to index.html after sign-in
+  // The duplicate handler was causing conflicts by hiding the auth container
 
   // Save child profile function
   window.saveChildProfile = function() {
@@ -3077,12 +3049,7 @@ document.addEventListener('keypress', function(e) {
     window.location.href = 'index.html';
   };
 
-  // Initialize when DOM ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initProfileHandler);
-  } else {
-    initProfileHandler();
-  }
+  // initProfileHandler removed - no longer needed
 })();
 </script>
 <script>
