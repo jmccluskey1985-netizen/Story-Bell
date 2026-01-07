@@ -67,25 +67,7 @@
 <title>Milo the Mouse</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
-   .story-card {
-  width: 22%;
-  margin: 1%;
-  background: #001f3f;
-  color: #fff;
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px #2223;
-  border: 2px solid #FFEB3B;
-  transition: box-shadow 0.32s cubic-bezier(.5,1.7,.49,1.06), transform 0.2s cubic-bezier(.5,1.7,.49,1.06);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.13em 0;
-  height: 100%;
-  min-height: 245px;
-  box-sizing: border-box;
-}
+   /* removed desktop .story-card width% rule */
 .story-card img {
   width: 100%;
   height: 195px;
@@ -2032,25 +2014,7 @@ header .site-title {
   
 
 
-   .story-card {
-  width: 22%;
-  margin: 1%;
-  background: #001f3f;
-  color: #fff;
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px #2223;
-  border: 2px solid #FFEB3B;
-  transition: box-shadow 0.32s cubic-bezier(.5,1.7,.49,1.06), transform 0.2s cubic-bezier(.5,1.7,.49,1.06);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.13em 0;
-  height: 100%;
-  min-height: 245px;
-  box-sizing: border-box;
-}
+   /* removed desktop .story-card width% rule */
 .story-card img {
   width: 100%;
   height: 195px;
@@ -8101,6 +8065,116 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 }
 .question-text:last-child {
   margin-bottom: 30px !important;
+}
+</style>
+
+<style id="sb-story-mobile-header-fix">
+/* === Story Page Mobile Header Fixes === */
+
+/* 1. Hide profile pill/button in header on mobile - only show in hamburger menu */
+@media (max-width: 800px) {
+  /* Hide any profile elements in header (not in nav dropdown) */
+  header .sb-user-profile,
+  header > .sb-user-profile,
+  .header-right > .sb-user-profile,
+  header .profile-pill,
+  header .auth-profile,
+  header .user-profile-btn {
+    display: none !important;
+  }
+
+  /* Hide desktop login button on mobile */
+  header .login-cta-header,
+  .header-right .login-cta-header {
+    display: none !important;
+  }
+
+  /* But show profile in mobile menu dropdown */
+  .login-mobile-profile,
+  nav .sb-user-profile,
+  .header-right nav .sb-user-profile {
+    display: flex !important;
+  }
+}
+
+/* 2. Ensure hamburger menu toggle is visible on mobile */
+@media (max-width: 900px) {
+  #menu-toggle,
+  .header-right #menu-toggle {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: absolute !important;
+    right: 10px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 11002 !important;
+    background: none !important;
+    border: none !important;
+    color: #FFEB3B !important;
+    font-size: 2em !important;
+    padding: 8px !important;
+    cursor: pointer !important;
+  }
+}
+
+/* 3. Fix header-right layout to accommodate hamburger */
+@media (max-width: 800px) {
+  .header-right {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    min-width: 100px !important;
+    gap: 8px !important;
+  }
+
+  /* Search icon positioning */
+  .header-right .sb-search-icon {
+    position: relative !important;
+    right: auto !important;
+    order: 1 !important;
+  }
+
+  /* Hamburger positioning */
+  .header-right #menu-toggle {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    order: 2 !important;
+  }
+}
+
+/* 4. Hide any dynamically added auth elements in header on mobile */
+@media (max-width: 800px) {
+  /* Common auth element patterns to hide in header */
+  header [class*="profile"]:not(nav [class*="profile"]),
+  header [class*="user"]:not(nav [class*="user"]),
+  .header-right > [class*="profile"],
+  .header-right > [class*="auth"] {
+    display: none !important;
+  }
+
+  /* Preserve login-mobile in nav */
+  .login-mobile {
+    display: block !important;
+  }
+}
+
+/* 5. Prevent profile from being inserted before search/hamburger */
+@media (max-width: 800px) {
+  .header-right {
+    flex-wrap: nowrap !important;
+  }
+
+  .header-right > *:not(.sb-search-icon):not(#menu-toggle):not(nav) {
+    display: none !important;
+  }
+
+  .header-right nav {
+    display: block !important;
+  }
 }
 </style>
 </head>

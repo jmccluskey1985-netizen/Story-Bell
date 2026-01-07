@@ -144,59 +144,8 @@ document.addEventListener('DOMContentLoaded', updateStars);
   else if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
 </script>
 <!-- End Firebase Auth Scripts -->
-<style id="sb-cards-grid-clean">
-.cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-  align-items: stretch !important;
-  gap: 16px !important;
-}
-.cards-grid > .story-card,
-#story-cards .cards-grid > .story-card,
-#story-cards .story-grid > .story-card {
-  display: flex !important;
-  flex-direction: column !important;
-  align-self: stretch !important;
-  box-sizing: border-box !important;
-  margin: 0 !important;
-  width: auto !important;
-  min-width: 0 !important;
-  max-width: none !important;
-  height: auto !important;
-  min-height: 0 !important;
-  flex: 0 1 calc(25% - 16px) !important;
-}
-@media (max-width: 1200px){
-  .cards-grid > .story-card,
-  #story-cards .cards-grid > .story-card,
-  #story-cards .story-grid > .story-card {
-    flex: 0 1 calc(33.333% - 16px) !important;
-  }
-}
-@media (max-width: 800px){
-  .cards-grid > .story-card,
-  #story-cards .cards-grid > .story-card,
-  #story-cards .story-grid > .story-card {
-    flex: 0 1 calc(50% - 10px) !important;
-  }
-}
-.cards-grid > .story-card .chips,
-#story-cards .cards-grid > .story-card .chips,
-#story-cards .story-grid > .story-card .chips {
-  overflow: visible !important;
-  max-height: none !important;
-}
-.cards-grid > .story-card .desc-wrap p,
-#story-cards .cards-grid > .story-card .desc-wrap p,
-#story-cards .story-grid > .story-card .desc-wrap p {
-  display: block !important;
-  -webkit-line-clamp: unset !important;
-  -webkit-box-orient: unset !important;
-  overflow: visible !important;
-}
-</style>
-<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"owl-in-the-dark-forest2","url":"https://storybellkids.com/owl-in-the-dark-forest2.html","inLanguage":"en","description":"Get free kids' stories and updates:","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+
+<style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
 .carousel-section .carousel-desc{
@@ -2035,7 +1984,60 @@ nav ul > li:focus-within > .dropdown {
   .sb-user-profile { display: none !important; }
 }
 </style>
-</head><body><header>
+
+<style id="sb-cards-grid-clean">
+.cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  gap: 16px !important;
+}
+.cards-grid > .story-card,
+#story-cards .cards-grid > .story-card,
+#story-cards .story-grid > .story-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-self: stretch !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  flex: 0 1 calc(25% - 16px) !important;
+}
+@media (max-width: 1200px){
+  .cards-grid > .story-card,
+  #story-cards .cards-grid > .story-card,
+  #story-cards .story-grid > .story-card {
+    flex: 0 1 calc(33.333% - 16px) !important;
+  }
+}
+@media (max-width: 800px){
+  .cards-grid > .story-card,
+  #story-cards .cards-grid > .story-card,
+  #story-cards .story-grid > .story-card {
+    flex: 0 1 calc(50% - 10px) !important;
+  }
+}
+.cards-grid > .story-card .chips,
+#story-cards .cards-grid > .story-card .chips,
+#story-cards .story-grid > .story-card .chips {
+  overflow: visible !important;
+  max-height: none !important;
+}
+.cards-grid > .story-card .desc-wrap p,
+#story-cards .cards-grid > .story-card .desc-wrap p,
+#story-cards .story-grid > .story-card .desc-wrap p {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+  overflow: visible !important;
+}
+</style>
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"owl-in-the-dark-forest2","url":"https://storybellkids.com/owl-in-the-dark-forest2.html","inLanguage":"en","description":"Get free kids' stories and updates:","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script></head><body><header>
 <div class="header-left">
 <a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
 <video autoplay="" class="storybell-header-video" controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture="" muted="" playsinline="" style="max-width:90px; height:auto; display:none; margin-right:10px;max-width:90px; height:auto; margin-right:8px;">
@@ -2053,7 +2055,7 @@ nav ul > li:focus-within > .dropdown {
     </button>
 <nav>
 <ul><li class="login-mobile"><a href="signin.html" style="background:#FFEB3B; color:#003366; font-weight:bold; border-radius:12px; text-decoration:none; display:block; padding:8px 14px; margin:6px 10px; text-align:left; white-space:nowrap;">Log in / Create Account</a></li>
-<li class="login-mobile-profile" style="display:none;"><a href="profile.html" style="background:#FFEB3B; color:#003366; font-weight:bold; border-radius:12px; display:flex; align-items:center; gap:8px; padding:8px 14px; margin:6px 10px; text-decoration:none;"><svg style="width:22px;height:22px;fill:#003366;" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg><span class="sb-user-name-mobile" style="font-family:'Coming Soon',cursive; font-size:15px;"></span></a></li>
+<li class="login-mobile-profile" style="display:none;"><a href="profile.html" style="background:#FFEB3B; color:#003366; font-weight:bold; border-radius:12px; display:flex; align-items:center; gap:8px; padding:8px 14px; margin:6px 10px; text-decoration:none;"><svg style="width:22px;height:22px;fill:#003366;" viewbox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg><span class="sb-user-name-mobile" style="font-family:'Coming Soon',cursive; font-size:15px;"></span></a></li>
 <li style="position:relative;">
 <a href="#" style="cursor:pointer;">
         Age Group
@@ -12556,50 +12558,7 @@ nav ul > li:focus-within > .dropdown {
 })();
 </script>
 <!-- End Auth Bindings -->
-<script id="sb-cards-flex-enforcer">
-(function(){
-  function applyLayout(root){
-    var grids = (root||document).querySelectorAll('.cards-grid, #story-cards .cards-grid, #story-cards .story-grid');
-    grids.forEach(function(grid){
-      grid.style.display = 'flex';
-      grid.style.flexWrap = 'wrap';
-      grid.style.justifyContent = 'center';
-      grid.style.alignItems = 'stretch';
-      grid.style.gap = '16px';
 
-      var w = window.innerWidth;
-      var basis = 'calc(25% - 16px)';
-      if (w <= 1200) basis = 'calc(33.333% - 16px)';
-      if (w <= 800)  basis = 'calc(50% - 10px)';
-
-      grid.querySelectorAll(':scope > .story-card').forEach(function(card){
-        card.style.display = 'flex';
-        card.style.flexDirection = 'column';
-        card.style.alignSelf = 'stretch';
-        card.style.boxSizing = 'border-box';
-        card.style.margin = '0';
-        card.style.width = '';
-        card.style.minWidth = '0';
-        card.style.maxWidth = 'none';
-        card.style.height = 'auto';
-        card.style.minHeight = '0';
-        card.style.flex = '0 1 ' + basis;
-      });
-
-      grid.querySelectorAll('.chips').forEach(function(ch){
-        ch.style.overflow = 'visible';
-        ch.style.maxHeight = 'none';
-      });
-      grid.querySelectorAll('.desc-wrap p').forEach(function(p){
-        p.style.display = 'block';
-        p.style.overflow = 'visible';
-      });
-    });
-  }
-  function onReady(fn){ if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, {once:true}); else fn(); }
-  onReady(function(){ applyLayout(document); window.addEventListener('resize', function(){ applyLayout(document); }); });
-})();
-</script>
 <style id="sb-mobile-carousel-typography-override">
 @media (max-width: 800px){
   /* Remove the extra line break between title and description */
@@ -13516,54 +13475,7 @@ nav ul > li:focus-within > .dropdown {
     }
   }, {capture:true, passive:false});
 })();
-</script><script data-copied-from-id="auth-mobile-direct">
-(function(){
-  function bySel(s){ return document.querySelector(s); }
-  function closeMenu(){
-    try {
-      var nav = document.querySelector('.header-right nav');
-      var overlay = document.querySelector('.menu-overlay');
-      document.body.classList.remove('menu-open');
-      if (nav) nav.classList.remove('open');
-      if (overlay){ overlay.classList.remove('active'); overlay.style.display = 'none'; }
-      if (nav) nav.querySelectorAll('li.open').forEach(li => li.classList.remove('open'));
-    } catch(e){}
-  }
-  function openAuth(link){
-    // mark last click for guard
-    window.__sbLastClickTarget = link;
-    if (typeof window.openAuthModal === 'function'){ return window.openAuthModal(); }
-    var m = document.getElementById('auth-modal');
-    if (m){
-      m.style.display = 'flex';
-      try { if (typeof window.onOpenAuthModalHook === 'function') window.onOpenAuthModalHook(); } catch(e){}
-      return true;
-    }
-    console.warn('auth-mobile-direct: auth modal not found');
-    return false;
-  }
-  function bind(){
-    var link = bySel('.login-mobile a');
-    if(!link) return;
-    // Defensive: ensure it has explicit CTA marker
-    if(!link.hasAttribute('data-auth-cta')) link.setAttribute('data-auth-cta','auth');
-    ['click','touchend','pointerup'].forEach(function(evt){
-      link.addEventListener(evt, function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        closeMenu();
-        setTimeout(function(){ openAuth(link); }, 0);
-        return false;
-      }, {passive:false, capture:true});
-    });
-  }
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', bind, {once:true});
-  } else {
-    bind();
-  }
-})();
-</script><script id="sb-search-fallback-opener">
+</script><!-- auth-mobile-direct removed: mobile login navigates to signin.html --><script id="sb-search-fallback-opener">
 (function(){
   try{
     var btn = document.querySelector('[data-sb-search-trigger]');
@@ -13593,9 +13505,8 @@ nav ul > li:focus-within > .dropdown {
   }catch(_){}
 })();
 </script>
-
 <!-- SB Search Modal (Fuse.js) - Injected -->
-<script defer src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
 <div aria-hidden="true" id="sb-search-modal" style="position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:10001">
 <div aria-label="Search stories" aria-modal="true" role="dialog" style="max-width:720px;margin:8vh auto;background:white;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)">
 <div style="padding:14px 16px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px">
@@ -13668,4 +13579,48 @@ nav ul > li:focus-within > .dropdown {
 </script>
 <!-- END SB Search Modal -->
 
+<script id="sb-cards-flex-enforcer">
+(function(){
+  function applyLayout(root){
+    var grids = (root||document).querySelectorAll('.cards-grid, #story-cards .cards-grid, #story-cards .story-grid');
+    grids.forEach(function(grid){
+      grid.style.display = 'flex';
+      grid.style.flexWrap = 'wrap';
+      grid.style.justifyContent = 'center';
+      grid.style.alignItems = 'stretch';
+      grid.style.gap = '16px';
+
+      var w = window.innerWidth;
+      var basis = 'calc(25% - 16px)';
+      if (w <= 1200) basis = 'calc(33.333% - 16px)';
+      if (w <= 800)  basis = 'calc(50% - 10px)';
+
+      grid.querySelectorAll(':scope > .story-card').forEach(function(card){
+        card.style.display = 'flex';
+        card.style.flexDirection = 'column';
+        card.style.alignSelf = 'stretch';
+        card.style.boxSizing = 'border-box';
+        card.style.margin = '0';
+        card.style.width = '';
+        card.style.minWidth = '0';
+        card.style.maxWidth = 'none';
+        card.style.height = 'auto';
+        card.style.minHeight = '0';
+        card.style.flex = '0 1 ' + basis;
+      });
+
+      grid.querySelectorAll('.chips').forEach(function(ch){
+        ch.style.overflow = 'visible';
+        ch.style.maxHeight = 'none';
+      });
+      grid.querySelectorAll('.desc-wrap p').forEach(function(p){
+        p.style.display = 'block';
+        p.style.overflow = 'visible';
+      });
+    });
+  }
+  function onReady(fn){ if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, {once:true}); else fn(); }
+  onReady(function(){ applyLayout(document); window.addEventListener('resize', function(){ applyLayout(document); }); });
+})();
+</script>
 </body></html>

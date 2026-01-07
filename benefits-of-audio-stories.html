@@ -1,28 +1,26 @@
 <!-- UPDATED: 2026-01-04 12:00 UTC -->
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <title>Benefits of Audio Stories with Synchronized Text & Gentle Animations for Children | Story Bell</title>
-<meta name="description" content="Discover the research-backed benefits of audio stories, synchronized text highlighting, and gentle animations for children's literacy, comprehension, and emotional development."/>
-<meta name="keywords" content="audio stories for kids, read aloud benefits, synchronized text, text highlighting, animated storybooks, children literacy, audiobooks children, bedtime stories"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://storybellkids.com/benefits-of-audio-stories.html"/>
-
+<meta content="Discover the research-backed benefits of audio stories, synchronized text highlighting, and gentle animations for children's literacy, comprehension, and emotional development." name="description"/>
+<meta content="audio stories for kids, read aloud benefits, synchronized text, text highlighting, animated storybooks, children literacy, audiobooks children, bedtime stories" name="keywords"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://storybellkids.com/benefits-of-audio-stories.html" rel="canonical"/>
 <!-- Open Graph -->
-<meta property="og:title" content="Benefits of Audio Stories with Synchronized Text & Gentle Animations"/>
-<meta property="og:description" content="Research-backed insights on how audio stories, synchronized text, and gentle animations boost children's literacy, comprehension, and wellbeing."/>
-<meta property="og:type" content="article"/>
-<meta property="og:url" content="https://storybellkids.com/benefits-of-audio-stories.html"/>
-<meta property="og:image" content="https://storybellkids.com/icon/storybell-icon.webp"/>
-<meta property="og:site_name" content="Story Bell"/>
-
+<meta content="Benefits of Audio Stories with Synchronized Text & Gentle Animations" property="og:title"/>
+<meta content="Research-backed insights on how audio stories, synchronized text, and gentle animations boost children's literacy, comprehension, and wellbeing." property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://storybellkids.com/benefits-of-audio-stories.html" property="og:url"/>
+<meta content="https://storybellkids.com/icon/storybell-icon.webp" property="og:image"/>
+<meta content="Story Bell" property="og:site_name"/>
 <!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Benefits of Audio Stories for Children"/>
-<meta name="twitter:description" content="Discover research-backed benefits of audio stories with synchronized text and gentle animations."/>
-
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Benefits of Audio Stories for Children" name="twitter:title"/>
+<meta content="Discover research-backed benefits of audio stories with synchronized text and gentle animations." name="twitter:description"/>
 <!-- Schema.org Article Markup -->
 <script type="application/ld+json">
 {
@@ -51,10 +49,8 @@
   }
 }
 </script>
-
 <link href="https://fonts.googleapis.com/css?family=Coming+Soon&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet"/>
-
 <style>
 :root {
   --navy: #001f3f;
@@ -403,219 +399,424 @@ footer a:hover {
   .mascot-logo { height: 44px; width: 44px; }
 }
 </style>
+
+<style id="sb-cards-base">
+.cards-grid{
+  display:flex; flex-wrap:wrap; justify-content:center;
+  align-items:stretch; gap:16px; margin:2em auto; max-width:1200px; box-sizing:border-box;
+}
+.story-card{
+  flex: 0 1 260px;
+  min-width: 260px;
+  max-width: 320px;
+  display:flex; flex-direction:column; box-sizing:border-box;
+  background:#001f3f; color:#fff; padding:12px; border-radius:14px;
+  border:2px solid #FFEB3B; box-shadow:0 2px 10px #2223;
+  transition:box-shadow .32s cubic-bezier(.5,1.7,.49,1.06), transform .2s cubic-bezier(.5,1.7,.49,1.06);
+  text-align:center;
+}
+.story-card img{
+  width:100%; height:auto; object-fit:cover; aspect-ratio:1/1; border-radius:10px; display:block;
+  margin:0 !important; padding:0 !important; transition:transform .3s cubic-bezier(.5,1.7,.49,1.06);
+}
+.story-card .grow{ flex:1 1 auto; display:flex; flex-direction:column; min-height:0; }
+.story-card h3, .story-card h3 a{
+  color:#fff !important; text-decoration:none !important;
+  text-shadow:0 0 6px #0008; margin:8px 0 6px 0 !important; font-size:1.08em; font-weight:bold;
+}
+.story-card .desc-wrap{ background:#003366; border-radius:8px; padding:8px 10px; margin-top:2px; }
+.story-card p{ color:#fff; font-size:.95em; margin:0; }
+.story-card .chips{ margin-top:10px; display:flex; flex-wrap:wrap; justify-content:center; gap:6px; }
+.story-card .chip{
+  display:inline-block; text-decoration:none; user-select:none;
+  padding:6px 12px; border-radius:999px; font-size:.78em; line-height:1;
+  background:#002a55; color:#fff; border:1px solid rgba(255,255,255,.18);
+  box-shadow: 0 2px 6px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.06);
+  transition: transform .13s, box-shadow .21s, background .18s, color .12s;
+}
+.story-card .chip:hover, .story-card .chip:focus{
+  background:#003e80; color:#FFEB3B;
+  box-shadow: 0 0 16px 6px #FFEB3B66, 0 2px 10px rgba(0,0,0,.28);
+  transform: translateY(-1px) scale(1.05);
+}
+.favorite-star{
+  background:none; border:1px solid rgba(255,255,255,.25);
+  cursor:pointer; font-size:1em; color:#FFEB3B;
+  border-radius:999px; padding:6px 10px; margin-top:10px;
+  transition: color .14s, box-shadow .18s, transform .13s, background .18s, border-color .18s;
+}
+.favorite-star .star{ pointer-events:none; font-size:1.2em; line-height:1; vertical-align:middle; }
+.favorite-star:hover, .favorite-star:focus{
+  background:rgba(255,235,59,.12); border-color:rgba(255,235,59,.55);
+  box-shadow: 0 0 16px 6px #FFEB3B66; transform: translateY(-1px);
+}
+.story-card:hover{ box-shadow:0 0 28px 12px #FFEB3Bcc, 0 2px 10px #2223; transform:scale(1.035); }
+@media (max-width:800px){
+  .cards-grid{ gap:12px; justify-content:space-between; }
+  .story-card{ flex:0 0 calc(50% - 6px); min-width:calc(50% - 6px); max-width:calc(50% - 6px); padding:12px; }
+  .story-card img{ height:auto !important; aspect-ratio:1/1; }
+}
+@supports not (aspect-ratio: 1 / 1){
+  .story-card img{ height:160px !important; }
+  @media (max-width:800px){ .story-card img{ height:130px !important; } }
+}
+</style>
+
+<style id="sb-cards-grid-clean">
+.cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  gap: 16px !important;
+}
+.cards-grid > .story-card,
+#story-cards .cards-grid > .story-card,
+#story-cards .story-grid > .story-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-self: stretch !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  flex: 0 1 calc(25% - 16px) !important;
+}
+@media (max-width: 1200px){
+  .cards-grid > .story-card,
+  #story-cards .cards-grid > .story-card,
+  #story-cards .story-grid > .story-card {
+    flex: 0 1 calc(33.333% - 16px) !important;
+  }
+}
+@media (max-width: 800px){
+  .cards-grid > .story-card,
+  #story-cards .cards-grid > .story-card,
+  #story-cards .story-grid > .story-card {
+    flex: 0 1 calc(50% - 10px) !important;
+  }
+}
+.cards-grid > .story-card .chips,
+#story-cards .cards-grid > .story-card .chips,
+#story-cards .story-grid > .story-card .chips {
+  overflow: visible !important;
+  max-height: none !important;
+}
+.cards-grid > .story-card .desc-wrap p,
+#story-cards .cards-grid > .story-card .desc-wrap p,
+#story-cards .story-grid > .story-card .desc-wrap p {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+  overflow: visible !important;
+}
+</style>
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Benefits of Audio Stories with Synchronized Text & Gentle Animations for Children | Story Bell","url":"https://storybellkids.com/benefits-of-audio-stories.html","inLanguage":"en","description":"Discover the research-backed benefits of audio stories, synchronized text highlighting, and gentle animations for children's literacy, comprehension, and emotional development.","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script>
+<style id="sb-header-auth-fix">
+/* Desktop: hide mobile auth elements */
+@media (min-width: 801px) {
+  .login-mobile { display: none !important; }
+  .login-mobile-profile { display: none !important; }
+}
+/* Mobile: hide desktop auth elements */
+@media (max-width: 800px) {
+  .login-cta-header { display: none !important; }
+  .sb-user-profile { display: none !important; }
+}
+</style>
 </head>
-
 <body>
-
 <header>
-  <div class="header-left">
-    <a href="https://storybellkids.com/">
-      <img alt="Story Bell Logo" class="mascot-logo" src="icon/storybell-icon.webp"/>
-      <span class="site-title">Story Bell</span>
-    </a>
-  </div>
-  <div class="header-right">
-    <a href="https://storybellkids.com/">Explore Stories</a>
-  </div>
+<div class="header-left">
+<a href="https://storybellkids.com/">
+<img alt="Story Bell Logo" class="mascot-logo" src="icon/storybell-icon.webp"/>
+<span class="site-title">Story Bell</span>
+</a>
+</div>
+<div class="header-right">
+<a href="https://storybellkids.com/">Explore Stories</a>
+</div>
 </header>
-
 <main>
-
 <h1>The Science Behind Audio Stories, Synchronized Text & Gentle Animations</h1>
 <p class="subtitle">Research-backed insights on how Story Bell's approach supports children's literacy, comprehension, and emotional wellbeing</p>
-
 <p class="intro-text">At <a href="https://storybellkids.com/" style="color:#FFEB3B;">Story Bell</a>, we combine three powerful learning elements: narrated audio stories, synchronized word highlighting, and gentle, purposeful animations. Here's what the research says about each.</p>
-
 <!-- SECTION 1: AUDIO STORIES -->
 <h2>The Power of Audio Stories</h2>
-
 <p>Audio stories offer children a unique gateway into the world of literature, supporting listening skills, vocabulary development, and a lifelong love of reading. Recent research reveals just how impactful they can be.</p>
-
 <div class="stat-box">
-  <span class="stat-number">42.3%</span>
-  <span class="stat-label">of children enjoy listening to audio formats in 2024 &mdash; surpassing reading enjoyment for the first time</span>
+<span class="stat-number">42.3%</span>
+<span class="stat-label">of children enjoy listening to audio formats in 2024 — surpassing reading enjoyment for the first time</span>
 </div>
-
 <div class="quote-box">
-  <p class="quote-text">"Listening to audio could provide a gateway into reading and reading enjoyment for many young people."</p>
-  <p class="quote-source">&mdash; <a href="https://literacytrust.org.uk/information/what-is-literacy/audiobooks-and-literacy/" target="_blank" rel="noopener">National Literacy Trust, 2025</a></p>
+<p class="quote-text">"Listening to audio could provide a gateway into reading and reading enjoyment for many young people."</p>
+<p class="quote-source">— <a href="https://literacytrust.org.uk/information/what-is-literacy/audiobooks-and-literacy/" rel="noopener" target="_blank">National Literacy Trust, 2025</a></p>
 </div>
-
 <h3>Key Research Findings</h3>
-
 <div class="research-highlight">
-  <p><strong>Vocabulary Expansion:</strong> A 2019 Scholastic report revealed that children who listened to audiobooks were introduced to <strong>40% more advanced vocabulary words</strong> (Tier 2 and Tier 3) than children who only read independently.</p>
+<p><strong>Vocabulary Expansion:</strong> A 2019 Scholastic report revealed that children who listened to audiobooks were introduced to <strong>40% more advanced vocabulary words</strong> (Tier 2 and Tier 3) than children who only read independently.</p>
 </div>
-
 <div class="research-highlight">
-  <p><strong>Sparks Interest in Reading:</strong> According to the National Literacy Trust, <strong>37.5% of children</strong> said listening to audio sparked their interest in reading physical books.</p>
+<p><strong>Sparks Interest in Reading:</strong> According to the National Literacy Trust, <strong>37.5% of children</strong> said listening to audio sparked their interest in reading physical books.</p>
 </div>
-
 <div class="research-highlight">
-  <p><strong>Brain Activation:</strong> Research from the Journal of Neuroscience found that auditory storytelling activates brain areas responsible for <strong>attention and sensory integration</strong> &mdash; particularly helpful for children who struggle to sit still for traditional reading.</p>
+<p><strong>Brain Activation:</strong> Research from the Journal of Neuroscience found that auditory storytelling activates brain areas responsible for <strong>attention and sensory integration</strong> — particularly helpful for children who struggle to sit still for traditional reading.</p>
 </div>
-
 <div class="benefits-grid">
-  <div class="benefit-card">
-    <div class="benefit-icon">📚</div>
-    <div class="benefit-title">Access Beyond Reading Level</div>
-    <div class="benefit-desc">A 7-year-old may struggle to read Harry Potter, but can fully understand and enjoy it through audio, engaging with richer narratives earlier in life.</div>
-  </div>
-  <div class="benefit-card">
-    <div class="benefit-icon">🧠</div>
-    <div class="benefit-title">Reduces Gender Gap</div>
-    <div class="benefit-desc">The substantial gender gap in reading enjoyment (28.2% boys vs 40.5% girls) reverses with audio: 43.4% of boys enjoy listening vs 40.4% of girls.</div>
-  </div>
-  <div class="benefit-card">
-    <div class="benefit-icon">💆</div>
-    <div class="benefit-title">Wellbeing Benefits</div>
-    <div class="benefit-desc">52% of children report that listening to audio helps them feel relaxed or better when stressed or anxious.</div>
-  </div>
+<div class="benefit-card">
+<div class="benefit-icon">📚</div>
+<div class="benefit-title">Access Beyond Reading Level</div>
+<div class="benefit-desc">A 7-year-old may struggle to read Harry Potter, but can fully understand and enjoy it through audio, engaging with richer narratives earlier in life.</div>
 </div>
-
+<div class="benefit-card">
+<div class="benefit-icon">🧠</div>
+<div class="benefit-title">Reduces Gender Gap</div>
+<div class="benefit-desc">The substantial gender gap in reading enjoyment (28.2% boys vs 40.5% girls) reverses with audio: 43.4% of boys enjoy listening vs 40.4% of girls.</div>
+</div>
+<div class="benefit-card">
+<div class="benefit-icon">💆</div>
+<div class="benefit-title">Wellbeing Benefits</div>
+<div class="benefit-desc">52% of children report that listening to audio helps them feel relaxed or better when stressed or anxious.</div>
+</div>
+</div>
 <!-- SECTION 2: SYNCHRONIZED TEXT -->
 <h2>Synchronized Text Highlighting</h2>
-
-<p>When children see words light up as they're spoken, something magical happens &mdash; they make connections between spoken and written language that accelerate their reading development.</p>
-
+<p>When children see words light up as they're spoken, something magical happens — they make connections between spoken and written language that accelerate their reading development.</p>
 <div class="quote-box">
-  <p class="quote-text">"Reading While Listening provides an audio-visual sensory redundancy which allows for reciprocal support from one modality to the other. Such audio-visual redundancy favors further recall of words compared to unimodal presentations."</p>
-  <p class="quote-source">&mdash; <a href="https://www.sciencedirect.com/science/article/abs/pii/S0885230816300596" target="_blank" rel="noopener">ScienceDirect, Audio-visual synchronization research</a></p>
+<p class="quote-text">"Reading While Listening provides an audio-visual sensory redundancy which allows for reciprocal support from one modality to the other. Such audio-visual redundancy favors further recall of words compared to unimodal presentations."</p>
+<p class="quote-source">— <a href="https://www.sciencedirect.com/science/article/abs/pii/S0885230816300596" rel="noopener" target="_blank">ScienceDirect, Audio-visual synchronization research</a></p>
 </div>
-
 <h3>Research-Backed Benefits</h3>
-
 <div class="research-highlight">
-  <p><strong>Dyslexia Support:</strong> A 2018 study by Ikeshita, Yamaguchi, Morioka, and Yamazoe found that <strong>"children with developmental dyslexia found it easier to read when audio was synchronized with text highlighting"</strong> &mdash; particularly when using blue highlighting for whole sentences.</p>
+<p><strong>Dyslexia Support:</strong> A 2018 study by Ikeshita, Yamaguchi, Morioka, and Yamazoe found that <strong>"children with developmental dyslexia found it easier to read when audio was synchronized with text highlighting"</strong> — particularly when using blue highlighting for whole sentences.</p>
 </div>
-
 <div class="research-highlight">
-  <p><strong>Increased Engagement:</strong> Research with grades 3-5 students identified that synchronized reading while listening creates <strong>"increased engagement and attention to the currently heard word"</strong> and a preference for reading with synchronized audio and visual components.</p>
+<p><strong>Increased Engagement:</strong> Research with grades 3-5 students identified that synchronized reading while listening creates <strong>"increased engagement and attention to the currently heard word"</strong> and a preference for reading with synchronized audio and visual components.</p>
 </div>
-
 <div class="research-highlight">
-  <p><strong>Comprehension Boost:</strong> Studies show the technique is particularly beneficial for reading comprehension in middle school students, and in general, <strong>children's motivation to read is boosted</strong> by the synchronized experience.</p>
+<p><strong>Comprehension Boost:</strong> Studies show the technique is particularly beneficial for reading comprehension in middle school students, and in general, <strong>children's motivation to read is boosted</strong> by the synchronized experience.</p>
 </div>
-
 <div class="quote-box">
-  <p class="quote-text">"Digital texts can be made accessible to children with developmental dyslexia by presenting them in a simplified layout, using suitable fonts, or using text highlighting that is synchronized with audio."</p>
-  <p class="quote-source">&mdash; <a href="https://www.bookshare.org/accessible-educational-materials-aem/bookshares-evidence-based-features-provide-effective-reading-support" target="_blank" rel="noopener">Bookshare Evidence-Based Research</a></p>
+<p class="quote-text">"Digital texts can be made accessible to children with developmental dyslexia by presenting them in a simplified layout, using suitable fonts, or using text highlighting that is synchronized with audio."</p>
+<p class="quote-source">— <a href="https://www.bookshare.org/accessible-educational-materials-aem/bookshares-evidence-based-features-provide-effective-reading-support" rel="noopener" target="_blank">Bookshare Evidence-Based Research</a></p>
 </div>
-
 <div class="benefits-grid">
-  <div class="benefit-card">
-    <div class="benefit-icon">👁️</div>
-    <div class="benefit-title">Word Tracking</div>
-    <div class="benefit-desc">Children's eyes follow the highlighted text, building the connection between sounds and written words.</div>
-  </div>
-  <div class="benefit-card">
-    <div class="benefit-icon">🎯</div>
-    <div class="benefit-title">Focus & Attention</div>
-    <div class="benefit-desc">The visual guide keeps children engaged with the current word, reducing distraction.</div>
-  </div>
-  <div class="benefit-card">
-    <div class="benefit-icon">♿</div>
-    <div class="benefit-title">Accessibility</div>
-    <div class="benefit-desc">Follows Universal Design for Learning (UDL) and WCAG accessibility guidelines.</div>
-  </div>
+<div class="benefit-card">
+<div class="benefit-icon">👁️</div>
+<div class="benefit-title">Word Tracking</div>
+<div class="benefit-desc">Children's eyes follow the highlighted text, building the connection between sounds and written words.</div>
 </div>
-
+<div class="benefit-card">
+<div class="benefit-icon">🎯</div>
+<div class="benefit-title">Focus & Attention</div>
+<div class="benefit-desc">The visual guide keeps children engaged with the current word, reducing distraction.</div>
+</div>
+<div class="benefit-card">
+<div class="benefit-icon">♿</div>
+<div class="benefit-title">Accessibility</div>
+<div class="benefit-desc">Follows Universal Design for Learning (UDL) and WCAG accessibility guidelines.</div>
+</div>
+</div>
 <!-- SECTION 3: GENTLE ANIMATIONS -->
 <h2>The Role of Gentle, Purposeful Animations</h2>
-
 <p>Not all animations are created equal. Research shows that <em>gentle, narrative-aligned</em> animations support learning, while fast-paced or purely decorative animations can actually hinder it.</p>
-
 <div class="quote-box">
-  <p class="quote-text">"Motion in pictures is helpful when the animation depicts the language of the narration. Animations with only decorative purposes may not add to children's story comprehension and might even interfere with learning."</p>
-  <p class="quote-source">&mdash; <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5062825/" target="_blank" rel="noopener">PMC Research: Benefits of Motion in Animated Storybooks</a></p>
+<p class="quote-text">"Motion in pictures is helpful when the animation depicts the language of the narration. Animations with only decorative purposes may not add to children's story comprehension and might even interfere with learning."</p>
+<p class="quote-source">— <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5062825/" rel="noopener" target="_blank">PMC Research: Benefits of Motion in Animated Storybooks</a></p>
 </div>
-
 <h3>What the Research Shows</h3>
-
 <div class="stat-box">
-  <span class="stat-number">9%</span>
-  <span class="stat-label">more time spent on story-important details when they were gently animated vs. static</span>
+<span class="stat-number">9%</span>
+<span class="stat-label">more time spent on story-important details when they were gently animated vs. static</span>
 </div>
-
 <div class="research-highlight">
-  <p><strong>Visual Scaffolding:</strong> Eye-tracking research found that <strong>"children recalled significantly more story language from animated books compared to static versions"</strong> (p = 0.02). Motion functions as a "visual scaffolding" tool, guiding eyes toward text-relevant illustration details.</p>
+<p><strong>Visual Scaffolding:</strong> Eye-tracking research found that <strong>"children recalled significantly more story language from animated books compared to static versions"</strong> (p = 0.02). Motion functions as a "visual scaffolding" tool, guiding eyes toward text-relevant illustration details.</p>
 </div>
-
 <div class="research-highlight">
-  <p><strong>Vocabulary & Comprehension:</strong> Studies observed <strong>significant effects of animated features on children's vocabulary acquisition, story retelling, and visual attention</strong>.</p>
+<p><strong>Vocabulary & Comprehension:</strong> Studies observed <strong>significant effects of animated features on children's vocabulary acquisition, story retelling, and visual attention</strong>.</p>
 </div>
-
 <div class="research-highlight">
-  <p><strong>The Pace Matters:</strong> Research found that fast-paced animation can weaken children's executive function, while <strong>slow-paced, gentle animation supports cognitive development</strong>. Children who watched slow-paced programs had significantly higher persistence in subsequent cognitive tasks.</p>
+<p><strong>The Pace Matters:</strong> Research found that fast-paced animation can weaken children's executive function, while <strong>slow-paced, gentle animation supports cognitive development</strong>. Children who watched slow-paced programs had significantly higher persistence in subsequent cognitive tasks.</p>
 </div>
-
 <div class="benefits-grid">
-  <div class="benefit-card">
-    <div class="benefit-icon">🎬</div>
-    <div class="benefit-title">Narrative Alignment</div>
-    <div class="benefit-desc">Animations that match the story help children integrate verbal narration with visual information (dual coding theory).</div>
-  </div>
-  <div class="benefit-card">
-    <div class="benefit-icon">🐢</div>
-    <div class="benefit-title">Gentle Pacing</div>
-    <div class="benefit-desc">Slow, purposeful movements support rather than overwhelm children's cognitive processing.</div>
-  </div>
-  <div class="benefit-card">
-    <div class="benefit-icon">✨</div>
-    <div class="benefit-title">Memory Retention</div>
-    <div class="benefit-desc">Dynamic illustrations are retained in memory for longer than static images.</div>
-  </div>
+<div class="benefit-card">
+<div class="benefit-icon">🎬</div>
+<div class="benefit-title">Narrative Alignment</div>
+<div class="benefit-desc">Animations that match the story help children integrate verbal narration with visual information (dual coding theory).</div>
 </div>
-
+<div class="benefit-card">
+<div class="benefit-icon">🐢</div>
+<div class="benefit-title">Gentle Pacing</div>
+<div class="benefit-desc">Slow, purposeful movements support rather than overwhelm children's cognitive processing.</div>
+</div>
+<div class="benefit-card">
+<div class="benefit-icon">✨</div>
+<div class="benefit-title">Memory Retention</div>
+<div class="benefit-desc">Dynamic illustrations are retained in memory for longer than static images.</div>
+</div>
+</div>
 <!-- COMBINED APPROACH -->
 <h2>Why the Combination Works</h2>
-
-<p>Story Bell brings together all three elements &mdash; professional narration, synchronized word highlighting, and gentle animations &mdash; creating a <strong>multimodal learning experience</strong> that engages multiple senses simultaneously.</p>
-
+<p>Story Bell brings together all three elements — professional narration, synchronized word highlighting, and gentle animations — creating a <strong>multimodal learning experience</strong> that engages multiple senses simultaneously.</p>
 <div class="quote-box">
-  <p class="quote-text">"Listening to and discussing stories with young children supports language, literacy, and oracy development, as well as social and emotional growth."</p>
-  <p class="quote-source">&mdash; <a href="https://theconversation.com/why-listening-to-stories-and-talking-about-them-is-so-important-for-young-children-249302" target="_blank" rel="noopener">The Conversation, 2025</a></p>
+<p class="quote-text">"Listening to and discussing stories with young children supports language, literacy, and oracy development, as well as social and emotional growth."</p>
+<p class="quote-source">— <a href="https://theconversation.com/why-listening-to-stories-and-talking-about-them-is-so-important-for-young-children-249302" rel="noopener" target="_blank">The Conversation, 2025</a></p>
 </div>
-
 <p>This approach is particularly beneficial for:</p>
 <ul style="color:#fffde6; font-size:1.1em;">
-  <li><strong>Reluctant readers</strong> who feel overwhelmed by text</li>
-  <li><strong>Children with dyslexia</strong> who benefit from multimodal support</li>
-  <li><strong>English language learners</strong> developing vocabulary</li>
-  <li><strong>Young children</strong> in the pre-reading and early reading stages</li>
-  <li><strong>Bedtime routines</strong> where relaxation and engagement matter equally</li>
+<li><strong>Reluctant readers</strong> who feel overwhelmed by text</li>
+<li><strong>Children with dyslexia</strong> who benefit from multimodal support</li>
+<li><strong>English language learners</strong> developing vocabulary</li>
+<li><strong>Young children</strong> in the pre-reading and early reading stages</li>
+<li><strong>Bedtime routines</strong> where relaxation and engagement matter equally</li>
 </ul>
-
 <!-- CTA SECTION -->
 <div class="cta-section">
-  <h2>Experience the Difference</h2>
-  <p>Story Bell offers free bedtime stories and audio stories for children ages 0-12, featuring narrated audio with synchronized text highlighting and gentle, soothing animations.</p>
-  <a class="cta-button" href="https://storybellkids.com/">Explore Free Stories</a>
+<h2>Experience the Difference</h2>
+<p>Story Bell offers free bedtime stories and audio stories for children ages 0-12, featuring narrated audio with synchronized text highlighting and gentle, soothing animations.</p>
+<a class="cta-button" href="https://storybellkids.com/">Explore Free Stories</a>
 </div>
-
 <!-- SOURCES -->
 <section class="sources-section">
-  <h2>Sources & Further Reading</h2>
-  <ul class="sources-list">
-    <li><a href="https://literacytrust.org.uk/information/what-is-literacy/audiobooks-and-literacy/" target="_blank" rel="noopener">National Literacy Trust - Audiobooks and Literacy (2024-2025)</a></li>
-    <li><a href="https://www.starglowmedia.com/blog/are-audiobooks-good-for-kids" target="_blank" rel="noopener">Starglow Media - 18 Benefits of Audiobooks for Kids (2025)</a></li>
-    <li><a href="https://theconversation.com/why-listening-to-stories-and-talking-about-them-is-so-important-for-young-children-249302" target="_blank" rel="noopener">The Conversation - Why Listening to Stories Is Important (2025)</a></li>
-    <li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0885230816300596" target="_blank" rel="noopener">ScienceDirect - Audio-Visual Synchronization in Reading While Listening</a></li>
-    <li><a href="https://www.bookshare.org/accessible-educational-materials-aem/bookshares-evidence-based-features-provide-effective-reading-support" target="_blank" rel="noopener">Bookshare - Evidence-Based Features for Reading Support</a></li>
-    <li><a href="https://www.researchgate.net/publication/327967700_Effects_of_Highlighting_Text_on_the_Reading_Ability_of_Children_with_Developmental_Dyslexia_A_Pilot_Study" target="_blank" rel="noopener">ResearchGate - Highlighting Text Effects on Dyslexia</a></li>
-    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5062825/" target="_blank" rel="noopener">PMC - Benefits of Motion in Animated Storybooks for Children's Visual Attention</a></li>
-    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9453061/" target="_blank" rel="noopener">PMC - Psychological Impact of Animation on Visual Attention and Cognition</a></li>
-    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8392582/" target="_blank" rel="noopener">PMC - Impact of Animation on Children's Executive Function</a></li>
-    <li><a href="https://educationalvoice.co.uk/educational-animation-effectiveness/" target="_blank" rel="noopener">Educational Voice - Educational Animation Effectiveness Research</a></li>
-  </ul>
+<h2>Sources & Further Reading</h2>
+<ul class="sources-list">
+<li><a href="https://literacytrust.org.uk/information/what-is-literacy/audiobooks-and-literacy/" rel="noopener" target="_blank">National Literacy Trust - Audiobooks and Literacy (2024-2025)</a></li>
+<li><a href="https://www.starglowmedia.com/blog/are-audiobooks-good-for-kids" rel="noopener" target="_blank">Starglow Media - 18 Benefits of Audiobooks for Kids (2025)</a></li>
+<li><a href="https://theconversation.com/why-listening-to-stories-and-talking-about-them-is-so-important-for-young-children-249302" rel="noopener" target="_blank">The Conversation - Why Listening to Stories Is Important (2025)</a></li>
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0885230816300596" rel="noopener" target="_blank">ScienceDirect - Audio-Visual Synchronization in Reading While Listening</a></li>
+<li><a href="https://www.bookshare.org/accessible-educational-materials-aem/bookshares-evidence-based-features-provide-effective-reading-support" rel="noopener" target="_blank">Bookshare - Evidence-Based Features for Reading Support</a></li>
+<li><a href="https://www.researchgate.net/publication/327967700_Effects_of_Highlighting_Text_on_the_Reading_Ability_of_Children_with_Developmental_Dyslexia_A_Pilot_Study" rel="noopener" target="_blank">ResearchGate - Highlighting Text Effects on Dyslexia</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5062825/" rel="noopener" target="_blank">PMC - Benefits of Motion in Animated Storybooks for Children's Visual Attention</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9453061/" rel="noopener" target="_blank">PMC - Psychological Impact of Animation on Visual Attention and Cognition</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8392582/" rel="noopener" target="_blank">PMC - Impact of Animation on Children's Executive Function</a></li>
+<li><a href="https://educationalvoice.co.uk/educational-animation-effectiveness/" rel="noopener" target="_blank">Educational Voice - Educational Animation Effectiveness Research</a></li>
+</ul>
 </section>
-
 </main>
-
 <footer>
-  <p>&copy; 2026 <a href="https://storybellkids.com/">Story Bell</a> &mdash; Free Bedtime Stories & Audio Stories for Kids</p>
-  <p><a href="https://storybellkids.com/">Home</a> &nbsp;|&nbsp; <a href="https://storybellkids.com/about.html">About</a></p>
+<p>© 2026 <a href="https://storybellkids.com/">Story Bell</a> — Free Bedtime Stories & Audio Stories for Kids</p>
+<p><a href="https://storybellkids.com/">Home</a>  |  <a href="https://storybellkids.com/about.html">About</a></p>
 </footer>
+<script id="sb-cards-flex-enforcer">
+(function(){
+  function applyLayout(root){
+    var grids = (root||document).querySelectorAll('.cards-grid, #story-cards .cards-grid, #story-cards .story-grid');
+    grids.forEach(function(grid){
+      grid.style.display = 'flex';
+      grid.style.flexWrap = 'wrap';
+      grid.style.justifyContent = 'center';
+      grid.style.alignItems = 'stretch';
+      grid.style.gap = '16px';
+
+      var w = window.innerWidth;
+      var basis = 'calc(25% - 16px)';
+      if (w <= 1200) basis = 'calc(33.333% - 16px)';
+      if (w <= 800)  basis = 'calc(50% - 10px)';
+
+      grid.querySelectorAll(':scope > .story-card').forEach(function(card){
+        card.style.display = 'flex';
+        card.style.flexDirection = 'column';
+        card.style.alignSelf = 'stretch';
+        card.style.boxSizing = 'border-box';
+        card.style.margin = '0';
+        card.style.width = '';
+        card.style.minWidth = '0';
+        card.style.maxWidth = 'none';
+        card.style.height = 'auto';
+        card.style.minHeight = '0';
+        card.style.flex = '0 1 ' + basis;
+      });
+
+      grid.querySelectorAll('.chips').forEach(function(ch){
+        ch.style.overflow = 'visible';
+        ch.style.maxHeight = 'none';
+      });
+      grid.querySelectorAll('.desc-wrap p').forEach(function(p){
+        p.style.display = 'block';
+        p.style.overflow = 'visible';
+      });
+    });
+  }
+  function onReady(fn){ if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, {once:true}); else fn(); }
+  onReady(function(){ applyLayout(document); window.addEventListener('resize', function(){ applyLayout(document); }); });
+})();
+</script>
+<!-- SB Search Modal (Fuse.js) - Injected -->
+<script defer src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+<div aria-hidden="true" id="sb-search-modal" style="position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:10001">
+<div aria-label="Search stories" aria-modal="true" role="dialog" style="max-width:720px;margin:8vh auto;background:white;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)">
+<div style="padding:14px 16px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px">
+<input id="sb-search-input" placeholder="Search stories, categories, emotions… ( / )" style="flex:1;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:16px;outline:none" type="search"/>
+<button aria-label="Close" id="sb-search-close" style="border:0;background:transparent;font-size:18px;cursor:pointer;padding:8px">✕</button>
+</div>
+<div id="sb-search-results" style="max-height:60vh;overflow:auto;padding:8px 8px 12px"></div>
+</div>
+</div>
+<script id="sb-search-script">
+(() => {
+  const modal = document.getElementById('sb-search-modal');
+  const input = document.getElementById('sb-search-input');
+  const closeBtn = document.getElementById('sb-search-close');
+  const resultsEl = document.getElementById('sb-search-results');
+  if(!modal || !input) return;
+  if(resultsEl) resultsEl.style.display='none';
+  let fuse, data = [], loaded = false;
+
+  function renderMedia(it) {
+    // For categories with MP4, show video; otherwise show image
+    if (it.type === 'category' && it.mp4) {
+      return `<video autoplay loop muted playsinline style="width:80px;height:80px;object-fit:cover;border-radius:12px;border:1px solid #f2f2f2;background:#000">
+        <source src="${it.mp4}" type="video/mp4">
+      </video>`;
+    }
+    return `<img src="${it.cover||'/index_items/placeholder.webp'}" alt="${it.title||'Story'}"
+         style="width:64px;height:64px;object-fit:cover;border-radius:12px;border:1px solid #f2f2f2"
+         onerror="this.src='/index_items/placeholder.webp'">`;
+  }
+
+  function renderMeta(it) {
+    if (it.type === 'category') {
+      return `<span style="background:#FFEB3B;color:#003366;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:bold">CATEGORY</span>`;
+    }
+    return `Age: ${it.age||'—'} · ${(it.categories||[]).slice(0,2).join(', ')}`;
+  }
+
+  function render(items){
+    if(!items || items.length===0){ resultsEl.innerHTML=''; resultsEl.style.display='none'; return; }
+    resultsEl.style.display='block';
+    resultsEl.innerHTML = items.slice(0,30).map(x=>{ const it=x.item||x; return `
+      <a href="${it.url||'#'}" style="display:flex;gap:12px;padding:10px;border-radius:12px;text-decoration:none;color:inherit;border:1px solid #eee;margin:8px;${it.type==='category'?'background:#fffef0;':''}"
+         onmouseenter="this.querySelector('video')?.play()" onmouseleave="this.querySelector('video')?.pause()">
+        ${renderMedia(it)}
+        <div style="flex:1"><div style="font-weight:700">${it.title||'Untitled'}</div>
+        <div style="font-size:13px;color:#444;margin-top:2px">${(it.summary||'').slice(0,140)}</div>
+        <div style="font-size:12px;color:#666;margin-top:6px">${renderMeta(it)}</div></div>
+      </a>`; }).join('');
+  }
+  async function ensureLoaded(){
+    if(loaded) return;
+    try{
+      const res=await fetch('/search-index.json',{cache:'no-store'});
+      data=await res.json();
+    }catch(e){ data=[]; }
+    fuse=new Fuse(data,{includeScore:true,threshold:0.35,keys:[{name:'title',weight:0.5},{name:'summary',weight:0.15},{name:'keywords',weight:0.25},{name:'categories',weight:0.1}]});
+    loaded=true;
+  }
+  function openModal(){ modal.style.display='block'; modal.setAttribute('aria-hidden','false'); setTimeout(()=>input&&input.focus(),0); render([]); }
+  function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); if(input) input.value=''; }
+  function onTriggerClick(e){ e.preventDefault(); ensureLoaded().then(openModal); }
+  const attach=()=>{ document.querySelectorAll('[data-sb-search-trigger]').forEach(el=>{ if(!el._sbBound){ el.addEventListener('click', onTriggerClick); el._sbBound=true; } }); };
+  attach(); new MutationObserver(attach).observe(document.body,{childList:true,subtree:true});
+  if(closeBtn) closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
+  window.addEventListener('keydown', async e=>{ if(e.key==='/'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&document.activeElement.tagName!=='INPUT'&&document.activeElement.tagName!=='TEXTAREA'){ e.preventDefault(); await ensureLoaded(); openModal(); } else if(e.key==='Escape'){ closeModal(); } });
+  if(input){ input.addEventListener('input', ()=>{ const q=input.value.trim(); if(!q){ render([]); return; } const out=fuse.search(q); render(out); }); }
+})();
+</script>
+<!-- END SB Search Modal -->
 
 </body>
 </html>
