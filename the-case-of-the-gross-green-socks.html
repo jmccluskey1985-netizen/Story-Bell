@@ -1,61 +1,5 @@
 
-<style id="sb-cards-base">
-.cards-grid{
-  display:flex; flex-wrap:wrap; justify-content:center;
-  align-items:stretch; gap:16px; margin:2em auto; max-width:1200px; box-sizing:border-box;
-}
-.story-card{
-  flex: 0 1 260px;
-  min-width: 260px;
-  max-width: 320px;
-  display:flex; flex-direction:column; box-sizing:border-box;
-  background:#001f3f; color:#fff; padding:12px; border-radius:14px;
-  border:2px solid #FFEB3B; box-shadow:0 2px 10px #2223;
-  transition:box-shadow .32s cubic-bezier(.5,1.7,.49,1.06), transform .2s cubic-bezier(.5,1.7,.49,1.06);
-  text-align:center;
-}
-.story-card img{
-  width:100%; height:160px; object-fit:cover; border-radius:10px; display:block;
-  margin:0 !important; padding:0 !important; transition:transform .3s cubic-bezier(.5,1.7,.49,1.06);
-}
-.story-card .grow{ flex:1 1 auto; display:flex; flex-direction:column; min-height:0; }
-.story-card h3, .story-card h3 a{
-  color:#fff !important; text-decoration:none !important;
-  text-shadow:0 0 6px #0008; margin:8px 0 6px 0 !important; font-size:1.08em; font-weight:bold;
-}
-.story-card .desc-wrap{ background:#003366; border-radius:8px; padding:8px 10px; margin-top:2px; }
-.story-card p{ color:#fff; font-size:.95em; margin:0; }
-.story-card .chips{ margin-top:10px; display:flex; flex-wrap:wrap; justify-content:center; gap:6px; }
-.story-card .chip{
-  display:inline-block; text-decoration:none; user-select:none;
-  padding:6px 12px; border-radius:999px; font-size:.78em; line-height:1;
-  background:#002a55; color:#fff; border:1px solid rgba(255,255,255,.18);
-  box-shadow: 0 2px 6px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.06);
-  transition: transform .13s, box-shadow .21s, background .18s, color .12s;
-}
-.story-card .chip:hover, .story-card .chip:focus{
-  background:#003e80; color:#FFEB3B;
-  box-shadow: 0 0 16px 6px #FFEB3B66, 0 2px 10px rgba(0,0,0,.28);
-  transform: translateY(-1px) scale(1.05);
-}
-.favorite-star{
-  background:none; border:1px solid rgba(255,255,255,.25);
-  cursor:pointer; font-size:1em; color:#FFEB3B;
-  border-radius:999px; padding:6px 10px; margin-top:10px;
-  transition: color .14s, box-shadow .18s, transform .13s, background .18s, border-color .18s;
-}
-.favorite-star .star{ pointer-events:none; font-size:1.2em; line-height:1; vertical-align:middle; }
-.favorite-star:hover, .favorite-star:focus{
-  background:rgba(255,235,59,.12); border-color:rgba(255,235,59,.55);
-  box-shadow: 0 0 16px 6px #FFEB3B66; transform: translateY(-1px);
-}
-.story-card:hover{ box-shadow:0 0 28px 12px #FFEB3Bcc, 0 2px 10px #2223; transform:scale(1.035); }
-@media (max-width:800px){
-  .cards-grid{ gap:12px; justify-content:space-between; }
-  .story-card{ flex:0 0 calc(50% - 6px); min-width:calc(50% - 6px); max-width:calc(50% - 6px); padding:12px; }
-  .story-card img{ height:130px !important; }
-}
-</style>
+
 <script>
 function getFavorites(){ try{return JSON.parse(localStorage.getItem('favorites')||"[]");}catch{return[];} }
 function setFavorites(f){ localStorage.setItem('favorites', JSON.stringify(f)); }
@@ -121,7 +65,6 @@ if (!window.firebase) { console.error("Firebase SDK not found"); }
 
 <style id="wand-pointer-events-fix">/* auto patch */
 #wand, .cursor-wand, .sparkle { pointer-events: none !important; }</style><link href="favicon.ico" rel="icon" type="image/x-icon"/>
-
 <style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
@@ -1949,6 +1892,82 @@ nav ul > li:focus-within > .dropdown {
     }
   }
 </style>
+<style id="sb-header-auth-fix">
+/* Desktop: hide mobile auth elements */
+@media (min-width: 801px) {
+  .login-mobile { display: none !important; }
+  .login-mobile-profile { display: none !important; }
+}
+/* Mobile: hide desktop auth elements */
+@media (max-width: 800px) {
+  .login-cta-header { display: none !important; }
+  .sb-user-profile { display: none !important; }
+}
+</style>
+
+
+<style id="sb-cards-base">
+.cards-grid{
+  display:flex; flex-wrap:wrap; justify-content:center;
+  align-items:stretch; gap:16px; margin:2em auto; max-width:1200px; box-sizing:border-box;
+}
+.story-card{
+  flex: 0 1 260px;
+  min-width: 260px;
+  max-width: 320px;
+  display:flex; flex-direction:column; box-sizing:border-box;
+  background:#001f3f; color:#fff; padding:12px; border-radius:14px;
+  border:2px solid #FFEB3B; box-shadow:0 2px 10px #2223;
+  transition:box-shadow .32s cubic-bezier(.5,1.7,.49,1.06), transform .2s cubic-bezier(.5,1.7,.49,1.06);
+  text-align:center;
+}
+.story-card img{
+  width:100%; height:auto; object-fit:cover; aspect-ratio:1/1; border-radius:10px; display:block;
+  margin:0 !important; padding:0 !important; transition:transform .3s cubic-bezier(.5,1.7,.49,1.06);
+}
+.story-card .grow{ flex:1 1 auto; display:flex; flex-direction:column; min-height:0; }
+.story-card h3, .story-card h3 a{
+  color:#fff !important; text-decoration:none !important;
+  text-shadow:0 0 6px #0008; margin:8px 0 6px 0 !important; font-size:1.08em; font-weight:bold;
+}
+.story-card .desc-wrap{ background:#003366; border-radius:8px; padding:8px 10px; margin-top:2px; }
+.story-card p{ color:#fff; font-size:.95em; margin:0; }
+.story-card .chips{ margin-top:10px; display:flex; flex-wrap:wrap; justify-content:center; gap:6px; }
+.story-card .chip{
+  display:inline-block; text-decoration:none; user-select:none;
+  padding:6px 12px; border-radius:999px; font-size:.78em; line-height:1;
+  background:#002a55; color:#fff; border:1px solid rgba(255,255,255,.18);
+  box-shadow: 0 2px 6px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.06);
+  transition: transform .13s, box-shadow .21s, background .18s, color .12s;
+}
+.story-card .chip:hover, .story-card .chip:focus{
+  background:#003e80; color:#FFEB3B;
+  box-shadow: 0 0 16px 6px #FFEB3B66, 0 2px 10px rgba(0,0,0,.28);
+  transform: translateY(-1px) scale(1.05);
+}
+.favorite-star{
+  background:none; border:1px solid rgba(255,255,255,.25);
+  cursor:pointer; font-size:1em; color:#FFEB3B;
+  border-radius:999px; padding:6px 10px; margin-top:10px;
+  transition: color .14s, box-shadow .18s, transform .13s, background .18s, border-color .18s;
+}
+.favorite-star .star{ pointer-events:none; font-size:1.2em; line-height:1; vertical-align:middle; }
+.favorite-star:hover, .favorite-star:focus{
+  background:rgba(255,235,59,.12); border-color:rgba(255,235,59,.55);
+  box-shadow: 0 0 16px 6px #FFEB3B66; transform: translateY(-1px);
+}
+.story-card:hover{ box-shadow:0 0 28px 12px #FFEB3Bcc, 0 2px 10px #2223; transform:scale(1.035); }
+@media (max-width:800px){
+  .cards-grid{ gap:12px; justify-content:space-between; }
+  .story-card{ flex:0 0 calc(50% - 6px); min-width:calc(50% - 6px); max-width:calc(50% - 6px); padding:12px; }
+  .story-card img{ height:auto !important; aspect-ratio:1/1; }
+}
+@supports not (aspect-ratio: 1 / 1){
+  .story-card img{ height:160px !important; }
+  @media (max-width:800px){ .story-card img{ height:130px !important; } }
+}
+</style>
+
 <style id="sb-cards-grid-clean">
 .cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
   display: flex !important;
@@ -2001,20 +2020,7 @@ nav ul > li:focus-within > .dropdown {
   overflow: visible !important;
 }
 </style>
-<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"The Case of the Gross Green Socks","description":"A detective story about disgust, lost laundry, and learning to help with chores.","url":"https://storybellkids.com/the-case-of-the-gross-green-socks.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/the-case-of-the-gross-green-socks-icon.webp","genre":["chores","disgust","everyday-life","mystery"],"about":[{"@type":"Thing","name":"mystery"},{"@type":"Thing","name":"everyday-life"},{"@type":"Thing","name":"chores"},{"@type":"Thing","name":"disgust"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/the-case-of-the-gross-green-socks/the-case-of-the-gross-green-socks-audio.mp3","encodingFormat":"audio/mpeg"}}</script>
-<style id="sb-header-auth-fix">
-/* Desktop: hide mobile auth elements */
-@media (min-width: 801px) {
-  .login-mobile { display: none !important; }
-  .login-mobile-profile { display: none !important; }
-}
-/* Mobile: hide desktop auth elements */
-@media (max-width: 800px) {
-  .login-cta-header { display: none !important; }
-  .sb-user-profile { display: none !important; }
-}
-</style>
-</head><body><header>
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"The Case of the Gross Green Socks","description":"A detective story about disgust, lost laundry, and learning to help with chores.","url":"https://storybellkids.com/the-case-of-the-gross-green-socks.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/the-case-of-the-gross-green-socks-icon.webp","genre":["chores","disgust","everyday-life","mystery"],"about":[{"@type":"Thing","name":"mystery"},{"@type":"Thing","name":"everyday-life"},{"@type":"Thing","name":"chores"},{"@type":"Thing","name":"disgust"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/the-case-of-the-gross-green-socks/the-case-of-the-gross-green-socks-audio.mp3","encodingFormat":"audio/mpeg"}}</script></head><body><header>
 <div class="header-left">
 <a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
 <video autoplay="" class="storybell-header-video" controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture="" muted="" playsinline="" style="max-width:90px; height:auto; display:none; margin-right:10px;max-width:90px; height:auto; margin-right:8px;">
@@ -2693,7 +2699,6 @@ nav ul > li:focus-within > .dropdown {
   }, {capture:true, passive:false});
 })();
 </script>
-
 <style id="sb-mobile-carousel-typography-override">
 @media (max-width: 800px){
   /* Remove the extra line break between title and description */
@@ -3592,6 +3597,7 @@ nav ul > li:focus-within > .dropdown {
 })();
 </script>
 <!-- END SB Search Modal -->
+
 
 <script id="sb-cards-flex-enforcer">
 (function(){

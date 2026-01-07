@@ -278,63 +278,6 @@
 </script>
 if (!window.firebase) { console.error("Firebase SDK not found"); }
 
-<style id="sb-cards-base">
-.cards-grid{
-  display:flex; flex-wrap:wrap; justify-content:center;
-  align-items:stretch; gap:16px; margin:2em auto; max-width:1200px; box-sizing:border-box;
-}
-.story-card{
-  flex: 0 1 260px;
-  min-width: 260px;
-  max-width: 320px;
-  display:flex; flex-direction:column; box-sizing:border-box;
-  background:#001f3f; color:#fff; padding:12px; border-radius:14px;
-  border:2px solid #FFEB3B; box-shadow:0 2px 10px #2223;
-  transition:box-shadow .32s cubic-bezier(.5,1.7,.49,1.06), transform .2s cubic-bezier(.5,1.7,.49,1.06);
-  text-align:center;
-}
-.story-card img{
-  width:100%; height:160px; object-fit:cover; border-radius:10px; display:block;
-  margin:0 !important; padding:0 !important; transition:transform .3s cubic-bezier(.5,1.7,.49,1.06);
-}
-.story-card .grow{ flex:1 1 auto; display:flex; flex-direction:column; min-height:0; }
-.story-card h3, .story-card h3 a{
-  color:#fff !important; text-decoration:none !important;
-  text-shadow:0 0 6px #0008; margin:8px 0 6px 0 !important; font-size:1.08em; font-weight:bold;
-}
-.story-card .desc-wrap{ background:#003366; border-radius:8px; padding:8px 10px; margin-top:2px; }
-.story-card p{ color:#fff; font-size:.95em; margin:0; }
-.story-card .chips{ margin-top:10px; display:flex; flex-wrap:wrap; justify-content:center; gap:6px; }
-.story-card .chip{
-  display:inline-block; text-decoration:none; user-select:none;
-  padding:6px 12px; border-radius:999px; font-size:.78em; line-height:1;
-  background:#002a55; color:#fff; border:1px solid rgba(255,255,255,.18);
-  box-shadow: 0 2px 6px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.06);
-  transition: transform .13s, box-shadow .21s, background .18s, color .12s;
-}
-.story-card .chip:hover, .story-card .chip:focus{
-  background:#003e80; color:#FFEB3B;
-  box-shadow: 0 0 16px 6px #FFEB3B66, 0 2px 10px rgba(0,0,0,.28);
-  transform: translateY(-1px) scale(1.05);
-}
-.favorite-star{
-  background:none; border:1px solid rgba(255,255,255,.25);
-  cursor:pointer; font-size:1em; color:#FFEB3B;
-  border-radius:999px; padding:6px 10px; margin-top:10px;
-  transition: color .14s, box-shadow .18s, transform .13s, background .18s, border-color .18s;
-}
-.favorite-star .star{ pointer-events:none; font-size:1.2em; line-height:1; vertical-align:middle; }
-.favorite-star:hover, .favorite-star:focus{
-  background:rgba(255,235,59,.12); border-color:rgba(255,235,59,.55);
-  box-shadow: 0 0 16px 6px #FFEB3B66; transform: translateY(-1px);
-}
-.story-card:hover{ box-shadow:0 0 28px 12px #FFEB3Bcc, 0 2px 10px #2223; transform:scale(1.035); }
-@media (max-width:800px){
-  .cards-grid{ gap:12px; justify-content:space-between; }
-  .story-card{ flex:0 0 calc(50% - 6px); min-width:calc(50% - 6px); max-width:calc(50% - 6px); padding:12px; }
-  .story-card img{ height:130px !important; }
-}
-</style>
 <style id="sb-carousel-nosnap-mobile">
 /* === Force-disable carousel snap + recentering on mobile === */
 @media (max-width: 900px){
@@ -357,7 +300,6 @@ if (!window.firebase) { console.error("Firebase SDK not found"); }
 }
 </style><style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><link href="queue_assets/queue.css" rel="stylesheet"/><style></style><style id="wand-pointer-events-fix">/* auto patch */
 #wand, .cursor-wand, .sparkle { pointer-events: none !important; }</style><link href="favicon.ico" rel="icon" type="image/x-icon"/>
-
 <style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
@@ -2185,6 +2127,81 @@ nav ul > li:focus-within > .dropdown {
     }
   }
 </style>
+<style id="sb-header-auth-fix">
+/* Desktop: hide mobile auth elements */
+@media (min-width: 801px) {
+  .login-mobile { display: none !important; }
+  .login-mobile-profile { display: none !important; }
+}
+/* Mobile: hide desktop auth elements */
+@media (max-width: 800px) {
+  .login-cta-header { display: none !important; }
+  .sb-user-profile { display: none !important; }
+}
+</style>
+
+<style id="sb-cards-base">
+.cards-grid{
+  display:flex; flex-wrap:wrap; justify-content:center;
+  align-items:stretch; gap:16px; margin:2em auto; max-width:1200px; box-sizing:border-box;
+}
+.story-card{
+  flex: 0 1 260px;
+  min-width: 260px;
+  max-width: 320px;
+  display:flex; flex-direction:column; box-sizing:border-box;
+  background:#001f3f; color:#fff; padding:12px; border-radius:14px;
+  border:2px solid #FFEB3B; box-shadow:0 2px 10px #2223;
+  transition:box-shadow .32s cubic-bezier(.5,1.7,.49,1.06), transform .2s cubic-bezier(.5,1.7,.49,1.06);
+  text-align:center;
+}
+.story-card img{
+  width:100%; height:auto; object-fit:cover; aspect-ratio:1/1; border-radius:10px; display:block;
+  margin:0 !important; padding:0 !important; transition:transform .3s cubic-bezier(.5,1.7,.49,1.06);
+}
+.story-card .grow{ flex:1 1 auto; display:flex; flex-direction:column; min-height:0; }
+.story-card h3, .story-card h3 a{
+  color:#fff !important; text-decoration:none !important;
+  text-shadow:0 0 6px #0008; margin:8px 0 6px 0 !important; font-size:1.08em; font-weight:bold;
+}
+.story-card .desc-wrap{ background:#003366; border-radius:8px; padding:8px 10px; margin-top:2px; }
+.story-card p{ color:#fff; font-size:.95em; margin:0; }
+.story-card .chips{ margin-top:10px; display:flex; flex-wrap:wrap; justify-content:center; gap:6px; }
+.story-card .chip{
+  display:inline-block; text-decoration:none; user-select:none;
+  padding:6px 12px; border-radius:999px; font-size:.78em; line-height:1;
+  background:#002a55; color:#fff; border:1px solid rgba(255,255,255,.18);
+  box-shadow: 0 2px 6px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.06);
+  transition: transform .13s, box-shadow .21s, background .18s, color .12s;
+}
+.story-card .chip:hover, .story-card .chip:focus{
+  background:#003e80; color:#FFEB3B;
+  box-shadow: 0 0 16px 6px #FFEB3B66, 0 2px 10px rgba(0,0,0,.28);
+  transform: translateY(-1px) scale(1.05);
+}
+.favorite-star{
+  background:none; border:1px solid rgba(255,255,255,.25);
+  cursor:pointer; font-size:1em; color:#FFEB3B;
+  border-radius:999px; padding:6px 10px; margin-top:10px;
+  transition: color .14s, box-shadow .18s, transform .13s, background .18s, border-color .18s;
+}
+.favorite-star .star{ pointer-events:none; font-size:1.2em; line-height:1; vertical-align:middle; }
+.favorite-star:hover, .favorite-star:focus{
+  background:rgba(255,235,59,.12); border-color:rgba(255,235,59,.55);
+  box-shadow: 0 0 16px 6px #FFEB3B66; transform: translateY(-1px);
+}
+.story-card:hover{ box-shadow:0 0 28px 12px #FFEB3Bcc, 0 2px 10px #2223; transform:scale(1.035); }
+@media (max-width:800px){
+  .cards-grid{ gap:12px; justify-content:space-between; }
+  .story-card{ flex:0 0 calc(50% - 6px); min-width:calc(50% - 6px); max-width:calc(50% - 6px); padding:12px; }
+  .story-card img{ height:auto !important; aspect-ratio:1/1; }
+}
+@supports not (aspect-ratio: 1 / 1){
+  .story-card img{ height:160px !important; }
+  @media (max-width:800px){ .story-card img{ height:130px !important; } }
+}
+</style>
+
 <style id="sb-cards-grid-clean">
 .cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
   display: flex !important;
@@ -2237,20 +2254,7 @@ nav ul > li:focus-within > .dropdown {
   overflow: visible !important;
 }
 </style>
-<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"My Profile - Story Bell","url":"https://storybellkids.com/profile.html","inLanguage":"en","description":"You're not signed in yet.","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script>
-<style id="sb-header-auth-fix">
-/* Desktop: hide mobile auth elements */
-@media (min-width: 801px) {
-  .login-mobile { display: none !important; }
-  .login-mobile-profile { display: none !important; }
-}
-/* Mobile: hide desktop auth elements */
-@media (max-width: 800px) {
-  .login-cta-header { display: none !important; }
-  .sb-user-profile { display: none !important; }
-}
-</style>
-</head>
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"My Profile - Story Bell","url":"https://storybellkids.com/profile.html","inLanguage":"en","description":"You're not signed in yet.","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script></head>
 <body>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:none; position:fixed; pointer-events:none; z-index:20001;"/>
 <header>
@@ -2371,7 +2375,6 @@ nav ul > li:focus-within > .dropdown {
 </a>
 <div class="subscribe-text"></div></div>
 </header>
-
 <style id="sb-auth-page-hide">
 /* Hide login buttons on auth pages - you're already here! */
 .login-cta-header,
@@ -2380,7 +2383,6 @@ a[href="signin.html"].login-cta-header {
   display: none !important;
 }
 </style>
-
 <style>
 /* Hide ALL auth buttons on profile page - you're already here! */
 .login-cta-header,
@@ -2894,79 +2896,5 @@ if (window.firebase && firebase.auth) {
   onReady(function(){ applyLayout(document); window.addEventListener('resize', function(){ applyLayout(document); }); });
 })();
 </script>
-<!-- SB Search Modal (Fuse.js) - Injected -->
-<script defer src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
-<div aria-hidden="true" id="sb-search-modal" style="position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:10001">
-<div aria-label="Search stories" aria-modal="true" role="dialog" style="max-width:720px;margin:8vh auto;background:white;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)">
-<div style="padding:14px 16px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px">
-<input id="sb-search-input" placeholder="Search stories, categories, emotions… ( / )" style="flex:1;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:16px;outline:none" type="search"/>
-<button aria-label="Close" id="sb-search-close" style="border:0;background:transparent;font-size:18px;cursor:pointer;padding:8px">✕</button>
-</div>
-<div id="sb-search-results" style="max-height:60vh;overflow:auto;padding:8px 8px 12px"></div>
-</div>
-</div>
-<script id="sb-search-script">
-(() => {
-  const modal = document.getElementById('sb-search-modal');
-  const input = document.getElementById('sb-search-input');
-  const closeBtn = document.getElementById('sb-search-close');
-  const resultsEl = document.getElementById('sb-search-results');
-  if(!modal || !input) return;
-  if(resultsEl) resultsEl.style.display='none';
-  let fuse, data = [], loaded = false;
-
-  function renderMedia(it) {
-    // For categories with MP4, show video; otherwise show image
-    if (it.type === 'category' && it.mp4) {
-      return `<video autoplay loop muted playsinline style="width:80px;height:80px;object-fit:cover;border-radius:12px;border:1px solid #f2f2f2;background:#000">
-        <source src="${it.mp4}" type="video/mp4">
-      </video>`;
-    }
-    return `<img src="${it.cover||'/index_items/placeholder.webp'}" alt="${it.title||'Story'}"
-         style="width:64px;height:64px;object-fit:cover;border-radius:12px;border:1px solid #f2f2f2"
-         onerror="this.src='/index_items/placeholder.webp'">`;
-  }
-
-  function renderMeta(it) {
-    if (it.type === 'category') {
-      return `<span style="background:#FFEB3B;color:#003366;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:bold">CATEGORY</span>`;
-    }
-    return `Age: ${it.age||'—'} · ${(it.categories||[]).slice(0,2).join(', ')}`;
-  }
-
-  function render(items){
-    if(!items || items.length===0){ resultsEl.innerHTML=''; resultsEl.style.display='none'; return; }
-    resultsEl.style.display='block';
-    resultsEl.innerHTML = items.slice(0,30).map(x=>{ const it=x.item||x; return `
-      <a href="${it.url||'#'}" style="display:flex;gap:12px;padding:10px;border-radius:12px;text-decoration:none;color:inherit;border:1px solid #eee;margin:8px;${it.type==='category'?'background:#fffef0;':''}"
-         onmouseenter="this.querySelector('video')?.play()" onmouseleave="this.querySelector('video')?.pause()">
-        ${renderMedia(it)}
-        <div style="flex:1"><div style="font-weight:700">${it.title||'Untitled'}</div>
-        <div style="font-size:13px;color:#444;margin-top:2px">${(it.summary||'').slice(0,140)}</div>
-        <div style="font-size:12px;color:#666;margin-top:6px">${renderMeta(it)}</div></div>
-      </a>`; }).join('');
-  }
-  async function ensureLoaded(){
-    if(loaded) return;
-    try{
-      const res=await fetch('/search-index.json',{cache:'no-store'});
-      data=await res.json();
-    }catch(e){ data=[]; }
-    fuse=new Fuse(data,{includeScore:true,threshold:0.35,keys:[{name:'title',weight:0.5},{name:'summary',weight:0.15},{name:'keywords',weight:0.25},{name:'categories',weight:0.1}]});
-    loaded=true;
-  }
-  function openModal(){ modal.style.display='block'; modal.setAttribute('aria-hidden','false'); setTimeout(()=>input&&input.focus(),0); render([]); }
-  function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); if(input) input.value=''; }
-  function onTriggerClick(e){ e.preventDefault(); ensureLoaded().then(openModal); }
-  const attach=()=>{ document.querySelectorAll('[data-sb-search-trigger]').forEach(el=>{ if(!el._sbBound){ el.addEventListener('click', onTriggerClick); el._sbBound=true; } }); };
-  attach(); new MutationObserver(attach).observe(document.body,{childList:true,subtree:true});
-  if(closeBtn) closeBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
-  window.addEventListener('keydown', async e=>{ if(e.key==='/'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&document.activeElement.tagName!=='INPUT'&&document.activeElement.tagName!=='TEXTAREA'){ e.preventDefault(); await ensureLoaded(); openModal(); } else if(e.key==='Escape'){ closeModal(); } });
-  if(input){ input.addEventListener('input', ()=>{ const q=input.value.trim(); if(!q){ render([]); return; } const out=fuse.search(q); render(out); }); }
-})();
-</script>
-<!-- END SB Search Modal -->
-
 </body>
 </html>
