@@ -8007,13 +8007,40 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
   margin-bottom: 50px !important;
 }
 </style>
+<style id="sb-fab-mobile-css">
+/* Mobile FAB Buttons - Toggle audio bar + Scroll to top */
+@media (max-width: 900px){
+  body:not(.sb-menu-open) .audio-box,
+  body:not(.sb-menu-open) .sb-controls-wrap { display: none !important; }
+
+  .sb-fab{
+    position: fixed;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);
+    width: 22px; height: 22px;
+    background: transparent !important;
+    border: 0 !important; border-radius: 0 !important; box-shadow: none !important;
+    display: inline-flex; align-items: center; justify-content: center;
+    z-index: 2147483000; padding: 0; margin: 0;
+  }
+  .sb-fab::before{ display:none !important; content:none !important; }
+  .sb-fab img{
+    display:block !important;
+    width:100% !important; height:100% !important;
+    object-fit:contain !important; pointer-events:none;
+    filter:none !important; mix-blend-mode:normal !important;
+  }
+  .sb-fab-menu{ left: calc(env(safe-area-inset-left, 0px) + 8px) !important; }
+  .sb-fab-up{ right: calc(env(safe-area-inset-right, 0px) + 8px) !important; }
+  body.sb-menu-open .sb-fab-menu{ display:inline-flex !important; }
+}
+</style>
 </head>
 <body><h1 class="sr-only" id="story-title">Ages 4–6</h1>
-<div id="sb-test-banner">TEST PAGE - STAGING - 2025-12-26 19:25:47</div>
+<div id="sb-test-banner">TEST PAGE - STAGING - 2026-01-08 12:00:00</div>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>
 <div class="header-left">
-<a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
+<a href='/' style='display:flex; align-items:center; gap:10px; text-decoration:none;'>
 <video autoplay="" class="storybell-header-video" controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture="" muted="" playsinline="" style="max-width:90px; height:auto; display:none; margin-right:10px;max-width:90px; height:auto; margin-right:8px;">
 <source src="index_items/animationSB.mp4" type="video/mp4"/>
 </video>
@@ -8029,24 +8056,24 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
     </button>
 <nav>
 <ul><li class="login-mobile"><a data-auth-cta="auth" href="#login" style="background:#FFEB3B; color:#003366; font-weight:bold; border-radius:12px; text-decoration:none; display:block; padding:8px 14px; margin:6px 10px; text-align:left; white-space:nowrap;">Log in / Create Account</a></li>
-<li class="login-mobile-profile" style="display:none;"><a href="/profile.html" style="background:#FFEB3B; color:#003366; font-weight:bold; border-radius:12px; display:block; padding:8px 14px; margin:6px 10px; text-decoration:none;"><span class="sb-user-name-mobile" style="font-family:'Coming Soon',cursive; font-size:15px;"></span></a></li>
+<li class="login-mobile-profile" style="display:none;"><a href='/profile' style='background:#FFEB3B; color:#003366; font-weight:bold; border-radius:12px; display:block; padding:8px 14px; margin:6px 10px; text-decoration:none;'><span class="sb-user-name-mobile" style="font-family:'Coming Soon',cursive; font-size:15px;"></span></a></li>
 <li style="position:relative;">
 <a href="#" style="cursor:pointer;">
         Age Group
        </a>
 <ul class="dropdown">
 <li>
-<a href="childrens-stories-ages-0-3.html">
+<a href='/childrens-stories-ages-0-3'>
           0–3 Years Old
          </a>
 </li>
 <li>
-<a href="childrens-stories-ages-4-6.html">
+<a href='/childrens-stories-ages-4-6'>
           4–6 Years Old
          </a>
 </li>
 <li>
-<a href="childrens-stories-ages-7-12.html">
+<a href='/childrens-stories-ages-7-12'>
           7–12 Years Old
          </a>
 </li>
@@ -8060,32 +8087,32 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
        </a>
 <ul class="dropdown">
 <li>
-<a href="childrens-stories-about-happiness.html">
+<a href='/childrens-stories-about-happiness'>
           Happiness
          </a>
 </li>
 <li>
-<a href="childrens-stories-about-sadness.html">
+<a href='/childrens-stories-about-sadness'>
           Sadness
          </a>
 </li>
 <li>
-<a href="childrens-stories-about-fear.html">
+<a href='/childrens-stories-about-fear'>
           Fear
          </a>
 </li>
 <li>
-<a href="childrens-stories-about-anger.html">
+<a href='/childrens-stories-about-anger'>
           Anger
          </a>
 </li>
 <li>
-<a href="childrens-stories-about-disgust.html">
+<a href='/childrens-stories-about-disgust'>
           Disgust
          </a>
 </li>
 <li>
-<a href="childrens-stories-about-surprise.html">
+<a href='/childrens-stories-about-surprise'>
           Surprise
          </a>
 </li>
@@ -8095,16 +8122,16 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 <a href="#" style="cursor:pointer;">Story Length/<br/>Type</a>
 <ul class="dropdown">
 <li>
-<a href="5-minute-childrens-stories.html">
+<a href='/5-minute-childrens-stories'>
           Short Stories
          </a>
 </li>
 <li>
-<a href="10-minute-childrens-stories.html">
+<a href='/10-minute-childrens-stories'>
           Medium Length Stories
          </a>
 </li>
-<li><a href="childrens-poems-and-rhymes.html">Poems</a></li></ul>
+<li><a href='/childrens-poems-and-rhymes'>Poems</a></li></ul>
 </li>
 <li>
 <a href="parent-playground.html">Parents<br/>Playground</a>
@@ -8175,16 +8202,16 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 <div class="carousel-container">
 <div class="carousel-track">
 <div class="carousel-item" data-title="Maya's Missing Mittens">
-<a href="mayas-missing-mittens.html"><img alt="Maya's Missing Mittens" loading="lazy" onerror="this.style.display='none'" src="icon/mayas-missing-mittens-icon.webp"/></a>
-<a class="carousel-title-link" href="mayas-missing-mittens.html"><span class="carousel-item-title">Maya's Missing Mittens</span></a>
+<a href='/mayas-missing-mittens'><img alt="Maya's Missing Mittens" loading="lazy" onerror="this.style.display='none'" src="icon/mayas-missing-mittens-icon.webp"/></a>
+<a class='carousel-title-link' href='/mayas-missing-mittens'><span class="carousel-item-title">Maya's Missing Mittens</span></a>
 </div>
 <div class="carousel-item" data-title="Milo the Mouse">
-<a href="milo-the-mouse.html"><img alt="Milo the Mouse" loading="lazy" onerror="this.style.display='none'" src="icon/milo-the-mouse-icon.webp"/></a>
-<a class="carousel-title-link" href="milo-the-mouse.html"><span class="carousel-item-title">Milo the Mouse</span></a>
+<a href='/milo-the-mouse'><img alt="Milo the Mouse" loading="lazy" onerror="this.style.display='none'" src="icon/milo-the-mouse-icon.webp"/></a>
+<a class='carousel-title-link' href='/milo-the-mouse'><span class="carousel-item-title">Milo the Mouse</span></a>
 </div>
 <div class="carousel-item" data-title="The Lonely Leaf">
-<a href="the-lonely-leaf.html"><img alt="The Lonely Leaf" loading="lazy" onerror="this.style.display='none'" src="icon/the-lonely-leaf-icon.webp"/></a>
-<a class="carousel-title-link" href="the-lonely-leaf.html"><span class="carousel-item-title">The Lonely Leaf</span></a>
+<a href='/the-lonely-leaf'><img alt="The Lonely Leaf" loading="lazy" onerror="this.style.display='none'" src="icon/the-lonely-leaf-icon.webp"/></a>
+<a class='carousel-title-link' href='/the-lonely-leaf'><span class="carousel-item-title">The Lonely Leaf</span></a>
 </div>
 <div class="carousel-item" data-title="Melody and the Muddy Puppy">
 <a href="melody-and-the-muddy-puppy.html"><img alt="Melody and the Muddy Puppy" loading="lazy" onerror="this.style.display='none'" src="icon/melody-and-the-muddy-puppy-icon.webp"/></a>
@@ -8195,8 +8222,8 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 <a class="carousel-title-link" href="grumpy-grandpa-and-the-silly-hat.html"><span class="carousel-item-title">Grumpy Grandpa and the Silly Hat</span></a>
 </div>
 <div class="carousel-item" data-title="Lily and the Blue Balloon">
-<a href="lily-and-the-blue-balloon.html"><img alt="Lily and the Blue Balloon" loading="lazy" onerror="this.style.display='none'" src="icon/lily-and-the-blue-balloon-icon.webp"/></a>
-<a class="carousel-title-link" href="lily-and-the-blue-balloon.html"><span class="carousel-item-title">Lily and the Blue Balloon</span></a>
+<a href='/lily-and-the-blue-balloon'><img alt="Lily and the Blue Balloon" loading="lazy" onerror="this.style.display='none'" src="icon/lily-and-the-blue-balloon-icon.webp"/></a>
+<a class='carousel-title-link' href='/lily-and-the-blue-balloon'><span class="carousel-item-title">Lily and the Blue Balloon</span></a>
 </div>
 </div>
 </div>
@@ -8313,7 +8340,7 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 <div id="footer-legal-links" style="margin-top:8px; font-size:12px; color:#FFEB3B; text-align:center;">
 <a href="./terms.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">Terms &amp; Conditions</a> | 
     <a href="./privacy.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">Privacy Policy</a> | 
-    <a href="./about.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">About</a> | 
+    <a href='/about' style='color:#FFEB3B; text-decoration:none; margin:0 8px;'>About</a> | 
     <a href="Reviews.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">Reviews</a> | 
     <a href="./contact.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">Contact</a>
 </div>
@@ -8432,6 +8459,37 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
   }
 
   audio.addEventListener('timeupdate', maybeArmCountdown);
+})();
+</script>
+
+<!-- Mobile FAB Buttons -->
+<button class="sb-fab sb-fab-menu" aria-label="Toggle audio controls">
+  <img src="index_items/menu.webp" alt="Menu">
+</button>
+<button class="sb-fab sb-fab-up" aria-label="Scroll to top">
+  <img src="index_items/arrow.webp" alt="Up">
+</button>
+
+<script id="sb-fab-mobile-ensure-js">
+(function(){
+  if (window.innerWidth > 900) return;
+
+  var menuFab = document.querySelector('.sb-fab-menu');
+  var upFab = document.querySelector('.sb-fab-up');
+
+  if (menuFab) {
+    menuFab.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.body.classList.toggle('sb-menu-open');
+    });
+  }
+
+  if (upFab) {
+    upFab.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 })();
 </script>
 </body>
