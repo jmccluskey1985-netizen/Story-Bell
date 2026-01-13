@@ -67,25 +67,7 @@
 <title>Luna's Colorful Garden</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
-   .story-card {
-  width: 22%;
-  margin: 1%;
-  background: #001f3f;
-  color: #fff;
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px #2223;
-  border: 2px solid #FFEB3B;
-  transition: box-shadow 0.32s cubic-bezier(.5,1.7,.49,1.06), transform 0.2s cubic-bezier(.5,1.7,.49,1.06);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.13em 0;
-  height: 100%;
-  min-height: 245px;
-  box-sizing: border-box;
-}
+   /* removed desktop .story-card width% rule */
 .story-card img {
   width: 100%;
   height: 195px;
@@ -351,167 +333,6 @@ html, body {
   @media (max-width: 800px){
     .carousel-item img, .carousel-card img { height: 25vw !important; }
   }
-}
-</style><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
-
-/* Always show a subtle light-blue chip behind descriptions */
-.carousel-section .carousel-desc{
-  background: rgba(173, 216, 230, 0.18); /* light blue */
-  padding: 0.25em 0.5em;
-  border-radius: 10px;
-  display: inline-block;
-  color: #ffffff !important;
-}
-
-/* Make sure carousels don't block vertical page scroll on touch devices */
-.carousel-section .carousel-track{
-  touch-action: auto !important;             /* allow vertical swipes to bubble */
-  overscroll-behavior-x: contain !important; /* keep horizontal bounce inside */
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x proximity;             /* gentler snapping */
-}
-
-/* --- Mobile-only refinements --- */
-@media (max-width: 800px){
-
-  /* Hide explicit <br> between title and description to save space */
-  .carousel-section .carousel-item br{ display: none !important; }
-
-  /* Title: smaller than before, tighter line-height, stays white */
-  .carousel-section .carousel-item .carousel-title,
-  .carousel-section a.carousel-title-link .carousel-title,
-  .carousel-section .carousel-title{
-    font-size: 0.74em !important;            /* smaller, still > description */
-    line-height: 1.06em !important;          /* much tighter for 2-line titles */
-    color: #ffffff !important;
-    margin: 0.10em 0 0.06em !important;      /* bring closer to desc */
-  }
-  .carousel-section .carousel-title-link,
-  .carousel-section .carousel-title-link:link,
-  .carousel-section .carousel-title-link:visited{
-    color: #ffffff !important;
-    text-decoration: none !important;
-  }
-
-  /* Description: compact, white, sits in the blue chip */
-  .carousel-section .carousel-desc{
-    font-size: 0.56em !important;
-    line-height: 1.12em !important;          /* tighter */
-    color: #ffffff !important;
-    padding: 0.22em 0.45em;                   /* a bit tighter on mobile */
-  }
-
-  /* Categories: same size as desc, bold, white; closer spacing */
-  .carousel-section .carousel-category{
-    font-size: 0.56em !important;
-    font-weight: 700 !important;
-    color: #ffffff !important;
-    text-decoration: none !important;
-  }
-  .carousel-section .carousel-categories{
-    margin-top: 0.06em !important;           /* closer to description */
-  }
-}</style><style id="sb-carousel-perf-ux">/* === Carousel performance + UX smoothing === */
-
-/* 1) Promote images to their own compositor layer; confine paints */
-.carousel-section .carousel-item img,
-.carousel-section .carousel-card img{
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  will-change: transform;
-  contain: paint; /* shadows/borders don't spill to ancestors */
-}
-
-/* 2) Track tuned for momentum but lets vertical page scroll through */
-.carousel-section .carousel-track{
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x proximity;    /* gentler snap reduces jerk */
-  touch-action: auto !important;     /* allow vertical swipes */
-  overscroll-behavior-x: contain;    /* keep bounce inside track */
-  will-change: scroll-position;
-}
-
-/* 3) Tighter two-line titles (carousels only) */
-.carousel-section .carousel-item .carousel-title,
-.carousel-section a.carousel-title-link .carousel-title,
-.carousel-section .carousel-title{
-  line-height: 1.06em !important;   /* reduce big interline gap */
-  margin: 0.10em 0 0.06em !important;
-  color: #fff !important;           /* keep white */
-}
-
-/* 4) Light blue chip behind description (carousels only) */
-.carousel-section .carousel-desc{
-  background: rgba(173, 216, 230, 0.18);
-  padding: 0.25em 0.5em;
-  border-radius: 10px;
-  display: inline-block;
-  color: #ffffff !important;
-}
-
-/* 5) Mobile-only: cheaper shadows + compact spacing */
-@media (max-width: 800px){
-  .carousel-section .carousel-item br{ display:none !important; } /* save vertical space */
-  .carousel-section .carousel-item img,
-  .carousel-section .carousel-card img{
-    box-shadow: 0 0 8px 2px rgba(255,223,0,.35) !important; /* lighter than desktop */
-  }
-  .carousel-section .carousel-desc{
-    line-height: 1.12em !important;
-    padding: 0.22em 0.45em;
-  }
-  .carousel-section .carousel-categories{ margin-top: 0.06em !important; }
-}</style><style id="sb-android-smoothing">
-/* --- Android/Samsung smoothing tweaks (carousels only) --- */
-
-/* Promote the horizontal track to its own layer to avoid repaint storms */
-.carousel-section .carousel-track{
-  transform: translateZ(0);           /* GPU layer */
-  will-change: scroll-position;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x proximity;      /* gentler snapping */
-  overscroll-behavior-x: contain;
-  touch-action: auto !important;      /* allow vertical scroll to pass through */
-}
-
-/* Isolate each card so its paints don't spill to neighbors */
-.carousel-section .carousel-item,
-.carousel-section .carousel-card{
-  contain: content;                    /* size+layout+paint isolation */
-}
-
-/* Images: keep compositor-friendly; lighten paints on mobile */
-@media (max-width: 800px){
-  .carousel-section .carousel-item img,
-  .carousel-section .carousel-card img{
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    transform: translateZ(0);
-    will-change: transform;
-    /* Lighter glow on mobile, and don't animate box-shadow (expensive) */
-    box-shadow: 0 0 6px 2px rgba(255,223,0,.28) !important;
-    transition: transform .2s ease !important;  /* drop shadow animation */
-  }
-}
-
-/* Tighter two-line titles to avoid big gaps */
-.carousel-section .carousel-item .carousel-title,
-.carousel-section a.carousel-title-link .carousel-title,
-.carousel-section .carousel-title{
-  line-height: 1.06em !important;
-  margin: 0.10em 0 0.06em !important;
-  color: #fff !important;
-}
-
-/* Keep the light-blue chip on description */
-.carousel-section .carousel-desc{
-  background: rgba(173,216,230,0.18);
-  color: #fff !important;
-  padding: 0.22em 0.45em;
-  border-radius: 10px;
-  display: inline-block;
 }
 </style><style id="sb-carousel-nosnap-mobile">
 /* === Force-disable carousel snap + recentering on mobile === */
@@ -2032,25 +1853,7 @@ header .site-title {
   
 
 
-   .story-card {
-  width: 22%;
-  margin: 1%;
-  background: #001f3f;
-  color: #fff;
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px #2223;
-  border: 2px solid #FFEB3B;
-  transition: box-shadow 0.32s cubic-bezier(.5,1.7,.49,1.06), transform 0.2s cubic-bezier(.5,1.7,.49,1.06);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.13em 0;
-  height: 100%;
-  min-height: 245px;
-  box-sizing: border-box;
-}
+   /* removed desktop .story-card width% rule */
 .story-card img {
   width: 100%;
   height: 195px;
@@ -8026,9 +7829,295 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
     }
 }
 </style>
-</head>
-<body><div id="sb-version-stamp" style="width:100%;padding:6px 10px;margin:0;background:#cc0000;color:#fff;font-weight:bold;font-size:13px;font-family:Arial,sans-serif;text-align:center;position:relative;z-index:10000;">v2026-01-13 22:13:40</div><div id="sb-test-iteration" style="width:100%; box-sizing:border-box; padding:10px 14px; margin:0;background:#1d1d1d; color:#ffeb3b; font-weight:700;font-size:15px; font-family:Arial,sans-serif; text-align:center;border-bottom:3px solid #ffeb3b; box-shadow:0 3px 10px #0008;position:relative; z-index:9999;">TEST PAGE v29 (not for production)</div><h1 class="sr-only" id="story-title">Ages 4–6</h1>
-<div id="sb-test-banner">TEST PAGE - STAGING - 2026-01-09 23:01:12</div>
+<style id="sb-desktop-carousel-category-white">
+/* Desktop only: make carousel category links white */
+@media (min-width: 801px){
+  .carousel-section .carousel-category,
+  .carousel-section .carousel-category:link,
+  .carousel-section .carousel-category:visited {
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+  /* optional: keep your yellow glow on interaction */
+  .carousel-section .carousel-category:hover,
+  .carousel-section .carousel-category:focus {
+    color: #FFEB3B !important;
+  }
+}
+</style><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+
+/* Always show a subtle light-blue chip behind descriptions */
+.carousel-section .carousel-desc{
+  background: rgba(173, 216, 230, 0.18); /* light blue */
+  padding: 0.25em 0.5em;
+  border-radius: 10px;
+  display: inline-block;
+  color: #ffffff !important;
+}
+
+/* Make sure carousels don't block vertical page scroll on touch devices */
+.carousel-section .carousel-track{
+  touch-action: auto !important;             /* allow vertical swipes to bubble */
+  overscroll-behavior-x: contain !important; /* keep horizontal bounce inside */
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;             /* gentler snapping */
+}
+
+/* --- Mobile-only refinements --- */
+@media (max-width: 800px){
+
+  /* Hide explicit <br> between title and description to save space */
+  .carousel-section .carousel-item br{ display: none !important; }
+
+  /* Title: smaller than before, tighter line-height, stays white */
+  .carousel-section .carousel-item .carousel-title,
+  .carousel-section a.carousel-title-link .carousel-title,
+  .carousel-section .carousel-title{
+    font-size: 0.74em !important;            /* smaller, still > description */
+    line-height: 1.06em !important;          /* much tighter for 2-line titles */
+    color: #ffffff !important;
+    margin: 0.10em 0 0.06em !important;      /* bring closer to desc */
+  }
+  .carousel-section .carousel-title-link,
+  .carousel-section .carousel-title-link:link,
+  .carousel-section .carousel-title-link:visited{
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+
+  /* Description: compact, white, sits in the blue chip */
+  .carousel-section .carousel-desc{
+    font-size: 0.56em !important;
+    line-height: 1.12em !important;          /* tighter */
+    color: #ffffff !important;
+    padding: 0.22em 0.45em;                   /* a bit tighter on mobile */
+  }
+
+  /* Categories: same size as desc, bold, white; closer spacing */
+  .carousel-section .carousel-category{
+    font-size: 0.56em !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+  .carousel-section .carousel-categories{
+    margin-top: 0.06em !important;           /* closer to description */
+  }
+}</style><style id="sb-carousel-perf-ux">/* === Carousel performance + UX smoothing === */
+
+/* 1) Promote images to their own compositor layer; confine paints */
+.carousel-section .carousel-item img,
+.carousel-section .carousel-card img{
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+  contain: paint; /* shadows/borders don't spill to ancestors */
+}
+
+/* 2) Track tuned for momentum but lets vertical page scroll through */
+.carousel-section .carousel-track{
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;    /* gentler snap reduces jerk */
+  touch-action: auto !important;     /* allow vertical swipes */
+  overscroll-behavior-x: contain;    /* keep bounce inside track */
+  will-change: scroll-position;
+}
+
+/* 3) Tighter two-line titles (carousels only) */
+.carousel-section .carousel-item .carousel-title,
+.carousel-section a.carousel-title-link .carousel-title,
+.carousel-section .carousel-title{
+  line-height: 1.06em !important;   /* reduce big interline gap */
+  margin: 0.10em 0 0.06em !important;
+  color: #fff !important;           /* keep white */
+}
+
+/* 4) Light blue chip behind description (carousels only) */
+.carousel-section .carousel-desc{
+  background: rgba(173, 216, 230, 0.18);
+  padding: 0.25em 0.5em;
+  border-radius: 10px;
+  display: inline-block;
+  color: #ffffff !important;
+}
+
+/* 5) Mobile-only: cheaper shadows + compact spacing */
+@media (max-width: 800px){
+  .carousel-section .carousel-item br{ display:none !important; } /* save vertical space */
+  .carousel-section .carousel-item img,
+  .carousel-section .carousel-card img{
+    box-shadow: 0 0 8px 2px rgba(255,223,0,.35) !important; /* lighter than desktop */
+  }
+  .carousel-section .carousel-desc{
+    line-height: 1.12em !important;
+    padding: 0.22em 0.45em;
+  }
+  .carousel-section .carousel-categories{ margin-top: 0.06em !important; }
+}</style><style id="sb-android-smoothing">
+/* --- Android/Samsung smoothing tweaks (carousels only) --- */
+
+/* Promote the horizontal track to its own layer to avoid repaint storms */
+.carousel-section .carousel-track{
+  transform: translateZ(0);           /* GPU layer */
+  will-change: scroll-position;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;      /* gentler snapping */
+  overscroll-behavior-x: contain;
+  touch-action: auto !important;      /* allow vertical scroll to pass through */
+}
+
+/* Isolate each card so its paints don't spill to neighbors */
+.carousel-section .carousel-item,
+.carousel-section .carousel-card{
+  contain: content;                    /* size+layout+paint isolation */
+}
+
+/* Images: keep compositor-friendly; lighten paints on mobile */
+@media (max-width: 800px){
+  .carousel-section .carousel-item img,
+  .carousel-section .carousel-card img{
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+    /* Lighter glow on mobile, and don't animate box-shadow (expensive) */
+    box-shadow: 0 0 6px 2px rgba(255,223,0,.28) !important;
+    transition: transform .2s ease !important;  /* drop shadow animation */
+  }
+}
+
+/* Tighter two-line titles to avoid big gaps */
+.carousel-section .carousel-item .carousel-title,
+.carousel-section a.carousel-title-link .carousel-title,
+.carousel-section .carousel-title{
+  line-height: 1.06em !important;
+  margin: 0.10em 0 0.06em !important;
+  color: #fff !important;
+}
+
+/* Keep the light-blue chip on description */
+.carousel-section .carousel-desc{
+  background: rgba(173,216,230,0.18);
+  color: #fff !important;
+  padding: 0.22em 0.45em;
+  border-radius: 10px;
+  display: inline-block;
+}
+</style>
+<style id="sb-swipe-carousel-style-lite">
+/* Swipe-friendly, momentum + gentle snapping */
+.carousel-track{
+  display:flex;
+  gap:1em;
+  overflow-x:auto;
+  scroll-snap-type:x proximity;     /* softer than mandatory */
+  -webkit-overflow-scrolling:touch; /* iOS momentum */
+  scrollbar-width:none;             /* Firefox hide bar */
+  touch-action:pan-x;
+  overscroll-behavior-x:contain;
+}
+.carousel-track::-webkit-scrollbar{ display:none; }
+
+/* Each card snaps into view */
+.carousel-item, .carousel-card{
+  flex:0 0 auto;
+  scroll-snap-align:start;
+}
+
+/* Mobile: reclaim edge space + tighter gaps */
+@media (max-width:800px){
+  .carousel-wrapper,
+  .carousel-container,
+  .carousel-track{
+    padding-left:0 !important;
+    padding-right:0 !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+  }
+  .carousel-track{ gap:.5em !important; }
+}
+</style>
+<style id="sb-mobile-hide-carousel-arrows-lite">
+/* Mobile: hide arrow UI (CSS-only; no DOM deletion) */
+@media (max-width:800px){
+  .carousel-arrow,
+  .carousel-arrow-left,
+  .carousel-arrow-right,
+  .carousel-prev,
+  .carousel-next,
+  .prev,
+  .next,
+  button[aria-label="Previous"],
+  button[aria-label="Next"],
+  .carousel-button{
+    display:none !important;
+  }
+}
+</style>
+<style id="sb-mobile-carousel-trim">/* === Mobile carousel trim: hide arrows + 50% item width === */
+@media (max-width: 800px){
+  /* Hide arrow UIs so edges are usable for swiping */
+  .carousel-button,
+  .carousel-arrow,
+  .carousel-arrow-left,
+  .carousel-arrow-right,
+  .carousel-prev,
+  .carousel-next,
+  .prev,
+  .next,
+  button[aria-label="Previous"],
+  button[aria-label="Next"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Reclaim edge space */
+  .carousel-wrapper,
+  .carousel-container,
+  .cards-row,
+  .cards-track,
+  .carousel-track {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Tighter spacing on mobile */
+  .carousel-track { gap: 0.5em !important; }
+
+  /* Make each card ~50% of the viewport width */
+  .carousel-card {
+    width: 50vw !important;
+    min-width: 50vw !important;
+    max-width: 50vw !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Ensure images scale inside the card */
+  .carousel-card img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Optional: slightly smaller text to match the reduced cards */
+  .carousel-title   { font-size: 0.9em !important; }
+  .carousel-desc    { font-size: 0.85em !important; }
+  .carousel-category{ font-size: 0.8em !important; }
+}</style><style id="sb-mobile-track-transform-kill">
+@media (max-width:800px){
+  /* kill any JS translateX on mobile */
+  .carousel-track{
+    transform: none !important;
+    transition: none !important;
+    scroll-snap-type: none !important; /* avoids wrap flicker */
+  }
+}
+</style></head>
+<body><div id="sb-version-stamp" style="width:100%;padding:6px 10px;margin:0;background:#cc0000;color:#fff;font-weight:bold;font-size:13px;font-family:Arial,sans-serif;text-align:center;position:relative;z-index:10000;">v2026-01-13 22:36:41</div><div id="sb-test-iteration" style="width:100%; box-sizing:border-box; padding:10px 14px; margin:0;background:#1d1d1d; color:#ffeb3b; font-weight:700;font-size:15px; font-family:Arial,sans-serif; text-align:center;border-bottom:3px solid #ffeb3b; box-shadow:0 3px 10px #0008;position:relative; z-index:9999;">TEST PAGE v29 (not for production)</div><h1 class="sr-only" id="story-title">Ages 4–6</h1>
+<div id="sb-test-banner">TEST PAGE - STAGING - 2026-01-13 22:36:41</div>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>
 <div class="header-left">
@@ -8142,53 +8231,6 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 </header>
 <div class="main-blank questions-toggle"><div id="transcript" style="text-align:center;"><img alt="Luna's Colorful Garden" class="story-image sb-firstline" decoding="async" loading="lazy" src="lunas-colorful-garden/lunas-colorful-garden-imagetitle.webp" style="display:block;margin:1em auto;max-width:90%"/><br/>
 <span class="big-title" data-end="0.720000" data-start="0.000000" id="word_1" style="font-size:1.28em;font-weight:bold;">Luna's</span> <span class="big-title" data-end="1.220000" data-start="0.720000" id="word_2" style="font-size:1.28em;font-weight:bold;">Colorful</span> <span class="big-title" data-end="1.960000" data-start="1.220000" id="word_3" style="font-size:1.28em;font-weight:bold;">Garden</span> <br/><span data-end="5.020000" data-start="4.720000" id="word_4">Luna</span> <span data-end="5.500000" data-start="5.020000" id="word_5">loved</span> <span data-end="6.320000" data-start="5.500000" id="word_6">everything</span> <span data-end="6.700000" data-start="6.320000" id="word_7">about</span> <span data-end="7.240000" data-start="6.700000" id="word_8">nature.</span> <span data-end="9.380000" data-start="9.020000" id="word_9">She</span> <span data-end="9.700000" data-start="9.380000" id="word_10">loved</span> <span data-end="9.880000" data-start="9.700000" id="word_11">the</span> <span data-end="10.080000" data-start="9.880000" id="word_12">way</span> <span data-end="10.440000" data-start="10.080000" id="word_13">flowers</span> <span data-end="10.900000" data-start="10.440000" id="word_14">smelled,</span> <span data-end="11.640000" data-start="11.400000" id="word_15">the</span> <span data-end="11.900000" data-start="11.640000" id="word_16">soft</span> <span data-end="12.120000" data-start="11.900000" id="word_17">buzz</span> <span data-end="12.340000" data-start="12.120000" id="word_18">of</span> <span data-end="12.760000" data-start="12.340000" id="word_19">bees,</span> <span data-end="13.260000" data-start="13.160000" id="word_20">and</span> <span data-end="13.600000" data-start="13.260000" id="word_21">the</span> <span data-end="13.740000" data-start="13.600000" id="word_22">feeling</span> <span data-end="14.100000" data-start="13.740000" id="word_23">of</span> <span data-end="14.380000" data-start="14.100000" id="word_24">warm</span> <span data-end="14.720000" data-start="14.380000" id="word_25">soil</span> <span data-end="15.080000" data-start="14.720000" id="word_26">between</span> <span data-end="15.300000" data-start="15.080000" id="word_27">her</span> <span data-end="15.680000" data-start="15.300000" id="word_28">fingers.</span> <span data-end="17.280000" data-start="16.940000" id="word_29">One</span> <span data-end="17.580000" data-start="17.280000" id="word_30">sunny</span> <span data-end="18.320000" data-start="17.580000" id="word_31">afternoon,</span> <span data-end="18.780000" data-start="18.560000" id="word_32">while</span> <span data-end="19.060000" data-start="18.780000" id="word_33">playing</span> <span data-end="19.260000" data-start="19.060000" id="word_34">near</span> <span data-end="19.400000" data-start="19.260000" id="word_35">the</span> <span data-end="19.820000" data-start="19.400000" id="word_36">neighborhood</span> <span data-end="20.340000" data-start="19.820000" id="word_37">playground,</span> <span data-end="21.200000" data-start="21.020000" id="word_38">Luna</span> <span data-end="21.580000" data-start="21.200000" id="word_39">noticed</span> <span data-end="21.920000" data-start="21.580000" id="word_40">something</span> <span data-end="22.440000" data-start="21.920000" id="word_41">special</span> <span data-end="22.760000" data-start="22.440000" id="word_42">behind</span> <span data-end="22.980000" data-start="22.760000" id="word_43">the</span> <span data-end="23.140000" data-start="22.980000" id="word_44">old</span> <span data-end="23.420000" data-start="23.140000" id="word_45">wooden</span> <span data-end="23.840000" data-start="23.420000" id="word_46">fence.</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image1.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation1.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="24.940000" data-start="24.660000" id="word_47">She</span> <span data-end="25.200000" data-start="24.940000" id="word_48">pushed</span> <span data-end="25.580000" data-start="25.200000" id="word_49">aside</span> <span data-end="25.840000" data-start="25.580000" id="word_50">the</span> <span data-end="26.040000" data-start="25.840000" id="word_51">tall</span> <span data-end="26.360000" data-start="26.040000" id="word_52">weeds</span> <span data-end="26.660000" data-start="26.360000" id="word_53">and</span> <span data-end="26.940000" data-start="26.660000" id="word_54">tangled</span> <span data-end="28.060000" data-start="26.940000" id="word_55">vines.</span> <span data-end="28.760000" data-start="28.060000" id="word_56">There,</span> <span data-end="29.140000" data-start="29.040000" id="word_57">hidden</span> <span data-end="29.500000" data-start="29.140000" id="word_58">from</span> <span data-end="29.920000" data-start="29.500000" id="word_59">everyone,</span> <span data-end="30.180000" data-start="30.020000" id="word_60">was</span> <span data-end="30.320000" data-start="30.180000" id="word_61">a</span> <span data-end="30.760000" data-start="30.320000" id="word_62">forgotten</span> <span data-end="31.260000" data-start="30.760000" id="word_63">garden!</span> <span data-end="32.620000" data-start="32.400000" id="word_64">The</span> <span data-end="32.920000" data-start="32.620000" id="word_65">space</span> <span data-end="33.200000" data-start="32.920000" id="word_66">was</span> <span data-end="33.620000" data-start="33.200000" id="word_67">overgrown</span> <span data-end="33.940000" data-start="33.620000" id="word_68">with</span> <span data-end="34.340000" data-start="33.940000" id="word_69">weeds</span> <span data-end="34.520000" data-start="34.340000" id="word_70">and</span> <span data-end="34.760000" data-start="34.520000" id="word_71">the</span> <span data-end="35.020000" data-start="34.760000" id="word_72">soil</span> <span data-end="35.280000" data-start="35.020000" id="word_73">looked</span> <span data-end="35.740000" data-start="35.280000" id="word_74">tired</span> <span data-end="36.080000" data-start="35.740000" id="word_75">and</span> <span data-end="36.380000" data-start="36.080000" id="word_76">brown,</span> <span data-end="37.200000" data-start="36.940000" id="word_77">but</span> <span data-end="37.440000" data-start="37.200000" id="word_78">Luna</span> <span data-end="37.780000" data-start="37.440000" id="word_79">could</span> <span data-end="38.080000" data-start="37.780000" id="word_80">see</span> <span data-end="38.360000" data-start="38.080000" id="word_81">its</span> <span data-end="38.740000" data-start="38.360000" id="word_82">magic.</span> <span data-end="40.600000" data-start="40.120000" id="word_83">"This</span> <span data-end="40.920000" data-start="40.600000" id="word_84">garden</span> <span data-end="41.160000" data-start="40.920000" id="word_85">is</span> <span data-end="41.420000" data-start="41.160000" id="word_86">just</span> <span data-end="41.680000" data-start="41.420000" id="word_87">waiting</span> <span data-end="41.940000" data-start="41.680000" id="word_88">for</span> <span data-end="42.160000" data-start="41.940000" id="word_89">someone</span> <span data-end="42.360000" data-start="42.160000" id="word_90">to</span> <span data-end="42.480000" data-start="42.360000" id="word_91">help</span> <span data-end="42.720000" data-start="42.480000" id="word_92">it</span> <span data-end="42.860000" data-start="42.720000" id="word_93">bloom</span> <span data-end="43.320000" data-start="42.860000" id="word_94">again,"</span> <span data-end="44.440000" data-start="44.160000" id="word_95">she</span> <span data-end="44.860000" data-start="44.440000" id="word_96">whispered</span> <span data-end="45.060000" data-start="44.860000" id="word_97">to</span> <span data-end="45.460000" data-start="45.060000" id="word_98">herself.</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image2.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation2.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="47.180000" data-start="46.760000" id="word_99">Luna's</span> <span data-end="47.420000" data-start="47.180000" id="word_100">heart</span> <span data-end="47.740000" data-start="47.420000" id="word_101">filled</span> <span data-end="48.060000" data-start="47.740000" id="word_102">with</span> <span data-end="48.540000" data-start="48.060000" id="word_103">excitement.</span> <span data-end="49.900000" data-start="49.640000" id="word_104">She</span> <span data-end="50.140000" data-start="49.900000" id="word_105">ran</span> <span data-end="50.360000" data-start="50.140000" id="word_106">back</span> <span data-end="50.540000" data-start="50.360000" id="word_107">to</span> <span data-end="50.700000" data-start="50.540000" id="word_108">the</span> <span data-end="50.960000" data-start="50.700000" id="word_109">playground</span> <span data-end="51.220000" data-start="50.960000" id="word_110">where</span> <span data-end="51.480000" data-start="51.220000" id="word_111">her</span> <span data-end="51.700000" data-start="51.480000" id="word_112">friends</span> <span data-end="52.000000" data-start="51.700000" id="word_113">were</span> <span data-end="52.300000" data-start="52.000000" id="word_114">playing</span> <span data-end="52.480000" data-start="52.300000" id="word_115">on</span> <span data-end="52.700000" data-start="52.480000" id="word_116">the</span> <span data-end="53.020000" data-start="52.700000" id="word_117">swings.</span> <span data-end="54.640000" data-start="54.160000" id="word_118">"Everyone,</span> <span data-end="55.240000" data-start="54.920000" id="word_119">come</span> <span data-end="55.560000" data-start="55.240000" id="word_120">quick!</span> <span data-end="56.100000" data-start="55.900000" id="word_121">I</span> <span data-end="56.300000" data-start="56.100000" id="word_122">found</span> <span data-end="56.680000" data-start="56.300000" id="word_123">something</span> <span data-end="57.380000" data-start="56.680000" id="word_124">amazing!"</span> <span data-end="58.520000" data-start="58.060000" id="word_125">Her</span> <span data-end="58.900000" data-start="58.520000" id="word_126">friends</span> <span data-end="59.240000" data-start="58.900000" id="word_127">gathered</span> <span data-end="59.600000" data-start="59.240000" id="word_128">around</span> <span data-end="59.840000" data-start="59.600000" id="word_129">as</span> <span data-end="60.060000" data-start="59.840000" id="word_130">Luna</span> <span data-end="60.340000" data-start="60.060000" id="word_131">told</span> <span data-end="60.520000" data-start="60.340000" id="word_132">them</span> <span data-end="60.760000" data-start="60.520000" id="word_133">about</span> <span data-end="60.960000" data-start="60.760000" id="word_134">the</span> <span data-end="61.220000" data-start="60.960000" id="word_135">secret</span> <span data-end="61.600000" data-start="61.220000" id="word_136">garden.</span> <span data-end="63.400000" data-start="62.960000" id="word_137">"It</span> <span data-end="63.700000" data-start="63.400000" id="word_138">needs</span> <span data-end="63.960000" data-start="63.700000" id="word_139">our</span> <span data-end="64.300000" data-start="63.960000" id="word_140">help,"</span> <span data-end="65.100000" data-start="64.860000" id="word_141">Luna</span> <span data-end="65.640000" data-start="65.100000" id="word_142">explained.</span> <span data-end="66.460000" data-start="66.220000" id="word_143">"If</span> <span data-end="66.660000" data-start="66.460000" id="word_144">we</span> <span data-end="66.880000" data-start="66.660000" id="word_145">work</span> <span data-end="67.300000" data-start="66.880000" id="word_146">together,</span> <span data-end="67.780000" data-start="67.640000" id="word_147">we</span> <span data-end="68.000000" data-start="67.780000" id="word_148">can</span> <span data-end="68.180000" data-start="68.000000" id="word_149">make</span> <span data-end="68.420000" data-start="68.180000" id="word_150">it</span> <span data-end="68.820000" data-start="68.420000" id="word_151">beautiful</span> <span data-end="69.320000" data-start="68.820000" id="word_152">again!"</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image3.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation3.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="70.880000" data-start="70.720000" id="word_153">The</span> <span data-end="71.160000" data-start="70.880000" id="word_154">next</span> <span data-end="71.560000" data-start="71.160000" id="word_155">day,</span> <span data-end="71.960000" data-start="71.860000" id="word_156">Luna</span> <span data-end="72.120000" data-start="71.960000" id="word_157">and</span> <span data-end="72.360000" data-start="72.120000" id="word_158">her</span> <span data-end="72.600000" data-start="72.360000" id="word_159">friends</span> <span data-end="73.080000" data-start="72.600000" id="word_160">arrived</span> <span data-end="73.320000" data-start="73.080000" id="word_161">with</span> <span data-end="73.580000" data-start="73.320000" id="word_162">small</span> <span data-end="73.940000" data-start="73.580000" id="word_163">gloves</span> <span data-end="74.200000" data-start="73.940000" id="word_164">and</span> <span data-end="74.440000" data-start="74.200000" id="word_165">garden</span> <span data-end="74.840000" data-start="74.440000" id="word_166">tools.</span> <span data-end="75.800000" data-start="75.640000" id="word_167">There</span> <span data-end="76.020000" data-start="75.800000" id="word_168">was</span> <span data-end="76.260000" data-start="76.020000" id="word_169">Maya</span> <span data-end="76.460000" data-start="76.260000" id="word_170">with</span> <span data-end="76.660000" data-start="76.460000" id="word_171">her</span> <span data-end="76.860000" data-start="76.660000" id="word_172">bright</span> <span data-end="77.080000" data-start="76.860000" id="word_173">red</span> <span data-end="77.460000" data-start="77.080000" id="word_174">hat,</span> <span data-end="78.180000" data-start="77.940000" id="word_175">Sam</span> <span data-end="78.580000" data-start="78.180000" id="word_176">carrying</span> <span data-end="78.840000" data-start="78.580000" id="word_177">a</span> <span data-end="79.060000" data-start="78.840000" id="word_178">tiny</span> <span data-end="79.480000" data-start="79.060000" id="word_179">rake,</span> <span data-end="80.080000" data-start="79.860000" id="word_180">and</span> <span data-end="80.220000" data-start="80.080000" id="word_181">Noah</span> <span data-end="80.440000" data-start="80.220000" id="word_182">with</span> <span data-end="80.640000" data-start="80.440000" id="word_183">a</span> <span data-end="80.920000" data-start="80.640000" id="word_184">basket</span> <span data-end="81.180000" data-start="80.920000" id="word_185">for</span> <span data-end="81.500000" data-start="81.180000" id="word_186">collecting</span> <span data-end="81.920000" data-start="81.500000" id="word_187">weeds.</span> <span data-end="83.540000" data-start="83.100000" id="word_188">Together,</span> <span data-end="83.880000" data-start="83.700000" id="word_189">they</span> <span data-end="84.080000" data-start="83.880000" id="word_190">worked</span> <span data-end="84.300000" data-start="84.080000" id="word_191">as</span> <span data-end="84.480000" data-start="84.300000" id="word_192">a</span> <span data-end="84.760000" data-start="84.480000" id="word_193">team.</span> <span data-end="86.240000" data-start="85.640000" id="word_194">Luna</span> <span data-end="86.500000" data-start="86.240000" id="word_195">showed</span> <span data-end="86.680000" data-start="86.500000" id="word_196">them</span> <span data-end="86.880000" data-start="86.680000" id="word_197">how</span> <span data-end="87.040000" data-start="86.880000" id="word_198">to</span> <span data-end="87.220000" data-start="87.040000" id="word_199">pull</span> <span data-end="87.620000" data-start="87.220000" id="word_200">weeds</span> <span data-end="88.080000" data-start="87.620000" id="word_201">gently</span> <span data-end="88.300000" data-start="88.080000" id="word_202">from</span> <span data-end="88.460000" data-start="88.300000" id="word_203">the</span> <span data-end="88.840000" data-start="88.460000" id="word_204">roots.</span> <span data-end="89.820000" data-start="89.600000" id="word_205">Sam</span> <span data-end="90.120000" data-start="89.820000" id="word_206">raked</span> <span data-end="90.400000" data-start="90.120000" id="word_207">the</span> <span data-end="90.660000" data-start="90.400000" id="word_208">soil</span> <span data-end="91.280000" data-start="90.660000" id="word_209">smooth.</span> <span data-end="92.400000" data-start="92.180000" id="word_210">Maya</span> <span data-end="92.660000" data-start="92.400000" id="word_211">and</span> <span data-end="92.960000" data-start="92.660000" id="word_212">Noah</span> <span data-end="93.260000" data-start="92.960000" id="word_213">cleared</span> <span data-end="93.600000" data-start="93.260000" id="word_214">away</span> <span data-end="94.020000" data-start="93.600000" id="word_215">old</span> <span data-end="94.360000" data-start="94.020000" id="word_216">leaves</span> <span data-end="94.680000" data-start="94.360000" id="word_217">and</span> <span data-end="95.100000" data-start="94.680000" id="word_218">sticks.</span> <span data-end="96.140000" data-start="95.840000" id="word_219">Even</span> <span data-end="96.340000" data-start="96.140000" id="word_220">though</span> <span data-end="96.440000" data-start="96.340000" id="word_221">it</span> <span data-end="96.680000" data-start="96.440000" id="word_222">was</span> <span data-end="96.980000" data-start="96.680000" id="word_223">hard</span> <span data-end="97.260000" data-start="96.980000" id="word_224">work,</span> <span data-end="97.920000" data-start="97.640000" id="word_225">they</span> <span data-end="98.360000" data-start="97.920000" id="word_226">laughed</span> <span data-end="98.740000" data-start="98.360000" id="word_227">and</span> <span data-end="99.060000" data-start="98.740000" id="word_228">sang</span> <span data-end="99.520000" data-start="99.060000" id="word_229">songs</span> <span data-end="99.700000" data-start="99.520000" id="word_230">while</span> <span data-end="99.940000" data-start="99.700000" id="word_231">they</span> <span data-end="100.200000" data-start="99.940000" id="word_232">worked.</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image4.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation4.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="101.500000" data-start="101.300000" id="word_233">When</span> <span data-end="101.800000" data-start="101.500000" id="word_234">the</span> <span data-end="102.040000" data-start="101.800000" id="word_235">garden</span> <span data-end="102.320000" data-start="102.040000" id="word_236">space</span> <span data-end="102.620000" data-start="102.320000" id="word_237">was</span> <span data-end="102.920000" data-start="102.620000" id="word_238">clean</span> <span data-end="103.160000" data-start="102.920000" id="word_239">and</span> <span data-end="103.640000" data-start="103.160000" id="word_240">ready,</span> <span data-end="104.180000" data-start="103.980000" id="word_241">Luna</span> <span data-end="104.780000" data-start="104.180000" id="word_242">carefully</span> <span data-end="105.180000" data-start="104.780000" id="word_243">opened</span> <span data-end="105.660000" data-start="105.180000" id="word_244">several</span> <span data-end="106.040000" data-start="105.660000" id="word_245">packets</span> <span data-end="106.340000" data-start="106.040000" id="word_246">of</span> <span data-end="106.620000" data-start="106.340000" id="word_247">flower</span> <span data-end="106.980000" data-start="106.620000" id="word_248">seeds.</span> <span data-end="108.180000" data-start="107.880000" id="word_249">"These</span> <span data-end="108.420000" data-start="108.180000" id="word_250">are</span> <span data-end="108.880000" data-start="108.420000" id="word_251">sunflower</span> <span data-end="109.480000" data-start="108.880000" id="word_252">seeds,"</span> <span data-end="110.060000" data-start="109.820000" id="word_253">she</span> <span data-end="110.580000" data-start="110.060000" id="word_254">explained,</span> <span data-end="111.240000" data-start="111.060000" id="word_255">showing</span> <span data-end="111.560000" data-start="111.240000" id="word_256">the</span> <span data-end="111.820000" data-start="111.560000" id="word_257">small</span> <span data-end="112.100000" data-start="111.820000" id="word_258">seeds</span> <span data-end="112.320000" data-start="112.100000" id="word_259">to</span> <span data-end="112.520000" data-start="112.320000" id="word_260">her</span> <span data-end="112.880000" data-start="112.520000" id="word_261">friends.</span> <span data-end="113.820000" data-start="113.540000" id="word_262">"And</span> <span data-end="114.160000" data-start="113.820000" id="word_263">these</span> <span data-end="114.360000" data-start="114.160000" id="word_264">will</span> <span data-end="114.580000" data-start="114.360000" id="word_265">grow</span> <span data-end="114.860000" data-start="114.580000" id="word_266">into</span> <span data-end="115.240000" data-start="114.860000" id="word_267">purple</span> <span data-end="115.640000" data-start="115.240000" id="word_268">lavender.</span> <span data-end="116.620000" data-start="116.320000" id="word_269">These</span> <span data-end="116.900000" data-start="116.620000" id="word_270">pink</span> <span data-end="117.200000" data-start="116.900000" id="word_271">ones</span> <span data-end="117.460000" data-start="117.200000" id="word_272">will</span> <span data-end="117.800000" data-start="117.460000" id="word_273">become</span> <span data-end="118.420000" data-start="117.800000" id="word_274">zinnias!"</span> <span data-end="119.700000" data-start="119.420000" id="word_275">Each</span> <span data-end="119.940000" data-start="119.700000" id="word_276">friend</span> <span data-end="120.220000" data-start="119.940000" id="word_277">took</span> <span data-end="120.680000" data-start="120.220000" id="word_278">turns</span> <span data-end="121.100000" data-start="120.680000" id="word_279">pressing</span> <span data-end="121.580000" data-start="121.100000" id="word_280">seeds</span> <span data-end="121.820000" data-start="121.580000" id="word_281">into</span> <span data-end="122.080000" data-start="121.820000" id="word_282">the</span> <span data-end="122.320000" data-start="122.080000" id="word_283">soft</span> <span data-end="122.800000" data-start="122.320000" id="word_284">soil.</span> <span data-end="123.840000" data-start="123.660000" id="word_285">Luna</span> <span data-end="124.140000" data-start="123.840000" id="word_286">taught</span> <span data-end="124.340000" data-start="124.140000" id="word_287">them</span> <span data-end="124.540000" data-start="124.340000" id="word_288">to</span> <span data-end="124.780000" data-start="124.540000" id="word_289">make</span> <span data-end="125.120000" data-start="124.780000" id="word_290">small</span> <span data-end="125.440000" data-start="125.120000" id="word_291">holes</span> <span data-end="125.660000" data-start="125.440000" id="word_292">with</span> <span data-end="125.900000" data-start="125.660000" id="word_293">their</span> <span data-end="126.380000" data-start="125.900000" id="word_294">fingers,</span> <span data-end="127.220000" data-start="127.040000" id="word_295">drop</span> <span data-end="127.420000" data-start="127.220000" id="word_296">in</span> <span data-end="127.620000" data-start="127.420000" id="word_297">a</span> <span data-end="127.860000" data-start="127.620000" id="word_298">seed,</span> <span data-end="128.560000" data-start="128.380000" id="word_299">and</span> <span data-end="128.800000" data-start="128.560000" id="word_300">cover</span> <span data-end="129.060000" data-start="128.800000" id="word_301">it</span> <span data-end="129.320000" data-start="129.060000" id="word_302">gently</span> <span data-end="129.600000" data-start="129.320000" id="word_303">with</span> <span data-end="129.940000" data-start="129.600000" id="word_304">earth.</span> <span data-end="131.140000" data-start="130.720000" id="word_305">"Gardens</span> <span data-end="131.480000" data-start="131.140000" id="word_306">teach</span> <span data-end="131.680000" data-start="131.480000" id="word_307">us</span> <span data-end="131.820000" data-start="131.680000" id="word_308">to</span> <span data-end="132.000000" data-start="131.820000" id="word_309">be</span> <span data-end="132.600000" data-start="132.000000" id="word_310">patient,"</span> <span data-end="133.400000" data-start="133.180000" id="word_311">Luna</span> <span data-end="133.620000" data-start="133.400000" id="word_312">said</span> <span data-end="134.120000" data-start="133.620000" id="word_313">wisely.</span> <span data-end="135.520000" data-start="135.140000" id="word_314">"Seeds</span> <span data-end="135.740000" data-start="135.520000" id="word_315">need</span> <span data-end="136.020000" data-start="135.740000" id="word_316">time</span> <span data-end="136.260000" data-start="136.020000" id="word_317">to</span> <span data-end="136.500000" data-start="136.260000" id="word_318">grow,</span> <span data-end="137.280000" data-start="137.080000" id="word_319">just</span> <span data-end="137.520000" data-start="137.280000" id="word_320">like</span> <span data-end="137.940000" data-start="137.520000" id="word_321">friendships</span> <span data-end="138.220000" data-start="137.940000" id="word_322">need</span> <span data-end="138.520000" data-start="138.220000" id="word_323">time</span> <span data-end="138.720000" data-start="138.520000" id="word_324">to</span> <span data-end="138.900000" data-start="138.720000" id="word_325">grow</span> <span data-end="139.340000" data-start="138.900000" id="word_326">strong."</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image5.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation5.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="140.760000" data-start="140.080000" id="word_327">Every</span> <span data-end="141.000000" data-start="140.760000" id="word_328">day</span> <span data-end="141.300000" data-start="141.000000" id="word_329">after</span> <span data-end="141.660000" data-start="141.300000" id="word_330">that,</span> <span data-end="142.080000" data-start="141.900000" id="word_331">the</span> <span data-end="142.280000" data-start="142.080000" id="word_332">friends</span> <span data-end="142.700000" data-start="142.280000" id="word_333">visited</span> <span data-end="142.960000" data-start="142.700000" id="word_334">their</span> <span data-end="143.200000" data-start="142.960000" id="word_335">garden</span> <span data-end="143.700000" data-start="143.200000" id="word_336">together.</span> <span data-end="144.720000" data-start="144.480000" id="word_337">They</span> <span data-end="144.940000" data-start="144.720000" id="word_338">brought</span> <span data-end="145.360000" data-start="144.940000" id="word_339">watering</span> <span data-end="145.820000" data-start="145.360000" id="word_340">cans</span> <span data-end="146.180000" data-start="145.820000" id="word_341">filled</span> <span data-end="146.440000" data-start="146.180000" id="word_342">with</span> <span data-end="146.720000" data-start="146.440000" id="word_343">cool</span> <span data-end="147.080000" data-start="146.720000" id="word_344">water</span> <span data-end="147.480000" data-start="147.080000" id="word_345">and</span> <span data-end="147.920000" data-start="147.480000" id="word_346">sprinkled</span> <span data-end="148.160000" data-start="147.920000" id="word_347">the</span> <span data-end="148.420000" data-start="148.160000" id="word_348">thirsty</span> <span data-end="148.960000" data-start="148.420000" id="word_349">soil.</span> <span data-end="150.280000" data-start="150.120000" id="word_350">Luna</span> <span data-end="150.760000" data-start="150.280000" id="word_351">reminded</span> <span data-end="151.300000" data-start="150.760000" id="word_352">everyone</span> <span data-end="151.640000" data-start="151.300000" id="word_353">that</span> <span data-end="152.020000" data-start="151.640000" id="word_354">plants</span> <span data-end="152.340000" data-start="152.020000" id="word_355">need</span> <span data-end="152.920000" data-start="152.340000" id="word_356">water,</span> <span data-end="153.980000" data-start="153.540000" id="word_357">sunshine,</span> <span data-end="154.880000" data-start="154.680000" id="word_358">and</span> <span data-end="155.180000" data-start="154.880000" id="word_359">love</span> <span data-end="155.480000" data-start="155.180000" id="word_360">to</span> <span data-end="155.760000" data-start="155.480000" id="word_361">grow.</span> <span data-end="157.100000" data-start="156.860000" id="word_362">"We're</span> <span data-end="157.340000" data-start="157.100000" id="word_363">taking</span> <span data-end="157.600000" data-start="157.340000" id="word_364">care</span> <span data-end="157.780000" data-start="157.600000" id="word_365">of</span> <span data-end="158.040000" data-start="157.780000" id="word_366">something</span> <span data-end="158.620000" data-start="158.040000" id="word_367">together,"</span> <span data-end="159.260000" data-start="159.080000" id="word_368">she</span> <span data-end="159.420000" data-start="159.260000" id="word_369">told</span> <span data-end="159.680000" data-start="159.420000" id="word_370">her</span> <span data-end="160.020000" data-start="159.680000" id="word_371">friends.</span> <span data-end="161.060000" data-start="160.760000" id="word_372">"That</span> <span data-end="161.320000" data-start="161.060000" id="word_373">makes</span> <span data-end="161.620000" data-start="161.320000" id="word_374">our</span> <span data-end="162.040000" data-start="161.620000" id="word_375">friendship</span> <span data-end="162.520000" data-start="162.040000" id="word_376">even</span> <span data-end="162.880000" data-start="162.520000" id="word_377">more</span> <span data-end="163.480000" data-start="162.880000" id="word_378">special."</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image6.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation6.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="165.240000" data-start="164.740000" id="word_379">Weeks</span> <span data-end="165.640000" data-start="165.240000" id="word_380">passed,</span> <span data-end="166.180000" data-start="165.900000" id="word_381">and</span> <span data-end="166.380000" data-start="166.180000" id="word_382">Luna</span> <span data-end="166.720000" data-start="166.380000" id="word_383">checked</span> <span data-end="166.980000" data-start="166.720000" id="word_384">the</span> <span data-end="167.260000" data-start="166.980000" id="word_385">garden</span> <span data-end="167.800000" data-start="167.260000" id="word_386">every</span> <span data-end="168.100000" data-start="167.800000" id="word_387">morning</span> <span data-end="168.460000" data-start="168.100000" id="word_388">before</span> <span data-end="168.940000" data-start="168.460000" id="word_389">school.</span> <span data-end="170.140000" data-start="169.820000" id="word_390">At</span> <span data-end="170.660000" data-start="170.140000" id="word_391">first,</span> <span data-end="171.220000" data-start="171.000000" id="word_392">nothing</span> <span data-end="171.520000" data-start="171.220000" id="word_393">seemed</span> <span data-end="171.800000" data-start="171.520000" id="word_394">to</span> <span data-end="172.080000" data-start="171.800000" id="word_395">happen.</span> <span data-end="172.880000" data-start="172.720000" id="word_396">But</span> <span data-end="173.160000" data-start="172.880000" id="word_397">Luna</span> <span data-end="173.640000" data-start="173.160000" id="word_398">wasn't</span> <span data-end="173.980000" data-start="173.640000" id="word_399">worried.</span> <span data-end="175.260000" data-start="175.020000" id="word_400">"Good</span> <span data-end="175.520000" data-start="175.260000" id="word_401">things</span> <span data-end="175.800000" data-start="175.520000" id="word_402">take</span> <span data-end="176.340000" data-start="175.800000" id="word_403">time,"</span> <span data-end="176.980000" data-start="176.720000" id="word_404">she</span> <span data-end="177.340000" data-start="176.980000" id="word_405">reminded</span> <span data-end="177.840000" data-start="177.340000" id="word_406">herself.</span> <span data-end="179.020000" data-start="178.720000" id="word_407">Then</span> <span data-end="179.280000" data-start="179.020000" id="word_408">one</span> <span data-end="179.680000" data-start="179.280000" id="word_409">morning,</span> <span data-end="180.060000" data-start="179.840000" id="word_410">she</span> <span data-end="180.320000" data-start="180.060000" id="word_411">saw</span> <span data-end="180.960000" data-start="180.320000" id="word_412">them—tiny</span> <span data-end="181.620000" data-start="181.320000" id="word_413">green</span> <span data-end="182.100000" data-start="181.620000" id="word_414">sprouts</span> <span data-end="182.540000" data-start="182.100000" id="word_415">pushing</span> <span data-end="182.940000" data-start="182.540000" id="word_416">up</span> <span data-end="183.180000" data-start="182.940000" id="word_417">through</span> <span data-end="183.360000" data-start="183.180000" id="word_418">the</span> <span data-end="183.560000" data-start="183.360000" id="word_419">soil!</span> <span data-end="183.840000" data-start="183.560000" id="word_420">Luna</span> <span data-end="185.420000" data-start="185.160000" id="word_421">felt</span> <span data-end="185.720000" data-start="185.420000" id="word_422">so</span> <span data-end="186.140000" data-start="185.720000" id="word_423">happy</span> <span data-end="186.440000" data-start="186.140000" id="word_424">she</span> <span data-end="186.640000" data-start="186.440000" id="word_425">could</span> <span data-end="186.800000" data-start="186.640000" id="word_426">hardly</span> <span data-end="187.120000" data-start="186.800000" id="word_427">stand</span> <span data-end="187.620000" data-start="187.120000" id="word_428">still.</span> <span data-end="188.040000" data-start="187.620000" id="word_429">She</span> <span data-end="189.040000" data-start="188.800000" id="word_430">touched</span> <span data-end="189.320000" data-start="189.040000" id="word_431">the</span> <span data-end="189.520000" data-start="189.320000" id="word_432">little</span> <span data-end="189.760000" data-start="189.520000" id="word_433">sprouts</span> <span data-end="190.080000" data-start="189.760000" id="word_434">gently</span> <span data-end="190.620000" data-start="190.080000" id="word_435">with</span> <span data-end="190.860000" data-start="190.620000" id="word_436">one</span> <span data-end="191.120000" data-start="190.860000" id="word_437">finger.</span> <span data-end="191.480000" data-start="191.120000" id="word_438">"Hello,</span> <span data-end="192.860000" data-start="192.500000" id="word_439">little</span> <span data-end="193.260000" data-start="192.940000" id="word_440">plants,"</span> <span data-end="193.760000" data-start="193.260000" id="word_441">she</span> <span data-end="194.420000" data-start="194.180000" id="word_442">whispered.</span> <span data-end="195.220000" data-start="194.420000" id="word_443">"Keep</span> <span data-end="195.680000" data-start="195.340000" id="word_444">growing</span> <span data-end="196.180000" data-start="195.680000" id="word_445">strong."</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image7.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation7.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="196.940000" data-start="196.180000" id="word_446">More</span> <span data-end="198.420000" data-start="197.700000" id="word_447">weeks</span> <span data-end="198.720000" data-start="198.420000" id="word_448">went</span> <span data-end="198.940000" data-start="198.720000" id="word_449">by,</span> <span data-end="199.440000" data-start="198.940000" id="word_450">and</span> <span data-end="199.900000" data-start="199.760000" id="word_451">something</span> <span data-end="200.320000" data-start="199.900000" id="word_452">magical</span> <span data-end="200.800000" data-start="200.320000" id="word_453">happened.</span> <span data-end="201.260000" data-start="200.800000" id="word_454">The</span> <span data-end="202.140000" data-start="201.780000" id="word_455">garden</span> <span data-end="202.460000" data-start="202.140000" id="word_456">exploded</span> <span data-end="203.260000" data-start="202.460000" id="word_457">with</span> <span data-end="203.580000" data-start="203.260000" id="word_458">color!</span> <span data-end="203.980000" data-start="203.580000" id="word_459">Bright</span> <span data-end="205.040000" data-start="204.780000" id="word_460">yellow</span> <span data-end="205.400000" data-start="205.040000" id="word_461">sunflowers</span> <span data-end="206.080000" data-start="205.400000" id="word_462">stretched</span> <span data-end="206.480000" data-start="206.080000" id="word_463">tall</span> <span data-end="206.900000" data-start="206.480000" id="word_464">toward</span> <span data-end="207.140000" data-start="206.900000" id="word_465">the</span> <span data-end="207.380000" data-start="207.140000" id="word_466">sky.</span> <span data-end="207.860000" data-start="207.380000" id="word_467">Purple</span> <span data-end="208.860000" data-start="208.500000" id="word_468">lavender</span> <span data-end="209.320000" data-start="208.860000" id="word_469">swayed</span> <span data-end="209.880000" data-start="209.320000" id="word_470">in</span> <span data-end="210.040000" data-start="209.880000" id="word_471">the</span> <span data-end="210.200000" data-start="210.040000" id="word_472">breeze,</span> <span data-end="210.660000" data-start="210.200000" id="word_473">filling</span> <span data-end="211.380000" data-start="211.260000" id="word_474">the</span> <span data-end="211.680000" data-start="211.380000" id="word_475">air</span> <span data-end="211.880000" data-start="211.680000" id="word_476">with</span> <span data-end="212.220000" data-start="211.880000" id="word_477">sweet</span> <span data-end="212.580000" data-start="212.220000" id="word_478">scent.</span> <span data-end="212.980000" data-start="212.580000" id="word_479">Pink</span> <span data-end="214.440000" data-start="214.160000" id="word_480">and</span> <span data-end="214.700000" data-start="214.440000" id="word_481">red</span> <span data-end="215.000000" data-start="214.700000" id="word_482">zinnias</span> <span data-end="215.480000" data-start="215.000000" id="word_483">opened</span> <span data-end="215.820000" data-start="215.480000" id="word_484">their</span> <span data-end="216.080000" data-start="215.820000" id="word_485">petals</span> <span data-end="216.380000" data-start="216.080000" id="word_486">wide.</span> <span data-end="216.920000" data-start="216.380000" id="word_487">Orange</span> <span data-end="218.160000" data-start="217.840000" id="word_488">marigolds</span> <span data-end="218.800000" data-start="218.160000" id="word_489">glowed</span> <span data-end="219.380000" data-start="218.800000" id="word_490">like</span> <span data-end="219.600000" data-start="219.380000" id="word_491">little</span> <span data-end="219.880000" data-start="219.600000" id="word_492">suns.</span> <span data-end="220.760000" data-start="219.880000" id="word_493">Blue</span> <span data-end="221.280000" data-start="220.920000" id="word_494">forget-me-nots</span> <span data-end="221.640000" data-start="221.280000" id="word_495">dotted</span> <span data-end="221.840000" data-start="221.640000" id="word_496">the</span> <span data-end="222.040000" data-start="221.840000" id="word_497">garden</span> <span data-end="222.420000" data-start="222.040000" id="word_498">like</span> <span data-end="222.700000" data-start="222.420000" id="word_499">tiny</span> <span data-end="222.960000" data-start="222.700000" id="word_500">stars.</span> <span data-end="223.300000" data-start="222.960000" id="word_501">When</span> <span data-end="223.780000" data-start="223.300000" id="word_502">Luna</span> <span data-end="224.480000" data-start="223.780000" id="word_503">and</span> <span data-end="226.080000" data-start="225.400000" id="word_504">her</span> <span data-end="226.360000" data-start="226.080000" id="word_505">friends</span> <span data-end="226.540000" data-start="226.360000" id="word_506">arrived</span> <span data-end="226.760000" data-start="226.540000" id="word_507">that</span> <span data-end="226.980000" data-start="226.760000" id="word_508">afternoon,</span> <span data-end="227.420000" data-start="226.980000" id="word_509">they</span> <span data-end="227.720000" data-start="227.420000" id="word_510">gasped</span> <span data-end="228.180000" data-start="227.720000" id="word_511">with</span> <span data-end="228.900000" data-start="228.600000" id="word_512">wonder.</span> <span data-end="229.360000" data-start="228.900000" id="word_513">Butterflies</span> <span data-end="229.620000" data-start="229.360000" id="word_514">danced</span> <span data-end="230.120000" data-start="229.620000" id="word_515">from</span> <span data-end="231.660000" data-start="231.000000" id="word_516">flower</span> <span data-end="232.160000" data-start="231.660000" id="word_517">to</span> <span data-end="232.540000" data-start="232.160000" id="word_518">flower.</span> <span data-end="232.860000" data-start="232.540000" id="word_519">Bees</span> <span data-end="233.140000" data-start="232.860000" id="word_520">hummed</span> <span data-end="233.520000" data-start="233.140000" id="word_521">happy</span> <span data-end="234.860000" data-start="234.360000" id="word_522">songs.</span> <span data-end="235.240000" data-start="234.860000" id="word_523">"We</span> <span data-end="235.500000" data-start="235.240000" id="word_524">did</span> <span data-end="236.000000" data-start="235.500000" id="word_525">this</span> <span data-end="236.980000" data-start="236.740000" id="word_526">together!"</span> <span data-end="237.240000" data-start="236.980000" id="word_527">Maya</span> <span data-end="237.480000" data-start="237.240000" id="word_528">cheered.</span> <span data-end="238.060000" data-start="237.480000" id="word_529">"Our</span> <span data-end="238.920000" data-start="238.720000" id="word_530">garden</span> <span data-end="239.360000" data-start="238.920000" id="word_531">is</span> <span data-end="240.100000" data-start="239.820000" id="word_532">like</span> <span data-end="240.380000" data-start="240.100000" id="word_533">a</span> <span data-end="240.580000" data-start="240.380000" id="word_534">rainbow!"</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image8.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation8.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="240.760000" data-start="240.580000" id="word_535">The</span> <span data-end="241.020000" data-start="240.760000" id="word_536">colorful</span> <span data-end="241.380000" data-start="241.020000" id="word_537">garden</span> <span data-end="242.820000" data-start="242.580000" id="word_538">became</span> <span data-end="243.180000" data-start="242.820000" id="word_539">a</span> <span data-end="243.520000" data-start="243.180000" id="word_540">special</span> <span data-end="243.840000" data-start="243.520000" id="word_541">place</span> <span data-end="244.180000" data-start="243.840000" id="word_542">for</span> <span data-end="244.420000" data-start="244.180000" id="word_543">everyone</span> <span data-end="244.760000" data-start="244.420000" id="word_544">in</span> <span data-end="245.100000" data-start="244.760000" id="word_545">the</span> <span data-end="245.400000" data-start="245.100000" id="word_546">neighborhood.</span> <span data-end="245.540000" data-start="245.400000" id="word_547">Families</span> <span data-end="245.680000" data-start="245.540000" id="word_548">came</span> <span data-end="246.080000" data-start="245.680000" id="word_549">to</span> <span data-end="247.480000" data-start="247.100000" id="word_550">admire</span> <span data-end="247.820000" data-start="247.480000" id="word_551">the</span> <span data-end="248.060000" data-start="247.820000" id="word_552">flowers</span> <span data-end="248.320000" data-start="248.060000" id="word_553">and</span> <span data-end="248.600000" data-start="248.320000" id="word_554">rest</span> <span data-end="248.900000" data-start="248.600000" id="word_555">on</span> <span data-end="249.280000" data-start="248.900000" id="word_556">the</span> <span data-end="249.520000" data-start="249.280000" id="word_557">soft</span> <span data-end="249.680000" data-start="249.520000" id="word_558">grass.</span> <span data-end="249.920000" data-start="249.680000" id="word_559">Luna</span> <span data-end="250.160000" data-start="249.920000" id="word_560">and</span> <span data-end="250.680000" data-start="250.160000" id="word_561">her</span> <span data-end="252.020000" data-start="251.420000" id="word_562">friends</span> <span data-end="252.220000" data-start="252.020000" id="word_563">felt</span> <span data-end="252.420000" data-start="252.220000" id="word_564">proud</span> <span data-end="252.700000" data-start="252.420000" id="word_565">every</span> <span data-end="252.960000" data-start="252.700000" id="word_566">time</span> <span data-end="253.360000" data-start="252.960000" id="word_567">someone</span> <span data-end="253.780000" data-start="253.360000" id="word_568">smiled</span> <span data-end="254.020000" data-start="253.780000" id="word_569">at</span> <span data-end="254.320000" data-start="254.020000" id="word_570">their</span> <span data-end="254.720000" data-start="254.320000" id="word_571">beautiful</span> <span data-end="254.840000" data-start="254.720000" id="word_572">creation.</span> <span data-end="255.000000" data-start="254.840000" id="word_573">"Remember</span> <span data-end="255.400000" data-start="255.000000" id="word_574">when</span> <span data-end="255.960000" data-start="255.400000" id="word_575">this</span> <span data-end="257.860000" data-start="257.420000" id="word_576">was</span> <span data-end="258.040000" data-start="257.860000" id="word_577">just</span> <span data-end="258.240000" data-start="258.040000" id="word_578">weeds</span> <span data-end="258.400000" data-start="258.240000" id="word_579">and</span> <span data-end="258.680000" data-start="258.400000" id="word_580">dirt?"</span> <span data-end="258.960000" data-start="258.680000" id="word_581">Sam</span> <span data-end="259.240000" data-start="258.960000" id="word_582">asked.</span> <span data-end="259.500000" data-start="259.240000" id="word_583">Luna</span> <span data-end="260.340000" data-start="260.140000" id="word_584">nodded,</span> <span data-end="261.020000" data-start="260.340000" id="word_585">her</span> <span data-end="262.220000" data-start="262.000000" id="word_586">heart</span> <span data-end="262.800000" data-start="262.220000" id="word_587">full</span> <span data-end="263.200000" data-start="262.980000" id="word_588">of</span> <span data-end="263.460000" data-start="263.200000" id="word_589">happiness.</span> <span data-end="263.720000" data-start="263.460000" id="word_590">"We</span> <span data-end="263.940000" data-start="263.720000" id="word_591">learned</span> <span data-end="264.360000" data-start="263.940000" id="word_592">something</span> <span data-end="265.680000" data-start="265.440000" id="word_593">important,"</span> <span data-end="265.940000" data-start="265.680000" id="word_594">she</span> <span data-end="266.360000" data-start="265.940000" id="word_595">said.</span> <span data-end="266.960000" data-start="266.360000" id="word_596">"When</span> <span data-end="267.500000" data-start="267.260000" id="word_597">friends</span> <span data-end="267.800000" data-start="267.500000" id="word_598">work</span> <span data-end="269.020000" data-start="268.820000" id="word_599">together</span> <span data-end="269.340000" data-start="269.020000" id="word_600">and</span> <span data-end="269.640000" data-start="269.340000" id="word_601">take</span> <span data-end="270.020000" data-start="269.640000" id="word_602">care</span> <span data-end="270.280000" data-start="270.020000" id="word_603">of</span> <span data-end="270.480000" data-start="270.280000" id="word_604">something</span> <span data-end="270.700000" data-start="270.480000" id="word_605">with</span> <span data-end="270.920000" data-start="270.700000" id="word_606">patience</span> <span data-end="271.180000" data-start="270.920000" id="word_607">and</span> <span data-end="271.480000" data-start="271.180000" id="word_608">love,</span> <span data-end="271.840000" data-start="271.480000" id="word_609">magical</span> <span data-end="272.160000" data-start="271.840000" id="word_610">things</span> <span data-end="272.500000" data-start="272.160000" id="word_611">can</span> <span data-end="273.380000" data-start="273.120000" id="word_612">happen."</span> <span data-end="273.820000" data-start="273.380000" id="word_613">The</span> <span data-end="274.100000" data-start="273.820000" id="word_614">garden</span> <span data-end="274.500000" data-start="274.100000" id="word_615">wasn't</span> <span data-end="275.840000" data-start="275.580000" id="word_616">just</span> <span data-end="276.140000" data-start="275.840000" id="word_617">full</span> <span data-end="276.440000" data-start="276.140000" id="word_618">of</span> <span data-end="276.800000" data-start="276.440000" id="word_619">beautiful</span> <span data-end="277.020000" data-start="276.800000" id="word_620">flowers—it</span> <span data-end="277.200000" data-start="277.020000" id="word_621">was</span> <span data-end="277.580000" data-start="277.200000" id="word_622">full</span> <span data-end="278.060000" data-start="277.580000" id="word_623">of</span> <span data-end="278.300000" data-start="278.060000" id="word_624">friendship,</span> <span data-end="278.920000" data-start="278.300000" id="word_625">teamwork,</span> <span data-end="279.200000" data-start="278.920000" id="word_626">and</span> <span data-end="279.460000" data-start="279.200000" id="word_627">the</span> <span data-end="279.920000" data-start="279.460000" id="word_628">wonderful</span> <span data-end="280.780000" data-start="280.420000" id="word_629">feeling</span> <span data-end="281.600000" data-start="281.500000" id="word_630">that</span> <span data-end="281.820000" data-start="281.600000" id="word_631">comes</span> <span data-end="282.280000" data-start="281.820000" id="word_632">from</span> <span data-end="282.680000" data-start="282.280000" id="word_633">making</span> <span data-end="282.920000" data-start="282.680000" id="word_634">the</span> <span data-end="283.200000" data-start="282.920000" id="word_635">world</span> <span data-end="283.540000" data-start="283.200000" id="word_636">a</span> <span data-end="283.780000" data-start="283.540000" id="word_637">little</span> <span data-end="284.080000" data-start="283.780000" id="word_638">more</span> <span data-end="284.360000" data-start="284.080000" id="word_639">colorful.</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Luna's Colorful Garden" autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="lunas-colorful-garden/lunas-colorful-garden-image9.webp" preload="none" src="lunas-colorful-garden/lunas-colorful-garden-animation9.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="284.540000" data-start="284.360000" id="word_640">The</span> <span data-end="284.680000" data-start="284.540000" id="word_641">End</span> <br/></div>
-<style id="sb-questions-style">
-.questions-container {
-  display: block;
-  clear: both;
-  margin-top: 0;
-  margin-bottom: 60px;
-  padding: 30px 20px;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-.questions-title {
-  font-family: 'Coming Soon', cursive;
-  font-size: 1.8em;
-  color: #FFD700;
-  text-shadow: 0 0 10px rgba(255,215,0,0.6), 0 0 20px rgba(255,165,0,0.4);
-  margin-bottom: 30px;
-}
-.question-text {
-  font-family: 'Coming Soon', cursive;
-  font-size: 1.3em;
-  color: #FFD700;
-  text-shadow: 0 0 8px rgba(255,215,0,0.5), 0 0 16px rgba(255,165,0,0.3);
-  line-height: 1.8;
-  padding: 20px 10px;
-  margin: 0 auto 50px auto;
-  max-width: 85%;
-}
-.question-number {
-  display: block;
-  font-size: 1.4em;
-  color: #FFD700;
-  text-shadow: 0 0 6px rgba(255,165,0,0.5);
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-@media (max-width: 900px) {
-  .questions-container {
-    padding: 20px 15px;
-  }
-  .question-text {
-    font-size: 1.1em;
-    max-width: 95%;
-  }
-}
-</style>
 <div class="questions-container" id="questionsContainer" style="display:none;">
 <h2 class="questions-title">Discussion Questions</h2>
 <div class="question-text">
@@ -8240,27 +8282,27 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 <div class="carousel-container">
 <div class="carousel-track">
 <div class="carousel-item" data-title="Maya's Missing Mittens">
-<a href="mayas-missing-mittens.html"><img alt="Maya's Missing Mittens" loading="lazy" onerror="this.style.display='none'" src="icon/mayas-missing-mittens-icon.webp"/></a>
+<a href="mayas-missing-mittens.html"><img alt="Maya's Missing Mittens" decoding="async" height="250" loading="lazy" onerror="this.style.display='none'" src="icon/mayas-missing-mittens-icon.webp" width="250"/></a>
 <a class="carousel-title-link" href="mayas-missing-mittens.html"><span class="carousel-item-title">Maya's Missing Mittens</span></a>
 </div>
 <div class="carousel-item" data-title="Milo the Mouse">
-<a href="milo-the-mouse.html"><img alt="Milo the Mouse" loading="lazy" onerror="this.style.display='none'" src="icon/milo-the-mouse-icon.webp"/></a>
+<a href="milo-the-mouse.html"><img alt="Milo the Mouse" decoding="async" height="250" loading="lazy" onerror="this.style.display='none'" src="icon/milo-the-mouse-icon.webp" width="250"/></a>
 <a class="carousel-title-link" href="milo-the-mouse.html"><span class="carousel-item-title">Milo the Mouse</span></a>
 </div>
 <div class="carousel-item" data-title="The Lonely Leaf">
-<a href="the-lonely-leaf.html"><img alt="The Lonely Leaf" loading="lazy" onerror="this.style.display='none'" src="icon/the-lonely-leaf-icon.webp"/></a>
+<a href="the-lonely-leaf.html"><img alt="The Lonely Leaf" decoding="async" height="250" loading="lazy" onerror="this.style.display='none'" src="icon/the-lonely-leaf-icon.webp" width="250"/></a>
 <a class="carousel-title-link" href="the-lonely-leaf.html"><span class="carousel-item-title">The Lonely Leaf</span></a>
 </div>
 <div class="carousel-item" data-title="Melody and the Muddy Puppy">
-<a href="melody-and-the-muddy-puppy.html"><img alt="Melody and the Muddy Puppy" loading="lazy" onerror="this.style.display='none'" src="icon/melody-and-the-muddy-puppy-icon.webp"/></a>
+<a href="melody-and-the-muddy-puppy.html"><img alt="Melody and the Muddy Puppy" decoding="async" height="250" loading="lazy" onerror="this.style.display='none'" src="icon/melody-and-the-muddy-puppy-icon.webp" width="250"/></a>
 <a class="carousel-title-link" href="melody-and-the-muddy-puppy.html"><span class="carousel-item-title">Melody and the Muddy Puppy</span></a>
 </div>
 <div class="carousel-item" data-title="Grumpy Grandpa and the Silly Hat">
-<a href="grumpy-grandpa-and-the-silly-hat.html"><img alt="Grumpy Grandpa and the Silly Hat" loading="lazy" onerror="this.style.display='none'" src="icon/grumpy-grandpa-and-the-silly-hat-icon.webp"/></a>
+<a href="grumpy-grandpa-and-the-silly-hat.html"><img alt="Grumpy Grandpa and the Silly Hat" decoding="async" height="250" loading="lazy" onerror="this.style.display='none'" src="icon/grumpy-grandpa-and-the-silly-hat-icon.webp" width="250"/></a>
 <a class="carousel-title-link" href="grumpy-grandpa-and-the-silly-hat.html"><span class="carousel-item-title">Grumpy Grandpa and the Silly Hat</span></a>
 </div>
 <div class="carousel-item" data-title="Lily and the Blue Balloon">
-<a href="lily-and-the-blue-balloon.html"><img alt="Lily and the Blue Balloon" loading="lazy" onerror="this.style.display='none'" src="icon/lily-and-the-blue-balloon-icon.webp"/></a>
+<a href="lily-and-the-blue-balloon.html"><img alt="Lily and the Blue Balloon" decoding="async" height="250" loading="lazy" onerror="this.style.display='none'" src="icon/lily-and-the-blue-balloon-icon.webp" width="250"/></a>
 <a class="carousel-title-link" href="lily-and-the-blue-balloon.html"><span class="carousel-item-title">Lily and the Blue Balloon</span></a>
 </div>
 </div>
@@ -8268,7 +8310,6 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 <button aria-label="Scroll right" class="carousel-button">→</button>
 </div>
 </section>
-
 <script id="sb-questions-script">
 (function(){
   // Reveal questions AFTER end animation + completion sound finish (~8 seconds after audio ends)
@@ -9024,50 +9065,7 @@ document.addEventListener('DOMContentLoaded', updateStars);
     q('.carousel-wrapper').forEach(initWrapper);
   });
 })();
-</script><style id="sb-mobile-carousel-typography-override">
-@media (max-width: 800px){
-  /* Remove the extra line break between title and description */
-  .carousel-section .carousel-item br{
-    display: none !important;
-  }
-
-  /* Title: smaller than before, but still larger than description; keep white */
-  .carousel-section .carousel-item .carousel-title,
-  .carousel-section a.carousel-title-link .carousel-title,
-  .carousel-section .carousel-title{
-    font-size: 0.74em !important;   /* adjust as needed */
-    line-height: 1.12em !important;
-    color: #ffffff !important;
-    margin: 0.15em 0 0.08em !important;  /* tighter */
-  }
-  /* Ensure the title link itself stays white and un-underlined */
-  .carousel-section .carousel-title-link,
-  .carousel-section .carousel-title-link:link,
-  .carousel-section .carousel-title-link:visited{
-    color: #ffffff !important;
-    text-decoration: none !important;
-  }
-
-  /* Description: compact, white */
-  .carousel-section .carousel-desc{
-    font-size: 0.56em !important;
-    line-height: 1.18em !important;
-    color: #ffffff !important;
-    margin: 0.05em 0 0.05em !important;  /* tighter */
-  }
-
-  /* Categories: same size as description, bold, white */
-  .carousel-section .carousel-category{
-    font-size: 0.56em !important;
-    font-weight: 700 !important;
-    color: #ffffff !important;
-    text-decoration: none !important;
-  }
-  .carousel-section .carousel-categories{
-    margin-top: 0.06em !important;  /* tighter */
-  }
-}
-</style>
+</script>
 <script id="sb-fav-inline-js">
 (function(){
   var btn = document.getElementById('sb-story-fav-btn'); if(!btn) return;
@@ -14774,7 +14772,6 @@ var wordTimings = [
   hideAnim(); // initial state
 })();
 </script>
-
 <script id="sb-carousel-script">
 (function(){
     var track = document.querySelector('.age-carousel .carousel-track');
@@ -14806,6 +14803,208 @@ var wordTimings = [
     });
 })();
 </script>
-</body>
+<style id="sb-mobile-carousel-typography-override">
+@media (max-width: 800px){
+  /* Remove the extra line break between title and description */
+  .carousel-section .carousel-item br{
+    display: none !important;
+  }
+
+  /* Title: smaller than before, but still larger than description; keep white */
+  .carousel-section .carousel-item .carousel-title,
+  .carousel-section a.carousel-title-link .carousel-title,
+  .carousel-section .carousel-title{
+    font-size: 0.74em !important;   /* adjust as needed */
+    line-height: 1.12em !important;
+    color: #ffffff !important;
+    margin: 0.15em 0 0.08em !important;  /* tighter */
+  }
+  /* Ensure the title link itself stays white and un-underlined */
+  .carousel-section .carousel-title-link,
+  .carousel-section .carousel-title-link:link,
+  .carousel-section .carousel-title-link:visited{
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+
+  /* Description: compact, white */
+  .carousel-section .carousel-desc{
+    font-size: 0.56em !important;
+    line-height: 1.18em !important;
+    color: #ffffff !important;
+    margin: 0.05em 0 0.05em !important;  /* tighter */
+  }
+
+  /* Categories: same size as description, bold, white */
+  .carousel-section .carousel-category{
+    font-size: 0.56em !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+  .carousel-section .carousel-categories{
+    margin-top: 0.06em !important;  /* tighter */
+  }
+}
+</style><script id="sb-favorites-js">
+(function(){
+  function getFavorites(){ try { return JSON.parse(localStorage.getItem('favorites') || "[]"); } catch { return []; } }
+  function setFavorites(f){ localStorage.setItem('favorites', JSON.stringify(f)); }
+  function isFavorite(t){ return getFavorites().includes(t); }
+  window.toggleFavorite = function(btn){
+    const t = btn.getAttribute("data-title");
+    let favs = getFavorites();
+    favs = favs.includes(t) ? favs.filter(x=>x!==t) : favs.concat(t);
+    setFavorites(favs);
+    updateStars();
+    buildFavoritesCarousel();
+  }
+  window.updateStars = function(){
+    document.querySelectorAll('.favorite-star').forEach(btn=>{
+      const t = btn.getAttribute("data-title");
+      const star = btn.querySelector(".star");
+      if(star) star.innerHTML = isFavorite(t) ? "&#9733;" : "&#9734;";
+      btn.title = isFavorite(t) ? "Remove from Favorites" : "Add to Favorites";
+    });
+  }
+
+  // Native-momentum init for a single wrapper (Favorites)
+  function initFavoritesNative(wrapper){
+    if(!wrapper || wrapper.dataset.nativeInfinite==='1') return;
+    const track = wrapper.querySelector('.carousel-track');
+    const container = wrapper.querySelector('.carousel-container');
+    if(!track || !container) return;
+
+    const items = Array.from(track.children).filter(n=>n.matches('.carousel-item,.carousel-card'));
+    const base = items.length; if(!base) return;
+
+    // Measure one card
+    const measure = ()=> (items[0]?.getBoundingClientRect().width || container.getBoundingClientRect().width/2 || 1);
+    let cardW = measure();
+
+    // Clone enough items on each side
+    let clones = Math.max(1, Math.ceil(container.clientWidth / cardW));
+    clones = Math.min(clones, base);
+    const head = items.slice(0, clones).map(n=>n.cloneNode(true));
+    const tail = items.slice(-clones).map(n=>n.cloneNode(true));
+    tail.forEach(n=>track.insertBefore(n, track.firstChild));
+    head.forEach(n=>track.appendChild(n));
+
+    const jump = base * cardW;
+    const start = clones * cardW;
+    track.scrollLeft = Math.round(start);
+
+    // Buttons
+    const [leftBtn, rightBtn] = wrapper.querySelectorAll('.carousel-button');
+    if(leftBtn)  leftBtn.onclick  = (e)=>{ e.preventDefault(); track.scrollBy({left:-cardW,behavior:'smooth'}); };
+    if(rightBtn) rightBtn.onclick = (e)=>{ e.preventDefault(); track.scrollBy({left: cardW,behavior:'smooth'}); };
+
+    // Wrap
+    let wrapping=false;
+    track.addEventListener('scroll', ()=>{
+      if(wrapping) return;
+      const x=track.scrollLeft, nearL = x <= (cardW*0.5), nearR = x >= (start+jump - cardW*0.5);
+      if(nearL || nearR){
+        const prev = track.style.scrollSnapType; track.style.scrollSnapType = 'none';
+        wrapping = true;
+        track.scrollLeft = Math.round(x + (nearL ? jump : -jump));
+        requestAnimationFrame(()=>{ track.style.scrollSnapType = prev || 'x mandatory'; wrapping=false; });
+      }
+    }, {passive:true});
+
+    // Keep aligned on resize
+    window.addEventListener('resize', ()=>{
+      cardW = measure();
+      const idx = Math.round(track.scrollLeft / (cardW||1));
+      track.scrollLeft = Math.round(idx * (cardW||1));
+    });
+
+    wrapper.dataset.nativeInfinite='1';
+  }
+
+  // Build/refresh Favorites section
+  window.buildFavoritesCarousel = function(){
+    const favs = getFavorites();
+    const allCards = Array.from(document.querySelectorAll('.carousel-item,.carousel-card'));
+    const used = new Set();
+    const favCards = [];
+
+    favs.forEach(t=>{
+      if(used.has(t)) return;
+      const c = allCards.find(el => el.getAttribute('data-title') === t);
+      if(c){ favCards.push(c.cloneNode(true)); used.add(t); }
+    });
+
+    // Find or create the target section
+    let host = document.getElementById('favorites-carousel-section');
+    if(!host){
+      host = document.createElement('div');
+      host.id = 'favorites-carousel-section';
+      // insert after the first carousel-section if possible
+      const firstSection = document.querySelector('.carousel-section');
+      if(firstSection && firstSection.parentElement){
+        firstSection.parentElement.insertBefore(host, firstSection.nextSibling);
+      } else {
+        document.body.appendChild(host);
+      }
+    }
+
+    if(favCards.length === 0){
+      host.innerHTML = ""; // nothing to show
+      return;
+    }
+
+    host.innerHTML = `
+      <div class="carousel-section">
+        <h2 class="carousel-header"><span class="glow-underline">Favorites</span></h2>
+        <div class="carousel-wrapper">
+          <button class="carousel-button">←</button>
+          <div class="carousel-container">
+            <div class="carousel-track" id="favorites-carousel-track"></div>
+          </div>
+          <button class="carousel-button">→</button>
+        </div>
+      </div>`;
+
+    const track = host.querySelector('#favorites-carousel-track');
+    favCards.forEach(c => track.appendChild(c));
+
+    // Init the favorites wrapper with native infinite behavior
+    initFavoritesNative(host.querySelector('.carousel-wrapper'));
+  };
+
+  document.addEventListener('DOMContentLoaded', function(){
+    updateStars();
+    buildFavoritesCarousel();
+  });
+})();
+</script><script id="sb-mobile-scrollby-override">
+(function(){
+  if (!window.matchMedia || !window.matchMedia("(max-width: 800px)").matches) return;
+
+  function q(sel, root){ return [].slice.call((root||document).querySelectorAll(sel)); }
+  function firstCard(track){ return track && (track.querySelector('.carousel-item, .carousel-card')); }
+
+  // Override moveCarousel to use native scrollBy (no clamping, no translateX)
+  window.moveCarousel = function(btn, dir){
+    var w = btn.closest('.carousel-wrapper');
+    var track = w && w.querySelector('.carousel-track');
+    var card = firstCard(track);
+    if(!track || !card) return;
+    var wCard = card.getBoundingClientRect().width || 1;
+    track.scrollBy({ left: (dir<0?-1:1) * wCard, behavior: 'smooth' });
+  };
+
+  // During scroll, strip any inline transform/data-current that older code might set
+  q('.carousel-track').forEach(function(track){
+    track.addEventListener('scroll', function(){
+      try{
+        if (track.hasAttribute('data-current')) track.removeAttribute('data-current');
+        if (track.style && track.style.transform) track.style.transform = ''; // neutralize translateX writes
+      }catch(e){}
+    }, {passive:true});
+  });
+})();
+</script></body>
 </html>
-<!-- Deploy trigger: 2026-01-13 22:13:40 -->
+<!-- Deploy trigger: 2026-01-13 22:36:41 -->
