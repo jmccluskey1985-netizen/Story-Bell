@@ -7,12 +7,6 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://storybellkids.com/milo-the-mouse/</loc>
-    <lastmod>2026-01-07T21:37:49Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>https://storybellkids.com/mayas-missing-mittens/</loc>
     <lastmod>2026-01-07T21:37:49Z</lastmod>
     <changefreq>monthly</changefreq>
@@ -20,7 +14,13 @@
   </url>
   <url>
     <loc>https://storybellkids.com/lunas-colorful-garden/</loc>
-    <lastmod>2026-01-08T22:36:13Z</lastmod>
+    <lastmod>2026-01-13T21:49:15Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://storybellkids.com/rustys-big-day/</loc>
+    <lastmod>2026-01-17T19:34:15Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -164,7 +164,7 @@
   </url>
   <url>
     <loc>https://storybellkids.com/lunas-colorful-garden.html</loc>
-    <lastmod>2026-01-08T22:36:06Z</lastmod>
+    <lastmod>2026-01-17T19:40:56Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -176,7 +176,7 @@
   </url>
   <url>
     <loc>https://storybellkids.com/milo-the-mouse.html</loc>
-    <lastmod>2026-01-08T22:36:06Z</lastmod>
+    <lastmod>2026-01-17T19:40:56Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -189,6 +189,12 @@
   <url>
     <loc>https://storybellkids.com/read-aloud-stories-for-children.html</loc>
     <lastmod>2026-01-08T22:36:00Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://storybellkids.com/rustys-big-day.html</loc>
+    <lastmod>2026-01-17T19:40:56Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
