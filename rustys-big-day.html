@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<!-- Last modified: 2026-01-18 - Fixed FAB desktop visibility -->
 <html lang="en">
 <head>
 <!-- BEGIN SWIPE-CAROUSEL-STYLE -->
@@ -4732,14 +4732,6 @@ nav ul > li > a {
   /* Keep Menu FAB visible even when open */
   body.sb-menu-open .sb-fab-menu{ display:inline-flex !important; }
 
-/* Hide FABs on desktop - only show on mobile */
-@media (min-width: 801px) {
-  .sb-fab, .sb-fab-menu, .sb-fab-up {
-    display: none !important;
-    visibility: hidden !important;
-  }
-}
-
   /* Header: move title further left; keep hamburger pinned right */
   header, .site-header, .header{
     position: relative !important;
@@ -4756,6 +4748,13 @@ nav ul > li > a {
   }
 }
 
+/* Hide FABs on desktop - these are mobile-only controls */
+@media (min-width: 901px) {
+  .sb-fab, .sb-fab-menu, .sb-fab-up {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
 
 @media (max-width: 900px){
   .scrollup-menu{ bottom: auto; top: calc(100% + 8px); right: 6px; } /* drop-over on mobile */
