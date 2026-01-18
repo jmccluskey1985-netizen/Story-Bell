@@ -4732,6 +4732,14 @@ nav ul > li > a {
   /* Keep Menu FAB visible even when open */
   body.sb-menu-open .sb-fab-menu{ display:inline-flex !important; }
 
+/* Hide FABs on desktop - only show on mobile */
+@media (min-width: 801px) {
+  .sb-fab, .sb-fab-menu, .sb-fab-up {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
   /* Header: move title further left; keep hamburger pinned right */
   header, .site-header, .header{
     position: relative !important;
