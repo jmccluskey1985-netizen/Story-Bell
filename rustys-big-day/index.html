@@ -7911,7 +7911,7 @@ if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
 </head>
 <body>
 <div id="sb-timestamp-banner" style="background:#cc0000;color:white;text-align:center;padding:8px;font-family:monospace;font-size:14px;position:fixed;top:0;left:0;right:0;z-index:99999;">
-DEPLOY: 2026-01-18 15:35:57 | Audio: 169.8s (90% speed) | Timings: Updated
+DEPLOY: 2026-01-18 15:44:29 | Audio: 169.8s (90% speed) | Timings: Updated
 </div>
 <style>#sb-timestamp-banner + * { margin-top: 40px !important; }</style>
 
@@ -8102,6 +8102,126 @@ DEPLOY: 2026-01-18 15:35:57 | Audio: 169.8s (90% speed) | Timings: Updated
       });
     });
   </script>
+
+<section class="age-carousel" data-carousel-hash="0cafead2f34f" data-carousel-version="2.2" id="sb-age-carousel">
+<h2 class="carousel-title">More Stories for Ages 4-6</h2>
+<div class="carousel-wrapper">
+<button aria-label="Scroll left" class="carousel-button">←</button>
+<div class="carousel-container">
+<div class="carousel-track">
+<div class="carousel-item" data-title="Maya's Missing Mittens">
+<a href="mayas-missing-mittens.html"><img alt="Maya's Missing Mittens" loading="lazy" onerror="this.style.display='none'" src="icon/mayas-missing-mittens-icon.webp"/></a>
+<a class="carousel-title-link" href="mayas-missing-mittens.html"><span class="carousel-item-title">Maya's Missing Mittens</span></a>
+</div>
+<div class="carousel-item" data-title="Milo the Mouse">
+<a href="milo-the-mouse.html"><img alt="Milo the Mouse" loading="lazy" onerror="this.style.display='none'" src="icon/milo-the-mouse-icon.webp"/></a>
+<a class="carousel-title-link" href="milo-the-mouse.html"><span class="carousel-item-title">Milo the Mouse</span></a>
+</div>
+<div class="carousel-item" data-title="Luna's Colorful Garden">
+<a href="lunas-colorful-garden.html"><img alt="Luna's Colorful Garden" loading="lazy" onerror="this.style.display='none'" src="icon/lunas-colorful-garden-icon.webp"/></a>
+<a class="carousel-title-link" href="lunas-colorful-garden.html"><span class="carousel-item-title">Luna's Colorful Garden</span></a>
+</div>
+<div class="carousel-item" data-title="The Lonely Leaf">
+<a href="the-lonely-leaf.html"><img alt="The Lonely Leaf" loading="lazy" onerror="this.style.display='none'" src="icon/the-lonely-leaf-icon.webp"/></a>
+<a class="carousel-title-link" href="the-lonely-leaf.html"><span class="carousel-item-title">The Lonely Leaf</span></a>
+</div>
+<div class="carousel-item" data-title="Melody and the Muddy Puppy">
+<a href="melody-and-the-muddy-puppy.html"><img alt="Melody and the Muddy Puppy" loading="lazy" onerror="this.style.display='none'" src="icon/melody-and-the-muddy-puppy-icon.webp"/></a>
+<a class="carousel-title-link" href="melody-and-the-muddy-puppy.html"><span class="carousel-item-title">Melody and the Muddy Puppy</span></a>
+</div>
+<div class="carousel-item" data-title="Grumpy Grandpa and the Silly Hat">
+<a href="grumpy-grandpa-and-the-silly-hat.html"><img alt="Grumpy Grandpa and the Silly Hat" loading="lazy" onerror="this.style.display='none'" src="icon/grumpy-grandpa-and-the-silly-hat-icon.webp"/></a>
+<a class="carousel-title-link" href="grumpy-grandpa-and-the-silly-hat.html"><span class="carousel-item-title">Grumpy Grandpa and the Silly Hat</span></a>
+</div>
+<div class="carousel-item" data-title="Lily and the Blue Balloon">
+<a href="lily-and-the-blue-balloon.html"><img alt="Lily and the Blue Balloon" loading="lazy" onerror="this.style.display='none'" src="icon/lily-and-the-blue-balloon-icon.webp"/></a>
+<a class="carousel-title-link" href="lily-and-the-blue-balloon.html"><span class="carousel-item-title">Lily and the Blue Balloon</span></a>
+</div>
+</div>
+</div>
+<button aria-label="Scroll right" class="carousel-button">→</button>
+</div>
+</section>
+<script id="sb-carousel-script">
+(function(){
+    var track = document.querySelector('.age-carousel .carousel-track');
+    if (!track) return;
+    var wrapper = track.closest('.carousel-wrapper');
+    if (wrapper) {
+        var btns = wrapper.querySelectorAll('.carousel-button');
+        if (btns.length === 2) {
+            btns[0].onclick = function(){ track.scrollBy({left: -200, behavior: 'smooth'}); };
+            btns[1].onclick = function(){ track.scrollBy({left: 200, behavior: 'smooth'}); };
+        }
+    }
+    // Drag to scroll
+    var isDown = false, startX, scrollLeft;
+    track.addEventListener('mousedown', function(e){
+        isDown = true;
+        startX = e.pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+        track.style.cursor = 'grabbing';
+    });
+    track.addEventListener('mouseleave', function(){ isDown = false; track.style.cursor = 'grab'; });
+    track.addEventListener('mouseup', function(){ isDown = false; track.style.cursor = 'grab'; });
+    track.addEventListener('mousemove', function(e){
+        if (!isDown) return;
+        e.preventDefault();
+        var x = e.pageX - track.offsetLeft;
+        var walk = (x - startX) * 2;
+        track.scrollLeft = scrollLeft - walk;
+    });
+})();
+</script>
+<style id="sb-questions-style">
+@keyframes magicalAppear {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+#questionsContainer { margin-top: 80px !important; }
+</style>
+<div id="questionsContainer" style="display:none;margin:2em auto;max-width:800px;padding:0 1em;clear:both;">
+  <h2 style="text-align:center;color:#FFEB3B;font-family:'Coming Soon',cursive;">Questions for Discussion</h2>
+  <div class="question-box" style="animation-delay:0.0s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
+    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">How was Rusty feeling at the beginning of the story? Can you remember a time when you felt left out like Rusty?</p>
+  </div>
+  <div class="question-box" style="animation-delay:0.3s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
+    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">Why did the shiny lorries not want to play with Rusty? Was that a kind thing to do?</p>
+  </div>
+  <div class="question-box" style="animation-delay:0.6s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
+    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">What made Rusty special even though he looked old and rusty?</p>
+  </div>
+  <div class="question-box" style="animation-delay:0.8999999999999999s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
+    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">How did Rusty feel when he successfully delivered the packages to the mountain village?</p>
+  </div>
+  <div class="question-box" style="animation-delay:1.2s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
+    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">Why did the shiny lorries change their minds about Rusty? What did they learn?</p>
+  </div>
+  <div class="question-box" style="animation-delay:1.5s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
+    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">The story says what is outside does not define, the heart within that truly shines - what does that mean to you?</p>
+  </div>
+  <div class="question-box" style="animation-delay:1.7999999999999998s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
+    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">Have you ever judged someone by how they looked before getting to know them?</p>
+  </div>
+  <div class="question-box" style="animation-delay:2.1s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
+    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">What would you say to someone who was being left out like Rusty was?</p>
+  </div>
+  <div class="question-box" style="animation-delay:2.4s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
+    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">Can you think of something that makes you special on the inside, not just how you look?</p>
+  </div>
+  <div class="question-box" style="animation-delay:2.6999999999999997s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
+    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">If you could be friends with Rusty, what adventures would you go on together?</p>
+  </div>
+</div>
+<script id="sb-questions-script">
+(function() {
+  var audio = document.querySelector('audio[id*="story"], audio[src*="audio"]');
+  if (!audio) return;
+  audio.addEventListener('ended', function() {
+    var qc = document.getElementById('questionsContainer');
+    if (qc) { qc.style.display = 'block'; qc.scrollIntoView({behavior:'smooth'}); }
+  });
+})();
+</script>
 <footer style="color: #fff; text-align: center; padding: 10px 20px; font-family: 'Georgia', serif; margin-top: 80px; position: relative;">
 <div style="background:#001020; padding:30px 10px; text-align:center;">
 <!-- Signup button -->
@@ -9576,128 +9696,9 @@ else{
 </script>
 
 <!-- Age-Appropriate Story Carousel (Dark Theme) v2.2 -->
-<section class="age-carousel" data-carousel-hash="0cafead2f34f" data-carousel-version="2.2" id="sb-age-carousel">
-<h2 class="carousel-title">More Stories for Ages 4-6</h2>
-<div class="carousel-wrapper">
-<button aria-label="Scroll left" class="carousel-button">←</button>
-<div class="carousel-container">
-<div class="carousel-track">
-<div class="carousel-item" data-title="Maya's Missing Mittens">
-<a href="mayas-missing-mittens.html"><img alt="Maya's Missing Mittens" loading="lazy" onerror="this.style.display='none'" src="icon/mayas-missing-mittens-icon.webp"/></a>
-<a class="carousel-title-link" href="mayas-missing-mittens.html"><span class="carousel-item-title">Maya's Missing Mittens</span></a>
-</div>
-<div class="carousel-item" data-title="Milo the Mouse">
-<a href="milo-the-mouse.html"><img alt="Milo the Mouse" loading="lazy" onerror="this.style.display='none'" src="icon/milo-the-mouse-icon.webp"/></a>
-<a class="carousel-title-link" href="milo-the-mouse.html"><span class="carousel-item-title">Milo the Mouse</span></a>
-</div>
-<div class="carousel-item" data-title="Luna's Colorful Garden">
-<a href="lunas-colorful-garden.html"><img alt="Luna's Colorful Garden" loading="lazy" onerror="this.style.display='none'" src="icon/lunas-colorful-garden-icon.webp"/></a>
-<a class="carousel-title-link" href="lunas-colorful-garden.html"><span class="carousel-item-title">Luna's Colorful Garden</span></a>
-</div>
-<div class="carousel-item" data-title="The Lonely Leaf">
-<a href="the-lonely-leaf.html"><img alt="The Lonely Leaf" loading="lazy" onerror="this.style.display='none'" src="icon/the-lonely-leaf-icon.webp"/></a>
-<a class="carousel-title-link" href="the-lonely-leaf.html"><span class="carousel-item-title">The Lonely Leaf</span></a>
-</div>
-<div class="carousel-item" data-title="Melody and the Muddy Puppy">
-<a href="melody-and-the-muddy-puppy.html"><img alt="Melody and the Muddy Puppy" loading="lazy" onerror="this.style.display='none'" src="icon/melody-and-the-muddy-puppy-icon.webp"/></a>
-<a class="carousel-title-link" href="melody-and-the-muddy-puppy.html"><span class="carousel-item-title">Melody and the Muddy Puppy</span></a>
-</div>
-<div class="carousel-item" data-title="Grumpy Grandpa and the Silly Hat">
-<a href="grumpy-grandpa-and-the-silly-hat.html"><img alt="Grumpy Grandpa and the Silly Hat" loading="lazy" onerror="this.style.display='none'" src="icon/grumpy-grandpa-and-the-silly-hat-icon.webp"/></a>
-<a class="carousel-title-link" href="grumpy-grandpa-and-the-silly-hat.html"><span class="carousel-item-title">Grumpy Grandpa and the Silly Hat</span></a>
-</div>
-<div class="carousel-item" data-title="Lily and the Blue Balloon">
-<a href="lily-and-the-blue-balloon.html"><img alt="Lily and the Blue Balloon" loading="lazy" onerror="this.style.display='none'" src="icon/lily-and-the-blue-balloon-icon.webp"/></a>
-<a class="carousel-title-link" href="lily-and-the-blue-balloon.html"><span class="carousel-item-title">Lily and the Blue Balloon</span></a>
-</div>
-</div>
-</div>
-<button aria-label="Scroll right" class="carousel-button">→</button>
-</div>
-</section>
 
-<script id="sb-carousel-script">
-(function(){
-    var track = document.querySelector('.age-carousel .carousel-track');
-    if (!track) return;
-    var wrapper = track.closest('.carousel-wrapper');
-    if (wrapper) {
-        var btns = wrapper.querySelectorAll('.carousel-button');
-        if (btns.length === 2) {
-            btns[0].onclick = function(){ track.scrollBy({left: -200, behavior: 'smooth'}); };
-            btns[1].onclick = function(){ track.scrollBy({left: 200, behavior: 'smooth'}); };
-        }
-    }
-    // Drag to scroll
-    var isDown = false, startX, scrollLeft;
-    track.addEventListener('mousedown', function(e){
-        isDown = true;
-        startX = e.pageX - track.offsetLeft;
-        scrollLeft = track.scrollLeft;
-        track.style.cursor = 'grabbing';
-    });
-    track.addEventListener('mouseleave', function(){ isDown = false; track.style.cursor = 'grab'; });
-    track.addEventListener('mouseup', function(){ isDown = false; track.style.cursor = 'grab'; });
-    track.addEventListener('mousemove', function(e){
-        if (!isDown) return;
-        e.preventDefault();
-        var x = e.pageX - track.offsetLeft;
-        var walk = (x - startX) * 2;
-        track.scrollLeft = scrollLeft - walk;
-    });
-})();
-</script>
 
-<style id="sb-questions-style">
-@keyframes magicalAppear {
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-#questionsContainer { margin-top: 80px !important; }
-</style>
 
-<div id="questionsContainer" style="display:none;margin:2em auto;max-width:800px;padding:0 1em;clear:both;">
-  <h2 style="text-align:center;color:#FFEB3B;font-family:'Coming Soon',cursive;">Questions for Discussion</h2>
-  <div class="question-box" style="animation-delay:0.0s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
-    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">How was Rusty feeling at the beginning of the story? Can you remember a time when you felt left out like Rusty?</p>
-  </div>
-  <div class="question-box" style="animation-delay:0.3s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
-    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">Why did the shiny lorries not want to play with Rusty? Was that a kind thing to do?</p>
-  </div>
-  <div class="question-box" style="animation-delay:0.6s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
-    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">What made Rusty special even though he looked old and rusty?</p>
-  </div>
-  <div class="question-box" style="animation-delay:0.8999999999999999s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
-    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">How did Rusty feel when he successfully delivered the packages to the mountain village?</p>
-  </div>
-  <div class="question-box" style="animation-delay:1.2s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
-    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">Why did the shiny lorries change their minds about Rusty? What did they learn?</p>
-  </div>
-  <div class="question-box" style="animation-delay:1.5s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
-    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">The story says what is outside does not define, the heart within that truly shines - what does that mean to you?</p>
-  </div>
-  <div class="question-box" style="animation-delay:1.7999999999999998s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
-    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">Have you ever judged someone by how they looked before getting to know them?</p>
-  </div>
-  <div class="question-box" style="animation-delay:2.1s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
-    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">What would you say to someone who was being left out like Rusty was?</p>
-  </div>
-  <div class="question-box" style="animation-delay:2.4s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
-    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">Can you think of something that makes you special on the inside, not just how you look?</p>
-  </div>
-  <div class="question-box" style="animation-delay:2.6999999999999997s;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:15px;padding:20px 25px;margin:20px auto;max-width:80%;opacity:0;transform:translateY(20px) scale(0.95);animation:magicalAppear 0.8s ease-out forwards;">
-    <p class="question-text" style="font-size:1.1em;color:#001f3f;font-weight:bold;margin:0;text-align:left;">If you could be friends with Rusty, what adventures would you go on together?</p>
-  </div>
-</div>
-<script id="sb-questions-script">
-(function() {
-  var audio = document.querySelector('audio[id*="story"], audio[src*="audio"]');
-  if (!audio) return;
-  audio.addEventListener('ended', function() {
-    var qc = document.getElementById('questionsContainer');
-    if (qc) { qc.style.display = 'block'; qc.scrollIntoView({behavior:'smooth'}); }
-  });
-})();
-</script>
 </body>
 </html>
 <\!-- timing fix -->
