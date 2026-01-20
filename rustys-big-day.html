@@ -1033,7 +1033,7 @@ audio::-webkit-media-controls-timeline-container{
     .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
     .header-right { display: flex; align-items: center; gap: 10px; }
     .mascot-logo { height: 56px; width: 56px; border-radius: 50%; object-fit: cover; background: #ffeb3b33; box-shadow: 0 2px 10px #2227; }
-    .site-title {margin-top: 14px !important;  font-size: 28px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
+    .site-title {margin-top: 14px !important;  font-size: clamp(28px, 3vw, 35px); font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
     .header-left a:hover .site-title {margin-top: 14px !important;  color: #fffde6; }
     nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
     nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s; }
@@ -3815,7 +3815,7 @@ header nav a, header nav ul, header nav ul li, header nav ul li a
     header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
     .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
     .header-right { display: flex; align-items: center; gap: 10px; }
-    .site-title {margin-top: 14px !important;  font-size: 28px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
+    .site-title {margin-top: 14px !important;  font-size: clamp(28px, 3vw, 35px); font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
     .header-left a:hover .site-title {margin-top: 14px !important;  color: #fffde6; }
     nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
     nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s;}
@@ -4326,7 +4326,7 @@ header nav a, header nav ul, header nav ul li, header nav ul li a
     header { width: 100%; background-color: #001f3f; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; border-bottom: 2px solid #FFEB3B; max-width: 1100px; margin: 0 auto; }
     .header-left a { display: flex; align-items: center; gap: 8px; text-decoration: none; }
     .header-right { display: flex; align-items: center; gap: 10px; }
-    .site-title {margin-top: 14px !important;  font-size: 28px; font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
+    .site-title {margin-top: 14px !important;  font-size: clamp(28px, 3vw, 35px); font-weight: bold; color: #FFEB3B; font-family: 'Georgia', sans-serif; margin-left: 2px; transition: color 0.15s;}
     .header-left a:hover .site-title {margin-top: 14px !important;  color: #fffde6; }
     nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0 10px; }
     nav a { color: #FFEB3B; text-decoration: none; font-family: 'Georgia', serif; font-size: 18px; padding: 4px 8px; border-radius: 4px; transition: background 0.2s;}
@@ -7880,36 +7880,52 @@ html,body{cursor:url('index_items/wand_reader.png'),auto!important}
   box-shadow: none !important;
   border: 0 !important;
 }
-/* animation layer: behind transcript, but not buried under the whole page */
+/* animation layer: desktop */
 #sb-end-anim-wrap {
   position: relative;
-  z-index: 10;         /* higher z-index for better mobile visibility */
-  transform: translateZ(0);  /* force hardware acceleration */
+  z-index: 10;         
+  transform: translateZ(0);  
   -webkit-transform: translateZ(0);
-  pointer-events: none;  /* never intercept clicks */
+  pointer-events: none; 
   clear: both;
 }
-/* explicitly raise the transcript/text layer above */
-#transcript {
-  position: relative;
-  z-index: 2;          /* above video */
-}
+#transcript { position: relative; z-index: 2; }
 
 #sb-end-anim {
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
-  object-position:center;
-  outline:none;
-  background:transparent !important;
+  width:100%; height:100%; display:block;
+  object-fit:cover; object-position:center;
+  outline:none; background:transparent !important;
 }
 #sb-end-anim::-webkit-media-controls,
 #sb-end-anim::-webkit-media-controls-enclosure,
 #sb-end-anim::-webkit-media-controls-start-playback-button {
   display:none !important;
 }
-@media (max-width:700px) {  #sb-end-anim-frame { width:75vw; max-width:260px; }  /* Enhanced mobile visibility */  #sb-end-anim-wrap {    z-index: 10 !important;    /* display removed - controlled by JS */    visibility: visible !important;    opacity: 1 !important;    transform: translateZ(0) !important;    -webkit-transform: translateZ(0) !important;  }  #sb-end-anim {    /* display removed - controlled by JS */    visibility: visible !important;    opacity: 1 !important;    -webkit-backface-visibility: visible !important;    backface-visibility: visible !important;  }}
+
+/* --- MOBILE FIXES --- */
+@media (max-width:800px) {  
+  #sb-end-anim-frame { 
+      width:75vw; 
+      max-width:260px; 
+  }  
+  #sb-end-anim-wrap {
+    /* Force ultra-high z-index on mobile to sit above background */
+    z-index: 99999 !important; 
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    position: relative !important;
+  }
+  #sb-end-anim {
+    visibility: visible !important;
+    opacity: 1 !important;
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+}
 </style>
 <style id="sb-glowwand-hide-css">
   #glowWandImg { transition: opacity 200ms ease; }
@@ -7922,7 +7938,54 @@ html,body{cursor:url('index_items/wand_reader.png'),auto!important}
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-</style><meta content="A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside." name="description"/><link href="https://storybellkids.com/stories/rustys-big-day/" rel="canonical"/><meta content="index,follow,max-image-preview:large" name="robots"/><meta content="article" property="og:type"/><meta content="Rusty's Big Day" property="og:title"/><meta content="A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside." property="og:description"/><meta content="https://storybellkids.com/stories/rustys-big-day/rustys-big-day-imagetitle.webp" property="og:image"/><meta content="https://storybellkids.com/stories/rustys-big-day/" property="og:url"/><meta content="Story Bell" property="og:site_name"/><meta content="summary_large_image" name="twitter:card"/><meta content="Rusty's Big Day" name="twitter:title"/><meta content="A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside." name="twitter:description"/><meta content="https://storybellkids.com/stories/rustys-big-day/rustys-big-day-imagetitle.webp" name="twitter:image"/><script id="sb-jsonld" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://storybellkids.com/stories/rustys-big-day/#webpage","url":"https://storybellkids.com/stories/rustys-big-day/","name":"Rusty's Big Day","inLanguage":"en","description":"A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside.","isPartOf":null,"primaryImageOfPage":{"@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-imagetitle.webp#image"}},{"@type":"ShortStory","@id":"https://storybellkids.com/stories/rustys-big-day/#shortstory","name":"Rusty's Big Day","inLanguage":"en","isFamilyFriendly":true,"isAccessibleForFree":true,"datePublished":"2025-01-28","dateModified":"2025-01-28","creativeWorkStatus":"Published","keywords":null,"genre":null,"about":null,"timeRequired":"PT3M","description":"A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside.","author":{"@type":"Person","@id":"https://storybellkids.com/about/#author","name":"Story Bell"},"publisher":{"@type":"Organization","name":"Story Bell","url":"https://storybellkids.com/"},"image":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-imagetitle.webp","wordCount":672,"audio":{"@type":"AudioObject","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day/rustys-big-day-audio.mp3","encodingFormat":"audio/mpeg","duration":"PT2M38S","name":"Rusty's Big Day — read-aloud"},"hasPart":[{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-imagetitle.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-imagetitle.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image1.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image1.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image2.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image2.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image3.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image3.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image4.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image4.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image5.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image5.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image6.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image6.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image7.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image7.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image8.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image8.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image9.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image9.webp"}]},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-imagetitle.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-imagetitle.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image1.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image1.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image2.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image2.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image3.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image3.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image4.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image4.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image5.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image5.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image6.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image6.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image7.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image7.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image8.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image8.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image9.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image9.webp"},{"@type":"AudioObject","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day/rustys-big-day-audio.mp3","encodingFormat":"audio/mpeg","duration":"PT2M38S","name":"Rusty's Big Day — read-aloud"},{"@type":"FAQPage","@id":"https://storybellkids.com/stories/rustys-big-day/#faq","mainEntity":[{"@type":"Question","name":"How was Rusty feeling at the beginning of the story? Can you remember a time when you felt left out like Rusty?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"Why did the shiny lorries not want to play with Rusty? Was that a kind thing to do?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"What made Rusty special even though he looked old and rusty?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"How did Rusty feel when he successfully delivered the packages to the mountain village?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"Why did the shiny lorries change their minds about Rusty? What did they learn?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"The story says what is outside does not define, the heart within that truly shines - what does that mean to you?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"Have you ever judged someone by how they looked before getting to know them?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"What would you say to someone who was being left out like Rusty was?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"Can you think of something that makes you special on the inside, not just how you look?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"If you could be friends with Rusty, what adventures would you go on together?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}}]},{"@type":"WebSite","@id":"https://storybellkids.com#website","url":"https://storybellkids.com"}]}</script></head>
+</style><meta content="A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside." name="description"/><link href="https://storybellkids.com/stories/rustys-big-day/" rel="canonical"/><meta content="index,follow,max-image-preview:large" name="robots"/><meta content="article" property="og:type"/><meta content="Rusty's Big Day" property="og:title"/><meta content="A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside." property="og:description"/><meta content="https://storybellkids.com/stories/rustys-big-day/rustys-big-day-imagetitle.webp" property="og:image"/><meta content="https://storybellkids.com/stories/rustys-big-day/" property="og:url"/><meta content="Story Bell" property="og:site_name"/><meta content="summary_large_image" name="twitter:card"/><meta content="Rusty's Big Day" name="twitter:title"/><meta content="A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside." name="twitter:description"/><meta content="https://storybellkids.com/stories/rustys-big-day/rustys-big-day-imagetitle.webp" name="twitter:image"/><script id="sb-jsonld" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://storybellkids.com/stories/rustys-big-day/#webpage","url":"https://storybellkids.com/stories/rustys-big-day/","name":"Rusty's Big Day","inLanguage":"en","description":"A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside.","isPartOf":null,"primaryImageOfPage":{"@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-imagetitle.webp#image"}},{"@type":"ShortStory","@id":"https://storybellkids.com/stories/rustys-big-day/#shortstory","name":"Rusty's Big Day","inLanguage":"en","isFamilyFriendly":true,"isAccessibleForFree":true,"datePublished":"2025-01-28","dateModified":"2025-01-28","creativeWorkStatus":"Published","keywords":null,"genre":null,"about":null,"timeRequired":"PT3M","description":"A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside.","author":{"@type":"Person","@id":"https://storybellkids.com/about/#author","name":"Story Bell"},"publisher":{"@type":"Organization","name":"Story Bell","url":"https://storybellkids.com/"},"image":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-imagetitle.webp","wordCount":672,"audio":{"@type":"AudioObject","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day/rustys-big-day-audio.mp3","encodingFormat":"audio/mpeg","duration":"PT2M38S","name":"Rusty's Big Day — read-aloud"},"hasPart":[{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-imagetitle.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-imagetitle.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image1.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image1.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image2.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image2.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image3.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image3.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image4.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image4.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image5.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image5.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image6.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image6.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image7.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image7.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image8.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image8.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image9.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image9.webp"}]},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-imagetitle.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-imagetitle.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image1.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image1.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image2.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image2.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image3.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image3.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image4.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image4.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image5.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image5.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image6.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image6.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image7.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image7.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image8.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image8.webp"},{"@type":"ImageObject","@id":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image9.webp#image","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day-image9.webp"},{"@type":"AudioObject","url":"https://storybellkids.com/stories/rustys-big-day/rustys-big-day/rustys-big-day-audio.mp3","encodingFormat":"audio/mpeg","duration":"PT2M38S","name":"Rusty's Big Day — read-aloud"},{"@type":"FAQPage","@id":"https://storybellkids.com/stories/rustys-big-day/#faq","mainEntity":[{"@type":"Question","name":"How was Rusty feeling at the beginning of the story? Can you remember a time when you felt left out like Rusty?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"Why did the shiny lorries not want to play with Rusty? Was that a kind thing to do?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"What made Rusty special even though he looked old and rusty?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"How did Rusty feel when he successfully delivered the packages to the mountain village?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"Why did the shiny lorries change their minds about Rusty? What did they learn?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"The story says what is outside does not define, the heart within that truly shines - what does that mean to you?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"Have you ever judged someone by how they looked before getting to know them?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"What would you say to someone who was being left out like Rusty was?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"Can you think of something that makes you special on the inside, not just how you look?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}},{"@type":"Question","name":"If you could be friends with Rusty, what adventures would you go on together?","acceptedAnswer":{"@type":"Answer","text":"Discuss together."}}]},{"@type":"WebSite","@id":"https://storybellkids.com#website","url":"https://storybellkids.com"}]}</script>
+<style id="sb-header-desktop-patch">
+/* Desktop Header Fixes - Auto-applied by generator */
+@media (min-width: 801px) {
+  .mascot-logo {
+    height: 56px !important;
+    width: 56px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    background: #ffeb3b33 !important;
+    box-shadow: 0 2px 10px rgba(34, 34, 34, 0.44) !important;
+    /* display removed - controlled by JS */
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .site-title {
+    font-size: clamp(28px, 3vw, 35px) !important;
+    font-weight: bold !important;
+    color: #FFEB3B !important;
+    text-shadow: 0 0 12px #ffff66, 0 0 24px #ffaa0099 !important;
+  }
+
+  .header-left a {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+}
+</style>
+
+<style id="sb-questions-mobile-fix">
+.questions-container {
+  position: relative !important;
+  z-index: 2147483647 !important; /* Must be higher than video (99999) */
+  display: none; /* Hidden by default, toggled by JS */
+  clear: both;
+  margin-top: 20px;
+  padding-bottom: 50px;
+}
+/* Ensure content inside is visible */
+.question-box {
+  opacity: 1 !important; 
+  transform: none !important;
+  visibility: visible !important;
+}
+</style>
+</head>
 <body><h1 class="sr-only" id="story-title">Ages 4–6</h1>
 <div id="sb-test-banner">TEST PAGE - STAGING - 2026-01-20 21:38:00</div>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
@@ -8038,53 +8101,7 @@ html,body{cursor:url('index_items/wand_reader.png'),auto!important}
 </header>
 <div class="main-blank questions-toggle"><div id="transcript" style="text-align:center;"><img alt="Rusty's Big Day – A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside." class="story-image sb-firstline" decoding="async" loading="lazy" src="rustys-big-day/rustys-big-day-imagetitle.webp" style="display:block;margin:1em auto;max-width:90%"/><br/>
 <span class="big-title" data-end="3.037000" data-start="2.596000" id="word_1" style="font-size:1.28em;font-weight:bold;">Rusty's</span> <span class="big-title" data-end="3.317000" data-start="3.137000" id="word_2" style="font-size:1.28em;font-weight:bold;">Big</span> <span class="big-title" data-end="3.538000" data-start="3.358000" id="word_3" style="font-size:1.28em;font-weight:bold;">Day</span> <br/><span data-end="3.698000" data-start="3.578000" id="word_4">By</span> <span data-end="4.079000" data-start="3.758000" id="word_5">Story</span> <span data-end="4.340000" data-start="4.099000" id="word_6">Bell</span> <br/><span data-end="4.921000" data-start="4.861000" id="word_7">At</span> <span data-end="5.362000" data-start="4.981000" id="word_8">Hillside</span> <span data-end="5.742000" data-start="5.402000" id="word_9">Depot,</span> <span data-end="6.384000" data-start="6.203000" id="word_10">bright</span> <span data-end="6.504000" data-start="6.424000" id="word_11">and</span> <span data-end="6.805000" data-start="6.524000" id="word_12">wide,</span> <br/><span data-end="7.346000" data-start="7.125000" id="word_13">Stood</span> <span data-end="7.747000" data-start="7.386000" id="word_14">lorries</span> <span data-end="8.268000" data-start="7.847000" id="word_15">gleaming,</span> <span data-end="8.568000" data-start="8.388000" id="word_16">side</span> <span data-end="8.709000" data-start="8.608000" id="word_17">by</span> <span data-end="9.009000" data-start="8.769000" id="word_18">side.</span> <br/><span data-end="9.610000" data-start="9.530000" id="word_19">But</span> <span data-end="9.751000" data-start="9.651000" id="word_20">in</span> <span data-end="9.791000" data-start="9.761000" id="word_21">the</span> <span data-end="10.132000" data-start="9.851000" id="word_22">corner,</span> <span data-end="10.893000" data-start="10.773000" id="word_23">old</span> <span data-end="11.033000" data-start="10.953000" id="word_24">and</span> <span data-end="11.394000" data-start="11.094000" id="word_25">small,</span> <br/><span data-end="12.096000" data-start="11.875000" id="word_26">Sat</span> <span data-end="12.516000" data-start="12.156000" id="word_27">Rusty,</span> <span data-end="13.438000" data-start="13.038000" id="word_28">rustiest</span> <span data-end="13.578000" data-start="13.478000" id="word_29">of</span> <span data-end="13.759000" data-start="13.639000" id="word_30">all.</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Rusty's Big Day – A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside." autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="rustys-big-day/rustys-big-day-image1.webp" preload="none" src="rustys-big-day/rustys-big-day-animation1.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="16.705000" data-start="16.585000" id="word_31">His</span> <span data-end="16.986000" data-start="16.765000" id="word_32">paint</span> <span data-end="17.146000" data-start="17.026000" id="word_33">was</span> <span data-end="17.547000" data-start="17.226000" id="word_34">faded,</span> <span data-end="18.148000" data-start="17.867000" id="word_35">cherry</span> <span data-end="18.409000" data-start="18.208000" id="word_36">red,</span> <br/><span data-end="18.950000" data-start="18.849000" id="word_37">With</span> <span data-end="19.290000" data-start="19.070000" id="word_38">orange</span> <span data-end="19.631000" data-start="19.351000" id="word_39">patches</span> <span data-end="19.791000" data-start="19.691000" id="word_40">on</span> <span data-end="19.872000" data-start="19.801000" id="word_41">his</span> <span data-end="20.092000" data-start="19.912000" id="word_42">head.</span> <br/><span data-end="20.793000" data-start="20.713000" id="word_43">The</span> <span data-end="21.134000" data-start="20.834000" id="word_44">shiny</span> <span data-end="21.495000" data-start="21.174000" id="word_45">lorries</span> <span data-end="21.675000" data-start="21.535000" id="word_46">would</span> <span data-end="21.816000" data-start="21.715000" id="word_47">not</span> <span data-end="22.136000" data-start="21.876000" id="word_48">play,</span> <br/><span data-end="22.637000" data-start="22.537000" id="word_49">They</span> <span data-end="22.778000" data-start="22.657000" id="word_50">would</span> <span data-end="22.958000" data-start="22.798000" id="word_51">turn</span> <span data-end="23.118000" data-start="22.978000" id="word_52">their</span> <span data-end="23.479000" data-start="23.138000" id="word_53">bumpers</span> <span data-end="23.659000" data-start="23.519000" id="word_54">right</span> <span data-end="23.980000" data-start="23.699000" id="word_55">away.</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Rusty's Big Day – A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside." autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="rustys-big-day/rustys-big-day-image2.webp" preload="none" src="rustys-big-day/rustys-big-day-animation2.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="27.386000" data-start="27.166000" id="word_56">Look</span> <span data-end="27.526000" data-start="27.426000" id="word_57">at</span> <span data-end="27.847000" data-start="27.546000" id="word_58">Rusty</span> <span data-end="28.087000" data-start="27.887000" id="word_59">Max</span> <span data-end="28.267000" data-start="28.127000" id="word_60">would</span> <span data-end="28.507000" data-start="28.307000" id="word_61">say,</span> <br/><span data-end="29.148000" data-start="28.567000" id="word_62">So</span> <span data-end="29.448000" data-start="29.308000" id="word_63">old</span> <span data-end="29.588000" data-start="29.508000" id="word_64">and</span> <span data-end="30.009000" data-start="29.629000" id="word_65">rusty,</span> <span data-end="30.289000" data-start="30.149000" id="word_66">go</span> <span data-end="30.650000" data-start="30.369000" id="word_67">away!</span> <br/><span data-end="31.530000" data-start="30.710000" id="word_68">We</span> <span data-end="31.671000" data-start="31.571000" id="word_69">are</span> <span data-end="31.991000" data-start="31.731000" id="word_70">bright</span> <span data-end="32.151000" data-start="32.071000" id="word_71">and</span> <span data-end="32.371000" data-start="32.231000" id="word_72">new</span> <span data-end="32.491000" data-start="32.431000" id="word_73">and</span> <span data-end="32.672000" data-start="32.532000" id="word_74">made</span> <span data-end="32.772000" data-start="32.712000" id="word_75">to</span> <span data-end="33.132000" data-start="32.832000" id="word_76">shine,</span> <br/><span data-end="33.593000" data-start="33.452000" id="word_77">Your</span> <span data-end="33.913000" data-start="33.633000" id="word_78">rusty</span> <span data-end="34.253000" data-start="33.953000" id="word_79">patches</span> <span data-end="34.614000" data-start="34.353000" id="word_80">cross</span> <span data-end="34.714000" data-start="34.654000" id="word_81">the</span> <span data-end="35.034000" data-start="34.754000" id="word_82">line!</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Rusty's Big Day – A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside." autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="rustys-big-day/rustys-big-day-image3.webp" preload="none" src="rustys-big-day/rustys-big-day-animation3.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="38.498000" data-start="38.277000" id="word_83">Poor</span> <span data-end="38.878000" data-start="38.558000" id="word_84">Rusty</span> <span data-end="39.098000" data-start="38.918000" id="word_85">sat</span> <span data-end="39.359000" data-start="39.138000" id="word_86">beneath</span> <span data-end="39.539000" data-start="39.439000" id="word_87">a</span> <span data-end="39.759000" data-start="39.549000" id="word_88">tree,</span> <br/><span data-end="40.440000" data-start="40.380000" id="word_89">As</span> <span data-end="40.780000" data-start="40.540000" id="word_90">sad</span> <span data-end="40.900000" data-start="40.840000" id="word_91">as</span> <span data-end="41.120000" data-start="40.980000" id="word_92">any</span> <span data-end="41.401000" data-start="41.180000" id="word_93">truck</span> <span data-end="41.561000" data-start="41.421000" id="word_94">could</span> <span data-end="41.761000" data-start="41.601000" id="word_95">be.</span> <br/><span data-end="41.881000" data-start="41.781000" id="word_96">I</span> <span data-end="43.122000" data-start="42.962000" id="word_97">wish</span> <span data-end="43.303000" data-start="43.162000" id="word_98">he</span> <span data-end="43.703000" data-start="43.383000" id="word_99">sighed</span> <span data-end="43.843000" data-start="43.723000" id="word_100">with</span> <span data-end="44.183000" data-start="43.883000" id="word_101">creaky</span> <span data-end="44.524000" data-start="44.244000" id="word_102">door,</span> <br/><span data-end="45.445000" data-start="45.325000" id="word_103">They</span> <span data-end="45.625000" data-start="45.485000" id="word_104">would</span> <span data-end="45.865000" data-start="45.685000" id="word_105">see</span> <span data-end="46.025000" data-start="45.925000" id="word_106">I</span> <span data-end="46.105000" data-start="46.045000" id="word_107">am</span> <span data-end="46.326000" data-start="46.166000" id="word_108">good</span> <span data-end="46.486000" data-start="46.366000" id="word_109">for</span> <span data-end="46.846000" data-start="46.686000" id="word_110">so</span> <span data-end="47.086000" data-start="46.906000" id="word_111">much</span> <span data-end="47.367000" data-start="47.147000" id="word_112">more.</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Rusty's Big Day – A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside." autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="rustys-big-day/rustys-big-day-image4.webp" preload="none" src="rustys-big-day/rustys-big-day-animation4.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="50.890000" data-start="50.770000" id="word_113">One</span> <span data-end="51.071000" data-start="50.930000" id="word_114">day</span> <span data-end="51.211000" data-start="51.131000" id="word_115">the</span> <span data-end="51.611000" data-start="51.251000" id="word_116">manager</span> <span data-end="51.831000" data-start="51.671000" id="word_117">came</span> <span data-end="52.172000" data-start="51.891000" id="word_118">round,</span> <br/><span data-end="52.852000" data-start="52.752000" id="word_119">A</span> <span data-end="53.193000" data-start="52.872000" id="word_120">special</span> <span data-end="53.533000" data-start="53.253000" id="word_121">job</span> <span data-end="53.673000" data-start="53.573000" id="word_122">he</span> <span data-end="53.953000" data-start="53.733000" id="word_123">said,</span> <span data-end="55.435000" data-start="54.334000" id="word_124">profound.</span> <br/><span data-end="55.977000" data-start="55.837000" id="word_125">The</span> <span data-end="56.338000" data-start="56.037000" id="word_126">mountain</span> <span data-end="56.679000" data-start="56.378000" id="word_127">village</span> <span data-end="56.939000" data-start="56.739000" id="word_128">needs</span> <span data-end="57.501000" data-start="56.979000" id="word_129">supplies,</span> <br/><span data-end="58.102000" data-start="58.002000" id="word_130">But</span> <span data-end="58.222000" data-start="58.122000" id="word_131">the</span> <span data-end="58.543000" data-start="58.302000" id="word_132">road</span> <span data-end="58.683000" data-start="58.623000" id="word_133">is</span> <span data-end="59.084000" data-start="58.763000" id="word_134">steep</span> <span data-end="59.244000" data-start="59.124000" id="word_135">with</span> <span data-end="59.565000" data-start="59.324000" id="word_136">sharp</span> <span data-end="60.106000" data-start="59.605000" id="word_137">surprise!</span> <br/><span data-end="60.807000" data-start="60.727000" id="word_138">The</span> <span data-end="61.228000" data-start="60.888000" id="word_139">shiny</span> <span data-end="61.649000" data-start="61.268000" id="word_140">lorries</span> <span data-end="61.950000" data-start="61.689000" id="word_141">shook</span> <span data-end="62.070000" data-start="61.990000" id="word_142">with</span> <span data-end="62.411000" data-start="62.170000" id="word_143">fear,</span> <br/><span data-end="63.152000" data-start="63.012000" id="word_144">That</span> <span data-end="63.513000" data-start="63.213000" id="word_145">winding</span> <span data-end="63.814000" data-start="63.573000" id="word_146">road?</span> <span data-end="64.575000" data-start="64.515000" id="word_147">Oh</span> <span data-end="64.796000" data-start="64.636000" id="word_148">no,</span> <span data-end="65.076000" data-start="64.936000" id="word_149">not</span> <span data-end="65.337000" data-start="65.117000" id="word_150">here!</span> <br/><span data-end="66.038000" data-start="65.938000" id="word_151">The</span> <span data-end="66.359000" data-start="66.079000" id="word_152">turns</span> <span data-end="66.499000" data-start="66.399000" id="word_153">are</span> <span data-end="66.800000" data-start="66.560000" id="word_154">tight,</span> <span data-end="67.441000" data-start="67.361000" id="word_155">the</span> <span data-end="67.702000" data-start="67.482000" id="word_156">hills</span> <span data-end="67.842000" data-start="67.762000" id="word_157">are</span> <span data-end="68.183000" data-start="67.902000" id="word_158">tall,</span> <br/><span data-end="69.005000" data-start="68.904000" id="word_159">We</span> <span data-end="69.205000" data-start="69.045000" id="word_160">might</span> <span data-end="69.506000" data-start="69.265000" id="word_161">slip</span> <span data-end="69.686000" data-start="69.626000" id="word_162">up</span> <span data-end="69.846000" data-start="69.786000" id="word_163">or</span> <span data-end="70.087000" data-start="69.927000" id="word_164">even</span> <span data-end="70.588000" data-start="70.167000" id="word_165">fall!</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Rusty's Big Day – A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside." autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="rustys-big-day/rustys-big-day-image5.webp" preload="none" src="rustys-big-day/rustys-big-day-animation5.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="73.833000" data-start="73.673000" id="word_166">But</span> <span data-end="74.254000" data-start="73.853000" id="word_167">Rusty</span> <span data-end="74.534000" data-start="74.314000" id="word_168">rolled</span> <span data-end="74.715000" data-start="74.634000" id="word_169">up,</span> <span data-end="75.456000" data-start="75.155000" id="word_170">brave</span> <span data-end="75.596000" data-start="75.516000" id="word_171">and</span> <span data-end="75.896000" data-start="75.656000" id="word_172">true,</span> <br/><span data-end="76.497000" data-start="75.936000" id="word_173">I</span> <span data-end="76.657000" data-start="76.517000" id="word_174">will</span> <span data-end="76.858000" data-start="76.697000" id="word_175">take</span> <span data-end="76.978000" data-start="76.898000" id="word_176">the</span> <span data-end="77.318000" data-start="77.038000" id="word_177">job,</span> <span data-end="77.979000" data-start="77.879000" id="word_178">I</span> <span data-end="78.100000" data-start="77.989000" id="word_179">will</span> <span data-end="78.280000" data-start="78.160000" id="word_180">see</span> <span data-end="78.420000" data-start="78.320000" id="word_181">it</span> <span data-end="78.660000" data-start="78.420000" id="word_182">through!</span> <br/><span data-end="79.582000" data-start="79.462000" id="word_183">My</span> <span data-end="79.982000" data-start="79.642000" id="word_184">smaller</span> <span data-end="80.343000" data-start="80.042000" id="word_185">size</span> <span data-end="80.543000" data-start="80.383000" id="word_186">will</span> <span data-end="80.803000" data-start="80.583000" id="word_187">serve</span> <span data-end="80.944000" data-start="80.844000" id="word_188">me</span> <span data-end="81.224000" data-start="81.004000" id="word_189">well,</span> <br/><span data-end="81.905000" data-start="81.845000" id="word_190">On</span> <span data-end="82.286000" data-start="81.945000" id="word_191">mountain</span> <span data-end="82.626000" data-start="82.326000" id="word_192">roads</span> <span data-end="82.826000" data-start="82.666000" id="word_193">where</span> <span data-end="83.087000" data-start="82.887000" id="word_194">big</span> <span data-end="83.467000" data-start="83.187000" id="word_195">trucks</span> <span data-end="83.828000" data-start="83.568000" id="word_196">fell.</span> <br/><span data-end="85.290000" data-start="85.190000" id="word_197">Up,</span> <span data-end="85.611000" data-start="85.530000" id="word_198">up</span> <span data-end="85.771000" data-start="85.671000" id="word_199">he</span> <span data-end="86.171000" data-start="85.831000" id="word_200">climbed</span> <span data-end="86.312000" data-start="86.211000" id="word_201">with</span> <span data-end="86.692000" data-start="86.412000" id="word_202">steady</span> <span data-end="87.033000" data-start="86.732000" id="word_203">pace,</span> <br/><span data-end="87.714000" data-start="87.493000" id="word_204">Around</span> <span data-end="88.054000" data-start="87.754000" id="word_205">each</span> <span data-end="88.395000" data-start="88.154000" id="word_206">bend</span> <span data-end="88.555000" data-start="88.435000" id="word_207">with</span> <span data-end="88.955000" data-start="88.635000" id="word_208">careful</span> <span data-end="89.336000" data-start="89.016000" id="word_209">grace.</span> <br/><span data-end="90.398000" data-start="90.277000" id="word_210">His</span> <span data-end="90.638000" data-start="90.518000" id="word_211">old</span> <span data-end="90.958000" data-start="90.698000" id="word_212">worn</span> <span data-end="91.319000" data-start="90.998000" id="word_213">wheels</span> <span data-end="91.559000" data-start="91.419000" id="word_214">knew</span> <span data-end="91.880000" data-start="91.659000" id="word_215">every</span> <span data-end="92.220000" data-start="91.940000" id="word_216">trick,</span> <br/><span data-end="93.021000" data-start="92.821000" id="word_217">Through</span> <span data-end="93.422000" data-start="93.102000" id="word_218">rain</span> <span data-end="93.602000" data-start="93.522000" id="word_219">and</span> <span data-end="93.903000" data-start="93.682000" id="word_220">mud,</span> <span data-end="94.544000" data-start="94.343000" id="word_221">through</span> <span data-end="94.884000" data-start="94.644000" id="word_222">thin</span> <span data-end="95.064000" data-start="94.964000" id="word_223">and</span> <span data-end="95.445000" data-start="95.084000" id="word_224">thick.</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Rusty's Big Day – A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside." autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="rustys-big-day/rustys-big-day-image6.webp" preload="none" src="rustys-big-day/rustys-big-day-animation6.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="98.330000" data-start="98.210000" id="word_225">The</span> <span data-end="98.631000" data-start="98.370000" id="word_226">village</span> <span data-end="98.971000" data-start="98.671000" id="word_227">children</span> <span data-end="99.332000" data-start="99.051000" id="word_228">clapped</span> <span data-end="99.452000" data-start="99.372000" id="word_229">and</span> <span data-end="99.772000" data-start="99.492000" id="word_230">cheered,</span> <br/><span data-end="99.932000" data-start="99.792000" id="word_231">As</span> <span data-end="100.293000" data-start="100.032000" id="word_232">brave</span> <span data-end="100.473000" data-start="100.353000" id="word_233">old</span> <span data-end="100.874000" data-start="100.553000" id="word_234">Rusty</span> <span data-end="101.314000" data-start="100.974000" id="word_235">finally</span> <span data-end="101.675000" data-start="101.354000" id="word_236">appeared!</span> <br/><span data-end="102.516000" data-start="102.055000" id="word_237">Hooray!</span> <span data-end="103.377000" data-start="102.556000" id="word_238">Hooray!</span> <span data-end="104.158000" data-start="103.437000" id="word_239">they</span> <span data-end="104.398000" data-start="104.218000" id="word_240">sang</span> <span data-end="104.539000" data-start="104.439000" id="word_241">with</span> <span data-end="104.879000" data-start="104.599000" id="word_242">glee,</span> <br/><span data-end="105.280000" data-start="105.200000" id="word_243">The</span> <span data-end="105.660000" data-start="105.320000" id="word_244">bravest</span> <span data-end="105.981000" data-start="105.700000" id="word_245">lorry</span> <span data-end="106.141000" data-start="106.041000" id="word_246">we</span> <span data-end="106.301000" data-start="106.181000" id="word_247">did</span> <span data-end="106.581000" data-start="106.401000" id="word_248">see!</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Rusty's Big Day – A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside." autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="rustys-big-day/rustys-big-day-image7.webp" preload="none" src="rustys-big-day/rustys-big-day-animation7.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="109.666000" data-start="109.526000" id="word_249">Back</span> <span data-end="109.786000" data-start="109.686000" id="word_250">at</span> <span data-end="109.826000" data-start="109.796000" id="word_251">the</span> <span data-end="110.226000" data-start="109.866000" id="word_252">depot,</span> <span data-end="110.387000" data-start="110.267000" id="word_253">what</span> <span data-end="110.527000" data-start="110.427000" id="word_254">a</span> <span data-end="110.747000" data-start="110.527000" id="word_255">sight!</span> <br/><span data-end="111.348000" data-start="111.268000" id="word_256">The</span> <span data-end="111.688000" data-start="111.408000" id="word_257">shiny</span> <span data-end="112.029000" data-start="111.709000" id="word_258">lorries</span> <span data-end="112.289000" data-start="112.089000" id="word_259">felt</span> <span data-end="112.810000" data-start="112.369000" id="word_260">contrite.</span> <br/><span data-end="114.072000" data-start="113.851000" id="word_261">Dear</span> <span data-end="114.552000" data-start="114.152000" id="word_262">Rusty,</span> <span data-end="115.053000" data-start="114.953000" id="word_263">we</span> <span data-end="115.233000" data-start="115.093000" id="word_264">were</span> <span data-end="115.634000" data-start="115.333000" id="word_265">wrong,</span> <span data-end="115.834000" data-start="115.714000" id="word_266">they</span> <span data-end="116.455000" data-start="115.914000" id="word_267">said,</span> <br/><span data-end="117.115000" data-start="116.975000" id="word_268">We</span> <span data-end="117.456000" data-start="117.175000" id="word_269">judged</span> <span data-end="117.616000" data-start="117.496000" id="word_270">your</span> <span data-end="118.016000" data-start="117.656000" id="word_271">patches,</span> <span data-end="118.256000" data-start="118.116000" id="word_272">not</span> <span data-end="118.397000" data-start="118.276000" id="word_273">your</span> <span data-end="118.637000" data-start="118.437000" id="word_274">head.</span> <br/><span data-end="119.498000" data-start="119.378000" id="word_275">Your</span> <span data-end="119.818000" data-start="119.538000" id="word_276">rusty</span> <span data-end="120.058000" data-start="119.858000" id="word_277">coat</span> <span data-end="120.319000" data-start="120.099000" id="word_278">holds</span> <span data-end="120.759000" data-start="120.379000" id="word_279">stories</span> <span data-end="121.140000" data-start="120.899000" id="word_280">true,</span> <br/><span data-end="121.941000" data-start="121.180000" id="word_281">Of</span> <span data-end="122.241000" data-start="122.121000" id="word_282">all</span> <span data-end="122.361000" data-start="122.281000" id="word_283">the</span> <span data-end="122.722000" data-start="122.421000" id="word_284">helpful</span> <span data-end="123.022000" data-start="122.782000" id="word_285">things</span> <span data-end="123.202000" data-start="123.062000" id="word_286">you</span> <span data-end="123.462000" data-start="123.242000" id="word_287">do.</span> <br/><span data-end="124.323000" data-start="124.243000" id="word_288">We</span> <span data-end="124.463000" data-start="124.363000" id="word_289">are</span> <span data-end="124.884000" data-start="124.564000" id="word_290">sorry</span> <span data-end="125.024000" data-start="124.924000" id="word_291">that</span> <span data-end="125.124000" data-start="125.044000" id="word_292">we</span> <span data-end="125.284000" data-start="125.164000" id="word_293">were</span> <span data-end="125.465000" data-start="125.324000" id="word_294">so</span> <span data-end="125.765000" data-start="125.545000" id="word_295">mean,</span> <br/><span data-end="126.586000" data-start="125.825000" id="word_296">The</span> <span data-end="127.227000" data-start="126.706000" id="word_297">kindest</span> <span data-end="127.627000" data-start="127.307000" id="word_298">lorry</span> <span data-end="127.767000" data-start="127.667000" id="word_299">we</span> <span data-end="127.907000" data-start="127.787000" id="word_300">have</span> <span data-end="128.228000" data-start="127.967000" id="word_301">seen!</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Rusty's Big Day – A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside." autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="rustys-big-day/rustys-big-day-image8.webp" preload="none" src="rustys-big-day/rustys-big-day-animation8.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="131.652000" data-start="128.288000" id="word_302">Now</span> <span data-end="132.112000" data-start="131.752000" id="word_303">Rusty</span> <span data-end="132.453000" data-start="132.172000" id="word_304">parks</span> <span data-end="132.793000" data-start="132.573000" id="word_305">right</span> <span data-end="132.933000" data-start="132.873000" id="word_306">in</span> <span data-end="133.053000" data-start="132.973000" id="word_307">the</span> <span data-end="133.354000" data-start="133.093000" id="word_308">middle,</span> <br/><span data-end="134.235000" data-start="134.094000" id="word_309">His</span> <span data-end="134.575000" data-start="134.375000" id="word_310">rust</span> <span data-end="134.935000" data-start="134.615000" id="word_311">spots</span> <span data-end="135.316000" data-start="135.015000" id="word_312">solve</span> <span data-end="135.436000" data-start="135.356000" id="word_313">the</span> <span data-end="135.856000" data-start="135.476000" id="word_314">friendship</span> <span data-end="136.157000" data-start="135.896000" id="word_315">riddle.</span> <br/><span data-end="136.898000" data-start="136.797000" id="word_316">For</span> <span data-end="137.098000" data-start="136.958000" id="word_317">what</span> <span data-end="137.218000" data-start="137.138000" id="word_318">is</span> <span data-end="137.759000" data-start="137.278000" id="word_319">outside</span> <span data-end="137.979000" data-start="137.839000" id="word_320">does</span> <span data-end="138.259000" data-start="138.079000" id="word_321">not</span> <span data-end="138.780000" data-start="138.339000" id="word_322">define,</span> <br/><span data-end="139.501000" data-start="139.400000" id="word_323">The</span> <span data-end="139.781000" data-start="139.581000" id="word_324">heart</span> <span data-end="140.141000" data-start="139.841000" id="word_325">within</span> <span data-end="140.342000" data-start="140.201000" id="word_326">that</span> <span data-end="140.902000" data-start="140.482000" id="word_327">truly</span> <span data-end="141.683000" data-start="140.982000" id="word_328">shines!</span> <br/><span data-end="143.106000" data-start="142.945000" id="word_329">So</span> <span data-end="143.206000" data-start="143.146000" id="word_330">if</span> <span data-end="143.367000" data-start="143.246000" id="word_331">you</span> <span data-end="143.588000" data-start="143.427000" id="word_332">meet</span> <span data-end="143.929000" data-start="143.668000" id="word_333">someone</span> <span data-end="144.049000" data-start="143.969000" id="word_334">who</span> <span data-end="144.210000" data-start="144.130000" id="word_335">is</span> <span data-end="144.511000" data-start="144.330000" id="word_336">new,</span> <br/><span data-end="145.214000" data-start="144.551000" id="word_337">With</span> <span data-end="145.615000" data-start="145.314000" id="word_338">different</span> <span data-end="145.917000" data-start="145.656000" id="word_339">looks</span> <span data-end="146.218000" data-start="146.158000" id="word_340">or</span> <span data-end="146.619000" data-start="146.278000" id="word_341">different</span> <span data-end="146.921000" data-start="146.680000" id="word_342">hue,</span> <br/><span data-end="148.366000" data-start="147.965000" id="word_343">Remember</span> <span data-end="148.788000" data-start="148.447000" id="word_344">Rusty</span> <span data-end="149.169000" data-start="148.848000" id="word_345">tale</span> <span data-end="149.531000" data-start="149.330000" id="word_346">so</span> <span data-end="149.892000" data-start="149.611000" id="word_347">bright,</span> <br/><span data-end="151.077000" data-start="150.876000" id="word_348">True</span> <span data-end="151.438000" data-start="151.137000" id="word_349">friends</span> <span data-end="151.719000" data-start="151.539000" id="word_350">see</span> <span data-end="152.061000" data-start="151.780000" id="word_351">hearts,</span> <span data-end="153.185000" data-start="152.944000" id="word_352">not</span> <span data-end="153.587000" data-start="153.326000" id="word_353">just</span> <span data-end="153.787000" data-start="153.687000" id="word_354">the</span> <span data-end="154.089000" data-start="153.848000" id="word_355">sight!</span> <br/><div class="story-animation-wrapper" style="display:block;margin:1em auto;max-width:100%;overflow:hidden;"><video aria-label="Rusty's Big Day – A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside." autoplay="" class="story-image story-animation" loop="" muted="" playsinline="" poster="rustys-big-day/rustys-big-day-image9.webp" preload="none" src="rustys-big-day/rustys-big-day-animation9.mp4" style="display:block;width:100%;height:auto;object-fit:contain;"></video></div><br/><span data-end="157.602000" data-start="157.502000" id="word_356">The</span> <span data-end="158.305000" data-start="157.723000" id="word_357">End</span> <br/></div>
-<style id="sb-questions-style">
-.questions-container {
-  display: block;
-  clear: both;
-  margin-top: 0;
-  margin-bottom: 60px;
-  padding: 30px 20px;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-.questions-title {
-  font-family: 'Coming Soon', cursive;
-  font-size: 1.8em;
-  color: #FFD700;
-  text-shadow: 0 0 10px rgba(255,215,0,0.6), 0 0 20px rgba(255,165,0,0.4);
-  margin-bottom: 30px;
-}
-.question-text {
-  font-family: 'Coming Soon', cursive;
-  font-size: 1.3em;
-  color: #FFD700;
-  text-shadow: 0 0 8px rgba(255,215,0,0.5), 0 0 16px rgba(255,165,0,0.3);
-  line-height: 1.8;
-  padding: 20px 10px;
-  margin: 0 auto 50px auto;
-  max-width: 85%;
-}
-.question-number {
-  display: block;
-  font-size: 1.4em;
-  color: #FFD700;
-  text-shadow: 0 0 6px rgba(255,165,0,0.5);
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-@media (max-width: 900px) {
-  .questions-container {
-    padding: 20px 15px;
-  }
-  .question-text {
-    font-size: 1.1em;
-    max-width: 95%;
-  }
-}
-</style>
+
 <div class="questions-container" id="questionsContainer" style="display:none;">
 <h2 class="questions-title">Discussion Questions</h2>
 <div class="question-text">
@@ -8128,58 +8145,8 @@ html,body{cursor:url('index_items/wand_reader.png'),auto!important}
     If you could be friends with Rusty, what adventures would you go on together?
   </div>
 </div>
-<script id="sb-questions-script">
-(function(){
-  // Reveal questions AFTER end animation + completion sound finish (~8 seconds after audio ends)
-  var QUESTIONS_DELAY = 5000;  // 5s hidden countdown after audio near-end trigger
 
-  function revealNow(){
-    var qc = document.getElementById('questionsContainer');
-    if (qc && qc.style.display !== 'block') {
-      qc.style.display = 'block'; qc.style.marginTop = '50px';
-      // Smooth scroll to questions section
-      setTimeout(function(){
-        qc.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 500);
-    }
-  }
-  function resolveAudio(){
-    return (
-      document.getElementById('audio') ||
-      document.getElementById('storyAudio') ||
-      document.querySelector('.audio-box audio') ||
-      document.querySelector('audio#story-audio') ||
-      document.querySelector('audio')
-    );
-  }
-
-  var audio = resolveAudio();
-  if (!audio) {
-    // No audio found - don't show questions automatically
-    console.log('[Questions] No audio element found');
-    return;
-  }
-
-  var revealed = false;
-
-  // Trigger 0.1s before audio ends, then 5s hidden countdown
-  audio.addEventListener('timeupdate', function(){
-    if (!revealed && audio.duration && (audio.duration - audio.currentTime <= 0.1)) {
-      revealed = true;
-      setTimeout(revealNow, QUESTIONS_DELAY);
-    }
-  });
-
-  // Fallback for audio.ended (in case timeupdate misses)
-  audio.addEventListener('ended', function(){
-    if (!revealed) {
-      revealed = true;
-      setTimeout(revealNow, QUESTIONS_DELAY);
-    }
-  });
-})();
-</script>
-<div id="sb-end-anim-wrap" style="display:none; margin-top:16px; width:100%; text-align:left; position:relative;"><div id="sb-end-anim-holder" style="display:inline-block;"><div id="sb-end-anim-frame" style="display:inline-block; overflow:hidden; border-radius:16px; width:60vw; max-width:320px; aspect-ratio:1/1; position:relative;"><video controlslist="nodownload noplaybackrate noremoteplayback" disablepictureinpicture="" id="sb-end-anim" muted="True" playsinline="True" preload="auto" webkit-playsinline=""><source src="index_items/sbell_story.webm" type="video/webm"/><source src="index_items/sbell_story.mp4" type="video/mp4"/></video></div></div></div>
+<div id="sb-end-anim-wrap" style="display:none; margin-top:16px; width:100%; text-align:left; position:relative;"><div id="sb-end-anim-holder" style="display:inline-block;"><div id="sb-end-anim-frame" style="display:inline-block; overflow:hidden; border-radius:16px; width:60vw; max-width:320px; aspect-ratio:1/1; position:relative;"><video controlslist="nodownload noplaybackrate noremoteplayback" disablepictureinpicture="" id="sb-end-anim" muted="" playsinline="" preload="auto" webkit-playsinline=""><source src="index_items/sbell_story.mp4" type="video/mp4"/><source src="index_items/sbell_story.webm" type="video/webm"/></video></div></div></div>
 <!-- Age-Appropriate Story Carousel -->
 <style id="sb-carousel-style">
 .age-carousel {
@@ -8331,15 +8298,8 @@ html,body{cursor:url('index_items/wand_reader.png'),auto!important}
     });
 })();
 </script>
-
 </div>
-
-
-
 <!-- Age-Appropriate Story Carousel -->
-
-
-
 <div class="audio-sticky-bottom">
 <div class="audio-box" style=";overflow:visible;position:relative;">
 <audio autoplay="" controls="" controlslist="nodownload" id="audio">
@@ -10390,26 +10350,7 @@ var wordTimings = [
 })();
 </script>
 <!-- SB_AUTOPLAY_V1 END -->
-<!-- SB_GLOW_BOOST_START -->
-<style id="sb-glow-boost">
-/* Stronger two-word glow — override only */
-#transcript span.highlight,
-#transcript span.glow {
-  color: #ffffff !important;
-  /* heavier + wider multi-layer glow */
-  text-shadow:
-    0 0 10px rgba(255,232,40,1.00),
-    0 0 18px rgba(255,196,0,0.95),
-    0 0 34px rgba(255,150,0,0.85),
-    0 0 56px rgba(255,130,0,0.70),
-    0 0 84px rgba(255,110,0,0.55);
-}
-/* keep previous word slightly dimmed but still glowing */
-#transcript span.prev {
-  opacity: .98;
-}
-</style>
-<!-- SB_GLOW_BOOST_END -->
+
 <!-- SB_AUTODETECT10_BOTTOMAWARE_V1 -->
 <style id="sb-scroll-behavior-off">html{scroll-behavior:auto!important}</style>
 <script id="SB_AUTODETECT10_BOTTOMAWARE_V1">
@@ -10983,88 +10924,58 @@ var wordTimings = [
 </script>
 <script id="sb-end-anim-replay-js">
 (function(){
-  // IDs expected from your existing injector:
-  // wrap: #sb-end-anim-wrap, video: #sb-end-anim
   var wrap = document.getElementById('sb-end-anim-wrap');
   var vid  = document.getElementById('sb-end-anim');
   if (!wrap || !vid) return;
 
-  // Prefer the main audio; fallbacks keep it resilient.
-  var audio = document.getElementById('audio')
-          || document.querySelector('.audio-box audio')
-          || document.querySelector('audio');
-  if (!audio) return;
-
-  // ---- Completion sound (index_items/complete.mp3) ----
-  // Create once, reuse every cycle.
-  var COMPLETE_ID = 'sb-complete-audio';
-  var complete = document.getElementById(COMPLETE_ID);
-  if (!complete) {
-    complete = document.createElement('audio');
-    complete.id = COMPLETE_ID;
-    complete.preload = 'auto';
-    complete.src = 'index_items/complete.mp3';
-    complete.setAttribute('playsinline','');
-    // Optionally set a default volume (0.0 - 1.0):
-    // complete.volume = 1.0;
-    document.body.appendChild(complete);
-  }
-
-  // Helper: if your page defines alignUnderAnchor(), reuse it to keep positioning tidy.
-  function alignIfAvailable(){
-    try {
-      if (typeof alignUnderAnchor === 'function') { alignUnderAnchor(); }
-    } catch(e){}
-  }
+  var audio = document.getElementById('audio') || document.querySelector('.audio-box audio') || document.querySelector('audio');
+  var complete = document.getElementById('sb-complete-audio');
 
   function hideAnim(){
     wrap.style.display = 'none';
     try { vid.pause(); } catch(e){}
-    try { vid.currentTime = 0; } catch(e){}
-    try { complete.pause(); complete.currentTime = 0; } catch(e){}
+    if (complete) try { complete.pause(); complete.currentTime = 0; } catch(e){}
   }
 
   function playAnimOnce(){
+    // 1. Show container
     wrap.style.display = 'block';
-    alignIfAvailable();
-    try { vid.currentTime = 0; } catch(e){}
-    try { vid.play(); } catch(e){}
-    // play completion MP3 DURING the animation
-    try { complete.currentTime = 0; complete.play(); } catch(e){}
+    
+    // 2. iOS FIX: Wait for paint before playing
+    requestAnimationFrame(function(){
+        setTimeout(function(){
+            try { 
+                vid.currentTime = 0; 
+                // Promise handling for modern browsers
+                var p = vid.play();
+                if (p !== undefined) {
+                    p.catch(error => {
+                        console.log("Auto-play prevented by browser:", error);
+                    });
+                }
+            } catch(e){}
+        }, 50); // 50ms delay is crucial for iPhone
+    });
+
+    // Play sound
+    if (complete) try { complete.currentTime = 0; complete.play(); } catch(e){}
   }
 
-  // When the animation video ends, briefly hold last frame then hide.
   vid.addEventListener('ended', function(){
-    try {
-      if (isFinite(vid.duration) && vid.duration > 0) {
-        var hold = Math.max(0, vid.duration - 0.05);
-        vid.currentTime = hold;
-      }
-      vid.pause();
-    } catch(e){}
+    try { vid.pause(); } catch(e){}
     wrap.style.display = 'none';
   });
 
-  // --- Replay logic: animation shows every time audio completes,
-  //     BUT completion MP3 plays only once per page load.
-  function resetForNewPlayback(){
-    hideAnim();
+  if(audio){
+      var _playedOnce = false;
+      audio.addEventListener('ended', function(){
+        if (_playedOnce) return;
+        _playedOnce = true;
+        playAnimOnce();
+      });
+      audio.addEventListener('play', hideAnim);
   }
-
-  audio.addEventListener('play',    resetForNewPlayback);
-  audio.addEventListener('seeking', resetForNewPlayback);
-  audio.addEventListener('seeked',  resetForNewPlayback);
-
-  // >>>>> Option A guard (ONCE per page load) <<<<<
-  var _playedOnce = false;
-  audio.addEventListener('ended', function(){
-    if (_playedOnce) return;
-    _playedOnce = true;
-    playAnimOnce();
-  });
-
-  // Initial state
-  hideAnim();
+  hideAnim(); 
 })();
 </script>
 <script id="sb-glowwand-hide-js">
@@ -11298,5 +11209,76 @@ var wordTimings = [
     wire();
   }
 })();
-</script></body>
+</script>
+<script id="sb-questions-script">
+(function(){
+  var containerId = 'questionsContainer';
+  var showed = false;
+
+  function showQuestions(){
+    if(showed) return;
+    showed = true;
+    var el = document.getElementById(containerId);
+    if(el) {
+        el.style.display = 'block';
+        el.style.visibility = 'visible';
+        el.style.opacity = '1';
+        
+        // Force scroll to questions so user sees them
+        setTimeout(function(){
+            el.scrollIntoView({behavior: "smooth", block: "center"});
+        }, 500);
+    }
+  }
+
+  var audio = document.getElementById('audio') || document.querySelector('audio');
+  
+  if(audio){
+      // 1. Normal Trigger: When audio ends
+      audio.addEventListener('ended', showQuestions);
+      
+      // 2. Backup Trigger: Near end of audio
+      audio.addEventListener('timeupdate', function(){
+        if(!showed && (audio.duration - audio.currentTime) < 0.5){
+            showQuestions();
+        }
+      });
+      
+      // 3. Safety Net: If audio is really long, ensure we don't wait forever if paused
+      // This calculates duration and sets a one-time timer
+      audio.addEventListener('play', function() {
+          if(!showed && audio.duration > 0 && audio.duration < 600) { // limit to 10 mins
+              var timeLeftMs = (audio.duration - audio.currentTime) * 1000;
+              // Set a timeout for the exact remainder + 1 second buffer
+              setTimeout(showQuestions, timeLeftMs + 1000);
+          }
+      }, {once:true});
+  } else {
+      // No audio found? Show questions after 3 seconds automatically
+      setTimeout(showQuestions, 3000);
+  }
+})();
+</script>
+
+<!-- SB_GLOW_BOOST_START -->
+<style id="sb-glow-boost">
+/* Stronger two-word glow — override only */
+#transcript span.highlight,
+#transcript span.glow {
+  color: #ffffff !important;
+  /* heavier + wider multi-layer glow */
+  text-shadow:
+    0 0 10px rgba(255,232,40,1.00),
+    0 0 18px rgba(255,196,0,0.95),
+    0 0 34px rgba(255,150,0,0.85),
+    0 0 56px rgba(255,130,0,0.70),
+    0 0 84px rgba(255,110,0,0.55);
+}
+/* keep previous word slightly dimmed but still glowing */
+#transcript span.prev {
+  opacity: .98;
+}
+</style>
+<!-- SB_GLOW_BOOST_END -->
+</body>
 </html>
