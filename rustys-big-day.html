@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html data-updated="2026-01-20T22:19:12Z" lang="en">
+<html data-updated="2026-01-20T22:54:44Z" lang="en">
 <head>
 <!-- BEGIN SWIPE-CAROUSEL-STYLE -->
 <!-- BEGIN HAMBURGER-MENU-CSS -->
@@ -8130,53 +8130,57 @@ html,body{cursor:url('index_items/wand_reader.png'),auto!important}
 </div>
 <script id="sb-questions-script">
 (function(){
-  // Reveal questions AFTER end animation + completion sound finish (~8 seconds after audio ends)
-  var QUESTIONS_DELAY = 5000;  // 5s hidden countdown after audio near-end trigger
+  function initQuestions(){
+    var QUESTIONS_DELAY = 5000;
 
-  function revealNow(){
-    var qc = document.getElementById('questionsContainer');
-    if (qc && qc.style.display !== 'block') {
-      qc.style.display = 'block'; qc.style.marginTop = '50px';
-      // Smooth scroll to questions section
-      setTimeout(function(){
-        qc.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 500);
+    function revealNow(){
+      var qc = document.getElementById('questionsContainer');
+      if (qc && qc.style.display !== 'block') {
+        qc.style.display = 'block'; qc.style.marginTop = '50px';
+        setTimeout(function(){
+          qc.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 500);
+      }
     }
-  }
-  function resolveAudio(){
-    return (
-      document.getElementById('audio') ||
-      document.getElementById('storyAudio') ||
-      document.querySelector('.audio-box audio') ||
-      document.querySelector('audio#story-audio') ||
-      document.querySelector('audio')
-    );
-  }
-
-  var audio = resolveAudio();
-  if (!audio) {
-    // No audio found - don't show questions automatically
-    console.log('[Questions] No audio element found');
-    return;
-  }
-
-  var revealed = false;
-
-  // Trigger 0.1s before audio ends, then 5s hidden countdown
-  audio.addEventListener('timeupdate', function(){
-    if (!revealed && audio.duration && (audio.duration - audio.currentTime <= 0.1)) {
-      revealed = true;
-      setTimeout(revealNow, QUESTIONS_DELAY);
+    function resolveAudio(){
+      return (
+        document.getElementById('audio') ||
+        document.getElementById('storyAudio') ||
+        document.querySelector('.audio-box audio') ||
+        document.querySelector('audio#story-audio') ||
+        document.querySelector('audio')
+      );
     }
-  });
 
-  // Fallback for audio.ended (in case timeupdate misses)
-  audio.addEventListener('ended', function(){
-    if (!revealed) {
-      revealed = true;
-      setTimeout(revealNow, QUESTIONS_DELAY);
+    var audio = resolveAudio();
+    if (!audio) {
+      console.log('[Questions] No audio element found, showing after 10s fallback');
+      setTimeout(revealNow, 10000);
+      return;
     }
-  });
+
+    var revealed = false;
+
+    audio.addEventListener('timeupdate', function(){
+      if (!revealed && audio.duration && (audio.duration - audio.currentTime <= 0.1)) {
+        revealed = true;
+        setTimeout(revealNow, QUESTIONS_DELAY);
+      }
+    });
+
+    audio.addEventListener('ended', function(){
+      if (!revealed) {
+        revealed = true;
+        setTimeout(revealNow, QUESTIONS_DELAY);
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initQuestions);
+  } else {
+    initQuestions();
+  }
 })();
 </script>
 <div id="sb-end-anim-wrap" style="display:none; margin-top:16px; width:100%; text-align:left; position:relative;"><div id="sb-end-anim-holder" style="display:inline-block;"><div id="sb-end-anim-frame" style="display:inline-block; overflow:hidden; border-radius:16px; width:60vw; max-width:320px; aspect-ratio:1/1; position:relative;"><video controlslist="nodownload noplaybackrate noremoteplayback" disablepictureinpicture="" id="sb-end-anim" muted="True" playsinline="True" preload="auto" webkit-playsinline=""><source src="index_items/sbell_story.webm" type="video/webm"/><source src="index_items/sbell_story.mp4" type="video/mp4"/></video></div></div></div>
