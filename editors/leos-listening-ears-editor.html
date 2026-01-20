@@ -1,0 +1,3406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Leo's Listening Ears - Story Editor</title>
+    <style>
+        :root {
+            --bg-dark: #0f0f1a;
+            --bg-card: #1a1a2e;
+            --bg-hover: #252542;
+            --bg-input: #12121f;
+            --text-primary: #f0f4f8;
+            --text-secondary: #a0aec0;
+            --accent-gold: #ffd700;
+            --accent-green: #48bb78;
+            --accent-red: #fc8181;
+            --accent-blue: #63b3ed;
+            --accent-purple: #b794f4;
+            --border-subtle: #2d2d44;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1600px; margin: 0 auto; }
+
+        /* Header */
+        .header {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-subtle);
+        }
+        .header h1 {
+            color: var(--accent-gold);
+            font-size: 2em;
+            margin-bottom: 8px;
+        }
+        .header-subtitle {
+            color: var(--accent-purple);
+            font-size: 0.9em;
+            margin-bottom: 12px;
+        }
+        .meta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
+        .badge {
+            background: rgba(255, 215, 0, 0.15);
+            color: var(--accent-gold);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+        .description { color: var(--text-secondary); line-height: 1.6; font-size: 0.95em; }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.3em;
+            margin: 24px 0 16px 0;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-count {
+            background: var(--accent-gold);
+            color: var(--bg-dark);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+
+        /* Collapsible Section */
+        .collapsible-section {
+            margin-bottom: 24px;
+        }
+        .collapsible-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 12px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            transition: background 0.2s;
+        }
+        .collapsible-header:hover {
+            background: var(--bg-hover);
+        }
+        .collapsible-header .arrow {
+            font-size: 1.2em;
+            transition: transform 0.3s;
+            color: var(--text-secondary);
+        }
+        .collapsible-header.expanded .arrow {
+            transform: rotate(90deg);
+        }
+        .collapsible-content {
+            display: none;
+            padding-top: 16px;
+        }
+        .collapsible-content.active {
+            display: block;
+        }
+
+        /* Character Reference Grid */
+        .char-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding: 16px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+        }
+        .char-card {
+            width: 120px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-radius: 12px;
+            padding: 8px;
+            border: 2px solid transparent;
+        }
+        .char-card:hover {
+            transform: translateY(-4px);
+            background: var(--bg-hover);
+        }
+        .char-card.selected {
+            border-color: var(--accent-purple);
+            background: rgba(183, 148, 244, 0.1);
+        }
+        .char-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--border-subtle);
+        }
+        .char-card.selected img {
+            border-color: var(--accent-purple);
+        }
+        .char-name {
+            margin-top: 8px;
+            font-size: 0.85em;
+            color: var(--text-secondary);
+        }
+        .char-info {
+            font-size: 0.7em;
+            color: var(--accent-gold);
+            margin-top: 2px;
+        }
+        .char-images {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+        .char-portrait, .char-fullbody {
+            position: relative;
+            text-align: center;
+        }
+        .char-portrait img, .char-fullbody img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--border-subtle);
+        }
+        .char-fullbody img {
+            border-color: var(--accent-green);
+        }
+        .portrait-label, .fullbody-label {
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.6em;
+            background: var(--bg-dark);
+            padding: 1px 4px;
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+        .fullbody-label {
+            color: var(--accent-green);
+        }
+        .btn-gen-fullbody {
+            width: 60px;
+            height: 60px;
+            border: 2px dashed var(--accent-purple);
+            background: rgba(183, 148, 244, 0.1);
+            border-radius: 8px;
+            color: var(--accent-purple);
+            font-size: 0.65em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-gen-fullbody:hover {
+            background: rgba(183, 148, 244, 0.2);
+            border-style: solid;
+        }
+        .no-chars {
+            color: var(--text-secondary);
+            font-style: italic;
+            padding: 20px;
+        }
+        .info-box {
+            background: rgba(99, 179, 237, 0.1);
+            border: 1px solid var(--accent-blue);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .info-box strong {
+            color: var(--accent-blue);
+        }
+        .btn-generate-char {
+            background: var(--accent-purple);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 24px;
+            transition: all 0.2s;
+        }
+        .btn-generate-char:hover {
+            background: #9f7aea;
+            transform: translateY(-2px);
+        }
+        .prompt-template-section {
+            background: var(--bg-input);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+        }
+        .prompt-template-section label {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.85em;
+            margin-bottom: 8px;
+        }
+        .template-select {
+            width: 100%;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+        .char-desc-input {
+            width: 100%;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            margin-bottom: 12px;
+        }
+        .char-desc-input:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+        }
+
+        /* Image Grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .image-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--border-subtle);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .image-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-blue);
+        }
+        .image-card.approved { border-color: var(--accent-green); }
+        .image-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.3);
+        }
+        .image-label { font-weight: 600; }
+        .image-status {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+        .status-good { background: rgba(72, 187, 120, 0.2); color: var(--accent-green); }
+        .status-warning { background: rgba(246, 173, 85, 0.2); color: #f6ad55; }
+        .status-missing { background: rgba(252, 129, 129, 0.2); color: var(--accent-red); }
+        .image-preview {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .image-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .image-preview:hover img { transform: scale(1.05); }
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 40px 16px 16px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .image-preview:hover .image-overlay { opacity: 1; }
+        .missing-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(252, 129, 129, 0.1);
+            color: var(--accent-red);
+        }
+        .image-prompt-preview {
+            padding: 12px 16px;
+            font-size: 0.8em;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            max-height: 60px;
+            overflow: hidden;
+            border-top: 1px solid var(--border-subtle);
+        }
+        /* Character tracking indicators */
+        .char-tracking {
+            padding: 8px 16px;
+            background: rgba(0,0,0,0.2);
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+        .char-tracking-label {
+            font-size: 0.75em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .char-indicator {
+            font-size: 0.8em;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+        .char-indicator.sent {
+            background: rgba(72, 187, 120, 0.2);
+            color: var(--accent-green);
+        }
+        .char-indicator.not-sent {
+            background: rgba(252, 129, 129, 0.2);
+            color: var(--accent-red);
+        }
+        .char-indicator.none {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .image-actions {
+            display: flex;
+            gap: 8px;
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.2);
+        }
+        .btn {
+            flex: 1;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .btn-approve { background: rgba(72, 187, 120, 0.2); color: var(--accent-green); }
+        .btn-approve:hover { background: rgba(72, 187, 120, 0.4); }
+        .btn-edit { background: rgba(99, 179, 237, 0.2); color: var(--accent-blue); }
+        .btn-edit:hover { background: rgba(99, 179, 237, 0.4); }
+
+        /* Animation Button */
+        .btn-animate {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+            flex: 1;
+        }
+        .btn-animate:hover { background: linear-gradient(135deg, #8e44ad, #7d3c98); }
+        .btn-animate:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background: var(--border-subtle);
+        }
+        .animation-status {
+            font-size: 0.8em;
+            padding: 8px 12px;
+            background: rgba(155, 89, 182, 0.1);
+            border-radius: 6px;
+            margin-top: 8px;
+            display: none;
+        }
+        .animation-status.active { display: block; }
+        .animation-status.success { background: rgba(72, 187, 120, 0.1); color: var(--accent-green); }
+        .animation-status.error { background: rgba(252, 129, 129, 0.1); color: var(--accent-red); }
+
+        /* Model Selector */
+        .model-selector {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+            padding: 8px 0;
+        }
+        .model-selector label {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        .model-select {
+            padding: 8px 14px;
+            background: var(--bg-tertiary);
+            border: 2px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.9em;
+            cursor: pointer;
+            min-width: 180px;
+        }
+        .model-select:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+        }
+        .model-select option {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        /* Visible Story Text Display */
+        .story-text-display {
+            background: linear-gradient(135deg, rgba(99, 179, 237, 0.1), rgba(155, 89, 182, 0.1));
+            border-left: 3px solid var(--accent-blue);
+            padding: 16px;
+            margin: 0;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 1.05em;
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+        .story-text-content {
+            white-space: pre-wrap;
+        }
+        .story-text-content em {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Animation Preview */
+        .animation-preview {
+            background: rgba(155, 89, 182, 0.1);
+            border-top: 1px solid var(--border-subtle);
+            padding: 12px;
+            text-align: center;
+            position: relative;
+        }
+        .animation-preview.no-animation {
+            padding: 20px 12px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .animation-label {
+            font-size: 0.8em;
+            color: var(--accent-purple);
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .animation-video {
+            width: 100%;
+            max-height: 300px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: transparent;
+        }
+
+        /* Video Loading Overlay */
+        .animation-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 26, 46, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            z-index: 10;
+        }
+        .animation-loading .loader {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border-subtle);
+            border-top-color: var(--accent-purple);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        .animation-loading .loader-text {
+            margin-top: 16px;
+            color: var(--accent-purple);
+            font-size: 0.9em;
+            font-weight: 500;
+            text-align: center;
+        }
+        .animation-loading .loader-progress {
+            margin-top: 8px;
+            color: var(--text-secondary);
+            font-size: 0.8em;
+        }
+
+        /* Animation Prompt Editor */
+        .anim-prompt-panel {
+            background: rgba(155, 89, 182, 0.1);
+            border-radius: 8px;
+            margin-top: 12px;
+            overflow: hidden;
+        }
+        .anim-prompt-toggle {
+            padding: 10px 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-purple);
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+        .anim-prompt-toggle:hover { background: rgba(155, 89, 182, 0.15); }
+        .anim-prompt-toggle .arrow {
+            transition: transform 0.2s;
+            font-size: 0.8em;
+        }
+        .anim-prompt-toggle.expanded .arrow { transform: rotate(90deg); }
+        .anim-prompt-content {
+            display: none;
+            padding: 12px 16px;
+            border-top: 1px solid rgba(155, 89, 182, 0.2);
+        }
+        .anim-prompt-content.active { display: block; }
+        .anim-prompt-editor {
+            width: 100%;
+            min-height: 80px;
+            background: var(--bg-input);
+            border: 1px solid rgba(155, 89, 182, 0.3);
+            border-radius: 8px;
+            color: var(--text-primary);
+            padding: 10px;
+            font-size: 0.85em;
+            line-height: 1.5;
+            resize: vertical;
+            font-family: inherit;
+        }
+        .anim-prompt-editor:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+        }
+
+        /* Story Text Editor */
+        .story-editor-panel {
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            margin-top: 12px;
+            overflow: hidden;
+        }
+        .story-editor-toggle {
+            padding: 12px 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-blue);
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .story-editor-toggle:hover { background: rgba(99, 179, 237, 0.1); }
+        .story-editor-toggle .arrow {
+            transition: transform 0.2s;
+            font-size: 0.8em;
+        }
+        .story-editor-toggle.expanded .arrow { transform: rotate(90deg); }
+        .story-editor-content {
+            display: none;
+            padding: 16px;
+            border-top: 1px solid var(--border-subtle);
+        }
+        .story-editor-content.active { display: block; }
+        .story-text-editor {
+            width: 100%;
+            min-height: 120px;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            padding: 12px;
+            font-size: 0.95em;
+            line-height: 1.6;
+            resize: vertical;
+            font-family: inherit;
+        }
+        .story-text-editor:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+        .story-editor-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            align-items: center;
+        }
+        .btn-save-story {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn-save-story:hover { background: linear-gradient(135deg, #219a52, #27ae60); }
+        .btn-save-story:disabled { opacity: 0.6; cursor: not-allowed; }
+        .save-story-status {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+        }
+        .save-story-status.success { color: var(--accent-green); }
+        .save-story-status.error { color: var(--accent-red); }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal.active { display: flex; justify-content: center; padding: 40px 20px; }
+        .modal-content {
+            background: var(--bg-card);
+            border-radius: 16px;
+            max-width: 1200px;
+            width: 100%;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-subtle);
+            position: sticky;
+            top: 0;
+            background: var(--bg-card);
+            z-index: 10;
+        }
+        .modal-header h2 { color: var(--accent-gold); }
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 2em;
+            cursor: pointer;
+            padding: 0 10px;
+        }
+        .modal-close:hover { color: var(--text-primary); }
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            padding: 24px;
+        }
+        @media (max-width: 900px) {
+            .modal-body { grid-template-columns: 1fr; }
+        }
+        .modal-image-section { }
+        .modal-image {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+        .modal-controls { }
+        .control-group {
+            margin-bottom: 20px;
+        }
+        .control-label {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+        .prompt-textarea {
+            width: 100%;
+            min-height: 200px;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            padding: 12px;
+            font-size: 0.9em;
+            line-height: 1.5;
+            resize: vertical;
+            font-family: inherit;
+        }
+        .prompt-textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+        .ref-image-section {
+            background: var(--bg-input);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+        }
+        .ref-image-preview {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .ref-image-preview img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .ref-image-info {
+            flex: 1;
+        }
+        .ref-image-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .ref-image-hint {
+            font-size: 0.8em;
+            color: var(--text-secondary);
+        }
+        .btn-clear-ref {
+            background: rgba(252, 129, 129, 0.2);
+            color: var(--accent-red);
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8em;
+        }
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .btn-generate {
+            background: var(--accent-gold);
+            color: var(--bg-dark);
+            padding: 14px 28px;
+            font-size: 1em;
+            flex: 2;
+        }
+        .btn-generate:hover { background: #e6c200; }
+        .btn-generate:disabled {
+            background: var(--border-subtle);
+            color: var(--text-secondary);
+            cursor: not-allowed;
+        }
+        .btn-cancel {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-primary);
+            padding: 14px 28px;
+            font-size: 1em;
+            flex: 1;
+        }
+
+        /* Generation Status */
+        .gen-status {
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+            display: none;
+        }
+        .gen-status.active { display: block; }
+        .gen-status.loading {
+            background: rgba(99, 179, 237, 0.1);
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+        }
+        .gen-status.success {
+            background: rgba(72, 187, 120, 0.1);
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+        }
+        .gen-status.error {
+            background: rgba(252, 129, 129, 0.1);
+            border: 1px solid var(--accent-red);
+            color: var(--accent-red);
+        }
+        .save-buttons {
+            display: none;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .save-buttons.active {
+            display: flex;
+        }
+        .btn-download {
+            background: var(--accent-green);
+            color: white;
+            flex: 1;
+        }
+        .btn-download:hover {
+            background: #38a169;
+        }
+        .btn-save-server {
+            background: var(--accent-purple);
+            color: white;
+            flex: 1;
+        }
+        .btn-save-server:hover {
+            background: #9f7aea;
+        }
+        .save-buttons {
+            display: none;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .save-buttons.active {
+            display: flex;
+        }
+        .btn-download {
+            background: var(--accent-green);
+            color: white;
+            flex: 1;
+        }
+        .btn-download:hover {
+            background: #38a169;
+        }
+        .btn-save-server {
+            background: var(--accent-purple);
+            color: white;
+            flex: 1;
+        }
+        .btn-save-server:hover {
+            background: #9f7aea;
+        }
+
+        /* Advanced Settings */
+        .advanced-settings {
+            margin-top: 20px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .advanced-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background: var(--bg-input);
+            cursor: pointer;
+            color: var(--accent-purple);
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .advanced-toggle:hover {
+            background: var(--bg-hover);
+        }
+        .advanced-content {
+            padding: 16px;
+            background: rgba(0,0,0,0.2);
+        }
+        .story-ref-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .story-ref-thumb {
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: border-color 0.2s, transform 0.2s;
+            position: relative;
+        }
+        .story-ref-thumb:hover {
+            transform: scale(1.05);
+        }
+        .story-ref-thumb.selected {
+            border-color: var(--accent-purple);
+        }
+        .story-ref-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .story-ref-thumb .ref-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            font-size: 0.7em;
+            padding: 2px 4px;
+            text-align: center;
+        }
+        .char-checkbox-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 8px;
+        }
+        .char-checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: var(--bg-input);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .char-checkbox-item:hover {
+            background: var(--bg-hover);
+        }
+        .char-checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        .char-checkbox-item img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .char-checkbox-item span {
+            color: var(--text-primary);
+            font-size: 0.9em;
+        }
+        .advanced-hint {
+            font-size: 0.8em;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-secondary);
+            font-size: 0.85em;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent-blue);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Save verification success animation */
+        @keyframes saveVerifiedPulse {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            50% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        @keyframes saveVerifiedGlow {
+            0% { border-color: #22c55e; }
+            100% { border-color: #4ade80; }
+        }
+
+        @keyframes checkmarkPop {
+            0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(0deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        @keyframes checkmarkFade {
+            0% { opacity: 1; }
+            70% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .image-card.save-verified {
+            border: 3px solid #22c55e !important;
+            animation: saveVerifiedPulse 0.6s ease-out, saveVerifiedGlow 0.3s ease-in-out alternate 4;
+        }
+
+        .image-card .save-checkmark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 80px;
+            height: 80px;
+            background: rgba(34, 197, 94, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .image-card .save-checkmark svg {
+            width: 50px;
+            height: 50px;
+            stroke: white;
+            stroke-width: 3;
+            fill: none;
+        }
+
+        .image-card.save-verified .save-checkmark {
+            animation: checkmarkPop 0.4s ease-out forwards, checkmarkFade 2.5s ease-out forwards;
+        }
+
+        .image-card .verified-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #22c55e;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            display: none;
+            z-index: 50;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .image-card.save-verified .verified-badge {
+            display: block;
+            animation: checkmarkPop 0.3s ease-out 0.2s forwards;
+        }
+
+        /* AI Chat Popup */
+        .chat-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        .chat-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(102, 126, 234, 0.6);
+        }
+        .chat-toggle.active {
+            background: #dc2626;
+        }
+        .chat-popup {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 420px;
+            max-width: calc(100vw - 40px);
+            height: 550px;
+            max-height: calc(100vh - 120px);
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-subtle);
+            display: none;
+            flex-direction: column;
+            z-index: 999;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+        .chat-popup.active {
+            display: flex;
+        }
+        .chat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-bottom: 1px solid var(--border-subtle);
+            cursor: move;
+        }
+        .chat-header h3 {
+            color: var(--accent-purple);
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .chat-header-btns {
+            display: flex;
+            gap: 8px;
+        }
+        .chat-header-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        .chat-header-btn:hover {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+        }
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.85em;
+            background: #0a0a14;
+        }
+        .chat-message {
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        .chat-message.user {
+            color: #9ae6b4;
+        }
+        .chat-message.user::before {
+            content: '> ';
+            color: #48bb78;
+        }
+        .chat-message.assistant {
+            color: #e2e8f0;
+            white-space: pre-wrap;
+        }
+        .chat-message.error {
+            color: #fc8181;
+        }
+        .chat-message.system {
+            color: #a0aec0;
+            font-style: italic;
+        }
+        .chat-message.modification {
+            color: #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 8px;
+            border-radius: 4px;
+            margin: 8px 0;
+        }
+        .chat-input-area {
+            padding: 12px;
+            border-top: 1px solid var(--border-subtle);
+            background: var(--bg-dark);
+        }
+        .chat-input-row {
+            display: flex;
+            gap: 8px;
+        }
+        .chat-input {
+            flex: 1;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            padding: 12px;
+            font-size: 0.9em;
+            font-family: inherit;
+            resize: none;
+        }
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+        }
+        .chat-send {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .chat-send:hover {
+            transform: translateY(-2px);
+        }
+        .chat-send:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .chat-api-key {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .chat-api-key input {
+            flex: 1;
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            color: var(--text-primary);
+            padding: 8px;
+            font-size: 0.8em;
+        }
+        .chat-api-key input:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+        }
+        .typing-indicator {
+            display: inline-block;
+        }
+        .typing-indicator span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--accent-purple);
+            border-radius: 50%;
+            margin-right: 3px;
+            animation: typing 1s infinite;
+        }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing {
+            0%, 100% { opacity: 0.3; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-3px); }
+        }
+        @media (max-width: 500px) {
+            .chat-popup {
+                width: calc(100vw - 20px);
+                right: 10px;
+                bottom: 80px;
+                height: calc(100vh - 100px);
+            }
+            .chat-toggle {
+                width: 50px;
+                height: 50px;
+                right: 10px;
+                bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Leo's Listening Ears</h1>
+            <div class="header-subtitle">Story Editor - Image-to-Image Generation</div>
+            <div class="meta-row">
+                <span class="badge" style="background: #ff6b6b; color: white;">Generated: 2026-01-20 23:43:52</span>
+                <span class="badge">Ages 6-8</span>
+                <span class="badge">0 Characters</span>
+                <span class="badge">9 Images</span>
+            </div>
+            <p class="description">An engaging story about Leo the lion cub who learns the power of truly listening to others. Through a series of misunderstandings, Leo discovers that listening with his whole heart helps him understand his friends better and become a better friend himself.</p>
+            <div class="model-selector">
+                <label for="videoModelSelect">Video Model:</label>
+                <select id="videoModelSelect" class="model-select">
+                    <option value="kling" selected>Kling AI (Recommended)</option>
+                    <option value="veo">Google Veo</option>
+                </select>
+            </div>
+            <div class="finalize-section" style="margin-top: 20px; padding: 20px; background: linear-gradient(135deg, #28a745 0%, #20c997 100%); border-radius: 12px; text-align: center;">
+                <h3 style="margin: 0 0 10px 0; color: white;">Ready to Publish?</h3>
+                <p style="margin: 0 0 15px 0; color: rgba(255,255,255,0.9); font-size: 0.9em;">Generate audio, word timing, and push to production</p>
+                <div style="margin-bottom: 15px; text-align: left; padding: 12px; background: rgba(255,255,255,0.15); border-radius: 8px; display: inline-block;">
+                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: white;">
+                        <input type="checkbox" id="regenerateAudio" style="width: 20px; height: 20px; cursor: pointer;"/>
+                        <span style="font-weight: 600;">Regenerate Audio (ElevenLabs ~$0.40)</span>
+                    </label>
+                    <small style="color: rgba(255,255,255,0.8); display: block; margin-left: 30px; margin-top: 4px;">
+                        Uncheck to skip audio generation and reuse existing audio file
+                    </small>
+                </div>
+                <br/>
+                <button id="finalizeBtn" onclick="finalizeStory()" style="background: white; color: #28a745; border: none; padding: 12px 30px; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                    Finalise & Publish
+                </button>
+                <div id="finalizeProgress" style="display: none; margin-top: 20px;">
+                    <div style="background: rgba(255,255,255,0.3); border-radius: 10px; height: 20px; overflow: hidden; margin-bottom: 10px;">
+                        <div id="progressBar" style="background: white; height: 100%; width: 0%; transition: width 0.3s ease; border-radius: 10px;"></div>
+                    </div>
+                    <div id="progressPercent" style="color: white; font-size: 1.2em; font-weight: bold;">0%</div>
+                    <div id="progressStep" style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin-top: 5px;"></div>
+                </div>
+                <div id="finalizeStatus" style="margin-top: 15px; color: white; font-weight: bold;"></div>
+            </div>
+        </div>
+
+        <div class="collapsible-section">
+            <div class="collapsible-header" onclick="toggleCharacterSection(this)">
+                <h2 class="section-title" style="margin: 0;">
+                    Character References
+                    <span class="section-count">0</span>
+                </h2>
+                <span class="arrow">▶</span>
+            </div>
+            <div class="collapsible-content" id="characterSectionContent">
+                <div class="char-grid">
+                    <p class="no-chars">No character references found</p>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 0.85em; margin-bottom: 16px;">
+                    Click a character to use as reference for image generation. Selected character will be included in the generation.
+                </p>
+                <div class="info-box">
+                    <strong>Note on Character Consistency:</strong> The model (gemini-2.5-flash-image) supports image references.
+                    Select a character below before regenerating to include their reference image in the API call.
+                    Uncheck "Use current image as style reference" if the current image has wrong style.
+                    <br/><br/>
+                    <strong>Legend:</strong> <span class="char-indicator sent" style="display:inline-block;">Name ✓</span> = ref sent to API &nbsp;
+                    <span class="char-indicator not-sent" style="display:inline-block;">Name ✗</span> = in prompt but ref NOT sent (file name mismatch)
+                </div>
+                <button class="btn btn-generate-char" onclick="openCharacterModal()">+ Generate New Character Reference</button>
+            </div>
+        </div>
+
+        <h2 class="section-title">
+            Story Images
+            <span class="section-count">9</span>
+        </h2>
+        <div class="image-grid">
+            
+            <div class="image-card missing" data-image="imagetitle">
+                <div class="save-checkmark">
+                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div class="verified-badge">Saved ✓</div>
+                <div class="image-header">
+                    <span class="image-label">Title Image</span>
+                    <span class="image-status status-missing">Missing</span>
+                </div>
+                <div class="image-preview missing-placeholder" onclick="openImageModal('imagetitle', `Title image showing Leo with oversized glowing ears, surrounded by his friends Zara and Pip, all in a warm savanna setting.`)">
+                    <span>Click to Generate</span>
+                </div>
+                <!-- Animation preview below image -->
+                
+                <div class="animation-preview no-animation">
+                    <div class="animation-label">No Animation Yet</div>
+                </div>
+                <!-- Story text displayed AFTER image/animation -->
+                <div class="story-text-display" id="story-display-imagetitle">
+                    <div class="story-text-content">On the golden savanna, where the tall grass danced in the wind, lived a young lion cub named Leo. He had the biggest heart and the most exciting ideas - but sometimes, his mouth moved faster than his ears could listen.</div>
+                </div>
+                <div class="char-tracking">
+                    <span class="char-tracking-label">Char Refs:</span>
+                    <span class="char-indicator none">No characters</span>
+                </div>
+                <div class="image-prompt-preview">Title image showing Leo with oversized glowing ears, surrounded by his friends Zara and Pip, all in a warm savanna setting.</div>
+                <div class="image-actions">
+                    <button class="btn btn-approve" onclick="event.stopPropagation(); approveImage('imagetitle')" disabled>Approve</button>
+                    <button class="btn btn-edit" onclick="event.stopPropagation(); openImageModal('imagetitle', `Title image showing Leo with oversized glowing ears, surrounded by his friends Zara and Pip, all in a warm savanna setting.`)">Generate</button>
+                    <button class="btn btn-animate" onclick="event.stopPropagation(); generateAnimation('imagetitle', this)" disabled>Animate</button>
+                </div>
+                <div class="animation-status" id="anim-status-imagetitle"></div>
+                <div class="anim-prompt-panel">
+                    <div class="anim-prompt-toggle" onclick="toggleAnimPrompt('imagetitle', this)">
+                        <span class="arrow">▶</span> Animation Prompt
+                    </div>
+                    <div class="anim-prompt-content" id="anim-prompt-imagetitle">
+                        <textarea class="anim-prompt-editor" id="anim-prompt-text-imagetitle">Gentle idle animation. Leo\'s ears twitching. Friends swaying gently. Warm savanna breeze atmosphere.</textarea>
+                    </div>
+                </div>
+                <div class="story-editor-panel">
+                    <div class="story-editor-toggle" onclick="toggleStoryEditor('imagetitle', this)">
+                        <span class="arrow">▶</span> Edit Story Text
+                    </div>
+                    <div class="story-editor-content" id="story-editor-imagetitle">
+                        <textarea class="story-text-editor" id="story-text-imagetitle">On the golden savanna, where the tall grass danced in the wind, lived a young lion cub named Leo. He had the biggest heart and the most exciting ideas - but sometimes, his mouth moved faster than his ears could listen.</textarea>
+                        <div class="story-editor-actions">
+                            <button class="btn-save-story" onclick="saveStoryText('imagetitle', this)">Save Text</button>
+                            <span class="save-story-status" id="story-status-imagetitle"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-card missing" data-image="image1">
+                <div class="save-checkmark">
+                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div class="verified-badge">Saved ✓</div>
+                <div class="image-header">
+                    <span class="image-label">Image 1</span>
+                    <span class="image-status status-missing">Missing</span>
+                </div>
+                <div class="image-preview missing-placeholder" onclick="openImageModal('image1', `Leo talking excitedly with big gestures while Zara tries to speak but can't get a word in.`)">
+                    <span>Click to Generate</span>
+                </div>
+                <!-- Animation preview below image -->
+                
+                <div class="animation-preview no-animation">
+                    <div class="animation-label">No Animation Yet</div>
+                </div>
+                <!-- Story text displayed AFTER image/animation -->
+                <div class="story-text-display" id="story-display-image1">
+                    <div class="story-text-content">"And then I saw the BIGGEST butterfly!" Leo said excitedly, waving his paws. His friend Zara the zebra opened her mouth to share her own story, but Leo kept right on talking. "It was orange and blue and it flew SO high!"</div>
+                </div>
+                <div class="char-tracking">
+                    <span class="char-tracking-label">Char Refs:</span>
+                    <span class="char-indicator none">No characters</span>
+                </div>
+                <div class="image-prompt-preview">Leo talking excitedly with big gestures while Zara tries to speak but can't get a word in.</div>
+                <div class="image-actions">
+                    <button class="btn btn-approve" onclick="event.stopPropagation(); approveImage('image1')" disabled>Approve</button>
+                    <button class="btn btn-edit" onclick="event.stopPropagation(); openImageModal('image1', `Leo talking excitedly with big gestures while Zara tries to speak but can't get a word in.`)">Generate</button>
+                    <button class="btn btn-animate" onclick="event.stopPropagation(); generateAnimation('image1', this)" disabled>Animate</button>
+                </div>
+                <div class="animation-status" id="anim-status-image1"></div>
+                <div class="anim-prompt-panel">
+                    <div class="anim-prompt-toggle" onclick="toggleAnimPrompt('image1', this)">
+                        <span class="arrow">▶</span> Animation Prompt
+                    </div>
+                    <div class="anim-prompt-content" id="anim-prompt-image1">
+                        <textarea class="anim-prompt-editor" id="anim-prompt-text-image1">Animated talking gestures. Leo\'s mouth moving enthusiastically. Zara trying to interject. Busy energy.</textarea>
+                    </div>
+                </div>
+                <div class="story-editor-panel">
+                    <div class="story-editor-toggle" onclick="toggleStoryEditor('image1', this)">
+                        <span class="arrow">▶</span> Edit Story Text
+                    </div>
+                    <div class="story-editor-content" id="story-editor-image1">
+                        <textarea class="story-text-editor" id="story-text-image1">"And then I saw the BIGGEST butterfly!" Leo said excitedly, waving his paws. His friend Zara the zebra opened her mouth to share her own story, but Leo kept right on talking. "It was orange and blue and it flew SO high!"</textarea>
+                        <div class="story-editor-actions">
+                            <button class="btn-save-story" onclick="saveStoryText('image1', this)">Save Text</button>
+                            <span class="save-story-status" id="story-status-image1"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-card missing" data-image="image2">
+                <div class="save-checkmark">
+                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div class="verified-badge">Saved ✓</div>
+                <div class="image-header">
+                    <span class="image-label">Image 2</span>
+                    <span class="image-status status-missing">Missing</span>
+                </div>
+                <div class="image-preview missing-placeholder" onclick="openImageModal('image2', `Pip looking sad and frustrated as Leo talks over him, not noticing Pip's expression.`)">
+                    <span>Click to Generate</span>
+                </div>
+                <!-- Animation preview below image -->
+                
+                <div class="animation-preview no-animation">
+                    <div class="animation-label">No Animation Yet</div>
+                </div>
+                <!-- Story text displayed AFTER image/animation -->
+                <div class="story-text-display" id="story-display-image2">
+                    <div class="story-text-content">Later, little Pip the meerkat tried to tell Leo about something important. "Leo, I really need to tell you about-" he started, but Leo jumped in with his own story about chasing his tail. Pip's shoulders drooped, and his eyes looked sad.</div>
+                </div>
+                <div class="char-tracking">
+                    <span class="char-tracking-label">Char Refs:</span>
+                    <span class="char-indicator none">No characters</span>
+                </div>
+                <div class="image-prompt-preview">Pip looking sad and frustrated as Leo talks over him, not noticing Pip's expression.</div>
+                <div class="image-actions">
+                    <button class="btn btn-approve" onclick="event.stopPropagation(); approveImage('image2')" disabled>Approve</button>
+                    <button class="btn btn-edit" onclick="event.stopPropagation(); openImageModal('image2', `Pip looking sad and frustrated as Leo talks over him, not noticing Pip's expression.`)">Generate</button>
+                    <button class="btn btn-animate" onclick="event.stopPropagation(); generateAnimation('image2', this)" disabled>Animate</button>
+                </div>
+                <div class="animation-status" id="anim-status-image2"></div>
+                <div class="anim-prompt-panel">
+                    <div class="anim-prompt-toggle" onclick="toggleAnimPrompt('image2', this)">
+                        <span class="arrow">▶</span> Animation Prompt
+                    </div>
+                    <div class="anim-prompt-content" id="anim-prompt-image2">
+                        <textarea class="anim-prompt-editor" id="anim-prompt-text-image2">Sad subtle movements. Pip\'s shoulders dropping. Leo obliviously animated. Contrast in energy.</textarea>
+                    </div>
+                </div>
+                <div class="story-editor-panel">
+                    <div class="story-editor-toggle" onclick="toggleStoryEditor('image2', this)">
+                        <span class="arrow">▶</span> Edit Story Text
+                    </div>
+                    <div class="story-editor-content" id="story-editor-image2">
+                        <textarea class="story-text-editor" id="story-text-image2">Later, little Pip the meerkat tried to tell Leo about something important. "Leo, I really need to tell you about-" he started, but Leo jumped in with his own story about chasing his tail. Pip's shoulders drooped, and his eyes looked sad.</textarea>
+                        <div class="story-editor-actions">
+                            <button class="btn-save-story" onclick="saveStoryText('image2', this)">Save Text</button>
+                            <span class="save-story-status" id="story-status-image2"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-card missing" data-image="image3">
+                <div class="save-checkmark">
+                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div class="verified-badge">Saved ✓</div>
+                <div class="image-header">
+                    <span class="image-label">Image 3</span>
+                    <span class="image-status status-missing">Missing</span>
+                </div>
+                <div class="image-preview missing-placeholder" onclick="openImageModal('image3', `Leo sitting alone looking confused as Zara and Pip walk away looking upset.`)">
+                    <span>Click to Generate</span>
+                </div>
+                <!-- Animation preview below image -->
+                
+                <div class="animation-preview no-animation">
+                    <div class="animation-label">No Animation Yet</div>
+                </div>
+                <!-- Story text displayed AFTER image/animation -->
+                <div class="story-text-display" id="story-display-image3">
+                    <div class="story-text-content">The next day, Leo bounded over to play, but Zara and Pip were already walking away. "Don't you want to play?" Leo called out, confused. "You never listen to us," Zara said quietly. Leo's heart sank like a stone.</div>
+                </div>
+                <div class="char-tracking">
+                    <span class="char-tracking-label">Char Refs:</span>
+                    <span class="char-indicator none">No characters</span>
+                </div>
+                <div class="image-prompt-preview">Leo sitting alone looking confused as Zara and Pip walk away looking upset.</div>
+                <div class="image-actions">
+                    <button class="btn btn-approve" onclick="event.stopPropagation(); approveImage('image3')" disabled>Approve</button>
+                    <button class="btn btn-edit" onclick="event.stopPropagation(); openImageModal('image3', `Leo sitting alone looking confused as Zara and Pip walk away looking upset.`)">Generate</button>
+                    <button class="btn btn-animate" onclick="event.stopPropagation(); generateAnimation('image3', this)" disabled>Animate</button>
+                </div>
+                <div class="animation-status" id="anim-status-image3"></div>
+                <div class="anim-prompt-panel">
+                    <div class="anim-prompt-toggle" onclick="toggleAnimPrompt('image3', this)">
+                        <span class="arrow">▶</span> Animation Prompt
+                    </div>
+                    <div class="anim-prompt-content" id="anim-prompt-image3">
+                        <textarea class="anim-prompt-editor" id="anim-prompt-text-image3">Lonely atmosphere. Leo\'s confused head tilt. Friends walking away. Emotional weight.</textarea>
+                    </div>
+                </div>
+                <div class="story-editor-panel">
+                    <div class="story-editor-toggle" onclick="toggleStoryEditor('image3', this)">
+                        <span class="arrow">▶</span> Edit Story Text
+                    </div>
+                    <div class="story-editor-content" id="story-editor-image3">
+                        <textarea class="story-text-editor" id="story-text-image3">The next day, Leo bounded over to play, but Zara and Pip were already walking away. "Don't you want to play?" Leo called out, confused. "You never listen to us," Zara said quietly. Leo's heart sank like a stone.</textarea>
+                        <div class="story-editor-actions">
+                            <button class="btn-save-story" onclick="saveStoryText('image3', this)">Save Text</button>
+                            <span class="save-story-status" id="story-status-image3"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-card missing" data-image="image4">
+                <div class="save-checkmark">
+                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div class="verified-badge">Saved ✓</div>
+                <div class="image-header">
+                    <span class="image-label">Image 4</span>
+                    <span class="image-status status-missing">Missing</span>
+                </div>
+                <div class="image-preview missing-placeholder" onclick="openImageModal('image4', `Leo visiting Grandpa Baxter under the big acacia tree, Grandpa looking wise and kind.`)">
+                    <span>Click to Generate</span>
+                </div>
+                <!-- Animation preview below image -->
+                
+                <div class="animation-preview no-animation">
+                    <div class="animation-label">No Animation Yet</div>
+                </div>
+                <!-- Story text displayed AFTER image/animation -->
+                <div class="story-text-display" id="story-display-image4">
+                    <div class="story-text-content">Feeling lonely and confused, Leo went to visit wise Grandpa Baxter under the big acacia tree. "Grandpa, my friends are upset with me, and I don't understand why," Leo said sadly.
+
+Grandpa Baxter smiled gently. "Tell me, little one - when your friends talk, what do you do?"
+
+Leo thought hard. "I... I tell them about MY ideas?"</div>
+                </div>
+                <div class="char-tracking">
+                    <span class="char-tracking-label">Char Refs:</span>
+                    <span class="char-indicator none">No characters</span>
+                </div>
+                <div class="image-prompt-preview">Leo visiting Grandpa Baxter under the big acacia tree, Grandpa looking wise and kind.</div>
+                <div class="image-actions">
+                    <button class="btn btn-approve" onclick="event.stopPropagation(); approveImage('image4')" disabled>Approve</button>
+                    <button class="btn btn-edit" onclick="event.stopPropagation(); openImageModal('image4', `Leo visiting Grandpa Baxter under the big acacia tree, Grandpa looking wise and kind.`)">Generate</button>
+                    <button class="btn btn-animate" onclick="event.stopPropagation(); generateAnimation('image4', this)" disabled>Animate</button>
+                </div>
+                <div class="animation-status" id="anim-status-image4"></div>
+                <div class="anim-prompt-panel">
+                    <div class="anim-prompt-toggle" onclick="toggleAnimPrompt('image4', this)">
+                        <span class="arrow">▶</span> Animation Prompt
+                    </div>
+                    <div class="anim-prompt-content" id="anim-prompt-image4">
+                        <textarea class="anim-prompt-editor" id="anim-prompt-text-image4">Wise calm atmosphere. Grandpa\'s gentle breathing. Leo attentive. Peaceful setting.</textarea>
+                    </div>
+                </div>
+                <div class="story-editor-panel">
+                    <div class="story-editor-toggle" onclick="toggleStoryEditor('image4', this)">
+                        <span class="arrow">▶</span> Edit Story Text
+                    </div>
+                    <div class="story-editor-content" id="story-editor-image4">
+                        <textarea class="story-text-editor" id="story-text-image4">Feeling lonely and confused, Leo went to visit wise Grandpa Baxter under the big acacia tree. "Grandpa, my friends are upset with me, and I don't understand why," Leo said sadly.&#10;&#10;Grandpa Baxter smiled gently. "Tell me, little one - when your friends talk, what do you do?"&#10;&#10;Leo thought hard. "I... I tell them about MY ideas?"</textarea>
+                        <div class="story-editor-actions">
+                            <button class="btn-save-story" onclick="saveStoryText('image4', this)">Save Text</button>
+                            <span class="save-story-status" id="story-status-image4"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-card missing" data-image="image5">
+                <div class="save-checkmark">
+                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div class="verified-badge">Saved ✓</div>
+                <div class="image-header">
+                    <span class="image-label">Image 5</span>
+                    <span class="image-status status-missing">Missing</span>
+                </div>
+                <div class="image-preview missing-placeholder" onclick="openImageModal('image5', `Grandpa Baxter demonstrating listening - leaning in, making eye contact, ears perked forward.`)">
+                    <span>Click to Generate</span>
+                </div>
+                <!-- Animation preview below image -->
+                
+                <div class="animation-preview no-animation">
+                    <div class="animation-label">No Animation Yet</div>
+                </div>
+                <!-- Story text displayed AFTER image/animation -->
+                <div class="story-text-display" id="story-display-image5">
+                    <div class="story-text-content">Grandpa nodded wisely. "Ah, I see. Let me teach you about listening with your whole heart." He leaned in close, his kind eyes focused on Leo. "When someone speaks, we look at them. We wait until they're finished. We think about their words, not just our own."
+
+"Real listening," Grandpa said, "means making the other person feel heard. It's one of the greatest gifts we can give."</div>
+                </div>
+                <div class="char-tracking">
+                    <span class="char-tracking-label">Char Refs:</span>
+                    <span class="char-indicator none">No characters</span>
+                </div>
+                <div class="image-prompt-preview">Grandpa Baxter demonstrating listening - leaning in, making eye contact, ears perked forward.</div>
+                <div class="image-actions">
+                    <button class="btn btn-approve" onclick="event.stopPropagation(); approveImage('image5')" disabled>Approve</button>
+                    <button class="btn btn-edit" onclick="event.stopPropagation(); openImageModal('image5', `Grandpa Baxter demonstrating listening - leaning in, making eye contact, ears perked forward.`)">Generate</button>
+                    <button class="btn btn-animate" onclick="event.stopPropagation(); generateAnimation('image5', this)" disabled>Animate</button>
+                </div>
+                <div class="animation-status" id="anim-status-image5"></div>
+                <div class="anim-prompt-panel">
+                    <div class="anim-prompt-toggle" onclick="toggleAnimPrompt('image5', this)">
+                        <span class="arrow">▶</span> Animation Prompt
+                    </div>
+                    <div class="anim-prompt-content" id="anim-prompt-image5">
+                        <textarea class="anim-prompt-editor" id="anim-prompt-text-image5">Teaching demonstration. Ear movements. Eye contact emphasis. Educational moment.</textarea>
+                    </div>
+                </div>
+                <div class="story-editor-panel">
+                    <div class="story-editor-toggle" onclick="toggleStoryEditor('image5', this)">
+                        <span class="arrow">▶</span> Edit Story Text
+                    </div>
+                    <div class="story-editor-content" id="story-editor-image5">
+                        <textarea class="story-text-editor" id="story-text-image5">Grandpa nodded wisely. "Ah, I see. Let me teach you about listening with your whole heart." He leaned in close, his kind eyes focused on Leo. "When someone speaks, we look at them. We wait until they're finished. We think about their words, not just our own."&#10;&#10;"Real listening," Grandpa said, "means making the other person feel heard. It's one of the greatest gifts we can give."</textarea>
+                        <div class="story-editor-actions">
+                            <button class="btn-save-story" onclick="saveStoryText('image5', this)">Save Text</button>
+                            <span class="save-story-status" id="story-status-image5"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-card missing" data-image="image6">
+                <div class="save-checkmark">
+                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div class="verified-badge">Saved ✓</div>
+                <div class="image-header">
+                    <span class="image-label">Image 6</span>
+                    <span class="image-status status-missing">Missing</span>
+                </div>
+                <div class="image-preview missing-placeholder" onclick="openImageModal('image6', `Leo practicing listening to Zara, making eye contact, not interrupting, looking focused.`)">
+                    <span>Click to Generate</span>
+                </div>
+                <!-- Animation preview below image -->
+                
+                <div class="animation-preview no-animation">
+                    <div class="animation-label">No Animation Yet</div>
+                </div>
+                <!-- Story text displayed AFTER image/animation -->
+                <div class="story-text-display" id="story-display-image6">
+                    <div class="story-text-content">Leo found Zara by the watering hole. "I'm sorry I didn't listen before," he said. "Will you tell me your butterfly story? I really want to hear it."
+
+This time, Leo kept his eyes on Zara. He didn't interrupt. He asked questions about HER story. Zara's face lit up. "You're really listening!" she said, surprised and happy.</div>
+                </div>
+                <div class="char-tracking">
+                    <span class="char-tracking-label">Char Refs:</span>
+                    <span class="char-indicator none">No characters</span>
+                </div>
+                <div class="image-prompt-preview">Leo practicing listening to Zara, making eye contact, not interrupting, looking focused.</div>
+                <div class="image-actions">
+                    <button class="btn btn-approve" onclick="event.stopPropagation(); approveImage('image6')" disabled>Approve</button>
+                    <button class="btn btn-edit" onclick="event.stopPropagation(); openImageModal('image6', `Leo practicing listening to Zara, making eye contact, not interrupting, looking focused.`)">Generate</button>
+                    <button class="btn btn-animate" onclick="event.stopPropagation(); generateAnimation('image6', this)" disabled>Animate</button>
+                </div>
+                <div class="animation-status" id="anim-status-image6"></div>
+                <div class="anim-prompt-panel">
+                    <div class="anim-prompt-toggle" onclick="toggleAnimPrompt('image6', this)">
+                        <span class="arrow">▶</span> Animation Prompt
+                    </div>
+                    <div class="anim-prompt-content" id="anim-prompt-image6">
+                        <textarea class="anim-prompt-editor" id="anim-prompt-text-image6">Focused listening posture. Zara animated while talking. Leo still and attentive. Progress shown.</textarea>
+                    </div>
+                </div>
+                <div class="story-editor-panel">
+                    <div class="story-editor-toggle" onclick="toggleStoryEditor('image6', this)">
+                        <span class="arrow">▶</span> Edit Story Text
+                    </div>
+                    <div class="story-editor-content" id="story-editor-image6">
+                        <textarea class="story-text-editor" id="story-text-image6">Leo found Zara by the watering hole. "I'm sorry I didn't listen before," he said. "Will you tell me your butterfly story? I really want to hear it."&#10;&#10;This time, Leo kept his eyes on Zara. He didn't interrupt. He asked questions about HER story. Zara's face lit up. "You're really listening!" she said, surprised and happy.</textarea>
+                        <div class="story-editor-actions">
+                            <button class="btn-save-story" onclick="saveStoryText('image6', this)">Save Text</button>
+                            <span class="save-story-status" id="story-status-image6"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-card missing" data-image="image7">
+                <div class="save-checkmark">
+                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div class="verified-badge">Saved ✓</div>
+                <div class="image-header">
+                    <span class="image-label">Image 7</span>
+                    <span class="image-status status-missing">Missing</span>
+                </div>
+                <div class="image-preview missing-placeholder" onclick="openImageModal('image7', `Leo listening carefully to Pip's story, Pip looking happy and animated as he speaks.`)">
+                    <span>Click to Generate</span>
+                </div>
+                <!-- Animation preview below image -->
+                
+                <div class="animation-preview no-animation">
+                    <div class="animation-label">No Animation Yet</div>
+                </div>
+                <!-- Story text displayed AFTER image/animation -->
+                <div class="story-text-display" id="story-display-image7">
+                    <div class="story-text-content">Next, Leo found Pip. "What was it you wanted to tell me before?" Leo asked, sitting down at Pip's level.
+
+Pip's eyes sparkled as he finally got to share his exciting news about finding a secret tunnel. Leo listened to every word, and Pip felt so happy to finally be heard.</div>
+                </div>
+                <div class="char-tracking">
+                    <span class="char-tracking-label">Char Refs:</span>
+                    <span class="char-indicator none">No characters</span>
+                </div>
+                <div class="image-prompt-preview">Leo listening carefully to Pip's story, Pip looking happy and animated as he speaks.</div>
+                <div class="image-actions">
+                    <button class="btn btn-approve" onclick="event.stopPropagation(); approveImage('image7')" disabled>Approve</button>
+                    <button class="btn btn-edit" onclick="event.stopPropagation(); openImageModal('image7', `Leo listening carefully to Pip's story, Pip looking happy and animated as he speaks.`)">Generate</button>
+                    <button class="btn btn-animate" onclick="event.stopPropagation(); generateAnimation('image7', this)" disabled>Animate</button>
+                </div>
+                <div class="animation-status" id="anim-status-image7"></div>
+                <div class="anim-prompt-panel">
+                    <div class="anim-prompt-toggle" onclick="toggleAnimPrompt('image7', this)">
+                        <span class="arrow">▶</span> Animation Prompt
+                    </div>
+                    <div class="anim-prompt-content" id="anim-prompt-image7">
+                        <textarea class="anim-prompt-editor" id="anim-prompt-text-image7">Happy storytelling energy. Pip animated and joyful. Leo engaged listener. Warm connection.</textarea>
+                    </div>
+                </div>
+                <div class="story-editor-panel">
+                    <div class="story-editor-toggle" onclick="toggleStoryEditor('image7', this)">
+                        <span class="arrow">▶</span> Edit Story Text
+                    </div>
+                    <div class="story-editor-content" id="story-editor-image7">
+                        <textarea class="story-text-editor" id="story-text-image7">Next, Leo found Pip. "What was it you wanted to tell me before?" Leo asked, sitting down at Pip's level.&#10;&#10;Pip's eyes sparkled as he finally got to share his exciting news about finding a secret tunnel. Leo listened to every word, and Pip felt so happy to finally be heard.</textarea>
+                        <div class="story-editor-actions">
+                            <button class="btn-save-story" onclick="saveStoryText('image7', this)">Save Text</button>
+                            <span class="save-story-status" id="story-status-image7"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-card missing" data-image="image8">
+                <div class="save-checkmark">
+                    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div class="verified-badge">Saved ✓</div>
+                <div class="image-header">
+                    <span class="image-label">Image 8</span>
+                    <span class="image-status status-missing">Missing</span>
+                </div>
+                <div class="image-preview missing-placeholder" onclick="openImageModal('image8', `All three friends sitting together happily, Leo in the middle, everyone smiling and connected.`)">
+                    <span>Click to Generate</span>
+                </div>
+                <!-- Animation preview below image -->
+                
+                <div class="animation-preview no-animation">
+                    <div class="animation-label">No Animation Yet</div>
+                </div>
+                <!-- Story text displayed AFTER image/animation -->
+                <div class="story-text-display" id="story-display-image8">
+                    <div class="story-text-content">From that day on, Leo became the best listener on the savanna. He learned that listening wasn't just about being quiet - it was about caring what others had to say. And do you know what? His friendships grew stronger than ever, because everyone feels special when someone truly listens.
+
+The End.</div>
+                </div>
+                <div class="char-tracking">
+                    <span class="char-tracking-label">Char Refs:</span>
+                    <span class="char-indicator none">No characters</span>
+                </div>
+                <div class="image-prompt-preview">All three friends sitting together happily, Leo in the middle, everyone smiling and connected.</div>
+                <div class="image-actions">
+                    <button class="btn btn-approve" onclick="event.stopPropagation(); approveImage('image8')" disabled>Approve</button>
+                    <button class="btn btn-edit" onclick="event.stopPropagation(); openImageModal('image8', `All three friends sitting together happily, Leo in the middle, everyone smiling and connected.`)">Generate</button>
+                    <button class="btn btn-animate" onclick="event.stopPropagation(); generateAnimation('image8', this)" disabled>Animate</button>
+                </div>
+                <div class="animation-status" id="anim-status-image8"></div>
+                <div class="anim-prompt-panel">
+                    <div class="anim-prompt-toggle" onclick="toggleAnimPrompt('image8', this)">
+                        <span class="arrow">▶</span> Animation Prompt
+                    </div>
+                    <div class="anim-prompt-content" id="anim-prompt-image8">
+                        <textarea class="anim-prompt-editor" id="anim-prompt-text-image8">Joyful group energy. All three friends happy. Warm sunset glow. Friendship celebration.</textarea>
+                    </div>
+                </div>
+                <div class="story-editor-panel">
+                    <div class="story-editor-toggle" onclick="toggleStoryEditor('image8', this)">
+                        <span class="arrow">▶</span> Edit Story Text
+                    </div>
+                    <div class="story-editor-content" id="story-editor-image8">
+                        <textarea class="story-text-editor" id="story-text-image8">From that day on, Leo became the best listener on the savanna. He learned that listening wasn't just about being quiet - it was about caring what others had to say. And do you know what? His friendships grew stronger than ever, because everyone feels special when someone truly listens.&#10;&#10;The End.</textarea>
+                        <div class="story-editor-actions">
+                            <button class="btn-save-story" onclick="saveStoryText('image8', this)">Save Text</button>
+                            <span class="save-story-status" id="story-status-image8"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Story Bell Editor V2 | Generated: 2026-01-20 23:43:52</p>
+            <p>Slug: leos-listening-ears</p>
+        </div>
+    </div>
+
+    <!-- Image Edit Modal -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Edit Image</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image-section">
+                    <img id="modalImage" class="modal-image" src="" alt="Current image"/>
+                    <div id="refImageSection" class="ref-image-section" style="display: none;">
+                        <div class="ref-image-preview">
+                            <img id="refImagePreview" src="" alt="Reference"/>
+                            <div class="ref-image-info">
+                                <div class="ref-image-name" id="refImageName">Character Reference</div>
+                                <div class="ref-image-hint">Will be used as style/character reference</div>
+                            </div>
+                            <button class="btn-clear-ref" onclick="clearCharacterRef()">Remove</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-controls">
+                    <div class="control-group">
+                        <label class="control-label">Generation Prompt (Full)</label>
+                        <textarea id="promptTextarea" class="prompt-textarea" placeholder="Enter your prompt here..."></textarea>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Gemini API Key</label>
+                        <input type="password" id="apiKeyInput" class="prompt-textarea" style="min-height: auto; height: 44px;"
+                               placeholder="Enter Gemini API key" value=""/>
+                    </div>
+                    <div class="control-group" style="margin-top: 12px;">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-secondary);">
+                            <input type="checkbox" id="useStyleRef" style="width: 18px; height: 18px;"/>
+                            <span>Use current image as style reference</span>
+                        </label>
+                        <small style="color: var(--accent-gold); display: block; margin-top: 4px;">
+                            Uncheck this if the current image has wrong style - only Pixar prompt + character refs will be used
+                        </small>
+                    </div>
+                    
+                    <!-- Advanced Settings -->
+                    <div class="advanced-settings">
+                        <div class="advanced-toggle" onclick="toggleAdvancedSettings()">
+                            <span id="advancedArrow">▶</span>
+                            <span>Advanced Settings</span>
+                        </div>
+                        <div class="advanced-content" id="advancedContent" style="display: none;">
+                            <div class="control-group">
+                                <label class="control-label">Story Image References</label>
+                                <small style="color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                                    Select images from this story to use as additional references
+                                </small>
+                                <div class="story-ref-grid" id="storyRefGrid">
+                                    <!-- Populated by JavaScript -->
+                                </div>
+                            </div>
+                            <div class="control-group" style="margin-top: 16px;">
+                                <label class="control-label">Character References</label>
+                                <small style="color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                                    Select characters to include as references
+                                </small>
+                                <div class="char-checkbox-grid" id="charCheckboxGrid">
+                                    <!-- Populated by JavaScript -->
+                                </div>
+                            </div>
+                            <div class="advanced-hint">
+                                Selected story images and characters will be sent as additional references to the API
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="btn btn-cancel" onclick="closeModal()">Cancel</button>
+                        <button class="btn btn-generate" id="generateBtn" onclick="generateImage()">
+                            Generate New Image
+                        </button>
+                    </div>
+                    <div id="genStatus" class="gen-status"></div>
+                    <div id="saveButtons" class="save-buttons">
+                        <button class="btn btn-download" onclick="downloadGeneratedImage()">
+                            Download Image
+                        </button>
+                        <button class="btn btn-save-server" onclick="saveImageToStory()">
+                            Save to Story
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Character Generation Modal -->
+    <div class="modal" id="characterModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Generate Character Reference</h2>
+                <button class="modal-close" onclick="closeCharacterModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image-section">
+                    <div id="charPreviewPlaceholder" class="missing-placeholder" style="aspect-ratio: 1; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(183, 148, 244, 0.1); color: var(--accent-purple);">
+                        <span>Character preview will appear here</span>
+                    </div>
+                    <img id="charPreviewImage" class="modal-image" src="" alt="Generated character" style="display: none;"/>
+                </div>
+                <div class="modal-controls">
+                    <div class="control-group">
+                        <label class="control-label">Character Name (used for filename)</label>
+                        <input type="text" id="charNameInput" class="char-desc-input" placeholder="e.g., Luna, Maya, Noah"/>
+                    </div>
+                    <div class="prompt-template-section">
+                        <label>Prompt Template (Pixar-Style 3D)</label>
+                        <select id="templateSelect" class="template-select" onchange="updateCharPrompt()">
+                            <option value="portrait">Portrait (Face/Head)</option>
+                            <option value="fullbody">Full Body</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Character Description (fill in the details)</label>
+                        <input type="text" id="charDescInput" class="char-desc-input" placeholder="e.g., a 6-year-old girl with curly black hair in two puffs, brown eyes, yellow sundress"/>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Full Prompt (auto-generated from template)</label>
+                        <textarea id="charPromptTextarea" class="prompt-textarea" style="min-height: 180px;"></textarea>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Gemini API Key</label>
+                        <input type="password" id="charApiKeyInput" class="prompt-textarea" style="min-height: auto; height: 44px;"
+                               placeholder="Enter Gemini API key" value=""/>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn btn-cancel" onclick="closeCharacterModal()">Cancel</button>
+                        <button class="btn btn-generate" id="generateCharBtn" onclick="generateCharacter()" style="background: var(--accent-purple);">
+                            Generate Character
+                        </button>
+                    </div>
+                    <div id="charGenStatus" class="gen-status"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const imageUrls = {};
+        const imageDataCache = {};  // Cache for base64 data when needed
+        let currentImageKey = null;
+        let selectedCharRef = null;
+        let selectedCharData = null;
+        let selectedCharUrl = null;
+        const storySlug = 'leos-listening-ears';
+        
+        // Character data for advanced settings
+        const characterData = [];
+
+        // Story text data for editing
+        const storyTexts = {"imagetitle": "On the golden savanna, where the tall grass danced in the wind, lived a young lion cub named Leo. He had the biggest heart and the most exciting ideas - but sometimes, his mouth moved faster than his ears could listen.", "image1": "\"And then I saw the BIGGEST butterfly!\" Leo said excitedly, waving his paws. His friend Zara the zebra opened her mouth to share her own story, but Leo kept right on talking. \"It was orange and blue and it flew SO high!\"", "image2": "Later, little Pip the meerkat tried to tell Leo about something important. \"Leo, I really need to tell you about-\" he started, but Leo jumped in with his own story about chasing his tail. Pip's shoulders drooped, and his eyes looked sad.", "image3": "The next day, Leo bounded over to play, but Zara and Pip were already walking away. \"Don't you want to play?\" Leo called out, confused. \"You never listen to us,\" Zara said quietly. Leo's heart sank like a stone.", "image4": "Feeling lonely and confused, Leo went to visit wise Grandpa Baxter under the big acacia tree. \"Grandpa, my friends are upset with me, and I don't understand why,\" Leo said sadly.\n\nGrandpa Baxter smiled gently. \"Tell me, little one - when your friends talk, what do you do?\"\n\nLeo thought hard. \"I... I tell them about MY ideas?\"", "image5": "Grandpa nodded wisely. \"Ah, I see. Let me teach you about listening with your whole heart.\" He leaned in close, his kind eyes focused on Leo. \"When someone speaks, we look at them. We wait until they're finished. We think about their words, not just our own.\"\n\n\"Real listening,\" Grandpa said, \"means making the other person feel heard. It's one of the greatest gifts we can give.\"", "image6": "Leo found Zara by the watering hole. \"I'm sorry I didn't listen before,\" he said. \"Will you tell me your butterfly story? I really want to hear it.\"\n\nThis time, Leo kept his eyes on Zara. He didn't interrupt. He asked questions about HER story. Zara's face lit up. \"You're really listening!\" she said, surprised and happy.", "image7": "Next, Leo found Pip. \"What was it you wanted to tell me before?\" Leo asked, sitting down at Pip's level.\n\nPip's eyes sparkled as he finally got to share his exciting news about finding a secret tunnel. Leo listened to every word, and Pip felt so happy to finally be heard.", "image8": "From that day on, Leo became the best listener on the savanna. He learned that listening wasn't just about being quiet - it was about caring what others had to say. And do you know what? His friendships grew stronger than ever, because everyone feels special when someone truly listens.\n\nThe End."};
+
+        // Image prompts for animation generation
+        const prompts = {"imagetitle": "Title image showing Leo with oversized glowing ears, surrounded by his friends Zara and Pip, all in a warm savanna setting.", "image1": "Leo talking excitedly with big gestures while Zara tries to speak but can't get a word in.", "image2": "Pip looking sad and frustrated as Leo talks over him, not noticing Pip's expression.", "image3": "Leo sitting alone looking confused as Zara and Pip walk away looking upset.", "image4": "Leo visiting Grandpa Baxter under the big acacia tree, Grandpa looking wise and kind.", "image5": "Grandpa Baxter demonstrating listening - leaning in, making eye contact, ears perked forward.", "image6": "Leo practicing listening to Zara, making eye contact, not interrupting, looking focused.", "image7": "Leo listening carefully to Pip's story, Pip looking happy and animated as he speaks.", "image8": "All three friends sitting together happily, Leo in the middle, everyone smiling and connected."};
+
+        // Image server URL for API calls - dynamically determined
+        let IMAGE_SERVER_URL = 'http://localhost:3456'; // Default for local development
+        const STORY_SLUG = 'leos-listening-ears';
+
+        // Determine the API server URL based on how the editor is accessed
+        async function initApiServerUrl() {
+            const currentHost = window.location.hostname;
+            const currentOrigin = window.location.origin;
+
+            // Case 1: Accessed via Cloudflare Tunnel - use same origin (tunnel proxies to local server)
+            if (currentHost.endsWith('.trycloudflare.com')) {
+                IMAGE_SERVER_URL = currentOrigin;
+                console.log('[API] Using Cloudflare Tunnel origin:', IMAGE_SERVER_URL);
+                return;
+            }
+
+            // Case 2: Accessed via editor.readaloudstories.com (static hosting) - need tunnel URL from config
+            if (currentHost === 'editor.readaloudstories.com') {
+                try {
+                    // Try to fetch current tunnel URL from config
+                    const configResponse = await fetch('/api-config.json?t=' + Date.now());
+                    if (configResponse.ok) {
+                        const config = await configResponse.json();
+                        if (config.apiServerUrl) {
+                            IMAGE_SERVER_URL = config.apiServerUrl;
+                            console.log('[API] Using configured tunnel URL:', IMAGE_SERVER_URL);
+                            return;
+                        }
+                    }
+                } catch (e) {
+                    console.warn('[API] Could not load api-config.json:', e.message);
+                }
+                // Show warning if no tunnel URL configured
+                console.error('[API] No API server configured! AI chat and animate features will not work.');
+                console.error('[API] Start the Cloudflare tunnel and update api-config.json with the tunnel URL.');
+                return;
+            }
+
+            // Case 3: Local development (localhost/127.0.0.1)
+            if (currentHost === 'localhost' || currentHost === '127.0.0.1') {
+                IMAGE_SERVER_URL = 'http://localhost:3456';
+                console.log('[API] Local development mode, using localhost:3456');
+                return;
+            }
+
+            // Case 4: Any other origin - assume it's serving the API too
+            IMAGE_SERVER_URL = currentOrigin;
+            console.log('[API] Using current origin as API server:', IMAGE_SERVER_URL);
+        }
+        // Initialize API URL on page load
+        initApiServerUrl();
+
+        // Advanced settings state
+        let advancedOpen = false;
+        let selectedStoryRefs = [];  // Array of image keys (e.g., 'image1', 'image2')
+        let selectedCharRefs = [];   // Array of {name, data} objects
+
+        // NOTE: fetchImageAsBase64 is defined below with caching support
+
+        // Advanced Settings Functions
+        function toggleAdvancedSettings() {
+            advancedOpen = !advancedOpen;
+            const content = document.getElementById('advancedContent');
+            const arrow = document.getElementById('advancedArrow');
+            content.style.display = advancedOpen ? 'block' : 'none';
+            arrow.textContent = advancedOpen ? '▼' : '▶';
+        }
+        
+        function populateAdvancedSettings() {
+            // Populate story image thumbnails
+            const storyGrid = document.getElementById('storyRefGrid');
+            storyGrid.innerHTML = '';
+            
+            const imageNames = ['imagetitle', 'image1', 'image2', 'image3', 'image4', 'image5', 'image6', 'image7', 'image8'];
+            imageNames.forEach(imgKey => {
+                if (imageUrls[imgKey] && imgKey !== currentImageKey) {
+                    const thumb = document.createElement('div');
+                    thumb.className = 'story-ref-thumb' + (selectedStoryRefs.includes(imgKey) ? ' selected' : '');
+                    thumb.dataset.imageKey = imgKey;
+                    thumb.onclick = () => toggleStoryRef(imgKey, thumb);
+                    thumb.innerHTML = '<img src="' + imageUrls[imgKey] + '" alt="' + imgKey + '"/>';
+                    storyGrid.appendChild(thumb);
+                }
+            });
+            
+            // Populate character checkboxes
+            const charGrid = document.getElementById('charCheckboxGrid');
+            charGrid.innerHTML = '';
+            
+            characterData.forEach((char, idx) => {
+                const item = document.createElement('label');
+                item.className = 'char-checkbox-item';
+                const isChecked = selectedCharRefs.some(c => c.name === char.name);
+                const charUrl = char.url || '';
+                item.innerHTML = '<input type="checkbox" id="charRef' + idx + '" ' + (isChecked ? 'checked' : '') + ' onchange="toggleCharRef(this)" data-char-name="' + char.name + '" data-char-url="' + charUrl + '"/><img src="' + charUrl + '" alt="' + char.name + '"/><span>' + char.name + '</span>';
+                charGrid.appendChild(item);
+            });
+        }
+        
+        function resetAdvancedSettings() {
+            // Reset selections when opening a new image
+            selectedStoryRefs = [];
+            selectedCharRefs = [];
+            advancedOpen = false;
+            const content = document.getElementById('advancedContent');
+            const arrow = document.getElementById('advancedArrow');
+            if (content) content.style.display = 'none';
+            if (arrow) arrow.textContent = '▶';
+        }
+        
+        function toggleStoryRef(imgKey, thumbEl) {
+            const idx = selectedStoryRefs.indexOf(imgKey);
+            if (idx > -1) {
+                selectedStoryRefs.splice(idx, 1);
+                thumbEl.classList.remove('selected');
+            } else {
+                selectedStoryRefs.push(imgKey);
+                thumbEl.classList.add('selected');
+            }
+        }
+        
+        function toggleCharRef(checkbox) {
+            const charName = checkbox.dataset.charName;
+            const charIdx = parseInt(checkbox.id.replace('charRef', ''));
+            const charUrl = characterData[charIdx] ? (characterData[charIdx].fullbody_url || characterData[charIdx].url) : '';
+
+            if (checkbox.checked) {
+                // Add if not already present
+                if (!selectedCharRefs.some(c => c.name === charName)) {
+                    selectedCharRefs.push({ name: charName, url: charUrl });
+                }
+            } else {
+                // Remove
+                selectedCharRefs = selectedCharRefs.filter(c => c.name !== charName);
+            }
+        }
+        
+        // Detect characters mentioned in a prompt
+        function detectCharactersInPrompt(prompt) {
+            const promptLower = prompt.toLowerCase();
+            const found = [];
+            characterData.forEach(char => {
+                const charName = char.name.toLowerCase();
+                if (promptLower.includes(charName)) {
+                    found.push(char);
+                }
+            });
+            return found;
+        }
+        
+        // Generate scale/height instruction for multi-character scenes
+        function generateScalePrompt(charactersInScene) {
+            if (charactersInScene.length < 2) return '';
+            
+            // Sort by height descending
+            const sorted = [...charactersInScene].sort((a, b) => (b.height_cm || 107) - (a.height_cm || 107));
+            const tallestHeight = sorted[0].height_cm || 170;
+            const tallestName = sorted[0].name;
+            
+            let lines = ['CHARACTER SCALE REFERENCE (maintain these relative heights):'];
+            
+            sorted.forEach((char, i) => {
+                const height = char.height_cm || 107;
+                const ratio = height / tallestHeight;
+                const age = char.age || '?';
+                
+                if (i === 0) {
+                    lines.push(`- ${char.name} (${age}yo): Tallest character, reference point`);
+                } else {
+                    let relDesc;
+                    if (ratio >= 0.95) relDesc = `nearly same height as ${tallestName}`;
+                    else if (ratio >= 0.85) relDesc = `head reaches ${tallestName}'s eye level`;
+                    else if (ratio >= 0.75) relDesc = `head reaches ${tallestName}'s shoulder`;
+                    else if (ratio >= 0.65) relDesc = `head reaches ${tallestName}'s chest`;
+                    else relDesc = `head reaches ${tallestName}'s waist`;
+                    lines.push(`- ${char.name} (${age}yo): ${relDesc}`);
+                }
+            });
+            
+            lines.push('Maintain these proportions consistently in the image.');
+            return lines.join('\n');
+        }
+
+        // Pixar-style prompt templates
+        const PORTRAIT_TEMPLATE = `Pixar-style 3D animated character portrait. {description}.
+
+Soft volumetric lighting with warm golden rim light. Tactile realistic textures - soft skin, realistic hair texture with individual strands visible. Neotenous chibi proportions with big head, large expressive eyes with reflective highlights and catchlights, small cute features. Cinematic depth of field with soft bokeh background. Vibrant warm color palette. Magical yet believable atmosphere.
+
+Close-up portrait view, centered, facing slightly toward camera, neutral warm-toned background.
+
+Avoid: flat lighting, harsh shadows, 2D flat illustration, realistic human proportions, neon colors, busy cluttered background, blurry subject, sketch, line art, anime, manga style, watercolor, painted, multiple characters.`;
+
+        const FULLBODY_TEMPLATE = `Pixar-style 3D animated character full body illustration. {description}.
+
+Soft volumetric lighting with glowing god rays streaming through mist. Tactile realistic textures - soft skin, realistic clothing fabric, detailed accessories. Neotenous chibi proportions with big head, large expressive eyes, small cute body. Cinematic depth of field with soft bokeh background. Vibrant warm color palette - rich golds, greens, and browns. Magical yet believable atmosphere.
+
+Full body view, standing pose, centered, simple complementary background.
+
+Avoid: flat lighting, harsh shadows, 2D flat illustration, realistic human proportions, neon colors, busy cluttered background, blurry subject, sketch, line art, anime, manga style, watercolor, painted, multiple characters.`;
+
+        function updateCharPrompt() {
+            const template = document.getElementById('templateSelect').value;
+            const desc = document.getElementById('charDescInput').value || '{description}';
+            const promptTemplate = template === 'portrait' ? PORTRAIT_TEMPLATE : FULLBODY_TEMPLATE;
+            document.getElementById('charPromptTextarea').value = promptTemplate.replace('{description}', desc);
+        }
+
+        function openCharacterModal() {
+            document.getElementById('charNameInput').value = '';
+            document.getElementById('charDescInput').value = '';
+            document.getElementById('templateSelect').value = 'portrait';
+            updateCharPrompt();
+            document.getElementById('charPreviewPlaceholder').style.display = 'flex';
+            document.getElementById('charPreviewImage').style.display = 'none';
+            document.getElementById('charGenStatus').className = 'gen-status';
+            document.getElementById('characterModal').classList.add('active');
+        }
+
+        function closeCharacterModal() {
+            document.getElementById('characterModal').classList.remove('active');
+        }
+
+        // Open modal pre-configured for generating full body image
+        function openFullBodyModal(charKey, charName, charDesc) {
+            document.getElementById('charNameInput').value = charKey + '_full';
+            document.getElementById('charDescInput').value = charDesc || charName;
+            document.getElementById('templateSelect').value = 'fullbody';
+            updateCharPrompt();
+            document.getElementById('charPreviewPlaceholder').style.display = 'flex';
+            document.getElementById('charPreviewImage').style.display = 'none';
+            document.getElementById('charGenStatus').className = 'gen-status';
+            document.getElementById('characterModal').classList.add('active');
+            // Store the character key for saving
+            window.fullBodyCharKey = charKey;
+        }
+
+        // Update prompt when description changes
+        document.addEventListener('DOMContentLoaded', () => {
+            const descInput = document.getElementById('charDescInput');
+            if (descInput) {
+                descInput.addEventListener('input', updateCharPrompt);
+            }
+
+            // Force autoplay videos when visible
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const video = entry.target;
+                    if (entry.isIntersecting) {
+                        video.play().catch(() => {});
+                    }
+                });
+            }, { threshold: 0.25 });
+            document.querySelectorAll('.animation-video').forEach(v => videoObserver.observe(v));
+
+            // Check for animations that may have been generated after page was built
+            checkForNewAnimations();
+        });
+
+        // Check for new animations on page load (in case generation completed after timeout)
+        async function checkForNewAnimations() {
+            const animPreviews = document.querySelectorAll('.animation-preview.no-animation');
+            for (const preview of animPreviews) {
+                const card = preview.closest('.image-card');
+                if (!card) continue;
+
+                const imageKey = card.dataset.image; // e.g., "image1", "imagetitle"
+                if (!imageKey) continue;
+
+                // Convert image key to animation key (image1 -> animation1, imagetitle -> animationtitle)
+                const animKey = imageKey.replace('image', 'animation');
+                const animUrl = `/${STORY_SLUG}/${STORY_SLUG}-${animKey}.mp4`;
+
+                try {
+                    const resp = await fetch(animUrl, { method: 'HEAD' });
+                    if (resp.ok) {
+                        // Animation exists! Update the preview
+                        console.log(`Found animation: ${animUrl}`);
+                        preview.classList.remove('no-animation');
+                        preview.innerHTML = `
+                            <div class="animation-label">Animation (found on refresh)</div>
+                            <video src="${animUrl}?t=${Date.now()}" autoplay loop muted playsinline class="animation-video"></video>
+                        `;
+                        // Add to video observer
+                        const video = preview.querySelector('video');
+                        if (video) {
+                            video.play().catch(() => {});
+                        }
+                    }
+                } catch (e) {
+                    // Animation doesn't exist yet, that's fine
+                }
+            }
+        }
+
+        async function generateCharacter() {
+            const name = document.getElementById('charNameInput').value.trim();
+            const prompt = document.getElementById('charPromptTextarea').value;
+            const apiKey = document.getElementById('charApiKeyInput').value;
+            const statusEl = document.getElementById('charGenStatus');
+            const btn = document.getElementById('generateCharBtn');
+
+            if (!name) {
+                statusEl.className = 'gen-status active error';
+                statusEl.textContent = 'Please enter a character name';
+                return;
+            }
+
+            if (!prompt || prompt.includes('{description}')) {
+                statusEl.className = 'gen-status active error';
+                statusEl.textContent = 'Please enter a character description';
+                return;
+            }
+
+            if (!apiKey) {
+                statusEl.className = 'gen-status active error';
+                statusEl.textContent = 'Please enter your Gemini API key';
+                return;
+            }
+
+            btn.disabled = true;
+            statusEl.className = 'gen-status active loading';
+            statusEl.innerHTML = '<span class="spinner"></span>Generating character reference...';
+
+            try {
+                const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${apiKey}`;
+
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }],
+                        generationConfig: {
+                            responseModalities: ['TEXT', 'IMAGE']
+                        }
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.error) {
+                    throw new Error(result.error.message || 'Generation failed');
+                }
+
+                // Extract generated image
+                const candidates = result.candidates || [];
+                let newImageData = null;
+
+                for (const candidate of candidates) {
+                    const parts = candidate.content?.parts || [];
+                    for (const part of parts) {
+                        if (part.inlineData) {
+                            newImageData = `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`;
+                            break;
+                        }
+                    }
+                }
+
+                if (newImageData) {
+                    document.getElementById('charPreviewPlaceholder').style.display = 'none';
+                    document.getElementById('charPreviewImage').style.display = 'block';
+                    document.getElementById('charPreviewImage').src = newImageData;
+
+                    statusEl.className = 'gen-status active success';
+                    statusEl.innerHTML = `Character generated! <strong>Save as: ${name.toLowerCase()}.webp</strong> in the character directory to use it.`;
+                } else {
+                    throw new Error('No image in response');
+                }
+
+            } catch (error) {
+                statusEl.className = 'gen-status active error';
+                statusEl.textContent = 'Error: ' + error.message;
+            }
+
+            btn.disabled = false;
+        }
+
+        // Fetch image as base64 (uses imageDataCache declared above)
+        async function fetchImageAsBase64(url) {
+            // Check cache first
+            if (imageDataCache[url]) {
+                return imageDataCache[url];
+            }
+            try {
+                const response = await fetch(url);
+                const blob = await response.blob();
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                        imageDataCache[url] = reader.result;
+                        resolve(reader.result);
+                    };
+                    reader.onerror = reject;
+                    reader.readAsDataURL(blob);
+                });
+            } catch (e) {
+                console.error('Failed to fetch image:', url, e);
+                return null;
+            }
+        }
+
+        async function selectCharacterByUrl(element, imgUrl, charName) {
+            // Toggle selection
+            document.querySelectorAll('.char-card').forEach(c => c.classList.remove('selected'));
+
+            if (selectedCharUrl === imgUrl) {
+                // Deselect
+                selectedCharRef = null;
+                selectedCharData = null;
+                selectedCharUrl = null;
+                document.getElementById('refImageSection').style.display = 'none';
+            } else {
+                // Select
+                element.classList.add('selected');
+                selectedCharRef = charName;
+                selectedCharUrl = imgUrl;
+
+                // Fetch base64 data (async but we update UI immediately with URL)
+                const refSection = document.getElementById('refImageSection');
+                const refPreview = document.getElementById('refImagePreview');
+                const refName = document.getElementById('refImageName');
+
+                if (document.getElementById('imageModal').classList.contains('active')) {
+                    refSection.style.display = 'block';
+                    refPreview.src = imgUrl;  // Show immediately with URL
+                    refName.textContent = charName;
+                }
+
+                // Fetch and cache base64 in background
+                const base64Data = await fetchImageAsBase64(imgUrl);
+                selectedCharData = base64Data;
+            }
+        }
+
+        function selectCharacterRef(element, imgData, charName) {
+            // Legacy function for backwards compatibility
+            document.querySelectorAll('.char-card').forEach(c => c.classList.remove('selected'));
+
+            if (selectedCharData === imgData) {
+                // Deselect
+                selectedCharRef = null;
+                selectedCharData = null;
+                document.getElementById('refImageSection').style.display = 'none';
+            } else {
+                // Select
+                element.classList.add('selected');
+                selectedCharRef = charName;
+                selectedCharData = imgData;
+
+                // Update modal if open
+                if (document.getElementById('imageModal').classList.contains('active')) {
+                    document.getElementById('refImageSection').style.display = 'block';
+                    document.getElementById('refImagePreview').src = imgData;
+                    document.getElementById('refImageName').textContent = charName;
+                }
+            }
+        }
+
+        function clearCharacterRef() {
+            document.querySelectorAll('.char-card').forEach(c => c.classList.remove('selected'));
+            selectedCharRef = null;
+            selectedCharData = null;
+            document.getElementById('refImageSection').style.display = 'none';
+        }
+
+        function openImageModal(imageKey, prompt) {
+            currentImageKey = imageKey;
+            const label = imageKey === 'imagetitle' ? 'Title Image' : 'Image ' + imageKey.replace('image', '');
+
+            document.getElementById('modalTitle').textContent = 'Edit ' + label;
+            document.getElementById('promptTextarea').value = prompt;
+
+            if (imageUrls[imageKey]) {
+                document.getElementById('modalImage').src = imageUrls[imageKey];
+            } else {
+                document.getElementById('modalImage').src = '';
+            }
+
+            // Show character ref if selected
+            if (selectedCharData) {
+                document.getElementById('refImageSection').style.display = 'block';
+                document.getElementById('refImagePreview').src = selectedCharData;
+                document.getElementById('refImageName').textContent = selectedCharRef;
+            } else {
+                document.getElementById('refImageSection').style.display = 'none';
+            }
+
+            document.getElementById('genStatus').className = 'gen-status';
+            document.getElementById('genStatus').textContent = '';
+            
+            // Reset and populate advanced settings
+            resetAdvancedSettings();
+            populateAdvancedSettings();
+            
+            document.getElementById('imageModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('active');
+            document.getElementById('saveButtons').classList.remove('active');
+            currentImageKey = null;
+        }
+
+        // Store the last generated image for saving
+        let lastGeneratedImage = null;
+        let lastGeneratedMimeType = 'image/webp';
+
+        function downloadGeneratedImage() {
+            if (!lastGeneratedImage) {
+                alert('No image to download');
+                return;
+            }
+
+            // Create download link
+            const link = document.createElement('a');
+            const slug = 'leos-listening-ears';
+            const ext = lastGeneratedMimeType.includes('png') ? 'png' : 'webp';
+            const filename = `${slug}-${currentImageKey}.${ext}`;
+            link.download = filename;
+            link.href = lastGeneratedImage;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            document.getElementById('genStatus').innerHTML = `<span style="color: var(--accent-green);">Downloaded as ${filename}</span>`;
+        }
+
+        async function saveImageToStory() {
+            if (!lastGeneratedImage) {
+                alert('No image to save');
+                return;
+            }
+
+            const statusEl = document.getElementById('genStatus');
+            statusEl.className = 'gen-status active loading';
+            statusEl.innerHTML = '<span class="spinner"></span>Saving to story...';
+
+            try {
+                // Extract base64 data
+                const base64Data = lastGeneratedImage.split(',')[1];
+                const slug = 'leos-listening-ears';
+
+                // Call the image server to save the file
+                // Dynamically determine save URL based on how page is accessed
+                const currentHost = window.location.hostname;
+                const currentProtocol = window.location.protocol;
+                const isLocalAccess = currentHost === 'localhost' || currentHost === '127.0.0.1';
+                const isFileAccess = currentProtocol === 'file:';
+                const isRemoteEditor = currentHost === 'editor.readaloudstories.com';
+
+                // Build list of URLs to try
+                const saveUrls = [];
+                if (isRemoteEditor) {
+                    // Accessed via Cloudflare Tunnel - use same origin (tunnel routes to local server)
+                    saveUrls.push('https://editor.readaloudstories.com/save-image');
+                } else if (isLocalAccess || isFileAccess) {
+                    saveUrls.push('http://localhost:3456/save-image');
+                    saveUrls.push('https://editor.readaloudstories.com/save-image');
+                } else {
+                    // Accessed via LAN IP - try local server first
+                    saveUrls.push('http://' + currentHost + ':3456/save-image');
+                    saveUrls.push('http://localhost:3456/save-image');
+                    saveUrls.push('https://editor.readaloudstories.com/save-image');
+                }
+                
+                let result = null;
+                let lastError = null;
+                
+                for (const url of saveUrls) {
+                    try {
+                        const response = await fetch(url, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                slug: slug,
+                                imageKey: currentImageKey,
+                                imageData: base64Data,
+                                mimeType: lastGeneratedMimeType
+                            })
+                        });
+                        result = await response.json();
+                        if (result.success) {
+                            console.log('Saved via:', url);
+                            break;
+                        }
+                    } catch (e) {
+                        lastError = e;
+                        console.log('Save failed for:', url, e.message);
+                        continue;
+                    }
+                }
+                
+                if (!result || !result.success) {
+                    throw lastError || new Error('All save endpoints failed');
+                }
+
+                if (result.success) {
+                    // Step 2: Verify the image was actually saved by fetching it back
+                    statusEl.innerHTML = '<span class="spinner"></span>Verifying save...';
+
+                    const verifyUrl = `${result.filename}?verify=${Date.now()}`;
+                    const imageCard = document.querySelector(`[data-image="${currentImageKey}"]`);
+
+                    try {
+                        // Fetch the saved image to verify it exists
+                        const verifyResponse = await fetch(verifyUrl);
+                        if (!verifyResponse.ok) {
+                            throw new Error('Verification failed - file not found on server');
+                        }
+
+                        // Check the content length matches what we saved
+                        const savedSize = result.size;
+                        const fetchedBlob = await verifyResponse.blob();
+                        const fetchedSize = fetchedBlob.size;
+
+                        // Allow small size difference (server might recompress)
+                        const sizeDiff = Math.abs(savedSize - fetchedSize);
+                        const sizeMatch = sizeDiff < (savedSize * 0.1); // Within 10%
+
+                        if (!sizeMatch && savedSize > 0) {
+                            console.warn(`Size mismatch: saved=${savedSize}, fetched=${fetchedSize}`);
+                        }
+
+                        // SUCCESS - Image verified!
+                        statusEl.className = 'gen-status active success';
+                        const savedPath = result.path || result.filename;
+                        statusEl.innerHTML = `<strong>✓ Verified & Saved!</strong><br><small style="color:#888;">${result.filename} (${Math.round(fetchedSize/1024)}KB)</small>`;
+
+                        // Update URL with cache buster so refresh loads the new file
+                        const newUrl = `${result.filename}?t=${Date.now()}`;
+                        imageUrls[currentImageKey] = newUrl;
+
+                        // Update the image in the grid
+                        const cardImg = document.querySelector(`[data-image="${currentImageKey}"] .image-preview img`);
+                        if (cardImg) cardImg.src = newUrl;
+
+                        // Trigger the green verification animation
+                        if (imageCard) {
+                            // Remove any previous animation
+                            imageCard.classList.remove('save-verified');
+                            // Force reflow to restart animation
+                            void imageCard.offsetWidth;
+                            // Add verified class to trigger animation
+                            imageCard.classList.add('save-verified');
+
+                            // Remove the animation class after it completes (keep badge visible briefly)
+                            setTimeout(() => {
+                                imageCard.classList.remove('save-verified');
+                            }, 3000);
+                        }
+
+                        // Keep the base64 cached for style reference
+                        imageDataCache[currentImageKey] = lastGeneratedImage;
+
+                    } catch (verifyError) {
+                        // Save reported success but verification failed
+                        statusEl.className = 'gen-status active error';
+                        statusEl.innerHTML = `<strong>Save reported success but verification failed</strong><br><small>${verifyError.message}</small><br><small>The file may still have saved - try refreshing</small>`;
+                    }
+                } else {
+                    throw new Error(result.error || 'Save failed');
+                }
+            } catch (error) {
+                statusEl.className = 'gen-status active error';
+
+                // Build detailed error message with retry option
+                const attemptedUrls = saveUrls.join(', ');
+                statusEl.innerHTML = `
+                    <div style="text-align:left;">
+                        <strong>Save Failed</strong><br>
+                        <small>Error: ${error.message}</small><br>
+                        <small style="color:#888;">Tried: ${attemptedUrls}</small><br>
+                        <div style="margin-top:8px;">
+                            <button onclick="saveImageToStory()" style="padding:4px 12px;background:#4a90d9;color:white;border:none;border-radius:4px;cursor:pointer;margin-right:8px;">Retry Save</button>
+                            <button onclick="downloadImage()" style="padding:4px 12px;background:#666;color:white;border:none;border-radius:4px;cursor:pointer;">Download Instead</button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function approveImage(imageKey) {
+            const card = document.querySelector(`[data-image="${imageKey}"]`);
+            card.classList.toggle('approved');
+        }
+
+        async function generateImage() {
+            const prompt = document.getElementById('promptTextarea').value;
+            const apiKey = document.getElementById('apiKeyInput').value;
+            const statusEl = document.getElementById('genStatus');
+            const btn = document.getElementById('generateBtn');
+
+            if (!prompt) {
+                statusEl.className = 'gen-status active error';
+                statusEl.textContent = 'Please enter a prompt';
+                return;
+            }
+
+            if (!apiKey) {
+                statusEl.className = 'gen-status active error';
+                statusEl.textContent = 'Please enter your Gemini API key';
+                return;
+            }
+
+            btn.disabled = true;
+            statusEl.className = 'gen-status active loading';
+            statusEl.innerHTML = '<span class="spinner"></span>Generating image...';
+
+            try {
+                const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${apiKey}`;
+
+                // Build request parts - RESTRUCTURED for better results
+                const parts = [];
+
+                // 0. Detect characters in prompt and generate scale instructions
+                const detectedChars = detectCharactersInPrompt(prompt);
+                const scalePrompt = generateScalePrompt(detectedChars);
+                
+                // 1. Main generation instruction FIRST
+                let mainInstruction = `Generate a new Pixar-style 3D children's storybook illustration based on this description: ${prompt}`;
+                
+                // Inject scale instructions if multiple characters detected
+                if (scalePrompt) {
+                    mainInstruction += `
+
+${scalePrompt}`;
+                    statusEl.innerHTML = `<span class="spinner"></span>Generating image with ${detectedChars.length} characters (scale-adjusted)...`;
+                }
+                
+                parts.push({
+                    text: mainInstruction
+                });
+
+                // 2. Add character reference with clear context (if selected from main grid)
+                if (selectedCharData) {
+                    parts.push({
+                        text: `IMPORTANT - Character Reference: The character "${selectedCharRef}" in the new image must look exactly like this reference image. Match their face, hair, clothing, and overall appearance:`
+                    });
+                    const charBase64 = selectedCharData.split(',')[1];
+                    const charMime = selectedCharData.includes('image/png') ? 'image/png' : 'image/webp';
+                    parts.push({
+                        inlineData: {
+                            mimeType: charMime,
+                            data: charBase64
+                        }
+                    });
+                }
+                
+                // 2b. AUTO-DETECT: Add reference images for ALL characters mentioned in prompt
+                // This ensures consistent character appearance without manual selection
+                const addedCharNames = new Set();
+                if (selectedCharRef) addedCharNames.add(selectedCharRef.toLowerCase());
+                selectedCharRefs.forEach(c => addedCharNames.add(c.name.toLowerCase()));
+
+                if (detectedChars.length > 0) {
+                    const autoAddedChars = [];
+                    for (const char of detectedChars) {
+                        // Skip if already added via manual selection
+                        if (addedCharNames.has(char.name.toLowerCase())) continue;
+
+                        // Use fullbody URL if available, otherwise portrait URL
+                        const charUrl = char.fullbody_url || char.url;
+                        if (charUrl) {
+                            // Fetch base64 data from URL
+                            const charImageData = await fetchImageAsBase64(charUrl);
+                            if (charImageData) {
+                                parts.push({
+                                    text: `Character Reference - "${char.name}": This character must look exactly like this reference image:`
+                                });
+                                const charBase64 = charImageData.split(',')[1];
+                                const charMime = charImageData.includes('image/png') ? 'image/png' : 'image/webp';
+                                parts.push({
+                                    inlineData: {
+                                        mimeType: charMime,
+                                        data: charBase64
+                                    }
+                                });
+                                addedCharNames.add(char.name.toLowerCase());
+                                autoAddedChars.push(char.name);
+                            }
+                        }
+                    }
+                    if (autoAddedChars.length > 0) {
+                        console.log('Auto-added character refs:', autoAddedChars.join(', '));
+                        statusEl.innerHTML = `<span class="spinner"></span>Generating with ${autoAddedChars.length + (selectedCharRef ? 1 : 0)} character ref(s)...`;
+                    }
+                }
+
+                // 2c. Add character references from Advanced Settings (manual selection)
+                if (selectedCharRefs.length > 0) {
+                    for (const charRef of selectedCharRefs) {
+                        // Skip if already added
+                        if (addedCharNames.has(charRef.name.toLowerCase())) continue;
+
+                        // Fetch base64 data from URL
+                        const charImageData = await fetchImageAsBase64(charRef.url);
+                        if (charImageData) {
+                            parts.push({
+                                text: `Additional Character Reference - "${charRef.name}": Include this character with matching appearance:`
+                            });
+                            const charBase64 = charImageData.split(',')[1];
+                            const charMime = charImageData.includes('image/png') ? 'image/png' : 'image/webp';
+                            parts.push({
+                                inlineData: {
+                                    mimeType: charMime,
+                                    data: charBase64
+                                }
+                            });
+                        }
+                        addedCharNames.add(charRef.name.toLowerCase());
+                    }
+                }
+
+                // 2d. Add story image references from Advanced Settings
+                if (selectedStoryRefs.length > 0) {
+                    for (const imgKey of selectedStoryRefs) {
+                        if (imageUrls[imgKey]) {
+                            const storyRefData = await fetchImageAsBase64(imageUrls[imgKey]);
+                            parts.push({
+                                text: `Story Image Reference (${imgKey}): Use this image from the story as additional visual reference:`
+                            });
+                            const base64Data = storyRefData.split(',')[1];
+                            parts.push({
+                                inlineData: {
+                                    mimeType: 'image/webp',
+                                    data: base64Data
+                                }
+                            });
+                        }
+                    }
+                }
+
+                // 3. Add current image as style reference (only if checkbox is checked)
+                const useStyleRef = document.getElementById('useStyleRef').checked;
+                if (useStyleRef && imageUrls[currentImageKey]) {
+                    // Fetch the current image as base64 for style reference
+                    const styleRefData = await fetchImageAsBase64(imageUrls[currentImageKey]);
+                    parts.push({
+                        text: 'Style Reference: Match the art style, lighting, and color palette of this existing image:'
+                    });
+                    const base64Data = styleRefData.split(',')[1];
+                    parts.push({
+                        inlineData: {
+                            mimeType: 'image/webp',
+                            data: base64Data
+                        }
+                    });
+                }
+
+                // 4. Final instruction
+                parts.push({
+                    text: 'Generate a single new image now. Maintain Pixar-style 3D aesthetics with soft volumetric lighting, chibi proportions, and warm colors.'
+                });
+
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts }],
+                        generationConfig: {
+                            responseModalities: ['TEXT', 'IMAGE']
+                        }
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.error) {
+                    throw new Error(result.error.message || 'Generation failed');
+                }
+
+                // Extract generated image
+                const candidates = result.candidates || [];
+                let newImageData = null;
+
+                for (const candidate of candidates) {
+                    const parts = candidate.content?.parts || [];
+                    for (const part of parts) {
+                        if (part.inlineData) {
+                            newImageData = `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`;
+                            break;
+                        }
+                    }
+                }
+
+                if (newImageData) {
+                    // Update image in modal and page
+                    document.getElementById('modalImage').src = newImageData;
+                    imageDataCache[currentImageKey] = newImageData;  // Cache the base64 for style ref
+
+                    // Update card image
+                    const card = document.querySelector(`[data-image="${currentImageKey}"] .image-preview img`);
+                    if (card) card.src = newImageData;
+
+                    // Store for save functionality
+                    lastGeneratedImage = newImageData;
+                    lastGeneratedMimeType = newImageData.includes('image/png') ? 'image/png' : 'image/webp';
+
+                    statusEl.className = 'gen-status active success';
+                    statusEl.textContent = 'Image generated! Use buttons below to save:';
+
+                    // Show save buttons
+                    document.getElementById('saveButtons').classList.add('active');
+                } else {
+                    throw new Error('No image in response');
+                }
+
+            } catch (error) {
+                statusEl.className = 'gen-status active error';
+                statusEl.textContent = 'Error: ' + error.message;
+            }
+
+            btn.disabled = false;
+        }
+
+        // Close modal on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Close modal on backdrop click
+        document.getElementById('imageModal').addEventListener('click', (e) => {
+            if (e.target.id === 'imageModal') closeModal();
+        });
+
+        // ============================================
+        // ANIMATION GENERATION FUNCTIONS
+        // ============================================
+
+        async function generateAnimation(imageKey, btn) {
+            console.log('[DEBUG] generateAnimation called for:', imageKey);
+            const statusEl = document.getElementById(`anim-status-${imageKey}`);
+            const modelSelect = document.getElementById('videoModelSelect');
+            const selectedModel = modelSelect ? modelSelect.value : 'kling';
+            const modelName = selectedModel === 'kling' ? 'Kling AI' : 'Google Veo';
+
+            // Get animation preview container and show loading overlay
+            const card = btn.closest('.image-card');
+            const animPreview = card.querySelector('.animation-preview');
+
+            // Create and show loading overlay
+            const loadingOverlay = document.createElement('div');
+            loadingOverlay.className = 'animation-loading';
+            loadingOverlay.innerHTML = `
+                <div class="loader"></div>
+                <div class="loader-text">Generating 5s animation...</div>
+                <div class="loader-progress" id="loader-progress-${imageKey}">Starting ${modelName}...</div>
+            `;
+            animPreview.appendChild(loadingOverlay);
+
+            statusEl.className = 'animation-status active';
+            statusEl.textContent = `Using ${modelName} (may take 1-3 minutes)...`;
+
+            btn.disabled = true;
+            const originalText = btn.textContent;
+            btn.textContent = 'Generating...';
+
+            try {
+                // Get the custom animation prompt from the textarea
+                const promptTextarea = document.getElementById(`anim-prompt-text-${imageKey}`);
+                let motionPrompt = promptTextarea ? promptTextarea.value.trim() : '';
+
+                // Ensure gentle storybook style with static camera
+                if (!motionPrompt) {
+                    motionPrompt = 'Gentle storybook animation with soft subtle movements. Static camera, no camera motion.';
+                } else if (!motionPrompt.toLowerCase().includes('static camera')) {
+                    motionPrompt += ' Static camera, no camera motion.';
+                }
+
+                // Step 1: Start the animation job (returns immediately with job ID)
+                const startResponse = await fetch(`${IMAGE_SERVER_URL}/start-animation`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        storySlug: STORY_SLUG,
+                        imageKey: imageKey,
+                        motionPrompt: motionPrompt,
+                        model: selectedModel
+                    })
+                });
+
+                const startResult = await startResponse.json();
+                if (!startResult.success) {
+                    throw new Error(startResult.error || 'Failed to start animation job');
+                }
+
+                const jobId = startResult.jobId;
+                console.log(`[Animation] Job started: ${jobId}`);
+
+                // Step 2: Poll for completion (every 5 seconds for up to 5 minutes)
+                const maxPolls = 60; // 5 minutes max
+                for (let i = 0; i < maxPolls; i++) {
+                    await new Promise(r => setTimeout(r, 5000)); // Wait 5 seconds
+
+                    const statusResponse = await fetch(`${IMAGE_SERVER_URL}/animation-status/${jobId}`);
+                    const status = await statusResponse.json();
+
+                    // Update progress display
+                    const progressEl = document.getElementById(`loader-progress-${imageKey}`);
+                    if (progressEl && status.message) {
+                        progressEl.textContent = status.message;
+                    }
+                    if (status.progress) {
+                        const loaderText = animPreview.querySelector('.loader-text');
+                        if (loaderText) {
+                            loaderText.textContent = `${status.progress}% complete`;
+                        }
+                    }
+
+                    if (status.status === 'complete') {
+                        statusEl.className = 'animation-status active success';
+                        statusEl.textContent = `✅ Animation saved: ${status.filename} (${Math.round(status.size / 1024)} KB)`;
+
+                        // Update animation preview
+                        const timestamp = Date.now();
+                        animPreview.classList.remove('no-animation');
+                        animPreview.innerHTML = `
+                            <div class="animation-label">Animation (${Math.round(status.size / 1024)} KB)</div>
+                            <video src="${status.filename}?t=${timestamp}" autoplay loop muted playsinline class="animation-video"></video>
+                        `;
+                        // Force video playback
+                        const videoEl = animPreview.querySelector('video');
+                        if (videoEl) {
+                            videoEl.play().catch(e => console.log('Autoplay blocked:', e));
+                        }
+                        return; // Success!
+                    } else if (status.status === 'failed') {
+                        throw new Error(status.error || 'Animation generation failed');
+                    }
+                    // status is 'pending' or 'processing' - continue polling
+                }
+
+                // Reached max polls without completion
+                throw new Error('Animation generation timed out after 5 minutes');
+
+            } catch (err) {
+                statusEl.className = 'animation-status active error';
+                statusEl.textContent = `❌ Error: ${err.message}`;
+            } finally {
+                // Remove loading overlay
+                const overlay = animPreview.querySelector('.animation-loading');
+                if (overlay) overlay.remove();
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
+        }
+
+        // ============================================
+        // CHARACTER SECTION TOGGLE
+        // ============================================
+
+        function toggleCharacterSection(headerEl) {
+            const content = document.getElementById('characterSectionContent');
+            content.classList.toggle('active');
+            headerEl.classList.toggle('expanded');
+        }
+
+        // ============================================
+        // ANIMATION PROMPT TOGGLE
+        // ============================================
+
+        function toggleAnimPrompt(imageKey, toggleEl) {
+            const content = document.getElementById(`anim-prompt-${imageKey}`);
+            content.classList.toggle('active');
+            toggleEl.classList.toggle('expanded');
+        }
+
+        // ============================================
+        // STORY TEXT EDITING FUNCTIONS
+        // ============================================
+
+        function toggleStoryEditor(imageKey, toggleEl) {
+            const content = document.getElementById(`story-editor-${imageKey}`);
+            const isHidden = !content.classList.contains('active');
+
+            content.classList.toggle('active');
+            toggleEl.classList.toggle('expanded');
+        }
+
+        async function saveStoryText(imageKey, btn) {
+            const textarea = document.getElementById(`story-text-${imageKey}`);
+            const statusEl = document.getElementById(`story-status-${imageKey}`);
+            const newText = textarea.value.trim();
+
+            btn.disabled = true;
+            const originalText = btn.textContent;
+            btn.textContent = 'Saving...';
+            statusEl.className = 'save-story-status';
+            statusEl.textContent = '';
+
+            try {
+                const response = await fetch(`${IMAGE_SERVER_URL}/save-story-text`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        storySlug: STORY_SLUG,
+                        imageKey: imageKey,
+                        text: newText
+                    })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    statusEl.className = 'save-story-status success';
+                    statusEl.textContent = '✅ Saved!';
+                    // Update local cache
+                    storyTexts[imageKey] = newText;
+                    // Update visible story text display
+                    const displayEl = document.getElementById(`story-display-${imageKey}`);
+                    if (displayEl) {
+                        const contentEl = displayEl.querySelector('.story-text-content');
+                        if (contentEl) {
+                            contentEl.textContent = newText || '';
+                        }
+                    }
+                } else {
+                    throw new Error(result.error || 'Failed to save story text');
+                }
+            } catch (err) {
+                statusEl.className = 'save-story-status error';
+                statusEl.textContent = `❌ ${err.message}`;
+            } finally {
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
+        }
+
+        function finalizeStory() {
+            const btn = document.getElementById('finalizeBtn');
+            const status = document.getElementById('finalizeStatus');
+            const progressDiv = document.getElementById('finalizeProgress');
+            const progressBar = document.getElementById('progressBar');
+            const progressPercent = document.getElementById('progressPercent');
+            const progressStep = document.getElementById('progressStep');
+            const regenerateAudio = document.getElementById('regenerateAudio').checked;
+
+            btn.disabled = true;
+            btn.textContent = 'Processing...';
+            progressDiv.style.display = 'block';
+            status.innerHTML = '';
+
+            const stepNames = {
+                1: '📁 Step 1: Copying files',
+                2: regenerateAudio ? '🎙️ Step 2: ElevenLabs Audio' : '⏭️ Step 2: Skipping Audio (reusing existing)',
+                3: '⏱️ Step 3: WhisperX Word Timing',
+                4: '📄 Step 4: Building HTML',
+                5: '✅ Step 5: Verifying outputs',
+                6: '🚀 Step 6: Deploying to GitHub',
+                7: '🎉 Complete!'
+            };
+
+            const eventSource = new EventSource(`/finalize-story-sse/${STORY_SLUG}?regenerateAudio=${regenerateAudio}`);
+
+            eventSource.onmessage = function(event) {
+                const data = JSON.parse(event.data);
+                const percent = data.percent;
+                const step = data.step;
+                const message = data.message;
+
+                progressBar.style.width = percent + '%';
+                progressPercent.textContent = percent + '%';
+                progressStep.textContent = (stepNames[step] || '') + ' - ' + message;
+
+                if (step === 0) {
+                    // Error
+                    eventSource.close();
+                    status.innerHTML = `❌ ${message}`;
+                    btn.disabled = false;
+                    btn.textContent = '🚀 Finalise & Publish';
+                    progressDiv.style.display = 'none';
+                } else if (percent >= 100) {
+                    // Complete
+                    eventSource.close();
+                    status.innerHTML = `✅ Published! <a href="https://readaloudstories.com/stories/${STORY_SLUG}/" target="_blank" style="color: white; text-decoration: underline;">View Live Story</a>`;
+                    btn.textContent = '✓ Published!';
+                    btn.style.background = '#d4edda';
+                    btn.style.color = '#155724';
+                }
+            };
+
+            eventSource.onerror = function() {
+                eventSource.close();
+                status.innerHTML = '❌ Connection lost. Check server logs.';
+                btn.disabled = false;
+                btn.textContent = '🚀 Finalise & Publish';
+                progressDiv.style.display = 'none';
+            };
+        }
+    </script>
+
+    <!-- AI Chat Popup -->
+    <button class="chat-toggle" id="chatToggle" title="AI Assistant" onclick="document.getElementById('chatPopup').classList.toggle('active'); this.classList.toggle('active');">🤖</button>
+    <div class="chat-popup" id="chatPopup">
+        <div class="chat-header" id="chatHeader">
+            <h3>🤖 AI Story Assistant</h3>
+            <div class="chat-header-btns">
+                <button class="chat-header-btn" onclick="clearChatHistory()" title="Clear">🗑️</button>
+                <button class="chat-header-btn" onclick="document.getElementById('chatPopup').classList.remove('active'); document.getElementById('chatToggle').classList.remove('active');" title="Close" style="font-size: 18px; font-weight: bold;">✕</button>
+            </div>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-message system">Welcome! I can help you edit your story. Try asking me to:</div>
+            <div class="chat-message system">• Change the title or description</div>
+            <div class="chat-message system">• Modify image prompts</div>
+            <div class="chat-message system">• Edit parts of the story text</div>
+            <div class="chat-message system">• Add animation/motion prompts</div>
+        </div>
+        <div class="chat-input-area">
+            <div class="chat-api-key">
+                <input type="password" id="chatApiKey" placeholder="Enter your Claude API key (sk-ant-...)" value="" />
+            </div>
+            <div class="chat-input-row">
+                <textarea class="chat-input" id="chatInput" rows="2" placeholder="Ask me to make changes to your story..."></textarea>
+                <button class="chat-send" id="chatSend" onclick="sendChatMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // AI Chat functionality
+        let chatOpen = false;
+        let chatStreaming = false;
+
+        function toggleChat() {
+            chatOpen = !chatOpen;
+            document.getElementById('chatPopup').classList.toggle('active', chatOpen);
+            document.getElementById('chatToggle').classList.toggle('active', chatOpen);
+            if (chatOpen) {
+                document.getElementById('chatInput').focus();
+            }
+        }
+
+        document.getElementById('chatToggle').addEventListener('click', toggleChat);
+
+        document.getElementById('chatInput').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendChatMessage();
+            }
+        });
+
+        function addChatMessage(type, content) {
+            const messagesDiv = document.getElementById('chatMessages');
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'chat-message ' + type;
+            msgDiv.textContent = content;
+            messagesDiv.appendChild(msgDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            return msgDiv;
+        }
+
+        function clearChatHistory() {
+            const messagesDiv = document.getElementById('chatMessages');
+            messagesDiv.innerHTML = '<div class="chat-message system">Chat cleared. I can help you edit your story.</div>';
+        }
+
+        async function sendChatMessage() {
+            if (chatStreaming) return;
+
+            const input = document.getElementById('chatInput');
+            const apiKey = document.getElementById('chatApiKey').value.trim();
+            const message = input.value.trim();
+
+            if (!message) return;
+            if (!apiKey) {
+                addChatMessage('error', 'Please enter your Claude API key first');
+                return;
+            }
+
+            addChatMessage('user', message);
+            input.value = '';
+
+            const typingDiv = addChatMessage('assistant', '');
+            typingDiv.innerHTML = '<span class="typing-indicator"><span></span><span></span><span></span></span>';
+
+            chatStreaming = true;
+            document.getElementById('chatSend').disabled = true;
+
+            try {
+                // Use the dynamically determined IMAGE_SERVER_URL
+                const response = await fetch(IMAGE_SERVER_URL + '/ai-chat/' + STORY_SLUG, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: message, apiKey: apiKey })
+                });
+
+                if (!response.ok) throw new Error('HTTP error: ' + response.status);
+
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+                let fullResponse = '';
+                typingDiv.textContent = '';
+
+                while (true) {
+                    const result = await reader.read();
+                    if (result.done) break;
+
+                    const chunk = decoder.decode(result.value, { stream: true });
+                    const lines = chunk.split('
+');
+
+                    for (const line of lines) {
+                        if (line.startsWith('data: ')) {
+                            try {
+                                const data = JSON.parse(line.slice(6));
+                                if (data.type === 'text') {
+                                    fullResponse += data.content;
+                                    typingDiv.textContent = fullResponse;
+                                    document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+                                } else if (data.type === 'modifications') {
+                                    addChatMessage('modification', '✅ Applied ' + data.content.count + ' modification(s) to: ' + data.content.sections.join(', '));
+                                    setTimeout(function() { addChatMessage('system', 'Refresh the page to see the changes in the editor.'); }, 500);
+                                } else if (data.type === 'error') {
+                                    typingDiv.className = 'chat-message error';
+                                    typingDiv.textContent = 'Error: ' + data.content;
+                                }
+                            } catch (e) {}
+                        }
+                    }
+                }
+            } catch (error) {
+                typingDiv.className = 'chat-message error';
+                typingDiv.textContent = 'Error: ' + error.message;
+            }
+
+            chatStreaming = false;
+            document.getElementById('chatSend').disabled = false;
+        }
+
+        // Make chat draggable
+        let isDragging = false;
+        let dragOffsetX = 0;
+        let dragOffsetY = 0;
+
+        document.getElementById('chatHeader').addEventListener('mousedown', function(e) {
+            if (e.target.closest('.chat-header-btn')) return;
+            isDragging = true;
+            const popup = document.getElementById('chatPopup');
+            const rect = popup.getBoundingClientRect();
+            dragOffsetX = e.clientX - rect.left;
+            dragOffsetY = e.clientY - rect.top;
+            popup.style.transition = 'none';
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+            const popup = document.getElementById('chatPopup');
+            popup.style.left = (e.clientX - dragOffsetX) + 'px';
+            popup.style.top = (e.clientY - dragOffsetY) + 'px';
+            popup.style.right = 'auto';
+            popup.style.bottom = 'auto';
+        });
+
+        document.addEventListener('mouseup', function() {
+            if (isDragging) {
+                isDragging = false;
+                document.getElementById('chatPopup').style.transition = '';
+            }
+        });
+    </script>
+</body>
+</html>
