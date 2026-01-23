@@ -2545,5 +2545,165 @@
         "literacy"
       ]
     }
+  },
+  {
+    "id": "bubbles_the_brave",
+    "title": "Bubbles the Brave",
+    "description": "A story about learning to share",
+    "author": "Jon McCluskey",
+    "image": "icon/bubbles-the-brave-icon.webp",
+    "audio": "bubbles-the-brave/bubbles-the-brave-audio.mp3",
+    "categories": [
+      "childrens-stories-ages-2-4",
+      "emotional-intelligence"
+    ],
+    "html": "bubbles-the-brave.html",
+    "date_added": "2026-01-21",
+    "slug": "bubbles-the-brave",
+    "url": "https://storybellkids.com/bubbles-the-brave.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "2-4",
+    "themes": [
+      "sharing",
+      "friendship"
+    ],
+    "emotions": [
+      "kindness"
+    ],
+    "keywords": [
+      "Bubbles",
+      "fish",
+      "sharing",
+      "friendship"
+    ]
+  },
+  {
+    "id": "leos_listening_ears",
+    "title": "Leo's Listening Ears",
+    "description": "A story about the importance of listening",
+    "author": "Jon McCluskey",
+    "image": "icon/leos-listening-ears-icon.webp",
+    "audio": "leos-listening-ears/leos-listening-ears-audio.mp3",
+    "categories": [
+      "childrens-stories-ages-2-4",
+      "emotional-intelligence"
+    ],
+    "html": "leos-listening-ears.html",
+    "date_added": "2026-01-21",
+    "slug": "leos-listening-ears",
+    "url": "https://storybellkids.com/leos-listening-ears.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "2-4",
+    "themes": [
+      "listening",
+      "attention"
+    ],
+    "emotions": [
+      "patience"
+    ],
+    "keywords": [
+      "Leo",
+      "listening",
+      "attention"
+    ]
+  },
+  {
+    "id": "miras_magic_mirror",
+    "title": "Mira's Magic Mirror",
+    "description": "A story about self-acceptance and confidence",
+    "author": "Jon McCluskey",
+    "image": "icon/miras-magic-mirror-icon.webp",
+    "audio": "miras-magic-mirror/miras-magic-mirror-audio.mp3",
+    "categories": [
+      "childrens-stories-ages-2-4",
+      "emotional-intelligence"
+    ],
+    "html": "miras-magic-mirror.html",
+    "date_added": "2026-01-21",
+    "slug": "miras-magic-mirror",
+    "url": "https://storybellkids.com/miras-magic-mirror.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "2-4",
+    "themes": [
+      "self-acceptance",
+      "confidence"
+    ],
+    "emotions": [
+      "self-love"
+    ],
+    "keywords": [
+      "Mira",
+      "mirror",
+      "self-acceptance",
+      "confidence"
+    ]
+  },
+  {
+    "id": "novas_new_school",
+    "title": "Nova's New School",
+    "description": "A story about new beginnings and overcoming anxiety",
+    "author": "Jon McCluskey",
+    "image": "icon/novas-new-school-icon.webp",
+    "audio": "novas-new-school/novas-new-school-audio.mp3",
+    "categories": [
+      "childrens-stories-ages-2-4",
+      "emotional-intelligence"
+    ],
+    "html": "novas-new-school.html",
+    "date_added": "2026-01-21",
+    "slug": "novas-new-school",
+    "url": "https://storybellkids.com/novas-new-school.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "2-4",
+    "themes": [
+      "new beginnings",
+      "courage"
+    ],
+    "emotions": [
+      "anxiety",
+      "bravery"
+    ],
+    "keywords": [
+      "Nova",
+      "school",
+      "new beginnings",
+      "anxiety"
+    ]
+  },
+  {
+    "id": "rivers_hidden_talent",
+    "title": "River's Hidden Talent",
+    "description": "A story about discovering your unique talents",
+    "author": "Jon McCluskey",
+    "image": "icon/rivers-hidden-talent-icon.webp",
+    "audio": "rivers-hidden-talent/rivers-hidden-talent-audio.mp3",
+    "categories": [
+      "childrens-stories-ages-2-4",
+      "emotional-intelligence"
+    ],
+    "html": "rivers-hidden-talent.html",
+    "date_added": "2026-01-21",
+    "slug": "rivers-hidden-talent",
+    "url": "https://storybellkids.com/rivers-hidden-talent.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "2-4",
+    "themes": [
+      "self-discovery",
+      "talents"
+    ],
+    "emotions": [
+      "pride",
+      "confidence"
+    ],
+    "keywords": [
+      "River",
+      "talent",
+      "self-discovery"
+    ]
   }
 ]
