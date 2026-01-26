@@ -8059,7 +8059,7 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 </style>
 </head>
 <body><h1 class="sr-only" id="story-title">Ages 4–6</h1>
-<div id="sb-test-banner">TEST PAGE - STAGING - 2026-01-26 20:17:00</div>
+<div id="sb-test-banner">TEST PAGE - STAGING - 2026-01-26 20:22:00</div>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>
 <div class="header-left">
@@ -8475,7 +8475,38 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
   audio.loop = false;
 })();
 </script>
+<img alt="Reading wand" id="wand-reader" src="index_items/wand_reader.png" style="display:none; position:absolute; z-index:20; width:38px; height:auto; pointer-events:none; background:transparent; filter: drop-shadow(0 0 10px #fffbe9) brightness(1.15);"/>
+<script id="sb_wand_reader_script">
+(function(){
+  var wand = document.getElementById('wand-reader');
+  if (!wand) return;
+  var audio = document.getElementById('audio') || document.querySelector('audio');
+  if (!audio) return;
 
+  function moveWandTo(el) {
+    if (!el || !wand) return;
+    var r = el.getBoundingClientRect();
+    wand.style.display = 'block';
+    wand.style.left = (window.scrollX + r.left + r.width + 2) + 'px';
+    wand.style.top = (window.scrollY + r.top - 8) + 'px';
+  }
+  function hideWand() { if (wand) wand.style.display = 'none'; }
+
+  var observer = new MutationObserver(function() {
+    var highlighted = document.querySelector('#transcript .highlight');
+    if (highlighted && !audio.paused) moveWandTo(highlighted);
+  });
+  var transcript = document.getElementById('transcript');
+  if (transcript) observer.observe(transcript, { attributes: true, subtree: true, attributeFilter: ['class'] });
+
+  audio.addEventListener('pause', hideWand);
+  audio.addEventListener('ended', hideWand);
+  audio.addEventListener('play', function() {
+    var highlighted = document.querySelector('#transcript .highlight');
+    if (highlighted) moveWandTo(highlighted);
+  });
+})();
+</script>
 <script id="sb-wand-hiding-fix">
 (function(){
   var HIDE_DELAY_MS = 3500;   // 3.5s after trigger
