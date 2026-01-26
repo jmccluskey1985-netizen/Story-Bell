@@ -8059,7 +8059,7 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 </style>
 </head>
 <body><h1 class="sr-only" id="story-title">Ages 4–6</h1>
-<div id="sb-test-banner">TEST PAGE - STAGING - 2026-01-26 20:22:00</div>
+<div id="sb-test-banner">TEST PAGE - STAGING - 2026-01-26 20:30:00</div>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>
 <div class="header-left">
@@ -8476,34 +8476,88 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 })();
 </script>
 <img alt="Reading wand" id="wand-reader" src="index_items/wand_reader.png" style="display:none; position:absolute; z-index:20; width:38px; height:auto; pointer-events:none; background:transparent; filter: drop-shadow(0 0 10px #fffbe9) brightness(1.15);"/>
-<script id="sb_wand_reader_script">
+<script id="sb_wand_reader_exact_legacy_v1">
 (function(){
+  var root = document.getElementById('transcript') || document.body;
+  if (!root) return;
   var wand = document.getElementById('wand-reader');
   if (!wand) return;
-  var audio = document.getElementById('audio') || document.querySelector('audio');
-  if (!audio) return;
 
-  function moveWandTo(el) {
-    if (!el || !wand) return;
-    var r = el.getBoundingClientRect();
-    wand.style.display = 'block';
-    wand.style.left = (window.scrollX + r.left + r.width + 2) + 'px';
-    wand.style.top = (window.scrollY + r.top - 8) + 'px';
+  function anchorEl(){
+    return window.__sb_prev_word || window.__sb_first_word || window.__sb_cur_word || null;
   }
-  function hideWand() { if (wand) wand.style.display = 'none'; }
 
-  var observer = new MutationObserver(function() {
-    var highlighted = document.querySelector('#transcript .highlight');
-    if (highlighted && !audio.paused) moveWandTo(highlighted);
+  function moveWand(el){
+    if (!el) return;
+    var r = el.getBoundingClientRect();
+    wand.style.left = (window.scrollX + r.left - 36) + 'px';
+    wand.style.top  = (window.scrollY + r.bottom - 20) + 'px';
+    wand.style.display = 'block';
+  }
+  function hide(){ wand.style.display = 'none'; }
+
+  var audio = document.getElementById('audio') || document.getElementById('storyAudio')
+           || document.querySelector('.audio-box audio') || document.querySelector('audio');
+  if (audio) {
+    audio.addEventListener('play',  function(){ wand.style.display='block'; });
+    audio.addEventListener('pause', function(){ hide(); });
+    audio.addEventListener('ended', function(){ hide(); });
+  }
+
+  var obs = new MutationObserver(function(muts){
+    for (var i=0;i<muts.length;i++) {
+      var m = muts[i];
+      if (m.type!=='attributes' || m.attributeName!=='class') continue;
+      var el = m.target;
+      if (!((el.id||'').match(/^word_\d+$/i) || el.hasAttribute('data-word'))) continue;
+      if (el.classList.contains('highlight')) {
+        var a = anchorEl();
+        if (a) requestAnimationFrame(function(){ moveWand(a); });
+        break;
+      }
+    }
   });
-  var transcript = document.getElementById('transcript');
-  if (transcript) observer.observe(transcript, { attributes: true, subtree: true, attributeFilter: ['class'] });
+  obs.observe(root, {subtree:true, attributes:true, attributeFilter:['class']});
 
-  audio.addEventListener('pause', hideWand);
-  audio.addEventListener('ended', hideWand);
-  audio.addEventListener('play', function() {
-    var highlighted = document.querySelector('#transcript .highlight');
-    if (highlighted) moveWandTo(highlighted);
+  requestAnimationFrame(function(){
+    var a = anchorEl();
+    if (a) moveWand(a);
+  });
+
+  window.addEventListener('scroll', function(){
+    var a = anchorEl();
+    if (a && wand.style.display!=='none') requestAnimationFrame(function(){ moveWand(a); });
+  });
+  window.addEventListener('resize', function(){
+    var a = anchorEl();
+    if (a && wand.style.display!=='none') requestAnimationFrame(function(){ moveWand(a); });
+  });
+})();
+</script>
+<script id="sb-magnify-handler">
+(function(){
+  var btn = document.getElementById('sb-size-btn');
+  var menu = document.getElementById('sb-size-menu');
+  var slider = document.getElementById('sb-size-slider');
+  var transcript = document.getElementById('transcript');
+  if (!btn || !menu || !slider) return;
+
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', menu.classList.contains('open'));
+  });
+
+  slider.addEventListener('input', function(){
+    var size = parseFloat(slider.value);
+    if (transcript) transcript.style.fontSize = size + 'em';
+  });
+
+  document.addEventListener('click', function(e){
+    if (!menu.contains(e.target) && e.target !== btn) {
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
   });
 })();
 </script>
