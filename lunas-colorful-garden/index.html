@@ -7562,20 +7562,29 @@ span[id^="word_"].on,
   animation-fill-mode: both;
 }
 .glow-fade{background:rgba(255,235,59,.08);transition:background 240ms linear}
-/* Previous word trail effect - dimmer glow */
-.prev {
-  display: inline-block;
-  padding: 3px 6px;
-  margin: 0 2px;
-  border-radius: 5px;
-  background: rgba(255,235,59,.25) !important;
-  box-shadow: 0 0 6px 2px rgba(255,235,59,.3);
-  animation: sb-glow-fade-out 0.8s ease-out forwards !important;
+#transcript .highlight{
+  color:#ffffff!important;
+  text-shadow:
+    0 0 6px #ffd700,
+    0 0 14px #ffae00,
+    0 0 26px rgba(255,174,0,.85),
+    0 0 40px rgba(255,174,0,.55);
+  text-decoration:none!important;
+  font-weight:inherit!important;
+  transform:none!important;
+  transition:text-shadow .18s ease, color .18s ease;
 }
-@keyframes sb-glow-fade-out {
-  0% { background: rgba(255,235,59,.4); box-shadow: 0 0 8px 3px rgba(255,235,59,.4); }
-  100% { background: rgba(255,235,59,.1); box-shadow: 0 0 4px 1px rgba(255,235,59,.15); }
+#transcript .prev{
+  opacity:.95;
+  text-shadow:
+    0 0 4px #ffd700,
+    0 0 10px #ffae00,
+    0 0 18px rgba(255,174,0,.65);
+  text-decoration:none!important;
+  font-weight:inherit!important;
+  transform:none!important;
 }
+#transcript [id^="word_"]{ background:none!important; display:inline; }
 .logo-img{display:block;margin:0 auto .1em auto;max-width:130px}
 #transcript{width:98vw;max-width:1000px;margin:2em auto;line-height:2;font-size:1.25em;word-break:break-word;box-sizing:border-box;padding:1em .5em;position:relative;text-align:center}
 #transcript>br{margin-bottom:1.2em;display:block}
@@ -8050,7 +8059,7 @@ html,body{cursor:url('images/wand_reader.png'),auto!important}
 </style>
 </head>
 <body><h1 class="sr-only" id="story-title">Ages 4–6</h1>
-<div id="sb-test-banner">TEST PAGE - STAGING - 2026-01-26 14:00:00</div>
+<div id="sb-test-banner">TEST PAGE - STAGING - 2026-01-26 20:17:00</div>
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:block;"/>
 <header>
 <div class="header-left">
