@@ -2705,5 +2705,68 @@
       "talent",
       "self-discovery"
     ]
+  },
+  {
+    "id": "rustys_big_day",
+    "title": "Rusty's Big Day",
+    "description": "A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside.",
+    "author": "Story Bell",
+    "image": "rustys-big-day/rustys-big-day-icon.webp",
+    "audio": "rustys-big-day/rustys-big-day-audio.mp3",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "5-minute-childrens-stories",
+      "childrens-poems-and-rhymes",
+      "emotional-intelligence-happiness",
+      "friendship-stories",
+      "vehicle-stories",
+      "kindness-and-sharing"
+    ],
+    "html": "rustys-big-day.html",
+    "date_added": "2025-01-28",
+    "slug": "rustys-big-day",
+    "url": "https://storybellkids.com/rustys-big-day.html",
+    "inLanguage": "en",
+    "duration_min": 5,
+    "age_bracket": "4-6",
+    "themes": [
+      "friendship",
+      "self-worth",
+      "kindness",
+      "not-judging"
+    ],
+    "emotions": [
+      "happy",
+      "proud",
+      "accepted"
+    ],
+    "keywords": [
+      "Rusty",
+      "lorry",
+      "truck",
+      "friendship",
+      "self-worth",
+      "kindness",
+      "rhyming poem"
+    ],
+    "schema": {
+      "@type": "CreativeWork",
+      "name": "Rusty's Big Day",
+      "description": "A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within",
+      "url": "https://storybellkids.com/rustys-big-day.html",
+      "inLanguage": "en",
+      "isFamilyFriendly": true,
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://storybellkids.com/rustys-big-day/rustys-big-day-icon.webp"
+      },
+      "timeRequired": "PT5M",
+      "typicalAgeRange": "4-6",
+      "genre": [
+        "Poem",
+        "Friendship",
+        "Vehicles"
+      ]
+    }
   }
 ]
