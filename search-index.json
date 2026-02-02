@@ -714,6 +714,168 @@
     "cover": "/icon/the-wishing-star-icon.webp"
   },
   {
+    "type": "story",
+    "title": "Bubbles the Brave",
+    "url": "/bubbles-the-brave.html",
+    "summary": "A story about learning to share",
+    "age": "2-4",
+    "categories": [
+      "childrens-stories-ages-2-4",
+      "emotional-intelligence"
+    ],
+    "themes": [
+      "sharing",
+      "friendship"
+    ],
+    "emotions": [
+      "kindness"
+    ],
+    "keywords": [
+      "Bubbles",
+      "fish",
+      "sharing",
+      "friendship"
+    ],
+    "cover": "/icon/bubbles-the-brave-icon.webp"
+  },
+  {
+    "type": "story",
+    "title": "Leo's Listening Ears",
+    "url": "/leos-listening-ears.html",
+    "summary": "A story about the importance of listening",
+    "age": "2-4",
+    "categories": [
+      "childrens-stories-ages-2-4",
+      "emotional-intelligence"
+    ],
+    "themes": [
+      "listening",
+      "attention"
+    ],
+    "emotions": [
+      "patience"
+    ],
+    "keywords": [
+      "Leo",
+      "listening",
+      "attention"
+    ],
+    "cover": "/icon/leos-listening-ears-icon.webp"
+  },
+  {
+    "type": "story",
+    "title": "Mira's Magic Mirror",
+    "url": "/miras-magic-mirror.html",
+    "summary": "A story about self-acceptance and confidence",
+    "age": "2-4",
+    "categories": [
+      "childrens-stories-ages-2-4",
+      "emotional-intelligence"
+    ],
+    "themes": [
+      "self-acceptance",
+      "confidence"
+    ],
+    "emotions": [
+      "self-love"
+    ],
+    "keywords": [
+      "Mira",
+      "mirror",
+      "self-acceptance",
+      "confidence"
+    ],
+    "cover": "/icon/miras-magic-mirror-icon.webp"
+  },
+  {
+    "type": "story",
+    "title": "Nova's New School",
+    "url": "/novas-new-school.html",
+    "summary": "A story about new beginnings and overcoming anxiety",
+    "age": "2-4",
+    "categories": [
+      "childrens-stories-ages-2-4",
+      "emotional-intelligence"
+    ],
+    "themes": [
+      "new beginnings",
+      "courage"
+    ],
+    "emotions": [
+      "anxiety",
+      "bravery"
+    ],
+    "keywords": [
+      "Nova",
+      "school",
+      "new beginnings",
+      "anxiety"
+    ],
+    "cover": "/icon/novas-new-school-icon.webp"
+  },
+  {
+    "type": "story",
+    "title": "River's Hidden Talent",
+    "url": "/rivers-hidden-talent.html",
+    "summary": "A story about discovering your unique talents",
+    "age": "2-4",
+    "categories": [
+      "childrens-stories-ages-2-4",
+      "emotional-intelligence"
+    ],
+    "themes": [
+      "self-discovery",
+      "talents"
+    ],
+    "emotions": [
+      "pride",
+      "confidence"
+    ],
+    "keywords": [
+      "River",
+      "talent",
+      "self-discovery"
+    ],
+    "cover": "/icon/rivers-hidden-talent-icon.webp"
+  },
+  {
+    "type": "story",
+    "title": "Rusty's Big Day",
+    "url": "/rustys-big-day.html",
+    "summary": "A heartwarming rhyming poem about Rusty, an old rusty lorry who proves that true worth comes from within, not from how shiny you look on the outside.",
+    "age": "4-6",
+    "categories": [
+      "childrens-stories-ages-4-6",
+      "5-minute-childrens-stories",
+      "childrens-poems-and-rhymes",
+      "emotional-intelligence-happiness",
+      "friendship-stories",
+      "vehicle-stories",
+      "kindness-and-sharing"
+    ],
+    "themes": [
+      "friendship",
+      "self-worth",
+      "kindness",
+      "not-judging"
+    ],
+    "emotions": [
+      "happy",
+      "proud",
+      "accepted"
+    ],
+    "keywords": [
+      "Rusty",
+      "lorry",
+      "truck",
+      "friendship",
+      "self-worth",
+      "kindness",
+      "rhyming poem"
+    ],
+    "cover": "/icon/rustys-big-day-icon.webp"
+  },
+  {
     "type": "category",
     "title": "Stories About Sadness",
     "url": "/childrens-stories-about-sadness.html",
