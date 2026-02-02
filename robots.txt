@@ -1,21 +1,4 @@
-# Story Bell - robots.txt
-# https://storybellkids.com
-
 User-agent: *
 Allow: /
 
-# Block internal/dev files
-Disallow: /.git/
-Disallow: /OLD HTML/
-Disallow: /*backup*
-Disallow: /*test*
-
-# Allow all assets
-Allow: /icon/
-Allow: /index_items/
-Allow: /*.webp
-Allow: /*.mp4
-Allow: /*.mp3
-
-# Sitemap location
-Sitemap: https://storybellkids.com/sitemap.xml
+Sitemap: https://www.storybellkids.com/sitemap.xml

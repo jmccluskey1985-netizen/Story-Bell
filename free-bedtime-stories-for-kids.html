@@ -43,7 +43,7 @@
 }
   </style>
 <!-- END CAROUSEL-DESKTOP-FIX -->
-<link href="https://fonts.googleapis.com/css?family=Coming+Soon&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Coming+Soon&amp;display=swap" rel="stylesheet"/>
 <meta charset="utf-8"/>
 <title>Free Bedtime Stories For Kids – Story Bell</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -530,7 +530,6 @@ header .site-title {
   }
 }
 </style>
-
 <style id="sb-play-all-style">
 .sb-play-all-wrap {
   max-width: 1200px;
@@ -595,6 +594,8 @@ header .site-title {
 <script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
 <script id="firebase-init">
   // Story Bell — Firebase config + single-init (compat)
+  <script id="firebase-init">
+  // Story Bell — Firebase config + single-init (compat)
   const firebaseConfig = {
     apiKey: "AIzaSyC9vYsSvGN7zSDfkIcByvBZDOQnRyUPIBo",
     authDomain: "storybellkids.firebaseapp.com",
@@ -605,13 +606,131 @@ header .site-title {
     measurementId: "G-F64PJ8CCZQ"
   };
   if (!window.firebase) { console.error("Firebase SDK not found"); }
-  else if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+  else if (!firebase.apps.length) { if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); } }
 </script>
+  if (!window.firebase) { console.error("Firebase SDK not found"); }
+  else if (!firebase.apps.length) { if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); } }
+
 if (!window.firebase) { console.error("Firebase SDK not found"); }
 
 <style id="wand-pointer-events-fix">/* auto patch */
 #wand, .cursor-wand, .sparkle { pointer-events: none !important; }</style><link href="favicon.ico" rel="icon" type="image/x-icon"/>
-<style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
+<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style>
+<style id="sb-cards-base">
+.cards-grid{
+  display:flex; flex-wrap:wrap; justify-content:center;
+  align-items:stretch; gap:16px; margin:2em auto; max-width:1200px; box-sizing:border-box;
+}
+.story-card{
+  flex: 0 1 260px;
+  min-width: 260px;
+  max-width: 320px;
+  display:flex; flex-direction:column; box-sizing:border-box;
+  background:#001f3f; color:#fff; padding:12px; border-radius:14px;
+  border:2px solid #FFEB3B; box-shadow:0 2px 10px #2223;
+  transition:box-shadow .32s cubic-bezier(.5,1.7,.49,1.06), transform .2s cubic-bezier(.5,1.7,.49,1.06);
+  text-align:center;
+}
+.story-card img{
+  width:100%; height:auto; object-fit:cover; aspect-ratio:1/1; border-radius:10px; display:block;
+  margin:0 !important; padding:0 !important; transition:transform .3s cubic-bezier(.5,1.7,.49,1.06);
+}
+.story-card .grow{ flex:1 1 auto; display:flex; flex-direction:column; min-height:0; }
+.story-card h3, .story-card h3 a{
+  color:#fff !important; text-decoration:none !important;
+  text-shadow:0 0 6px #0008; margin:8px 0 6px 0 !important; font-size:1.08em; font-weight:bold;
+}
+.story-card .desc-wrap{ background:#003366; border-radius:8px; padding:8px 10px; margin-top:2px; }
+.story-card p{ color:#fff; font-size:.95em; margin:0; }
+.story-card .chips{ margin-top:10px; display:flex; flex-wrap:wrap; justify-content:center; gap:6px; }
+.story-card .chip{
+  display:inline-block; text-decoration:none; user-select:none;
+  padding:6px 12px; border-radius:999px; font-size:.78em; line-height:1;
+  background:#002a55; color:#fff; border:1px solid rgba(255,255,255,.18);
+  box-shadow: 0 2px 6px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.06);
+  transition: transform .13s, box-shadow .21s, background .18s, color .12s;
+}
+.story-card .chip:hover, .story-card .chip:focus{
+  background:#003e80; color:#FFEB3B;
+  box-shadow: 0 0 16px 6px #FFEB3B66, 0 2px 10px rgba(0,0,0,.28);
+  transform: translateY(-1px) scale(1.05);
+}
+.favorite-star{
+  background:none; border:1px solid rgba(255,255,255,.25);
+  cursor:pointer; font-size:1em; color:#FFEB3B;
+  border-radius:999px; padding:6px 10px; margin-top:10px;
+  transition: color .14s, box-shadow .18s, transform .13s, background .18s, border-color .18s;
+}
+.favorite-star .star{ pointer-events:none; font-size:1.2em; line-height:1; vertical-align:middle; }
+.favorite-star:hover, .favorite-star:focus{
+  background:rgba(255,235,59,.12); border-color:rgba(255,235,59,.55);
+  box-shadow: 0 0 16px 6px #FFEB3B66; transform: translateY(-1px);
+}
+.story-card:hover{ box-shadow:0 0 28px 12px #FFEB3Bcc, 0 2px 10px #2223; transform:scale(1.035); }
+@media (max-width:800px){
+  .cards-grid{ gap:12px; justify-content:space-between; }
+  .story-card{ flex:0 0 calc(50% - 6px); min-width:calc(50% - 6px); max-width:calc(50% - 6px); padding:12px; }
+  .story-card img{ height:auto !important; aspect-ratio:1/1; }
+}
+@supports not (aspect-ratio: 1 / 1){
+  .story-card img{ height:160px !important; }
+  @media (max-width:800px){ .story-card img{ height:130px !important; } }
+}
+</style>
+<style id="sb-cards-grid-clean">
+.cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  gap: 16px !important;
+}
+.cards-grid > .story-card,
+#story-cards .cards-grid > .story-card,
+#story-cards .story-grid > .story-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-self: stretch !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  flex: 0 1 calc(25% - 16px) !important;
+}
+@media (max-width: 1200px){
+  .cards-grid > .story-card,
+  #story-cards .cards-grid > .story-card,
+  #story-cards .story-grid > .story-card {
+    flex: 0 1 calc(33.333% - 16px) !important;
+  }
+}
+@media (max-width: 800px){
+  .cards-grid > .story-card,
+  #story-cards .cards-grid > .story-card,
+  #story-cards .story-grid > .story-card {
+    flex: 0 1 calc(50% - 10px) !important;
+  }
+}
+.cards-grid > .story-card .chips,
+#story-cards .cards-grid > .story-card .chips,
+#story-cards .story-grid > .story-card .chips {
+  overflow: visible !important;
+  max-height: none !important;
+}
+.cards-grid > .story-card .desc-wrap p,
+#story-cards .cards-grid > .story-card .desc-wrap p,
+#story-cards .story-grid > .story-card .desc-wrap p {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+  overflow: visible !important;
+}
+</style>
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Free Bedtime Stories For Kids – Story Bell","url":"https://storybellkids.com/free-bedtime-stories-for-kids.html","inLanguage":"en","description":"A gentle bedtime story for toddlers about discovering happiness on a rainy day.","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}},"mainEntity":{"@type":"ItemList","numberOfItems":2,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"CreativeWork","name":"The Tiniest Rainbow","description":"A gentle bedtime story for toddlers about discovering happiness on a rainy day.","url":"https://storybellkids.com/the-tiniest-rainbow.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/the-tiniest-rainbow-icon.webp","genre":["bedtime","happiness","weather"],"about":[{"@type":"Thing","name":"bedtime"},{"@type":"Thing","name":"weather"},{"@type":"Thing","name":"happiness"},{"@type":"Thing","name":"happiness"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/the-tiniest-rainbow/the-tiniest-rainbow-audio.mp3","encodingFormat":"audio/mpeg"}}},{"@type":"ListItem","position":2,"item":{"@type":"CreativeWork","name":"Stars in My Window","description":"A bedtime poem about finding comfort in the night sky.","url":"https://storybellkids.com/stars-in-my-window.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/stars-in-my-window-icon.webp","genre":["bedtime","comfort","happiness","night","poem"],"about":[{"@type":"Thing","name":"bedtime"},{"@type":"Thing","name":"night"},{"@type":"Thing","name":"comfort"},{"@type":"Thing","name":"poem"},{"@type":"Thing","name":"happiness"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/stars-in-my-window/stars-in-my-window-audio.mp3","encodingFormat":"audio/mpeg"}}}]},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://storybellkids.com/"},{"@type":"ListItem","position":2,"name":"Free Bedtime Stories For Kids – Story Bell","item":"https://storybellkids.com/free-bedtime-stories-for-kids.html"}]}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
 .carousel-section .carousel-desc{
@@ -2437,123 +2556,7 @@ nav ul > li:focus-within > .dropdown {
       font-size: 35px !important;
     }
   }
-</style>
-
-<style id="sb-cards-base">
-.cards-grid{
-  display:flex; flex-wrap:wrap; justify-content:center;
-  align-items:stretch; gap:16px; margin:2em auto; max-width:1200px; box-sizing:border-box;
-}
-.story-card{
-  flex: 0 1 260px;
-  min-width: 260px;
-  max-width: 320px;
-  display:flex; flex-direction:column; box-sizing:border-box;
-  background:#001f3f; color:#fff; padding:12px; border-radius:14px;
-  border:2px solid #FFEB3B; box-shadow:0 2px 10px #2223;
-  transition:box-shadow .32s cubic-bezier(.5,1.7,.49,1.06), transform .2s cubic-bezier(.5,1.7,.49,1.06);
-  text-align:center;
-}
-.story-card img{
-  width:100%; height:auto; object-fit:cover; aspect-ratio:1/1; border-radius:10px; display:block;
-  margin:0 !important; padding:0 !important; transition:transform .3s cubic-bezier(.5,1.7,.49,1.06);
-}
-.story-card .grow{ flex:1 1 auto; display:flex; flex-direction:column; min-height:0; }
-.story-card h3, .story-card h3 a{
-  color:#fff !important; text-decoration:none !important;
-  text-shadow:0 0 6px #0008; margin:8px 0 6px 0 !important; font-size:1.08em; font-weight:bold;
-}
-.story-card .desc-wrap{ background:#003366; border-radius:8px; padding:8px 10px; margin-top:2px; }
-.story-card p{ color:#fff; font-size:.95em; margin:0; }
-.story-card .chips{ margin-top:10px; display:flex; flex-wrap:wrap; justify-content:center; gap:6px; }
-.story-card .chip{
-  display:inline-block; text-decoration:none; user-select:none;
-  padding:6px 12px; border-radius:999px; font-size:.78em; line-height:1;
-  background:#002a55; color:#fff; border:1px solid rgba(255,255,255,.18);
-  box-shadow: 0 2px 6px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.06);
-  transition: transform .13s, box-shadow .21s, background .18s, color .12s;
-}
-.story-card .chip:hover, .story-card .chip:focus{
-  background:#003e80; color:#FFEB3B;
-  box-shadow: 0 0 16px 6px #FFEB3B66, 0 2px 10px rgba(0,0,0,.28);
-  transform: translateY(-1px) scale(1.05);
-}
-.favorite-star{
-  background:none; border:1px solid rgba(255,255,255,.25);
-  cursor:pointer; font-size:1em; color:#FFEB3B;
-  border-radius:999px; padding:6px 10px; margin-top:10px;
-  transition: color .14s, box-shadow .18s, transform .13s, background .18s, border-color .18s;
-}
-.favorite-star .star{ pointer-events:none; font-size:1.2em; line-height:1; vertical-align:middle; }
-.favorite-star:hover, .favorite-star:focus{
-  background:rgba(255,235,59,.12); border-color:rgba(255,235,59,.55);
-  box-shadow: 0 0 16px 6px #FFEB3B66; transform: translateY(-1px);
-}
-.story-card:hover{ box-shadow:0 0 28px 12px #FFEB3Bcc, 0 2px 10px #2223; transform:scale(1.035); }
-@media (max-width:800px){
-  .cards-grid{ gap:12px; justify-content:space-between; }
-  .story-card{ flex:0 0 calc(50% - 6px); min-width:calc(50% - 6px); max-width:calc(50% - 6px); padding:12px; }
-  .story-card img{ height:auto !important; aspect-ratio:1/1; }
-}
-@supports not (aspect-ratio: 1 / 1){
-  .story-card img{ height:160px !important; }
-  @media (max-width:800px){ .story-card img{ height:130px !important; } }
-}
-</style>
-
-<style id="sb-cards-grid-clean">
-.cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-  align-items: stretch !important;
-  gap: 16px !important;
-}
-.cards-grid > .story-card,
-#story-cards .cards-grid > .story-card,
-#story-cards .story-grid > .story-card {
-  display: flex !important;
-  flex-direction: column !important;
-  align-self: stretch !important;
-  box-sizing: border-box !important;
-  margin: 0 !important;
-  width: auto !important;
-  min-width: 0 !important;
-  max-width: none !important;
-  height: auto !important;
-  min-height: 0 !important;
-  flex: 0 1 calc(25% - 16px) !important;
-}
-@media (max-width: 1200px){
-  .cards-grid > .story-card,
-  #story-cards .cards-grid > .story-card,
-  #story-cards .story-grid > .story-card {
-    flex: 0 1 calc(33.333% - 16px) !important;
-  }
-}
-@media (max-width: 800px){
-  .cards-grid > .story-card,
-  #story-cards .cards-grid > .story-card,
-  #story-cards .story-grid > .story-card {
-    flex: 0 1 calc(50% - 10px) !important;
-  }
-}
-.cards-grid > .story-card .chips,
-#story-cards .cards-grid > .story-card .chips,
-#story-cards .story-grid > .story-card .chips {
-  overflow: visible !important;
-  max-height: none !important;
-}
-.cards-grid > .story-card .desc-wrap p,
-#story-cards .cards-grid > .story-card .desc-wrap p,
-#story-cards .story-grid > .story-card .desc-wrap p {
-  display: block !important;
-  -webkit-line-clamp: unset !important;
-  -webkit-box-orient: unset !important;
-  overflow: visible !important;
-}
-</style>
-<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Free Bedtime Stories For Kids – Story Bell","url":"https://storybellkids.com/free-bedtime-stories-for-kids.html","inLanguage":"en","description":"A gentle bedtime story for toddlers about discovering happiness on a rainy day.","isFamilyFriendly":true,"publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}},"mainEntity":{"@type":"ItemList","numberOfItems":2,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"CreativeWork","name":"The Tiniest Rainbow","description":"A gentle bedtime story for toddlers about discovering happiness on a rainy day.","url":"https://storybellkids.com/the-tiniest-rainbow.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/the-tiniest-rainbow-icon.webp","genre":["bedtime","happiness","weather"],"about":[{"@type":"Thing","name":"bedtime"},{"@type":"Thing","name":"weather"},{"@type":"Thing","name":"happiness"},{"@type":"Thing","name":"happiness"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/the-tiniest-rainbow/the-tiniest-rainbow-audio.mp3","encodingFormat":"audio/mpeg"}}},{"@type":"ListItem","position":2,"item":{"@type":"CreativeWork","name":"Stars in My Window","description":"A bedtime poem about finding comfort in the night sky.","url":"https://storybellkids.com/stars-in-my-window.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/stars-in-my-window-icon.webp","genre":["bedtime","comfort","happiness","night","poem"],"about":[{"@type":"Thing","name":"bedtime"},{"@type":"Thing","name":"night"},{"@type":"Thing","name":"comfort"},{"@type":"Thing","name":"poem"},{"@type":"Thing","name":"happiness"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/stars-in-my-window/stars-in-my-window-audio.mp3","encodingFormat":"audio/mpeg"}}}]},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://storybellkids.com/"},{"@type":"ListItem","position":2,"name":"Free Bedtime Stories For Kids – Story Bell","item":"https://storybellkids.com/free-bedtime-stories-for-kids.html"}]}}</script></head>
+</style></head>
 <body class="seo-page">
 <img alt="wand" id="wand" src="index_items/wand_cursor_cleaned_halfsize.png" style="display:none; position:fixed; pointer-events:none; z-index:20001;"/>
 <header>
@@ -2674,6 +2677,44 @@ nav ul > li:focus-within > .dropdown {
 </a>
 <div class="subscribe-text"></div></div>
 </header><main><div class="cards-grid">
+<div class="story-card" data-title="The Tiniest Rainbow">
+<a href="the-tiniest-rainbow.html"><img alt="The Tiniest Rainbow" loading="lazy" src="icon/the-tiniest-rainbow-icon.webp"/></a>
+<div class="grow">
+<h3><a href="the-tiniest-rainbow.html">The Tiniest Rainbow</a></h3>
+<div class="desc-wrap"><p>A gentle bedtime story for toddlers about discovering happiness on a rainy day.</p></div>
+<div class="chips"><a class="chip" href="childrens-stories-ages-0-3.html">Children’s stories ages 0 3</a> <a class="chip" href="5-minute-childrens-stories.html">5 minute Children’s stories</a> <a class="chip" href="childrens-stories-about-happiness.html">Children’s stories about happiness</a> <a class="chip" href="kids-stories-about-feelings.html">Kids stories about feelings</a> <a class="chip" href="5-minute-bedtime-stories.html">5 minute bedtime stories</a></div>
+</div>
+<button class="favorite-star" data-title="The Tiniest Rainbow" onclick="toggleFavorite(this)"><span class="star">☆</span></button>
+</div>
+<div class="story-card" data-title="Stars in My Window">
+<a href="stars-in-my-window.html"><img alt="Stars in My Window" loading="lazy" src="icon/stars-in-my-window-icon.webp"/></a>
+<div class="grow">
+<h3><a href="stars-in-my-window.html">Stars in My Window</a></h3>
+<div class="desc-wrap"><p>A bedtime poem about finding comfort in the night sky.</p></div>
+<div class="chips"><a class="chip" href="childrens-stories-ages-0-3.html">Children’s stories ages 0 3</a> <a class="chip" href="childrens-poems-and-rhymes.html">Children’s poems and rhymes</a> <a class="chip" href="childrens-stories-about-happiness.html">Children’s stories about happiness</a> <a class="chip" href="kids-stories-about-feelings.html">Kids stories about feelings</a></div>
+</div>
+<button class="favorite-star" data-title="Stars in My Window" onclick="toggleFavorite(this)"><span class="star">☆</span></button>
+</div>
+</div><div class="cards-grid">
+<div class="story-card" data-title="The Tiniest Rainbow">
+<a href="the-tiniest-rainbow.html"><img alt="The Tiniest Rainbow" loading="lazy" src="icon/the-tiniest-rainbow-icon.webp"/></a>
+<div class="grow">
+<h3><a href="the-tiniest-rainbow.html">The Tiniest Rainbow</a></h3>
+<div class="desc-wrap"><p>A gentle bedtime story for toddlers about discovering happiness on a rainy day.</p></div>
+<div class="chips"><a class="chip" href="childrens-stories-ages-0-3.html">Children’s stories ages 0 3</a> <a class="chip" href="5-minute-childrens-stories.html">5 minute Children’s stories</a> <a class="chip" href="childrens-stories-about-happiness.html">Children’s stories about happiness</a> <a class="chip" href="kids-stories-about-feelings.html">Kids stories about feelings</a> <a class="chip" href="5-minute-bedtime-stories.html">5 minute bedtime stories</a></div>
+</div>
+<button class="favorite-star" data-title="The Tiniest Rainbow" onclick="toggleFavorite(this)"><span class="star">☆</span></button>
+</div>
+<div class="story-card" data-title="Stars in My Window">
+<a href="stars-in-my-window.html"><img alt="Stars in My Window" loading="lazy" src="icon/stars-in-my-window-icon.webp"/></a>
+<div class="grow">
+<h3><a href="stars-in-my-window.html">Stars in My Window</a></h3>
+<div class="desc-wrap"><p>A bedtime poem about finding comfort in the night sky.</p></div>
+<div class="chips"><a class="chip" href="childrens-stories-ages-0-3.html">Children’s stories ages 0 3</a> <a class="chip" href="childrens-poems-and-rhymes.html">Children’s poems and rhymes</a> <a class="chip" href="childrens-stories-about-happiness.html">Children’s stories about happiness</a> <a class="chip" href="kids-stories-about-feelings.html">Kids stories about feelings</a></div>
+</div>
+<button class="favorite-star" data-title="Stars in My Window" onclick="toggleFavorite(this)"><span class="star">☆</span></button>
+</div>
+</div><div class="cards-grid">
 <div class="story-card" data-title="The Tiniest Rainbow">
 <a href="the-tiniest-rainbow.html"><img alt="The Tiniest Rainbow" loading="lazy" src="icon/the-tiniest-rainbow-icon.webp"/></a>
 <div class="grow">
@@ -2947,7 +2988,7 @@ nav ul > li:focus-within > .dropdown {
 <div style="background:#001020; padding:30px 10px; text-align:center;">
 <!-- Signup button -->
 <div style="margin:16px 0;">
-<a data-auth-cta="auth" href="#login" onclick="return window.sbFooterOpenAuth && sbFooterOpenAuth(this);" style="display:inline-block; background:#FFEB3B; color:#001f3f; font-weight:bold; padding:10px 20px; border-radius:6px; text-decoration:none; cursor:pointer;">
+<a data-auth-cta="auth" href="#login" onclick="return window.sbFooterOpenAuth &amp;&amp; sbFooterOpenAuth(this);" style="display:inline-block; background:#FFEB3B; color:#001f3f; font-weight:bold; padding:10px 20px; border-radius:6px; text-decoration:none; cursor:pointer;">
       Sign Up to Story Bell
     </a>
 </div>
@@ -2975,7 +3016,7 @@ nav ul > li:focus-within > .dropdown {
 <p style="color:#FFEB3B; margin-top:14px;">© 2025 Story Bell. All rights reserved.</p>
 <!-- Legal links -->
 <div id="footer-legal-links" style="margin-top:8px; font-size:12px; color:#FFEB3B; text-align:center;">
-<a href="./terms.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">Terms & Conditions</a> | 
+<a href="./terms.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">Terms &amp; Conditions</a> | 
     <a href="./privacy.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">Privacy Policy</a> | 
     <a href="./about.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">About</a> | 
     <a href="Reviews.html" style="color:#FFEB3B; text-decoration:none; margin:0 8px;">Reviews</a> | 
@@ -3027,18 +3068,697 @@ nav ul > li:focus-within > .dropdown {
   onReady(function(){ applyLayout(document); window.addEventListener('resize', function(){ applyLayout(document); }); });
 })();
 </script>
-<!-- SB Search Modal (Fuse.js) - Injected -->
-<script defer src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
-<div aria-hidden="true" id="sb-search-modal" style="position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:10001">
-<div aria-label="Search stories" aria-modal="true" role="dialog" style="max-width:720px;margin:8vh auto;background:white;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)">
-<div style="padding:14px 16px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px">
-<input id="sb-search-input" placeholder="Search stories, categories, emotions… ( / )" style="flex:1;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:16px;outline:none" type="search"/>
-<button aria-label="Close" id="sb-search-close" style="border:0;background:transparent;font-size:18px;cursor:pointer;padding:8px">✕</button>
+<script id="sb-play-all-script">
+(function(){
+  if (window.__SB_PLAY_ALL_BOUND) return;
+  window.__SB_PLAY_ALL_BOUND = true;
+
+  var LS_KEY = 'storyBellQueue';
+
+  function loadQ(){
+    try { return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); }
+    catch (_) { return []; }
+  }
+  function saveQ(q){
+    try { localStorage.setItem(LS_KEY, JSON.stringify(q)); } catch(_){}
+  }
+
+  function storyIdFromHref(href){
+    if (!href) return '';
+    try {
+      var u = new URL(href, window.location.href);
+      var fn = (u.pathname.split('/').pop() || '');
+      return fn.replace(/\.[^.]+$/, '').toLowerCase();
+    } catch(_){
+      var fn2 = (href || '').split('/').pop() || '';
+      return fn2.replace(/\.[^.]+$/, '').toLowerCase();
+    }
+  }
+
+  function applyBadges(){
+    var q = loadQ();
+    var map = new Map(q.map(function(it, i){ return [it.id, i+1]; }));
+
+    // Clear old
+    document.querySelectorAll('.sbq-badge').forEach(function(b){ b.remove(); });
+    document.querySelectorAll('.sbq-queued').forEach(function(el){ el.classList.remove('sbq-queued'); });
+
+    // Repaint on cards in grids
+    var cards = document.querySelectorAll('.cards-grid .story-card');
+    cards.forEach(function(card){
+      var link = card.querySelector('a[href]');
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      var id = storyIdFromHref(href);
+      if (!id) return;
+      var n = map.get(id);
+      if (!n) return;
+
+      card.classList.add('sbq-queued');
+      if (!card.style.position) card.style.position = 'relative';
+      var badge = document.createElement('div');
+      badge.className = 'sbq-badge';
+      badge.textContent = String(n);
+      card.insertBefore(badge, card.firstChild);
+    });
+  }
+
+  function collectPageStories(){
+    var queue = loadQ();
+    var map = new Map(queue.map(function(it){ return [it.id, it]; }));
+    var added = 0;
+
+    // Look at all .story-card inside .cards-grid on this page
+    var cards = document.querySelectorAll('.cards-grid .story-card');
+    cards.forEach(function(card){
+      var link = card.querySelector('a[href]');
+      if (!link) return;
+
+      var href = link.getAttribute('href') || '';
+      if (!href || href === '#') return;
+
+      var id = storyIdFromHref(href);
+      if (!id || map.has(id)) return;
+
+      // Derive a solid title
+      var title =
+        (card.getAttribute('data-title') || '').trim() ||
+        ((card.querySelector('h3') && card.querySelector('h3').textContent.trim()) || '') ||
+        ((link.getAttribute('title') || '').trim()) ||
+        ((card.querySelector('img') && card.querySelector('img').alt) || '').trim() ||
+        id;
+
+      map.set(id, { id: id, title: title, url: href });
+      added++;
+    });
+
+    var newQueue = Array.from(map.values());
+    saveQ(newQueue);
+    applyBadges();
+    return added;
+  }
+
+  function bindPlayAllButtons(){
+    document.querySelectorAll('[data-sb-play-all]').forEach(function(btn){
+      if (btn.__sbBound) return;
+      btn.__sbBound = true;
+
+      btn.addEventListener('click', function(ev){
+        ev.preventDefault();
+        ev.stopPropagation();
+
+        var added = collectPageStories();
+        if (added > 0){
+          alert('Added ' + added + ' stories from this page to your Story List.');
+        } else {
+          alert('All stories on this page are already in your Story List.');
+        }
+      }, true);
+    });
+  }
+
+  function init(){
+    bindPlayAllButtons();
+    applyBadges();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, {once:true});
+  } else {
+    init();
+  }
+})();
+</script>
+<style id="sb-mobile-carousel-typography-override">
+@media (max-width: 800px){
+  /* Remove the extra line break between title and description */
+  .carousel-section .carousel-item br{
+    display: none !important;
+  }
+
+  /* Title: smaller than before, but still larger than description; keep white */
+  .carousel-section .carousel-item .carousel-title,
+  .carousel-section a.carousel-title-link .carousel-title,
+  .carousel-section .carousel-title{
+    font-size: 0.74em !important;   /* adjust as needed */
+    line-height: 1.12em !important;
+    color: #ffffff !important;
+    margin: 0.15em 0 0.08em !important;  /* tighter */
+  }
+  /* Ensure the title link itself stays white and un-underlined */
+  .carousel-section .carousel-title-link,
+  .carousel-section .carousel-title-link:link,
+  .carousel-section .carousel-title-link:visited{
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+
+  /* Description: compact, white */
+  .carousel-section .carousel-desc{
+    font-size: 0.56em !important;
+    line-height: 1.18em !important;
+    color: #ffffff !important;
+    margin: 0.05em 0 0.05em !important;  /* tighter */
+  }
+
+  /* Categories: same size as description, bold, white */
+  .carousel-section .carousel-category{
+    font-size: 0.56em !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+  .carousel-section .carousel-categories{
+    margin-top: 0.06em !important;  /* tighter */
+  }
+}
+</style><link href="queue_assets/queue.css" rel="stylesheet"/><div aria-label="Open story queue" id="story-queue-button" role="button" tabindex="0" title="Open story queue">
+<img alt="Make Reading List" class="book-img" src="index_items/make-reading-list.png"/>
+</div><div aria-hidden="true" id="sbq-toggle-wrap">
+<span class="label">Queue</span>
+<span aria-pressed="false" class="sbq-toggle" data-on="false" id="sbq-toggle" role="button">
+<input aria-label="Toggle Queue Mode" type="checkbox"/>
+<span class="knob"></span>
+</span>
+</div><div aria-labelledby="sbq-title" aria-modal="true" id="story-queue-menu" role="dialog">
+<div class="queue-menu-header">
+<button aria-label="Close" class="queue-menu-close">×</button>
+<h2 class="queue-menu-title" id="sbq-title">✨ My Story List ✨</h2>
 </div>
-<div id="sb-search-results" style="max-height:60vh;overflow:auto;padding:8px 8px 12px"></div>
+<div class="queue-menu-list" id="queue-list">
+<div class="queue-empty-message">✨ Tap stories to add to your list ✨</div>
+</div>
+<div class="queue-menu-controls">
+<button id="queue-shuffle" title="Shuffle Queue">🔀</button>
+<button class="queue-control-btn" id="queue-play" title="Play Queue">▶</button>
+<button class="queue-control-btn" disabled="" id="queue-prev" title="Previous Story">◀</button>
+<button class="queue-control-btn" disabled="" id="queue-next" title="Next Story">▶</button>
+<button class="queue-control-btn" disabled="" id="queue-clear" title="Clear Queue">🗑️</button>
+</div>
+</div><!-- Auth Modal (injected if missing) -->
+<div id="auth-modal" style="display:none;position:fixed;inset:0;z-index:2147483647;align-items:center;justify-content:center;background:rgba(0,0,0,0.55);backdrop-filter:blur(3px);">
+<div style="background:#111;color:#fff;border-radius:12px;max-width:520px;width:90%;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.35);">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+<h3 style="margin:0;font-family:inherit;font-weight:600;">Sign in</h3>
+<button aria-label="Close" id="auth-close" style="background:transparent;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1;">×</button>
+</div>
+<div id="firebaseui-auth-container"></div>
 </div>
 </div>
-<script id="sb-search-script">
+<script id="firebase-auth-bindings">
+(function(){
+  // Guard to avoid double-binding
+  if (window.__SB_AUTH_BOUND__) return; window.__SB_AUTH_BOUND__ = true;
+
+  function ensureUI() {
+    if (!(window.firebase && firebase.auth && window.firebaseui)) {
+      console.warn("[SB] Firebase/FirebaseUI not ready");
+      return null;
+    }
+    var ui = window.firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
+    return ui;
+  }
+
+  function openAuthModal(e){
+    if (e && e.preventDefault) e.preventDefault();
+    var modal = document.getElementById('auth-modal');
+    if (modal) modal.style.display = 'flex';
+
+    var ui = ensureUI();
+    if (!ui) return;
+
+    ui.start('#firebaseui-auth-container', {
+      signInFlow: 'popup',
+      signInOptions: [
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+      ],
+      callbacks: {
+        signInSuccessWithAuthResult: function(authResult) {
+          try { closeAuthModal(); } catch(_) {}
+          console.log("[SB] Signed in:", authResult.user && (authResult.user.email || authResult.user.uid));
+          return false; // stay on page
+        },
+        uiShown: function(){ console.log("[SB] FirebaseUI shown"); }
+      }
+    });
+  }
+
+  function closeAuthModal(){
+    var modal = document.getElementById('auth-modal');
+    if (modal) modal.style.display = 'none';
+  }
+  window.openAuthModal = openAuthModal;
+  window.closeAuthModal = closeAuthModal;
+
+  // Close button + backdrop click
+  document.addEventListener('click', function(ev){
+    if (ev.target && ev.target.id === 'auth-close') closeAuthModal();
+    if (ev.target && ev.target.id === 'auth-modal') closeAuthModal();
+  }, { passive: true });
+
+  // Universal bindings (don’t change header layout; just listen)
+  var selectors = ['#loginBtn', '.login', '.login a', '.login-mobile a', '[data-auth-cta]'];
+  selectors.forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(el){
+      ['click','touchend','pointerup'].forEach(function(evt){
+        el.addEventListener(evt, openAuthModal, { passive:false });
+      });
+    });
+  });
+
+  // Debug log for duplicates
+  try {
+    console.log("[SB] firebase apps:", (window.firebase && firebase.apps) ? firebase.apps.length : "no firebase");
+  } catch(e){}
+
+  // Child profile storage
+  function getChildProfile(uid) {
+    try { return JSON.parse(localStorage.getItem('storybell_child_' + uid) || 'null'); }
+    catch(e) { return null; }
+  }
+
+  // Update header UI based on auth state
+  function updateHeaderAuth(user) {
+    var loginBtns = document.querySelectorAll('.login-cta-header, .login-mobile a[href*="signin"]');
+    var profileEls = document.querySelectorAll('.sb-user-profile');
+
+    if (user) {
+      var profile = getChildProfile(user.uid);
+      // Priority: child name > Firebase displayName > email prefix > 'Reader'
+      var displayName = (profile && profile.name) || user.displayName || (user.email ? user.email.split('@')[0] : 'Reader');
+
+      loginBtns.forEach(function(el){ el.style.display = 'none'; });
+      profileEls.forEach(function(el){
+        el.style.display = 'flex';
+        var nameEl = el.querySelector('.sb-user-name');
+        if (nameEl) nameEl.textContent = displayName;
+      });
+    } else {
+      loginBtns.forEach(function(el){ el.style.display = ''; });
+      profileEls.forEach(function(el){ el.style.display = 'none'; });
+    }
+  }
+
+  // Sign out function
+  window.signOutStoryBell = function(){
+    if (window.firebase && firebase.auth) {
+      firebase.auth().signOut().then(function(){
+        window.location.href = '/';
+      }).catch(function(e){ console.error('[SB] Sign out error:', e); });
+    }
+  };
+
+  // Enhanced auth state listener
+  if (window.firebase && firebase.auth) {
+    firebase.auth().onAuthStateChanged(function(u){
+      console.log("[SB] Auth state:", u ? "SIGNED IN" : "SIGNED OUT");
+      updateHeaderAuth(u);
+    });
+  }
+})();
+</script>
+<script>
+   // Wand cursor & sparkle logic
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   document.querySelectorAll('.carousel-track').forEach(function(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    e.preventDefault();
+  });
+  track.addEventListener('mouseleave', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    track.scrollLeft = scrollLeft - walk;
+  });
+  // Touch events for mobile
+  let startTouchX = 0, startScroll = 0;
+  track.addEventListener('touchstart', function(e) {
+    startTouchX = e.touches[0].pageX;
+    startScroll = track.scrollLeft;
+  }, {passive:true});
+  track.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      let dx = e.touches[0].pageX - startTouchX;
+      track.scrollLeft = startScroll - dx;
+    }
+  }, {passive:true});
+});
+  </script><script data-copied-from-id="mobile-disable-wand-js">
+   (function(){
+  function isMobile(){
+    return window.matchMedia("(max-width: 800px)").matches || ("ontouchstart" in window);
+  }
+  function disableWandOnMobile(){
+    if(!isMobile()) return;
+
+    // Remove wand image if present
+    var wand = document.getElementById("wand");
+    if (wand) { try { wand.remove(); } catch(e){} }
+
+    // Remove any existing sparkles
+    try { document.querySelectorAll(".sparkle").forEach(function(n){ n.remove(); }); } catch(e){}
+
+    // Block mousemove sparkle creators (capture phase)
+    try {
+      document.addEventListener("mousemove", function(e){ e.stopImmediatePropagation(); }, true);
+    } catch(e){}
+
+    // MutationObserver to auto-remove any sparkles added later
+    try {
+      var mo = new MutationObserver(function(muts){
+        for (var i=0;i<muts.length;i++){
+          var ad = muts[i].addedNodes || [];
+          for (var j=0;j<ad.length;j++){
+            var n = ad[j];
+            if (n && n.nodeType === 1){
+              if (n.classList && n.classList.contains("sparkle")) { n.remove(); continue; }
+              if (n.querySelectorAll){
+                n.querySelectorAll(".sparkle").forEach(function(el){ el.remove(); });
+              }
+            }
+          }
+        }
+      });
+      mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
+    } catch(e){}
+  }
+
+  document.addEventListener("DOMContentLoaded", disableWandOnMobile);
+  window.addEventListener("resize", disableWandOnMobile);
+})();
+  </script><script>
+// Delegated handler to ensure Login/Subscribe CTAs always open the auth modal (desktop & mobile).
+(function(){
+  function wantsAuth(el){
+    if(!el) return false;
+    return el.hasAttribute('data-auth-cta');
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-auth-cta]');
+    if(!t && wantsAuth(e.target)) t = e.target;
+    if(t){
+      try { e.preventDefault(); } catch(_){}
+      try { e.stopPropagation(); } catch(_){}
+      if(typeof window.openAuthModal === 'function'){ window.openAuthModal(); }
+    }
+  }, {passive:false, capture:true});
+})();
+</script><script>
+// --- Robust Auth Modal Open/Close (v3) ---
+(function(){
+  // Ensure functions exist on window
+  window.closeAuthModal = function(){
+    try {
+      var m = document.getElementById('auth-modal');
+      if (!m) return;
+      m.style.display = 'none';
+      // If FirebaseUI mounted, optionally reset container (prevents stale state)
+      var c = document.getElementById('firebaseui-auth-container');
+      if (c) { c.innerHTML = ''; }
+    } catch(e){ console.error('closeAuthModal error:', e); }
+  };
+
+  // Overlay + X + Esc close behavior
+  function bindModalClose(){
+    var m = document.getElementById('auth-modal');
+    if (!m) return;
+    var content = m.querySelector('.auth-modal-content, .modal-content, [role="dialog"]') || m;
+    // Close on overlay click (but not when clicking the content box)
+    m.addEventListener('click', function(ev){
+      if (!content.contains(ev.target)) return; // inside content: ignore
+      // If click target is *exactly* the overlay (m), close
+      if (ev.target === m) { window.closeAuthModal(); }
+    }, {capture: true});
+
+    // Bind buttons/links that look like close
+    var closeSelectors = [
+      '.auth-close', '.modal-close', '.close', '[data-close]', '[aria-label="Close"]', '.firebaseui-idp-cancel'
+    ];
+    closeSelectors.forEach(function(sel){
+      m.querySelectorAll(sel).forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          window.closeAuthModal();
+        }, {passive:false});
+      });
+    });
+
+    // Esc key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') window.closeAuthModal();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindModalClose);
+  } else {
+    bindModalClose();
+  }
+
+  // Make sure the hamburger's login button also opens the modal
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.hamburger-login, .hamburger .login, .mobile-login-button, #mobileLoginBtn, [data-hamburger-login]');
+    if (t){
+      try { e.preventDefault(); e.stopPropagation(); } catch(_){}
+      if (typeof window.openAuthModal === 'function') window.openAuthModal();
+    }
+  }, {capture:true, passive:false});
+})();
+</script><script>
+   (function () {
+  const nav = document.querySelector(".header-right nav");
+  const body = document.body;
+  if (!nav) return;
+
+  let toggleBtn = document.getElementById("menu-toggle");
+  if (!toggleBtn) {
+    // try to insert after .header-right open tag
+    const headerRight = document.querySelector(".header-right");
+    if (headerRight) {
+      toggleBtn = document.createElement("button");
+      toggleBtn.id = "menu-toggle";
+      toggleBtn.setAttribute("aria-label","Open menu");
+      toggleBtn.textContent = "☰";
+      toggleBtn.style.display = "none"; // your CSS shows it on mobile
+      headerRight.insertBefore(toggleBtn, headerRight.firstChild);
+    }
+  }
+
+  // ensure overlay exists (sibling after header)
+  let overlay = document.querySelector(".menu-overlay");
+  if (!overlay) {
+    const header = document.querySelector("header");
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    if (header && header.parentNode) {
+      header.parentNode.insertBefore(overlay, header.nextSibling);
+    } else {
+      document.body.appendChild(overlay);
+    }
+  }
+
+  function openMenu() {
+    nav.classList.add("open");
+    body.classList.add("menu-open");
+    overlay.classList.add("active");
+  }
+  function closeMenu() {
+    nav.classList.remove("open");
+    body.classList.remove("menu-open");
+    overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (nav.classList.contains("open")) closeMenu(); else openMenu();
+    });
+  }
+  overlay.addEventListener("click", (e) => { e.stopPropagation(); closeMenu(); });
+
+  // close on route click (mobile) when link navigates
+  nav.querySelectorAll("ul > li > a").forEach(link => {
+    link.addEventListener("click", function(e){
+      if (window.matchMedia("(max-width: 900px)").matches && this.href && !this.href.endsWith("#")) {
+        closeMenu();
+      }
+    });
+  });
+})();
+  </script><script>
+   (function () {
+  const nav = document.querySelector(".header-right nav");
+  const body = document.body;
+  if (!nav) return;
+
+  // Ensure toggle button exists
+  let toggleBtn = document.getElementById("menu-toggle");
+  if (!toggleBtn) {
+    const headerRight = document.querySelector(".header-right");
+    if (headerRight) {
+      toggleBtn = document.createElement("button");
+      toggleBtn.id = "menu-toggle";
+      toggleBtn.setAttribute("aria-label","Open menu");
+      toggleBtn.textContent = "☰";
+      toggleBtn.style.display = "none"; // CSS will unhide on mobile
+      headerRight.insertBefore(toggleBtn, headerRight.firstChild);
+    }
+  }
+  // Ensure overlay exists
+  let overlay = document.querySelector(".menu-overlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    const header = document.querySelector("header");
+    if (header && header.parentNode) header.parentNode.insertBefore(overlay, header.nextSibling);
+    else document.body.appendChild(overlay);
+  }
+
+  const openMenu = () => { nav.classList.add("open"); body.classList.add("menu-open"); overlay.classList.add("active"); };
+  const closeMenu = () => {
+    nav.classList.remove("open"); body.classList.remove("menu-open"); overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
+  };
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault(); e.stopPropagation();
+      nav.classList.contains("open") ? closeMenu() : openMenu();
+    });
+  }
+  overlay.addEventListener("click", (e) => { e.stopPropagation(); closeMenu(); });
+
+  // Close when navigating to a real href on mobile
+  nav.querySelectorAll("ul > li > a").forEach(link => {
+    link.addEventListener("click", function() {
+      if (window.matchMedia("(max-width: 900px)").matches && this.href && !this.href.endsWith("#")) {
+        closeMenu();
+      }
+    });
+  });
+})();
+  </script><script>
+   (function(){
+  const nav = document.querySelector(".header-right nav");
+  const btn = document.getElementById("menu-toggle");
+  let overlay = document.querySelector(".menu-overlay");
+  if (!nav || !btn) return;
+  if (!overlay){
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    const header = document.querySelector("header");
+    (header && header.parentNode ? header.parentNode : document.body)
+      .insertBefore(overlay, header ? header.nextSibling : null);
+  }
+  const body = document.body;
+  const isMobile = () => matchMedia("(max-width:900px)").matches;
+
+  let justOpenedUntil = 0;
+  const armGuard = () => { justOpenedUntil = Date.now() + 180; };
+
+  const openMenu = ()=>{
+    nav.classList.add("open");
+    body.classList.add("menu-open");
+    overlay.classList.add("active");
+    armGuard();
+  };
+  const closeMenu = ()=>{
+    nav.classList.remove("open");
+    body.classList.remove("menu-open");
+    overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li=>li.classList.remove("open"));
+  };
+
+  // Rebind elements to clear old listeners
+  const rebind = (el)=>{ const c = el.cloneNode(true); el.parentNode.replaceChild(c, el); return c; };
+  const _btn = rebind(btn);
+  overlay = rebind(overlay);
+
+  // Button uses pointerup only
+  _btn.addEventListener("pointerup", (e)=>{
+    e.preventDefault(); e.stopPropagation();
+    nav.classList.contains("open") ? closeMenu() : openMenu();
+  }, {passive:false});
+
+  // Overlay click closes, but not during guard window
+  overlay.addEventListener("click", (e)=>{
+    if (Date.now() < justOpenedUntil) { e.preventDefault(); return; }
+    e.preventDefault(); closeMenu();
+  }, {passive:false});
+
+  // Submenu: pointerup only (no click). Toggle .open on the parent <li>.
+  const onPointerUp = (e)=>{
+    if (!isMobile()) return;
+    const a = e.target.closest("nav ul > li > a");
+    if (!a || !nav.contains(a)) return;
+    const dd = a.nextElementSibling;
+    const hasDropdown = dd && dd.classList && dd.classList.contains("dropdown");
+    if (!hasDropdown) return;
+    e.preventDefault(); e.stopPropagation();
+    const li = a.parentElement;
+    const willOpen = !li.classList.contains("open");
+    nav.querySelectorAll("li.open").forEach(x=>{ if (x!==li) x.classList.remove("open"); });
+    li.classList.toggle("open", willOpen);
+  };
+  nav.addEventListener("pointerup", onPointerUp, {passive:false});
+
+  // Close on real link tap inside drawer
+  nav.addEventListener("pointerup", (e)=>{
+    if (!isMobile()) return;
+    const a = e.target.closest("nav ul > li > a");
+    if (!a || !nav.contains(a)) return;
+    const dd = a.nextElementSibling;
+    if (dd && dd.classList && dd.classList.contains("dropdown")) return; // parent; handled above
+    const href = a.getAttribute("href");
+    if (href && href !== "#") { e.preventDefault(); closeMenu(); location.href = href; }
+  }, {passive:false});
+
+  addEventListener("resize", ()=>{ if (!isMobile()) closeMenu(); });
+})();
+  </script><script>
 (() => {
   const modal = document.getElementById('sb-search-modal');
   const input = document.getElementById('sb-search-input');
@@ -3098,8 +3818,344 @@ nav ul > li:focus-within > .dropdown {
   window.addEventListener('keydown', async e=>{ if(e.key==='/'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&document.activeElement.tagName!=='INPUT'&&document.activeElement.tagName!=='TEXTAREA'){ e.preventDefault(); await ensureLoaded(); openModal(); } else if(e.key==='Escape'){ closeModal(); } });
   if(input){ input.addEventListener('input', ()=>{ const q=input.value.trim(); if(!q){ render([]); return; } const out=fuse.search(q); render(out); }); }
 })();
-</script>
-<!-- END SB Search Modal -->
+</script><div aria-hidden="true" id="sb-search-modal" style="position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:10001">
+<div aria-label="Search stories" aria-modal="true" role="dialog" style="max-width:720px;margin:8vh auto;background:white;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)">
+<div style="padding:14px 16px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px">
+<input id="sb-search-input" placeholder="Search stories, categories, emotions… ( / )" style="flex:1;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:16px;outline:none" type="search"/>
+<button aria-label="Close" id="sb-search-close" style="border:0;background:transparent;font-size:18px;cursor:pointer;padding:8px">✕</button>
+</div>
+<div id="sb-search-results" style="max-height:60vh;overflow:auto;padding:8px 8px 12px"></div>
+</div>
+</div><script>
+   // Wand cursor & sparkle logic
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   document.querySelectorAll('.carousel-track').forEach(function(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    e.preventDefault();
+  });
+  track.addEventListener('mouseleave', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    track.scrollLeft = scrollLeft - walk;
+  });
+  // Touch events for mobile
+  let startTouchX = 0, startScroll = 0;
+  track.addEventListener('touchstart', function(e) {
+    startTouchX = e.touches[0].pageX;
+    startScroll = track.scrollLeft;
+  }, {passive:true});
+  track.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      let dx = e.touches[0].pageX - startTouchX;
+      track.scrollLeft = startScroll - dx;
+    }
+  }, {passive:true});
+});
+  </script><script data-copied-from-id="mobile-disable-wand-js">
+   (function(){
+  function isMobile(){
+    return window.matchMedia("(max-width: 800px)").matches || ("ontouchstart" in window);
+  }
+  function disableWandOnMobile(){
+    if(!isMobile()) return;
 
-</body>
+    // Remove wand image if present
+    var wand = document.getElementById("wand");
+    if (wand) { try { wand.remove(); } catch(e){} }
+
+    // Remove any existing sparkles
+    try { document.querySelectorAll(".sparkle").forEach(function(n){ n.remove(); }); } catch(e){}
+
+    // Block mousemove sparkle creators (capture phase)
+    try {
+      document.addEventListener("mousemove", function(e){ e.stopImmediatePropagation(); }, true);
+    } catch(e){}
+
+    // MutationObserver to auto-remove any sparkles added later
+    try {
+      var mo = new MutationObserver(function(muts){
+        for (var i=0;i<muts.length;i++){
+          var ad = muts[i].addedNodes || [];
+          for (var j=0;j<ad.length;j++){
+            var n = ad[j];
+            if (n && n.nodeType === 1){
+              if (n.classList && n.classList.contains("sparkle")) { n.remove(); continue; }
+              if (n.querySelectorAll){
+                n.querySelectorAll(".sparkle").forEach(function(el){ el.remove(); });
+              }
+            }
+          }
+        }
+      });
+      mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
+    } catch(e){}
+  }
+
+  document.addEventListener("DOMContentLoaded", disableWandOnMobile);
+  window.addEventListener("resize", disableWandOnMobile);
+})();
+  </script><script>
+   (function () {
+  const nav = document.querySelector(".header-right nav");
+  const body = document.body;
+  if (!nav) return;
+
+  let toggleBtn = document.getElementById("menu-toggle");
+  if (!toggleBtn) {
+    // try to insert after .header-right open tag
+    const headerRight = document.querySelector(".header-right");
+    if (headerRight) {
+      toggleBtn = document.createElement("button");
+      toggleBtn.id = "menu-toggle";
+      toggleBtn.setAttribute("aria-label","Open menu");
+      toggleBtn.textContent = "☰";
+      toggleBtn.style.display = "none"; // your CSS shows it on mobile
+      headerRight.insertBefore(toggleBtn, headerRight.firstChild);
+    }
+  }
+
+  // ensure overlay exists (sibling after header)
+  let overlay = document.querySelector(".menu-overlay");
+  if (!overlay) {
+    const header = document.querySelector("header");
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    if (header && header.parentNode) {
+      header.parentNode.insertBefore(overlay, header.nextSibling);
+    } else {
+      document.body.appendChild(overlay);
+    }
+  }
+
+  function openMenu() {
+    nav.classList.add("open");
+    body.classList.add("menu-open");
+    overlay.classList.add("active");
+  }
+  function closeMenu() {
+    nav.classList.remove("open");
+    body.classList.remove("menu-open");
+    overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (nav.classList.contains("open")) closeMenu(); else openMenu();
+    });
+  }
+  overlay.addEventListener("click", (e) => { e.stopPropagation(); closeMenu(); });
+
+  // close on route click (mobile) when link navigates
+  nav.querySelectorAll("ul > li > a").forEach(link => {
+    link.addEventListener("click", function(e){
+      if (window.matchMedia("(max-width: 900px)").matches && this.href && !this.href.endsWith("#")) {
+        closeMenu();
+      }
+    });
+  });
+})();
+  </script><script>
+   (function () {
+  const nav = document.querySelector(".header-right nav");
+  const body = document.body;
+  if (!nav) return;
+
+  // Ensure toggle button exists
+  let toggleBtn = document.getElementById("menu-toggle");
+  if (!toggleBtn) {
+    const headerRight = document.querySelector(".header-right");
+    if (headerRight) {
+      toggleBtn = document.createElement("button");
+      toggleBtn.id = "menu-toggle";
+      toggleBtn.setAttribute("aria-label","Open menu");
+      toggleBtn.textContent = "☰";
+      toggleBtn.style.display = "none"; // CSS will unhide on mobile
+      headerRight.insertBefore(toggleBtn, headerRight.firstChild);
+    }
+  }
+  // Ensure overlay exists
+  let overlay = document.querySelector(".menu-overlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    const header = document.querySelector("header");
+    if (header && header.parentNode) header.parentNode.insertBefore(overlay, header.nextSibling);
+    else document.body.appendChild(overlay);
+  }
+
+  const openMenu = () => { nav.classList.add("open"); body.classList.add("menu-open"); overlay.classList.add("active"); };
+  const closeMenu = () => {
+    nav.classList.remove("open"); body.classList.remove("menu-open"); overlay.classList.remove("active");
+    nav.querySelectorAll("li.open").forEach(li => li.classList.remove("open"));
+  };
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault(); e.stopPropagation();
+      nav.classList.contains("open") ? closeMenu() : openMenu();
+    });
+  }
+  overlay.addEventListener("click", (e) => { e.stopPropagation(); closeMenu(); });
+
+  // Close when navigating to a real href on mobile
+  nav.querySelectorAll("ul > li > a").forEach(link => {
+    link.addEventListener("click", function() {
+      if (window.matchMedia("(max-width: 900px)").matches && this.href && !this.href.endsWith("#")) {
+        closeMenu();
+      }
+    });
+  });
+})();
+  </script><script>
+// Delegated handler to ensure Login/Subscribe CTAs always open the auth modal (desktop & mobile).
+(function(){
+  function wantsAuth(el){
+    if(!el) return false;
+    return el.hasAttribute('data-auth-cta');
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-auth-cta]');
+    if(!t && wantsAuth(e.target)) t = e.target;
+    if(t){
+      try { e.preventDefault(); } catch(_){}
+      try { e.stopPropagation(); } catch(_){}
+      if(typeof window.openAuthModal === 'function'){ window.openAuthModal(); }
+    }
+  }, {passive:false, capture:true});
+})();
+</script><script>
+// --- Robust Auth Modal Open/Close (v3) ---
+(function(){
+  // Ensure functions exist on window
+  window.closeAuthModal = function(){
+    try {
+      var m = document.getElementById('auth-modal');
+      if (!m) return;
+      m.style.display = 'none';
+      // If FirebaseUI mounted, optionally reset container (prevents stale state)
+      var c = document.getElementById('firebaseui-auth-container');
+      if (c) { c.innerHTML = ''; }
+    } catch(e){ console.error('closeAuthModal error:', e); }
+  };
+
+  // Overlay + X + Esc close behavior
+  function bindModalClose(){
+    var m = document.getElementById('auth-modal');
+    if (!m) return;
+    var content = m.querySelector('.auth-modal-content, .modal-content, [role="dialog"]') || m;
+    // Close on overlay click (but not when clicking the content box)
+    m.addEventListener('click', function(ev){
+      if (!content.contains(ev.target)) return; // inside content: ignore
+      // If click target is *exactly* the overlay (m), close
+      if (ev.target === m) { window.closeAuthModal(); }
+    }, {capture: true});
+
+    // Bind buttons/links that look like close
+    var closeSelectors = [
+      '.auth-close', '.modal-close', '.close', '[data-close]', '[aria-label="Close"]', '.firebaseui-idp-cancel'
+    ];
+    closeSelectors.forEach(function(sel){
+      m.querySelectorAll(sel).forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          window.closeAuthModal();
+        }, {passive:false});
+      });
+    });
+
+    // Esc key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') window.closeAuthModal();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindModalClose);
+  } else {
+    bindModalClose();
+  }
+
+  // Make sure the hamburger's login button also opens the modal
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.hamburger-login, .hamburger .login, .mobile-login-button, #mobileLoginBtn, [data-hamburger-login]');
+    if (t){
+      try { e.preventDefault(); e.stopPropagation(); } catch(_){}
+      if (typeof window.openAuthModal === 'function') window.openAuthModal();
+    }
+  }, {capture:true, passive:false});
+})();
+</script><script id="sb-search-fallback-opener">
+(function(){
+  try{
+    var btn = document.querySelector('[data-sb-search-trigger]');
+    var modal = document.getElementById('sb-search-modal');
+    if(!btn || !modal) return;
+    function openModal(){
+      modal.style.display = 'block';
+      document.documentElement.classList.add('sb-search-open');
+      setTimeout(function(){
+        var q = modal.querySelector('input[type="search"], input[type="text"]');
+        if(q) { try{ q.focus(); }catch(e){} }
+      }, 0);
+    }
+    function closeModal(){
+      modal.style.display = 'none';
+      document.documentElement.classList.remove('sb-search-open');
+    }
+    if(!btn._sbFallbackBound){
+      btn.addEventListener('click', function(e){ e.preventDefault(); openModal(); }, true);
+      btn._sbFallbackBound = true;
+    }
+    modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); }, true);
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); }, true);
+    (modal.querySelectorAll('[data-sb-search-close]')||[]).forEach(function(x){
+      x.addEventListener('click', function(e){ e.preventDefault(); closeModal(); }, true);
+    });
+  }catch(_){}
+})();
+</script></body>
 </html>

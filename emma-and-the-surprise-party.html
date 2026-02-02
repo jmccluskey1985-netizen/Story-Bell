@@ -1,5 +1,4 @@
 
-
 <script>
 function getFavorites(){ try{return JSON.parse(localStorage.getItem('favorites')||"[]");}catch{return[];} }
 function setFavorites(f){ localStorage.setItem('favorites', JSON.stringify(f)); }
@@ -49,6 +48,8 @@ document.addEventListener('DOMContentLoaded', updateStars);
 <script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
 <script id="firebase-init">
   // Story Bell — Firebase config + single-init (compat)
+  <script id="firebase-init">
+  // Story Bell — Firebase config + single-init (compat)
   const firebaseConfig = {
     apiKey: "AIzaSyC9vYsSvGN7zSDfkIcByvBZDOQnRyUPIBo",
     authDomain: "storybellkids.firebaseapp.com",
@@ -59,13 +60,143 @@ document.addEventListener('DOMContentLoaded', updateStars);
     measurementId: "G-F64PJ8CCZQ"
   };
   if (!window.firebase) { console.error("Firebase SDK not found"); }
-  else if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+  else if (!firebase.apps.length) { if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); } }
 </script>
+  if (!window.firebase) { console.error("Firebase SDK not found"); }
+  else if (!firebase.apps.length) { if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); } }
+
 if (!window.firebase) { console.error("Firebase SDK not found"); }
 
 <style id="wand-pointer-events-fix">/* auto patch */
 #wand, .cursor-wand, .sparkle { pointer-events: none !important; }</style><link href="favicon.ico" rel="icon" type="image/x-icon"/>
-<style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
+<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style><style></style>
+<style id="sb-header-auth-fix">
+/* Desktop: hide mobile auth elements */
+@media (min-width: 801px) {
+  .login-mobile { display: none !important; }
+  .login-mobile-profile { display: none !important; }
+}
+/* Mobile: hide desktop auth elements */
+@media (max-width: 800px) {
+  .login-cta-header { display: none !important; }
+  .sb-user-profile { display: none !important; }
+}
+</style>
+<style>html body #story-queue-menu.active{display:flex !important;}</style><style>html body #story-queue-menu.active{display:flex !important;}</style>
+<style id="sb-cards-base">
+.cards-grid{
+  display:flex; flex-wrap:wrap; justify-content:center;
+  align-items:stretch; gap:16px; margin:2em auto; max-width:1200px; box-sizing:border-box;
+}
+.story-card{
+  flex: 0 1 260px;
+  min-width: 260px;
+  max-width: 320px;
+  display:flex; flex-direction:column; box-sizing:border-box;
+  background:#001f3f; color:#fff; padding:12px; border-radius:14px;
+  border:2px solid #FFEB3B; box-shadow:0 2px 10px #2223;
+  transition:box-shadow .32s cubic-bezier(.5,1.7,.49,1.06), transform .2s cubic-bezier(.5,1.7,.49,1.06);
+  text-align:center;
+}
+.story-card img{
+  width:100%; height:auto; object-fit:cover; aspect-ratio:1/1; border-radius:10px; display:block;
+  margin:0 !important; padding:0 !important; transition:transform .3s cubic-bezier(.5,1.7,.49,1.06);
+}
+.story-card .grow{ flex:1 1 auto; display:flex; flex-direction:column; min-height:0; }
+.story-card h3, .story-card h3 a{
+  color:#fff !important; text-decoration:none !important;
+  text-shadow:0 0 6px #0008; margin:8px 0 6px 0 !important; font-size:1.08em; font-weight:bold;
+}
+.story-card .desc-wrap{ background:#003366; border-radius:8px; padding:8px 10px; margin-top:2px; }
+.story-card p{ color:#fff; font-size:.95em; margin:0; }
+.story-card .chips{ margin-top:10px; display:flex; flex-wrap:wrap; justify-content:center; gap:6px; }
+.story-card .chip{
+  display:inline-block; text-decoration:none; user-select:none;
+  padding:6px 12px; border-radius:999px; font-size:.78em; line-height:1;
+  background:#002a55; color:#fff; border:1px solid rgba(255,255,255,.18);
+  box-shadow: 0 2px 6px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.06);
+  transition: transform .13s, box-shadow .21s, background .18s, color .12s;
+}
+.story-card .chip:hover, .story-card .chip:focus{
+  background:#003e80; color:#FFEB3B;
+  box-shadow: 0 0 16px 6px #FFEB3B66, 0 2px 10px rgba(0,0,0,.28);
+  transform: translateY(-1px) scale(1.05);
+}
+.favorite-star{
+  background:none; border:1px solid rgba(255,255,255,.25);
+  cursor:pointer; font-size:1em; color:#FFEB3B;
+  border-radius:999px; padding:6px 10px; margin-top:10px;
+  transition: color .14s, box-shadow .18s, transform .13s, background .18s, border-color .18s;
+}
+.favorite-star .star{ pointer-events:none; font-size:1.2em; line-height:1; vertical-align:middle; }
+.favorite-star:hover, .favorite-star:focus{
+  background:rgba(255,235,59,.12); border-color:rgba(255,235,59,.55);
+  box-shadow: 0 0 16px 6px #FFEB3B66; transform: translateY(-1px);
+}
+.story-card:hover{ box-shadow:0 0 28px 12px #FFEB3Bcc, 0 2px 10px #2223; transform:scale(1.035); }
+@media (max-width:800px){
+  .cards-grid{ gap:12px; justify-content:space-between; }
+  .story-card{ flex:0 0 calc(50% - 6px); min-width:calc(50% - 6px); max-width:calc(50% - 6px); padding:12px; }
+  .story-card img{ height:auto !important; aspect-ratio:1/1; }
+}
+@supports not (aspect-ratio: 1 / 1){
+  .story-card img{ height:160px !important; }
+  @media (max-width:800px){ .story-card img{ height:130px !important; } }
+}
+</style>
+<style id="sb-cards-grid-clean">
+.cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  gap: 16px !important;
+}
+.cards-grid > .story-card,
+#story-cards .cards-grid > .story-card,
+#story-cards .story-grid > .story-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-self: stretch !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  flex: 0 1 calc(25% - 16px) !important;
+}
+@media (max-width: 1200px){
+  .cards-grid > .story-card,
+  #story-cards .cards-grid > .story-card,
+  #story-cards .story-grid > .story-card {
+    flex: 0 1 calc(33.333% - 16px) !important;
+  }
+}
+@media (max-width: 800px){
+  .cards-grid > .story-card,
+  #story-cards .cards-grid > .story-card,
+  #story-cards .story-grid > .story-card {
+    flex: 0 1 calc(50% - 10px) !important;
+  }
+}
+.cards-grid > .story-card .chips,
+#story-cards .cards-grid > .story-card .chips,
+#story-cards .story-grid > .story-card .chips {
+  overflow: visible !important;
+  max-height: none !important;
+}
+.cards-grid > .story-card .desc-wrap p,
+#story-cards .cards-grid > .story-card .desc-wrap p,
+#story-cards .story-grid > .story-card .desc-wrap p {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+  overflow: visible !important;
+}
+</style>
+<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Emma and the Surprise Party","description":"Emma plans a secret party for her granddad and learns the joy of surprises.","url":"https://storybellkids.com/emma-and-the-surprise-party.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/emma-and-the-surprise-party-icon.webp","genre":["celebration","family","surprise"],"about":[{"@type":"Thing","name":"family"},{"@type":"Thing","name":"celebration"},{"@type":"Thing","name":"surprise"},{"@type":"Thing","name":"surprise"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/emma-and-the-surprise-party/emma-and-the-surprise-party-audio.mp3","encodingFormat":"audio/mpeg"}}</script><style id="sb-carousel-ux-improve">/* === Carousel UX improvements (scoped to carousels) === */
 
 /* Always show a subtle light-blue chip behind descriptions */
 .carousel-section .carousel-desc{
@@ -1891,136 +2022,7 @@ nav ul > li:focus-within > .dropdown {
       font-size: 35px !important;
     }
   }
-</style>
-<style id="sb-header-auth-fix">
-/* Desktop: hide mobile auth elements */
-@media (min-width: 801px) {
-  .login-mobile { display: none !important; }
-  .login-mobile-profile { display: none !important; }
-}
-/* Mobile: hide desktop auth elements */
-@media (max-width: 800px) {
-  .login-cta-header { display: none !important; }
-  .sb-user-profile { display: none !important; }
-}
-</style>
-
-
-<style id="sb-cards-base">
-.cards-grid{
-  display:flex; flex-wrap:wrap; justify-content:center;
-  align-items:stretch; gap:16px; margin:2em auto; max-width:1200px; box-sizing:border-box;
-}
-.story-card{
-  flex: 0 1 260px;
-  min-width: 260px;
-  max-width: 320px;
-  display:flex; flex-direction:column; box-sizing:border-box;
-  background:#001f3f; color:#fff; padding:12px; border-radius:14px;
-  border:2px solid #FFEB3B; box-shadow:0 2px 10px #2223;
-  transition:box-shadow .32s cubic-bezier(.5,1.7,.49,1.06), transform .2s cubic-bezier(.5,1.7,.49,1.06);
-  text-align:center;
-}
-.story-card img{
-  width:100%; height:auto; object-fit:cover; aspect-ratio:1/1; border-radius:10px; display:block;
-  margin:0 !important; padding:0 !important; transition:transform .3s cubic-bezier(.5,1.7,.49,1.06);
-}
-.story-card .grow{ flex:1 1 auto; display:flex; flex-direction:column; min-height:0; }
-.story-card h3, .story-card h3 a{
-  color:#fff !important; text-decoration:none !important;
-  text-shadow:0 0 6px #0008; margin:8px 0 6px 0 !important; font-size:1.08em; font-weight:bold;
-}
-.story-card .desc-wrap{ background:#003366; border-radius:8px; padding:8px 10px; margin-top:2px; }
-.story-card p{ color:#fff; font-size:.95em; margin:0; }
-.story-card .chips{ margin-top:10px; display:flex; flex-wrap:wrap; justify-content:center; gap:6px; }
-.story-card .chip{
-  display:inline-block; text-decoration:none; user-select:none;
-  padding:6px 12px; border-radius:999px; font-size:.78em; line-height:1;
-  background:#002a55; color:#fff; border:1px solid rgba(255,255,255,.18);
-  box-shadow: 0 2px 6px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.06);
-  transition: transform .13s, box-shadow .21s, background .18s, color .12s;
-}
-.story-card .chip:hover, .story-card .chip:focus{
-  background:#003e80; color:#FFEB3B;
-  box-shadow: 0 0 16px 6px #FFEB3B66, 0 2px 10px rgba(0,0,0,.28);
-  transform: translateY(-1px) scale(1.05);
-}
-.favorite-star{
-  background:none; border:1px solid rgba(255,255,255,.25);
-  cursor:pointer; font-size:1em; color:#FFEB3B;
-  border-radius:999px; padding:6px 10px; margin-top:10px;
-  transition: color .14s, box-shadow .18s, transform .13s, background .18s, border-color .18s;
-}
-.favorite-star .star{ pointer-events:none; font-size:1.2em; line-height:1; vertical-align:middle; }
-.favorite-star:hover, .favorite-star:focus{
-  background:rgba(255,235,59,.12); border-color:rgba(255,235,59,.55);
-  box-shadow: 0 0 16px 6px #FFEB3B66; transform: translateY(-1px);
-}
-.story-card:hover{ box-shadow:0 0 28px 12px #FFEB3Bcc, 0 2px 10px #2223; transform:scale(1.035); }
-@media (max-width:800px){
-  .cards-grid{ gap:12px; justify-content:space-between; }
-  .story-card{ flex:0 0 calc(50% - 6px); min-width:calc(50% - 6px); max-width:calc(50% - 6px); padding:12px; }
-  .story-card img{ height:auto !important; aspect-ratio:1/1; }
-}
-@supports not (aspect-ratio: 1 / 1){
-  .story-card img{ height:160px !important; }
-  @media (max-width:800px){ .story-card img{ height:130px !important; } }
-}
-</style>
-
-<style id="sb-cards-grid-clean">
-.cards-grid, #story-cards .cards-grid, #story-cards .story-grid {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-  align-items: stretch !important;
-  gap: 16px !important;
-}
-.cards-grid > .story-card,
-#story-cards .cards-grid > .story-card,
-#story-cards .story-grid > .story-card {
-  display: flex !important;
-  flex-direction: column !important;
-  align-self: stretch !important;
-  box-sizing: border-box !important;
-  margin: 0 !important;
-  width: auto !important;
-  min-width: 0 !important;
-  max-width: none !important;
-  height: auto !important;
-  min-height: 0 !important;
-  flex: 0 1 calc(25% - 16px) !important;
-}
-@media (max-width: 1200px){
-  .cards-grid > .story-card,
-  #story-cards .cards-grid > .story-card,
-  #story-cards .story-grid > .story-card {
-    flex: 0 1 calc(33.333% - 16px) !important;
-  }
-}
-@media (max-width: 800px){
-  .cards-grid > .story-card,
-  #story-cards .cards-grid > .story-card,
-  #story-cards .story-grid > .story-card {
-    flex: 0 1 calc(50% - 10px) !important;
-  }
-}
-.cards-grid > .story-card .chips,
-#story-cards .cards-grid > .story-card .chips,
-#story-cards .story-grid > .story-card .chips {
-  overflow: visible !important;
-  max-height: none !important;
-}
-.cards-grid > .story-card .desc-wrap p,
-#story-cards .cards-grid > .story-card .desc-wrap p,
-#story-cards .story-grid > .story-card .desc-wrap p {
-  display: block !important;
-  -webkit-line-clamp: unset !important;
-  -webkit-box-orient: unset !important;
-  overflow: visible !important;
-}
-</style>
-<script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Story-Bell","url":"https://storybellkids.com/","publisher":{"@type":"Organization","name":"Story-Bell","logo":{"@type":"ImageObject","url":"https://storybellkids.com/index_items/logo.webp"}}}</script><script data-sb="jsonld" type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Emma and the Surprise Party","description":"Emma plans a secret party for her granddad and learns the joy of surprises.","url":"https://storybellkids.com/emma-and-the-surprise-party.html","inLanguage":"en","isFamilyFriendly":true,"author":{"@type":"Person","name":"AI Generated"},"timeRequired":"PT5M","datePublished":"2025-10-06","dateModified":"2025-10-06","image":"https://storybellkids.com/icon/emma-and-the-surprise-party-icon.webp","genre":["celebration","family","surprise"],"about":[{"@type":"Thing","name":"family"},{"@type":"Thing","name":"celebration"},{"@type":"Thing","name":"surprise"},{"@type":"Thing","name":"surprise"}],"audio":{"@type":"AudioObject","name":"Story Audio","contentUrl":"https://storybellkids.com/emma-and-the-surprise-party/emma-and-the-surprise-party-audio.mp3","encodingFormat":"audio/mpeg"}}</script></head><body><header>
+</style></head><body><header>
 <div class="header-left">
 <a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
 <video autoplay="" class="storybell-header-video" controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture="" muted="" playsinline="" style="max-width:90px; height:auto; display:none; margin-right:10px;max-width:90px; height:auto; margin-right:8px;">
@@ -2200,7 +2202,7 @@ nav ul > li:focus-within > .dropdown {
   }, { passive: true });
 
   // Universal bindings (don’t change header layout; just listen)
-  var selectors = ['#loginBtn', '.login', '.login a', '[data-auth-cta]'];  // removed .login-mobile a - navigates to signin.html
+  var selectors = ['#loginBtn', '.login', '.login a', '.login-mobile a', '[data-auth-cta]'];
   selectors.forEach(function(sel){
     document.querySelectorAll(sel).forEach(function(el){
       ['click','touchend','pointerup'].forEach(function(evt){
@@ -2224,10 +2226,6 @@ nav ul > li:focus-within > .dropdown {
   function updateHeaderAuth(user) {
     var loginBtns = document.querySelectorAll('.login-cta-header, .login-mobile a[href*="signin"]');
     var profileEls = document.querySelectorAll('.sb-user-profile');
-    // Mobile hamburger elements
-    var loginMobile = document.querySelector('.login-mobile');
-    var profileMobile = document.querySelector('.login-mobile-profile');
-    var nameMobile = document.querySelector('.sb-user-name-mobile');
 
     if (user) {
       var profile = getChildProfile(user.uid);
@@ -2240,10 +2238,6 @@ nav ul > li:focus-within > .dropdown {
         var nameEl = el.querySelector('.sb-user-name');
         if (nameEl) nameEl.textContent = displayName;
       });
-      // Mobile hamburger: hide login, show profile with icon + name
-      if (loginMobile) loginMobile.classList.add('sb-auth-hidden');
-      if (profileMobile) profileMobile.style.display = 'block';
-      if (nameMobile) nameMobile.textContent = displayName;
     } else {
       loginBtns.forEach(function(el){ el.style.display = ''; });
       profileEls.forEach(function(el){ el.style.display = 'none'; });
@@ -2699,6 +2693,428 @@ nav ul > li:focus-within > .dropdown {
   }, {capture:true, passive:false});
 })();
 </script>
+<script>
+   // Wand cursor & sparkle logic
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   document.querySelectorAll('.carousel-track').forEach(function(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    e.preventDefault();
+  });
+  track.addEventListener('mouseleave', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    track.scrollLeft = scrollLeft - walk;
+  });
+  // Touch events for mobile
+  let startTouchX = 0, startScroll = 0;
+  track.addEventListener('touchstart', function(e) {
+    startTouchX = e.touches[0].pageX;
+    startScroll = track.scrollLeft;
+  }, {passive:true});
+  track.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      let dx = e.touches[0].pageX - startTouchX;
+      track.scrollLeft = startScroll - dx;
+    }
+  }, {passive:true});
+});
+  </script><script data-copied-from-id="mobile-disable-wand-js">
+   (function(){
+  function isMobile(){
+    return window.matchMedia("(max-width: 800px)").matches || ("ontouchstart" in window);
+  }
+  function disableWandOnMobile(){
+    if(!isMobile()) return;
+
+    // Remove wand image if present
+    var wand = document.getElementById("wand");
+    if (wand) { try { wand.remove(); } catch(e){} }
+
+    // Remove any existing sparkles
+    try { document.querySelectorAll(".sparkle").forEach(function(n){ n.remove(); }); } catch(e){}
+
+    // Block mousemove sparkle creators (capture phase)
+    try {
+      document.addEventListener("mousemove", function(e){ e.stopImmediatePropagation(); }, true);
+    } catch(e){}
+
+    // MutationObserver to auto-remove any sparkles added later
+    try {
+      var mo = new MutationObserver(function(muts){
+        for (var i=0;i<muts.length;i++){
+          var ad = muts[i].addedNodes || [];
+          for (var j=0;j<ad.length;j++){
+            var n = ad[j];
+            if (n && n.nodeType === 1){
+              if (n.classList && n.classList.contains("sparkle")) { n.remove(); continue; }
+              if (n.querySelectorAll){
+                n.querySelectorAll(".sparkle").forEach(function(el){ el.remove(); });
+              }
+            }
+          }
+        }
+      });
+      mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
+    } catch(e){}
+  }
+
+  document.addEventListener("DOMContentLoaded", disableWandOnMobile);
+  window.addEventListener("resize", disableWandOnMobile);
+})();
+  </script><script>
+// Delegated handler to ensure Login/Subscribe CTAs always open the auth modal (desktop & mobile).
+(function(){
+  function wantsAuth(el){
+    if(!el) return false;
+    return el.hasAttribute('data-auth-cta');
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-auth-cta]');
+    if(!t && wantsAuth(e.target)) t = e.target;
+    if(t){
+      try { e.preventDefault(); } catch(_){}
+      try { e.stopPropagation(); } catch(_){}
+      if(typeof window.openAuthModal === 'function'){ window.openAuthModal(); }
+    }
+  }, {passive:false, capture:true});
+})();
+</script><script>
+// --- Robust Auth Modal Open/Close (v3) ---
+(function(){
+  // Ensure functions exist on window
+  window.closeAuthModal = function(){
+    try {
+      var m = document.getElementById('auth-modal');
+      if (!m) return;
+      m.style.display = 'none';
+      // If FirebaseUI mounted, optionally reset container (prevents stale state)
+      var c = document.getElementById('firebaseui-auth-container');
+      if (c) { c.innerHTML = ''; }
+    } catch(e){ console.error('closeAuthModal error:', e); }
+  };
+
+  // Overlay + X + Esc close behavior
+  function bindModalClose(){
+    var m = document.getElementById('auth-modal');
+    if (!m) return;
+    var content = m.querySelector('.auth-modal-content, .modal-content, [role="dialog"]') || m;
+    // Close on overlay click (but not when clicking the content box)
+    m.addEventListener('click', function(ev){
+      if (!content.contains(ev.target)) return; // inside content: ignore
+      // If click target is *exactly* the overlay (m), close
+      if (ev.target === m) { window.closeAuthModal(); }
+    }, {capture: true});
+
+    // Bind buttons/links that look like close
+    var closeSelectors = [
+      '.auth-close', '.modal-close', '.close', '[data-close]', '[aria-label="Close"]', '.firebaseui-idp-cancel'
+    ];
+    closeSelectors.forEach(function(sel){
+      m.querySelectorAll(sel).forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          window.closeAuthModal();
+        }, {passive:false});
+      });
+    });
+
+    // Esc key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') window.closeAuthModal();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindModalClose);
+  } else {
+    bindModalClose();
+  }
+
+  // Make sure the hamburger's login button also opens the modal
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.hamburger-login, .hamburger .login, .mobile-login-button, #mobileLoginBtn, [data-hamburger-login]');
+    if (t){
+      try { e.preventDefault(); e.stopPropagation(); } catch(_){}
+      if (typeof window.openAuthModal === 'function') window.openAuthModal();
+    }
+  }, {capture:true, passive:false});
+})();
+</script><script>
+   // Wand cursor & sparkle logic
+    const wand = document.getElementById("wand");
+    const WAND_OFFSET_X = 15;
+    const WAND_OFFSET_Y = 8; // moved down by 10px
+    wand.style.position = "fixed";
+    wand.style.pointerEvents = "none";
+    wand.style.zIndex = 20001;
+    let lastSparkleTime = 0;
+    document.body.addEventListener("mousemove", (e) => {
+      wand.style.left = `${e.clientX - WAND_OFFSET_X}px`;
+      wand.style.top  = `${e.clientY - WAND_OFFSET_Y}px`;
+      wand.style.transition = "none";
+      wand.style.opacity = "1";
+      // Sparkle at wand tip
+      const now = Date.now();
+      if (now - lastSparkleTime > 16) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = `${e.clientX - 11}px`;
+        sparkle.style.top  = `${e.clientY - 11}px`;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 900);
+        lastSparkleTime = now;
+      }
+    });
+    document.body.addEventListener("mouseleave", () => { wand.style.opacity = "0"; });
+    document.body.addEventListener("mouseenter", () => { wand.style.opacity = "1"; });
+  </script><script>
+   document.querySelectorAll('.carousel-track').forEach(function(track){
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e){
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    e.preventDefault();
+  });
+  track.addEventListener('mouseleave', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mouseup', function(){
+    isDown = false;
+    track.classList.remove('dragging');
+  });
+  track.addEventListener('mousemove', function(e){
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    track.scrollLeft = scrollLeft - walk;
+  });
+  // Touch events for mobile
+  let startTouchX = 0, startScroll = 0;
+  track.addEventListener('touchstart', function(e) {
+    startTouchX = e.touches[0].pageX;
+    startScroll = track.scrollLeft;
+  }, {passive:true});
+  track.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      let dx = e.touches[0].pageX - startTouchX;
+      track.scrollLeft = startScroll - dx;
+    }
+  }, {passive:true});
+});
+  </script><script data-copied-from-id="mobile-disable-wand-js">
+   (function(){
+  function isMobile(){
+    return window.matchMedia("(max-width: 800px)").matches || ("ontouchstart" in window);
+  }
+  function disableWandOnMobile(){
+    if(!isMobile()) return;
+
+    // Remove wand image if present
+    var wand = document.getElementById("wand");
+    if (wand) { try { wand.remove(); } catch(e){} }
+
+    // Remove any existing sparkles
+    try { document.querySelectorAll(".sparkle").forEach(function(n){ n.remove(); }); } catch(e){}
+
+    // Block mousemove sparkle creators (capture phase)
+    try {
+      document.addEventListener("mousemove", function(e){ e.stopImmediatePropagation(); }, true);
+    } catch(e){}
+
+    // MutationObserver to auto-remove any sparkles added later
+    try {
+      var mo = new MutationObserver(function(muts){
+        for (var i=0;i<muts.length;i++){
+          var ad = muts[i].addedNodes || [];
+          for (var j=0;j<ad.length;j++){
+            var n = ad[j];
+            if (n && n.nodeType === 1){
+              if (n.classList && n.classList.contains("sparkle")) { n.remove(); continue; }
+              if (n.querySelectorAll){
+                n.querySelectorAll(".sparkle").forEach(function(el){ el.remove(); });
+              }
+            }
+          }
+        }
+      });
+      mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
+    } catch(e){}
+  }
+
+  document.addEventListener("DOMContentLoaded", disableWandOnMobile);
+  window.addEventListener("resize", disableWandOnMobile);
+})();
+  </script><script>
+// Delegated handler to ensure Login/Subscribe CTAs always open the auth modal (desktop & mobile).
+(function(){
+  function wantsAuth(el){
+    if(!el) return false;
+    return el.hasAttribute('data-auth-cta');
+  }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-auth-cta]');
+    if(!t && wantsAuth(e.target)) t = e.target;
+    if(t){
+      try { e.preventDefault(); } catch(_){}
+      try { e.stopPropagation(); } catch(_){}
+      if(typeof window.openAuthModal === 'function'){ window.openAuthModal(); }
+    }
+  }, {passive:false, capture:true});
+})();
+</script><script>
+// --- Robust Auth Modal Open/Close (v3) ---
+(function(){
+  // Ensure functions exist on window
+  window.closeAuthModal = function(){
+    try {
+      var m = document.getElementById('auth-modal');
+      if (!m) return;
+      m.style.display = 'none';
+      // If FirebaseUI mounted, optionally reset container (prevents stale state)
+      var c = document.getElementById('firebaseui-auth-container');
+      if (c) { c.innerHTML = ''; }
+    } catch(e){ console.error('closeAuthModal error:', e); }
+  };
+
+  // Overlay + X + Esc close behavior
+  function bindModalClose(){
+    var m = document.getElementById('auth-modal');
+    if (!m) return;
+    var content = m.querySelector('.auth-modal-content, .modal-content, [role="dialog"]') || m;
+    // Close on overlay click (but not when clicking the content box)
+    m.addEventListener('click', function(ev){
+      if (!content.contains(ev.target)) return; // inside content: ignore
+      // If click target is *exactly* the overlay (m), close
+      if (ev.target === m) { window.closeAuthModal(); }
+    }, {capture: true});
+
+    // Bind buttons/links that look like close
+    var closeSelectors = [
+      '.auth-close', '.modal-close', '.close', '[data-close]', '[aria-label="Close"]', '.firebaseui-idp-cancel'
+    ];
+    closeSelectors.forEach(function(sel){
+      m.querySelectorAll(sel).forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          window.closeAuthModal();
+        }, {passive:false});
+      });
+    });
+
+    // Esc key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') window.closeAuthModal();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindModalClose);
+  } else {
+    bindModalClose();
+  }
+
+  // Make sure the hamburger's login button also opens the modal
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.hamburger-login, .hamburger .login, .mobile-login-button, #mobileLoginBtn, [data-hamburger-login]');
+    if (t){
+      try { e.preventDefault(); e.stopPropagation(); } catch(_){}
+      if (typeof window.openAuthModal === 'function') window.openAuthModal();
+    }
+  }, {capture:true, passive:false});
+})();
+</script><!-- auth-mobile-direct removed: mobile login navigates to signin.html -->
+<!-- SB Search Modal (Fuse.js) - Injected -->
+<script defer="" src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+<!-- END SB Search Modal -->
+<script id="sb-cards-flex-enforcer">
+(function(){
+  function applyLayout(root){
+    var grids = (root||document).querySelectorAll('.cards-grid, #story-cards .cards-grid, #story-cards .story-grid');
+    grids.forEach(function(grid){
+      grid.style.display = 'flex';
+      grid.style.flexWrap = 'wrap';
+      grid.style.justifyContent = 'center';
+      grid.style.alignItems = 'stretch';
+      grid.style.gap = '16px';
+
+      var w = window.innerWidth;
+      var basis = 'calc(25% - 16px)';
+      if (w <= 1200) basis = 'calc(33.333% - 16px)';
+      if (w <= 800)  basis = 'calc(50% - 10px)';
+
+      grid.querySelectorAll(':scope > .story-card').forEach(function(card){
+        card.style.display = 'flex';
+        card.style.flexDirection = 'column';
+        card.style.alignSelf = 'stretch';
+        card.style.boxSizing = 'border-box';
+        card.style.margin = '0';
+        card.style.width = '';
+        card.style.minWidth = '0';
+        card.style.maxWidth = 'none';
+        card.style.height = 'auto';
+        card.style.minHeight = '0';
+        card.style.flex = '0 1 ' + basis;
+      });
+
+      grid.querySelectorAll('.chips').forEach(function(ch){
+        ch.style.overflow = 'visible';
+        ch.style.maxHeight = 'none';
+      });
+      grid.querySelectorAll('.desc-wrap p').forEach(function(p){
+        p.style.display = 'block';
+        p.style.overflow = 'visible';
+      });
+    });
+  }
+  function onReady(fn){ if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, {once:true}); else fn(); }
+  onReady(function(){ applyLayout(document); window.addEventListener('resize', function(){ applyLayout(document); }); });
+})();
+</script>
 <style id="sb-mobile-carousel-typography-override">
 @media (max-width: 800px){
   /* Remove the extra line break between title and description */
@@ -3146,53 +3562,74 @@ nav ul > li:focus-within > .dropdown {
   addEventListener("resize", ()=>{ if (!isMobile()) closeMenu(); });
 })();
   </script><script>
-(function(){
-  function bySel(s){ return document.querySelector(s); }
-  function closeMenu(){
-    try {
-      var nav = document.querySelector('.header-right nav');
-      var overlay = document.querySelector('.menu-overlay');
-      document.body.classList.remove('menu-open');
-      if (nav) nav.classList.remove('open');
-      if (overlay){ overlay.classList.remove('active'); overlay.style.display = 'none'; }
-      if (nav) nav.querySelectorAll('li.open').forEach(li => li.classList.remove('open'));
-    } catch(e){}
-  }
-  function openAuth(link){
-    // mark last click for guard
-    window.__sbLastClickTarget = link;
-    if (typeof window.openAuthModal === 'function'){ return window.openAuthModal(); }
-    var m = document.getElementById('auth-modal');
-    if (m){
-      m.style.display = 'flex';
-      try { if (typeof window.onOpenAuthModalHook === 'function') window.onOpenAuthModalHook(); } catch(e){}
-      return true;
+(() => {
+  const modal = document.getElementById('sb-search-modal');
+  const input = document.getElementById('sb-search-input');
+  const closeBtn = document.getElementById('sb-search-close');
+  const resultsEl = document.getElementById('sb-search-results');
+  if(!modal || !input) return;
+  if(resultsEl) resultsEl.style.display='none';
+  let fuse, data = [], loaded = false;
+
+  function renderMedia(it) {
+    // For categories with MP4, show video; otherwise show image
+    if (it.type === 'category' && it.mp4) {
+      return `<video autoplay loop muted playsinline style="width:80px;height:80px;object-fit:cover;border-radius:12px;border:1px solid #f2f2f2;background:#000">
+        <source src="${it.mp4}" type="video/mp4">
+      </video>`;
     }
-    console.warn('auth-mobile-direct: auth modal not found');
-    return false;
+    return `<img src="${it.cover||'/index_items/placeholder.webp'}" alt="${it.title||'Story'}"
+         style="width:64px;height:64px;object-fit:cover;border-radius:12px;border:1px solid #f2f2f2"
+         onerror="this.src='/index_items/placeholder.webp'">`;
   }
-  function bind(){
-    var link = bySel('.login-mobile a');
-    if(!link) return;
-    // Defensive: ensure it has explicit CTA marker
-    if(!link.hasAttribute('data-auth-cta')) link.setAttribute('data-auth-cta','auth');
-    ['click','touchend','pointerup'].forEach(function(evt){
-      link.addEventListener(evt, function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        closeMenu();
-        setTimeout(function(){ openAuth(link); }, 0);
-        return false;
-      }, {passive:false, capture:true});
-    });
+
+  function renderMeta(it) {
+    if (it.type === 'category') {
+      return `<span style="background:#FFEB3B;color:#003366;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:bold">CATEGORY</span>`;
+    }
+    return `Age: ${it.age||'—'} · ${(it.categories||[]).slice(0,2).join(', ')}`;
   }
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', bind, {once:true});
-  } else {
-    bind();
+
+  function render(items){
+    if(!items || items.length===0){ resultsEl.innerHTML=''; resultsEl.style.display='none'; return; }
+    resultsEl.style.display='block';
+    resultsEl.innerHTML = items.slice(0,30).map(x=>{ const it=x.item||x; return `
+      <a href="${it.url||'#'}" style="display:flex;gap:12px;padding:10px;border-radius:12px;text-decoration:none;color:inherit;border:1px solid #eee;margin:8px;${it.type==='category'?'background:#fffef0;':''}"
+         onmouseenter="this.querySelector('video')?.play()" onmouseleave="this.querySelector('video')?.pause()">
+        ${renderMedia(it)}
+        <div style="flex:1"><div style="font-weight:700">${it.title||'Untitled'}</div>
+        <div style="font-size:13px;color:#444;margin-top:2px">${(it.summary||'').slice(0,140)}</div>
+        <div style="font-size:12px;color:#666;margin-top:6px">${renderMeta(it)}</div></div>
+      </a>`; }).join('');
   }
+  async function ensureLoaded(){
+    if(loaded) return;
+    try{
+      const res=await fetch('/search-index.json',{cache:'no-store'});
+      data=await res.json();
+    }catch(e){ data=[]; }
+    fuse=new Fuse(data,{includeScore:true,threshold:0.35,keys:[{name:'title',weight:0.5},{name:'summary',weight:0.15},{name:'keywords',weight:0.25},{name:'categories',weight:0.1}]});
+    loaded=true;
+  }
+  function openModal(){ modal.style.display='block'; modal.setAttribute('aria-hidden','false'); setTimeout(()=>input&&input.focus(),0); render([]); }
+  function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); if(input) input.value=''; }
+  function onTriggerClick(e){ e.preventDefault(); ensureLoaded().then(openModal); }
+  const attach=()=>{ document.querySelectorAll('[data-sb-search-trigger]').forEach(el=>{ if(!el._sbBound){ el.addEventListener('click', onTriggerClick); el._sbBound=true; } }); };
+  attach(); new MutationObserver(attach).observe(document.body,{childList:true,subtree:true});
+  if(closeBtn) closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
+  window.addEventListener('keydown', async e=>{ if(e.key==='/'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&document.activeElement.tagName!=='INPUT'&&document.activeElement.tagName!=='TEXTAREA'){ e.preventDefault(); await ensureLoaded(); openModal(); } else if(e.key==='Escape'){ closeModal(); } });
+  if(input){ input.addEventListener('input', ()=>{ const q=input.value.trim(); if(!q){ render([]); return; } const out=fuse.search(q); render(out); }); }
 })();
-</script><script>
+</script><div aria-hidden="true" id="sb-search-modal" style="position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:10001">
+<div aria-label="Search stories" aria-modal="true" role="dialog" style="max-width:720px;margin:8vh auto;background:white;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)">
+<div style="padding:14px 16px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px">
+<input id="sb-search-input" placeholder="Search stories, categories, emotions… ( / )" style="flex:1;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:16px;outline:none" type="search"/>
+<button aria-label="Close" id="sb-search-close" style="border:0;background:transparent;font-size:18px;cursor:pointer;padding:8px">✕</button>
+</div>
+<div id="sb-search-results" style="max-height:60vh;overflow:auto;padding:8px 8px 12px"></div>
+</div>
+</div><script>
    // Wand cursor & sparkle logic
     const wand = document.getElementById("wand");
     const WAND_OFFSET_X = 15;
@@ -3494,7 +3931,7 @@ nav ul > li:focus-within > .dropdown {
     }
   }, {capture:true, passive:false});
 })();
-</script><!-- auth-mobile-direct removed: mobile login navigates to signin.html --><script id="sb-search-fallback-opener">
+</script><script id="sb-search-fallback-opener">
 (function(){
   try{
     var btn = document.querySelector('[data-sb-search-trigger]');
@@ -3523,124 +3960,4 @@ nav ul > li:focus-within > .dropdown {
     });
   }catch(_){}
 })();
-</script>
-<!-- SB Search Modal (Fuse.js) - Injected -->
-<script defer="" src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
-<div aria-hidden="true" id="sb-search-modal" style="position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:10001">
-<div aria-label="Search stories" aria-modal="true" role="dialog" style="max-width:720px;margin:8vh auto;background:white;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)">
-<div style="padding:14px 16px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px">
-<input id="sb-search-input" placeholder="Search stories, categories, emotions… ( / )" style="flex:1;padding:12px 14px;border:1px solid #ddd;border-radius:10px;font-size:16px;outline:none" type="search"/>
-<button aria-label="Close" id="sb-search-close" style="border:0;background:transparent;font-size:18px;cursor:pointer;padding:8px">✕</button>
-</div>
-<div id="sb-search-results" style="max-height:60vh;overflow:auto;padding:8px 8px 12px"></div>
-</div>
-</div>
-<script id="sb-search-script">
-(() => {
-  const modal = document.getElementById('sb-search-modal');
-  const input = document.getElementById('sb-search-input');
-  const closeBtn = document.getElementById('sb-search-close');
-  const resultsEl = document.getElementById('sb-search-results');
-  if(!modal || !input) return;
-  if(resultsEl) resultsEl.style.display='none';
-  let fuse, data = [], loaded = false;
-
-  function renderMedia(it) {
-    // For categories with MP4, show video; otherwise show image
-    if (it.type === 'category' && it.mp4) {
-      return `<video autoplay loop muted playsinline style="width:80px;height:80px;object-fit:cover;border-radius:12px;border:1px solid #f2f2f2;background:#000">
-        <source src="${it.mp4}" type="video/mp4">
-      </video>`;
-    }
-    return `<img src="${it.cover||'/index_items/placeholder.webp'}" alt="${it.title||'Story'}"
-         style="width:64px;height:64px;object-fit:cover;border-radius:12px;border:1px solid #f2f2f2"
-         onerror="this.src='/index_items/placeholder.webp'">`;
-  }
-
-  function renderMeta(it) {
-    if (it.type === 'category') {
-      return `<span style="background:#FFEB3B;color:#003366;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:bold">CATEGORY</span>`;
-    }
-    return `Age: ${it.age||'—'} · ${(it.categories||[]).slice(0,2).join(', ')}`;
-  }
-
-  function render(items){
-    if(!items || items.length===0){ resultsEl.innerHTML=''; resultsEl.style.display='none'; return; }
-    resultsEl.style.display='block';
-    resultsEl.innerHTML = items.slice(0,30).map(x=>{ const it=x.item||x; return `
-      <a href="${it.url||'#'}" style="display:flex;gap:12px;padding:10px;border-radius:12px;text-decoration:none;color:inherit;border:1px solid #eee;margin:8px;${it.type==='category'?'background:#fffef0;':''}"
-         onmouseenter="this.querySelector('video')?.play()" onmouseleave="this.querySelector('video')?.pause()">
-        ${renderMedia(it)}
-        <div style="flex:1"><div style="font-weight:700">${it.title||'Untitled'}</div>
-        <div style="font-size:13px;color:#444;margin-top:2px">${(it.summary||'').slice(0,140)}</div>
-        <div style="font-size:12px;color:#666;margin-top:6px">${renderMeta(it)}</div></div>
-      </a>`; }).join('');
-  }
-  async function ensureLoaded(){
-    if(loaded) return;
-    try{
-      const res=await fetch('/search-index.json',{cache:'no-store'});
-      data=await res.json();
-    }catch(e){ data=[]; }
-    fuse=new Fuse(data,{includeScore:true,threshold:0.35,keys:[{name:'title',weight:0.5},{name:'summary',weight:0.15},{name:'keywords',weight:0.25},{name:'categories',weight:0.1}]});
-    loaded=true;
-  }
-  function openModal(){ modal.style.display='block'; modal.setAttribute('aria-hidden','false'); setTimeout(()=>input&&input.focus(),0); render([]); }
-  function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); if(input) input.value=''; }
-  function onTriggerClick(e){ e.preventDefault(); ensureLoaded().then(openModal); }
-  const attach=()=>{ document.querySelectorAll('[data-sb-search-trigger]').forEach(el=>{ if(!el._sbBound){ el.addEventListener('click', onTriggerClick); el._sbBound=true; } }); };
-  attach(); new MutationObserver(attach).observe(document.body,{childList:true,subtree:true});
-  if(closeBtn) closeBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
-  window.addEventListener('keydown', async e=>{ if(e.key==='/'&&!e.metaKey&&!e.ctrlKey&&!e.altKey&&document.activeElement.tagName!=='INPUT'&&document.activeElement.tagName!=='TEXTAREA'){ e.preventDefault(); await ensureLoaded(); openModal(); } else if(e.key==='Escape'){ closeModal(); } });
-  if(input){ input.addEventListener('input', ()=>{ const q=input.value.trim(); if(!q){ render([]); return; } const out=fuse.search(q); render(out); }); }
-})();
-</script>
-<!-- END SB Search Modal -->
-
-
-<script id="sb-cards-flex-enforcer">
-(function(){
-  function applyLayout(root){
-    var grids = (root||document).querySelectorAll('.cards-grid, #story-cards .cards-grid, #story-cards .story-grid');
-    grids.forEach(function(grid){
-      grid.style.display = 'flex';
-      grid.style.flexWrap = 'wrap';
-      grid.style.justifyContent = 'center';
-      grid.style.alignItems = 'stretch';
-      grid.style.gap = '16px';
-
-      var w = window.innerWidth;
-      var basis = 'calc(25% - 16px)';
-      if (w <= 1200) basis = 'calc(33.333% - 16px)';
-      if (w <= 800)  basis = 'calc(50% - 10px)';
-
-      grid.querySelectorAll(':scope > .story-card').forEach(function(card){
-        card.style.display = 'flex';
-        card.style.flexDirection = 'column';
-        card.style.alignSelf = 'stretch';
-        card.style.boxSizing = 'border-box';
-        card.style.margin = '0';
-        card.style.width = '';
-        card.style.minWidth = '0';
-        card.style.maxWidth = 'none';
-        card.style.height = 'auto';
-        card.style.minHeight = '0';
-        card.style.flex = '0 1 ' + basis;
-      });
-
-      grid.querySelectorAll('.chips').forEach(function(ch){
-        ch.style.overflow = 'visible';
-        ch.style.maxHeight = 'none';
-      });
-      grid.querySelectorAll('.desc-wrap p').forEach(function(p){
-        p.style.display = 'block';
-        p.style.overflow = 'visible';
-      });
-    });
-  }
-  function onReady(fn){ if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, {once:true}); else fn(); }
-  onReady(function(){ applyLayout(document); window.addEventListener('resize', function(){ applyLayout(document); }); });
-})();
-</script>
-</body></html>
+</script></body></html>
